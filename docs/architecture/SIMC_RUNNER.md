@@ -38,6 +38,10 @@ de saída documentados pelo SimulationCraft em categorias estáveis e mensagens 
 preservar o código original. Ausência do executável, divergência de hash, perfil fora do projeto e
 argumentos inválidos interrompem a operação antes que qualquer processo seja iniciado.
 
+A matriz versionada e os planos de execução futuros estão definidos em [`SCENARIOS.md`](SCENARIOS.md).
+Nesta etapa, validar a matriz não dispara o runner; a orquestração de execuções comparativas pertence
+à suíte de regressão.
+
 Referências oficiais:
 
 - [Textual Configuration Interface](https://github.com/simulationcraft/simc/wiki/TextualConfigurationInterface)

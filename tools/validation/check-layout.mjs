@@ -90,6 +90,18 @@ const requiredFiles = [
   "tests/rotation-lab/compiler.test.mjs",
   "tests/unit/compiler_runtime_bundle_spec.lua",
   "docs/architecture/COMPILER.md",
+  "rotation-lab/scenarios/cli.mjs",
+  "rotation-lab/scenarios/errors.mjs",
+  "rotation-lab/scenarios/fitness.mjs",
+  "rotation-lab/scenarios/parser.mjs",
+  "rotation-lab/scenarios/plan.mjs",
+  "rotation-lab/scenarios/schema.mjs",
+  "rotation-lab/scenarios/verify.mjs",
+  "rotation-lab/fixtures/scenarios/initial.scenario-matrix.json",
+  "rotation-lab/fixtures/scenarios/accepted.scenario-results.json",
+  "rotation-lab/fixtures/scenarios/guardrail-rejection.scenario-results.json",
+  "tests/rotation-lab/scenarios.test.mjs",
+  "docs/architecture/SCENARIOS.md",
 ];
 const errors = [];
 

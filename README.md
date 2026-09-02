@@ -23,6 +23,8 @@ npm run dsl:check
 npm run dsl:test
 npm run compiler:check
 npm run compiler:test
+npm run scenario:check
+npm run scenario:test
 npm run core:test
 npm test
 ```
@@ -43,4 +45,5 @@ A detecção genérica de spec e talentos está em [`docs/architecture/SPEC_DETE
 O runner pinado do SimulationCraft está em [`docs/architecture/SIMC_RUNNER.md`](docs/architecture/SIMC_RUNNER.md).
 A representação intermediária de rotações está em [`docs/architecture/ROTATION_DSL.md`](docs/architecture/ROTATION_DSL.md).
 O compilador SimC ↔ DSL ↔ runtime está em [`docs/architecture/COMPILER.md`](docs/architecture/COMPILER.md).
+A matriz de cenários e o cálculo de fitness estão em [`docs/architecture/SCENARIOS.md`](docs/architecture/SCENARIOS.md).
 O lifecycle e a política de evidências estão em [`docs/project/BOARD_GOVERNANCE.md`](docs/project/BOARD_GOVERNANCE.md).

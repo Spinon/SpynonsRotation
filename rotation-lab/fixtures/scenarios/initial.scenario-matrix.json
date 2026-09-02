@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "id": "neutral.initial_matrix",
+  "version": "1.0.0",
+  "description": "Matriz inicial neutra; pesos são defaults técnicos, não representam uma spec ou decisão final de produto.",
+  "defaults": {
+    "iterations": 10000,
+    "threads": 1,
+    "fixedTime": true,
+    "varyCombatLength": 0
+  },
+  "fitness": {
+    "metric": "mean_dps",
+    "aggregation": "weighted_relative_delta",
+    "defaultMaxRegressionPercent": 3
+  },
+  "scenarios": [
+    {
+      "id": "neutral.st_short",
+      "category": "single_target",
+      "variant": "short",
+      "label": "Single Target — curto",
+      "weight": 0.75,
+      "simulation": {
+        "maxTime": 60,
+        "desiredTargets": 1,
+        "fightStyle": "Patchwerk"
+      }
+    },
+    {
+      "id": "neutral.st_medium",
+      "category": "single_target",
+      "variant": "medium",
+      "label": "Single Target — médio",
+      "weight": 1.25,
+      "simulation": {
+        "maxTime": 180,
+        "desiredTargets": 1,
+        "fightStyle": "Patchwerk"
+      }
+    },
+    {
+      "id": "neutral.st_long",
+      "category": "single_target",
+      "variant": "long",
+      "label": "Single Target — longo",
+      "weight": 1,
+      "simulation": {
+        "maxTime": 300,
+        "desiredTargets": 1,
+        "fightStyle": "Patchwerk"
+      }
+    },
+    {
+      "id": "neutral.cleave_2",
+      "category": "cleave",
+      "variant": "targets_2",
+      "label": "Cleave — 2 alvos",
+      "weight": 1,
+      "simulation": {
+        "maxTime": 180,
+        "desiredTargets": 2,
+        "fightStyle": "Patchwerk"
+      }
+    },
+    {
+      "id": "neutral.cleave_3",
+      "category": "cleave",
+      "variant": "targets_3",
+      "label": "Cleave — 3 alvos",
+      "weight": 1.25,
+      "simulation": {
+        "maxTime": 180,
+        "desiredTargets": 3,
+        "fightStyle": "Patchwerk"
+      }
+    },
+    {
+      "id": "neutral.aoe_4",
+      "category": "aoe",
+      "variant": "targets_4",
+      "label": "AoE — 4 alvos",
+      "weight": 1.25,
+      "simulation": {
+        "maxTime": 120,
+        "desiredTargets": 4,
+        "fightStyle": "Patchwerk"
+      }
+    },
+    {
+      "id": "neutral.aoe_5",
+      "category": "aoe",
+      "variant": "targets_5",
+      "label": "AoE — 5 alvos",
+      "weight": 1.5,
+      "simulation": {
+        "maxTime": 120,
+        "desiredTargets": 5,
+        "fightStyle": "Patchwerk"
+      }
+    },
+    {
+      "id": "neutral.aoe_8",
+      "category": "aoe",
+      "variant": "targets_8",
+      "label": "AoE — 8 alvos",
+      "weight": 0.75,
+      "simulation": {
+        "maxTime": 120,
+        "desiredTargets": 8,
+        "fightStyle": "Patchwerk"
+      }
+    },
+    {
+      "id": "neutral.dungeon_short_pull",
+      "category": "dungeon_like",
+      "variant": "short_pull",
+      "label": "Dungeon-like — pull curto",
+      "weight": 1.5,
+      "simulation": {
+        "maxTime": 30,
+        "desiredTargets": 5,
+        "fightStyle": "Patchwerk"
+      }
+    },
+    {
+      "id": "neutral.dungeon_prolonged_pull",
+      "category": "dungeon_like",
+      "variant": "prolonged_pull",
+      "label": "Dungeon-like — pull prolongado",
+      "weight": 1.25,
+      "simulation": {
+        "maxTime": 90,
+        "desiredTargets": 5,
+        "fightStyle": "Patchwerk"
+      }
+    },
+    {
+      "id": "neutral.dungeon_boss",
+      "category": "dungeon_like",
+      "variant": "boss",
+      "label": "Dungeon-like — boss",
+      "weight": 1.5,
+      "maxRegressionPercent": 1.5,
+      "simulation": {
+        "maxTime": 180,
+        "desiredTargets": 1,
+        "fightStyle": "Patchwerk"
+      }
+    },
+    {
+      "id": "neutral.dungeon_waves_adds",
+      "category": "dungeon_like",
+      "variant": "waves_adds",
+      "label": "Dungeon-like — waves/adds",
+      "weight": 2,
+      "maxRegressionPercent": 4,
+      "simulation": {
+        "maxTime": 180,
+        "desiredTargets": 1,
+        "fightStyle": "Patchwerk",
+        "raidEvents": [
+          {
+            "type": "adds",
+            "name": "NeutralWave",
+            "count": 4,
+            "first": 20,
+            "duration": 15,
+            "cooldown": 45,
+            "last": 155
+          }
+        ]
+      }
+    }
+  ]
+}

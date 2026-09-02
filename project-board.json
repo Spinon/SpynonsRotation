@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:26:00.394Z",
-  "currentFocus": "LAB-004",
+  "updatedAt": "2026-09-02T23:27:15.865Z",
+  "currentFocus": "LAB-005",
   "parallelFocus": {
     "ui": "UI-DESIGN-005"
   },
@@ -270,12 +270,12 @@
       "title": "Matriz de cenários",
       "lane": "ROTATION LAB",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/LAB-004.md",
-      "updatedAt": "2026-09-02T23:13:44.531Z",
+      "updatedAt": "2026-09-02T23:27:15.865Z",
       "reviewBy": null,
-      "nextAction": "Implementar schema, matriz neutra, planos SimC e fitness com guardrails.",
+      "nextAction": null,
       "dependencies": [
         "LAB-001",
         "LAB-002"
@@ -285,7 +285,15 @@
         "Pesos de fitness são configuráveis",
         "Regressões graves não são mascaradas"
       ],
-      "evidence": []
+      "evidence": [
+        "npm run scenario:test passou com 15 testes de schema, cobertura, canonicalização, planos, resultados, fitness e guardrails.",
+        "npm run scenario:check confirmou 12 cenários, peso total 15, 12 planos determinísticos e digest CD23ECE78BA018768FAE38B035EBCCC278C277B65B3B486CFDB323F9873E76E5.",
+        "A fixture de regressão manteve fitness ponderado de +3%, mas foi corretamente bloqueada por -10% em neutral.dungeon_waves_adds diante do limite de -4%.",
+        "O SimulationCraft pinado aceitou o plano waves/adds em execução mínima: exit 0 e relatório JSON produzido.",
+        "npm test passou com governança, runner SimC, DSL, compiler, matriz de cenários, 90 testes Lua, layout, Luacheck e wowlua-ls.",
+        "docs/architecture/SCENARIOS.md documenta cobertura, argumentos SimC, fórmula de fitness, guardrails e fronteiras futuras.",
+        "Commit e94e9b7 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD."
+      ]
     },
     {
       "id": "LAB-005",

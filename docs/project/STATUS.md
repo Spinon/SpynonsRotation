@@ -2,17 +2,17 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:26:00.394Z
+Atualizado pelo board em: 2026-09-02T23:27:15.865Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**LAB-004 — Matriz de cenários**
+**LAB-005 — Optimizer**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P2` · Responsável: Codex
 
-Próxima ação: Implementar schema, matriz neutra, planos SimC e fitness com guardrails.
+Próxima ação: Implementar beam search inicial com limites.
 
 ## Focos paralelos
 
@@ -23,9 +23,9 @@ Próxima ação: Implementar schema, matriz neutra, planos SimC e fitness com gu
 ## Progresso
 
 - Planejadas: 39
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 13
+- Concluídas: 14
 - Total: 53
 
 ## Fila canônica
@@ -41,7 +41,7 @@ Próxima ação: Implementar schema, matriz neutra, planos SimC e fitness com gu
 | LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | done | P0 | BOOT-002 |
 | LAB-002 | delivery | ROTATION LAB | DSL de rotação | done | P0 | CORE-001 |
 | LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | done | P0 | LAB-001, LAB-002, CORE-001 |
-| LAB-004 | delivery | ROTATION LAB | Matriz de cenários | in_progress | P1 | LAB-001, LAB-002 |
+| LAB-004 | delivery | ROTATION LAB | Matriz de cenários | done | P1 | LAB-001, LAB-002 |
 | LAB-005 | delivery | ROTATION LAB | Optimizer | planned | P2 | LAB-004, LAB-003 |
 | LAB-006 | delivery | ROTATION LAB | Regression suite | planned | P1 | LAB-003, LAB-004 |
 | ENH-001 | delivery | SHAMAN | Catálogo Enhancement | planned | P0 | CORE-002, CORE-003, CORE-004 |
@@ -157,6 +157,16 @@ Próxima ação: Implementar schema, matriz neutra, planos SimC e fitness com gu
 - npm test passou com 41 testes de governança, 9 do runner SimC, 16 da DSL, 14 do compilador, 90 testes Lua, golden check, layout, Luacheck e wowlua-ls.
 - docs/architecture/COMPILER.md documenta o subconjunto reversível, mapa neutro, bytecode postfix, capabilities, golden files e limites de integração.
 - Commit 8c3342d registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### LAB-004
+
+- npm run scenario:test passou com 15 testes de schema, cobertura, canonicalização, planos, resultados, fitness e guardrails.
+- npm run scenario:check confirmou 12 cenários, peso total 15, 12 planos determinísticos e digest CD23ECE78BA018768FAE38B035EBCCC278C277B65B3B486CFDB323F9873E76E5.
+- A fixture de regressão manteve fitness ponderado de +3%, mas foi corretamente bloqueada por -10% em neutral.dungeon_waves_adds diante do limite de -4%.
+- O SimulationCraft pinado aceitou o plano waves/adds em execução mínima: exit 0 e relatório JSON produzido.
+- npm test passou com governança, runner SimC, DSL, compiler, matriz de cenários, 90 testes Lua, layout, Luacheck e wowlua-ls.
+- docs/architecture/SCENARIOS.md documenta cobertura, argumentos SimC, fórmula de fitness, guardrails e fronteiras futuras.
+- Commit e94e9b7 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
 
 ### UI-DESIGN-001
 

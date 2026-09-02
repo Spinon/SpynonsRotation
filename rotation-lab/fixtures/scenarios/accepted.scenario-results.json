@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "matrixId": "neutral.initial_matrix",
+  "matrixVersion": "1.0.0",
+  "candidateId": "neutral.accepted_candidate",
+  "measurements": [
+    { "scenarioId": "neutral.st_short", "baseline": 100000, "candidate": 101000 },
+    { "scenarioId": "neutral.st_medium", "baseline": 110000, "candidate": 111100 },
+    { "scenarioId": "neutral.st_long", "baseline": 120000, "candidate": 121200 },
+    { "scenarioId": "neutral.cleave_2", "baseline": 180000, "candidate": 181800 },
+    { "scenarioId": "neutral.cleave_3", "baseline": 240000, "candidate": 242400 },
+    { "scenarioId": "neutral.aoe_4", "baseline": 300000, "candidate": 303000 },
+    { "scenarioId": "neutral.aoe_5", "baseline": 360000, "candidate": 363600 },
+    { "scenarioId": "neutral.aoe_8", "baseline": 500000, "candidate": 505000 },
+    { "scenarioId": "neutral.dungeon_short_pull", "baseline": 320000, "candidate": 323200 },
+    { "scenarioId": "neutral.dungeon_prolonged_pull", "baseline": 300000, "candidate": 303000 },
+    { "scenarioId": "neutral.dungeon_boss", "baseline": 130000, "candidate": 131300 },
+    { "scenarioId": "neutral.dungeon_waves_adds", "baseline": 400000, "candidate": 404000 }
+  ]
+}
