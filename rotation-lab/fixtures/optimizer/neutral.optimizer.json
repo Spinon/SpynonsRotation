@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "neutral.optimizer_fixture",
+  "version": "1.0.0",
+  "description": "Fixture sintética do beam search; não representa desempenho real de classe ou spec.",
+  "targets": {
+    "rotationId": "neutral.compiler_fixture",
+    "rotationVersion": "1.0.0",
+    "matrixId": "neutral.initial_matrix",
+    "matrixVersion": "1.0.0"
+  },
+  "limits": {
+    "maxDepth": 2,
+    "beamWidth": 2,
+    "maxCandidates": 6,
+    "finalists": 2
+  },
+  "budgets": {
+    "screeningIterations": 100,
+    "finalistIterations": 5000
+  },
+  "mutations": [
+    {
+      "id": "neutral.swap_openers",
+      "kind": "swap_rules",
+      "listId": "default",
+      "firstRuleId": "neutral.default_strike_1",
+      "secondRuleId": "neutral.default_cleave_1"
+    },
+    {
+      "id": "neutral.zz_duplicate_lower_resource",
+      "kind": "set_numeric_literal",
+      "listId": "default",
+      "ruleId": "neutral.default_strike_1",
+      "valuePath": ["conditions", 1, "right"],
+      "value": 40
+    },
+    {
+      "id": "neutral.raise_cleave_threshold",
+      "kind": "set_numeric_literal",
+      "listId": "default",
+      "ruleId": "neutral.default_cleave_1",
+      "valuePath": ["right"],
+      "value": 3
+    },
+    {
+      "id": "neutral.lower_resource_threshold",
+      "kind": "set_numeric_literal",
+      "listId": "default",
+      "ruleId": "neutral.default_strike_1",
+      "valuePath": ["conditions", 1, "right"],
+      "value": 40
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "optimizerId": "neutral.optimizer_fixture",
+  "optimizerVersion": "1.0.0",
+  "matrixId": "neutral.initial_matrix",
+  "matrixVersion": "1.0.0",
+  "baselineMetric": 100000,
+  "candidates": [
+    {
+      "mutations": ["neutral.swap_openers"],
+      "screening": {
+        "defaultDeltaPercent": 1
+      }
+    },
+    {
+      "mutations": ["neutral.lower_resource_threshold"],
+      "screening": {
+        "defaultDeltaPercent": 2,
+        "scenarioDeltaPercent": {
+          "neutral.dungeon_boss": -3
+        }
+      }
+    },
+    {
+      "mutations": ["neutral.raise_cleave_threshold"],
+      "screening": {
+        "defaultDeltaPercent": 3,
+        "scenarioDeltaPercent": {
+          "neutral.st_short": -1,
+          "neutral.st_medium": -1,
+          "neutral.st_long": -1
+        }
+      },
+      "finalist": {
+        "defaultDeltaPercent": 2.2,
+        "scenarioDeltaPercent": {
+          "neutral.dungeon_waves_adds": -5
+        }
+      }
+    },
+    {
+      "mutations": ["neutral.lower_resource_threshold", "neutral.raise_cleave_threshold"],
+      "screening": {
+        "defaultDeltaPercent": 4,
+        "scenarioDeltaPercent": {
+          "neutral.dungeon_boss": -3
+        }
+      }
+    },
+    {
+      "mutations": ["neutral.lower_resource_threshold", "neutral.swap_openers"],
+      "screening": {
+        "defaultDeltaPercent": 2.5,
+        "scenarioDeltaPercent": {
+          "neutral.dungeon_boss": -2
+        }
+      }
+    },
+    {
+      "mutations": ["neutral.raise_cleave_threshold", "neutral.swap_openers"],
+      "screening": {
+        "defaultDeltaPercent": 3.5
+      },
+      "finalist": {
+        "defaultDeltaPercent": 1.8
+      }
+    }
+  ]
+}

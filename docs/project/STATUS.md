@@ -2,17 +2,17 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:44:50.428Z
+Atualizado pelo board em: 2026-09-02T23:47:07.505Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**LAB-005 — Optimizer**
+**LAB-006 — Regression suite**
 
-Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Implementar configuração, mutações, beam search em duas fases e fixture neutra.
+Próxima ação: Criar formato de relatório e thresholds.
 
 ## Focos paralelos
 
@@ -23,9 +23,9 @@ Próxima ação: Implementar configuração, mutações, beam search em duas fas
 ## Progresso
 
 - Planejadas: 38
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 14
+- Concluídas: 15
 - Total: 54
 
 ## Fila canônica
@@ -42,7 +42,7 @@ Próxima ação: Implementar configuração, mutações, beam search em duas fas
 | LAB-002 | delivery | ROTATION LAB | DSL de rotação | done | P0 | CORE-001 |
 | LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | done | P0 | LAB-001, LAB-002, CORE-001 |
 | LAB-004 | delivery | ROTATION LAB | Matriz de cenários | done | P1 | LAB-001, LAB-002 |
-| LAB-005 | delivery | ROTATION LAB | Optimizer | in_progress | P2 | LAB-004, LAB-003 |
+| LAB-005 | delivery | ROTATION LAB | Optimizer | done | P2 | LAB-004, LAB-003 |
 | LAB-006 | delivery | ROTATION LAB | Regression suite | planned | P1 | LAB-003, LAB-004 |
 | ENH-001 | delivery | SHAMAN | Catálogo Enhancement | planned | P0 | CORE-002, CORE-003, CORE-004 |
 | ENH-002 | delivery | SHAMAN | Baseline APL | planned | P0 | ENH-001, LAB-002, LAB-003 |
@@ -168,6 +168,15 @@ Próxima ação: Implementar configuração, mutações, beam search em duas fas
 - npm test passou com governança, runner SimC, DSL, compiler, matriz de cenários, 90 testes Lua, layout, Luacheck e wowlua-ls.
 - docs/architecture/SCENARIOS.md documenta cobertura, argumentos SimC, fórmula de fitness, guardrails e fronteiras futuras.
 - Commit e94e9b7 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### LAB-005
+
+- npm run optimizer:test passou com 18 testes de configuração, mutações, limites, deduplicação, guardrails, fallback e reprodução byte a byte.
+- npm run optimizer:check comprovou 6/6 candidatas, duas gerações, quatro deduplicações e dois finalistas com budgets 100 → 5000.
+- A fixture neutra rejeitou um finalista após reavaliação por guardrail e escolheu deterministicamente a candidata elegível com fitness de 1,8%.
+- npm test passou com 113 testes Node, 90 testes Lua, lint e análise de tipos sem falhas.
+- docs/architecture/OPTIMIZER.md registra o contrato genérico, o evaluator injetável, a separação das fases e as fronteiras futuras.
+- Commit 0b1350f registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
 
 ### UI-DESIGN-001
 

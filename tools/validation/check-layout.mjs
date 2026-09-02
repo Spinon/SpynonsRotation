@@ -102,6 +102,17 @@ const requiredFiles = [
   "rotation-lab/fixtures/scenarios/guardrail-rejection.scenario-results.json",
   "tests/rotation-lab/scenarios.test.mjs",
   "docs/architecture/SCENARIOS.md",
+  "rotation-lab/optimizer/cli.mjs",
+  "rotation-lab/optimizer/config.mjs",
+  "rotation-lab/optimizer/errors.mjs",
+  "rotation-lab/optimizer/metrics.mjs",
+  "rotation-lab/optimizer/mutations.mjs",
+  "rotation-lab/optimizer/search.mjs",
+  "rotation-lab/optimizer/verify.mjs",
+  "rotation-lab/fixtures/optimizer/neutral.optimizer.json",
+  "rotation-lab/fixtures/optimizer/neutral.optimizer-evaluations.json",
+  "tests/rotation-lab/optimizer.test.mjs",
+  "docs/architecture/OPTIMIZER.md",
 ];
 const errors = [];
 

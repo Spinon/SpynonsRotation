@@ -25,11 +25,13 @@
     "compiler:test": "node --test tests/rotation-lab/compiler.test.mjs",
     "scenario:check": "node rotation-lab/scenarios/cli.mjs verify",
     "scenario:test": "node --test tests/rotation-lab/scenarios.test.mjs",
+    "optimizer:check": "node rotation-lab/optimizer/cli.mjs verify",
+    "optimizer:test": "node --test tests/rotation-lab/optimizer.test.mjs",
     "layout:check": "node tools/validation/check-layout.mjs",
     "core:test": "node tools/validation/run-lua-tests.mjs",
     "addon:lint": "node tools/validation/run-luacheck.mjs",
     "addon:typecheck": "node tools/validation/run-wowlua-ls.mjs",
-    "test": "npm run project:check && npm run project:test && npm run simc:test && npm run dsl:test && npm run compiler:test && npm run compiler:check && npm run scenario:test && npm run scenario:check && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
+    "test": "npm run project:check && npm run project:test && npm run simc:test && npm run dsl:test && npm run compiler:test && npm run compiler:check && npm run scenario:test && npm run scenario:check && npm run optimizer:test && npm run optimizer:check && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
   },
   "license": "UNLICENSED"
 }

@@ -25,6 +25,8 @@ npm run compiler:check
 npm run compiler:test
 npm run scenario:check
 npm run scenario:test
+npm run optimizer:check
+npm run optimizer:test
 npm run core:test
 npm test
 ```
@@ -46,4 +48,5 @@ O runner pinado do SimulationCraft está em [`docs/architecture/SIMC_RUNNER.md`]
 A representação intermediária de rotações está em [`docs/architecture/ROTATION_DSL.md`](docs/architecture/ROTATION_DSL.md).
 O compilador SimC ↔ DSL ↔ runtime está em [`docs/architecture/COMPILER.md`](docs/architecture/COMPILER.md).
 A matriz de cenários e o cálculo de fitness estão em [`docs/architecture/SCENARIOS.md`](docs/architecture/SCENARIOS.md).
+O beam search limitado do Rotation Lab está em [`docs/architecture/OPTIMIZER.md`](docs/architecture/OPTIMIZER.md).
 O lifecycle e a política de evidências estão em [`docs/project/BOARD_GOVERNANCE.md`](docs/project/BOARD_GOVERNANCE.md).

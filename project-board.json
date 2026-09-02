@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:44:50.428Z",
-  "currentFocus": "LAB-005",
+  "updatedAt": "2026-09-02T23:47:07.505Z",
+  "currentFocus": "LAB-006",
   "parallelFocus": {
     "ui": "UI-DESIGN-009"
   },
@@ -300,12 +300,12 @@
       "title": "Optimizer",
       "lane": "ROTATION LAB",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P2",
       "source": "tasks/LAB-005.md",
-      "updatedAt": "2026-09-02T23:31:54.440Z",
+      "updatedAt": "2026-09-02T23:47:07.505Z",
       "reviewBy": null,
-      "nextAction": "Implementar configuração, mutações, beam search em duas fases e fixture neutra.",
+      "nextAction": null,
       "dependencies": [
         "LAB-004",
         "LAB-003"
@@ -315,7 +315,14 @@
         "Candidatas são comparadas ao baseline",
         "Triagem e finalistas são separados"
       ],
-      "evidence": []
+      "evidence": [
+        "npm run optimizer:test passou com 18 testes de configuração, mutações, limites, deduplicação, guardrails, fallback e reprodução byte a byte.",
+        "npm run optimizer:check comprovou 6/6 candidatas, duas gerações, quatro deduplicações e dois finalistas com budgets 100 → 5000.",
+        "A fixture neutra rejeitou um finalista após reavaliação por guardrail e escolheu deterministicamente a candidata elegível com fitness de 1,8%.",
+        "npm test passou com 113 testes Node, 90 testes Lua, lint e análise de tipos sem falhas.",
+        "docs/architecture/OPTIMIZER.md registra o contrato genérico, o evaluator injetável, a separação das fases e as fronteiras futuras.",
+        "Commit 0b1350f registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD."
+      ]
     },
     {
       "id": "LAB-006",

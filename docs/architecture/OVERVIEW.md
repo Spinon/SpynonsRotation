@@ -31,6 +31,7 @@ A composição segura da spec ativa, módulo e talentos está definida em [`SPEC
 A representação intermediária declarativa e suas capabilities estão definidas em [`ROTATION_DSL.md`](ROTATION_DSL.md).
 O pipeline determinístico entre SimC, DSL e bundles de runtime está definido em [`COMPILER.md`](COMPILER.md).
 A matriz neutra de simulação, seus planos e guardrails de fitness estão definidos em [`SCENARIOS.md`](SCENARIOS.md).
+O beam search reproduzível e seus contratos de mutação e avaliação estão definidos em [`OPTIMIZER.md`](OPTIMIZER.md).
 
 ## Contratos do Core
 
