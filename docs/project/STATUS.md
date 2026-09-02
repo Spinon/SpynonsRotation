@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:30:13.095Z
+Atualizado pelo board em: 2026-09-02T23:31:15.372Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,12 +18,12 @@ Próxima ação: Implementar beam search inicial com limites.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-009 — Encaixe do GCD na ação atual | planned | Produzir revisão da moldura atual com slot inferior para GCD, preservando ícone, transparência e canais. |
+| ui | UI-DESIGN-009 — Encaixe do GCD na ação atual | in_progress | Produzir revisão da moldura atual com slot inferior para GCD, preservando ícone, transparência e canais. |
 
 ## Progresso
 
-- Planejadas: 40
-- Em andamento: 0
+- Planejadas: 39
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 14
 - Total: 54
@@ -60,7 +60,7 @@ Próxima ação: Implementar beam search inicial com limites.
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | planned | P0 | UI-DESIGN-005 |
 | UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006 |
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
-| UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | planned | P1 | UI-DESIGN-002, UI-DESIGN-004 |
+| UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | in_progress | P1 | UI-DESIGN-002, UI-DESIGN-004 |
 | UI-001 | delivery | UI | Queue estática | planned | P0 | RUN-002 |
 | UI-002 | delivery | UI | Animator | planned | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |

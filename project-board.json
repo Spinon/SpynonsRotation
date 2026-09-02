@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:30:13.095Z",
+  "updatedAt": "2026-09-02T23:31:15.372Z",
   "currentFocus": "LAB-005",
   "parallelFocus": {
     "ui": "UI-DESIGN-009"
@@ -728,10 +728,10 @@
       "title": "Encaixe do GCD na ação atual",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-009--encaixe-do-gcd-na-acao-atual",
-      "updatedAt": "2026-09-02T23:30:13.095Z",
+      "updatedAt": "2026-09-02T23:31:15.372Z",
       "reviewBy": "Product Owner",
       "nextAction": "Produzir revisão da moldura atual com slot inferior para GCD, preservando ícone, transparência e canais.",
       "dependencies": [
