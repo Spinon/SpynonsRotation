@@ -71,7 +71,7 @@ Produzir a arte final das molduras da ação atual e da fila, incluindo proporç
 
 ## UI-DESIGN-003 — Contexto, hotkeys e stacks
 
-Produzir o módulo de contexto de combate e os badges compactos de hotkey, charges e stacks, com legibilidade periférica e variações necessárias.
+Produzir o módulo de contexto de combate e definir o tratamento tipográfico de hotkey, charges e stacks. Hotkey e quantidades não usam background, badge ou glifo; fonte e posição devem ser ajustáveis nas configurações.
 
 ## UI-DESIGN-004 — GCD e cooldown individual
 

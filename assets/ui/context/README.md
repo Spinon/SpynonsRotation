@@ -2,7 +2,7 @@
 
 ## Status
 
-`combat-context-card-frame-v1.png` é o candidato visual ativo de `UI-DESIGN-003` e aguarda revisão do Product Owner. O arquivo é um master raster em alta resolução; a preparação para runtime pertence a `UI-DESIGN-008`.
+`combat-context-card-frame-v1.png` é o master visual aprovado em `UI-DESIGN-003`. O arquivo permanece em alta resolução; a preparação para runtime pertence a `UI-DESIGN-008`.
 
 O master contém somente moldura e superfície. `AUTO`, `ST`, `CLEAVE`, `AOE`, modo resolvido, quantidade de alvos e estados de disponibilidade são texto dinâmico e não são incorporados ao PNG.
 

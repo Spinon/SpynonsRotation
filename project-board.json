@@ -6,10 +6,10 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:05:17.938Z",
+  "updatedAt": "2026-09-02T23:10:20.849Z",
   "currentFocus": "LAB-004",
   "parallelFocus": {
-    "ui": "UI-DESIGN-003"
+    "ui": "UI-DESIGN-004"
   },
   "release": {
     "version": "0.0.0",
@@ -571,12 +571,12 @@
       "title": "Contexto, hotkeys e stacks",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-003--contexto-hotkeys-e-stacks",
-      "updatedAt": "2026-09-02T22:59:04.856Z",
+      "updatedAt": "2026-09-02T23:10:20.849Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Product Owner revisar os candidatos v1 do card de contexto, badges de hotkey/quantidade e glifos de stacks/charges.",
+      "nextAction": null,
       "dependencies": [
         "UI-DESIGN-002"
       ],
@@ -585,7 +585,13 @@
         "Hotkeys permanecem legíveis no canto superior direito",
         "Charges e stacks permanecem claros no canto inferior direito"
       ],
-      "evidence": [],
+      "evidence": [
+        "Product Owner aprovou a janela combat-context-card-frame-v1.png e definiu hotkey, stacks e charges como camadas tipográficas sem badge ou glifo.",
+        "assets/ui/context/manifest.json registra o master aprovado, hash, modos compartilhados e safe areas de conteúdo dinâmico.",
+        "docs/product/HUD_CONTEXT_BADGES.md documenta posições padrão, controles configuráveis de fonte/âncora/offset e ausência explícita de backgrounds.",
+        "assets/ui/concepts/radial-ring-reference-v1.png preserva a argola aprovada apenas como referência para UI-DESIGN-004, sem associá-la a charges.",
+        "npm test passou após a consolidação, incluindo board, Rotation Lab, Core, layout, lint e typecheck."
+      ],
       "track": "ui"
     },
     {

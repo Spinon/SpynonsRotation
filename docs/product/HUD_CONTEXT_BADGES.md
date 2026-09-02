@@ -1,8 +1,10 @@
-# Contexto de combate, hotkeys e quantidades
+# Contexto de combate e tipografia periférica
 
 ## Escopo
 
-Este documento define o contrato visual dos candidatos de `UI-DESIGN-003`. A arte permanece genérica e não implementa runtime Lua. A UI futura consome estado observável e `Recommendation`; não recebe objetos de classe/spec.
+Este documento registra a direção aprovada em `UI-DESIGN-003`. A arte permanece genérica e não implementa runtime Lua. A UI futura consome estado observável e `Recommendation`; não recebe objetos de classe/spec.
+
+O princípio aplicado é “menos é mais”: somente o contexto de combate recebe uma janela própria. Hotkey, stacks e charges não usam frame, badge ou glifo.
 
 ## Contexto de combate
 
@@ -21,33 +23,39 @@ O card apresenta o modo recebido do contrato. A UI não recalcula ST, CLEAVE ou 
 ## Hotkey
 
 - ocupa o canto superior direito da ação atual e de cada item da fila;
-- o frame é fixo e o texto é uma camada dinâmica;
-- strings curtas ficam centralizadas; modificadores usam redução limitada de escala, sem quebrar linha;
+- é apenas uma camada tipográfica, sem background ou moldura dedicada;
+- strings curtas ficam alinhadas ao canto; modificadores usam redução limitada de escala, sem quebrar linha;
 - ausência de binding oculta o conteúdo textual, sem substituir por instrução falsa;
-- contraste usa texto claro com outline escuro e não depende do azul da borda.
+- contraste usa texto claro com outline escuro e não depende do azul da moldura;
+- fonte, tamanho, âncora e offsets horizontal/vertical serão ajustáveis nas configurações.
 
 ## Stacks e charges
 
 - ocupam exclusivamente o canto inferior direito;
-- a quantidade fica na região central do badge;
-- stacks usam placas sobrepostas e charges usam anel segmentado;
-- o glifo é um overlay separado e nunca divide textura com o número;
+- usam somente o valor numérico, sem background, badge, glifo ou diferença ornamental entre stacks e charges;
+- a origem do dado continua distinguindo stacks de charges internamente, mas a apresentação permanece deliberadamente simples;
 - quantidades longas usam forma compacta como `99+` apenas quando o contrato de produto autorizar a abreviação;
-- buffs e debuffs continuam no trilho de juggle, sem disputar o badge.
+- zero ou ausência de dado ocultam a camada em vez de exibir informação falsa;
+- fonte, tamanho, âncora e offsets horizontal/vertical serão ajustáveis nas configurações;
+- buffs e debuffs continuam no trilho de juggle, sem disputar o canto.
+
+## Controles previstos nas configurações
+
+Hotkey e quantidade possuem controles independentes de `fontFace`, `fontSize`, `outline`, `anchor`, `offsetX` e `offsetY`. Os defaults mantêm hotkey no canto superior direito e quantidade no canto inferior direito; alterar esses valores não modifica a moldura da action.
 
 ## Camadas
 
 ```text
-texto ou número de runtime
-glifo stacks/charges (quando conhecido)
-frame do badge
+hotkey e quantidade tipográficas
 action frame v4
 cooldown radial
 ícone nativo do WoW
 ```
 
-No card de contexto, texto e estados ficam sobre `combat-context-card-frame-v1.png`. Nas actions, hotkey e quantidade permanecem acima de cooldown e estados transitórios.
+No card de contexto, texto e estados ficam sobre `combat-context-card-frame-v1.png`. Nas actions, hotkey e quantidade permanecem acima de cooldown e estados transitórios, sem texturas intermediárias.
 
 ## Handoff
 
-Os masters, hashes e safe areas normalizadas estão nos manifests de [`assets/ui/context`](../../assets/ui/context/manifest.json) e [`assets/ui/badges`](../../assets/ui/badges/manifest.json). Recorte final, resolução de exportação, teste de legibilidade em escala e simplificação dos glifos pertencem a `UI-DESIGN-008`.
+O master, hash e safe areas normalizadas do contexto estão no manifest de [`assets/ui/context`](../../assets/ui/context/manifest.json). Defaults tipográficos e testes de legibilidade em escala pertencem a `UI-DESIGN-008`; os controles de usuário pertencem à trilha de configuração.
+
+A argola gerada durante a exploração foi aprovada como referência visual, mas retirada do contrato de charges. Ela está preservada em [`assets/ui/concepts/radial-ring-reference-v1.png`](../../assets/ui/concepts/radial-ring-reference-v1.png) para orientar `UI-DESIGN-004`, onde poderá informar o cooldown radial em sentido horário.

@@ -35,14 +35,14 @@ Todo o conjunto deve poder ser ancorado e escalado como uma unidade no futuro mo
 | 1 | Contexto de combate | Card compacto lateral, com modo em destaque e quantidade de alvos como dado secundário. |
 | 2 | Ação atual | Ocupa uma linha própria acima da fila e mantém a maior hierarquia visual. |
 | 3 | Fila de recomendações | Três próximas actions em uma linha mais compacta que a ação atual. |
-| 4 | Hotkeys | Badge no canto superior direito da action atual e de cada item da fila. |
+| 4 | Hotkeys | Texto sem background no canto superior direito da action atual e de cada item da fila; fonte e posição configuráveis. |
 | 5 | Global Cooldown | Barra horizontal integrada ao rodapé da action atual, com tempo legível sem competir com a action. |
 | 6 | Barra de cast + indicadores | Barra única na base; progresso acima, informações decisivas no centro e emblema/nome da skill à direita. |
 | 7 | Área de animação | Espaço compartilhado pela fila para MOVE, ENTER, EXIT, PROMOTE e CONSUME; não é um painel persistente. |
 | 8 | Assinatura da marca | Elemento periférico e discreto; não concorre com dados de combate. |
 | 9 | Juggle de buffs/debuffs | Trilho dedicado entre fila e cast, mostrando apenas sinais decisivos. |
 | 10 | Cooldown individual | Overlay radial cinza em sentido horário, com tempo numérico central. |
-| 11 | Stacks/charges | Badge no canto inferior direito de cada action, livre de indicadores de debuff. |
+| 11 | Stacks/charges | Número sem background no canto inferior direito de cada action, livre de indicadores de debuff; fonte e posição configuráveis. |
 
 ## Hierarquia e proporções
 
@@ -101,7 +101,7 @@ Cor nunca é o único canal: texto, ícone de estado ou tratamento da moldura de
 
 ## Contexto, hotkeys e quantidades
 
-O contrato visual detalhado e os candidatos separados de `UI-DESIGN-003` estão em [`HUD_CONTEXT_BADGES.md`](HUD_CONTEXT_BADGES.md). O card de contexto reutiliza a mesma base para `AUTO`, `ST`, `CLEAVE` e `AOE`; hotkeys e quantidades são texto dinâmico sobre badges próprios; stacks e charges recebem glifos semânticos diferentes.
+O contrato visual detalhado de `UI-DESIGN-003` está em [`HUD_CONTEXT_BADGES.md`](HUD_CONTEXT_BADGES.md). O card de contexto reutiliza a mesma base para `AUTO`, `ST`, `CLEAVE` e `AOE`; hotkeys e quantidades são camadas tipográficas sem background, badge ou glifo.
 
 ## Barra de cast e indicadores
 
@@ -134,7 +134,7 @@ A galáxia e os raios do mockup são direção de atmosfera, não backgrounds ob
 | Camada | O que está aprovado | O que ainda falta |
 | --- | --- | --- |
 | Conceito | Hierarquia, agrupamentos, escala relativa, posições de hotkey/stacks, GCD, barra de cast e trilho de juggle. | Ajustes de detalhe podem ocorrer ao produzir cada componente. |
-| Arte final | Direção de cor e uso discreto da identidade Spynon. | Molduras, máscaras, glows, badges, overlays, tipografia e estados serão produzidos em `UI-DESIGN-002` a `UI-DESIGN-007`. |
+| Arte final | Direção de cor e uso discreto da identidade Spynon. | Molduras, máscaras, glows, overlays, tipografia e estados serão produzidos em `UI-DESIGN-002` a `UI-DESIGN-007`; hotkeys e quantidades não recebem badges. |
 | Runtime | Contrato conceitual: UI genérica consome `Recommendation`, ícone nativo e estado observável. | Lua, adapters, animação, resolução de ícone e validação Retail pertencem à trilha `delivery`. |
 
 O mockup não deve ser recortado e enviado diretamente como atlas. Cada elemento final precisa ser produzido separadamente, com transparência, estados e ponto de substituição documentado.

@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:05:17.938Z
+Atualizado pelo board em: 2026-09-02T23:10:20.849Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,14 +18,14 @@ Próxima ação: Modelar cenários e pesos iniciais.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-003 — Contexto, hotkeys e stacks | in_progress | Product Owner revisar os candidatos v1 do card de contexto, badges de hotkey/quantidade e glifos de stacks/charges. |
+| ui | UI-DESIGN-004 — Global Cooldown e cooldown individual | planned | Definir a barra de GCD e o overlay radial de cooldown. |
 
 ## Progresso
 
 - Planejadas: 41
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 11
+- Concluídas: 12
 - Total: 53
 
 ## Fila canônica
@@ -54,7 +54,7 @@ Próxima ação: Modelar cenários e pesos iniciais.
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
 | UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | done | P0 | UI-DESIGN-001 |
-| UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | in_progress | P1 | UI-DESIGN-002 |
+| UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | done | P1 | UI-DESIGN-002 |
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | planned | P1 | UI-DESIGN-003 |
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | planned | P1 | UI-DESIGN-004 |
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | planned | P0 | UI-DESIGN-005 |
@@ -172,3 +172,11 @@ Próxima ação: Modelar cenários e pesos iniciais.
 - assets/ui/frames/manifest.json registra os masters action-current-frame-v4.png e action-queue-frame-v4.png, checksums, canais sólidos e hooks de animação.
 - Os dois PNGs preservam as proporções aprovadas, alpha real no exterior e na abertura central, sem ícone ou dependência de classe/spec.
 - npm test passou após a revisão v4, incluindo board, Rotation Lab, Core, layout, lint e typecheck.
+
+### UI-DESIGN-003
+
+- Product Owner aprovou a janela combat-context-card-frame-v1.png e definiu hotkey, stacks e charges como camadas tipográficas sem badge ou glifo.
+- assets/ui/context/manifest.json registra o master aprovado, hash, modos compartilhados e safe areas de conteúdo dinâmico.
+- docs/product/HUD_CONTEXT_BADGES.md documenta posições padrão, controles configuráveis de fonte/âncora/offset e ausência explícita de backgrounds.
+- assets/ui/concepts/radial-ring-reference-v1.png preserva a argola aprovada apenas como referência para UI-DESIGN-004, sem associá-la a charges.
+- npm test passou após a consolidação, incluindo board, Rotation Lab, Core, layout, lint e typecheck.
