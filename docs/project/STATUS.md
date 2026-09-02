@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T21:34:41.384Z
+Atualizado pelo board em: 2026-09-02T21:35:21.236Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,12 +18,12 @@ Próxima ação: Verificar APIs Retail e implementar adapters, capabilities e fa
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-001 — Consolidar layout do HUD principal | planned | Aprovar o mockup anotado e registrar as decisões de layout. |
+| ui | UI-DESIGN-001 — Consolidar layout do HUD principal | in_progress | Consolidar o mockup aprovado em uma especificação de layout e contrato visual do HUD principal. |
 
 ## Progresso
 
-- Planejadas: 48
-- Em andamento: 1
+- Planejadas: 47
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 4
 - Total: 53
@@ -52,7 +52,7 @@ Próxima ação: Verificar APIs Retail e implementar adapters, capabilities e fa
 | RUN-001 | delivery | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
 | RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
-| UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | planned | P0 | BOOT-002 |
+| UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | in_progress | P0 | BOOT-002 |
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | planned | P0 | UI-DESIGN-001 |
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | planned | P1 | UI-DESIGN-002 |
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | planned | P1 | UI-DESIGN-003 |
