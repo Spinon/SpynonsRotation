@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:50:16.509Z",
+  "updatedAt": "2026-09-02T23:55:53.326Z",
   "currentFocus": "LAB-006",
   "parallelFocus": {
     "ui": "UI-DESIGN-005"
@@ -642,12 +642,12 @@
       "title": "Barra de cast e indicadores decisivos",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-005--barra-de-cast-e-indicadores",
-      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "updatedAt": "2026-09-02T23:55:53.326Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Produzir a barra combinada com conteúdo contextual.",
+      "nextAction": "Produzir e submeter à revisão visual a barra combinada vazia, com progresso, centro contextual e identidade da habilidade separados em camadas.",
       "dependencies": [
         "UI-DESIGN-004",
         "UI-DESIGN-009"

@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:50:16.509Z
+Atualizado pelo board em: 2026-09-02T23:55:53.326Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,12 +18,12 @@ Próxima ação: Criar formato de relatório e thresholds.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-005 — Barra de cast e indicadores decisivos | planned | Produzir a barra combinada com conteúdo contextual. |
+| ui | UI-DESIGN-005 — Barra de cast e indicadores decisivos | in_progress | Produzir e submeter à revisão visual a barra combinada vazia, com progresso, centro contextual e identidade da habilidade separados em camadas. |
 
 ## Progresso
 
-- Planejadas: 39
-- Em andamento: 0
+- Planejadas: 38
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 16
 - Total: 55
@@ -56,7 +56,7 @@ Próxima ação: Criar formato de relatório e thresholds.
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | done | P0 | UI-DESIGN-001 |
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | done | P1 | UI-DESIGN-002 |
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | done | P1 | UI-DESIGN-003 |
-| UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | planned | P1 | UI-DESIGN-004, UI-DESIGN-009 |
+| UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | in_progress | P1 | UI-DESIGN-004, UI-DESIGN-009 |
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | planned | P0 | UI-DESIGN-005 |
 | UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
