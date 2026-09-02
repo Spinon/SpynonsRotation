@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "neutral.training_rotation",
+  "version": "1.0.0",
+  "description": "Fixture neutra da DSL v1; não representa uma classe, spec ou baseline real.",
+  "entrypoint": "default",
+  "lists": [
+    {
+      "id": "default",
+      "rules": [
+        {
+          "id": "neutral.ready_strike",
+          "priority": 10,
+          "action": "neutral.strike",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": ["cooldowns", "neutral.strike", "ready"],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "any",
+                "conditions": [
+                  {
+                    "kind": "compare",
+                    "operator": "gte",
+                    "left": {
+                      "kind": "state",
+                      "path": ["resources", "neutral_energy", "current"],
+                      "capability": "ADDON_AVAILABLE"
+                    },
+                    "right": {
+                      "kind": "literal",
+                      "value": 50
+                    }
+                  },
+                  {
+                    "kind": "not",
+                    "condition": {
+                      "kind": "truthy",
+                      "value": {
+                        "kind": "state",
+                        "path": ["auras", "neutral.blocked", "active"],
+                        "capability": "ADDON_AVAILABLE"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "neutral.estimated_cleave",
+          "priority": 20,
+          "action": "neutral.cleave",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "compare",
+            "operator": "gte",
+            "left": {
+              "kind": "state",
+              "path": ["target", "estimated_count"],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 2
+            }
+          }
+        },
+        {
+          "id": "neutral.simulated_execute",
+          "priority": 30,
+          "action": "neutral.execute",
+          "capability": "SIM_ONLY",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "exists",
+                "value": {
+                  "kind": "state",
+                  "path": ["simulation", "target_time_to_die"],
+                  "capability": "SIM_ONLY"
+                }
+              },
+              {
+                "kind": "compare",
+                "operator": "lte",
+                "left": {
+                  "kind": "state",
+                  "path": ["simulation", "target_time_to_die"],
+                  "capability": "SIM_ONLY"
+                },
+                "right": {
+                  "kind": "literal",
+                  "value": 15
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "maintenance",
+      "rules": [
+        {
+          "id": "neutral.maintenance_action",
+          "priority": 10,
+          "action": "neutral.maintenance",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -19,6 +19,8 @@ npm run toolchain:doctor
 npm run simc:doctor
 npm run simc:run -- --profile rotation-lab/fixtures/simc-cli-smoke.simc
 npm run simc:smoke
+npm run dsl:check
+npm run dsl:test
 npm run core:test
 npm test
 ```
@@ -37,4 +39,5 @@ Os contratos públicos do Core estão em [`docs/architecture/CONTRACTS.md`](docs
 As APIs Blizzard cobertas e seus fallbacks estão em [`docs/architecture/COMPAT.md`](docs/architecture/COMPAT.md).
 A detecção genérica de spec e talentos está em [`docs/architecture/SPEC_DETECTION.md`](docs/architecture/SPEC_DETECTION.md).
 O runner pinado do SimulationCraft está em [`docs/architecture/SIMC_RUNNER.md`](docs/architecture/SIMC_RUNNER.md).
+A representação intermediária de rotações está em [`docs/architecture/ROTATION_DSL.md`](docs/architecture/ROTATION_DSL.md).
 O lifecycle e a política de evidências estão em [`docs/project/BOARD_GOVERNANCE.md`](docs/project/BOARD_GOVERNANCE.md).

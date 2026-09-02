@@ -19,11 +19,13 @@
     "simc:run": "node rotation-lab/simc/cli.mjs run",
     "simc:smoke": "node rotation-lab/simc/cli.mjs run --profile rotation-lab/fixtures/simc-cli-smoke.simc --name lab001-smoke --iterations 1 --threads 1 --max-time 1 --fixed-time",
     "simc:test": "node --test tests/rotation-lab/simc-runner.test.mjs",
+    "dsl:check": "node rotation-lab/dsl/cli.mjs check",
+    "dsl:test": "node --test tests/rotation-lab/dsl.test.mjs",
     "layout:check": "node tools/validation/check-layout.mjs",
     "core:test": "node tools/validation/run-lua-tests.mjs",
     "addon:lint": "node tools/validation/run-luacheck.mjs",
     "addon:typecheck": "node tools/validation/run-wowlua-ls.mjs",
-    "test": "npm run project:check && npm run project:test && npm run simc:test && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
+    "test": "npm run project:check && npm run project:test && npm run simc:test && npm run dsl:test && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
   },
   "license": "UNLICENSED"
 }

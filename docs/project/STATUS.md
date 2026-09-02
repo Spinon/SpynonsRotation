@@ -2,17 +2,17 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T22:44:41.209Z
+Atualizado pelo board em: 2026-09-02T22:46:37.037Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**LAB-002 — DSL de rotação**
+**LAB-003 — Compiler SimC ↔ DSL ↔ runtime**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Implementar a DSL v1, parser estrito, validação semântica, fixture neutra e testes.
+Próxima ação: Definir IR e pipeline de compilação.
 
 ## Focos paralelos
 
@@ -23,9 +23,9 @@ Próxima ação: Implementar a DSL v1, parser estrito, validação semântica, f
 ## Progresso
 
 - Planejadas: 43
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 8
+- Concluídas: 9
 - Total: 53
 
 ## Fila canônica
@@ -39,7 +39,7 @@ Próxima ação: Implementar a DSL v1, parser estrito, validação semântica, f
 | CORE-003 | delivery | CORE | Detecção de spec e talentos | done | P0 | CORE-002, CORE-004 |
 | CORE-004 | delivery | CORE | Compat layer WoW | done | P0 | CORE-001 |
 | LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | done | P0 | BOOT-002 |
-| LAB-002 | delivery | ROTATION LAB | DSL de rotação | in_progress | P0 | CORE-001 |
+| LAB-002 | delivery | ROTATION LAB | DSL de rotação | done | P0 | CORE-001 |
 | LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | planned | P0 | LAB-001, LAB-002, CORE-001 |
 | LAB-004 | delivery | ROTATION LAB | Matriz de cenários | planned | P1 | LAB-001, LAB-002 |
 | LAB-005 | delivery | ROTATION LAB | Optimizer | planned | P2 | LAB-004, LAB-003 |
@@ -140,6 +140,14 @@ Próxima ação: Implementar a DSL v1, parser estrito, validação semântica, f
 - npm run simc:test passou com 9/9 testes de instalação, hash, limites, isolamento de perfil, execução, relatórios e diagnósticos.
 - npm test passou com 41 testes de governança, 9 testes do runner, 84 testes Lua, layout, Luacheck e wowlua-ls sem falhas.
 - Commit 5749a64 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### LAB-002
+
+- npm run dsl:check validou neutral.training_rotation@1.0.0 com 2 listas, 4 regras e as três capabilities explícitas.
+- npm run dsl:test passou com 16/16 testes de parsing, canonicalização, estrutura, duplicidade, capability, fallback, limites e isolamento de arquivo/link.
+- npm test passou com 41 testes de governança, 9 testes do runner SimC, 16 testes da DSL, 84 testes Lua, layout, Luacheck e wowlua-ls sem falhas.
+- docs/architecture/ROTATION_DSL.md documenta a gramática v1, ordenação, diagnósticos, fronteira de compilação e política para Secret Values.
+- Commit 6c98bcd registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
 
 ### UI-DESIGN-001
 

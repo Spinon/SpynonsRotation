@@ -13,6 +13,7 @@ const requiredDirectories = [
   "addon/Skins",
   "addon/Compat",
   "rotation-lab/simc",
+  "rotation-lab/dsl",
   "rotation-lab/optimizer",
   "rotation-lab/scenarios",
   "specs/shaman/enhancement",
@@ -65,6 +66,12 @@ const requiredFiles = [
   "rotation-lab/fixtures/simc-cli-smoke.simc",
   "tests/rotation-lab/simc-runner.test.mjs",
   "docs/architecture/SIMC_RUNNER.md",
+  "rotation-lab/dsl/cli.mjs",
+  "rotation-lab/dsl/parser.mjs",
+  "rotation-lab/dsl/schema.mjs",
+  "rotation-lab/fixtures/neutral-priority.rotation.json",
+  "tests/rotation-lab/dsl.test.mjs",
+  "docs/architecture/ROTATION_DSL.md",
 ];
 const errors = [];
 

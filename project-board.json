@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T22:44:41.209Z",
-  "currentFocus": "LAB-002",
+  "updatedAt": "2026-09-02T22:46:37.037Z",
+  "currentFocus": "LAB-003",
   "parallelFocus": {
     "ui": "UI-DESIGN-002"
   },
@@ -213,12 +213,12 @@
       "title": "DSL de rotação",
       "lane": "ROTATION LAB",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/LAB-002.md",
-      "updatedAt": "2026-09-02T22:37:49.357Z",
+      "updatedAt": "2026-09-02T22:46:37.037Z",
       "reviewBy": null,
-      "nextAction": "Implementar a DSL v1, parser estrito, validação semântica, fixture neutra e testes.",
+      "nextAction": null,
       "dependencies": [
         "CORE-001"
       ],
@@ -227,7 +227,13 @@
         "Capabilities são explícitas",
         "Parser e validação possuem testes"
       ],
-      "evidence": []
+      "evidence": [
+        "npm run dsl:check validou neutral.training_rotation@1.0.0 com 2 listas, 4 regras e as três capabilities explícitas.",
+        "npm run dsl:test passou com 16/16 testes de parsing, canonicalização, estrutura, duplicidade, capability, fallback, limites e isolamento de arquivo/link.",
+        "npm test passou com 41 testes de governança, 9 testes do runner SimC, 16 testes da DSL, 84 testes Lua, layout, Luacheck e wowlua-ls sem falhas.",
+        "docs/architecture/ROTATION_DSL.md documenta a gramática v1, ordenação, diagnósticos, fronteira de compilação e política para Secret Values.",
+        "Commit 6c98bcd registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD."
+      ]
     },
     {
       "id": "LAB-003",
