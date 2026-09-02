@@ -37,7 +37,7 @@ O GCD é uma barra horizontal fina integrada ao rodapé da ação atual. Ele nã
 
 Contrato visual:
 
-- o trilho ocupa a faixa normalizada `(x: 0.075, y: 0.875, largura: 0.85, altura: 0.035)` da ação atual;
+- o trilho ocupa a abertura normalizada `(x: 0.172, y: 0.892, largura: 0.657, altura: 0.024)` da ação atual `v5`;
 - o preenchimento começa em `0%` e cresce linearmente da esquerda para a direita até `100%`;
 - a cor ativa é o azul elétrico sólido da marca, `#0788D8`;
 - o trilho de repouso é grafite azulado sólido, `#07131D`, com alpha `0.86`;
@@ -47,7 +47,7 @@ Contrato visual:
 
 O crescimento da barra comunica aproximação do estado ready. O verde não é usado no GCD: permanece reservado a confirmação e estados favoráveis, evitando que a barra pareça um proc.
 
-O GCD deve ser uma composição procedural leve, não um bitmap. Se o progresso real não estiver disponível de forma segura, a UI mantém apenas o trilho e não inventa duração. O contrato técnico está registrado em [`assets/ui/gcd`](../../assets/ui/gcd/README.md), com uma prancha de estados destinada somente à documentação.
+O GCD deve ser uma composição procedural leve, não um bitmap. A moldura `action-current-frame-v5.png` fornece somente o bezel e a abertura transparente de encaixe; trilho e preenchimento ficam abaixo dela. Se o progresso real não estiver disponível de forma segura, a UI mantém apenas o trilho e não inventa duração. O contrato técnico está registrado em [`assets/ui/gcd`](../../assets/ui/gcd/README.md), com pranchas destinadas somente à documentação.
 
 ## Camadas
 

@@ -17,6 +17,9 @@ O verde da marca não participa do GCD. Ele continua reservado a confirmação e
 
 - `gcd-state-reference-v1.svg`: fonte vetorial da prancha conceitual dos estados.
 - `gcd-state-reference-v1.png`: preview renderizado da prancha; as legendas pertencem somente à documentação.
+- `action-current-gcd-slot-preview-v1.png`: composição de revisão com o GCD a `62%`; o fundo neutro e o preenchimento existem somente no preview.
 - `manifest.json`: contrato de geometria, cores, direção e handoff.
 
 A prancha não é asset de runtime. A implementação final permanece sob `UI-DESIGN-008` e a task técnica correspondente.
+
+O encaixe correspondente está na candidata [`action-current-frame-v5.png`](../frames/action-current-frame-v5.png). O PNG da moldura contém apenas o bezel; sua abertura é transparente e recebe `gcdTrack` e `gcdFill` em camadas separadas.

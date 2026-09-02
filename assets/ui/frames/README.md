@@ -2,7 +2,7 @@
 
 ## Status
 
-Os arquivos `v4` são os candidatos visuais ativos de `UI-DESIGN-002` e aguardam aprovação do Product Owner. Eles mantêm os canais sólidos, agora em azul elétrico e verde ácido mais vívidos e próximos da identidade Spynon, sem incorporar o bloom da referência. Os arquivos `v1`, `v2` e `v3` permanecem preservados como histórico de comparação.
+A ação atual `v5` é a candidata visual ativa de `UI-DESIGN-009` e aguarda aprovação do Product Owner. Ela preserva a moldura `v4` e acrescenta somente o encaixe inferior do GCD. A fila continua usando `v4`. As versões anteriores permanecem preservadas como histórico de comparação.
 
 Todos são masters raster em alta resolução; normalização para dimensões e formatos de runtime pertence a `UI-DESIGN-008`.
 
@@ -10,6 +10,7 @@ Todos são masters raster em alta resolução; normalização para dimensões e 
 
 | Arquivo | Papel | Dimensões de origem | Estado base |
 | --- | --- | --- | --- |
+| `action-current-frame-v5.png` | Moldura candidata da ação atual com encaixe inferior para GCD | 1619 × 971 | Ênfase principal; slot transparente |
 | `action-current-frame-v4.png` | Moldura ativa da ação atual, em linha própria | 1619 × 971 | Ênfase principal; trilhos vívidos |
 | `action-queue-frame-v4.png` | Moldura ativa reutilizada pelas três próximas recomendações | 1254 × 1254 | Prioridade secundária; trilhos vívidos |
 | `action-current-frame-v3.png` | Histórico com canais sólidos escuros | 1619 × 971 | Referência anterior |
@@ -26,6 +27,8 @@ Os arquivos ativos possuem alpha real no exterior e na abertura central. O conte
 - o ícone nativo do WoW é renderizado em uma camada abaixo da moldura;
 - a arte não contém ícone, nome, número, hotkey, cooldown, GCD, stacks ou informação de spec;
 - a action atual mantém proporção horizontal de aproximadamente `1.65:1`;
+- a revisão `v5` reserva no rodapé um bezel de `1119 × 52 px` e uma abertura transparente de `1064 × 23 px` para o GCD;
+- trilho e preenchimento do GCD permanecem procedurais e são renderizados abaixo do bezel, nunca incorporados ao PNG;
 - a fila usa a mesma moldura quadrada três vezes, sem duplicar o bitmap;
 - hotkey e stacks ocupam camadas próprias nos cantos superior e inferior direitos;
 - cooldown, glow e estados animados serão overlays independentes, sem alterar estes masters;
@@ -36,6 +39,17 @@ Os arquivos ativos possuem alpha real no exterior e na abertura central. O conte
 ## Direção visual
 
 As molduras usam grafite e gunmetal como estrutura, prata somente nas quinas, azul elétrico (`#0788D8`) como assinatura principal e verde ácido (`#42C93E`) como acento mínimo. São cores-base vívidas, mas abaixo da luminosidade do overlay de glow futuro. A linguagem deriva da marca Spynon sem reproduzir o logotipo e permanece genérica entre classes e specs.
+
+## Prompt final — revisão v5 e encaixe do GCD
+
+```text
+Use case: precise-object-edit
+Asset type: production World of Warcraft addon current-action frame overlay
+Input images: Image 1 is the sole edit target.
+Primary request: integrate one discreet recessed docking slot into the lower inner edge for a procedural Global Cooldown bar, then extend only its endpoints symmetrically until it occupies most of the usable inner width. Keep the slot shallow, centered and thin, with an angular graphite/gunmetal bezel and genuinely transparent interior.
+Invariants: preserve canvas, outer silhouette, corner cuts, top-right hotkey recess, top-left green signature, metal texture and the exact solid blue #0788D8 and green #42C93E channels.
+Constraints: no icon, text, number, GCD fill, progress, label, gradient, baked glow, bloom, shadow, checkerboard, background, logo, tall footer or redesign.
+```
 
 ## Prompt final — revisão v4
 
@@ -103,3 +117,5 @@ Na revisão `v2`, a edição criativa produziu corretamente os canais sólidos, 
 Na revisão `v3`, a edição criativa escureceu somente os canais de repouso e voltou a achatar o alpha. Foi repetida a mesma normalização técnica de transparência, sem redesenhar a moldura nem incorporar o glow futuro.
 
 Na revisão `v4`, a imagem enviada pelo Product Owner foi usada somente como referência de vivacidade e o logo oficial somente como referência de paleta. A edição elevou saturação e luminosidade dos canais sem copiar o bloom; o alpha achatado pela geração foi novamente normalizado sem alterar o desenho.
+
+Na revisão `v5`, a geração foi usada somente para desenhar o bezel inferior. A saída achatou o alpha; a normalização técnica recompôs a edição sobre o master `v4`, preservou todos os pixels fora da região `(250, 838)–(1369, 890)` e converteu o miolo do slot para transparência real. O preview com preenchimento é separado e não integra o master.

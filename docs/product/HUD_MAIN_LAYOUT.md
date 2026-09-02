@@ -106,7 +106,7 @@ O contrato visual detalhado de `UI-DESIGN-003` está em [`HUD_CONTEXT_BADGES.md`
 
 ## Global Cooldown e cooldown individual
 
-O contrato de `UI-DESIGN-004` está em [`HUD_COOLDOWNS.md`](HUD_COOLDOWNS.md). O cooldown individual usa somente um radial swipe cinza sobre o ícone, com revelação horária e número central opcional; não existe argola decorativa. O GCD cresce da esquerda para a direita em azul sólido no rodapé da ação atual, sem texto e sem aparecer na fila.
+O contrato de `UI-DESIGN-004` está em [`HUD_COOLDOWNS.md`](HUD_COOLDOWNS.md). O cooldown individual usa somente um radial swipe cinza sobre o ícone, com revelação horária e número central opcional; não existe argola decorativa. O GCD cresce da esquerda para a direita em azul sólido no encaixe transparente do rodapé da ação atual `v5`, sem texto e sem aparecer na fila.
 
 ## Barra de cast e indicadores
 

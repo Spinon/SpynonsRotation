@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:31:54.440Z
+Atualizado pelo board em: 2026-09-02T23:44:50.428Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,7 +18,7 @@ Próxima ação: Implementar configuração, mutações, beam search em duas fas
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-009 — Encaixe do GCD na ação atual | in_progress | Produzir revisão da moldura atual com slot inferior para GCD, preservando ícone, transparência e canais. |
+| ui | UI-DESIGN-009 — Encaixe do GCD na ação atual | in_progress | Product Owner revisar a candidata action-current-frame-v5.png e aprovar ou solicitar ajuste do encaixe inferior do GCD. |
 
 ## Progresso
 

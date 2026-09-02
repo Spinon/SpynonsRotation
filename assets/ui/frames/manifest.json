@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "status": "candidate_review",
-  "activeVersion": "v4",
+  "activeVersion": "v5",
   "iconSource": "wow_runtime",
   "assets": {
     "actionCurrentFrame": {
-      "file": "action-current-frame-v4.png",
+      "file": "action-current-frame-v5.png",
       "role": "frame_overlay",
       "sourceWidth": 1619,
       "sourceHeight": 971,
@@ -23,7 +23,26 @@
         "current.blue.perimeter",
         "current.green.signature"
       ],
-      "sha256": "9614C4B8D7C89F531837A157ADF7317443908A9472D5E084A521E0F1EF7BBC4C"
+      "gcdSlot": {
+        "status": "candidate_review",
+        "bezelPixelRect": {
+          "x": 250,
+          "y": 838,
+          "width": 1119,
+          "height": 52
+        },
+        "contentPixelRect": {
+          "x": 278,
+          "y": 866,
+          "width": 1064,
+          "height": 23
+        },
+        "dynamicLayers": [
+          "gcdTrack",
+          "gcdFill"
+        ]
+      },
+      "sha256": "2BC28A791523BEB7C511BB677B182346DD37B63FDA785AC2FAC86C98F76E848B"
     },
     "actionQueueFrame": {
       "file": "action-queue-frame-v4.png",
@@ -64,7 +83,8 @@
     "action-current-frame-v2.png",
     "action-queue-frame-v2.png",
     "action-current-frame-v3.png",
-    "action-queue-frame-v3.png"
+    "action-queue-frame-v3.png",
+    "action-current-frame-v4.png"
   ],
   "runtimeReady": false,
   "runtimePreparationTask": "UI-DESIGN-008",
