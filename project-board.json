@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T21:49:49.031Z",
-  "currentFocus": "CORE-003",
+  "updatedAt": "2026-09-02T22:03:52.076Z",
+  "currentFocus": "LAB-001",
   "parallelFocus": {
     "ui": "UI-DESIGN-002"
   },
@@ -131,12 +131,12 @@
       "title": "Detecção de spec e talentos",
       "lane": "CORE",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/CORE-003.md",
-      "updatedAt": "2026-09-02T21:49:49.031Z",
+      "updatedAt": "2026-09-02T22:03:52.076Z",
       "reviewBy": null,
-      "nextAction": "Implementar snapshot genérico de spec e talentos sobre Compat e SpecRegistry.",
+      "nextAction": null,
       "dependencies": [
         "CORE-002",
         "CORE-004"
@@ -146,7 +146,13 @@
         "Abilities indisponíveis ficam fora da avaliação",
         "Falhas de API degradam de forma segura"
       ],
-      "evidence": []
+      "evidence": [
+        "npm run core:test passou com 25/25 testes de Compat, 31/31 contratos, 15/15 do detector e 13/13 do registry em 4/4 suítes Lua.",
+        "npm test passou com 41 testes de governança, 84 testes Lua, fronteiras/TOC, Luacheck e wowlua-ls sem falhas.",
+        "tests/fixtures/specs/neutral_talent_environment.lua cobre árvore simples, choice node, ranks, nodes indisponíveis e Hero Talent SubTree.",
+        "docs/architecture/SPEC_DETECTION.md documenta o snapshot, estados de falha segura e eventos futuros de invalidação.",
+        "Commit 290eedf registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD."
+      ]
     },
     {
       "id": "CORE-004",

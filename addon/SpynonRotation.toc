@@ -23,4 +23,5 @@ Compat/Specialization.lua
 Compat/Talents.lua
 Compat/Secrets.lua
 Compat/Facade.lua
+Core/SpecDetector.lua
 Core/Bootstrap.lua

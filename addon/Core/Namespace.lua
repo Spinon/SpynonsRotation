@@ -19,6 +19,8 @@ local addonName, Spynon = ...
 ---@field CompatFactory table
 ---@field Compat table
 ---@field CompatInternal table
+---@field SpecDetectorFactory table
+---@field SpecDetector table
 
 Spynon.name = addonName
 Spynon.version = "0.0.0"

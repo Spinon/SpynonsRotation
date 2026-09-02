@@ -112,6 +112,9 @@ local function createEnvironment()
       GetDefinitionInfo = function(definitionId)
         return { ID = definitionId, spellID = 4001 }
       end,
+      GetSubTreeInfo = function(configId, subTreeId)
+        return { configId = configId, ID = subTreeId, isActive = true }
+      end,
     },
     C_Secrets = {
       HasSecretRestrictions = function()
@@ -260,6 +263,7 @@ test("Talents passes trait structures through without transforming them", functi
   assertEqual(talents:GetNodeInfo(7001, 1).value.activeRank, 1)
   assertEqual(talents:GetEntryInfo(7001, 2).value.definitionID, 3001)
   assertEqual(talents:GetDefinitionInfo(3001).value.spellID, 4001)
+  assertEqual(talents:GetSubTreeInfo(7001, 8001).value.ID, 8001)
 end)
 
 test("Talents reports missing trait data explicitly", function()
@@ -280,6 +284,18 @@ test("Talents rejects invalid IDs before calling WoW", function()
     called = true
   end
   local result = CompatFactory.Create(environment).Talents:GetConfigInfo(-1)
+  assertFalse(result.ok)
+  assertEqual(result.code, Result.Code.INVALID_ARGUMENT)
+  assertFalse(called)
+end)
+
+test("Talents validates hero subtree IDs before calling WoW", function()
+  local called = false
+  local environment = createEnvironment()
+  environment.C_Traits.GetSubTreeInfo = function()
+    called = true
+  end
+  local result = CompatFactory.Create(environment).Talents:GetSubTreeInfo(7001, 0)
   assertFalse(result.ok)
   assertEqual(result.code, Result.Code.INVALID_ARGUMENT)
   assertFalse(called)

@@ -2,17 +2,17 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T21:49:49.031Z
+Atualizado pelo board em: 2026-09-02T22:03:52.076Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**CORE-003 — Detecção de spec e talentos**
+**LAB-001 — Integração SimC CLI**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Implementar snapshot genérico de spec e talentos sobre Compat e SpecRegistry.
+Próxima ação: Criar runner headless para o SimC pinado.
 
 ## Focos paralelos
 
@@ -23,9 +23,9 @@ Próxima ação: Implementar snapshot genérico de spec e talentos sobre Compat 
 ## Progresso
 
 - Planejadas: 45
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 6
+- Concluídas: 7
 - Total: 53
 
 ## Fila canônica
@@ -36,7 +36,7 @@ Próxima ação: Implementar snapshot genérico de spec e talentos sobre Compat 
 | BOOT-002 | delivery | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
 | CORE-001 | delivery | CORE | Contratos genéricos | done | P0 | BOOT-002 |
 | CORE-002 | delivery | CORE | Registry de classes/specs | done | P0 | CORE-001 |
-| CORE-003 | delivery | CORE | Detecção de spec e talentos | in_progress | P0 | CORE-002, CORE-004 |
+| CORE-003 | delivery | CORE | Detecção de spec e talentos | done | P0 | CORE-002, CORE-004 |
 | CORE-004 | delivery | CORE | Compat layer WoW | done | P0 | CORE-001 |
 | LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | planned | P0 | BOOT-002 |
 | LAB-002 | delivery | ROTATION LAB | DSL de rotação | planned | P0 | CORE-001 |
@@ -116,6 +116,14 @@ Próxima ação: Implementar snapshot genérico de spec e talentos sobre Compat 
 - tests/fixtures/specs/neutral_vanguard.lua demonstra registro plugável sem alterar o Core ou introduzir lógica de spec real.
 - docs/architecture/SPEC_REGISTRY.md documenta API, ownership, conflitos, ordem determinística e carregamento pelo TOC.
 - Commit 9df6fc0 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### CORE-003
+
+- npm run core:test passou com 25/25 testes de Compat, 31/31 contratos, 15/15 do detector e 13/13 do registry em 4/4 suítes Lua.
+- npm test passou com 41 testes de governança, 84 testes Lua, fronteiras/TOC, Luacheck e wowlua-ls sem falhas.
+- tests/fixtures/specs/neutral_talent_environment.lua cobre árvore simples, choice node, ranks, nodes indisponíveis e Hero Talent SubTree.
+- docs/architecture/SPEC_DETECTION.md documenta o snapshot, estados de falha segura e eventos futuros de invalidação.
+- Commit 290eedf registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
 
 ### CORE-004
 

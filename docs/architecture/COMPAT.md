@@ -50,6 +50,7 @@ erros determinísticos nos testes.
 | Hero tree ativa | `Talents:GetActiveHeroTreeId` | `C_ClassTalents.GetActiveHeroTalentSpec` | `ADDON_AVAILABLE` | ausência explícita |
 | Árvore da spec | `Talents:GetTreeIdForSpec` | `C_ClassTalents.GetTraitTreeForSpec` | `ADDON_AVAILABLE` | `SKIP` |
 | Config/nodes/entries | métodos `Talents:Get*` | `C_Traits.Get*` | `ADDON_AVAILABLE` | `SKIP` |
+| Metadados da Hero tree | `Talents:GetSubTreeInfo` | `C_Traits.GetSubTreeInfo` | `ADDON_AVAILABLE` | `SKIP` |
 | Restrições globais | `Secrets:GetRestrictionState` | `C_Secrets.HasSecretRestrictions` | resultado da sonda | `SKIP` |
 | Cooldowns | `Secrets:ClassifyCooldown` | `C_Secrets.Should*Cooldown*BeSecret` | resultado da sonda | `SKIP` |
 | Auras | `Secrets:ClassifyAura` | `C_Secrets.Should*Aura*BeSecret` | resultado da sonda | `SKIP` |
@@ -65,5 +66,5 @@ erros determinísticos nos testes.
 6. Sonda ausente, inválida, falha ou positiva resulta em `CONDITIONALLY_SECRET` e fallback `SKIP`.
 7. O código não tenta testar, converter, comparar ou calcular um valor depois que ele foi marcado como secreto.
 
-`CORE-003` combinará esses adapters para detectar spec e talentos. `RUN-001` adicionará adapters de estado somente quando
+`CORE-003` combina esses adapters para detectar spec e talentos. `RUN-001` adicionará adapters de estado somente quando
 cada sinal e fallback estiverem documentados nesta matriz.

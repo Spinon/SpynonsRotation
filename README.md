@@ -32,4 +32,5 @@ npm test
 Consulte [`docs/architecture/OVERVIEW.md`](docs/architecture/OVERVIEW.md) para as regras de dependência entre camadas.
 Os contratos públicos do Core estão em [`docs/architecture/CONTRACTS.md`](docs/architecture/CONTRACTS.md).
 As APIs Blizzard cobertas e seus fallbacks estão em [`docs/architecture/COMPAT.md`](docs/architecture/COMPAT.md).
+A detecção genérica de spec e talentos está em [`docs/architecture/SPEC_DETECTION.md`](docs/architecture/SPEC_DETECTION.md).
 O lifecycle e a política de evidências estão em [`docs/project/BOARD_GOVERNANCE.md`](docs/project/BOARD_GOVERNANCE.md).

@@ -106,6 +106,13 @@ function Talents.Create(environment)
     return callTable(environment, "C_Traits.GetDefinitionInfo", definitionId)
   end
 
+  function adapter.GetSubTreeInfo(_, configId, subTreeId)
+    if not Validation.IsPositiveInteger(configId) or not Validation.IsPositiveInteger(subTreeId) then
+      return invalidArgument()
+    end
+    return callTable(environment, "C_Traits.GetSubTreeInfo", configId, subTreeId)
+  end
+
   return adapter
 end
 
