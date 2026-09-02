@@ -99,6 +99,10 @@ O trilho é genérico e orientado a decisão. Cada célula reserva espaço para 
 
 Cor nunca é o único canal: texto, ícone de estado ou tratamento da moldura deve reforçar a leitura. A quantidade máxima visível e o comportamento de overflow serão definidos em `UI-DESIGN-006`.
 
+## Contexto, hotkeys e quantidades
+
+O contrato visual detalhado e os candidatos separados de `UI-DESIGN-003` estão em [`HUD_CONTEXT_BADGES.md`](HUD_CONTEXT_BADGES.md). O card de contexto reutiliza a mesma base para `AUTO`, `ST`, `CLEAVE` e `AOE`; hotkeys e quantidades são texto dinâmico sobre badges próprios; stacks e charges recebem glifos semânticos diferentes.
+
 ## Barra de cast e indicadores
 
 A barra inferior combina dois papéis sem misturar a hierarquia:

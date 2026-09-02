@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T22:50:18.830Z
+Atualizado pelo board em: 2026-09-02T22:59:04.856Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,7 +18,7 @@ Próxima ação: Implementar mapa, import/export SimC, bundle de runtime e verif
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-003 — Contexto, hotkeys e stacks | in_progress | Produzir e apresentar os candidatos do card de contexto, badge de hotkey e badge de stacks/charges. |
+| ui | UI-DESIGN-003 — Contexto, hotkeys e stacks | in_progress | Product Owner revisar os candidatos v1 do card de contexto, badges de hotkey/quantidade e glifos de stacks/charges. |
 
 ## Progresso
 

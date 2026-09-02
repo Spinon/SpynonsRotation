@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T22:50:18.830Z",
+  "updatedAt": "2026-09-02T22:59:04.856Z",
   "currentFocus": "LAB-003",
   "parallelFocus": {
     "ui": "UI-DESIGN-003"
@@ -567,9 +567,9 @@
       "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-003--contexto-hotkeys-e-stacks",
-      "updatedAt": "2026-09-02T22:49:12.467Z",
+      "updatedAt": "2026-09-02T22:59:04.856Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Produzir e apresentar os candidatos do card de contexto, badge de hotkey e badge de stacks/charges.",
+      "nextAction": "Product Owner revisar os candidatos v1 do card de contexto, badges de hotkey/quantidade e glifos de stacks/charges.",
       "dependencies": [
         "UI-DESIGN-002"
       ],
