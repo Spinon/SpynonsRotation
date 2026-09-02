@@ -41,9 +41,19 @@ Quando um componente ainda não possuir asset aprovado, o desenvolvimento princi
 
 Placeholders não são aprovação visual, não podem reutilizar arte externa sem licença e não contam como evidência de conclusão de uma task de arte final.
 
+## Fonte visual das actions
+
+O conteúdo visual de uma action vem do próprio World of Warcraft. A fonte de verdade é a identidade genérica da `Action` (`kind` + `gameId`) e o runtime entrega à UI o `icon` resolvido pelo contrato existente. Não serão produzidas, copiadas ou versionadas ilustrações próprias para substituir ícones de spells, items, racials, trinkets, potions, interrupts, defensives ou utilities.
+
+Os assets desta trilha cobrem somente molduras, máscaras, recortes, badges, glows, overlays e estados. O ícone nativo permanece uma camada substituível e não pode ser incorporado à arte final da moldura.
+
+No hub, `kind` + `gameId` continuam sendo a fonte de verdade. Um preview pode ser resolvido ou armazenado em cache por uma integração de mídia separada, mas esse cache não é autoritativo e nunca se torna dependência do addon. Na ausência do ícone, aplica-se o placeholder neutro definido nesta task.
+
 ## UI-DESIGN-001 — Layout do HUD principal
 
 Consolidar o mockup anotado, hierarquia, agrupamentos, proporções e vocabulário visual da tela operacional principal.
+
+A especificação consolidada fica em [`docs/product/HUD_MAIN_LAYOUT.md`](../docs/product/HUD_MAIN_LAYOUT.md).
 
 Entregáveis:
 
@@ -57,7 +67,7 @@ Entregáveis:
 
 ## UI-DESIGN-002 — Ação atual e fila
 
-Produzir a arte final das molduras da ação atual e da fila, incluindo proporções, recortes e estados base reutilizáveis por qualquer spec.
+Produzir a arte final das molduras da ação atual e da fila, incluindo proporções, recortes e estados base reutilizáveis por qualquer spec. O miolo das actions é reservado ao ícone nativo do WoW e não faz parte da arte produzida.
 
 ## UI-DESIGN-003 — Contexto, hotkeys e stacks
 

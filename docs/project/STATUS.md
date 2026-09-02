@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T21:35:21.236Z
+Atualizado pelo board em: 2026-09-02T21:38:34.436Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,14 +18,14 @@ Próxima ação: Verificar APIs Retail e implementar adapters, capabilities e fa
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-001 — Consolidar layout do HUD principal | in_progress | Consolidar o mockup aprovado em uma especificação de layout e contrato visual do HUD principal. |
+| ui | UI-DESIGN-002 — Arte final da ação atual e fila | planned | Produzir molduras e estados base da ação atual e da fila. |
 
 ## Progresso
 
 - Planejadas: 47
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 4
+- Concluídas: 5
 - Total: 53
 
 ## Fila canônica
@@ -52,7 +52,7 @@ Próxima ação: Verificar APIs Retail e implementar adapters, capabilities e fa
 | RUN-001 | delivery | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
 | RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
-| UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | in_progress | P0 | BOOT-002 |
+| UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | planned | P0 | UI-DESIGN-001 |
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | planned | P1 | UI-DESIGN-002 |
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | planned | P1 | UI-DESIGN-003 |
@@ -116,3 +116,11 @@ Próxima ação: Verificar APIs Retail e implementar adapters, capabilities e fa
 - tests/fixtures/specs/neutral_vanguard.lua demonstra registro plugável sem alterar o Core ou introduzir lógica de spec real.
 - docs/architecture/SPEC_REGISTRY.md documenta API, ownership, conflitos, ordem determinística e carregamento pelo TOC.
 - Commit 9df6fc0 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### UI-DESIGN-001
+
+- assets/ui/concepts/spynon-main-hud-annotated-concept-v2.png registra o mockup aprovado em 1672 x 941 px com os 11 componentes da tela principal anotados.
+- docs/product/HUD_MAIN_LAYOUT.md consolida hierarquia, agrupamentos, proporções, camadas, origem dos ícones e separação entre conceito, arte final e runtime.
+- tasks/UI-DESIGN.md registra que os ícones nativos do WoW não são assets autorais e que o hub mantém kind + gameId como fonte de verdade.
+- npm test passou: 41 testes de governança, 44 testes Lua, fronteiras/TOC, Luacheck e wowlua-ls sem falhas.
+- Commit 6b76890 registra planned -> in_progress e foi publicado em origin/main antes da consolidação.

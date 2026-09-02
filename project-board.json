@@ -6,10 +6,10 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T21:35:21.236Z",
+  "updatedAt": "2026-09-02T21:38:34.436Z",
   "currentFocus": "CORE-004",
   "parallelFocus": {
-    "ui": "UI-DESIGN-001"
+    "ui": "UI-DESIGN-002"
   },
   "release": {
     "version": "0.0.0",
@@ -485,12 +485,12 @@
       "title": "Consolidar layout do HUD principal",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/UI-DESIGN.md#ui-design-001--layout-do-hud-principal",
-      "updatedAt": "2026-09-02T21:35:21.236Z",
+      "updatedAt": "2026-09-02T21:38:34.436Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Consolidar o mockup aprovado em uma especificação de layout e contrato visual do HUD principal.",
+      "nextAction": null,
       "dependencies": [
         "BOOT-002"
       ],
@@ -499,7 +499,13 @@
         "Hierarquia, agrupamentos e proporções recebem aprovação visual",
         "Documento distingue explicitamente conceito de arte final e runtime"
       ],
-      "evidence": [],
+      "evidence": [
+        "assets/ui/concepts/spynon-main-hud-annotated-concept-v2.png registra o mockup aprovado em 1672 x 941 px com os 11 componentes da tela principal anotados.",
+        "docs/product/HUD_MAIN_LAYOUT.md consolida hierarquia, agrupamentos, proporções, camadas, origem dos ícones e separação entre conceito, arte final e runtime.",
+        "tasks/UI-DESIGN.md registra que os ícones nativos do WoW não são assets autorais e que o hub mantém kind + gameId como fonte de verdade.",
+        "npm test passou: 41 testes de governança, 44 testes Lua, fronteiras/TOC, Luacheck e wowlua-ls sem falhas.",
+        "Commit 6b76890 registra planned -> in_progress e foi publicado em origin/main antes da consolidação."
+      ],
       "track": "ui"
     },
     {
