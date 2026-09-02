@@ -20,6 +20,7 @@ const requiredDirectories = [
   "tests/integration",
   "tests/headless",
   "tests/project",
+  "tests/rotation-lab",
   "assets/brand",
   "docs/product",
   "docs/architecture",
@@ -59,6 +60,11 @@ const requiredFiles = [
   "docs/project/BOARD_GOVERNANCE.md",
   "docs/project/project-board.schema.json",
   "tools/toolchain/pins.json",
+  "rotation-lab/simc/cli.mjs",
+  "rotation-lab/simc/runner.mjs",
+  "rotation-lab/fixtures/simc-cli-smoke.simc",
+  "tests/rotation-lab/simc-runner.test.mjs",
+  "docs/architecture/SIMC_RUNNER.md",
 ];
 const errors = [];
 

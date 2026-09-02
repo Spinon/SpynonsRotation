@@ -15,11 +15,15 @@
     "project:test": "node --test tests/project/board.test.mjs tests/project/commands.test.mjs tests/project/sync.test.mjs",
     "project:sync": "node tools/project/sync.mjs",
     "toolchain:doctor": "node tools/toolchain/doctor.mjs",
+    "simc:doctor": "node rotation-lab/simc/cli.mjs doctor",
+    "simc:run": "node rotation-lab/simc/cli.mjs run",
+    "simc:smoke": "node rotation-lab/simc/cli.mjs run --profile rotation-lab/fixtures/simc-cli-smoke.simc --name lab001-smoke --iterations 1 --threads 1 --max-time 1 --fixed-time",
+    "simc:test": "node --test tests/rotation-lab/simc-runner.test.mjs",
     "layout:check": "node tools/validation/check-layout.mjs",
     "core:test": "node tools/validation/run-lua-tests.mjs",
     "addon:lint": "node tools/validation/run-luacheck.mjs",
     "addon:typecheck": "node tools/validation/run-wowlua-ls.mjs",
-    "test": "npm run project:check && npm run project:test && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
+    "test": "npm run project:check && npm run project:test && npm run simc:test && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
   },
   "license": "UNLICENSED"
 }

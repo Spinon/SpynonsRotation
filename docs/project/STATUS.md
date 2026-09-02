@@ -2,17 +2,17 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T22:12:39.112Z
+Atualizado pelo board em: 2026-09-02T22:20:22.539Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**LAB-001 — Integração SimC CLI**
+**LAB-002 — DSL de rotação**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Implementar runner, relatórios estruturados, diagnósticos e smoke real do SimC pinado.
+Próxima ação: Especificar a primeira versão da DSL.
 
 ## Focos paralelos
 
@@ -23,9 +23,9 @@ Próxima ação: Implementar runner, relatórios estruturados, diagnósticos e s
 ## Progresso
 
 - Planejadas: 44
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 7
+- Concluídas: 8
 - Total: 53
 
 ## Fila canônica
@@ -38,7 +38,7 @@ Próxima ação: Implementar runner, relatórios estruturados, diagnósticos e s
 | CORE-002 | delivery | CORE | Registry de classes/specs | done | P0 | CORE-001 |
 | CORE-003 | delivery | CORE | Detecção de spec e talentos | done | P0 | CORE-002, CORE-004 |
 | CORE-004 | delivery | CORE | Compat layer WoW | done | P0 | CORE-001 |
-| LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | in_progress | P0 | BOOT-002 |
+| LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | done | P0 | BOOT-002 |
 | LAB-002 | delivery | ROTATION LAB | DSL de rotação | planned | P0 | CORE-001 |
 | LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | planned | P0 | LAB-001, LAB-002, CORE-001 |
 | LAB-004 | delivery | ROTATION LAB | Matriz de cenários | planned | P1 | LAB-001, LAB-002 |
@@ -132,6 +132,14 @@ Próxima ação: Implementar runner, relatórios estruturados, diagnósticos e s
 - docs/architecture/COMPAT.md registra a matriz de APIs, o alvo 12.1.0.69587/120100, capabilities e fallbacks seguros.
 - tools/validation/check-layout.mjs impede o uso das APIs cobertas fora de addon/Compat.
 - Commit 0f9ea26 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### LAB-001
+
+- npm run simc:smoke executou o SimulationCraft real com código 0 e produziu JSON nativo e manifesto estruturado.
+- O manifesto do smoke confirmou SimulationCraft 1210.01, WoW 12.1.0.69587, commit f86979165c9b952e41d8cb6119065d3f6272abee, commit de publicação e SHA-256 do executável.
+- npm run simc:test passou com 9/9 testes de instalação, hash, limites, isolamento de perfil, execução, relatórios e diagnósticos.
+- npm test passou com 41 testes de governança, 9 testes do runner, 84 testes Lua, layout, Luacheck e wowlua-ls sem falhas.
+- Commit 5749a64 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
 
 ### UI-DESIGN-001
 

@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T22:12:39.112Z",
-  "currentFocus": "LAB-001",
+  "updatedAt": "2026-09-02T22:20:22.539Z",
+  "currentFocus": "LAB-002",
   "parallelFocus": {
     "ui": "UI-DESIGN-002"
   },
@@ -186,12 +186,12 @@
       "title": "Integração SimC CLI",
       "lane": "ROTATION LAB",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/LAB-001.md",
-      "updatedAt": "2026-09-02T22:12:39.112Z",
+      "updatedAt": "2026-09-02T22:20:22.539Z",
       "reviewBy": null,
-      "nextAction": "Implementar runner, relatórios estruturados, diagnósticos e smoke real do SimC pinado.",
+      "nextAction": null,
       "dependencies": [
         "BOOT-002"
       ],
@@ -200,7 +200,13 @@
         "Versão e commit aparecem no relatório",
         "Falhas produzem diagnóstico acionável"
       ],
-      "evidence": []
+      "evidence": [
+        "npm run simc:smoke executou o SimulationCraft real com código 0 e produziu JSON nativo e manifesto estruturado.",
+        "O manifesto do smoke confirmou SimulationCraft 1210.01, WoW 12.1.0.69587, commit f86979165c9b952e41d8cb6119065d3f6272abee, commit de publicação e SHA-256 do executável.",
+        "npm run simc:test passou com 9/9 testes de instalação, hash, limites, isolamento de perfil, execução, relatórios e diagnósticos.",
+        "npm test passou com 41 testes de governança, 9 testes do runner, 84 testes Lua, layout, Luacheck e wowlua-ls sem falhas.",
+        "Commit 5749a64 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD."
+      ]
     },
     {
       "id": "LAB-002",
