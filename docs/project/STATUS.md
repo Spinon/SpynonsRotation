@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T21:38:34.436Z
+Atualizado pelo board em: 2026-09-02T21:40:32.999Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,12 +18,12 @@ Próxima ação: Verificar APIs Retail e implementar adapters, capabilities e fa
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-002 — Arte final da ação atual e fila | planned | Produzir molduras e estados base da ação atual e da fila. |
+| ui | UI-DESIGN-002 — Arte final da ação atual e fila | in_progress | Produzir e validar as molduras reutilizáveis da ação atual e da fila sem incorporar ícones do WoW. |
 
 ## Progresso
 
-- Planejadas: 47
-- Em andamento: 1
+- Planejadas: 46
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 5
 - Total: 53
@@ -53,7 +53,7 @@ Próxima ação: Verificar APIs Retail e implementar adapters, capabilities e fa
 | RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
 | UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
-| UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | planned | P0 | UI-DESIGN-001 |
+| UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | in_progress | P0 | UI-DESIGN-001 |
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | planned | P1 | UI-DESIGN-002 |
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | planned | P1 | UI-DESIGN-003 |
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | planned | P1 | UI-DESIGN-004 |

@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T21:38:34.436Z",
+  "updatedAt": "2026-09-02T21:40:32.999Z",
   "currentFocus": "CORE-004",
   "parallelFocus": {
     "ui": "UI-DESIGN-002"
@@ -513,12 +513,12 @@
       "title": "Arte final da ação atual e fila",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "tasks/UI-DESIGN.md#ui-design-002--ação-atual-e-fila",
-      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "updatedAt": "2026-09-02T21:40:32.999Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Produzir molduras e estados base da ação atual e da fila.",
+      "nextAction": "Produzir e validar as molduras reutilizáveis da ação atual e da fila sem incorporar ícones do WoW.",
       "dependencies": [
         "UI-DESIGN-001"
       ],
