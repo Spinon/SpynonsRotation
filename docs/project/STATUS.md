@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T22:49:12.467Z
+Atualizado pelo board em: 2026-09-02T22:50:18.830Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,9 +10,9 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **LAB-003 — Compiler SimC ↔ DSL ↔ runtime**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Definir IR e pipeline de compilação.
+Próxima ação: Implementar mapa, import/export SimC, bundle de runtime e verificação por golden files.
 
 ## Focos paralelos
 
@@ -22,8 +22,8 @@ Próxima ação: Definir IR e pipeline de compilação.
 
 ## Progresso
 
-- Planejadas: 42
-- Em andamento: 1
+- Planejadas: 41
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 10
 - Total: 53
@@ -40,7 +40,7 @@ Próxima ação: Definir IR e pipeline de compilação.
 | CORE-004 | delivery | CORE | Compat layer WoW | done | P0 | CORE-001 |
 | LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | done | P0 | BOOT-002 |
 | LAB-002 | delivery | ROTATION LAB | DSL de rotação | done | P0 | CORE-001 |
-| LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | planned | P0 | LAB-001, LAB-002, CORE-001 |
+| LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | in_progress | P0 | LAB-001, LAB-002, CORE-001 |
 | LAB-004 | delivery | ROTATION LAB | Matriz de cenários | planned | P1 | LAB-001, LAB-002 |
 | LAB-005 | delivery | ROTATION LAB | Optimizer | planned | P2 | LAB-004, LAB-003 |
 | LAB-006 | delivery | ROTATION LAB | Regression suite | planned | P1 | LAB-003, LAB-004 |
