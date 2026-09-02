@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "status": "approved_direction",
+  "component": "globalCooldownBar",
+  "renderMode": "procedural",
+  "bitmapAsset": null,
+  "scope": "current_action_only",
+  "geometry": {
+    "relativeTo": "actionCurrentFrame",
+    "anchor": "BOTTOM",
+    "normalizedRect": {
+      "x": 0.075,
+      "y": 0.875,
+      "width": 0.85,
+      "height": 0.035
+    }
+  },
+  "visual": {
+    "trackColor": "#07131D",
+    "trackAlpha": 0.86,
+    "fillColor": "#0788D8",
+    "fillAlpha": 1,
+    "gradient": false,
+    "bakedGlow": false,
+    "text": false
+  },
+  "progress": {
+    "start": 0,
+    "end": 1,
+    "direction": "LEFT_TO_RIGHT",
+    "easing": "LINEAR",
+    "completionBehavior": "HIDE_FILL_KEEP_TRACK"
+  },
+  "states": {
+    "ready": {
+      "trackVisible": true,
+      "fillVisible": false
+    },
+    "active": {
+      "trackVisible": true,
+      "fillVisible": true
+    },
+    "unavailable": {
+      "trackVisible": true,
+      "fillVisible": false,
+      "inventProgress": false
+    }
+  },
+  "referenceSource": "gcd-state-reference-v1.svg",
+  "referencePreview": "gcd-state-reference-v1.png",
+  "referenceSourceSha256": "7D2B1E8997ABEBDCBA1447139FBEB7E68C3D1296A8A695E8E4594E82FE6A3E86",
+  "referencePreviewSha256": "52D3FD35DD05AEAF93F6F31DB24C4BE813E0A0B85C97A63798D15C6A694E92EF",
+  "runtimeReady": false,
+  "runtimePreparationTask": "UI-DESIGN-008"
+}

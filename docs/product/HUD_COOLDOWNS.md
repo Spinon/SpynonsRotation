@@ -33,9 +33,21 @@ Com `showCooldownText = false`, o radial swipe continua funcionando normalmente.
 
 ## Global Cooldown
 
-O GCD permanece uma barra horizontal fina integrada ao rodapé da ação atual. Ele não usa o radial swipe da habilidade e não aparece nos itens da fila. Essa diferença de forma evita confundir indisponibilidade individual com a curta janela global entre ações.
+O GCD é uma barra horizontal fina integrada ao rodapé da ação atual. Ele não usa o radial swipe da habilidade e não aparece nos itens da fila. Essa diferença de forma evita confundir indisponibilidade individual com a curta janela global entre ações.
 
-A direção final de preenchimento, cor de progresso e presença de texto na barra serão fechadas na continuação de `UI-DESIGN-004`. Nenhuma dessas decisões altera o contrato já aprovado do cooldown individual.
+Contrato visual:
+
+- o trilho ocupa a faixa normalizada `(x: 0.075, y: 0.875, largura: 0.85, altura: 0.035)` da ação atual;
+- o preenchimento começa em `0%` e cresce linearmente da esquerda para a direita até `100%`;
+- a cor ativa é o azul elétrico sólido da marca, `#0788D8`;
+- o trilho de repouso é grafite azulado sólido, `#07131D`, com alpha `0.86`;
+- não existe gradiente, bloom incorporado, brilho móvel ou pulso de conclusão;
+- a barra não mostra label, unidade ou valor numérico;
+- ao concluir, o preenchimento desaparece e somente o trilho discreto permanece.
+
+O crescimento da barra comunica aproximação do estado ready. O verde não é usado no GCD: permanece reservado a confirmação e estados favoráveis, evitando que a barra pareça um proc.
+
+O GCD deve ser uma composição procedural leve, não um bitmap. Se o progresso real não estiver disponível de forma segura, a UI mantém apenas o trilho e não inventa duração. O contrato técnico está registrado em [`assets/ui/gcd`](../../assets/ui/gcd/README.md), com uma prancha de estados destinada somente à documentação.
 
 ## Camadas
 
@@ -46,6 +58,8 @@ estados transitórios e glow da moldura
 moldura estática v4
 radial swipe cinza recortado
 ícone nativo do WoW
+
+GCD procedural              <- slot separado no rodapé da ação atual
 ```
 
 O radial swipe e o número são componentes independentes. Desabilitar o número não muda a textura, o recorte ou o progresso do cinza.

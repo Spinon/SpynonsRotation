@@ -6,10 +6,10 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:17:27.382Z",
+  "updatedAt": "2026-09-02T23:26:00.394Z",
   "currentFocus": "LAB-004",
   "parallelFocus": {
-    "ui": "UI-DESIGN-004"
+    "ui": "UI-DESIGN-005"
   },
   "release": {
     "version": "0.0.0",
@@ -599,12 +599,12 @@
       "title": "Global Cooldown e cooldown individual",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-004--gcd-e-cooldown-individual",
-      "updatedAt": "2026-09-02T23:17:27.382Z",
+      "updatedAt": "2026-09-02T23:26:00.394Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Product Owner definir direção de preenchimento, cor e texto da barra horizontal de GCD; cooldown individual já consolidado como radial swipe sem argola.",
+      "nextAction": null,
       "dependencies": [
         "UI-DESIGN-003"
       ],
@@ -615,7 +615,10 @@
       ],
       "evidence": [
         "Product Owner definiu o cooldown individual como overlay cinza radial que revela o ícone em sentido horário, sem argola ou moldura adicional.",
-        "docs/product/HUD_COOLDOWNS.md registra o comportamento visual, a preferência pela primitiva nativa do cliente e o número central opcional e configurável."
+        "docs/product/HUD_COOLDOWNS.md registra o comportamento visual, a preferência pela primitiva nativa do cliente e o número central opcional e configurável.",
+        "O GCD foi fechado como barra procedural azul sólida, sem texto, crescendo da esquerda para a direita somente no rodapé da ação atual.",
+        "assets/ui/gcd/manifest.json e gcd-state-reference-v1.svg registram geometria normalizada, tokens, estados e hashes do preview para handoff.",
+        "npm test passou com validações do board, Rotation Lab, cenários, Core, layout, lint e typecheck."
       ],
       "track": "ui"
     },

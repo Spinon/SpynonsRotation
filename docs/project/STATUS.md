@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:17:27.382Z
+Atualizado pelo board em: 2026-09-02T23:26:00.394Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,14 +18,14 @@ Próxima ação: Implementar schema, matriz neutra, planos SimC e fitness com gu
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-004 — Global Cooldown e cooldown individual | in_progress | Product Owner definir direção de preenchimento, cor e texto da barra horizontal de GCD; cooldown individual já consolidado como radial swipe sem argola. |
+| ui | UI-DESIGN-005 — Barra de cast e indicadores decisivos | planned | Produzir a barra combinada com conteúdo contextual. |
 
 ## Progresso
 
 - Planejadas: 39
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 12
+- Concluídas: 13
 - Total: 53
 
 ## Fila canônica
@@ -55,7 +55,7 @@ Próxima ação: Implementar schema, matriz neutra, planos SimC e fitness com gu
 | UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | done | P0 | UI-DESIGN-001 |
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | done | P1 | UI-DESIGN-002 |
-| UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | in_progress | P1 | UI-DESIGN-003 |
+| UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | done | P1 | UI-DESIGN-003 |
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | planned | P1 | UI-DESIGN-004 |
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | planned | P0 | UI-DESIGN-005 |
 | UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006 |
@@ -180,3 +180,11 @@ Próxima ação: Implementar schema, matriz neutra, planos SimC e fitness com gu
 - docs/product/HUD_CONTEXT_BADGES.md documenta posições padrão, controles configuráveis de fonte/âncora/offset e ausência explícita de backgrounds.
 - O Product Owner descartou a argola como representação de cooldown; UI-DESIGN-003 permanece restrita ao contexto e às camadas tipográficas.
 - npm test passou após a consolidação, incluindo board, Rotation Lab, Core, layout, lint e typecheck.
+
+### UI-DESIGN-004
+
+- Product Owner definiu o cooldown individual como overlay cinza radial que revela o ícone em sentido horário, sem argola ou moldura adicional.
+- docs/product/HUD_COOLDOWNS.md registra o comportamento visual, a preferência pela primitiva nativa do cliente e o número central opcional e configurável.
+- O GCD foi fechado como barra procedural azul sólida, sem texto, crescendo da esquerda para a direita somente no rodapé da ação atual.
+- assets/ui/gcd/manifest.json e gcd-state-reference-v1.svg registram geometria normalizada, tokens, estados e hashes do preview para handoff.
+- npm test passou com validações do board, Rotation Lab, cenários, Core, layout, lint e typecheck.
