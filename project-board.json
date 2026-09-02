@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:55:53.326Z",
+  "updatedAt": "2026-09-02T23:58:09.414Z",
   "currentFocus": "LAB-006",
   "parallelFocus": {
     "ui": "UI-DESIGN-005"
@@ -329,12 +329,12 @@
       "title": "Regression suite",
       "lane": "ROTATION LAB",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
-      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "source": "tasks/LAB-006.md",
+      "updatedAt": "2026-09-02T23:58:09.414Z",
       "reviewBy": null,
-      "nextAction": "Criar formato de relatório e thresholds.",
+      "nextAction": "Implementar contratos de resultados e política, comparações pareadas e fixtures neutras.",
       "dependencies": [
         "LAB-003",
         "LAB-004"

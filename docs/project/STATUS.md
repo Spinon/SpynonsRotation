@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:55:53.326Z
+Atualizado pelo board em: 2026-09-02T23:58:09.414Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,9 +10,9 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **LAB-006 — Regression suite**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Criar formato de relatório e thresholds.
+Próxima ação: Implementar contratos de resultados e política, comparações pareadas e fixtures neutras.
 
 ## Focos paralelos
 
@@ -22,8 +22,8 @@ Próxima ação: Criar formato de relatório e thresholds.
 
 ## Progresso
 
-- Planejadas: 38
-- Em andamento: 1
+- Planejadas: 37
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 16
 - Total: 55
@@ -43,7 +43,7 @@ Próxima ação: Criar formato de relatório e thresholds.
 | LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | done | P0 | LAB-001, LAB-002, CORE-001 |
 | LAB-004 | delivery | ROTATION LAB | Matriz de cenários | done | P1 | LAB-001, LAB-002 |
 | LAB-005 | delivery | ROTATION LAB | Optimizer | done | P2 | LAB-004, LAB-003 |
-| LAB-006 | delivery | ROTATION LAB | Regression suite | planned | P1 | LAB-003, LAB-004 |
+| LAB-006 | delivery | ROTATION LAB | Regression suite | in_progress | P1 | LAB-003, LAB-004 |
 | ENH-001 | delivery | SHAMAN | Catálogo Enhancement | planned | P0 | CORE-002, CORE-003, CORE-004 |
 | ENH-002 | delivery | SHAMAN | Baseline APL | planned | P0 | ENH-001, LAB-002, LAB-003 |
 | ENH-003 | delivery | SHAMAN | Curadoria ST | planned | P1 | ENH-002, LAB-004 |
