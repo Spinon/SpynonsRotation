@@ -1,28 +1,32 @@
 {
   "schemaVersion": 1,
   "status": "candidate_review",
-  "activeVersion": "v2",
+  "activeVersion": "v3",
   "iconSource": "wow_runtime",
   "assets": {
     "actionCurrentFrame": {
-      "file": "action-current-frame-v2.png",
+      "file": "action-current-frame-v3.png",
       "role": "frame_overlay",
       "sourceWidth": 1619,
       "sourceHeight": 971,
       "layoutAspectRatio": 1.667353,
       "baseState": "current",
       "solidChannels": {
-        "blue": "#00B7FF",
-        "green": "#66E23A"
+        "blue": "#07566D",
+        "green": "#2B6F35"
+      },
+      "glowChannels": {
+        "blue": "#27D9FF",
+        "green": "#7CFF4B"
       },
       "animationHooks": [
         "current.blue.perimeter",
         "current.green.signature"
       ],
-      "sha256": "1E215BA9FD91F49353B817917581343EB7033D08150096B355139372BE49E717"
+      "sha256": "F67D6624E9086FE386FAC5B066FF23FE88468D5BDE10721D0EEC7685C169E40A"
     },
     "actionQueueFrame": {
-      "file": "action-queue-frame-v2.png",
+      "file": "action-queue-frame-v3.png",
       "role": "frame_overlay",
       "sourceWidth": 1254,
       "sourceHeight": 1254,
@@ -30,14 +34,18 @@
       "baseState": "queued",
       "instances": 3,
       "solidChannels": {
-        "blue": "#00B7FF",
-        "green": "#66E23A"
+        "blue": "#07566D",
+        "green": "#2B6F35"
+      },
+      "glowChannels": {
+        "blue": "#27D9FF",
+        "green": "#7CFF4B"
       },
       "animationHooks": [
         "queue.blue.promote",
         "queue.green.confirm"
       ],
-      "sha256": "EC2B5148D4D7CCCF0DB3114FCB2623F0BA284F07C599814D63909BE9EFA50C27"
+      "sha256": "7E039D6ACF7583DDDD293E4910CA1FA1C731933F9EA3CB67E945EF59B4A5BF32"
     }
   },
   "animationSpec": "ANIMATION_HOOKS.md",
@@ -52,7 +60,9 @@
   ],
   "previousVersions": [
     "action-current-frame-v1.png",
-    "action-queue-frame-v1.png"
+    "action-queue-frame-v1.png",
+    "action-current-frame-v2.png",
+    "action-queue-frame-v2.png"
   ],
   "runtimeReady": false,
   "runtimePreparationTask": "UI-DESIGN-008",
