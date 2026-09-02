@@ -9,6 +9,7 @@ Este repositório usa uma fila canônica. Todo agente deve respeitar este protoc
 3. Leia `project-board.json` e localize `currentFocus`.
 4. Leia integralmente a fonte indicada no campo `source` da task.
 5. Verifique o que já existe e trabalhe somente na task atual.
+6. Se a task estiver `planned`, mude-a para `in_progress`, atualize os timestamps, gere o STATUS e faça commit/push desse início antes da implementação.
 
 Se a branch estiver divergente ou houver alterações inesperadas que conflitem com a task, interrompa a edição e reporte a evidência. Nunca use force push.
 
@@ -21,14 +22,19 @@ Se a branch estiver divergente ou houver alterações inesperadas que conflitem 
 - Regras do runtime só podem depender de capacidades `ADDON_AVAILABLE` ou de fallback explicitamente seguro.
 - Não expanda o escopo com refactors ou features de tasks futuras.
 - Nunca declare validação em jogo se apenas testes offline/headless foram executados.
+- Nunca edite `docs/project/STATUS.md` manualmente; use `npm run project:status`.
+- Respeite o lifecycle e as evidências definidos em [`docs/project/BOARD_GOVERNANCE.md`](docs/project/BOARD_GOVERNANCE.md).
 
 ## Encerramento
 
 1. Execute testes proporcionais e `npm test` quando aplicável.
-2. Atualize somente `project-board.json`, incluindo evidência verificável para qualquer item `done`.
-3. Execute `npm run project:status` e depois `npm run project:check`.
-4. Faça commit descritivo e push da branch.
-5. Não faça merge nem publique release sem autorização explícita do Product Owner.
+2. Na task concluída, registre evidência verificável, defina `nextAction: null`, avance `updatedAt` e mude o status para `done`.
+3. Aponte `currentFocus` para a próxima task elegível e atualize `board.updatedAt`.
+4. Execute `npm run project:status` e depois `npm run project:check`; o check valida a transição contra o board em `HEAD`.
+5. Faça commit descritivo e push da branch.
+6. Não faça merge nem publique release sem autorização explícita do Product Owner.
+
+Se a task bloquear, use `blocked`, preserve uma `nextAction` concreta para desbloqueio e registre a causa. Não use `done` para contornar bloqueios.
 
 ## Comunicação
 

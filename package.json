@@ -12,12 +12,13 @@
     "bootstrap": "npm run toolchain:doctor && npm run project:status && npm run project:check",
     "project:status": "node tools/project/status.mjs",
     "project:check": "node tools/project/check.mjs",
+    "project:test": "node --test tests/project/board.test.mjs tests/project/commands.test.mjs tests/project/sync.test.mjs",
     "project:sync": "node tools/project/sync.mjs",
     "toolchain:doctor": "node tools/toolchain/doctor.mjs",
     "layout:check": "node tools/validation/check-layout.mjs",
     "addon:lint": "node tools/validation/run-luacheck.mjs",
     "addon:typecheck": "node tools/validation/run-wowlua-ls.mjs",
-    "test": "npm run project:check && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
+    "test": "npm run project:check && npm run project:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
   },
   "license": "UNLICENSED"
 }

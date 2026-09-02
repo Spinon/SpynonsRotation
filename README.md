@@ -13,6 +13,7 @@ O repositório está na fase de bootstrap. O estado canônico do projeto vive em
 ```powershell
 npm run project:status
 npm run project:check
+npm run project:test
 npm run project:sync
 npm run toolchain:doctor
 npm test
@@ -28,3 +29,4 @@ npm test
 - `docs/`: produto, arquitetura e estado derivado do projeto.
 
 Consulte [`docs/architecture/OVERVIEW.md`](docs/architecture/OVERVIEW.md) para as regras de dependência entre camadas.
+O lifecycle e a política de evidências estão em [`docs/project/BOARD_GOVERNANCE.md`](docs/project/BOARD_GOVERNANCE.md).

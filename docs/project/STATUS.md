@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T20:31:00.000Z
+Atualizado pelo board em: 2026-09-02T20:31:10.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**BOOT-002 — Governança da fila e AGENTS**
+**CORE-001 — Contratos genéricos**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Formalizar o schema, testar invariantes e validar o ciclo completo da task.
+Próxima ação: Definir contratos e invariantes do Core.
 
 ## Progresso
 
 - Planejadas: 43
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 1
+- Concluídas: 2
 - Total: 45
 
 ## Fila canônica
@@ -27,7 +27,7 @@ Próxima ação: Formalizar o schema, testar invariantes e validar o ciclo compl
 | ID | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- |
 | BOOT-001 | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
-| BOOT-002 | BOOT | Governança da fila e AGENTS | in_progress | P0 | BOOT-001 |
+| BOOT-002 | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
 | CORE-001 | CORE | Contratos genéricos | planned | P0 | BOOT-002 |
 | CORE-002 | CORE | Registry de classes/specs | planned | P0 | CORE-001 |
 | CORE-003 | CORE | Detecção de spec e talentos | planned | P0 | CORE-002, CORE-004 |
@@ -80,3 +80,10 @@ Próxima ação: Formalizar o schema, testar invariantes e validar o ciclo compl
 - npm run toolchain:doctor passou com SHA-256 verificado e spell query real do SimulationCraft 1210-01 para Lightning Bolt.
 - Git remote origin aponta para https://github.com/Spinon/SpynonsRotation na branch main.
 - docs/architecture/OVERVIEW.md e tools/toolchain/pins.json registram as fronteiras e versões do bootstrap.
+
+### BOOT-002
+
+- npm run project:test passou com 33 testes de schema, lifecycle, STATUS e política de sync.
+- npm test passou com project checks, layout, Luacheck e wowlua-ls sem falhas.
+- docs/project/project-board.schema.json e docs/project/BOARD_GOVERNANCE.md formalizam o schema v1, transições, evidências e migrações.
+- Commit 3bb9fda registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.

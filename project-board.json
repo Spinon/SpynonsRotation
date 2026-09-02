@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T20:31:00.000Z",
-  "currentFocus": "BOOT-002",
+  "updatedAt": "2026-09-02T20:31:10.000Z",
+  "currentFocus": "CORE-001",
   "release": {
     "version": "0.0.0",
     "channel": "bootstrap",
@@ -49,12 +49,12 @@
       "title": "Governança da fila e AGENTS",
       "lane": "BOOT",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/BOOT-002.md",
-      "updatedAt": "2026-09-02T20:31:00.000Z",
+      "updatedAt": "2026-09-02T20:31:10.000Z",
       "reviewBy": null,
-      "nextAction": "Formalizar o schema, testar invariantes e validar o ciclo completo da task.",
+      "nextAction": null,
       "dependencies": [
         "BOOT-001"
       ],
@@ -63,7 +63,12 @@
         "STATUS é estritamente derivado do board",
         "Protocolo AGENTS é validado em um ciclo completo"
       ],
-      "evidence": []
+      "evidence": [
+        "npm run project:test passou com 33 testes de schema, lifecycle, STATUS e política de sync.",
+        "npm test passou com project checks, layout, Luacheck e wowlua-ls sem falhas.",
+        "docs/project/project-board.schema.json e docs/project/BOARD_GOVERNANCE.md formalizam o schema v1, transições, evidências e migrações.",
+        "Commit 3bb9fda registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD."
+      ]
     },
     {
       "id": "CORE-001",
@@ -72,8 +77,8 @@
       "owner": "Codex",
       "status": "planned",
       "priority": "P0",
-      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "source": "tasks/CORE-001.md",
+      "updatedAt": "2026-09-02T20:31:10.000Z",
       "reviewBy": null,
       "nextAction": "Definir contratos e invariantes do Core.",
       "dependencies": [

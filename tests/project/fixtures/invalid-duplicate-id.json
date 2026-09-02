@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "name": "Fixture",
+    "product": "Governance fixture",
+    "repository": "https://example.test/repository",
+    "defaultBranch": "main"
+  },
+  "updatedAt": "2026-09-02T00:03:00.000Z",
+  "currentFocus": "TEST-002",
+  "release": {
+    "version": "0.0.0",
+    "channel": "test",
+    "status": "unreleased",
+    "wowBuild": "12.1.0.69587",
+    "interface": 120100,
+    "simc": "1210.01",
+    "rotationRevision": null,
+    "validatedAt": null
+  },
+  "items": [
+    {
+      "lane": "TEST",
+      "owner": "Codex",
+      "priority": "P0",
+      "source": "https://example.test/task-source",
+      "updatedAt": "2026-09-02T00:01:00.000Z",
+      "reviewBy": null,
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Resultado verificável"
+      ],
+      "evidence": [
+        "fixture concluída"
+      ],
+      "id": "TEST-001",
+      "title": "Dependência concluída",
+      "status": "done",
+      "nextAction": null
+    },
+    {
+      "lane": "TEST",
+      "owner": "Codex",
+      "priority": "P0",
+      "source": "https://example.test/task-source",
+      "updatedAt": "2026-09-02T00:02:00.000Z",
+      "reviewBy": null,
+      "dependencies": [
+        "TEST-001"
+      ],
+      "acceptanceCriteria": [
+        "Resultado verificável"
+      ],
+      "evidence": [],
+      "id": "TEST-002",
+      "title": "Task ativa",
+      "status": "in_progress",
+      "nextAction": "Concluir a fixture ativa."
+    },
+    {
+      "lane": "TEST",
+      "owner": "Codex",
+      "priority": "P0",
+      "source": "https://example.test/task-source",
+      "updatedAt": "2026-09-02T00:03:00.000Z",
+      "reviewBy": null,
+      "dependencies": [
+        "TEST-002"
+      ],
+      "acceptanceCriteria": [
+        "Resultado verificável"
+      ],
+      "evidence": [],
+      "id": "TEST-002",
+      "title": "Próxima task",
+      "status": "planned",
+      "nextAction": "Aguardar TEST-002."
+    }
+  ]
+}
+

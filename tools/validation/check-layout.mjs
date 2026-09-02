@@ -19,6 +19,7 @@ const requiredDirectories = [
   "tests/unit",
   "tests/integration",
   "tests/headless",
+  "tests/project",
   "assets/brand",
   "docs/product",
   "docs/architecture",
@@ -30,6 +31,8 @@ const requiredFiles = [
   "addon/Core/Bootstrap.lua",
   "AGENTS.md",
   "project-board.json",
+  "docs/project/BOARD_GOVERNANCE.md",
+  "docs/project/project-board.schema.json",
   "tools/toolchain/pins.json",
 ];
 const errors = [];

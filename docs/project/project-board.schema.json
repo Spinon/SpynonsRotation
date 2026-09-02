@@ -1,0 +1,239 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Spinon/SpynonsRotation/blob/main/docs/project/project-board.schema.json",
+  "title": "Spynon's Rotation project board",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "project",
+    "updatedAt",
+    "currentFocus",
+    "release",
+    "items"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "product",
+        "repository",
+        "defaultBranch"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "product": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "repository": {
+          "type": "string",
+          "format": "uri"
+        },
+        "defaultBranch": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currentFocus": {
+      "$ref": "#/$defs/taskId"
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "channel",
+        "status",
+        "wowBuild",
+        "interface",
+        "simc",
+        "rotationRevision",
+        "validatedAt"
+      ],
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "channel": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "status": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "wowBuild": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "interface": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "simc": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "rotationRevision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "validatedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/task"
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "taskId": {
+      "type": "string",
+      "pattern": "^[A-Z]+(?:-[A-Z]+)*-[0-9]{3}$"
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "lane",
+        "owner",
+        "status",
+        "priority",
+        "source",
+        "updatedAt",
+        "reviewBy",
+        "nextAction",
+        "dependencies",
+        "acceptanceCriteria",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/taskId"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "lane": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "owner": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "status": {
+          "enum": [
+            "planned",
+            "in_progress",
+            "blocked",
+            "done"
+          ]
+        },
+        "priority": {
+          "enum": [
+            "P0",
+            "P1",
+            "P2",
+            "P3"
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reviewBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nextAction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dependencies": {
+          "$ref": "#/$defs/stringList"
+        },
+        "acceptanceCriteria": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/stringList"
+            },
+            {
+              "minItems": 1
+            }
+          ]
+        },
+        "evidence": {
+          "$ref": "#/$defs/stringList"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "done"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "nextAction": {
+                "type": "null"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "nextAction": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
