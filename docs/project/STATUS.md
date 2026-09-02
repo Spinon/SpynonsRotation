@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T22:36:27.386Z
+Atualizado pelo board em: 2026-09-02T22:37:49.357Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,9 +10,9 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **LAB-002 — DSL de rotação**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Especificar a primeira versão da DSL.
+Próxima ação: Implementar a DSL v1, parser estrito, validação semântica, fixture neutra e testes.
 
 ## Focos paralelos
 
@@ -22,8 +22,8 @@ Próxima ação: Especificar a primeira versão da DSL.
 
 ## Progresso
 
-- Planejadas: 44
-- Em andamento: 1
+- Planejadas: 43
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 8
 - Total: 53
@@ -39,7 +39,7 @@ Próxima ação: Especificar a primeira versão da DSL.
 | CORE-003 | delivery | CORE | Detecção de spec e talentos | done | P0 | CORE-002, CORE-004 |
 | CORE-004 | delivery | CORE | Compat layer WoW | done | P0 | CORE-001 |
 | LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | done | P0 | BOOT-002 |
-| LAB-002 | delivery | ROTATION LAB | DSL de rotação | planned | P0 | CORE-001 |
+| LAB-002 | delivery | ROTATION LAB | DSL de rotação | in_progress | P0 | CORE-001 |
 | LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | planned | P0 | LAB-001, LAB-002, CORE-001 |
 | LAB-004 | delivery | ROTATION LAB | Matriz de cenários | planned | P1 | LAB-001, LAB-002 |
 | LAB-005 | delivery | ROTATION LAB | Optimizer | planned | P2 | LAB-004, LAB-003 |

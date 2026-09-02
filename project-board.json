@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T22:36:27.386Z",
+  "updatedAt": "2026-09-02T22:37:49.357Z",
   "currentFocus": "LAB-002",
   "parallelFocus": {
     "ui": "UI-DESIGN-002"
@@ -213,12 +213,12 @@
       "title": "DSL de rotação",
       "lane": "ROTATION LAB",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
-      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "source": "tasks/LAB-002.md",
+      "updatedAt": "2026-09-02T22:37:49.357Z",
       "reviewBy": null,
-      "nextAction": "Especificar a primeira versão da DSL.",
+      "nextAction": "Implementar a DSL v1, parser estrito, validação semântica, fixture neutra e testes.",
       "dependencies": [
         "CORE-001"
       ],
