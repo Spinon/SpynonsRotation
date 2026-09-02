@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T22:48:00.170Z
+Atualizado pelo board em: 2026-09-02T22:49:12.467Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,12 +18,12 @@ Próxima ação: Definir IR e pipeline de compilação.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-003 — Contexto, hotkeys e stacks | planned | Produzir o módulo de contexto e os badges compactos. |
+| ui | UI-DESIGN-003 — Contexto, hotkeys e stacks | in_progress | Produzir e apresentar os candidatos do card de contexto, badge de hotkey e badge de stacks/charges. |
 
 ## Progresso
 
-- Planejadas: 43
-- Em andamento: 0
+- Planejadas: 42
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 10
 - Total: 53
@@ -54,7 +54,7 @@ Próxima ação: Definir IR e pipeline de compilação.
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
 | UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | done | P0 | UI-DESIGN-001 |
-| UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | planned | P1 | UI-DESIGN-002 |
+| UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | in_progress | P1 | UI-DESIGN-002 |
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | planned | P1 | UI-DESIGN-003 |
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | planned | P1 | UI-DESIGN-004 |
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | planned | P0 | UI-DESIGN-005 |
