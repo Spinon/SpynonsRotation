@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:13:44.531Z
+Atualizado pelo board em: 2026-09-02T23:14:48.311Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,12 +18,12 @@ Próxima ação: Implementar schema, matriz neutra, planos SimC e fitness com gu
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-004 — Global Cooldown e cooldown individual | planned | Definir a barra de GCD e o overlay radial de cooldown. |
+| ui | UI-DESIGN-004 — Global Cooldown e cooldown individual | in_progress | Consolidar o cooldown individual como radial swipe sem argola e definir a direção visual da barra de GCD. |
 
 ## Progresso
 
-- Planejadas: 40
-- Em andamento: 1
+- Planejadas: 39
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 12
 - Total: 53
@@ -55,7 +55,7 @@ Próxima ação: Implementar schema, matriz neutra, planos SimC e fitness com gu
 | UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | done | P0 | UI-DESIGN-001 |
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | done | P1 | UI-DESIGN-002 |
-| UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | planned | P1 | UI-DESIGN-003 |
+| UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | in_progress | P1 | UI-DESIGN-003 |
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | planned | P1 | UI-DESIGN-004 |
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | planned | P0 | UI-DESIGN-005 |
 | UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006 |

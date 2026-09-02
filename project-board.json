@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:13:44.531Z",
+  "updatedAt": "2026-09-02T23:14:48.311Z",
   "currentFocus": "LAB-004",
   "parallelFocus": {
     "ui": "UI-DESIGN-004"
@@ -599,12 +599,12 @@
       "title": "Global Cooldown e cooldown individual",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-004--gcd-e-cooldown-individual",
-      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "updatedAt": "2026-09-02T23:14:48.311Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Definir a barra de GCD e o overlay radial de cooldown.",
+      "nextAction": "Consolidar o cooldown individual como radial swipe sem argola e definir a direção visual da barra de GCD.",
       "dependencies": [
         "UI-DESIGN-003"
       ],
