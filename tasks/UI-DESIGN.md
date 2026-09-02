@@ -75,7 +75,7 @@ Produzir o módulo de contexto de combate e definir o tratamento tipográfico de
 
 ## UI-DESIGN-004 — GCD e cooldown individual
 
-Definir e produzir a barra de Global Cooldown e o overlay radial cinza em sentido horário, incluindo tipografia do cooldown numérico central.
+Definir a barra de Global Cooldown e o radial swipe cinza que revela o ícone em sentido horário. O cooldown individual não usa argola ou moldura adicional; o valor numérico central é configurável e pode ser ocultado.
 
 ## UI-DESIGN-005 — Barra de cast e indicadores
 

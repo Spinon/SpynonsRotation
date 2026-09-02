@@ -41,7 +41,7 @@ Todo o conjunto deve poder ser ancorado e escalado como uma unidade no futuro mo
 | 7 | Área de animação | Espaço compartilhado pela fila para MOVE, ENTER, EXIT, PROMOTE e CONSUME; não é um painel persistente. |
 | 8 | Assinatura da marca | Elemento periférico e discreto; não concorre com dados de combate. |
 | 9 | Juggle de buffs/debuffs | Trilho dedicado entre fila e cast, mostrando apenas sinais decisivos. |
-| 10 | Cooldown individual | Overlay radial cinza em sentido horário, com tempo numérico central. |
+| 10 | Cooldown individual | O próprio ícone recebe um radial swipe cinza que revela a cor em sentido horário, sem argola; o tempo numérico central é configurável e pode ser ocultado. |
 | 11 | Stacks/charges | Número sem background no canto inferior direito de cada action, livre de indicadores de debuff; fonte e posição configuráveis. |
 
 ## Hierarquia e proporções
@@ -63,12 +63,13 @@ Da base para o topo, uma action é composta por:
 
 1. ícone nativo do WoW;
 2. máscara ou recorte geométrico;
-3. overlay radial e número do cooldown, limitados à abertura do ícone;
+3. radial swipe cinza do cooldown, limitado à abertura do ícone;
 4. moldura visual estática do addon;
 5. glow animado sobre os trilhos da moldura;
 6. demais estados transitórios;
-7. hotkey no canto superior direito;
-8. stacks ou charges no canto inferior direito.
+7. valor numérico opcional do cooldown no centro da habilidade;
+8. hotkey no canto superior direito;
+9. stacks ou charges no canto inferior direito.
 
 Buffs e debuffs não ocupam os cantos das actions. Eles pertencem ao trilho de juggle e, quando decisivos para a ação corrente, ao centro informativo da barra de cast/indicadores.
 
@@ -102,6 +103,10 @@ Cor nunca é o único canal: texto, ícone de estado ou tratamento da moldura de
 ## Contexto, hotkeys e quantidades
 
 O contrato visual detalhado de `UI-DESIGN-003` está em [`HUD_CONTEXT_BADGES.md`](HUD_CONTEXT_BADGES.md). O card de contexto reutiliza a mesma base para `AUTO`, `ST`, `CLEAVE` e `AOE`; hotkeys e quantidades são camadas tipográficas sem background, badge ou glifo.
+
+## Global Cooldown e cooldown individual
+
+O contrato de `UI-DESIGN-004` está em [`HUD_COOLDOWNS.md`](HUD_COOLDOWNS.md). O cooldown individual usa somente um radial swipe cinza sobre o ícone, com revelação horária e número central opcional; não existe argola decorativa.
 
 ## Barra de cast e indicadores
 

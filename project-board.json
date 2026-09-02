@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:14:48.311Z",
+  "updatedAt": "2026-09-02T23:17:27.382Z",
   "currentFocus": "LAB-004",
   "parallelFocus": {
     "ui": "UI-DESIGN-004"
@@ -589,7 +589,7 @@
         "Product Owner aprovou a janela combat-context-card-frame-v1.png e definiu hotkey, stacks e charges como camadas tipográficas sem badge ou glifo.",
         "assets/ui/context/manifest.json registra o master aprovado, hash, modos compartilhados e safe areas de conteúdo dinâmico.",
         "docs/product/HUD_CONTEXT_BADGES.md documenta posições padrão, controles configuráveis de fonte/âncora/offset e ausência explícita de backgrounds.",
-        "assets/ui/concepts/radial-ring-reference-v1.png preserva a argola aprovada apenas como referência para UI-DESIGN-004, sem associá-la a charges.",
+        "O Product Owner descartou a argola como representação de cooldown; UI-DESIGN-003 permanece restrita ao contexto e às camadas tipográficas.",
         "npm test passou após a consolidação, incluindo board, Rotation Lab, Core, layout, lint e typecheck."
       ],
       "track": "ui"
@@ -602,9 +602,9 @@
       "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-004--gcd-e-cooldown-individual",
-      "updatedAt": "2026-09-02T23:14:48.311Z",
+      "updatedAt": "2026-09-02T23:17:27.382Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Consolidar o cooldown individual como radial swipe sem argola e definir a direção visual da barra de GCD.",
+      "nextAction": "Product Owner definir direção de preenchimento, cor e texto da barra horizontal de GCD; cooldown individual já consolidado como radial swipe sem argola.",
       "dependencies": [
         "UI-DESIGN-003"
       ],
@@ -613,7 +613,10 @@
         "Overlay individual progride em sentido horário com leitura numérica central",
         "Estados ready e cooldown continuam legíveis sobre ícones variados"
       ],
-      "evidence": [],
+      "evidence": [
+        "Product Owner definiu o cooldown individual como overlay cinza radial que revela o ícone em sentido horário, sem argola ou moldura adicional.",
+        "docs/product/HUD_COOLDOWNS.md registra o comportamento visual, a preferência pela primitiva nativa do cliente e o número central opcional e configurável."
+      ],
       "track": "ui"
     },
     {

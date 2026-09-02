@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:14:48.311Z
+Atualizado pelo board em: 2026-09-02T23:17:27.382Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,7 +18,7 @@ Próxima ação: Implementar schema, matriz neutra, planos SimC e fitness com gu
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-004 — Global Cooldown e cooldown individual | in_progress | Consolidar o cooldown individual como radial swipe sem argola e definir a direção visual da barra de GCD. |
+| ui | UI-DESIGN-004 — Global Cooldown e cooldown individual | in_progress | Product Owner definir direção de preenchimento, cor e texto da barra horizontal de GCD; cooldown individual já consolidado como radial swipe sem argola. |
 
 ## Progresso
 
@@ -178,5 +178,5 @@ Próxima ação: Implementar schema, matriz neutra, planos SimC e fitness com gu
 - Product Owner aprovou a janela combat-context-card-frame-v1.png e definiu hotkey, stacks e charges como camadas tipográficas sem badge ou glifo.
 - assets/ui/context/manifest.json registra o master aprovado, hash, modos compartilhados e safe areas de conteúdo dinâmico.
 - docs/product/HUD_CONTEXT_BADGES.md documenta posições padrão, controles configuráveis de fonte/âncora/offset e ausência explícita de backgrounds.
-- assets/ui/concepts/radial-ring-reference-v1.png preserva a argola aprovada apenas como referência para UI-DESIGN-004, sem associá-la a charges.
+- O Product Owner descartou a argola como representação de cooldown; UI-DESIGN-003 permanece restrita ao contexto e às camadas tipográficas.
 - npm test passou após a consolidação, incluindo board, Rotation Lab, Core, layout, lint e typecheck.

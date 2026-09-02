@@ -57,5 +57,3 @@ No card de contexto, texto e estados ficam sobre `combat-context-card-frame-v1.p
 ## Handoff
 
 O master, hash e safe areas normalizadas do contexto estão no manifest de [`assets/ui/context`](../../assets/ui/context/manifest.json). Defaults tipográficos e testes de legibilidade em escala pertencem a `UI-DESIGN-008`; os controles de usuário pertencem à trilha de configuração.
-
-A argola gerada durante a exploração foi aprovada como referência visual, mas retirada do contrato de charges. Ela está preservada em [`assets/ui/concepts/radial-ring-reference-v1.png`](../../assets/ui/concepts/radial-ring-reference-v1.png) para orientar `UI-DESIGN-004`, onde poderá informar o cooldown radial em sentido horário.
