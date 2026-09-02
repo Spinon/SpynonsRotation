@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T21:46:24.197Z
+Atualizado pelo board em: 2026-09-02T21:47:15.574Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,7 +18,7 @@ Próxima ação: Mapear APIs de specialização e talentos via Compat.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-002 — Arte final da ação atual e fila | in_progress | Produzir e validar as molduras reutilizáveis da ação atual e da fila sem incorporar ícones do WoW. |
+| ui | UI-DESIGN-002 — Arte final da ação atual e fila | in_progress | Product Owner revisar e aprovar ou solicitar ajustes nos candidatos v1 da ação atual e da fila. |
 
 ## Progresso
 

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate_review",
+  "iconSource": "wow_runtime",
+  "assets": {
+    "actionCurrentFrame": {
+      "file": "action-current-frame-v1.png",
+      "role": "frame_overlay",
+      "sourceWidth": 1610,
+      "sourceHeight": 977,
+      "layoutAspectRatio": 1.648925,
+      "baseState": "current",
+      "sha256": "A9726B8A97C14FAD439A058CF9F6E9091EFB98284F2C15D5860EC8DD486138B4"
+    },
+    "actionQueueFrame": {
+      "file": "action-queue-frame-v1.png",
+      "role": "frame_overlay",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "layoutAspectRatio": 1.0,
+      "baseState": "queued",
+      "instances": 3,
+      "sha256": "746AF852A9CBD3B58ED709481F8D36D47ADA42A190D97426BFDE99B409646CBB"
+    }
+  },
+  "separateLayers": [
+    "wowIcon",
+    "hotkey",
+    "stacksOrCharges",
+    "cooldown",
+    "gcd",
+    "glow",
+    "animation"
+  ],
+  "runtimeReady": false,
+  "runtimePreparationTask": "UI-DESIGN-008"
+}
