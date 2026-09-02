@@ -27,6 +27,20 @@ Esta trilha não pode:
 - simular integração real com `Recommendation`, APIs Blizzard ou Secret Values;
 - declarar validação no cliente Retail com base apenas em mockups.
 
+## Contrato de placeholders com delivery
+
+A ausência de arte final não bloqueia uma task técnica elegível na trilha `delivery`.
+
+Quando um componente ainda não possuir asset aprovado, o desenvolvimento principal deve:
+
+- usar um placeholder neutro, local e explicitamente identificado como temporário;
+- preservar dimensões, âncoras, camadas e caminho de substituição esperados para a arte final;
+- manter o placeholder desacoplado de classe e spec;
+- registrar onde o asset aprovado será conectado;
+- substituir o placeholder sem reescrever a lógica quando a entrega correspondente de `ui` ficar pronta.
+
+Placeholders não são aprovação visual, não podem reutilizar arte externa sem licença e não contam como evidência de conclusão de uma task de arte final.
+
 ## UI-DESIGN-001 — Layout do HUD principal
 
 Consolidar o mockup anotado, hierarquia, agrupamentos, proporções e vocabulário visual da tela operacional principal.

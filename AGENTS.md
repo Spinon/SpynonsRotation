@@ -27,6 +27,9 @@ Se a branch estiver divergente ou houver alterações inesperadas que conflitem 
 - No máximo uma task pode ficar `in_progress` por trilha.
 - A trilha paralela `ui` pode produzir direção visual, mockups, especificações e assets. Ela não autoriza implementar runtime ou contornar dependências da fila de entrega.
 - Alterações entre trilhas só podem se sobrepor quando a task e suas dependências autorizarem explicitamente o mesmo arquivo.
+- Se a trilha `delivery` precisar de um asset ainda não entregue por `ui`, use um placeholder neutro, local e claramente identificado em vez de bloquear a implementação.
+- O placeholder deve preservar dimensões, âncoras e contrato de substituição do componente final, sem copiar arte externa, simular aprovação visual ou introduzir dependência de classe/spec.
+- Registre o ponto de substituição no código ou manifesto do asset para que a arte aprovada possa entrar sem refatorar a lógica.
 
 ## Encerramento
 
