@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T20:49:58.888Z
+Atualizado pelo board em: 2026-09-02T20:53:16.484Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,9 +10,9 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **CORE-002 — Registry de classes/specs**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Projetar e implementar o registry genérico.
+Próxima ação: Implementar e testar registro, consultas e listagem determinística de SpecModule.
 
 ## Focos paralelos
 
@@ -22,8 +22,8 @@ Próxima ação: Projetar e implementar o registry genérico.
 
 ## Progresso
 
-- Planejadas: 50
-- Em andamento: 0
+- Planejadas: 49
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 3
 - Total: 53
@@ -35,7 +35,7 @@ Próxima ação: Projetar e implementar o registry genérico.
 | BOOT-001 | delivery | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
 | BOOT-002 | delivery | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
 | CORE-001 | delivery | CORE | Contratos genéricos | done | P0 | BOOT-002 |
-| CORE-002 | delivery | CORE | Registry de classes/specs | planned | P0 | CORE-001 |
+| CORE-002 | delivery | CORE | Registry de classes/specs | in_progress | P0 | CORE-001 |
 | CORE-003 | delivery | CORE | Detecção de spec e talentos | planned | P0 | CORE-002, CORE-004 |
 | CORE-004 | delivery | CORE | Compat layer WoW | planned | P0 | CORE-001 |
 | LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | planned | P0 | BOOT-002 |

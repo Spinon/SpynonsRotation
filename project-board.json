@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T20:49:58.888Z",
+  "updatedAt": "2026-09-02T20:53:16.484Z",
   "currentFocus": "CORE-002",
   "parallelFocus": {
     "ui": "UI-DESIGN-001"
@@ -104,12 +104,12 @@
       "title": "Registry de classes/specs",
       "lane": "CORE",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "tasks/CORE-002.md",
-      "updatedAt": "2026-09-02T20:43:39.372Z",
+      "updatedAt": "2026-09-02T20:53:16.484Z",
       "reviewBy": null,
-      "nextAction": "Projetar e implementar o registry genérico.",
+      "nextAction": "Implementar e testar registro, consultas e listagem determinística de SpecModule.",
       "dependencies": [
         "CORE-001"
       ],
