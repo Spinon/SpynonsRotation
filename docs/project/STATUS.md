@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T22:46:37.037Z
+Atualizado pelo board em: 2026-09-02T22:48:00.170Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,14 +18,14 @@ Próxima ação: Definir IR e pipeline de compilação.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-002 — Arte final da ação atual e fila | in_progress | Product Owner revisar e aprovar ou solicitar ajustes nos candidatos v4 com cores vívidas alinhadas à marca e hooks de glow documentados. |
+| ui | UI-DESIGN-003 — Contexto, hotkeys e stacks | planned | Produzir o módulo de contexto e os badges compactos. |
 
 ## Progresso
 
 - Planejadas: 43
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 9
+- Concluídas: 10
 - Total: 53
 
 ## Fila canônica
@@ -53,7 +53,7 @@ Próxima ação: Definir IR e pipeline de compilação.
 | RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
 | UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
-| UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | in_progress | P0 | UI-DESIGN-001 |
+| UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | done | P0 | UI-DESIGN-001 |
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | planned | P1 | UI-DESIGN-002 |
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | planned | P1 | UI-DESIGN-003 |
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | planned | P1 | UI-DESIGN-004 |
@@ -156,3 +156,10 @@ Próxima ação: Definir IR e pipeline de compilação.
 - tasks/UI-DESIGN.md registra que os ícones nativos do WoW não são assets autorais e que o hub mantém kind + gameId como fonte de verdade.
 - npm test passou: 41 testes de governança, 44 testes Lua, fronteiras/TOC, Luacheck e wowlua-ls sem falhas.
 - Commit 6b76890 registra planned -> in_progress e foi publicado em origin/main antes da consolidação.
+
+### UI-DESIGN-002
+
+- Product Owner aprovou explicitamente os candidatos v4 na conversa da task.
+- assets/ui/frames/manifest.json registra os masters action-current-frame-v4.png e action-queue-frame-v4.png, checksums, canais sólidos e hooks de animação.
+- Os dois PNGs preservam as proporções aprovadas, alpha real no exterior e na abertura central, sem ícone ou dependência de classe/spec.
+- npm test passou após a revisão v4, incluindo board, Rotation Lab, Core, layout, lint e typecheck.

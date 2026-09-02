@@ -6,10 +6,10 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T22:46:37.037Z",
+  "updatedAt": "2026-09-02T22:48:00.170Z",
   "currentFocus": "LAB-003",
   "parallelFocus": {
-    "ui": "UI-DESIGN-002"
+    "ui": "UI-DESIGN-003"
   },
   "release": {
     "version": "0.0.0",
@@ -537,12 +537,12 @@
       "title": "Arte final da ação atual e fila",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/UI-DESIGN.md#ui-design-002--ação-atual-e-fila",
-      "updatedAt": "2026-09-02T22:44:41.209Z",
+      "updatedAt": "2026-09-02T22:48:00.170Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Product Owner revisar e aprovar ou solicitar ajustes nos candidatos v4 com cores vívidas alinhadas à marca e hooks de glow documentados.",
+      "nextAction": null,
       "dependencies": [
         "UI-DESIGN-001"
       ],
@@ -551,7 +551,12 @@
         "Proporções preservam a hierarquia aprovada no mockup",
         "Assets não contêm dependência visual de uma spec específica"
       ],
-      "evidence": [],
+      "evidence": [
+        "Product Owner aprovou explicitamente os candidatos v4 na conversa da task.",
+        "assets/ui/frames/manifest.json registra os masters action-current-frame-v4.png e action-queue-frame-v4.png, checksums, canais sólidos e hooks de animação.",
+        "Os dois PNGs preservam as proporções aprovadas, alpha real no exterior e na abertura central, sem ícone ou dependência de classe/spec.",
+        "npm test passou após a revisão v4, incluindo board, Rotation Lab, Core, layout, lint e typecheck."
+      ],
       "track": "ui"
     },
     {
