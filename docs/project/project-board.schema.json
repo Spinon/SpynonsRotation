@@ -48,6 +48,15 @@
     "currentFocus": {
       "$ref": "#/$defs/taskId"
     },
+    "parallelFocus": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/parallelTrackId"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/taskId"
+      }
+    },
     "release": {
       "type": "object",
       "additionalProperties": false,
@@ -113,6 +122,22 @@
     "taskId": {
       "type": "string",
       "pattern": "^[A-Z]+(?:-[A-Z]+)*-[0-9]{3}$"
+    },
+    "trackId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "parallelTrackId": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/trackId"
+        },
+        {
+          "not": {
+            "const": "delivery"
+          }
+        }
+      ]
     },
     "stringList": {
       "type": "array",
@@ -201,6 +226,9 @@
         },
         "evidence": {
           "$ref": "#/$defs/stringList"
+        },
+        "track": {
+          "$ref": "#/$defs/trackId"
         }
       },
       "allOf": [

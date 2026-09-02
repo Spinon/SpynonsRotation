@@ -6,8 +6,11 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T20:43:39.372Z",
+  "updatedAt": "2026-09-02T20:49:58.888Z",
   "currentFocus": "CORE-002",
+  "parallelFocus": {
+    "ui": "UI-DESIGN-001"
+  },
   "release": {
     "version": "0.0.0",
     "channel": "bootstrap",
@@ -470,6 +473,186 @@
         "Ausência de capacidade degrada com segurança"
       ],
       "evidence": []
+    },
+    {
+      "id": "UI-DESIGN-001",
+      "title": "Consolidar layout do HUD principal",
+      "lane": "UI DESIGN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "tasks/UI-DESIGN.md#ui-design-001--layout-do-hud-principal",
+      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Aprovar o mockup anotado e registrar as decisões de layout.",
+      "dependencies": [
+        "BOOT-002"
+      ],
+      "acceptanceCriteria": [
+        "Mockup anotado cobre todos os componentes da tela operacional principal",
+        "Hierarquia, agrupamentos e proporções recebem aprovação visual",
+        "Documento distingue explicitamente conceito de arte final e runtime"
+      ],
+      "evidence": [],
+      "track": "ui"
+    },
+    {
+      "id": "UI-DESIGN-002",
+      "title": "Arte final da ação atual e fila",
+      "lane": "UI DESIGN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "tasks/UI-DESIGN.md#ui-design-002--ação-atual-e-fila",
+      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Produzir molduras e estados base da ação atual e da fila.",
+      "dependencies": [
+        "UI-DESIGN-001"
+      ],
+      "acceptanceCriteria": [
+        "Ação atual e fila possuem arte final separada e reutilizável",
+        "Proporções preservam a hierarquia aprovada no mockup",
+        "Assets não contêm dependência visual de uma spec específica"
+      ],
+      "evidence": [],
+      "track": "ui"
+    },
+    {
+      "id": "UI-DESIGN-003",
+      "title": "Contexto, hotkeys e stacks",
+      "lane": "UI DESIGN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "tasks/UI-DESIGN.md#ui-design-003--contexto-hotkeys-e-stacks",
+      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Produzir o módulo de contexto e os badges compactos.",
+      "dependencies": [
+        "UI-DESIGN-002"
+      ],
+      "acceptanceCriteria": [
+        "Contexto AUTO, ST, CLEAVE e AOE compartilha um vocabulário visual",
+        "Hotkeys permanecem legíveis no canto superior direito",
+        "Charges e stacks permanecem claros no canto inferior direito"
+      ],
+      "evidence": [],
+      "track": "ui"
+    },
+    {
+      "id": "UI-DESIGN-004",
+      "title": "Global Cooldown e cooldown individual",
+      "lane": "UI DESIGN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "tasks/UI-DESIGN.md#ui-design-004--gcd-e-cooldown-individual",
+      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Definir a barra de GCD e o overlay radial de cooldown.",
+      "dependencies": [
+        "UI-DESIGN-003"
+      ],
+      "acceptanceCriteria": [
+        "GCD e cooldown individual são visualmente distintos",
+        "Overlay individual progride em sentido horário com leitura numérica central",
+        "Estados ready e cooldown continuam legíveis sobre ícones variados"
+      ],
+      "evidence": [],
+      "track": "ui"
+    },
+    {
+      "id": "UI-DESIGN-005",
+      "title": "Barra de cast e indicadores decisivos",
+      "lane": "UI DESIGN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "tasks/UI-DESIGN.md#ui-design-005--barra-de-cast-e-indicadores",
+      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Produzir a barra combinada com conteúdo contextual.",
+      "dependencies": [
+        "UI-DESIGN-004"
+      ],
+      "acceptanceCriteria": [
+        "Progresso de cast continua claro com indicadores no centro",
+        "Emblema e nome da habilidade ocupam a área direita",
+        "Componente degrada com elegância quando não há cast ou indicadores"
+      ],
+      "evidence": [],
+      "track": "ui"
+    },
+    {
+      "id": "UI-DESIGN-006",
+      "title": "Juggle de buffs e debuffs",
+      "lane": "UI DESIGN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "tasks/UI-DESIGN.md#ui-design-006--juggle-de-buffsdebuffs",
+      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Definir cards, urgência e estados de refresh do trilho de auras.",
+      "dependencies": [
+        "UI-DESIGN-005"
+      ],
+      "acceptanceCriteria": [
+        "Múltiplos buffs e debuffs permanecem comparáveis em um trilho compacto",
+        "Duração, ausência e janela de refresh possuem estados distintos",
+        "Somente auras que alteram a decisão recebem destaque"
+      ],
+      "evidence": [],
+      "track": "ui"
+    },
+    {
+      "id": "UI-DESIGN-007",
+      "title": "Movimento e estados visuais",
+      "lane": "UI DESIGN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "tasks/UI-DESIGN.md#ui-design-007--movimento-e-estados-visuais",
+      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Prototipar o vocabulário de movimento e os estados críticos.",
+      "dependencies": [
+        "UI-DESIGN-002",
+        "UI-DESIGN-003",
+        "UI-DESIGN-004",
+        "UI-DESIGN-005",
+        "UI-DESIGN-006"
+      ],
+      "acceptanceCriteria": [
+        "MOVE, ENTER, EXIT, PROMOTE e CONSUME são visualmente distintos",
+        "Ready, cooldown, proc, refresh e indisponível possuem tratamento coerente",
+        "Animações propostas são discretas e preservam leitura periférica"
+      ],
+      "evidence": [],
+      "track": "ui"
+    },
+    {
+      "id": "UI-DESIGN-008",
+      "title": "Kit técnico de assets e handoff",
+      "lane": "UI DESIGN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "tasks/UI-DESIGN.md#ui-design-008--kit-técnico-e-handoff",
+      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Preparar formatos, dimensões, transparências e documentação de integração.",
+      "dependencies": [
+        "UI-DESIGN-007"
+      ],
+      "acceptanceCriteria": [
+        "Assets aprovados possuem formatos e dimensões adequados ao cliente",
+        "Arquivos fonte e derivados técnicos permanecem rastreáveis",
+        "Handoff documenta estados e consumo futuro pela UI sem implementar runtime"
+      ],
+      "evidence": [],
+      "track": "ui"
     },
     {
       "id": "UI-001",

@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T20:43:39.372Z
+Atualizado pelo board em: 2026-09-02T20:49:58.888Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -14,63 +14,77 @@ Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
 Próxima ação: Projetar e implementar o registry genérico.
 
+## Focos paralelos
+
+| Trilha | Task | Status | Próxima ação |
+| --- | --- | --- | --- |
+| ui | UI-DESIGN-001 — Consolidar layout do HUD principal | planned | Aprovar o mockup anotado e registrar as decisões de layout. |
+
 ## Progresso
 
-- Planejadas: 42
+- Planejadas: 50
 - Em andamento: 0
 - Bloqueadas: 0
 - Concluídas: 3
-- Total: 45
+- Total: 53
 
 ## Fila canônica
 
-| ID | Lane | Título | Status | Prioridade | Dependências |
-| --- | --- | --- | --- | --- | --- |
-| BOOT-001 | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
-| BOOT-002 | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
-| CORE-001 | CORE | Contratos genéricos | done | P0 | BOOT-002 |
-| CORE-002 | CORE | Registry de classes/specs | planned | P0 | CORE-001 |
-| CORE-003 | CORE | Detecção de spec e talentos | planned | P0 | CORE-002, CORE-004 |
-| CORE-004 | CORE | Compat layer WoW | planned | P0 | CORE-001 |
-| LAB-001 | ROTATION LAB | Integração SimC CLI | planned | P0 | BOOT-002 |
-| LAB-002 | ROTATION LAB | DSL de rotação | planned | P0 | CORE-001 |
-| LAB-003 | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | planned | P0 | LAB-001, LAB-002, CORE-001 |
-| LAB-004 | ROTATION LAB | Matriz de cenários | planned | P1 | LAB-001, LAB-002 |
-| LAB-005 | ROTATION LAB | Optimizer | planned | P2 | LAB-004, LAB-003 |
-| LAB-006 | ROTATION LAB | Regression suite | planned | P1 | LAB-003, LAB-004 |
-| ENH-001 | SHAMAN | Catálogo Enhancement | planned | P0 | CORE-002, CORE-003, CORE-004 |
-| ENH-002 | SHAMAN | Baseline APL | planned | P0 | ENH-001, LAB-002, LAB-003 |
-| ENH-003 | SHAMAN | Curadoria ST | planned | P1 | ENH-002, LAB-004 |
-| ENH-004 | SHAMAN | Curadoria Cleave/AoE | planned | P1 | ENH-002, LAB-004 |
-| ENH-005 | SHAMAN | Talent-aware rotation | planned | P1 | ENH-003, ENH-004, CORE-003 |
-| RUN-001 | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
-| RUN-002 | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
-| RUN-003 | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
-| UI-001 | UI | Queue estática | planned | P0 | RUN-002 |
-| UI-002 | UI | Animator | planned | P1 | UI-001 |
-| UI-003 | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |
-| UI-004 | UI | Cooldowns/charges/stacks | planned | P1 | UI-001, CORE-004 |
-| UI-005 | UI | Buff/debuff indicators | planned | P2 | UI-004, RUN-002 |
-| UI-006 | UI | Demo Mode | planned | P1 | UI-002, UI-004, RUN-003 |
-| UX-001 | CONFIG / UX | Config básico contextual | planned | P1 | UI-001 |
-| UX-002 | CONFIG / UX | Edit HUD | planned | P1 | UX-001, UI-002 |
-| UX-003 | CONFIG / UX | Advanced panels | planned | P2 | UX-001 |
-| UX-004 | CONFIG / UX | Undo/Redo | planned | P1 | UX-002 |
-| UX-005 | CONFIG / UX | Preview + reset granular | planned | P2 | UX-004 |
-| UX-006 | CONFIG / UX | Typography | planned | P2 | UX-001 |
-| PROFILE-001 | PROFILES / SKINS | Persistência e perfis | planned | P1 | CORE-001, UX-001 |
-| SKIN-001 | PROFILES / SKINS | Skin API | planned | P1 | UI-001 |
-| SKIN-002 | PROFILES / SKINS | External reskin contract | planned | P2 | SKIN-001 |
-| BRAND-001 | BRAND | Integrar logotipo Spynon aprovado | planned | P1 | BOOT-001 |
-| BRAND-002 | BRAND | Criar master técnico e variantes | planned | P2 | BRAND-001 |
-| BRAND-003 | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
-| PATCH-001 | PATCH / QUALITY | API diff pipeline | planned | P1 | CORE-004 |
-| PATCH-002 | PATCH / QUALITY | Secret Values audit | planned | P1 | PATCH-001, RUN-001 |
-| TEST-001 | PATCH / QUALITY | Wowless integration | planned | P1 | BOOT-001 |
-| TEST-002 | PATCH / QUALITY | In-game harness | planned | P0 | RUN-002, UI-001, CORE-004 |
-| RELEASE-001 | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
-| RELEASE-002 | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
-| ARCH-001 | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
+| ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
+| --- | --- | --- | --- | --- | --- | --- |
+| BOOT-001 | delivery | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
+| BOOT-002 | delivery | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
+| CORE-001 | delivery | CORE | Contratos genéricos | done | P0 | BOOT-002 |
+| CORE-002 | delivery | CORE | Registry de classes/specs | planned | P0 | CORE-001 |
+| CORE-003 | delivery | CORE | Detecção de spec e talentos | planned | P0 | CORE-002, CORE-004 |
+| CORE-004 | delivery | CORE | Compat layer WoW | planned | P0 | CORE-001 |
+| LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | planned | P0 | BOOT-002 |
+| LAB-002 | delivery | ROTATION LAB | DSL de rotação | planned | P0 | CORE-001 |
+| LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | planned | P0 | LAB-001, LAB-002, CORE-001 |
+| LAB-004 | delivery | ROTATION LAB | Matriz de cenários | planned | P1 | LAB-001, LAB-002 |
+| LAB-005 | delivery | ROTATION LAB | Optimizer | planned | P2 | LAB-004, LAB-003 |
+| LAB-006 | delivery | ROTATION LAB | Regression suite | planned | P1 | LAB-003, LAB-004 |
+| ENH-001 | delivery | SHAMAN | Catálogo Enhancement | planned | P0 | CORE-002, CORE-003, CORE-004 |
+| ENH-002 | delivery | SHAMAN | Baseline APL | planned | P0 | ENH-001, LAB-002, LAB-003 |
+| ENH-003 | delivery | SHAMAN | Curadoria ST | planned | P1 | ENH-002, LAB-004 |
+| ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | planned | P1 | ENH-002, LAB-004 |
+| ENH-005 | delivery | SHAMAN | Talent-aware rotation | planned | P1 | ENH-003, ENH-004, CORE-003 |
+| RUN-001 | delivery | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
+| RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
+| RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
+| UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | planned | P0 | BOOT-002 |
+| UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | planned | P0 | UI-DESIGN-001 |
+| UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | planned | P1 | UI-DESIGN-002 |
+| UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | planned | P1 | UI-DESIGN-003 |
+| UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | planned | P1 | UI-DESIGN-004 |
+| UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | planned | P0 | UI-DESIGN-005 |
+| UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006 |
+| UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
+| UI-001 | delivery | UI | Queue estática | planned | P0 | RUN-002 |
+| UI-002 | delivery | UI | Animator | planned | P1 | UI-001 |
+| UI-003 | delivery | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |
+| UI-004 | delivery | UI | Cooldowns/charges/stacks | planned | P1 | UI-001, CORE-004 |
+| UI-005 | delivery | UI | Buff/debuff indicators | planned | P2 | UI-004, RUN-002 |
+| UI-006 | delivery | UI | Demo Mode | planned | P1 | UI-002, UI-004, RUN-003 |
+| UX-001 | delivery | CONFIG / UX | Config básico contextual | planned | P1 | UI-001 |
+| UX-002 | delivery | CONFIG / UX | Edit HUD | planned | P1 | UX-001, UI-002 |
+| UX-003 | delivery | CONFIG / UX | Advanced panels | planned | P2 | UX-001 |
+| UX-004 | delivery | CONFIG / UX | Undo/Redo | planned | P1 | UX-002 |
+| UX-005 | delivery | CONFIG / UX | Preview + reset granular | planned | P2 | UX-004 |
+| UX-006 | delivery | CONFIG / UX | Typography | planned | P2 | UX-001 |
+| PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | planned | P1 | CORE-001, UX-001 |
+| SKIN-001 | delivery | PROFILES / SKINS | Skin API | planned | P1 | UI-001 |
+| SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | planned | P2 | SKIN-001 |
+| BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | planned | P1 | BOOT-001 |
+| BRAND-002 | delivery | BRAND | Criar master técnico e variantes | planned | P2 | BRAND-001 |
+| BRAND-003 | delivery | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
+| PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | planned | P1 | CORE-004 |
+| PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | planned | P1 | PATCH-001, RUN-001 |
+| TEST-001 | delivery | PATCH / QUALITY | Wowless integration | planned | P1 | BOOT-001 |
+| TEST-002 | delivery | PATCH / QUALITY | In-game harness | planned | P0 | RUN-002, UI-001, CORE-004 |
+| RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
+| RELEASE-002 | delivery | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
+| ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
 

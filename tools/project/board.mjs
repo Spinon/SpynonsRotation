@@ -18,6 +18,8 @@ export const ALLOWED_STATUS_TRANSITIONS = Object.freeze({
 const STATUS_SET = new Set(VALID_STATUSES);
 const PRIORITY_SET = new Set(VALID_PRIORITIES);
 const TASK_ID_PATTERN = /^[A-Z]+(?:-[A-Z]+)*-\d{3}$/u;
+const TRACK_ID_PATTERN = /^[a-z][a-z0-9-]*$/u;
+const DEFAULT_TRACK = "delivery";
 
 export function readBoard(boardPath = BOARD_PATH) {
   if (!fs.existsSync(boardPath)) {
@@ -37,6 +39,21 @@ function dateIsAfter(nextValue, previousValue) {
 
 function isNonEmptyString(value) {
   return typeof value === "string" && value.trim() !== "";
+}
+
+function taskTrack(item) {
+  return item?.track ?? DEFAULT_TRACK;
+}
+
+function focusEntries(board) {
+  return [
+    [DEFAULT_TRACK, board.currentFocus],
+    ...Object.entries(board.parallelFocus ?? {}),
+  ];
+}
+
+function focusLabel(track) {
+  return track === DEFAULT_TRACK ? "currentFocus" : `parallelFocus.${track}`;
 }
 
 function validateKnownFields(value, allowedFields, prefix, errors) {
@@ -90,7 +107,7 @@ export function validateBoard(board, { root = ROOT } = {}) {
     return ["board deve ser um objeto JSON"];
   }
 
-  validateKnownFields(board, ["schemaVersion", "project", "updatedAt", "currentFocus", "release", "items"], "board", errors);
+  validateKnownFields(board, ["schemaVersion", "project", "updatedAt", "currentFocus", "parallelFocus", "release", "items"], "board", errors);
 
   if (board.schemaVersion !== 1) {
     errors.push("schemaVersion deve ser 1");
@@ -113,6 +130,21 @@ export function validateBoard(board, { root = ROOT } = {}) {
 
   if (!isIsoDate(board.updatedAt)) {
     errors.push("updatedAt deve ser uma data ISO válida");
+  }
+
+  if (board.parallelFocus !== undefined) {
+    if (!board.parallelFocus || typeof board.parallelFocus !== "object" || Array.isArray(board.parallelFocus)) {
+      errors.push("parallelFocus deve ser um objeto");
+    } else {
+      for (const [track, focusId] of Object.entries(board.parallelFocus)) {
+        if (!TRACK_ID_PATTERN.test(track) || track === DEFAULT_TRACK) {
+          errors.push(`parallelFocus possui trilha inválida: ${track}`);
+        }
+        if (!isNonEmptyString(focusId) || !TASK_ID_PATTERN.test(focusId)) {
+          errors.push(`parallelFocus.${track} deve apontar para um ID de task válido`);
+        }
+      }
+    }
   }
 
   validateKnownFields(board.release, ["version", "channel", "status", "wowBuild", "interface", "simc", "rotationRevision", "validatedAt"], "release", errors);
@@ -162,6 +194,7 @@ export function validateBoard(board, { root = ROOT } = {}) {
       "dependencies",
       "acceptanceCriteria",
       "evidence",
+      "track",
     ], prefix, errors);
 
     if (!TASK_ID_PATTERN.test(item.id)) {
@@ -186,6 +219,10 @@ export function validateBoard(board, { root = ROOT } = {}) {
 
     if (!PRIORITY_SET.has(item.priority)) {
       errors.push(`${prefix}.priority inválida: ${String(item.priority)}`);
+    }
+
+    if (item.track !== undefined && (!isNonEmptyString(item.track) || !TRACK_ID_PATTERN.test(item.track))) {
+      errors.push(`${prefix}.track deve seguir o formato lower-kebab-case`);
     }
 
     if (!isIsoDate(item.updatedAt)) {
@@ -216,19 +253,42 @@ export function validateBoard(board, { root = ROOT } = {}) {
     }
   }
 
-  const focus = itemsById.get(board.currentFocus);
-  if (!focus) {
-    errors.push(`currentFocus inexistente: ${String(board.currentFocus)}`);
-  } else if (focus.status === "done") {
-    errors.push(`currentFocus aponta para task concluída: ${focus.id}`);
+  const focusByTrack = new Map(focusEntries(board));
+  for (const [track, focusId] of focusByTrack) {
+    const label = focusLabel(track);
+    const focus = itemsById.get(focusId);
+    if (!focus) {
+      errors.push(`${label} inexistente: ${String(focusId)}`);
+      continue;
+    }
+    if (focus.status === "done") {
+      errors.push(`${label} aponta para task concluída: ${focus.id}`);
+    }
+    if (taskTrack(focus) !== track) {
+      errors.push(`${label} aponta para ${focus.id}, que pertence à trilha ${taskTrack(focus)}`);
+    }
   }
 
-  const inProgress = board.items.filter((item) => item.status === "in_progress");
-  if (inProgress.length > 1) {
-    errors.push(`fila incoerente: ${inProgress.length} tasks estão in_progress`);
+  const inProgressByTrack = new Map();
+  for (const item of board.items.filter((candidate) => candidate.status === "in_progress")) {
+    const track = taskTrack(item);
+    const active = inProgressByTrack.get(track) ?? [];
+    active.push(item);
+    inProgressByTrack.set(track, active);
   }
-  if (inProgress.length === 1 && inProgress[0].id !== board.currentFocus) {
-    errors.push(`fila incoerente: ${inProgress[0].id} está in_progress, mas currentFocus é ${board.currentFocus}`);
+
+  for (const [track, inProgress] of inProgressByTrack) {
+    if (inProgress.length > 1) {
+      errors.push(`fila ${track} incoerente: ${inProgress.length} tasks estão in_progress`);
+      continue;
+    }
+
+    const focusId = focusByTrack.get(track);
+    if (!focusId) {
+      errors.push(`fila ${track} incoerente: ${inProgress[0].id} está in_progress, mas a trilha não possui foco`);
+    } else if (inProgress[0].id !== focusId) {
+      errors.push(`fila ${track} incoerente: ${inProgress[0].id} está in_progress, mas o foco é ${focusId}`);
+    }
   }
 
   for (const item of board.items) {
@@ -256,7 +316,7 @@ export function validateBoard(board, { root = ROOT } = {}) {
 
       const dependencyMustBeDone = item.status === "in_progress"
         || item.status === "done"
-        || item.id === board.currentFocus;
+        || focusByTrack.get(taskTrack(item)) === item.id;
       if (dependencyMustBeDone && dependency.status !== "done") {
         errors.push(`${item.id} depende de task não concluída: ${dependencyId}`);
       }
@@ -271,6 +331,7 @@ export function validateBoardTransition(previousBoard, nextBoard) {
   const previousItems = new Map(previousBoard.items.map((item) => [item.id, item]));
   const nextItems = new Map(nextBoard.items.map((item) => [item.id, item]));
   let changed = previousBoard.currentFocus !== nextBoard.currentFocus
+    || JSON.stringify(previousBoard.parallelFocus ?? {}) !== JSON.stringify(nextBoard.parallelFocus ?? {})
     || JSON.stringify(previousBoard.project) !== JSON.stringify(nextBoard.project)
     || JSON.stringify(previousBoard.release) !== JSON.stringify(nextBoard.release)
     || previousBoard.items.length !== nextBoard.items.length;
@@ -307,11 +368,15 @@ export function validateBoardTransition(previousBoard, nextBoard) {
     }
   }
 
-  const previousActive = previousBoard.items.find((item) => item.status === "in_progress");
-  if (previousActive && nextBoard.currentFocus !== previousBoard.currentFocus) {
-    const transitioned = nextItems.get(previousActive.id);
-    if (!transitioned || !["done", "blocked"].includes(transitioned.status)) {
-      errors.push(`currentFocus só pode sair de ${previousActive.id} após done ou blocked`);
+  const previousFocusByTrack = new Map(focusEntries(previousBoard));
+  const nextFocusByTrack = new Map(focusEntries(nextBoard));
+  for (const previousActive of previousBoard.items.filter((item) => item.status === "in_progress")) {
+    const track = taskTrack(previousActive);
+    if (nextFocusByTrack.get(track) !== previousFocusByTrack.get(track)) {
+      const transitioned = nextItems.get(previousActive.id);
+      if (!transitioned || !["done", "blocked"].includes(transitioned.status)) {
+        errors.push(`${focusLabel(track)} só pode sair de ${previousActive.id} após done ou blocked`);
+      }
     }
   }
 
@@ -333,6 +398,8 @@ export function renderStatus(board) {
   }
 
   const focus = board.items.find((item) => item.id === board.currentFocus);
+  const parallel = Object.entries(board.parallelFocus ?? {})
+    .map(([track, focusId]) => [track, board.items.find((item) => item.id === focusId)]);
   const lines = [
     "<!-- GENERATED BY npm run project:status. DO NOT EDIT MANUALLY. -->",
     "",
@@ -350,6 +417,24 @@ export function renderStatus(board) {
     "",
     focus ? `Próxima ação: ${focus.nextAction}` : "",
     "",
+  ];
+
+  if (parallel.length > 0) {
+    lines.push(
+      "## Focos paralelos",
+      "",
+      "| Trilha | Task | Status | Próxima ação |",
+      "| --- | --- | --- | --- |",
+    );
+    for (const [track, parallelFocus] of parallel) {
+      lines.push(parallelFocus
+        ? `| ${escapeCell(track)} | ${escapeCell(`${parallelFocus.id} — ${parallelFocus.title}`)} | ${escapeCell(parallelFocus.status)} | ${escapeCell(parallelFocus.nextAction)} |`
+        : `| ${escapeCell(track)} | Foco inválido | — | — |`);
+    }
+    lines.push("");
+  }
+
+  lines.push(
     "## Progresso",
     "",
     `- Planejadas: ${counts.planned}`,
@@ -360,12 +445,12 @@ export function renderStatus(board) {
     "",
     "## Fila canônica",
     "",
-    "| ID | Lane | Título | Status | Prioridade | Dependências |",
-    "| --- | --- | --- | --- | --- | --- |",
-  ];
+    "| ID | Trilha | Lane | Título | Status | Prioridade | Dependências |",
+    "| --- | --- | --- | --- | --- | --- | --- |",
+  );
 
   for (const item of board.items) {
-    lines.push(`| ${escapeCell(item.id)} | ${escapeCell(item.lane)} | ${escapeCell(item.title)} | ${escapeCell(item.status)} | ${escapeCell(item.priority)} | ${escapeCell(item.dependencies.length ? item.dependencies.join(", ") : "—")} |`);
+    lines.push(`| ${escapeCell(item.id)} | ${escapeCell(taskTrack(item))} | ${escapeCell(item.lane)} | ${escapeCell(item.title)} | ${escapeCell(item.status)} | ${escapeCell(item.priority)} | ${escapeCell(item.dependencies.length ? item.dependencies.join(", ") : "—")} |`);
   }
 
   const completed = board.items.filter((item) => item.status === "done");

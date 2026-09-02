@@ -1,14 +1,14 @@
 # Protocolo de trabalho — Spynon's Rotation
 
-Este repositório usa uma fila canônica. Todo agente deve respeitar este protocolo antes de editar código.
+Este repositório usa um board canônico com trilhas de trabalho controladas. Todo agente deve respeitar este protocolo antes de editar código ou assets do projeto.
 
 ## Antes do trabalho
 
 1. Execute `npm run project:sync` para buscar o remote, rejeitar divergências e validar o estado derivado.
 2. Confirme que a branch esperada está ativa e que não há alterações de terceiros sobrepostas ao escopo.
-3. Leia `project-board.json` e localize `currentFocus`.
+3. Leia `project-board.json` e localize o foco da trilha aplicável: `currentFocus` para entrega técnica ou `parallelFocus.<trilha>` para trabalho paralelo autorizado.
 4. Leia integralmente a fonte indicada no campo `source` da task.
-5. Verifique o que já existe e trabalhe somente na task atual.
+5. Verifique o que já existe e trabalhe somente na task focal da trilha selecionada.
 6. Se a task estiver `planned`, mude-a para `in_progress`, atualize os timestamps, gere o STATUS e faça commit/push desse início antes da implementação.
 
 Se a branch estiver divergente ou houver alterações inesperadas que conflitem com a task, interrompa a edição e reporte a evidência. Nunca use force push.
@@ -24,12 +24,15 @@ Se a branch estiver divergente ou houver alterações inesperadas que conflitem 
 - Nunca declare validação em jogo se apenas testes offline/headless foram executados.
 - Nunca edite `docs/project/STATUS.md` manualmente; use `npm run project:status`.
 - Respeite o lifecycle e as evidências definidos em [`docs/project/BOARD_GOVERNANCE.md`](docs/project/BOARD_GOVERNANCE.md).
+- No máximo uma task pode ficar `in_progress` por trilha.
+- A trilha paralela `ui` pode produzir direção visual, mockups, especificações e assets. Ela não autoriza implementar runtime ou contornar dependências da fila de entrega.
+- Alterações entre trilhas só podem se sobrepor quando a task e suas dependências autorizarem explicitamente o mesmo arquivo.
 
 ## Encerramento
 
 1. Execute testes proporcionais e `npm test` quando aplicável.
 2. Na task concluída, registre evidência verificável, defina `nextAction: null`, avance `updatedAt` e mude o status para `done`.
-3. Aponte `currentFocus` para a próxima task elegível e atualize `board.updatedAt`.
+3. Aponte o foco da trilha concluída (`currentFocus` ou `parallelFocus.<trilha>`) para a próxima task elegível e atualize `board.updatedAt`.
 4. Execute `npm run project:status` e depois `npm run project:check`; o check valida a transição contra o board em `HEAD`.
 5. Faça commit descritivo e push da branch.
 6. Não faça merge nem publique release sem autorização explícita do Product Owner.
