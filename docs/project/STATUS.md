@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:10:20.849Z
+Atualizado pelo board em: 2026-09-02T23:13:44.531Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,9 +10,9 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **LAB-004 — Matriz de cenários**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Modelar cenários e pesos iniciais.
+Próxima ação: Implementar schema, matriz neutra, planos SimC e fitness com guardrails.
 
 ## Focos paralelos
 
@@ -22,8 +22,8 @@ Próxima ação: Modelar cenários e pesos iniciais.
 
 ## Progresso
 
-- Planejadas: 41
-- Em andamento: 0
+- Planejadas: 40
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 12
 - Total: 53
@@ -41,7 +41,7 @@ Próxima ação: Modelar cenários e pesos iniciais.
 | LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | done | P0 | BOOT-002 |
 | LAB-002 | delivery | ROTATION LAB | DSL de rotação | done | P0 | CORE-001 |
 | LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | done | P0 | LAB-001, LAB-002, CORE-001 |
-| LAB-004 | delivery | ROTATION LAB | Matriz de cenários | planned | P1 | LAB-001, LAB-002 |
+| LAB-004 | delivery | ROTATION LAB | Matriz de cenários | in_progress | P1 | LAB-001, LAB-002 |
 | LAB-005 | delivery | ROTATION LAB | Optimizer | planned | P2 | LAB-004, LAB-003 |
 | LAB-006 | delivery | ROTATION LAB | Regression suite | planned | P1 | LAB-003, LAB-004 |
 | ENH-001 | delivery | SHAMAN | Catálogo Enhancement | planned | P0 | CORE-002, CORE-003, CORE-004 |

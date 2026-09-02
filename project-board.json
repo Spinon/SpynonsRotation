@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:10:20.849Z",
+  "updatedAt": "2026-09-02T23:13:44.531Z",
   "currentFocus": "LAB-004",
   "parallelFocus": {
     "ui": "UI-DESIGN-004"
@@ -270,12 +270,12 @@
       "title": "Matriz de cenários",
       "lane": "ROTATION LAB",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
-      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "source": "tasks/LAB-004.md",
+      "updatedAt": "2026-09-02T23:13:44.531Z",
       "reviewBy": null,
-      "nextAction": "Modelar cenários e pesos iniciais.",
+      "nextAction": "Implementar schema, matriz neutra, planos SimC e fitness com guardrails.",
       "dependencies": [
         "LAB-001",
         "LAB-002"
