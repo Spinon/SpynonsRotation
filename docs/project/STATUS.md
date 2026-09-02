@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T21:47:15.574Z
+Atualizado pelo board em: 2026-09-02T21:49:49.031Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,9 +10,9 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **CORE-003 — Detecção de spec e talentos**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Mapear APIs de specialização e talentos via Compat.
+Próxima ação: Implementar snapshot genérico de spec e talentos sobre Compat e SpecRegistry.
 
 ## Focos paralelos
 
@@ -22,8 +22,8 @@ Próxima ação: Mapear APIs de specialização e talentos via Compat.
 
 ## Progresso
 
-- Planejadas: 46
-- Em andamento: 1
+- Planejadas: 45
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 6
 - Total: 53
@@ -36,7 +36,7 @@ Próxima ação: Mapear APIs de specialização e talentos via Compat.
 | BOOT-002 | delivery | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
 | CORE-001 | delivery | CORE | Contratos genéricos | done | P0 | BOOT-002 |
 | CORE-002 | delivery | CORE | Registry de classes/specs | done | P0 | CORE-001 |
-| CORE-003 | delivery | CORE | Detecção de spec e talentos | planned | P0 | CORE-002, CORE-004 |
+| CORE-003 | delivery | CORE | Detecção de spec e talentos | in_progress | P0 | CORE-002, CORE-004 |
 | CORE-004 | delivery | CORE | Compat layer WoW | done | P0 | CORE-001 |
 | LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | planned | P0 | BOOT-002 |
 | LAB-002 | delivery | ROTATION LAB | DSL de rotação | planned | P0 | CORE-001 |
