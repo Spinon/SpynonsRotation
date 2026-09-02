@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T22:03:52.076Z
+Atualizado pelo board em: 2026-09-02T22:12:39.112Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,9 +10,9 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **LAB-001 — Integração SimC CLI**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Criar runner headless para o SimC pinado.
+Próxima ação: Implementar runner, relatórios estruturados, diagnósticos e smoke real do SimC pinado.
 
 ## Focos paralelos
 
@@ -22,8 +22,8 @@ Próxima ação: Criar runner headless para o SimC pinado.
 
 ## Progresso
 
-- Planejadas: 45
-- Em andamento: 1
+- Planejadas: 44
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 7
 - Total: 53
@@ -38,7 +38,7 @@ Próxima ação: Criar runner headless para o SimC pinado.
 | CORE-002 | delivery | CORE | Registry de classes/specs | done | P0 | CORE-001 |
 | CORE-003 | delivery | CORE | Detecção de spec e talentos | done | P0 | CORE-002, CORE-004 |
 | CORE-004 | delivery | CORE | Compat layer WoW | done | P0 | CORE-001 |
-| LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | planned | P0 | BOOT-002 |
+| LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | in_progress | P0 | BOOT-002 |
 | LAB-002 | delivery | ROTATION LAB | DSL de rotação | planned | P0 | CORE-001 |
 | LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | planned | P0 | LAB-001, LAB-002, CORE-001 |
 | LAB-004 | delivery | ROTATION LAB | Matriz de cenários | planned | P1 | LAB-001, LAB-002 |
