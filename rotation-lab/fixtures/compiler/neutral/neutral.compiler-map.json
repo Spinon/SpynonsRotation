@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "document": {
+    "id": "neutral.compiler_fixture",
+    "version": "1.0.0",
+    "description": "Fixture neutra do compilador; não representa uma classe, spec ou baseline real.",
+    "entrypoint": "default",
+    "priorityStep": 10
+  },
+  "actions": [
+    { "simc": "neutral_cleave", "dsl": "neutral.cleave" },
+    { "simc": "neutral_execute", "dsl": "neutral.execute" },
+    { "simc": "neutral_maintenance", "dsl": "neutral.maintenance" },
+    { "simc": "neutral_strike", "dsl": "neutral.strike" }
+  ],
+  "states": [
+    {
+      "simc": "cooldown.neutral_strike.ready",
+      "path": ["cooldowns", "neutral.strike", "ready"],
+      "capability": "ADDON_AVAILABLE"
+    },
+    {
+      "simc": "resource.neutral_energy",
+      "path": ["resources", "neutral_energy", "current"],
+      "capability": "ADDON_AVAILABLE"
+    },
+    {
+      "simc": "simulation.target_time_to_die",
+      "path": ["simulation", "target_time_to_die"],
+      "capability": "SIM_ONLY"
+    },
+    {
+      "simc": "target.estimated_count",
+      "path": ["target", "estimated_count"],
+      "capability": "CONDITIONALLY_SECRET"
+    }
+  ]
+}

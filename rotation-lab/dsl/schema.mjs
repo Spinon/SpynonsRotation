@@ -525,3 +525,25 @@ export function summarizeRotationDocument(document) {
     capabilities,
   };
 }
+
+function valueCapability(value) {
+  return value.kind === "state" ? value.capability : CAPABILITY.ADDON_AVAILABLE;
+}
+
+export function deriveConditionCapability(condition) {
+  if (condition.kind === "constant") {
+    return CAPABILITY.ADDON_AVAILABLE;
+  }
+  if (condition.kind === "all" || condition.kind === "any") {
+    return condition.conditions
+      .map(deriveConditionCapability)
+      .reduce(strongestCapability, CAPABILITY.ADDON_AVAILABLE);
+  }
+  if (condition.kind === "not") {
+    return deriveConditionCapability(condition.condition);
+  }
+  if (condition.kind === "compare") {
+    return strongestCapability(valueCapability(condition.left), valueCapability(condition.right));
+  }
+  return valueCapability(condition.value);
+}

@@ -1,0 +1,5 @@
+# Baseline neutra do subconjunto reversível; não é um perfil executável ou uma APL de spec real.
+actions=/neutral_strike,if=cooldown.neutral_strike.ready&resource.neutral_energy>=50
+actions+=/neutral_cleave,if=target.estimated_count>=2
+actions+=/neutral_execute,if=simulation.target_time_to_die<=15
+actions.maintenance=/neutral_maintenance

@@ -21,6 +21,8 @@ npm run simc:run -- --profile rotation-lab/fixtures/simc-cli-smoke.simc
 npm run simc:smoke
 npm run dsl:check
 npm run dsl:test
+npm run compiler:check
+npm run compiler:test
 npm run core:test
 npm test
 ```
@@ -40,4 +42,5 @@ As APIs Blizzard cobertas e seus fallbacks estão em [`docs/architecture/COMPAT.
 A detecção genérica de spec e talentos está em [`docs/architecture/SPEC_DETECTION.md`](docs/architecture/SPEC_DETECTION.md).
 O runner pinado do SimulationCraft está em [`docs/architecture/SIMC_RUNNER.md`](docs/architecture/SIMC_RUNNER.md).
 A representação intermediária de rotações está em [`docs/architecture/ROTATION_DSL.md`](docs/architecture/ROTATION_DSL.md).
+O compilador SimC ↔ DSL ↔ runtime está em [`docs/architecture/COMPILER.md`](docs/architecture/COMPILER.md).
 O lifecycle e a política de evidências estão em [`docs/project/BOARD_GOVERNANCE.md`](docs/project/BOARD_GOVERNANCE.md).

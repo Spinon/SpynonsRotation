@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "source": "baseline.simc",
+  "mapping": "neutral.compiler-map.json",
+  "expectedDsl": "expected.rotation.json",
+  "expectedSimc": "expected.normalized.simc",
+  "expectedRuntimeJson": "expected.runtime.json",
+  "expectedRuntimeLua": "expected.runtime.lua"
+}

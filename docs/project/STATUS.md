@@ -2,17 +2,17 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T22:59:04.856Z
+Atualizado pelo board em: 2026-09-02T23:05:17.938Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**LAB-003 — Compiler SimC ↔ DSL ↔ runtime**
+**LAB-004 — Matriz de cenários**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Implementar mapa, import/export SimC, bundle de runtime e verificação por golden files.
+Próxima ação: Modelar cenários e pesos iniciais.
 
 ## Focos paralelos
 
@@ -23,9 +23,9 @@ Próxima ação: Implementar mapa, import/export SimC, bundle de runtime e verif
 ## Progresso
 
 - Planejadas: 41
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 10
+- Concluídas: 11
 - Total: 53
 
 ## Fila canônica
@@ -40,7 +40,7 @@ Próxima ação: Implementar mapa, import/export SimC, bundle de runtime e verif
 | CORE-004 | delivery | CORE | Compat layer WoW | done | P0 | CORE-001 |
 | LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | done | P0 | BOOT-002 |
 | LAB-002 | delivery | ROTATION LAB | DSL de rotação | done | P0 | CORE-001 |
-| LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | in_progress | P0 | LAB-001, LAB-002, CORE-001 |
+| LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | done | P0 | LAB-001, LAB-002, CORE-001 |
 | LAB-004 | delivery | ROTATION LAB | Matriz de cenários | planned | P1 | LAB-001, LAB-002 |
 | LAB-005 | delivery | ROTATION LAB | Optimizer | planned | P2 | LAB-004, LAB-003 |
 | LAB-006 | delivery | ROTATION LAB | Regression suite | planned | P1 | LAB-003, LAB-004 |
@@ -148,6 +148,15 @@ Próxima ação: Implementar mapa, import/export SimC, bundle de runtime e verif
 - npm test passou com 41 testes de governança, 9 testes do runner SimC, 16 testes da DSL, 84 testes Lua, layout, Luacheck e wowlua-ls sem falhas.
 - docs/architecture/ROTATION_DSL.md documenta a gramática v1, ordenação, diagnósticos, fronteira de compilação e política para Secret Values.
 - Commit 6c98bcd registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### LAB-003
+
+- npm run compiler:test passou com 14 testes de mapa, expressões, import/export, runtime, determinismo e detecção de drift.
+- npm run compiler:check confirmou os quatro golden files da fixture neutra: 2 listas, 3 regras de runtime, 1 exclusão SIM_ONLY e digest SHA-256 estável.
+- npm run core:test passou com 90 testes Lua, incluindo 6 testes que carregam e validam o bundle Lua 5.1 gerado.
+- npm test passou com 41 testes de governança, 9 do runner SimC, 16 da DSL, 14 do compilador, 90 testes Lua, golden check, layout, Luacheck e wowlua-ls.
+- docs/architecture/COMPILER.md documenta o subconjunto reversível, mapa neutro, bytecode postfix, capabilities, golden files e limites de integração.
+- Commit 8c3342d registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
 
 ### UI-DESIGN-001
 

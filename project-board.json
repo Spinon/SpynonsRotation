@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T22:59:04.856Z",
-  "currentFocus": "LAB-003",
+  "updatedAt": "2026-09-02T23:05:17.938Z",
+  "currentFocus": "LAB-004",
   "parallelFocus": {
     "ui": "UI-DESIGN-003"
   },
@@ -240,12 +240,12 @@
       "title": "Compiler SimC ↔ DSL ↔ runtime",
       "lane": "ROTATION LAB",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/LAB-003.md",
-      "updatedAt": "2026-09-02T22:50:18.830Z",
+      "updatedAt": "2026-09-02T23:05:17.938Z",
       "reviewBy": null,
-      "nextAction": "Implementar mapa, import/export SimC, bundle de runtime e verificação por golden files.",
+      "nextAction": null,
       "dependencies": [
         "LAB-001",
         "LAB-002",
@@ -256,7 +256,14 @@
         "DSL gera dados determinísticos",
         "Divergências são detectadas por fixtures"
       ],
-      "evidence": []
+      "evidence": [
+        "npm run compiler:test passou com 14 testes de mapa, expressões, import/export, runtime, determinismo e detecção de drift.",
+        "npm run compiler:check confirmou os quatro golden files da fixture neutra: 2 listas, 3 regras de runtime, 1 exclusão SIM_ONLY e digest SHA-256 estável.",
+        "npm run core:test passou com 90 testes Lua, incluindo 6 testes que carregam e validam o bundle Lua 5.1 gerado.",
+        "npm test passou com 41 testes de governança, 9 do runner SimC, 16 da DSL, 14 do compilador, 90 testes Lua, golden check, layout, Luacheck e wowlua-ls.",
+        "docs/architecture/COMPILER.md documenta o subconjunto reversível, mapa neutro, bytecode postfix, capabilities, golden files e limites de integração.",
+        "Commit 8c3342d registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD."
+      ]
     },
     {
       "id": "LAB-004",

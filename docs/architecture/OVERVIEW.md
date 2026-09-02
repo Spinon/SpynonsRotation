@@ -29,6 +29,7 @@ Dependências apontam para contratos estáveis. Uma pasta genérica não pode de
 O registry plugável de classes/specs e sua ordem de carregamento estão definidos em [`SPEC_REGISTRY.md`](SPEC_REGISTRY.md).
 A composição segura da spec ativa, módulo e talentos está definida em [`SPEC_DETECTION.md`](SPEC_DETECTION.md).
 A representação intermediária declarativa e suas capabilities estão definidas em [`ROTATION_DSL.md`](ROTATION_DSL.md).
+O pipeline determinístico entre SimC, DSL e bundles de runtime está definido em [`COMPILER.md`](COMPILER.md).
 
 ## Contratos do Core
 

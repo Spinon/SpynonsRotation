@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "dslSchemaVersion": 1,
+    "id": "neutral.compiler_fixture",
+    "version": "1.0.0",
+    "sha256": "0B04C5D3EDB81F7E078C430E657598437D6476C0BFB4B394F88016088FE92E1D"
+  },
+  "entrypoint": "default",
+  "lists": [
+    {
+      "id": "default",
+      "rules": [
+        {
+          "id": "neutral.default_strike_1",
+          "priority": 10,
+          "action": "neutral.strike",
+          "capability": "ADDON_AVAILABLE",
+          "program": [
+            {
+              "op": "READ_STATE",
+              "path": [
+                "cooldowns",
+                "neutral.strike",
+                "ready"
+              ],
+              "capability": "ADDON_AVAILABLE"
+            },
+            {
+              "op": "TRUTHY"
+            },
+            {
+              "op": "READ_STATE",
+              "path": [
+                "resources",
+                "neutral_energy",
+                "current"
+              ],
+              "capability": "ADDON_AVAILABLE"
+            },
+            {
+              "op": "PUSH_LITERAL",
+              "value": 50
+            },
+            {
+              "op": "COMPARE",
+              "operator": "gte"
+            },
+            {
+              "op": "ALL",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "id": "neutral.default_cleave_1",
+          "priority": 20,
+          "action": "neutral.cleave",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "program": [
+            {
+              "op": "READ_STATE",
+              "path": [
+                "target",
+                "estimated_count"
+              ],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            {
+              "op": "PUSH_LITERAL",
+              "value": 2
+            },
+            {
+              "op": "COMPARE",
+              "operator": "gte"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "maintenance",
+      "rules": [
+        {
+          "id": "neutral.maintenance_maintenance_1",
+          "priority": 10,
+          "action": "neutral.maintenance",
+          "capability": "ADDON_AVAILABLE",
+          "program": [
+            {
+              "op": "PUSH_LITERAL",
+              "value": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "excludedRules": [
+    {
+      "list": "default",
+      "rule": "neutral.default_execute_1",
+      "action": "neutral.execute",
+      "reason": "SIM_ONLY"
+    }
+  ]
+}

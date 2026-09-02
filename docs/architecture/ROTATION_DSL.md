@@ -104,6 +104,7 @@ demonstra todas as formas de condição e as três capabilities sem representar 
 
 ## Fronteira com as próximas tasks
 
-`LAB-003` será responsável por traduzir SimC ↔ DSL ↔ dados de runtime, cruzar ações com o catálogo e
-definir semântica executável. `LAB-004` definirá contextos e cenários. Nenhum desses comportamentos é
+`LAB-003` traduz o subconjunto reversível SimC ↔ DSL e gera bundles determinísticos, conforme
+[`COMPILER.md`](COMPILER.md). O cruzamento definitivo com o catálogo e a avaliação das regras ficam
+nas tasks de spec e runtime. `LAB-004` definirá contextos e cenários; nenhum desses comportamentos é
 implementado pelo parser v1.
