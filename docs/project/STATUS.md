@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:27:15.865Z
+Atualizado pelo board em: 2026-09-02T23:30:13.095Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,15 +18,15 @@ Próxima ação: Implementar beam search inicial com limites.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-005 — Barra de cast e indicadores decisivos | planned | Produzir a barra combinada com conteúdo contextual. |
+| ui | UI-DESIGN-009 — Encaixe do GCD na ação atual | planned | Produzir revisão da moldura atual com slot inferior para GCD, preservando ícone, transparência e canais. |
 
 ## Progresso
 
-- Planejadas: 39
+- Planejadas: 40
 - Em andamento: 0
 - Bloqueadas: 0
 - Concluídas: 14
-- Total: 53
+- Total: 54
 
 ## Fila canônica
 
@@ -56,10 +56,11 @@ Próxima ação: Implementar beam search inicial com limites.
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | done | P0 | UI-DESIGN-001 |
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | done | P1 | UI-DESIGN-002 |
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | done | P1 | UI-DESIGN-003 |
-| UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | planned | P1 | UI-DESIGN-004 |
+| UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | planned | P1 | UI-DESIGN-004, UI-DESIGN-009 |
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | planned | P0 | UI-DESIGN-005 |
 | UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006 |
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
+| UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | planned | P1 | UI-DESIGN-002, UI-DESIGN-004 |
 | UI-001 | delivery | UI | Queue estática | planned | P0 | RUN-002 |
 | UI-002 | delivery | UI | Animator | planned | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |

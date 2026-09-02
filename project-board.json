@@ -6,10 +6,10 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:27:15.865Z",
+  "updatedAt": "2026-09-02T23:30:13.095Z",
   "currentFocus": "LAB-005",
   "parallelFocus": {
-    "ui": "UI-DESIGN-005"
+    "ui": "UI-DESIGN-009"
   },
   "release": {
     "version": "0.0.0",
@@ -642,7 +642,8 @@
       "reviewBy": "Product Owner",
       "nextAction": "Produzir a barra combinada com conteúdo contextual.",
       "dependencies": [
-        "UI-DESIGN-004"
+        "UI-DESIGN-004",
+        "UI-DESIGN-009"
       ],
       "acceptanceCriteria": [
         "Progresso de cast continua claro com indicadores no centro",
@@ -718,6 +719,29 @@
         "Assets aprovados possuem formatos e dimensões adequados ao cliente",
         "Arquivos fonte e derivados técnicos permanecem rastreáveis",
         "Handoff documenta estados e consumo futuro pela UI sem implementar runtime"
+      ],
+      "evidence": [],
+      "track": "ui"
+    },
+    {
+      "id": "UI-DESIGN-009",
+      "title": "Encaixe do GCD na ação atual",
+      "lane": "UI DESIGN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "tasks/UI-DESIGN.md#ui-design-009--encaixe-do-gcd-na-acao-atual",
+      "updatedAt": "2026-09-02T23:30:13.095Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Produzir revisão da moldura atual com slot inferior para GCD, preservando ícone, transparência e canais.",
+      "dependencies": [
+        "UI-DESIGN-002",
+        "UI-DESIGN-004"
+      ],
+      "acceptanceCriteria": [
+        "O slot do GCD integra a moldura da ação atual sem comprometer a leitura do ícone",
+        "O encaixe respeita a geometria normalizada e mantém o preenchimento dinâmico em camada separada",
+        "A revisão preserva transparência, materiais e canais sólidos aprovados no v4"
       ],
       "evidence": [],
       "track": "ui"

@@ -92,3 +92,7 @@ Documentar e prototipar MOVE, ENTER, EXIT, PROMOTE e CONSUME, além de estados r
 ## UI-DESIGN-008 — Kit técnico e handoff
 
 Preparar os assets aprovados em formatos, dimensões, transparências e organização adequados à futura implementação da UI no runtime, mantendo fontes editáveis quando aplicável.
+
+## UI-DESIGN-009 — Encaixe do GCD na ação atual
+
+Revisar a moldura da ação atual para incorporar um encaixe físico discreto no rodapé para a barra procedural de Global Cooldown. Preservar a abertura do ícone, a transparência, os canais sólidos `v4` e a separação entre moldura estática e preenchimento dinâmico.
