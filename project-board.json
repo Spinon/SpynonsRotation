@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T20:22:00.000Z",
+  "updatedAt": "2026-09-02T20:31:00.000Z",
   "currentFocus": "BOOT-002",
   "release": {
     "version": "0.0.0",
@@ -49,12 +49,12 @@
       "title": "Governança da fila e AGENTS",
       "lane": "BOOT",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "tasks/BOOT-002.md",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-02T20:31:00.000Z",
       "reviewBy": null,
-      "nextAction": "Revisar o bootstrap e adicionar fixtures de governança.",
+      "nextAction": "Formalizar o schema, testar invariantes e validar o ciclo completo da task.",
       "dependencies": [
         "BOOT-001"
       ],

@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T20:22:00.000Z
+Atualizado pelo board em: 2026-09-02T20:31:00.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **BOOT-002 — Governança da fila e AGENTS**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Revisar o bootstrap e adicionar fixtures de governança.
+Próxima ação: Formalizar o schema, testar invariantes e validar o ciclo completo da task.
 
 ## Progresso
 
-- Planejadas: 44
-- Em andamento: 0
+- Planejadas: 43
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 1
 - Total: 45
@@ -27,7 +27,7 @@ Próxima ação: Revisar o bootstrap e adicionar fixtures de governança.
 | ID | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- |
 | BOOT-001 | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
-| BOOT-002 | BOOT | Governança da fila e AGENTS | planned | P0 | BOOT-001 |
+| BOOT-002 | BOOT | Governança da fila e AGENTS | in_progress | P0 | BOOT-001 |
 | CORE-001 | CORE | Contratos genéricos | planned | P0 | BOOT-002 |
 | CORE-002 | CORE | Registry de classes/specs | planned | P0 | CORE-001 |
 | CORE-003 | CORE | Detecção de spec e talentos | planned | P0 | CORE-002, CORE-004 |
