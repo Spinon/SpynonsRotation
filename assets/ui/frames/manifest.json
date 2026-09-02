@@ -1,37 +1,60 @@
 {
   "schemaVersion": 1,
   "status": "candidate_review",
+  "activeVersion": "v2",
   "iconSource": "wow_runtime",
   "assets": {
     "actionCurrentFrame": {
-      "file": "action-current-frame-v1.png",
+      "file": "action-current-frame-v2.png",
       "role": "frame_overlay",
-      "sourceWidth": 1610,
-      "sourceHeight": 977,
-      "layoutAspectRatio": 1.648925,
+      "sourceWidth": 1619,
+      "sourceHeight": 971,
+      "layoutAspectRatio": 1.667353,
       "baseState": "current",
-      "sha256": "A9726B8A97C14FAD439A058CF9F6E9091EFB98284F2C15D5860EC8DD486138B4"
+      "solidChannels": {
+        "blue": "#00B7FF",
+        "green": "#66E23A"
+      },
+      "animationHooks": [
+        "current.blue.perimeter",
+        "current.green.signature"
+      ],
+      "sha256": "1E215BA9FD91F49353B817917581343EB7033D08150096B355139372BE49E717"
     },
     "actionQueueFrame": {
-      "file": "action-queue-frame-v1.png",
+      "file": "action-queue-frame-v2.png",
       "role": "frame_overlay",
       "sourceWidth": 1254,
       "sourceHeight": 1254,
       "layoutAspectRatio": 1.0,
       "baseState": "queued",
       "instances": 3,
-      "sha256": "746AF852A9CBD3B58ED709481F8D36D47ADA42A190D97426BFDE99B409646CBB"
+      "solidChannels": {
+        "blue": "#00B7FF",
+        "green": "#66E23A"
+      },
+      "animationHooks": [
+        "queue.blue.promote",
+        "queue.green.confirm"
+      ],
+      "sha256": "EC2B5148D4D7CCCF0DB3114FCB2623F0BA284F07C599814D63909BE9EFA50C27"
     }
   },
+  "animationSpec": "ANIMATION_HOOKS.md",
   "separateLayers": [
     "wowIcon",
+    "cooldown",
+    "frame",
+    "animatedGlow",
     "hotkey",
     "stacksOrCharges",
-    "cooldown",
-    "gcd",
-    "glow",
-    "animation"
+    "gcd"
+  ],
+  "previousVersions": [
+    "action-current-frame-v1.png",
+    "action-queue-frame-v1.png"
   ],
   "runtimeReady": false,
-  "runtimePreparationTask": "UI-DESIGN-008"
+  "runtimePreparationTask": "UI-DESIGN-008",
+  "motionDesignTask": "UI-DESIGN-007"
 }

@@ -63,10 +63,10 @@ Da base para o topo, uma action é composta por:
 
 1. ícone nativo do WoW;
 2. máscara ou recorte geométrico;
-3. moldura visual do addon;
-4. overlay radial de cooldown;
-5. número central do cooldown;
-6. glows e estados transitórios;
+3. overlay radial e número do cooldown, limitados à abertura do ícone;
+4. moldura visual estática do addon;
+5. glow animado sobre os trilhos da moldura;
+6. demais estados transitórios;
 7. hotkey no canto superior direito;
 8. stacks ou charges no canto inferior direito.
 
@@ -120,6 +120,8 @@ A identidade usa a marca aprovada em [`assets/brand/Spynon Logo.png`](../../asse
 - vermelho para urgência ou debuff crítico;
 - grafite translúcido para superfícies e cooldown;
 - metal claro apenas em bordas e tipografia de alta hierarquia.
+
+A moldura usa canais azul/ciano e verde de cor sólida, sem gradiente ou glow incorporado. A sensação de energia em movimento será produzida por um overlay animado independente, permitindo desligar ou reduzir movimento sem trocar o bitmap-base.
 
 A galáxia e os raios do mockup são direção de atmosfera, não backgrounds obrigatórios das actions. A marca informa molduras, glows e assinatura; não substitui a arte nativa fornecida pelo WoW.
 

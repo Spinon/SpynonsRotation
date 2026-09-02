@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T22:20:22.539Z",
+  "updatedAt": "2026-09-02T22:23:36.049Z",
   "currentFocus": "LAB-002",
   "parallelFocus": {
     "ui": "UI-DESIGN-002"
@@ -534,9 +534,9 @@
       "status": "in_progress",
       "priority": "P0",
       "source": "tasks/UI-DESIGN.md#ui-design-002--ação-atual-e-fila",
-      "updatedAt": "2026-09-02T21:47:15.574Z",
+      "updatedAt": "2026-09-02T22:23:36.049Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Product Owner revisar e aprovar ou solicitar ajustes nos candidatos v1 da ação atual e da fila.",
+      "nextAction": "Product Owner revisar e aprovar ou solicitar ajustes nos candidatos v2 com canais sólidos e hooks de animação documentados.",
       "dependencies": [
         "UI-DESIGN-001"
       ],

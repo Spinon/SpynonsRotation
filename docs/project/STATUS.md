@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T22:20:22.539Z
+Atualizado pelo board em: 2026-09-02T22:23:36.049Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,7 +18,7 @@ Próxima ação: Especificar a primeira versão da DSL.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-002 — Arte final da ação atual e fila | in_progress | Product Owner revisar e aprovar ou solicitar ajustes nos candidatos v1 da ação atual e da fila. |
+| ui | UI-DESIGN-002 — Arte final da ação atual e fila | in_progress | Product Owner revisar e aprovar ou solicitar ajustes nos candidatos v2 com canais sólidos e hooks de animação documentados. |
 
 ## Progresso
 
