@@ -75,7 +75,7 @@ Produzir o módulo de contexto de combate e definir o tratamento tipográfico de
 
 ## UI-DESIGN-004 — GCD e cooldown individual
 
-Definir a barra de Global Cooldown e o radial swipe cinza que revela o ícone em sentido horário. O cooldown individual não usa argola ou moldura adicional; o valor numérico central é configurável e pode ser ocultado. O GCD é procedural, exclusivo da ação atual, cresce da esquerda para a direita em azul sólido e não exibe texto.
+Definir a barra de Global Cooldown e o radial swipe cinza que revela o ícone em sentido horário. O cooldown individual não usa argola ou moldura adicional; o valor numérico central é configurável e pode ser ocultado. O GCD é procedural, exclusivo da ação atual, cresce da esquerda para a direita e não exibe texto. O azul sólido permanece provisório até a revisão comparativa de `UI-DESIGN-010`.
 
 ## UI-DESIGN-005 — Barra de cast e indicadores
 
@@ -96,3 +96,7 @@ Preparar os assets aprovados em formatos, dimensões, transparências e organiza
 ## UI-DESIGN-009 — Encaixe do GCD na ação atual
 
 Revisar a moldura da ação atual para incorporar um encaixe físico discreto no rodapé para a barra procedural de Global Cooldown. Preservar a abertura do ícone, a transparência, os canais sólidos `v4` e a separação entre moldura estática e preenchimento dinâmico.
+
+## UI-DESIGN-010 — Contraste cromático do GCD
+
+Comparar a cor provisória do GCD com a moldura, a barra de cast e os demais estados do HUD. Selecionar uma cor final que preserve contraste e não seja confundida com proc, cast, cooldown individual ou assinatura da marca, sem alterar o encaixe e o movimento já aprovados.

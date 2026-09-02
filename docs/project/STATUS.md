@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:47:07.505Z
+Atualizado pelo board em: 2026-09-02T23:50:16.509Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,15 +18,15 @@ Próxima ação: Criar formato de relatório e thresholds.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-009 — Encaixe do GCD na ação atual | in_progress | Product Owner revisar a candidata action-current-frame-v5.png e aprovar ou solicitar ajuste do encaixe inferior do GCD. |
+| ui | UI-DESIGN-005 — Barra de cast e indicadores decisivos | planned | Produzir a barra combinada com conteúdo contextual. |
 
 ## Progresso
 
-- Planejadas: 38
-- Em andamento: 1
+- Planejadas: 39
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 15
-- Total: 54
+- Concluídas: 16
+- Total: 55
 
 ## Fila canônica
 
@@ -58,9 +58,10 @@ Próxima ação: Criar formato de relatório e thresholds.
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | done | P1 | UI-DESIGN-003 |
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | planned | P1 | UI-DESIGN-004, UI-DESIGN-009 |
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | planned | P0 | UI-DESIGN-005 |
-| UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006 |
+| UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
-| UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | in_progress | P1 | UI-DESIGN-002, UI-DESIGN-004 |
+| UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |
+| UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | planned | P1 | UI-DESIGN-005, UI-DESIGN-009 |
 | UI-001 | delivery | UI | Queue estática | planned | P0 | RUN-002 |
 | UI-002 | delivery | UI | Animator | planned | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |
@@ -208,3 +209,11 @@ Próxima ação: Criar formato de relatório e thresholds.
 - O GCD foi fechado como barra procedural azul sólida, sem texto, crescendo da esquerda para a direita somente no rodapé da ação atual.
 - assets/ui/gcd/manifest.json e gcd-state-reference-v1.svg registram geometria normalizada, tokens, estados e hashes do preview para handoff.
 - npm test passou com validações do board, Rotation Lab, cenários, Core, layout, lint e typecheck.
+
+### UI-DESIGN-009
+
+- assets/ui/frames/action-current-frame-v5.png preserva o master v4 e acrescenta um bezel inferior com abertura transparente para o GCD.
+- assets/ui/gcd/action-current-gcd-slot-preview-v1.png demonstra trilho e preenchimento procedurais sob a moldura, sem incorporá-los ao master.
+- Validação de imagem confirmou 1619 × 971, alpha nos pontos externos e internos, 14.730 pixels novos no slot e zero alterações fora da região autorizada.
+- npm test passou com board, Rotation Lab, optimizer, Core, layout, lint e typecheck.
+- Product Owner aprovou o encaixe v5 e solicitou preservar a geometria, mantendo a cor do preenchimento para revisão posterior.

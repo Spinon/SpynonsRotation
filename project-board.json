@@ -6,10 +6,10 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:47:07.505Z",
+  "updatedAt": "2026-09-02T23:50:16.509Z",
   "currentFocus": "LAB-006",
   "parallelFocus": {
-    "ui": "UI-DESIGN-009"
+    "ui": "UI-DESIGN-005"
   },
   "release": {
     "version": "0.0.0",
@@ -698,7 +698,8 @@
         "UI-DESIGN-003",
         "UI-DESIGN-004",
         "UI-DESIGN-005",
-        "UI-DESIGN-006"
+        "UI-DESIGN-006",
+        "UI-DESIGN-010"
       ],
       "acceptanceCriteria": [
         "MOVE, ENTER, EXIT, PROMOTE e CONSUME são visualmente distintos",
@@ -735,12 +736,12 @@
       "title": "Encaixe do GCD na ação atual",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-009--encaixe-do-gcd-na-acao-atual",
-      "updatedAt": "2026-09-02T23:44:50.428Z",
+      "updatedAt": "2026-09-02T23:50:16.509Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Product Owner revisar a candidata action-current-frame-v5.png e aprovar ou solicitar ajuste do encaixe inferior do GCD.",
+      "nextAction": null,
       "dependencies": [
         "UI-DESIGN-002",
         "UI-DESIGN-004"
@@ -754,8 +755,32 @@
         "assets/ui/frames/action-current-frame-v5.png preserva o master v4 e acrescenta um bezel inferior com abertura transparente para o GCD.",
         "assets/ui/gcd/action-current-gcd-slot-preview-v1.png demonstra trilho e preenchimento procedurais sob a moldura, sem incorporá-los ao master.",
         "Validação de imagem confirmou 1619 × 971, alpha nos pontos externos e internos, 14.730 pixels novos no slot e zero alterações fora da região autorizada.",
-        "npm test passou com board, Rotation Lab, optimizer, Core, layout, lint e typecheck."
+        "npm test passou com board, Rotation Lab, optimizer, Core, layout, lint e typecheck.",
+        "Product Owner aprovou o encaixe v5 e solicitou preservar a geometria, mantendo a cor do preenchimento para revisão posterior."
       ],
+      "track": "ui"
+    },
+    {
+      "id": "UI-DESIGN-010",
+      "title": "Contraste cromático do GCD",
+      "lane": "UI DESIGN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "tasks/UI-DESIGN.md#ui-design-010--contraste-cromatico-do-gcd",
+      "updatedAt": "2026-09-02T23:50:16.509Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Após a barra de cast, comparar alternativas de cor do GCD no HUD completo e selecionar a opção com menor ambiguidade.",
+      "dependencies": [
+        "UI-DESIGN-005",
+        "UI-DESIGN-009"
+      ],
+      "acceptanceCriteria": [
+        "A cor do GCD permanece distinta da moldura, da barra de cast e dos estados de proc",
+        "A leitura continua clara sobre ícones e ambientes variados",
+        "A cor final é registrada nos tokens sem alterar geometria ou movimento aprovados"
+      ],
+      "evidence": [],
       "track": "ui"
     },
     {

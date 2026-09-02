@@ -5,13 +5,15 @@
 O GCD é uma barra procedural fina, exclusiva da ação atual. Ele não possui bitmap próprio: trilho, preenchimento e recorte devem ser construídos com primitivas leves do cliente.
 
 - o progresso começa vazio e cresce da esquerda para a direita;
-- o preenchimento usa azul elétrico sólido `#0788D8`;
+- o preenchimento usa provisoriamente azul elétrico sólido `#0788D8`;
 - o trilho usa grafite azulado sólido `#07131D`;
 - não há gradiente, bloom incorporado, brilho móvel, label ou contagem regressiva;
 - ao concluir, o preenchimento desaparece e apenas o trilho discreto permanece;
 - o componente nunca aparece nos itens da fila.
 
 O verde da marca não participa do GCD. Ele continua reservado a confirmação e estados favoráveis, evitando confusão com proc ou disponibilidade.
+
+A geometria, direção e integração com a ação atual estão aprovadas. A cor do preenchimento continua provisória e será comparada com moldura, barra de cast e estados de proc em `UI-DESIGN-010`, sem redesenhar o encaixe.
 
 ## Arquivos
 

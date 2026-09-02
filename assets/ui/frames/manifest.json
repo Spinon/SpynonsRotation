@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "candidate_review",
+  "status": "approved",
   "activeVersion": "v5",
   "iconSource": "wow_runtime",
   "assets": {
@@ -24,7 +24,7 @@
         "current.green.signature"
       ],
       "gcdSlot": {
-        "status": "candidate_review",
+        "status": "approved",
         "bezelPixelRect": {
           "x": 250,
           "y": 838,

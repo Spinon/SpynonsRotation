@@ -2,7 +2,7 @@
 
 ## Status
 
-A ação atual `v5` é a candidata visual ativa de `UI-DESIGN-009` e aguarda aprovação do Product Owner. Ela preserva a moldura `v4` e acrescenta somente o encaixe inferior do GCD. A fila continua usando `v4`. As versões anteriores permanecem preservadas como histórico de comparação.
+A ação atual `v5` foi aprovada pelo Product Owner em `UI-DESIGN-009`. Ela preserva a moldura `v4` e acrescenta somente o encaixe inferior do GCD. A fila continua usando `v4`. As versões anteriores permanecem preservadas como histórico de comparação.
 
 Todos são masters raster em alta resolução; normalização para dimensões e formatos de runtime pertence a `UI-DESIGN-008`.
 
@@ -10,7 +10,7 @@ Todos são masters raster em alta resolução; normalização para dimensões e 
 
 | Arquivo | Papel | Dimensões de origem | Estado base |
 | --- | --- | --- | --- |
-| `action-current-frame-v5.png` | Moldura candidata da ação atual com encaixe inferior para GCD | 1619 × 971 | Ênfase principal; slot transparente |
+| `action-current-frame-v5.png` | Moldura aprovada da ação atual com encaixe inferior para GCD | 1619 × 971 | Ênfase principal; slot transparente |
 | `action-current-frame-v4.png` | Moldura ativa da ação atual, em linha própria | 1619 × 971 | Ênfase principal; trilhos vívidos |
 | `action-queue-frame-v4.png` | Moldura ativa reutilizada pelas três próximas recomendações | 1254 × 1254 | Prioridade secundária; trilhos vívidos |
 | `action-current-frame-v3.png` | Histórico com canais sólidos escuros | 1619 × 971 | Referência anterior |

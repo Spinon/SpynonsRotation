@@ -27,6 +27,7 @@
     "trackColor": "#07131D",
     "trackAlpha": 0.86,
     "fillColor": "#0788D8",
+    "fillColorStatus": "provisional",
     "fillAlpha": 1,
     "gradient": false,
     "bakedGlow": false,
@@ -59,11 +60,12 @@
   "referenceSourceSha256": "7D2B1E8997ABEBDCBA1447139FBEB7E68C3D1296A8A695E8E4594E82FE6A3E86",
   "referencePreviewSha256": "52D3FD35DD05AEAF93F6F31DB24C4BE813E0A0B85C97A63798D15C6A694E92EF",
   "integration": {
-    "status": "candidate_review",
+    "status": "approved",
     "frame": "../frames/action-current-frame-v5.png",
     "preview": "action-current-gcd-slot-preview-v1.png",
     "previewSha256": "1C0274ABF32FAF286670AFE924AC5614170194F99ED8EF2993BB2D52F4970EB9"
   },
+  "colorReviewTask": "UI-DESIGN-010",
   "runtimeReady": false,
   "runtimePreparationTask": "UI-DESIGN-008"
 }

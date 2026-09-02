@@ -39,13 +39,13 @@ Contrato visual:
 
 - o trilho ocupa a abertura normalizada `(x: 0.172, y: 0.892, largura: 0.657, altura: 0.024)` da ação atual `v5`;
 - o preenchimento começa em `0%` e cresce linearmente da esquerda para a direita até `100%`;
-- a cor ativa é o azul elétrico sólido da marca, `#0788D8`;
+- a cor ativa provisória é o azul elétrico sólido da marca, `#0788D8`;
 - o trilho de repouso é grafite azulado sólido, `#07131D`, com alpha `0.86`;
 - não existe gradiente, bloom incorporado, brilho móvel ou pulso de conclusão;
 - a barra não mostra label, unidade ou valor numérico;
 - ao concluir, o preenchimento desaparece e somente o trilho discreto permanece.
 
-O crescimento da barra comunica aproximação do estado ready. O verde não é usado no GCD: permanece reservado a confirmação e estados favoráveis, evitando que a barra pareça um proc.
+O crescimento da barra comunica aproximação do estado ready. O verde não é usado no GCD: permanece reservado a confirmação e estados favoráveis, evitando que a barra pareça um proc. A cor final será validada em `UI-DESIGN-010` contra a moldura, a barra de cast e os demais sinais do HUD; essa revisão não altera geometria ou movimento.
 
 O GCD deve ser uma composição procedural leve, não um bitmap. A moldura `action-current-frame-v5.png` fornece somente o bezel e a abertura transparente de encaixe; trilho e preenchimento ficam abaixo dela. Se o progresso real não estiver disponível de forma segura, a UI mantém apenas o trilho e não inventa duração. O contrato técnico está registrado em [`assets/ui/gcd`](../../assets/ui/gcd/README.md), com pranchas destinadas somente à documentação.
 
