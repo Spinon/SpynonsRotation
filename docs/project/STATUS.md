@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:31:15.372Z
+Atualizado pelo board em: 2026-09-02T23:31:54.440Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,9 +10,9 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **LAB-005 — Optimizer**
 
-Status: `planned` · Prioridade: `P2` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
 
-Próxima ação: Implementar beam search inicial com limites.
+Próxima ação: Implementar configuração, mutações, beam search em duas fases e fixture neutra.
 
 ## Focos paralelos
 
@@ -22,8 +22,8 @@ Próxima ação: Implementar beam search inicial com limites.
 
 ## Progresso
 
-- Planejadas: 39
-- Em andamento: 1
+- Planejadas: 38
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 14
 - Total: 54
@@ -42,7 +42,7 @@ Próxima ação: Implementar beam search inicial com limites.
 | LAB-002 | delivery | ROTATION LAB | DSL de rotação | done | P0 | CORE-001 |
 | LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | done | P0 | LAB-001, LAB-002, CORE-001 |
 | LAB-004 | delivery | ROTATION LAB | Matriz de cenários | done | P1 | LAB-001, LAB-002 |
-| LAB-005 | delivery | ROTATION LAB | Optimizer | planned | P2 | LAB-004, LAB-003 |
+| LAB-005 | delivery | ROTATION LAB | Optimizer | in_progress | P2 | LAB-004, LAB-003 |
 | LAB-006 | delivery | ROTATION LAB | Regression suite | planned | P1 | LAB-003, LAB-004 |
 | ENH-001 | delivery | SHAMAN | Catálogo Enhancement | planned | P0 | CORE-002, CORE-003, CORE-004 |
 | ENH-002 | delivery | SHAMAN | Baseline APL | planned | P0 | ENH-001, LAB-002, LAB-003 |
