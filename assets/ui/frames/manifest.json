@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
   "status": "candidate_review",
-  "activeVersion": "v3",
+  "activeVersion": "v4",
   "iconSource": "wow_runtime",
   "assets": {
     "actionCurrentFrame": {
-      "file": "action-current-frame-v3.png",
+      "file": "action-current-frame-v4.png",
       "role": "frame_overlay",
       "sourceWidth": 1619,
       "sourceHeight": 971,
       "layoutAspectRatio": 1.667353,
       "baseState": "current",
       "solidChannels": {
-        "blue": "#07566D",
-        "green": "#2B6F35"
+        "blue": "#0788D8",
+        "green": "#42C93E"
       },
       "glowChannels": {
         "blue": "#27D9FF",
@@ -23,10 +23,10 @@
         "current.blue.perimeter",
         "current.green.signature"
       ],
-      "sha256": "F67D6624E9086FE386FAC5B066FF23FE88468D5BDE10721D0EEC7685C169E40A"
+      "sha256": "9614C4B8D7C89F531837A157ADF7317443908A9472D5E084A521E0F1EF7BBC4C"
     },
     "actionQueueFrame": {
-      "file": "action-queue-frame-v3.png",
+      "file": "action-queue-frame-v4.png",
       "role": "frame_overlay",
       "sourceWidth": 1254,
       "sourceHeight": 1254,
@@ -34,8 +34,8 @@
       "baseState": "queued",
       "instances": 3,
       "solidChannels": {
-        "blue": "#07566D",
-        "green": "#2B6F35"
+        "blue": "#0788D8",
+        "green": "#42C93E"
       },
       "glowChannels": {
         "blue": "#27D9FF",
@@ -45,7 +45,7 @@
         "queue.blue.promote",
         "queue.green.confirm"
       ],
-      "sha256": "7E039D6ACF7583DDDD293E4910CA1FA1C731933F9EA3CB67E945EF59B4A5BF32"
+      "sha256": "931490C179251776E8F68DBD9CA14B30E222AD14F8CFBD24BCB0B54DA7523D17"
     }
   },
   "animationSpec": "ANIMATION_HOOKS.md",
@@ -62,7 +62,9 @@
     "action-current-frame-v1.png",
     "action-queue-frame-v1.png",
     "action-current-frame-v2.png",
-    "action-queue-frame-v2.png"
+    "action-queue-frame-v2.png",
+    "action-current-frame-v3.png",
+    "action-queue-frame-v3.png"
   ],
   "runtimeReady": false,
   "runtimePreparationTask": "UI-DESIGN-008",

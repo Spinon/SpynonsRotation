@@ -2,23 +2,23 @@
 
 ## Escopo
 
-Este documento registra onde o glow de movimento será conectado aos candidatos `v3`. Nenhuma animação ou lógica de runtime é implementada em `UI-DESIGN-002`.
+Este documento registra onde o glow de movimento será conectado aos candidatos `v4`. Nenhuma animação ou lógica de runtime é implementada em `UI-DESIGN-002`.
 
-As linhas azul/ciano e verde dos masters são trilhos de repouso: estáticos, sólidos, escuros e sem gradiente. O movimento virá de um pequeno overlay monocromático com queda suave apenas no alpha, colorido no runtime e posicionado sobre os trilhos existentes. Somente esse overlay deve atingir luminosidade de glow.
+As linhas azul/ciano e verde dos masters são trilhos-base: estáticos, sólidos, vívidos e sem gradiente. O movimento virá de um pequeno overlay monocromático com queda suave apenas no alpha, colorido no runtime e posicionado sobre os trilhos existentes. Somente esse overlay deve atingir luminosidade de glow.
 
 | Canal | Base em repouso | Glow futuro |
 | --- | --- | --- |
-| Azul/ciano | `#07566D` | `#27D9FF` |
-| Verde | `#2B6F35` | `#7CFF4B` |
+| Azul/ciano | `#0788D8` | `#27D9FF` |
+| Verde | `#42C93E` | `#7CFF4B` |
 
-As cores de glow são alvos de direção para `UI-DESIGN-007`, não pixels incorporados aos masters `v3`. A animação não deve elevar permanentemente o brilho do trilho inteiro.
+As cores de glow são alvos de direção para `UI-DESIGN-007`, não pixels incorporados aos masters `v4`. A animação não deve elevar permanentemente o brilho do trilho inteiro.
 
 ## Ordem das camadas
 
 ```text
 hotkey + stacks/charges
 glow animado              <- pontos definidos neste documento
-moldura estática v3
+moldura estática v4
 cooldown radial + número  <- limitado à abertura do ícone
 ícone nativo do WoW
 ```
@@ -86,7 +86,7 @@ left-high   (0.13, 0.23)
 - no máximo um ciclo ocioso: `current.blue.perimeter` da action atual;
 - fila usa somente animações one-shot e apenas no item afetado;
 - usar uma textura pequena de glow reutilizada e colorida no runtime;
-- manter o trilho-base escuro e mover apenas a janela luminosa do overlay;
+- manter o trilho-base saturado abaixo da luminosidade do glow e mover apenas a janela luminosa do overlay;
 - preferir grupos de animação nativos do cliente a loops próprios por frame;
 - nunca deslocar, trocar ou recalcular os bitmaps completos das molduras;
 - parar animações quando o HUD estiver oculto;

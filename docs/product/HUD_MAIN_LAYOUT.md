@@ -121,7 +121,7 @@ A identidade usa a marca aprovada em [`assets/brand/Spynon Logo.png`](../../asse
 - grafite translúcido para superfícies e cooldown;
 - metal claro apenas em bordas e tipografia de alta hierarquia.
 
-A moldura usa canais azul/ciano e verde escuros de repouso, em cor sólida e sem gradiente ou glow incorporado. A sensação de energia em movimento será produzida por um overlay animado independente e mais claro; somente a passagem desse overlay deve atingir luminosidade alta. Assim, desligar ou reduzir o movimento não exige trocar o bitmap-base e o glow não clareia permanentemente o HUD.
+A moldura usa canais azul elétrico e verde ácido vívidos, próximos da paleta da marca, em cor sólida e sem gradiente ou glow incorporado. A sensação de energia em movimento será produzida por um overlay animado independente e mais claro; somente a passagem desse overlay deve atingir luminosidade alta. Assim, desligar ou reduzir o movimento não exige trocar o bitmap-base e o glow não clareia permanentemente o HUD.
 
 A galáxia e os raios do mockup são direção de atmosfera, não backgrounds obrigatórios das actions. A marca informa molduras, glows e assinatura; não substitui a arte nativa fornecida pelo WoW.
 

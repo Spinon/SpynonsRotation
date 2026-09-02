@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T22:37:49.357Z
+Atualizado pelo board em: 2026-09-02T22:44:41.209Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,7 +18,7 @@ Próxima ação: Implementar a DSL v1, parser estrito, validação semântica, f
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-002 — Arte final da ação atual e fila | in_progress | Product Owner revisar e aprovar ou solicitar ajustes nos candidatos v3 com trilhos de repouso escuros e hooks de glow documentados. |
+| ui | UI-DESIGN-002 — Arte final da ação atual e fila | in_progress | Product Owner revisar e aprovar ou solicitar ajustes nos candidatos v4 com cores vívidas alinhadas à marca e hooks de glow documentados. |
 
 ## Progresso
 
