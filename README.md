@@ -6,7 +6,7 @@ O produto recomenda ações; ele não automatiza o jogo. Toda regra de produçã
 
 ## Estado atual
 
-O repositório está na fase de bootstrap. O estado canônico do projeto vive em [`project-board.json`](project-board.json); [`docs/project/STATUS.md`](docs/project/STATUS.md) é sempre gerado a partir dele.
+O bootstrap está concluído e o Core genérico está em construção. O estado canônico do projeto vive em [`project-board.json`](project-board.json); [`docs/project/STATUS.md`](docs/project/STATUS.md) é sempre gerado a partir dele.
 
 ## Comandos
 
@@ -16,6 +16,7 @@ npm run project:check
 npm run project:test
 npm run project:sync
 npm run toolchain:doctor
+npm run core:test
 npm test
 ```
 
@@ -29,4 +30,5 @@ npm test
 - `docs/`: produto, arquitetura e estado derivado do projeto.
 
 Consulte [`docs/architecture/OVERVIEW.md`](docs/architecture/OVERVIEW.md) para as regras de dependência entre camadas.
+Os contratos públicos do Core estão em [`docs/architecture/CONTRACTS.md`](docs/architecture/CONTRACTS.md).
 O lifecycle e a política de evidências estão em [`docs/project/BOARD_GOVERNANCE.md`](docs/project/BOARD_GOVERNANCE.md).

@@ -26,7 +26,7 @@ Compat ──> PlayerState ──> Recommendation Engine ──> Recommendation[
 
 Dependências apontam para contratos estáveis. Uma pasta genérica não pode depender de `Classes/Shaman/Enhancement`.
 
-## Contratos planejados
+## Contratos do Core
 
 - `Action`: spell, item, racial, trinket, potion, interrupt, defensive ou utility.
 - `Recommendation`: ação candidata, prioridade, razão observável e metadados visuais.
@@ -35,7 +35,7 @@ Dependências apontam para contratos estáveis. Uma pasta genérica não pode de
 - `SpecModule`: catálogo e regras plugáveis de uma spec.
 - `Capability`: `ADDON_AVAILABLE`, `SIM_ONLY` ou `CONDITIONALLY_SECRET`.
 
-Os contratos serão implementados em `CORE-001`; este documento apenas fixa as fronteiras do bootstrap.
+As invariantes e o ownership desses contratos estão documentados em [`CONTRACTS.md`](CONTRACTS.md).
 
 ## Secret Values
 

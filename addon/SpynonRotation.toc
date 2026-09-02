@@ -7,4 +7,12 @@
 ## X-Project-Revision: bootstrap
 ## X-WoW-Build: 12.1.0.69587
 
+Core/Namespace.lua
+Core/Contracts/Validation.lua
+Core/Contracts/Capability.lua
+Core/Contracts/CombatContext.lua
+Core/Contracts/Action.lua
+Core/Contracts/Recommendation.lua
+Core/Contracts/PlayerState.lua
+Core/Contracts/SpecModule.lua
 Core/Bootstrap.lua

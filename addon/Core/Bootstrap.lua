@@ -1,7 +1,5 @@
 local addonName, Spynon = ...
 
-Spynon.name = addonName
-Spynon.version = "0.0.0"
 Spynon.initialized = false
 
 local eventFrame = CreateFrame("Frame")

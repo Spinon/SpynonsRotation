@@ -16,9 +16,10 @@
     "project:sync": "node tools/project/sync.mjs",
     "toolchain:doctor": "node tools/toolchain/doctor.mjs",
     "layout:check": "node tools/validation/check-layout.mjs",
+    "core:test": "node tools/validation/run-lua-tests.mjs",
     "addon:lint": "node tools/validation/run-luacheck.mjs",
     "addon:typecheck": "node tools/validation/run-wowlua-ls.mjs",
-    "test": "npm run project:check && npm run project:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
+    "test": "npm run project:check && npm run project:test && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
   },
   "license": "UNLICENSED"
 }

@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T20:35:17.000Z
+Atualizado pelo board em: 2026-09-02T20:43:39.372Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**CORE-001 — Contratos genéricos**
+**CORE-002 — Registry de classes/specs**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Implementar e testar os seis contratos genéricos do Core.
+Próxima ação: Projetar e implementar o registry genérico.
 
 ## Progresso
 
 - Planejadas: 42
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 2
+- Concluídas: 3
 - Total: 45
 
 ## Fila canônica
@@ -28,7 +28,7 @@ Próxima ação: Implementar e testar os seis contratos genéricos do Core.
 | --- | --- | --- | --- | --- | --- |
 | BOOT-001 | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
 | BOOT-002 | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
-| CORE-001 | CORE | Contratos genéricos | in_progress | P0 | BOOT-002 |
+| CORE-001 | CORE | Contratos genéricos | done | P0 | BOOT-002 |
 | CORE-002 | CORE | Registry de classes/specs | planned | P0 | CORE-001 |
 | CORE-003 | CORE | Detecção de spec e talentos | planned | P0 | CORE-002, CORE-004 |
 | CORE-004 | CORE | Compat layer WoW | planned | P0 | CORE-001 |
@@ -87,3 +87,10 @@ Próxima ação: Implementar e testar os seis contratos genéricos do Core.
 - npm test passou com project checks, layout, Luacheck e wowlua-ls sem falhas.
 - docs/project/project-board.schema.json e docs/project/BOARD_GOVERNANCE.md formalizam o schema v1, transições, evidências e migrações.
 - Commit 3bb9fda registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### CORE-001
+
+- npm run core:test passou com 31/31 testes dos seis contratos e carregamento completo pela ordem do TOC.
+- npm test passou com 33 testes de governança, 31 testes do Core, fronteiras/TOC, Luacheck e wowlua-ls sem falhas.
+- docs/architecture/CONTRACTS.md documenta invariantes, ownership, capabilities e fronteiras de runtime dos contratos.
+- Commit 235c901 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.

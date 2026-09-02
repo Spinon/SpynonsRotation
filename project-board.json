@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T20:35:17.000Z",
-  "currentFocus": "CORE-001",
+  "updatedAt": "2026-09-02T20:43:39.372Z",
+  "currentFocus": "CORE-002",
   "release": {
     "version": "0.0.0",
     "channel": "bootstrap",
@@ -75,12 +75,12 @@
       "title": "Contratos genéricos",
       "lane": "CORE",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/CORE-001.md",
-      "updatedAt": "2026-09-02T20:35:17.000Z",
+      "updatedAt": "2026-09-02T20:43:39.372Z",
       "reviewBy": null,
-      "nextAction": "Implementar e testar os seis contratos genéricos do Core.",
+      "nextAction": null,
       "dependencies": [
         "BOOT-002"
       ],
@@ -89,7 +89,12 @@
         "Contratos possuem testes unitários",
         "Nenhum contrato contém lógica de Enhancement"
       ],
-      "evidence": []
+      "evidence": [
+        "npm run core:test passou com 31/31 testes dos seis contratos e carregamento completo pela ordem do TOC.",
+        "npm test passou com 33 testes de governança, 31 testes do Core, fronteiras/TOC, Luacheck e wowlua-ls sem falhas.",
+        "docs/architecture/CONTRACTS.md documenta invariantes, ownership, capabilities e fronteiras de runtime dos contratos.",
+        "Commit 235c901 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD."
+      ]
     },
     {
       "id": "CORE-002",
@@ -98,8 +103,8 @@
       "owner": "Codex",
       "status": "planned",
       "priority": "P0",
-      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "source": "tasks/CORE-002.md",
+      "updatedAt": "2026-09-02T20:43:39.372Z",
       "reviewBy": null,
       "nextAction": "Projetar e implementar o registry genérico.",
       "dependencies": [
