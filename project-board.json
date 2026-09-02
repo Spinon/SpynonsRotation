@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T20:57:47.070Z",
+  "updatedAt": "2026-09-02T21:34:41.384Z",
   "currentFocus": "CORE-004",
   "parallelFocus": {
     "ui": "UI-DESIGN-001"
@@ -153,12 +153,12 @@
       "title": "Compat layer WoW",
       "lane": "CORE",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "tasks/CORE-004.md",
-      "updatedAt": "2026-09-02T20:57:47.070Z",
+      "updatedAt": "2026-09-02T21:34:41.384Z",
       "reviewBy": null,
-      "nextAction": "Criar adapters e matriz inicial de capabilities.",
+      "nextAction": "Verificar APIs Retail e implementar adapters, capabilities e fallbacks testáveis.",
       "dependencies": [
         "CORE-001"
       ],

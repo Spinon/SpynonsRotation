@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T20:57:47.070Z
+Atualizado pelo board em: 2026-09-02T21:34:41.384Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,9 +10,9 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **CORE-004 — Compat layer WoW**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Criar adapters e matriz inicial de capabilities.
+Próxima ação: Verificar APIs Retail e implementar adapters, capabilities e fallbacks testáveis.
 
 ## Focos paralelos
 
@@ -22,8 +22,8 @@ Próxima ação: Criar adapters e matriz inicial de capabilities.
 
 ## Progresso
 
-- Planejadas: 49
-- Em andamento: 0
+- Planejadas: 48
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 4
 - Total: 53
@@ -37,7 +37,7 @@ Próxima ação: Criar adapters e matriz inicial de capabilities.
 | CORE-001 | delivery | CORE | Contratos genéricos | done | P0 | BOOT-002 |
 | CORE-002 | delivery | CORE | Registry de classes/specs | done | P0 | CORE-001 |
 | CORE-003 | delivery | CORE | Detecção de spec e talentos | planned | P0 | CORE-002, CORE-004 |
-| CORE-004 | delivery | CORE | Compat layer WoW | planned | P0 | CORE-001 |
+| CORE-004 | delivery | CORE | Compat layer WoW | in_progress | P0 | CORE-001 |
 | LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | planned | P0 | BOOT-002 |
 | LAB-002 | delivery | ROTATION LAB | DSL de rotação | planned | P0 | CORE-001 |
 | LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | planned | P0 | LAB-001, LAB-002, CORE-001 |
