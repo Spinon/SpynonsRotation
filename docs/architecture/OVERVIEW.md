@@ -26,6 +26,8 @@ Compat ──> PlayerState ──> Recommendation Engine ──> Recommendation[
 
 Dependências apontam para contratos estáveis. Uma pasta genérica não pode depender de `Classes/Shaman/Enhancement`.
 
+O registry plugável de classes/specs e sua ordem de carregamento estão definidos em [`SPEC_REGISTRY.md`](SPEC_REGISTRY.md).
+
 ## Contratos do Core
 
 - `Action`: spell, item, racial, trinket, potion, interrupt, defensive ou utility.

@@ -15,4 +15,5 @@ Core/Contracts/Action.lua
 Core/Contracts/Recommendation.lua
 Core/Contracts/PlayerState.lua
 Core/Contracts/SpecModule.lua
+Core/SpecRegistry.lua
 Core/Bootstrap.lua

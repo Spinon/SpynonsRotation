@@ -79,7 +79,7 @@ getActions    provider do catálogo de Action
 getRules      provider de regras/DSL
 ```
 
-`SpecModule` não se registra sozinho e não avalia regras. Registry é `CORE-002`; detecção real de spec/talentos é `CORE-003`.
+`SpecModule` não se registra sozinho e não avalia regras. O serviço e a ordem de carregamento estão documentados em [`SPEC_REGISTRY.md`](SPEC_REGISTRY.md); detecção real de spec/talentos é `CORE-003`.
 
 ## Fluxo de ownership
 

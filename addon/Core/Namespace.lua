@@ -14,6 +14,8 @@ local addonName, Spynon = ...
 ---@field version string
 ---@field initialized boolean
 ---@field Contracts SpynonContracts
+---@field SpecRegistry table
+---@field Specs table
 
 Spynon.name = addonName
 Spynon.version = "0.0.0"

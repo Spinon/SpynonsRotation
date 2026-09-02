@@ -2,17 +2,17 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T20:53:16.484Z
+Atualizado pelo board em: 2026-09-02T20:57:47.070Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**CORE-002 — Registry de classes/specs**
+**CORE-004 — Compat layer WoW**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Implementar e testar registro, consultas e listagem determinística de SpecModule.
+Próxima ação: Criar adapters e matriz inicial de capabilities.
 
 ## Focos paralelos
 
@@ -23,9 +23,9 @@ Próxima ação: Implementar e testar registro, consultas e listagem determinís
 ## Progresso
 
 - Planejadas: 49
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 3
+- Concluídas: 4
 - Total: 53
 
 ## Fila canônica
@@ -35,7 +35,7 @@ Próxima ação: Implementar e testar registro, consultas e listagem determinís
 | BOOT-001 | delivery | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
 | BOOT-002 | delivery | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
 | CORE-001 | delivery | CORE | Contratos genéricos | done | P0 | BOOT-002 |
-| CORE-002 | delivery | CORE | Registry de classes/specs | in_progress | P0 | CORE-001 |
+| CORE-002 | delivery | CORE | Registry de classes/specs | done | P0 | CORE-001 |
 | CORE-003 | delivery | CORE | Detecção de spec e talentos | planned | P0 | CORE-002, CORE-004 |
 | CORE-004 | delivery | CORE | Compat layer WoW | planned | P0 | CORE-001 |
 | LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | planned | P0 | BOOT-002 |
@@ -108,3 +108,11 @@ Próxima ação: Implementar e testar registro, consultas e listagem determinís
 - npm test passou com 33 testes de governança, 31 testes do Core, fronteiras/TOC, Luacheck e wowlua-ls sem falhas.
 - docs/architecture/CONTRACTS.md documenta invariantes, ownership, capabilities e fronteiras de runtime dos contratos.
 - Commit 235c901 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### CORE-002
+
+- npm run core:test passou com 31/31 testes dos contratos e 13/13 testes do registry em 2/2 suítes Lua.
+- npm test passou com 41 testes de governança, 44 testes Lua, fronteiras/TOC, Luacheck e wowlua-ls sem falhas.
+- tests/fixtures/specs/neutral_vanguard.lua demonstra registro plugável sem alterar o Core ou introduzir lógica de spec real.
+- docs/architecture/SPEC_REGISTRY.md documenta API, ownership, conflitos, ordem determinística e carregamento pelo TOC.
+- Commit 9df6fc0 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
