@@ -2,17 +2,17 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T21:40:32.999Z
+Atualizado pelo board em: 2026-09-02T21:46:24.197Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**CORE-004 — Compat layer WoW**
+**CORE-003 — Detecção de spec e talentos**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Verificar APIs Retail e implementar adapters, capabilities e fallbacks testáveis.
+Próxima ação: Mapear APIs de specialização e talentos via Compat.
 
 ## Focos paralelos
 
@@ -23,9 +23,9 @@ Próxima ação: Verificar APIs Retail e implementar adapters, capabilities e fa
 ## Progresso
 
 - Planejadas: 46
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 5
+- Concluídas: 6
 - Total: 53
 
 ## Fila canônica
@@ -37,7 +37,7 @@ Próxima ação: Verificar APIs Retail e implementar adapters, capabilities e fa
 | CORE-001 | delivery | CORE | Contratos genéricos | done | P0 | BOOT-002 |
 | CORE-002 | delivery | CORE | Registry de classes/specs | done | P0 | CORE-001 |
 | CORE-003 | delivery | CORE | Detecção de spec e talentos | planned | P0 | CORE-002, CORE-004 |
-| CORE-004 | delivery | CORE | Compat layer WoW | in_progress | P0 | CORE-001 |
+| CORE-004 | delivery | CORE | Compat layer WoW | done | P0 | CORE-001 |
 | LAB-001 | delivery | ROTATION LAB | Integração SimC CLI | planned | P0 | BOOT-002 |
 | LAB-002 | delivery | ROTATION LAB | DSL de rotação | planned | P0 | CORE-001 |
 | LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | planned | P0 | LAB-001, LAB-002, CORE-001 |
@@ -116,6 +116,14 @@ Próxima ação: Verificar APIs Retail e implementar adapters, capabilities e fa
 - tests/fixtures/specs/neutral_vanguard.lua demonstra registro plugável sem alterar o Core ou introduzir lógica de spec real.
 - docs/architecture/SPEC_REGISTRY.md documenta API, ownership, conflitos, ordem determinística e carregamento pelo TOC.
 - Commit 9df6fc0 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### CORE-004
+
+- npm run core:test passou com 24/24 testes de Compat, 31/31 testes dos contratos e 13/13 testes do registry em 3/3 suítes Lua.
+- npm test passou com 41 testes de governança, 68 testes Lua, fronteiras/TOC, Luacheck e wowlua-ls sem falhas.
+- docs/architecture/COMPAT.md registra a matriz de APIs, o alvo 12.1.0.69587/120100, capabilities e fallbacks seguros.
+- tools/validation/check-layout.mjs impede o uso das APIs cobertas fora de addon/Compat.
+- Commit 0f9ea26 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
 
 ### UI-DESIGN-001
 

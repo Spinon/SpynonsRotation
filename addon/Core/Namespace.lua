@@ -16,7 +16,11 @@ local addonName, Spynon = ...
 ---@field Contracts SpynonContracts
 ---@field SpecRegistry table
 ---@field Specs table
+---@field CompatFactory table
+---@field Compat table
+---@field CompatInternal table
 
 Spynon.name = addonName
 Spynon.version = "0.0.0"
 Spynon.Contracts = Spynon.Contracts or {}
+Spynon.CompatInternal = Spynon.CompatInternal or {}

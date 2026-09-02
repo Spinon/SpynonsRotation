@@ -37,9 +37,18 @@ const requiredFiles = [
   "addon/Core/Contracts/Recommendation.lua",
   "addon/Core/Contracts/SpecModule.lua",
   "addon/Core/SpecRegistry.lua",
+  "addon/Compat/SafeCall.lua",
+  "addon/Compat/Result.lua",
+  "addon/Compat/Build.lua",
+  "addon/Compat/Specialization.lua",
+  "addon/Compat/Talents.lua",
+  "addon/Compat/Secrets.lua",
+  "addon/Compat/Facade.lua",
+  "docs/architecture/COMPAT.md",
   "docs/architecture/CONTRACTS.md",
   "docs/architecture/SPEC_REGISTRY.md",
   "tests/fixtures/specs/neutral_vanguard.lua",
+  "tests/unit/compat_spec.lua",
   "tests/unit/spec_registry_spec.lua",
   "AGENTS.md",
   "project-board.json",
@@ -99,6 +108,40 @@ function visit(directory) {
 for (const directory of genericLuaRoots) {
   visit(path.join(root, "addon", directory));
 }
+
+const volatileApiPatterns = [
+  { name: "GetBuildInfo", pattern: /\bGetBuildInfo\s*\(/u },
+  { name: "C_SpecializationInfo", pattern: /\bC_SpecializationInfo\b/u },
+  { name: "C_ClassTalents", pattern: /\bC_ClassTalents\b/u },
+  { name: "C_Traits", pattern: /\bC_Traits\b/u },
+  { name: "C_Secrets", pattern: /\bC_Secrets\b/u },
+];
+
+function checkApiBoundary(directory) {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const target = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      checkApiBoundary(target);
+      continue;
+    }
+    if (!entry.isFile() || !entry.name.endsWith(".lua")) {
+      continue;
+    }
+
+    const relative = path.relative(path.join(root, "addon"), target).replaceAll("\\", "/");
+    if (relative.startsWith("Compat/")) {
+      continue;
+    }
+
+    const contents = fs.readFileSync(target, "utf8");
+    for (const api of volatileApiPatterns) {
+      if (api.pattern.test(contents)) {
+        errors.push(`API volátil ${api.name} usada fora de addon/Compat: addon/${relative}`);
+      }
+    }
+  }
+}
+checkApiBoundary(path.join(root, "addon"));
 
 if (errors.length > 0) {
   console.error(`layout:check encontrou ${errors.length} problema(s):`);

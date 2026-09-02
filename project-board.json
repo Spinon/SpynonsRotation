@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T21:40:32.999Z",
-  "currentFocus": "CORE-004",
+  "updatedAt": "2026-09-02T21:46:24.197Z",
+  "currentFocus": "CORE-003",
   "parallelFocus": {
     "ui": "UI-DESIGN-002"
   },
@@ -133,8 +133,8 @@
       "owner": "Codex",
       "status": "planned",
       "priority": "P0",
-      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "source": "tasks/CORE-003.md",
+      "updatedAt": "2026-09-02T21:46:24.197Z",
       "reviewBy": null,
       "nextAction": "Mapear APIs de specialização e talentos via Compat.",
       "dependencies": [
@@ -153,12 +153,12 @@
       "title": "Compat layer WoW",
       "lane": "CORE",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/CORE-004.md",
-      "updatedAt": "2026-09-02T21:34:41.384Z",
+      "updatedAt": "2026-09-02T21:46:24.197Z",
       "reviewBy": null,
-      "nextAction": "Verificar APIs Retail e implementar adapters, capabilities e fallbacks testáveis.",
+      "nextAction": null,
       "dependencies": [
         "CORE-001"
       ],
@@ -167,7 +167,13 @@
         "Capability detection cobre Secret Values",
         "Chamadas possuem fallbacks testáveis"
       ],
-      "evidence": []
+      "evidence": [
+        "npm run core:test passou com 24/24 testes de Compat, 31/31 testes dos contratos e 13/13 testes do registry em 3/3 suítes Lua.",
+        "npm test passou com 41 testes de governança, 68 testes Lua, fronteiras/TOC, Luacheck e wowlua-ls sem falhas.",
+        "docs/architecture/COMPAT.md registra a matriz de APIs, o alvo 12.1.0.69587/120100, capabilities e fallbacks seguros.",
+        "tools/validation/check-layout.mjs impede o uso das APIs cobertas fora de addon/Compat.",
+        "Commit 0f9ea26 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD."
+      ]
     },
     {
       "id": "LAB-001",

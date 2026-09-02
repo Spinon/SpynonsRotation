@@ -16,4 +16,11 @@ Core/Contracts/Recommendation.lua
 Core/Contracts/PlayerState.lua
 Core/Contracts/SpecModule.lua
 Core/SpecRegistry.lua
+Compat/SafeCall.lua
+Compat/Result.lua
+Compat/Build.lua
+Compat/Specialization.lua
+Compat/Talents.lua
+Compat/Secrets.lua
+Compat/Facade.lua
 Core/Bootstrap.lua

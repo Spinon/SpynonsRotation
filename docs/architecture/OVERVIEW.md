@@ -43,6 +43,8 @@ As invariantes e o ownership desses contratos estão documentados em [`CONTRACTS
 
 Nenhum módulo converte ou deriva valores secretos quando a API não permite. Condições incompatíveis com o runtime ficam no Rotation Lab como `SIM_ONLY`. Toda degradação deve ser explícita e segura.
 
+A API uniforme, matriz inicial e política de fallback da fronteira Blizzard estão em [`COMPAT.md`](COMPAT.md).
+
 ## Runtime mínimo
 
 O bootstrap inclui somente um `.toc` e ciclo de inicialização neutro. Ele não contém engine, UI ou lógica de Enhancement. A autoridade final para taint, combat lockdown, Secret Values e rendering continua sendo o cliente Retail real.
