@@ -1,0 +1,10 @@
+## Interface: 120100
+## Title: Spynon's Rotation
+## Notes: A generic, visual rotation assistant by Spynon.
+## Author: Spynon
+## Version: 0.0.0
+## SavedVariables: SpynonRotationDB
+## X-Project-Revision: bootstrap
+## X-WoW-Build: 12.1.0.69587
+
+Core/Bootstrap.lua

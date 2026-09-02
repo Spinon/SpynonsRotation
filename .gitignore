@@ -1,0 +1,27 @@
+# Local toolchains and environments
+.tools/
+.venv/
+
+# Node/Python caches
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Generated Rotation Lab output
+rotation-lab/reports/*
+!rotation-lab/reports/.gitkeep
+
+# Package output
+dist/
+build/
+*.zip
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Runtime files
+*.log

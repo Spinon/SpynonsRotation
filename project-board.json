@@ -1,0 +1,1008 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "name": "Spynon's Rotation",
+    "product": "Generic World of Warcraft rotation-assistant platform",
+    "repository": "https://github.com/Spinon/SpynonsRotation",
+    "defaultBranch": "main"
+  },
+  "updatedAt": "2026-09-02T20:22:00.000Z",
+  "currentFocus": "BOOT-002",
+  "release": {
+    "version": "0.0.0",
+    "channel": "bootstrap",
+    "status": "unreleased",
+    "wowBuild": "12.1.0.69587",
+    "interface": 120100,
+    "simc": "1210.01",
+    "rotationRevision": null,
+    "validatedAt": null
+  },
+  "items": [
+    {
+      "id": "BOOT-001",
+      "title": "Bootstrap do repositório e toolchain",
+      "lane": "BOOT",
+      "owner": "Codex",
+      "status": "done",
+      "priority": "P0",
+      "source": "tasks/BOOT-001.md",
+      "updatedAt": "2026-09-02T20:22:00.000Z",
+      "reviewBy": null,
+      "nextAction": null,
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Repositório conectado ao GitHub na branch main",
+        "Toolchain obrigatória detectada ou instalada com pins verificáveis",
+        "Monorepo e addon mínimo neutro criados",
+        "Checks offline executados sem falhas"
+      ],
+      "evidence": [
+        "npm test passou: board/STATUS, fronteiras, Luacheck e wowlua-ls sem falhas.",
+        "npm run toolchain:doctor passou com SHA-256 verificado e spell query real do SimulationCraft 1210-01 para Lightning Bolt.",
+        "Git remote origin aponta para https://github.com/Spinon/SpynonsRotation na branch main.",
+        "docs/architecture/OVERVIEW.md e tools/toolchain/pins.json registram as fronteiras e versões do bootstrap."
+      ]
+    },
+    {
+      "id": "BOOT-002",
+      "title": "Governança da fila e AGENTS",
+      "lane": "BOOT",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "tasks/BOOT-002.md",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Revisar o bootstrap e adicionar fixtures de governança.",
+      "dependencies": [
+        "BOOT-001"
+      ],
+      "acceptanceCriteria": [
+        "Board e transições possuem testes automatizados",
+        "STATUS é estritamente derivado do board",
+        "Protocolo AGENTS é validado em um ciclo completo"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "CORE-001",
+      "title": "Contratos genéricos",
+      "lane": "CORE",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Definir contratos e invariantes do Core.",
+      "dependencies": [
+        "BOOT-002"
+      ],
+      "acceptanceCriteria": [
+        "Contratos principais são genéricos",
+        "Contratos possuem testes unitários",
+        "Nenhum contrato contém lógica de Enhancement"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "CORE-002",
+      "title": "Registry de classes/specs",
+      "lane": "CORE",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Projetar e implementar o registry genérico.",
+      "dependencies": [
+        "CORE-001"
+      ],
+      "acceptanceCriteria": [
+        "Specs registram módulos sem alterar o Core",
+        "Registry rejeita módulos inválidos",
+        "Fixture demonstra carregamento plugável"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "CORE-003",
+      "title": "Detecção de spec e talentos",
+      "lane": "CORE",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Mapear APIs de specialização e talentos via Compat.",
+      "dependencies": [
+        "CORE-002",
+        "CORE-004"
+      ],
+      "acceptanceCriteria": [
+        "Spec, árvores, hero talents, nodes e ranks são lidos",
+        "Abilities indisponíveis ficam fora da avaliação",
+        "Falhas de API degradam de forma segura"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "CORE-004",
+      "title": "Compat layer WoW",
+      "lane": "CORE",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Criar adapters e matriz inicial de capabilities.",
+      "dependencies": [
+        "CORE-001"
+      ],
+      "acceptanceCriteria": [
+        "APIs voláteis ficam centralizadas em Compat",
+        "Capability detection cobre Secret Values",
+        "Chamadas possuem fallbacks testáveis"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "LAB-001",
+      "title": "Integração SimC CLI",
+      "lane": "ROTATION LAB",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Criar runner headless para o SimC pinado.",
+      "dependencies": [
+        "BOOT-002"
+      ],
+      "acceptanceCriteria": [
+        "SimC pinado executa automaticamente",
+        "Versão e commit aparecem no relatório",
+        "Falhas produzem diagnóstico acionável"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "LAB-002",
+      "title": "DSL de rotação",
+      "lane": "ROTATION LAB",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Especificar a primeira versão da DSL.",
+      "dependencies": [
+        "CORE-001"
+      ],
+      "acceptanceCriteria": [
+        "DSL representa prioridades e condições genéricas",
+        "Capabilities são explícitas",
+        "Parser e validação possuem testes"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "LAB-003",
+      "title": "Compiler SimC ↔ DSL ↔ runtime",
+      "lane": "ROTATION LAB",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Definir IR e pipeline de compilação.",
+      "dependencies": [
+        "LAB-001",
+        "LAB-002",
+        "CORE-001"
+      ],
+      "acceptanceCriteria": [
+        "Baseline pode ser normalizado para DSL",
+        "DSL gera dados determinísticos",
+        "Divergências são detectadas por fixtures"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "LAB-004",
+      "title": "Matriz de cenários",
+      "lane": "ROTATION LAB",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Modelar cenários e pesos iniciais.",
+      "dependencies": [
+        "LAB-001",
+        "LAB-002"
+      ],
+      "acceptanceCriteria": [
+        "Suíte cobre ST, cleave, AoE e dungeon-like",
+        "Pesos de fitness são configuráveis",
+        "Regressões graves não são mascaradas"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "LAB-005",
+      "title": "Optimizer",
+      "lane": "ROTATION LAB",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P2",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Implementar beam search inicial com limites.",
+      "dependencies": [
+        "LAB-004",
+        "LAB-003"
+      ],
+      "acceptanceCriteria": [
+        "Busca é limitada e reproduzível",
+        "Candidatas são comparadas ao baseline",
+        "Triagem e finalistas são separados"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "LAB-006",
+      "title": "Regression suite",
+      "lane": "ROTATION LAB",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Criar formato de relatório e thresholds.",
+      "dependencies": [
+        "LAB-003",
+        "LAB-004"
+      ],
+      "acceptanceCriteria": [
+        "Baseline, candidata e release anterior são comparados",
+        "Relatórios apontam regressão por cenário",
+        "Resultados registram versões e seeds"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "ENH-001",
+      "title": "Catálogo Enhancement",
+      "lane": "SHAMAN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Curar catálogo observável do Enhancement.",
+      "dependencies": [
+        "CORE-002",
+        "CORE-003",
+        "CORE-004"
+      ],
+      "acceptanceCriteria": [
+        "Catálogo cobre spells, talents, hero talents, resources e auras",
+        "IDs e disponibilidade são verificados",
+        "Catálogo vive somente no módulo da spec"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "ENH-002",
+      "title": "Baseline APL",
+      "lane": "SHAMAN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Importar e revisar baseline de referência.",
+      "dependencies": [
+        "ENH-001",
+        "LAB-002",
+        "LAB-003"
+      ],
+      "acceptanceCriteria": [
+        "APL tem origem e versão registradas",
+        "APL é normalizada para DSL",
+        "Condições impossíveis são SIM_ONLY"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "ENH-003",
+      "title": "Curadoria ST",
+      "lane": "SHAMAN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Validar prioridades single-target.",
+      "dependencies": [
+        "ENH-002",
+        "LAB-004"
+      ],
+      "acceptanceCriteria": [
+        "Cenários ST possuem golden fixtures",
+        "Resultado é comparado ao baseline",
+        "Regras usam somente estado permitido"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "ENH-004",
+      "title": "Curadoria Cleave/AoE",
+      "lane": "SHAMAN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Validar prioridades de cleave e AoE.",
+      "dependencies": [
+        "ENH-002",
+        "LAB-004"
+      ],
+      "acceptanceCriteria": [
+        "Cleave e AoE possuem golden fixtures",
+        "Thresholds são observáveis ou possuem override",
+        "Regressões por alvos são reportadas"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "ENH-005",
+      "title": "Talent-aware rotation",
+      "lane": "SHAMAN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Montar matriz de builds e regras condicionais.",
+      "dependencies": [
+        "ENH-003",
+        "ENH-004",
+        "CORE-003"
+      ],
+      "acceptanceCriteria": [
+        "Builds ativam somente regras compatíveis",
+        "Talents ausentes removem ações incompatíveis",
+        "Matriz de builds é determinística"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "RUN-001",
+      "title": "State engine",
+      "lane": "RUNTIME",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Implementar snapshots e atualização incremental.",
+      "dependencies": [
+        "CORE-001",
+        "CORE-004"
+      ],
+      "acceptanceCriteria": [
+        "PlayerState é determinístico e observável",
+        "Updates são event-driven",
+        "Secret Values não são convertidos indevidamente"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "RUN-002",
+      "title": "Recommendation engine",
+      "lane": "RUNTIME",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Implementar avaliação e ordenação de regras.",
+      "dependencies": [
+        "RUN-001",
+        "CORE-002",
+        "LAB-003"
+      ],
+      "acceptanceCriteria": [
+        "Engine produz Recommendation[] genérico",
+        "Golden fixtures são determinísticas",
+        "Regras incompatíveis são excluídas"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "RUN-003",
+      "title": "Context detector",
+      "lane": "RUNTIME",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Definir sinais e fallbacks do CombatContext.",
+      "dependencies": [
+        "RUN-001",
+        "CORE-004"
+      ],
+      "acceptanceCriteria": [
+        "AUTO, ST, CLEAVE e AOE usam sinais permitidos",
+        "Override manual está disponível",
+        "Ausência de capacidade degrada com segurança"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "UI-001",
+      "title": "Queue estática",
+      "lane": "UI",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Criar primeiro protótipo visual no cliente.",
+      "dependencies": [
+        "RUN-002"
+      ],
+      "acceptanceCriteria": [
+        "Fila mostra quatro recomendações por padrão",
+        "Primeira ação tem maior hierarquia",
+        "UI consome somente Recommendation"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "UI-002",
+      "title": "Animator",
+      "lane": "UI",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Implementar diff de fila e movimentos.",
+      "dependencies": [
+        "UI-001"
+      ],
+      "acceptanceCriteria": [
+        "Identidades visuais persistem",
+        "MOVE, ENTER, EXIT, PROMOTE e CONSUME são distintos",
+        "Defaults são discretos e legíveis"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "UI-003",
+      "title": "Hotkeys",
+      "lane": "UI",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Mapear bindings e renderizar overlay.",
+      "dependencies": [
+        "UI-001",
+        "CORE-004"
+      ],
+      "acceptanceCriteria": [
+        "Bindings são detectados automaticamente",
+        "Abreviação compacta é configurável",
+        "Fallback mantém legibilidade"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "UI-004",
+      "title": "Cooldowns/charges/stacks",
+      "lane": "UI",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Criar overlays compatíveis com Retail.",
+      "dependencies": [
+        "UI-001",
+        "CORE-004"
+      ],
+      "acceptanceCriteria": [
+        "Swipe, duração, charges e stacks funcionam",
+        "DurationObjects são usados quando necessário",
+        "Valores secretos não alimentam lógica proibida"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "UI-005",
+      "title": "Buff/debuff indicators",
+      "lane": "UI",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P2",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Definir vocabulário visual.",
+      "dependencies": [
+        "UI-004",
+        "RUN-002"
+      ],
+      "acceptanceCriteria": [
+        "Somente sinais que alteram decisão recebem destaque",
+        "Indicadores não poluem o HUD",
+        "Estados possuem Demo Mode e fixtures"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "UI-006",
+      "title": "Demo Mode",
+      "lane": "UI",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Criar timeline de demonstração.",
+      "dependencies": [
+        "UI-002",
+        "UI-004",
+        "RUN-003"
+      ],
+      "acceptanceCriteria": [
+        "Modo simula fila, procs, cooldowns, stacks e contextos",
+        "Não exige combate real",
+        "Cenários são reproduzíveis"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "UX-001",
+      "title": "Config básico contextual",
+      "lane": "CONFIG / UX",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Prototipar navegação e cards.",
+      "dependencies": [
+        "UI-001"
+      ],
+      "acceptanceCriteria": [
+        "Tela usa progressive disclosure",
+        "Opções técnicas não aparecem no nível básico",
+        "Mudanças têm preview imediato"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "UX-002",
+      "title": "Edit HUD",
+      "lane": "CONFIG / UX",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Implementar seleção contextual.",
+      "dependencies": [
+        "UX-001",
+        "UI-002"
+      ],
+      "acceptanceCriteria": [
+        "Clique seleciona diretamente o componente",
+        "Painel mostra opções pertinentes",
+        "Preview atualiza em tempo real"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "UX-003",
+      "title": "Advanced panels",
+      "lane": "CONFIG / UX",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P2",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Mapear níveis de disclosure.",
+      "dependencies": [
+        "UX-001"
+      ],
+      "acceptanceCriteria": [
+        "Controles técnicos ficam em Avançado",
+        "Parâmetros possuem nomes humanos",
+        "Configuração básica permanece limpa"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "UX-004",
+      "title": "Undo/Redo",
+      "lane": "CONFIG / UX",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Implementar command history.",
+      "dependencies": [
+        "UX-002"
+      ],
+      "acceptanceCriteria": [
+        "Histórico usa ações transacionais",
+        "Drag contínuo vira uma ação",
+        "Undo, redo e resets são distintos"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "UX-005",
+      "title": "Preview + reset granular",
+      "lane": "CONFIG / UX",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P2",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Definir snapshots e resets.",
+      "dependencies": [
+        "UX-004"
+      ],
+      "acceptanceCriteria": [
+        "Preview temporário não entra no histórico cedo",
+        "Elemento, seção e perfil restauram separadamente",
+        "Exploração evita perda acidental"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "UX-006",
+      "title": "Typography",
+      "lane": "CONFIG / UX",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P2",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Curar tipografia default.",
+      "dependencies": [
+        "UX-001"
+      ],
+      "acceptanceCriteria": [
+        "Default usa fonte do WoW",
+        "Modo simples controla base, outline e shadow",
+        "Overrides possuem fallback"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "PROFILE-001",
+      "title": "Persistência e perfis",
+      "lane": "PROFILES / SKINS",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Avaliar AceDB e implementar resolução.",
+      "dependencies": [
+        "CORE-001",
+        "UX-001"
+      ],
+      "acceptanceCriteria": [
+        "Global, personagem e spec resolvem precedência",
+        "Cópia e reset possuem testes",
+        "Default funciona sem abrir Profiles"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "SKIN-001",
+      "title": "Skin API",
+      "lane": "PROFILES / SKINS",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Definir contrato e skin default.",
+      "dependencies": [
+        "UI-001"
+      ],
+      "acceptanceCriteria": [
+        "Skin define tokens sem controlar lógica",
+        "Overrides preservam precedência",
+        "Default é desacoplado"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "SKIN-002",
+      "title": "External reskin contract",
+      "lane": "PROFILES / SKINS",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P2",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Projetar registro público de skins.",
+      "dependencies": [
+        "SKIN-001"
+      ],
+      "acceptanceCriteria": [
+        "Addon externo registra skin",
+        "Versionamento e conflitos são tratados",
+        "Exemplo mínimo valida a API"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "BRAND-001",
+      "title": "Integrar logotipo Spynon aprovado",
+      "lane": "BRAND",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Localizar o logo oficial quando disponibilizado.",
+      "dependencies": [
+        "BOOT-001"
+      ],
+      "acceptanceCriteria": [
+        "Asset oficial é localizado e preservado",
+        "Origem e checksum são registrados",
+        "Nenhum redesign é feito"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "BRAND-002",
+      "title": "Criar master técnico e variantes",
+      "lane": "BRAND",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P2",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Preparar derivados técnicos.",
+      "dependencies": [
+        "BRAND-001"
+      ],
+      "acceptanceCriteria": [
+        "Master é fiel ao aprovado",
+        "Variantes necessárias são produzidas",
+        "Comparação confirma fidelidade"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "BRAND-003",
+      "title": "Aplicar identidade ao default",
+      "lane": "BRAND",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P2",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Aplicar tokens à skin default.",
+      "dependencies": [
+        "BRAND-002",
+        "SKIN-001",
+        "UI-001"
+      ],
+      "acceptanceCriteria": [
+        "Default aplica identidade com discrição",
+        "Logo e skin permanecem coerentes",
+        "Preview é aprovado"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "PATCH-001",
+      "title": "API diff pipeline",
+      "lane": "PATCH / QUALITY",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Definir fontes e formato do diff.",
+      "dependencies": [
+        "CORE-004"
+      ],
+      "acceptanceCriteria": [
+        "Mudanças de API por build são detectáveis",
+        "Relatório aponta módulos afetados",
+        "Pins impedem alterações silenciosas"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "PATCH-002",
+      "title": "Secret Values audit",
+      "lane": "PATCH / QUALITY",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Criar matriz de riscos.",
+      "dependencies": [
+        "PATCH-001",
+        "RUN-001"
+      ],
+      "acceptanceCriteria": [
+        "Valores secretos possuem auditoria",
+        "Regressões quebram checks",
+        "Fallbacks são verificados"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "TEST-001",
+      "title": "Wowless integration",
+      "lane": "PATCH / QUALITY",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Criar harness Docker pinado.",
+      "dependencies": [
+        "BOOT-001"
+      ],
+      "acceptanceCriteria": [
+        "Commit do Wowless está fixado",
+        "Addon carrega em Docker reproduzível",
+        "Limitações pre-alpha são explícitas"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "TEST-002",
+      "title": "In-game harness",
+      "lane": "PATCH / QUALITY",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Detectar cliente Retail e definir /spynon test.",
+      "dependencies": [
+        "RUN-002",
+        "UI-001",
+        "CORE-004"
+      ],
+      "acceptanceCriteria": [
+        "Comando interno executa smoke no Retail",
+        "Taint, lockdown e rendering têm checklist",
+        "Evidência distingue teste real de headless"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "RELEASE-001",
+      "title": "Packaging",
+      "lane": "PATCH / QUALITY",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Criar pacote reproduzível.",
+      "dependencies": [
+        "UI-001",
+        "TEST-001"
+      ],
+      "acceptanceCriteria": [
+        "Zip contém somente runtime",
+        "TOC e metadados são validados",
+        "Artefato registra versões"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "RELEASE-002",
+      "title": "CI",
+      "lane": "PATCH / QUALITY",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": null,
+      "nextAction": "Definir workflow de validação.",
+      "dependencies": [
+        "RELEASE-001",
+        "BOOT-002"
+      ],
+      "acceptanceCriteria": [
+        "Checks rodam automaticamente",
+        "Artifacts são reproduzíveis",
+        "CI não publica sem autorização"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "ARCH-001",
+      "title": "Segunda spec para validação multiclasse",
+      "lane": "MULTI-CLASS VALIDATION",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P2",
+      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
+      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Selecionar segunda spec após maturidade.",
+      "dependencies": [
+        "ENH-005",
+        "RUN-003",
+        "UI-006",
+        "PROFILE-001",
+        "SKIN-002"
+      ],
+      "acceptanceCriteria": [
+        "Segunda spec diferente é implementada",
+        "Camadas genéricas não ganham exceções",
+        "Relatório confirma modularidade"
+      ],
+      "evidence": []
+    }
+  ]
+}

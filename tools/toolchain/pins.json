@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-02T20:06:29.884Z",
+  "platform": "windows-x64",
+  "runtime": {
+    "git": "2.53.0.windows.3",
+    "githubCli": "2.92.0",
+    "node": "24.15.0",
+    "npm": "11.12.1",
+    "python": "3.14.6",
+    "pythonEnvironment": ".venv",
+    "docker": "29.7.2"
+  },
+  "lua": {
+    "distribution": "LuaJIT",
+    "packageId": "DEVCOM.LuaJIT",
+    "packageVersion": "2.1.19907",
+    "runtimeVersion": "2.1.1720049189",
+    "languageCompatibility": "5.1",
+    "luarocks": "3.11.1"
+  },
+  "luacheck": {
+    "release": "v1.2.0",
+    "source": "https://github.com/lunarmodules/luacheck/releases/tag/v1.2.0",
+    "path": ".tools/luacheck/luacheck.exe",
+    "sha256": "0F1C69C4D09F1EBB4D8DF14C215E4553E2E639BD4CB7BF3C639B0DAA6198317B"
+  },
+  "wowluaLs": {
+    "release": "v0.30.4",
+    "source": "https://github.com/TradeSkillMaster/wowlua-ls/releases/tag/v0.30.4",
+    "path": ".tools/wowlua-ls/wowlua_ls.exe",
+    "sha256": "5D436B42D33AD01F1249A46F89AE41F7AA5B8F87E4BFB4336971B24FB2A57235"
+  },
+  "simulationCraft": {
+    "version": "1210.01",
+    "wowVersion": "12.1.0.69587",
+    "sourceRepository": "simulationcraft/simc-publish",
+    "workflowRunId": 33587950600,
+    "workflowCommit": "17e4d74676a0b45525906b5cb1acdb1af2c851e1",
+    "artifactId": 9831070830,
+    "artifactName": "simc-nightly-win64-midnight",
+    "archive": ".tools/simc/simc-1210.01.f869791-win64.7z",
+    "archiveSha256": "E934CB0471DEE1902EE4FCC036EC65082B8D4FBC8E419B6216FD4DD1FB4B5D70",
+    "executable": ".tools/simc/simc-1210.01.f869791-win64/simc.exe",
+    "executableSha256": "150D3D8FE6D2E5DF6279F0940BE118ECB3A47B79AF58E81BCF24F01FB91C5070"
+  },
+  "wowless": {
+    "repository": "https://github.com/wowless/wowless",
+    "commit": "e6fbf29e6496d57a9dd52e4e8adabc362fe6d1f4",
+    "integrationTask": "TEST-001"
+  },
+  "wowRetail": {
+    "version": "12.1.0",
+    "build": 69587,
+    "interface": 120100,
+    "clientDetected": false
+  }
+}
