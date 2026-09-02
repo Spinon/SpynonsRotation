@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T20:31:10.000Z
+Atualizado pelo board em: 2026-09-02T20:35:17.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **CORE-001 — Contratos genéricos**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Definir contratos e invariantes do Core.
+Próxima ação: Implementar e testar os seis contratos genéricos do Core.
 
 ## Progresso
 
-- Planejadas: 43
-- Em andamento: 0
+- Planejadas: 42
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 2
 - Total: 45
@@ -28,7 +28,7 @@ Próxima ação: Definir contratos e invariantes do Core.
 | --- | --- | --- | --- | --- | --- |
 | BOOT-001 | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
 | BOOT-002 | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
-| CORE-001 | CORE | Contratos genéricos | planned | P0 | BOOT-002 |
+| CORE-001 | CORE | Contratos genéricos | in_progress | P0 | BOOT-002 |
 | CORE-002 | CORE | Registry de classes/specs | planned | P0 | CORE-001 |
 | CORE-003 | CORE | Detecção de spec e talentos | planned | P0 | CORE-002, CORE-004 |
 | CORE-004 | CORE | Compat layer WoW | planned | P0 | CORE-001 |

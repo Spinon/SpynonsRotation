@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T20:31:10.000Z",
+  "updatedAt": "2026-09-02T20:35:17.000Z",
   "currentFocus": "CORE-001",
   "release": {
     "version": "0.0.0",
@@ -75,12 +75,12 @@
       "title": "Contratos genéricos",
       "lane": "CORE",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "tasks/CORE-001.md",
-      "updatedAt": "2026-09-02T20:31:10.000Z",
+      "updatedAt": "2026-09-02T20:35:17.000Z",
       "reviewBy": null,
-      "nextAction": "Definir contratos e invariantes do Core.",
+      "nextAction": "Implementar e testar os seis contratos genéricos do Core.",
       "dependencies": [
         "BOOT-002"
       ],
