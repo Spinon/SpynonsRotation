@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T20:21:43.012Z",
-  "currentFocus": "ENH-005",
+  "updatedAt": "2026-09-03T20:34:13.872Z",
+  "currentFocus": "RUN-001",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -474,12 +474,12 @@
       "title": "Talent-aware rotation",
       "lane": "SHAMAN",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/ENH-005.md",
-      "updatedAt": "2026-09-03T20:21:43.012Z",
+      "updatedAt": "2026-09-03T20:34:13.872Z",
       "reviewBy": null,
-      "nextAction": "Materializar os perfis Stormbringer e Totemic como snapshots e compilar a matriz talent-aware.",
+      "nextAction": null,
       "dependencies": [
         "ENH-003",
         "ENH-004",
@@ -490,7 +490,14 @@
         "Talents ausentes removem ações incompatíveis",
         "Matriz de builds é determinística"
       ],
-      "evidence": []
+      "evidence": [
+        "study.json fixa os perfis oficiais MID2 Stormbringer e Totemic no commit f86979165c9b952e41d8cb6119065d3f6272abee; os Git blobs locais 2059098303f2c02766a86287eb0935c97ce66712 e 95e954758a4c887ce51cfc446471a4725c580b0a correspondem às fontes upstream.",
+        "snapshots.json registra 47 talentos catalogados para Stormbringer e 45 para Totemic, incluindo ranks de choice nodes; entries pertencentes à Hero Tree inativa são auditadas e excluídas de activeSpellRanks.",
+        "matrix.json seleciona single_sb para Stormbringer, single_totemic para Totemic e aoe para ambas; cada build preserva 13 ações compatíveis e 28 regras ativas, com 27 exclusões explicadas no total.",
+        "Três probes removem Tempest, Surging Totem e Voltaic Blaze; as ações e regras incompatíveis desaparecem, e Flame Shock retorna quando Voltaic Blaze deixa de substituí-la.",
+        "Duas gerações completas produziram snapshots.json e matrix.json byte a byte idênticos, com SHA-256 EFAF18FDDF64D2B4150746FE1F1B9EC8547913C5A20D96B037DB02F6208A9599 e 9E85BE2218871B918A767B23F444092F73C0E9C9A91918284F7DE1AA0C31C704; digest lógico 1CAB82F2F888D7046E3595BDFECCFE752DC2E950D31A65107D18E02B33411D74.",
+        "npm test passou com 168 testes Node e 99 testes Lua; fronteiras, Luacheck e wowlua-ls permaneceram sem falhas."
+      ]
     },
     {
       "id": "RUN-001",

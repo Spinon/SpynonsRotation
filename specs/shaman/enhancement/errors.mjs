@@ -33,3 +33,12 @@ export class EnhancementMultiTargetError extends Error {
     this.details = details;
   }
 }
+
+export class EnhancementTalentAwareError extends Error {
+  constructor(code, message, details = {}) {
+    super(message);
+    this.name = "EnhancementTalentAwareError";
+    this.code = code;
+    this.details = details;
+  }
+}

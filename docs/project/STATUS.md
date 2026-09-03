@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T20:21:43.012Z
+Atualizado pelo board em: 2026-09-03T20:34:13.872Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**ENH-005 — Talent-aware rotation**
+**RUN-001 — State engine**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Materializar os perfis Stormbringer e Totemic como snapshots e compilar a matriz talent-aware.
+Próxima ação: Implementar snapshots e atualização incremental.
 
 ## Progresso
 
 - Planejadas: 28
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 27
+- Concluídas: 28
 - Total: 56
 
 ## Fila canônica
@@ -42,7 +42,7 @@ Próxima ação: Materializar os perfis Stormbringer e Totemic como snapshots e 
 | ENH-002 | delivery | SHAMAN | Baseline APL | done | P0 | ENH-001, LAB-002, LAB-003 |
 | ENH-003 | delivery | SHAMAN | Curadoria ST | done | P1 | ENH-002, LAB-004 |
 | ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | done | P1 | ENH-002, LAB-004 |
-| ENH-005 | delivery | SHAMAN | Talent-aware rotation | in_progress | P1 | ENH-003, ENH-004, CORE-003 |
+| ENH-005 | delivery | SHAMAN | Talent-aware rotation | done | P1 | ENH-003, ENH-004, CORE-003 |
 | RUN-001 | delivery | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
 | RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
@@ -218,6 +218,15 @@ Próxima ação: Materializar os perfis Stormbringer e Totemic como snapshots e 
 - chain_floor_4 obteve +0,001696% global, +0,017701% em AoE, -0,0232% em Cleave e limite inferior global de -0,037802%; report.json preserva enhancement.mt.baseline.
 - Duas execuções multi-target completas produziram measurements.json e report.json byte a byte idênticos, com SHA-256 31340D3AAA59366F7D34087CB1C35AA5B555AD9790A64782E79CB14DA2DE0F75 e 9526C540AA12D611BB4D39D616C47317E6AC2C1AC98136E10809C2CB0697E8C9.
 - npm test passou com 163 testes Node e 99 testes Lua; fronteiras, Luacheck e wowlua-ls permaneceram sem falhas.
+
+### ENH-005
+
+- study.json fixa os perfis oficiais MID2 Stormbringer e Totemic no commit f86979165c9b952e41d8cb6119065d3f6272abee; os Git blobs locais 2059098303f2c02766a86287eb0935c97ce66712 e 95e954758a4c887ce51cfc446471a4725c580b0a correspondem às fontes upstream.
+- snapshots.json registra 47 talentos catalogados para Stormbringer e 45 para Totemic, incluindo ranks de choice nodes; entries pertencentes à Hero Tree inativa são auditadas e excluídas de activeSpellRanks.
+- matrix.json seleciona single_sb para Stormbringer, single_totemic para Totemic e aoe para ambas; cada build preserva 13 ações compatíveis e 28 regras ativas, com 27 exclusões explicadas no total.
+- Três probes removem Tempest, Surging Totem e Voltaic Blaze; as ações e regras incompatíveis desaparecem, e Flame Shock retorna quando Voltaic Blaze deixa de substituí-la.
+- Duas gerações completas produziram snapshots.json e matrix.json byte a byte idênticos, com SHA-256 EFAF18FDDF64D2B4150746FE1F1B9EC8547913C5A20D96B037DB02F6208A9599 e 9E85BE2218871B918A767B23F444092F73C0E9C9A91918284F7DE1AA0C31C704; digest lógico 1CAB82F2F888D7046E3595BDFECCFE752DC2E950D31A65107D18E02B33411D74.
+- npm test passou com 168 testes Node e 99 testes Lua; fronteiras, Luacheck e wowlua-ls permaneceram sem falhas.
 
 ### UI-DESIGN-001
 

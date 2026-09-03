@@ -7,6 +7,7 @@ import { serializeEnhancementCatalogLua } from "./runtime.mjs";
 import { verifyPinnedSimcCatalog } from "./simc.mjs";
 import { generateSingleTargetCuration, verifySingleTargetCuration } from "./single-target.mjs";
 import { generateMultiTargetCuration, verifyMultiTargetCuration } from "./multi-target.mjs";
+import { generateTalentAwareArtifacts, verifyTalentAwareArtifacts } from "./talent-aware.mjs";
 import { CATALOG_FILE, RUNTIME_FILE, verifyEnhancementCatalog } from "./verify.mjs";
 
 const command = process.argv[2] ?? "check";
@@ -69,11 +70,23 @@ try {
       + `(${result.cleaveScenarios} Cleave, ${result.aoeScenarios} AoE); `
       + `decisão ${result.decision.outcome} (${result.decision.selectedId}).`
     );
+  } else if (command === "talent-generate") {
+    const result = await generateTalentAwareArtifacts();
+    console.log(
+      `Matriz talent-aware gerada: ${result.builds} builds, ${result.probes} probes, `
+      + `${result.activeRules} regras ativas; digest ${result.digest}.`
+    );
+  } else if (command === "talent-check") {
+    const result = await verifyTalentAwareArtifacts();
+    console.log(
+      `Matriz talent-aware verificada: ${result.builds} builds, ${result.probes} probes, `
+      + `${result.activeRules} regras ativas e ${result.excludedRules} exclusões; digest ${result.digest}.`
+    );
   } else {
     console.error(
       `Comando desconhecido: ${command}. `
       + "Use check, generate, simc-check, baseline-generate, baseline-check, st-generate, st-check, "
-      + "mt-generate ou mt-check."
+      + "mt-generate, mt-check, talent-generate ou talent-check."
     );
     process.exitCode = 1;
   }

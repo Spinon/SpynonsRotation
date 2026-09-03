@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "id": "enhancement.talent_matrix",
+  "version": "12.1.0-1",
+  "catalog": {
+    "id": "shaman.enhancement",
+    "version": "12.1.0-1",
+    "path": "specs/shaman/enhancement/catalog.json",
+    "sha256": "BE6C5436A83EAE8C065CFE2EADC867B625AEE43A4F626713E08E9BC724894199"
+  },
+  "baseline": {
+    "id": "enhancement.simc_baseline",
+    "version": "12.1.0-1",
+    "path": "specs/shaman/enhancement/baseline/baseline.rotation.json",
+    "sha256": "036BEE377D6C5B492B3EF1F670F9D1F6DE6CCC4A098A972C29B3F578669C0BA0"
+  },
+  "simulationCraft": {
+    "version": "1210.01",
+    "wowVersion": "12.1.0.69587",
+    "engineCommit": "f86979165c9b952e41d8cb6119065d3f6272abee",
+    "repository": "https://github.com/simulationcraft/simc",
+    "extraction": {
+      "iterations": 1,
+      "threads": 1,
+      "maxTime": 1,
+      "fixedTime": true,
+      "desiredTargets": 1,
+      "varyCombatLength": 0,
+      "fightStyle": "Patchwerk",
+      "debug": true,
+      "log": true
+    }
+  },
+  "builds": [
+    {
+      "id": "enhancement.build.stormbringer",
+      "heroTreeId": "enhancement.stormbringer",
+      "heroSubTreeId": 55,
+      "singleTargetList": "single_sb",
+      "aoeList": "aoe",
+      "profile": {
+        "path": "specs/shaman/enhancement/talent-aware/profiles/stormbringer.simc",
+        "upstreamPath": "profiles/MID2/MID2_Shaman_Enhancement.simc",
+        "sourceUrl": "https://github.com/simulationcraft/simc/blob/f86979165c9b952e41d8cb6119065d3f6272abee/profiles/MID2/MID2_Shaman_Enhancement.simc",
+        "playerName": "MID2_Shaman_Enhancement_Stormbringer",
+        "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+        "bytes": 13517,
+        "sha256": "2851BAEFBC179953B219267848FD784B4062AF73B2B634D6538CA97DCE7DF54F",
+        "gitBlobSha": "2059098303f2c02766a86287eb0935c97ce66712"
+      }
+    },
+    {
+      "id": "enhancement.build.totemic",
+      "heroTreeId": "enhancement.totemic",
+      "heroSubTreeId": 54,
+      "singleTargetList": "single_totemic",
+      "aoeList": "aoe",
+      "profile": {
+        "path": "specs/shaman/enhancement/single-target/upstream-profile.simc",
+        "upstreamPath": "profiles/MID2/MID2_Shaman_Enhancement_Totemic.simc",
+        "sourceUrl": "https://github.com/simulationcraft/simc/blob/f86979165c9b952e41d8cb6119065d3f6272abee/profiles/MID2/MID2_Shaman_Enhancement_Totemic.simc",
+        "playerName": "MID2_Shaman_Enhancement_Totemic",
+        "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+        "bytes": 13460,
+        "sha256": "32EB17FB5353C48AAA2B2FEFE45AFEC4AAFECDCBA969409459195580DC89CB16",
+        "gitBlobSha": "95e954758a4c887ce51cfc446471a4725c580b0a"
+      }
+    }
+  ],
+  "probes": [
+    {
+      "id": "enhancement.probe.stormbringer_without_tempest",
+      "fromBuild": "enhancement.build.stormbringer",
+      "removeTalentSpellIds": [454009],
+      "expectedAvailableActions": [],
+      "expectedUnavailableActions": ["enhancement.tempest"]
+    },
+    {
+      "id": "enhancement.probe.totemic_without_surging_totem",
+      "fromBuild": "enhancement.build.totemic",
+      "removeTalentSpellIds": [455630],
+      "expectedAvailableActions": [],
+      "expectedUnavailableActions": ["enhancement.surging_totem"]
+    },
+    {
+      "id": "enhancement.probe.totemic_without_voltaic_blaze",
+      "fromBuild": "enhancement.build.totemic",
+      "removeTalentSpellIds": [470057],
+      "expectedAvailableActions": ["enhancement.flame_shock"],
+      "expectedUnavailableActions": ["enhancement.voltaic_blaze"]
+    }
+  ]
+}

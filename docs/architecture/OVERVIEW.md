@@ -37,6 +37,8 @@ O primeiro catálogo concreto e sua disponibilidade por loadout estão definidos
 [`ENHANCEMENT_CATALOG.md`](ENHANCEMENT_CATALOG.md).
 A proveniência, auditoria e normalização da primeira APL real estão definidas em
 [`ENHANCEMENT_BASELINE.md`](ENHANCEMENT_BASELINE.md).
+A especialização determinística da baseline pelos talentos realmente ativos está definida em
+[`ENHANCEMENT_TALENT_AWARE.md`](ENHANCEMENT_TALENT_AWARE.md).
 
 ## Contratos do Core
 
