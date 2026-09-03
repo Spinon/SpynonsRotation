@@ -44,9 +44,9 @@ preservar o código original. Ausência do executável, divergência de hash, pe
 argumentos inválidos interrompem a operação antes que qualquer processo seja iniciado.
 
 A matriz versionada e os planos de execução estão definidos em [`SCENARIOS.md`](SCENARIOS.md).
-Validar a matriz isoladamente não dispara o runner. Orquestradores específicos, como a curadoria ST
-de Enhancement, devem derivar seus parâmetros dela, registrar métricas golden e remover relatórios
-transitórios depois da extração validada.
+Validar a matriz isoladamente não dispara o runner. Orquestradores específicos, como as curadorias
+ST e Cleave/AoE de Enhancement, devem derivar seus parâmetros dela, registrar métricas golden e
+remover relatórios transitórios depois da extração validada.
 
 Referências oficiais:
 

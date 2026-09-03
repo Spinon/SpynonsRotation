@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T19:49:17.079Z
+Atualizado pelo board em: 2026-09-03T20:17:02.822Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**ENH-004 — Curadoria Cleave/AoE**
+**ENH-005 — Talent-aware rotation**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Medir candidatas multi-target limitadas contra a baseline pinada.
+Próxima ação: Montar matriz de builds e regras condicionais.
 
 ## Progresso
 
 - Planejadas: 29
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 26
+- Concluídas: 27
 - Total: 56
 
 ## Fila canônica
@@ -41,7 +41,7 @@ Próxima ação: Medir candidatas multi-target limitadas contra a baseline pinad
 | ENH-001 | delivery | SHAMAN | Catálogo Enhancement | done | P0 | CORE-002, CORE-003, CORE-004 |
 | ENH-002 | delivery | SHAMAN | Baseline APL | done | P0 | ENH-001, LAB-002, LAB-003 |
 | ENH-003 | delivery | SHAMAN | Curadoria ST | done | P1 | ENH-002, LAB-004 |
-| ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | in_progress | P1 | ENH-002, LAB-004 |
+| ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | done | P1 | ENH-002, LAB-004 |
 | ENH-005 | delivery | SHAMAN | Talent-aware rotation | planned | P1 | ENH-003, ENH-004, CORE-003 |
 | RUN-001 | delivery | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
 | RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
@@ -209,6 +209,15 @@ Próxima ação: Medir candidatas multi-target limitadas contra a baseline pinad
 - A melhor finalista obteve fitness de +0,031734%, mas limite inferior familiar de -0,021387%; report.json preserva formalmente enhancement.st.baseline.
 - Duas execuções completas produziram resultados byte a byte idênticos; os artefatos finais registram SHA-256 DFF4CA972FA92EEDC9AE356161FB1EC208F4C4D8E418CD4F06A30ED2FF48B4F6 e 9FF83D9A06DB4FB37F6D07B6A7205588F6DE3B9CB4A75380944A7BA16B518296.
 - npm test passou com 158 testes Node e 99 testes Lua; fronteiras, Luacheck e wowlua-ls permaneceram sem falhas.
+
+### ENH-004
+
+- specs/shaman/enhancement/multi-target/context-policy.json fixa ST em 1 alvo, Cleave em 2–3 e AoE em 4+, exigindo override manual quando a contagem observável não estiver disponível e usando ST como default seguro.
+- study.json mede sete mutações limitadas da lista aoe nos cinco cenários canônicos de 2, 3, 4, 5 e 8 alvos, com linhagem DSL/APL e seeds independentes entre triagem e confirmação.
+- A triagem de 1.000 iterações selecionou chain_floor_4 e primordial_before_tempest; a confirmação usou 10.000 iterações por perfil e cenário.
+- chain_floor_4 obteve +0,001696% global, +0,017701% em AoE, -0,0232% em Cleave e limite inferior global de -0,037802%; report.json preserva enhancement.mt.baseline.
+- Duas execuções multi-target completas produziram measurements.json e report.json byte a byte idênticos, com SHA-256 31340D3AAA59366F7D34087CB1C35AA5B555AD9790A64782E79CB14DA2DE0F75 e 9526C540AA12D611BB4D39D616C47317E6AC2C1AC98136E10809C2CB0697E8C9.
+- npm test passou com 163 testes Node e 99 testes Lua; fronteiras, Luacheck e wowlua-ls permaneceram sem falhas.
 
 ### UI-DESIGN-001
 

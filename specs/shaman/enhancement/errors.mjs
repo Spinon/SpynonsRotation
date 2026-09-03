@@ -24,3 +24,12 @@ export class EnhancementSingleTargetError extends Error {
     this.details = details;
   }
 }
+
+export class EnhancementMultiTargetError extends Error {
+  constructor(code, message, details = {}) {
+    super(message);
+    this.name = "EnhancementMultiTargetError";
+    this.code = code;
+    this.details = details;
+  }
+}

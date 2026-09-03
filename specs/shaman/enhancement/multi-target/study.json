@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "enhancement.multi_target_curation",
+  "version": "12.1.0-1",
+  "baseline": {
+    "id": "enhancement.mt.baseline",
+    "rotationFile": "specs/shaman/enhancement/baseline/baseline.rotation.json",
+    "rotationSha256": "036BEE377D6C5B492B3EF1F670F9D1F6DE6CCC4A098A972C29B3F578669C0BA0",
+    "listId": "aoe"
+  },
+  "profile": {
+    "file": "specs/shaman/enhancement/single-target/upstream-profile.simc",
+    "bytes": 13460,
+    "sha256": "32EB17FB5353C48AAA2B2FEFE45AFEC4AAFECDCBA969409459195580DC89CB16",
+    "gitBlobSha": "95e954758a4c887ce51cfc446471a4725c580b0a",
+    "simulationCraftVersion": "1210.01",
+    "engineCommit": "f86979165c9b952e41d8cb6119065d3f6272abee",
+    "repository": "https://github.com/simulationcraft/simc",
+    "path": "profiles/MID2/MID2_Shaman_Enhancement_Totemic.simc",
+    "build": "Totemic"
+  },
+  "matrix": {
+    "file": "rotation-lab/fixtures/scenarios/initial.scenario-matrix.json",
+    "id": "neutral.initial_matrix",
+    "version": "1.0.0",
+    "sha256": "CD23ECE78BA018768FAE38B035EBCCC278C277B65B3B486CFDB323F9873E76E5"
+  },
+  "contextPolicy": {
+    "file": "specs/shaman/enhancement/multi-target/context-policy.json",
+    "id": "enhancement.initial_combat_context",
+    "version": "1.0.0",
+    "sha256": "D8ABA039574FD23B76EE26C5D387244762DB21BBE06BBB3CE2530E9FDC15FC01"
+  },
+  "scenarios": [
+    { "id": "neutral.cleave_2", "seeds": { "screening": 320021, "finalist": 420021 } },
+    { "id": "neutral.cleave_3", "seeds": { "screening": 320031, "finalist": 420031 } },
+    { "id": "neutral.aoe_4", "seeds": { "screening": 320041, "finalist": 420041 } },
+    { "id": "neutral.aoe_5", "seeds": { "screening": 320051, "finalist": 420051 } },
+    { "id": "neutral.aoe_8", "seeds": { "screening": 320081, "finalist": 420081 } }
+  ],
+  "phases": {
+    "screeningIterations": 1000,
+    "finalistIterations": 10000,
+    "finalistCount": 2
+  },
+  "selection": {
+    "confidenceZ": 2.241403,
+    "confidencePolicy": "95_percent_family_wise_bonferroni_for_two_finalists",
+    "requirePositiveLowerBound": true
+  },
+  "candidates": [
+    {
+      "id": "enhancement.mt.tempest_floor_9",
+      "mutation": {
+        "id": "enhancement.mt.mutation.tempest_floor_9",
+        "kind": "set_numeric_literal",
+        "listId": "aoe",
+        "ruleId": "enhancement.aoe_tempest_1",
+        "valuePath": ["conditions", 0, "right"],
+        "value": 9
+      },
+      "profilePatch": {
+        "kind": "replace_line",
+        "before": "actions.aoe+=/tempest,if=buff.maelstrom_weapon.stack>=10&(!buff.ascendance.up|!buff.doom_winds.up)",
+        "after": "actions.aoe+=/tempest,if=buff.maelstrom_weapon.stack>=9&(!buff.ascendance.up|!buff.doom_winds.up)"
+      }
+    },
+    {
+      "id": "enhancement.mt.primordial_floor_9",
+      "mutation": {
+        "id": "enhancement.mt.mutation.primordial_floor_9",
+        "kind": "set_numeric_literal",
+        "listId": "aoe",
+        "ruleId": "enhancement.aoe_primordial_storm_1",
+        "valuePath": ["right"],
+        "value": 9
+      },
+      "profilePatch": {
+        "kind": "replace_line",
+        "before": "actions.aoe+=/primordial_storm,if=buff.maelstrom_weapon.stack>=10",
+        "after": "actions.aoe+=/primordial_storm,if=buff.maelstrom_weapon.stack>=9"
+      }
+    },
+    {
+      "id": "enhancement.mt.chain_floor_4",
+      "mutation": {
+        "id": "enhancement.mt.mutation.chain_floor_4",
+        "kind": "set_numeric_literal",
+        "listId": "aoe",
+        "ruleId": "enhancement.aoe_chain_lightning_1",
+        "valuePath": ["right"],
+        "value": 4
+      },
+      "profilePatch": {
+        "kind": "replace_line",
+        "before": "actions.aoe+=/chain_lightning,if=buff.maelstrom_weapon.stack>=5",
+        "after": "actions.aoe+=/chain_lightning,if=buff.maelstrom_weapon.stack>=4"
+      }
+    },
+    {
+      "id": "enhancement.mt.chain_floor_6",
+      "mutation": {
+        "id": "enhancement.mt.mutation.chain_floor_6",
+        "kind": "set_numeric_literal",
+        "listId": "aoe",
+        "ruleId": "enhancement.aoe_chain_lightning_1",
+        "valuePath": ["right"],
+        "value": 6
+      },
+      "profilePatch": {
+        "kind": "replace_line",
+        "before": "actions.aoe+=/chain_lightning,if=buff.maelstrom_weapon.stack>=5",
+        "after": "actions.aoe+=/chain_lightning,if=buff.maelstrom_weapon.stack>=6"
+      }
+    },
+    {
+      "id": "enhancement.mt.primordial_before_tempest",
+      "mutation": {
+        "id": "enhancement.mt.mutation.primordial_before_tempest",
+        "kind": "swap_rules",
+        "listId": "aoe",
+        "firstRuleId": "enhancement.aoe_tempest_1",
+        "secondRuleId": "enhancement.aoe_primordial_storm_1"
+      },
+      "profilePatch": {
+        "kind": "swap_lines",
+        "first": "actions.aoe+=/tempest,if=buff.maelstrom_weapon.stack>=10&(!buff.ascendance.up|!buff.doom_winds.up)",
+        "second": "actions.aoe+=/primordial_storm,if=buff.maelstrom_weapon.stack>=10"
+      }
+    },
+    {
+      "id": "enhancement.mt.voltaic_before_crash",
+      "mutation": {
+        "id": "enhancement.mt.mutation.voltaic_before_crash",
+        "kind": "swap_rules",
+        "listId": "aoe",
+        "firstRuleId": "enhancement.aoe_crash_lightning_2",
+        "secondRuleId": "enhancement.aoe_voltaic_blaze_2"
+      },
+      "profilePatch": {
+        "kind": "swap_lines",
+        "first": "actions.aoe+=/crash_lightning",
+        "second": "actions.aoe+=/voltaic_blaze"
+      }
+    },
+    {
+      "id": "enhancement.mt.chain_before_stormstrike",
+      "mutation": {
+        "id": "enhancement.mt.mutation.chain_before_stormstrike",
+        "kind": "swap_rules",
+        "listId": "aoe",
+        "firstRuleId": "enhancement.aoe_stormstrike_4",
+        "secondRuleId": "enhancement.aoe_chain_lightning_1"
+      },
+      "profilePatch": {
+        "kind": "swap_lines",
+        "first": "actions.aoe+=/stormstrike",
+        "second": "actions.aoe+=/chain_lightning,if=buff.maelstrom_weapon.stack>=5"
+      }
+    }
+  ]
+}

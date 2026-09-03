@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "enhancement.initial_combat_context",
+  "version": "1.0.0",
+  "automaticSignal": {
+    "id": "observable_enemy_count",
+    "requiredCapability": "ADDON_AVAILABLE",
+    "onUnavailable": "manual_override",
+    "safeDefault": "SINGLE_TARGET"
+  },
+  "thresholds": [
+    {
+      "mode": "SINGLE_TARGET",
+      "minimumTargets": 1,
+      "maximumTargets": 1
+    },
+    {
+      "mode": "CLEAVE",
+      "minimumTargets": 2,
+      "maximumTargets": 3
+    },
+    {
+      "mode": "AOE",
+      "minimumTargets": 4,
+      "maximumTargets": 40
+    }
+  ],
+  "manualOverrides": [
+    "SINGLE_TARGET",
+    "CLEAVE",
+    "AOE"
+  ],
+  "runtimeImplementation": "deferred_to_RUN_003"
+}

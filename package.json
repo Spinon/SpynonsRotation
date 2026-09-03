@@ -36,12 +36,14 @@
     "enhancement:baseline-check": "node specs/shaman/enhancement/cli.mjs baseline-check",
     "enhancement:st-generate": "node specs/shaman/enhancement/cli.mjs st-generate",
     "enhancement:st-check": "node specs/shaman/enhancement/cli.mjs st-check",
-    "enhancement:test": "node --test tests/specs/enhancement-catalog.test.mjs tests/specs/enhancement-baseline.test.mjs tests/specs/enhancement-single-target.test.mjs",
+    "enhancement:mt-generate": "node specs/shaman/enhancement/cli.mjs mt-generate",
+    "enhancement:mt-check": "node specs/shaman/enhancement/cli.mjs mt-check",
+    "enhancement:test": "node --test tests/specs/enhancement-catalog.test.mjs tests/specs/enhancement-baseline.test.mjs tests/specs/enhancement-single-target.test.mjs tests/specs/enhancement-multi-target.test.mjs",
     "layout:check": "node tools/validation/check-layout.mjs",
     "core:test": "node tools/validation/run-lua-tests.mjs",
     "addon:lint": "node tools/validation/run-luacheck.mjs",
     "addon:typecheck": "node tools/validation/run-wowlua-ls.mjs",
-    "test": "npm run project:check && npm run project:test && npm run simc:test && npm run dsl:test && npm run compiler:test && npm run compiler:check && npm run scenario:test && npm run scenario:check && npm run optimizer:test && npm run optimizer:check && npm run regression:test && npm run regression:check && npm run enhancement:test && npm run enhancement:check && npm run enhancement:baseline-check && npm run enhancement:st-check && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
+    "test": "npm run project:check && npm run project:test && npm run simc:test && npm run dsl:test && npm run compiler:test && npm run compiler:check && npm run scenario:test && npm run scenario:check && npm run optimizer:test && npm run optimizer:check && npm run regression:test && npm run regression:check && npm run enhancement:test && npm run enhancement:check && npm run enhancement:baseline-check && npm run enhancement:st-check && npm run enhancement:mt-check && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
   },
   "license": "UNLICENSED"
 }

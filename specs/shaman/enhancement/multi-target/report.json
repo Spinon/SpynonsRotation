@@ -1,0 +1,639 @@
+{
+  "schemaVersion": 1,
+  "study": {
+    "id": "enhancement.multi_target_curation",
+    "version": "12.1.0-1",
+    "sha256": "60724E3652E2AB05AE728F51F9DFC486525BAA9C2CCA47217C7E6A4F84254DAF"
+  },
+  "metric": "mean_dps",
+  "method": {
+    "aggregation": "weighted_relative_delta",
+    "confidenceZ": 2.241403,
+    "uncertainty": "conservative_independent_standard_error",
+    "pairedSeeds": true,
+    "independentPhaseSeeds": true,
+    "confidencePolicy": "95_percent_family_wise_bonferroni_for_two_finalists"
+  },
+  "screening": {
+    "iterations": 1000,
+    "ranking": [
+      {
+        "candidateId": "enhancement.mt.chain_floor_4",
+        "eligible": true,
+        "fitnessPercent": 0.003227,
+        "lowerConfidenceBoundPercent": -0.121478,
+        "scenarios": [
+          {
+            "scenarioId": "neutral.cleave_2",
+            "baselineMeanDps": 337833.3275528899,
+            "candidateMeanDps": 338052.17262112745,
+            "deltaPercent": 0.064779,
+            "standardErrorPercent": 0.114059,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.cleave_3",
+            "baselineMeanDps": 444693.5170333267,
+            "candidateMeanDps": 444267.327762646,
+            "deltaPercent": -0.095839,
+            "standardErrorPercent": 0.108803,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_4",
+            "baselineMeanDps": 574719.2252482914,
+            "candidateMeanDps": 574975.207191471,
+            "deltaPercent": 0.04454,
+            "standardErrorPercent": 0.128099,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_5",
+            "baselineMeanDps": 675283.1300727071,
+            "candidateMeanDps": 675653.1036035605,
+            "deltaPercent": 0.054788,
+            "standardErrorPercent": 0.12589,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_8",
+            "baselineMeanDps": 863819.7235446963,
+            "candidateMeanDps": 863079.3607369774,
+            "deltaPercent": -0.085708,
+            "standardErrorPercent": 0.130234,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          }
+        ],
+        "categories": [
+          {
+            "category": "aoe",
+            "scenarios": 3,
+            "fitnessPercent": 0.021022,
+            "lowerConfidenceBoundPercent": -0.149425
+          },
+          {
+            "category": "cleave",
+            "scenarios": 2,
+            "fitnessPercent": -0.024453,
+            "lowerConfidenceBoundPercent": -0.201276
+          }
+        ]
+      },
+      {
+        "candidateId": "enhancement.mt.primordial_before_tempest",
+        "eligible": true,
+        "fitnessPercent": 0,
+        "lowerConfidenceBoundPercent": -0.123743,
+        "scenarios": [
+          {
+            "scenarioId": "neutral.cleave_2",
+            "baselineMeanDps": 337833.3275528899,
+            "candidateMeanDps": 337833.3275528899,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.113751,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.cleave_3",
+            "baselineMeanDps": 444693.5170333267,
+            "candidateMeanDps": 444693.5170333267,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.106644,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_4",
+            "baselineMeanDps": 574719.2252482914,
+            "candidateMeanDps": 574719.2252482914,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.129086,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_5",
+            "baselineMeanDps": 675283.1300727071,
+            "candidateMeanDps": 675283.1300727071,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.123748,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_8",
+            "baselineMeanDps": 863819.7235446963,
+            "candidateMeanDps": 863819.7235446963,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.130435,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          }
+        ],
+        "categories": [
+          {
+            "category": "aoe",
+            "scenarios": 3,
+            "fitnessPercent": 0,
+            "lowerConfidenceBoundPercent": -0.169509
+          },
+          {
+            "category": "cleave",
+            "scenarios": 2,
+            "fitnessPercent": 0,
+            "lowerConfidenceBoundPercent": -0.174572
+          }
+        ]
+      },
+      {
+        "candidateId": "enhancement.mt.tempest_floor_9",
+        "eligible": true,
+        "fitnessPercent": 0,
+        "lowerConfidenceBoundPercent": -0.123743,
+        "scenarios": [
+          {
+            "scenarioId": "neutral.cleave_2",
+            "baselineMeanDps": 337833.3275528899,
+            "candidateMeanDps": 337833.3275528899,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.113751,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.cleave_3",
+            "baselineMeanDps": 444693.5170333267,
+            "candidateMeanDps": 444693.5170333267,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.106644,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_4",
+            "baselineMeanDps": 574719.2252482914,
+            "candidateMeanDps": 574719.2252482914,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.129086,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_5",
+            "baselineMeanDps": 675283.1300727071,
+            "candidateMeanDps": 675283.1300727071,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.123748,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_8",
+            "baselineMeanDps": 863819.7235446963,
+            "candidateMeanDps": 863819.7235446963,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.130435,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          }
+        ],
+        "categories": [
+          {
+            "category": "aoe",
+            "scenarios": 3,
+            "fitnessPercent": 0,
+            "lowerConfidenceBoundPercent": -0.169509
+          },
+          {
+            "category": "cleave",
+            "scenarios": 2,
+            "fitnessPercent": 0,
+            "lowerConfidenceBoundPercent": -0.174572
+          }
+        ]
+      },
+      {
+        "candidateId": "enhancement.mt.chain_floor_6",
+        "eligible": true,
+        "fitnessPercent": -0.013334,
+        "lowerConfidenceBoundPercent": -0.13772,
+        "scenarios": [
+          {
+            "scenarioId": "neutral.cleave_2",
+            "baselineMeanDps": 337833.3275528899,
+            "candidateMeanDps": 338042.8493820623,
+            "deltaPercent": 0.062019,
+            "standardErrorPercent": 0.113509,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.cleave_3",
+            "baselineMeanDps": 444693.5170333267,
+            "candidateMeanDps": 444793.98898158205,
+            "deltaPercent": 0.022594,
+            "standardErrorPercent": 0.1094,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_4",
+            "baselineMeanDps": 574719.2252482914,
+            "candidateMeanDps": 574268.2811521441,
+            "deltaPercent": -0.078463,
+            "standardErrorPercent": 0.128077,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_5",
+            "baselineMeanDps": 675283.1300727071,
+            "candidateMeanDps": 674356.7981980387,
+            "deltaPercent": -0.137177,
+            "standardErrorPercent": 0.125025,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_8",
+            "baselineMeanDps": 863819.7235446963,
+            "candidateMeanDps": 865396.6575571421,
+            "deltaPercent": 0.182554,
+            "standardErrorPercent": 0.129521,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          }
+        ],
+        "categories": [
+          {
+            "category": "aoe",
+            "scenarios": 3,
+            "fitnessPercent": -0.047694,
+            "lowerConfidenceBoundPercent": -0.217415
+          },
+          {
+            "category": "cleave",
+            "scenarios": 2,
+            "fitnessPercent": 0.040116,
+            "lowerConfidenceBoundPercent": -0.136926
+          }
+        ]
+      },
+      {
+        "candidateId": "enhancement.mt.primordial_floor_9",
+        "eligible": true,
+        "fitnessPercent": -0.036097,
+        "lowerConfidenceBoundPercent": -0.16098,
+        "scenarios": [
+          {
+            "scenarioId": "neutral.cleave_2",
+            "baselineMeanDps": 337833.3275528899,
+            "candidateMeanDps": 337834.08830784995,
+            "deltaPercent": 0.000225,
+            "standardErrorPercent": 0.115139,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.cleave_3",
+            "baselineMeanDps": 444693.5170333267,
+            "candidateMeanDps": 444417.3596940265,
+            "deltaPercent": -0.062101,
+            "standardErrorPercent": 0.1071,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_4",
+            "baselineMeanDps": 574719.2252482914,
+            "candidateMeanDps": 574956.4248832797,
+            "deltaPercent": 0.041272,
+            "standardErrorPercent": 0.130364,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_5",
+            "baselineMeanDps": 675283.1300727071,
+            "candidateMeanDps": 674184.2135314827,
+            "deltaPercent": -0.162734,
+            "standardErrorPercent": 0.125396,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_8",
+            "baselineMeanDps": 863819.7235446963,
+            "candidateMeanDps": 864537.9208372367,
+            "deltaPercent": 0.083142,
+            "standardErrorPercent": 0.13012,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          }
+        ],
+        "categories": [
+          {
+            "category": "aoe",
+            "scenarios": 3,
+            "fitnessPercent": -0.037187,
+            "lowerConfidenceBoundPercent": -0.208376
+          },
+          {
+            "category": "cleave",
+            "scenarios": 2,
+            "fitnessPercent": -0.0344,
+            "lowerConfidenceBoundPercent": -0.210302
+          }
+        ]
+      },
+      {
+        "candidateId": "enhancement.mt.chain_before_stormstrike",
+        "eligible": true,
+        "fitnessPercent": -0.077803,
+        "lowerConfidenceBoundPercent": -0.202244,
+        "scenarios": [
+          {
+            "scenarioId": "neutral.cleave_2",
+            "baselineMeanDps": 337833.3275528899,
+            "candidateMeanDps": 337004.8202050426,
+            "deltaPercent": -0.245241,
+            "standardErrorPercent": 0.11359,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.cleave_3",
+            "baselineMeanDps": 444693.5170333267,
+            "candidateMeanDps": 444335.2974509687,
+            "deltaPercent": -0.080554,
+            "standardErrorPercent": 0.107075,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_4",
+            "baselineMeanDps": 574719.2252482914,
+            "candidateMeanDps": 574750.4206496968,
+            "deltaPercent": 0.005428,
+            "standardErrorPercent": 0.129288,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_5",
+            "baselineMeanDps": 675283.1300727071,
+            "candidateMeanDps": 674280.7202990034,
+            "deltaPercent": -0.148443,
+            "standardErrorPercent": 0.126193,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_8",
+            "baselineMeanDps": 863819.7235446963,
+            "candidateMeanDps": 865137.8989992297,
+            "deltaPercent": 0.152598,
+            "standardErrorPercent": 0.12752,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          }
+        ],
+        "categories": [
+          {
+            "category": "aoe",
+            "scenarios": 3,
+            "fitnessPercent": -0.02898,
+            "lowerConfidenceBoundPercent": -0.199735
+          },
+          {
+            "category": "cleave",
+            "scenarios": 2,
+            "fitnessPercent": -0.153749,
+            "lowerConfidenceBoundPercent": -0.328625
+          }
+        ]
+      },
+      {
+        "candidateId": "enhancement.mt.voltaic_before_crash",
+        "eligible": true,
+        "fitnessPercent": -0.114101,
+        "lowerConfidenceBoundPercent": -0.238462,
+        "scenarios": [
+          {
+            "scenarioId": "neutral.cleave_2",
+            "baselineMeanDps": 337833.3275528899,
+            "candidateMeanDps": 337885.6903379605,
+            "deltaPercent": 0.0155,
+            "standardErrorPercent": 0.114676,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.cleave_3",
+            "baselineMeanDps": 444693.5170333267,
+            "candidateMeanDps": 444062.898197041,
+            "deltaPercent": -0.14181,
+            "standardErrorPercent": 0.105881,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_4",
+            "baselineMeanDps": 574719.2252482914,
+            "candidateMeanDps": 574073.0788639517,
+            "deltaPercent": -0.112428,
+            "standardErrorPercent": 0.128848,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_5",
+            "baselineMeanDps": 675283.1300727071,
+            "candidateMeanDps": 673484.8198271022,
+            "deltaPercent": -0.266305,
+            "standardErrorPercent": 0.126604,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_8",
+            "baselineMeanDps": 863819.7235446963,
+            "candidateMeanDps": 864345.7647308192,
+            "deltaPercent": 0.060897,
+            "standardErrorPercent": 0.127249,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          }
+        ],
+        "categories": [
+          {
+            "category": "aoe",
+            "scenarios": 3,
+            "fitnessPercent": -0.141234,
+            "lowerConfidenceBoundPercent": -0.31201
+          },
+          {
+            "category": "cleave",
+            "scenarios": 2,
+            "fitnessPercent": -0.071894,
+            "lowerConfidenceBoundPercent": -0.246347
+          }
+        ]
+      }
+    ],
+    "selectedFinalists": [
+      "enhancement.mt.chain_floor_4",
+      "enhancement.mt.primordial_before_tempest"
+    ]
+  },
+  "finalist": {
+    "iterations": 10000,
+    "ranking": [
+      {
+        "candidateId": "enhancement.mt.chain_floor_4",
+        "eligible": true,
+        "fitnessPercent": 0.001696,
+        "lowerConfidenceBoundPercent": -0.037802,
+        "scenarios": [
+          {
+            "scenarioId": "neutral.cleave_2",
+            "baselineMeanDps": 338033.2829220093,
+            "candidateMeanDps": 337827.17626183,
+            "deltaPercent": -0.060972,
+            "standardErrorPercent": 0.03677,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.cleave_3",
+            "baselineMeanDps": 444703.3238640109,
+            "candidateMeanDps": 444734.53200827,
+            "deltaPercent": 0.007018,
+            "standardErrorPercent": 0.034089,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_4",
+            "baselineMeanDps": 574159.3155544512,
+            "candidateMeanDps": 574442.1447894343,
+            "deltaPercent": 0.04926,
+            "standardErrorPercent": 0.040637,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_5",
+            "baselineMeanDps": 674587.0388210563,
+            "candidateMeanDps": 674641.4424255519,
+            "deltaPercent": 0.008065,
+            "standardErrorPercent": 0.040149,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_8",
+            "baselineMeanDps": 864339.1549040503,
+            "candidateMeanDps": 864204.0923734887,
+            "deltaPercent": -0.015626,
+            "standardErrorPercent": 0.039834,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          }
+        ],
+        "categories": [
+          {
+            "category": "aoe",
+            "scenarios": 3,
+            "fitnessPercent": 0.017701,
+            "lowerConfidenceBoundPercent": -0.036259
+          },
+          {
+            "category": "cleave",
+            "scenarios": 2,
+            "fitnessPercent": -0.0232,
+            "lowerConfidenceBoundPercent": -0.079267
+          }
+        ]
+      },
+      {
+        "candidateId": "enhancement.mt.primordial_before_tempest",
+        "eligible": true,
+        "fitnessPercent": 0,
+        "lowerConfidenceBoundPercent": -0.039532,
+        "scenarios": [
+          {
+            "scenarioId": "neutral.cleave_2",
+            "baselineMeanDps": 338033.2829220093,
+            "candidateMeanDps": 338033.2829220093,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.036897,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.cleave_3",
+            "baselineMeanDps": 444703.3238640109,
+            "candidateMeanDps": 444703.3238640109,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.034045,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_4",
+            "baselineMeanDps": 574159.3155544512,
+            "candidateMeanDps": 574159.3155544512,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.040748,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_5",
+            "baselineMeanDps": 674587.0388210563,
+            "candidateMeanDps": 674587.0388210563,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.040173,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          },
+          {
+            "scenarioId": "neutral.aoe_8",
+            "baselineMeanDps": 864339.1549040503,
+            "candidateMeanDps": 864339.1549040503,
+            "deltaPercent": 0,
+            "standardErrorPercent": 0.039697,
+            "maxRegressionPercent": 3,
+            "guardrail": "pass"
+          }
+        ],
+        "categories": [
+          {
+            "category": "aoe",
+            "scenarios": 3,
+            "fitnessPercent": 0,
+            "lowerConfidenceBoundPercent": -0.054007
+          },
+          {
+            "category": "cleave",
+            "scenarios": 2,
+            "fitnessPercent": 0,
+            "lowerConfidenceBoundPercent": -0.05611
+          }
+        ]
+      }
+    ]
+  },
+  "decision": {
+    "outcome": "baseline_retained",
+    "selectedId": "enhancement.mt.baseline",
+    "reason": "no_finalist_cleared_guardrails_and_positive_family_wise_confidence_lower_bound"
+  }
+}

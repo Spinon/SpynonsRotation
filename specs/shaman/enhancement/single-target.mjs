@@ -258,7 +258,7 @@ function profileById(phase, profileId) {
 }
 
 function compareProfiles(validated, phase, candidateId) {
-  const baseline = profileById(phase, BASELINE_ID);
+  const baseline = profileById(phase, validated.study.baseline.id);
   const candidate = profileById(phase, candidateId);
   if (!baseline || !candidate) {
     fail("ST_MEASUREMENTS_INCOMPLETE", `Medição ausente para ${candidateId} em ${phase.id}.`);
@@ -266,6 +266,7 @@ function compareProfiles(validated, phase, candidateId) {
   let totalWeight = 0;
   let weightedDelta = 0;
   let weightedVariance = 0;
+  const categories = new Map();
   const scenarios = validated.scenarios.map((scenario) => {
     const baselineMetric = baseline.scenarios.find((entry) => entry.scenarioId === scenario.id);
     const candidateMetric = candidate.scenarios.find((entry) => entry.scenarioId === scenario.id);
@@ -279,6 +280,17 @@ function compareProfiles(validated, phase, candidateId) {
     totalWeight += scenario.weight;
     weightedDelta += scenario.weight * deltaPercent;
     weightedVariance += (scenario.weight * standardErrorPercent) ** 2;
+    const category = categories.get(scenario.category) ?? {
+      weight: 0,
+      weightedDelta: 0,
+      weightedVariance: 0,
+      scenarios: 0,
+    };
+    category.weight += scenario.weight;
+    category.weightedDelta += scenario.weight * deltaPercent;
+    category.weightedVariance += (scenario.weight * standardErrorPercent) ** 2;
+    category.scenarios += 1;
+    categories.set(scenario.category, category);
     return {
       scenarioId: scenario.id,
       baselineMeanDps: baselineMetric.meanDps,
@@ -293,13 +305,30 @@ function compareProfiles(validated, phase, candidateId) {
   const aggregateStandardError = Math.sqrt(weightedVariance) / totalWeight;
   const lowerConfidenceBoundPercent = fitnessPercent
     - validated.study.selection.confidenceZ * aggregateStandardError;
-  return {
+  const comparison = {
     candidateId,
     eligible: scenarios.every((scenario) => scenario.guardrail === "pass"),
     fitnessPercent: round(fitnessPercent),
     lowerConfidenceBoundPercent: round(lowerConfidenceBoundPercent),
     scenarios,
   };
+  if (categories.size > 1) {
+    comparison.categories = [...categories.entries()]
+      .sort(([left], [right]) => left.localeCompare(right, "en"))
+      .map(([category, aggregate]) => {
+        const categoryFitness = aggregate.weightedDelta / aggregate.weight;
+        const categoryStandardError = Math.sqrt(aggregate.weightedVariance) / aggregate.weight;
+        return {
+          category,
+          scenarios: aggregate.scenarios,
+          fitnessPercent: round(categoryFitness),
+          lowerConfidenceBoundPercent: round(
+            categoryFitness - validated.study.selection.confidenceZ * categoryStandardError
+          ),
+        };
+      });
+  }
+  return comparison;
 }
 
 function rankComparisons(comparisons) {
@@ -310,7 +339,7 @@ function rankComparisons(comparisons) {
   ));
 }
 
-export function calculateSingleTargetReport(validated, measurements) {
+export function calculateCurationReport(validated, measurements) {
   const screening = measurements.phases.find((phase) => phase.id === "screening");
   const finalist = measurements.phases.find((phase) => phase.id === "finalist");
   const screeningRanking = rankComparisons(
@@ -320,7 +349,9 @@ export function calculateSingleTargetReport(validated, measurements) {
     .filter((entry) => entry.eligible)
     .slice(0, validated.study.phases.finalistCount)
     .map((entry) => entry.candidateId);
-  const finalistIds = finalist.profiles.filter((profile) => profile.id !== BASELINE_ID).map((profile) => profile.id);
+  const finalistIds = finalist.profiles
+    .filter((profile) => profile.id !== validated.study.baseline.id)
+    .map((profile) => profile.id);
   if (JSON.stringify(finalistIds) !== JSON.stringify(expectedFinalists)) {
     fail("ST_FINALIST_SELECTION_DRIFT", "Os finalistas medidos não correspondem ao ranking da triagem.", {
       expectedFinalists,
@@ -364,10 +395,14 @@ export function calculateSingleTargetReport(validated, measurements) {
       }
       : {
         outcome: "baseline_retained",
-        selectedId: BASELINE_ID,
+        selectedId: validated.study.baseline.id,
         reason: "no_finalist_cleared_guardrails_and_positive_family_wise_confidence_lower_bound",
       },
   };
+}
+
+export function calculateSingleTargetReport(validated, measurements) {
+  return calculateCurationReport(validated, measurements);
 }
 
 function validateMetric(metric, phase, scenario) {
@@ -377,7 +412,7 @@ function validateMetric(metric, phase, scenario) {
     || metric.maxTime !== scenario.simulation.maxTime
     || metric.fixedTime !== true
     || metric.varyCombatLength !== 0
-    || metric.desiredTargets !== 1
+    || metric.desiredTargets !== scenario.simulation.desiredTargets
     || metric.fightStyle !== "Patchwerk"
     || !Number.isInteger(metric.sampleCount)
     || metric.sampleCount < 1
@@ -391,7 +426,7 @@ function validateMetric(metric, phase, scenario) {
   }
 }
 
-export function validateSingleTargetMeasurements(validated, measurements) {
+export function validateCurationMeasurements(validated, measurements) {
   if (measurements?.schemaVersion !== 1
     || measurements.study?.id !== validated.study.id
     || measurements.study?.version !== validated.study.version
@@ -414,7 +449,7 @@ export function validateSingleTargetMeasurements(validated, measurements) {
     }
     const ids = new Set();
     for (const profile of phase.profiles) {
-      const expected = profile.id === BASELINE_ID
+      const expected = profile.id === validated.study.baseline.id
         ? { profileSha256: validated.profileSha256, rotationSha256: validated.study.baseline.rotationSha256 }
         : candidateById.get(profile.id);
       if (!expected || ids.has(profile.id)
@@ -427,7 +462,7 @@ export function validateSingleTargetMeasurements(validated, measurements) {
       ids.add(profile.id);
       validated.scenarios.forEach((scenario, index) => validateMetric(profile.scenarios[index], phase, scenario));
     }
-    if (!ids.has(BASELINE_ID)) {
+    if (!ids.has(validated.study.baseline.id)) {
       fail("ST_MEASUREMENTS_INCOMPLETE", `A fase ${phase.id} não contém a baseline.`);
     }
     if (phase.id === "screening" && ids.size !== validated.candidates.length + 1) {
@@ -435,6 +470,10 @@ export function validateSingleTargetMeasurements(validated, measurements) {
     }
   }
   return measurements;
+}
+
+export function validateSingleTargetMeasurements(validated, measurements) {
+  return validateCurationMeasurements(validated, measurements);
 }
 
 function extractDpsMetric(report, scenario, phase) {
@@ -450,7 +489,7 @@ function extractDpsMetric(report, scenario, phase) {
     maxTime: scenario.simulation.maxTime,
     fixedTime: true,
     varyCombatLength: 0,
-    desiredTargets: 1,
+    desiredTargets: scenario.simulation.desiredTargets,
     fightStyle: "Patchwerk",
     meanDps: metric.mean,
     meanStandardError: metric.mean_std_dev,
@@ -458,9 +497,9 @@ function extractDpsMetric(report, scenario, phase) {
   };
 }
 
-function safeReportName(phaseId, profileId, scenarioId) {
-  const digest = sha256(`${phaseId}:${profileId}:${scenarioId}`).slice(0, 16).toLowerCase();
-  return `enh003-${phaseId.slice(0, 3)}-${digest}`;
+function safeReportName(studyId, phaseId, profileId, scenarioId) {
+  const digest = sha256(`${studyId}:${phaseId}:${profileId}:${scenarioId}`).slice(0, 16).toLowerCase();
+  return `curation-${phaseId.slice(0, 3)}-${digest}`;
 }
 
 async function measurePhase(validated, phaseId, iterations, profiles, transientFiles) {
@@ -476,14 +515,14 @@ async function measurePhase(validated, phaseId, iterations, profiles, transientF
       const result = await runSimulation({
         root: validated.root,
         profile: profile.file,
-        reportName: safeReportName(phaseId, profile.id, scenario.id),
+        reportName: safeReportName(validated.study.id, phaseId, profile.id, scenario.id),
         iterations,
         threads: validated.matrix.defaults.threads,
         maxTime: scenario.simulation.maxTime,
         fixedTime: true,
         seed: scenario.seeds[phaseId],
         varyCombatLength: 0,
-        desiredTargets: 1,
+        desiredTargets: scenario.simulation.desiredTargets,
         fightStyle: "Patchwerk",
       });
       transientFiles.push(result.manifestPath, result.simcReportPath);
@@ -498,22 +537,25 @@ async function measurePhase(validated, phaseId, iterations, profiles, transientF
   return phase;
 }
 
-export async function generateSingleTargetCuration({ root = process.cwd() } = {}) {
-  const validated = validateSingleTargetStudy({ root });
-  const tempDirectory = resolveInside(validated.root, TEMP_DIRECTORY);
+export async function generateCurationArtifacts(validated, {
+  tempDirectory: relativeTempDirectory,
+  measurementsFile,
+  reportFile,
+} = {}) {
+  const tempDirectory = resolveInside(validated.root, relativeTempDirectory);
   const transientFiles = [];
   fs.rmSync(tempDirectory, { recursive: true, force: true });
   fs.mkdirSync(tempDirectory, { recursive: true });
   try {
     const baselineProfile = {
-      id: BASELINE_ID,
+      id: validated.study.baseline.id,
       file: validated.study.profile.file,
       profileSha256: validated.profileSha256,
       rotationSha256: validated.study.baseline.rotationSha256,
     };
     const candidates = validated.candidates.map((candidate) => {
       const fileName = `${candidate.id.replaceAll(".", "-")}.simc`;
-      const relativeFile = `${TEMP_DIRECTORY}/${fileName}`;
+      const relativeFile = `${relativeTempDirectory}/${fileName}`;
       fs.writeFileSync(resolveInside(validated.root, relativeFile), candidate.profileText, "utf8");
       return { ...candidate, file: relativeFile };
     });
@@ -551,10 +593,10 @@ export async function generateSingleTargetCuration({ root = process.cwd() } = {}
       transientFiles
     );
     const measurements = { ...screeningMeasurements, phases: [screening, finalist] };
-    validateSingleTargetMeasurements(validated, measurements);
-    const report = calculateSingleTargetReport(validated, measurements);
-    fs.writeFileSync(resolveInside(validated.root, SINGLE_TARGET_MEASUREMENTS), normalizedJson(measurements), "utf8");
-    fs.writeFileSync(resolveInside(validated.root, SINGLE_TARGET_REPORT), normalizedJson(report), "utf8");
+    validateCurationMeasurements(validated, measurements);
+    const report = calculateCurationReport(validated, measurements);
+    fs.writeFileSync(resolveInside(validated.root, measurementsFile), normalizedJson(measurements), "utf8");
+    fs.writeFileSync(resolveInside(validated.root, reportFile), normalizedJson(report), "utf8");
     return report;
   } finally {
     for (const file of transientFiles.filter(Boolean)) {
@@ -567,12 +609,20 @@ export async function generateSingleTargetCuration({ root = process.cwd() } = {}
   }
 }
 
-export function verifySingleTargetCuration({ root = process.cwd() } = {}) {
+export async function generateSingleTargetCuration({ root = process.cwd() } = {}) {
   const validated = validateSingleTargetStudy({ root });
-  const measurementsText = readText(validated.root, SINGLE_TARGET_MEASUREMENTS);
-  const reportText = readText(validated.root, SINGLE_TARGET_REPORT);
-  const measurements = validateSingleTargetMeasurements(validated, JSON.parse(measurementsText));
-  const expectedReport = calculateSingleTargetReport(validated, measurements);
+  return generateCurationArtifacts(validated, {
+    tempDirectory: TEMP_DIRECTORY,
+    measurementsFile: SINGLE_TARGET_MEASUREMENTS,
+    reportFile: SINGLE_TARGET_REPORT,
+  });
+}
+
+export function verifyCurationArtifacts(validated, { measurementsFile, reportFile } = {}) {
+  const measurementsText = readText(validated.root, measurementsFile);
+  const reportText = readText(validated.root, reportFile);
+  const measurements = validateCurationMeasurements(validated, JSON.parse(measurementsText));
+  const expectedReport = calculateCurationReport(validated, measurements);
   if (reportText !== normalizedJson(expectedReport)) {
     fail("ST_REPORT_DRIFT", "O relatório ST diverge das medições golden ou da política de decisão.");
   }
@@ -585,4 +635,12 @@ export function verifySingleTargetCuration({ root = process.cwd() } = {}) {
     finalists: expectedReport.screening.selectedFinalists,
     decision: expectedReport.decision,
   };
+}
+
+export function verifySingleTargetCuration({ root = process.cwd() } = {}) {
+  const validated = validateSingleTargetStudy({ root });
+  return verifyCurationArtifacts(validated, {
+    measurementsFile: SINGLE_TARGET_MEASUREMENTS,
+    reportFile: SINGLE_TARGET_REPORT,
+  });
 }

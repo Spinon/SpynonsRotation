@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T19:49:17.079Z",
-  "currentFocus": "ENH-004",
+  "updatedAt": "2026-09-03T20:17:02.822Z",
+  "currentFocus": "ENH-005",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -445,12 +445,12 @@
       "title": "Curadoria Cleave/AoE",
       "lane": "SHAMAN",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/ENH-004.md",
-      "updatedAt": "2026-09-03T19:37:59.575Z",
+      "updatedAt": "2026-09-03T20:17:02.822Z",
       "reviewBy": null,
-      "nextAction": "Medir candidatas multi-target limitadas contra a baseline pinada.",
+      "nextAction": null,
       "dependencies": [
         "ENH-002",
         "LAB-004"
@@ -460,7 +460,14 @@
         "Thresholds são observáveis ou possuem override",
         "Regressões por alvos são reportadas"
       ],
-      "evidence": []
+      "evidence": [
+        "specs/shaman/enhancement/multi-target/context-policy.json fixa ST em 1 alvo, Cleave em 2–3 e AoE em 4+, exigindo override manual quando a contagem observável não estiver disponível e usando ST como default seguro.",
+        "study.json mede sete mutações limitadas da lista aoe nos cinco cenários canônicos de 2, 3, 4, 5 e 8 alvos, com linhagem DSL/APL e seeds independentes entre triagem e confirmação.",
+        "A triagem de 1.000 iterações selecionou chain_floor_4 e primordial_before_tempest; a confirmação usou 10.000 iterações por perfil e cenário.",
+        "chain_floor_4 obteve +0,001696% global, +0,017701% em AoE, -0,0232% em Cleave e limite inferior global de -0,037802%; report.json preserva enhancement.mt.baseline.",
+        "Duas execuções multi-target completas produziram measurements.json e report.json byte a byte idênticos, com SHA-256 31340D3AAA59366F7D34087CB1C35AA5B555AD9790A64782E79CB14DA2DE0F75 e 9526C540AA12D611BB4D39D616C47317E6AC2C1AC98136E10809C2CB0697E8C9.",
+        "npm test passou com 163 testes Node e 99 testes Lua; fronteiras, Luacheck e wowlua-ls permaneceram sem falhas."
+      ]
     },
     {
       "id": "ENH-005",

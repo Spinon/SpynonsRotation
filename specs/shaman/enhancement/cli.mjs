@@ -6,6 +6,7 @@ import { loadEnhancementCatalog } from "./catalog.mjs";
 import { serializeEnhancementCatalogLua } from "./runtime.mjs";
 import { verifyPinnedSimcCatalog } from "./simc.mjs";
 import { generateSingleTargetCuration, verifySingleTargetCuration } from "./single-target.mjs";
+import { generateMultiTargetCuration, verifyMultiTargetCuration } from "./multi-target.mjs";
 import { CATALOG_FILE, RUNTIME_FILE, verifyEnhancementCatalog } from "./verify.mjs";
 
 const command = process.argv[2] ?? "check";
@@ -54,10 +55,25 @@ try {
       `Curadoria ST verificada: ${result.candidates} candidatas × ${result.scenarios} cenários; `
       + `decisão ${result.decision.outcome} (${result.decision.selectedId}).`
     );
+  } else if (command === "mt-generate") {
+    const result = await generateMultiTargetCuration();
+    console.log(
+      `Curadoria multi-target medida: ${result.screening.ranking.length} candidatas, `
+      + `${result.screening.selectedFinalists.length} finalistas; decisão ${result.decision.outcome} `
+      + `(${result.decision.selectedId}).`
+    );
+  } else if (command === "mt-check") {
+    const result = verifyMultiTargetCuration();
+    console.log(
+      `Curadoria multi-target verificada: ${result.candidates} candidatas × ${result.scenarios} cenários `
+      + `(${result.cleaveScenarios} Cleave, ${result.aoeScenarios} AoE); `
+      + `decisão ${result.decision.outcome} (${result.decision.selectedId}).`
+    );
   } else {
     console.error(
       `Comando desconhecido: ${command}. `
-      + "Use check, generate, simc-check, baseline-generate, baseline-check, st-generate ou st-check."
+      + "Use check, generate, simc-check, baseline-generate, baseline-check, st-generate, st-check, "
+      + "mt-generate ou mt-check."
     );
     process.exitCode = 1;
   }
