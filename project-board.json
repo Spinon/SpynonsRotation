@@ -6,11 +6,9 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T19:30:58.255Z",
+  "updatedAt": "2026-09-03T19:34:32.212Z",
   "currentFocus": "ENH-004",
-  "parallelFocus": {
-    "ui": "UI-DESIGN-008"
-  },
+  "parallelFocus": {},
   "release": {
     "version": "0.0.0",
     "channel": "bootstrap",
@@ -770,12 +768,12 @@
       "title": "Kit técnico de assets e handoff",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-008--kit-técnico-e-handoff",
-      "updatedAt": "2026-09-03T19:26:30.929Z",
+      "updatedAt": "2026-09-03T19:34:32.212Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Revisar com o Product Owner os masters neutros, máscaras e dimensões antes de liberar o handoff para delivery.",
+      "nextAction": null,
       "dependencies": [
         "UI-DESIGN-007"
       ],
@@ -789,7 +787,8 @@
         "assets/ui/runtime-source/technical-kit-preview-v1.png compara os cinco masters neutros e suas máscaras principal, de assinatura e de estado.",
         "tools/ui/Build-TechnicalAssets.ps1 reconstrói deterministicamente os derivados sem editar os masters aprovados.",
         "tools/ui/Test-TechnicalAssets.ps1 validou headers, dimensões, alpha declarado, UVs, hashes e 7.995.680 bytes do pacote de runtime.",
-        "docs/product/HUD_ASSET_HANDOFF.md documenta ordem de camadas, placeholders, reutilização e integração futura sem implementar Lua."
+        "docs/product/HUD_ASSET_HANDOFF.md documenta ordem de camadas, placeholders, reutilização e integração futura sem implementar Lua.",
+        "O Product Owner aprovou o kit técnico como baseline em 2026-09-03 e autorizou refinamentos visuais posteriores por versionamento."
       ],
       "track": "ui"
     },

@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T19:30:58.255Z
+Atualizado pelo board em: 2026-09-03T19:34:32.212Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -14,18 +14,12 @@ Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Validar prioridades de cleave e AoE.
 
-## Focos paralelos
-
-| Trilha | Task | Status | Próxima ação |
-| --- | --- | --- | --- |
-| ui | UI-DESIGN-008 — Kit técnico de assets e handoff | in_progress | Revisar com o Product Owner os masters neutros, máscaras e dimensões antes de liberar o handoff para delivery. |
-
 ## Progresso
 
 - Planejadas: 30
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 24
+- Concluídas: 25
 - Total: 55
 
 ## Fila canônica
@@ -59,7 +53,7 @@ Próxima ação: Validar prioridades de cleave e AoE.
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | done | P1 | UI-DESIGN-004, UI-DESIGN-009 |
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | done | P0 | UI-DESIGN-005 |
 | UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | done | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
-| UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | in_progress | P1 | UI-DESIGN-007 |
+| UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | done | P1 | UI-DESIGN-007 |
 | UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |
 | UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | done | P1 | UI-DESIGN-005, UI-DESIGN-009 |
 | UI-001 | delivery | UI | Queue estática | planned | P0 | RUN-002 |
@@ -279,6 +273,15 @@ Próxima ação: Validar prioridades de cleave e AoE.
 - assets/ui/motion/manifest.json registra tempos candidatos, política de interrupção, limites de simultaneidade e fallback reduzido/desligado.
 - docs/product/HUD_MOTION_STATES.md documenta o vocabulário completo sem implementar runtime ou depender de classe/spec.
 - O Product Owner aprovou os tempos, a promoção da fila e os tratamentos locais em 2026-09-03.
+
+### UI-DESIGN-008
+
+- assets/ui/runtime/manifest.json registra 16 TGAs de 32 bits, 16 PNGs de revisão, canvases em potência de dois, UVs e hashes dos masters de origem.
+- assets/ui/runtime-source/technical-kit-preview-v1.png compara os cinco masters neutros e suas máscaras principal, de assinatura e de estado.
+- tools/ui/Build-TechnicalAssets.ps1 reconstrói deterministicamente os derivados sem editar os masters aprovados.
+- tools/ui/Test-TechnicalAssets.ps1 validou headers, dimensões, alpha declarado, UVs, hashes e 7.995.680 bytes do pacote de runtime.
+- docs/product/HUD_ASSET_HANDOFF.md documenta ordem de camadas, placeholders, reutilização e integração futura sem implementar Lua.
+- O Product Owner aprovou o kit técnico como baseline em 2026-09-03 e autorizou refinamentos visuais posteriores por versionamento.
 
 ### UI-DESIGN-009
 

@@ -4,6 +4,8 @@
 
 Os masters aprovados foram convertidos em um kit desacoplado de cor: estrutura neutra, máscara principal, máscara de assinatura e, quando necessário, máscara de estado. O pacote está em [`assets/ui/runtime`](../../assets/ui/runtime/README.md) e a prancha de inspeção está em [`technical-kit-preview-v1.png`](../../assets/ui/runtime-source/technical-kit-preview-v1.png).
 
+O Product Owner aprovou a versão 1 como baseline de handoff em 2026-09-03. Refinamentos futuros continuam permitidos, mas devem produzir arquivos versionados em vez de sobrescrever os derivados e hashes aprovados.
+
 Os PNGs originais continuam sendo a fonte visual de alta resolução. O script [`Build-TechnicalAssets.ps1`](../../tools/ui/Build-TechnicalAssets.ps1) redimensiona, adiciona padding transparente, neutraliza os pixels cromáticos e produz PNGs de revisão e TGAs equivalentes.
 
 ## Geometria de runtime

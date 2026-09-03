@@ -1,6 +1,6 @@
 # Assets de runtime do HUD
 
-Esta pasta contém derivados técnicos candidatos para consumo futuro pela UI do addon. Os arquivos são TGA true-color de 32 bits, com alpha de 8 bits, origem superior esquerda, canvas em potência de dois e padding transparente.
+Esta pasta contém a baseline técnica aprovada para consumo futuro pela UI do addon. Os arquivos são TGA true-color de 32 bits, com alpha de 8 bits, origem superior esquerda, canvas em potência de dois e padding transparente.
 
 Cada componente usa o mesmo conjunto lógico:
 
@@ -17,4 +17,4 @@ O pacote pode ser reconstruído com `tools/ui/Build-TechnicalAssets.ps1` e verif
 
 O GCD e o progresso de cast continuam procedurais e não possuem bitmap de preenchimento. Ícones continuam vindo do WoW. Na ausência de um asset ou ícone, a implementação usa o placeholder neutro contratual sem alterar âncoras.
 
-Estes arquivos estão prontos para handoff, mas ainda não foram carregados ou validados dentro do cliente Retail. A implementação Lua pertence à trilha `delivery`.
+Estes arquivos estão prontos para handoff, mas ainda não foram carregados ou validados dentro do cliente Retail. A implementação Lua pertence à trilha `delivery`. Ajustes visuais posteriores devem gerar uma nova versão dos derivados, preservando esta baseline e seus hashes.
