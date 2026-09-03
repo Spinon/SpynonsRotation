@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T20:41:07.569Z",
+  "updatedAt": "2026-09-03T20:42:08.198Z",
   "currentFocus": "ENH-006",
   "parallelFocus": {},
   "release": {
@@ -504,10 +504,10 @@
       "title": "Build de referência para iniciantes",
       "lane": "SHAMAN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "tasks/ENH-006.md",
-      "updatedAt": "2026-09-03T20:41:07.569Z",
+      "updatedAt": "2026-09-03T20:42:08.198Z",
       "reviewBy": null,
       "nextAction": "Montar o catálogo finito de talent strings válidas e medir o cenário Patchwerk.",
       "dependencies": [
