@@ -102,7 +102,7 @@ O trilho é genérico e orientado a decisão. Cada célula reserva espaço para 
 
 Cor nunca é o único canal: texto, ícone de estado ou tratamento da moldura deve reforçar a leitura.
 
-O padrão usa três células e o teto é cinco. Os slots permanecem em ordem estável; duração não reorganiza o trilho, e um efeito que expira muda para `AUSENTE` no mesmo lugar.
+O padrão usa três células e o teto é cinco. Elas funcionam como fila de urgência: o que exige atenção fica mais à esquerda, e a posição só muda ao trocar de faixa. O encaixe inferior não possui label; mostra verde, âmbar ou vermelho sólidos e fica vazio quando o sinal termina ou está desligado.
 
 ## Contexto, hotkeys e quantidades
 

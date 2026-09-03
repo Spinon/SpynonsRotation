@@ -1,12 +1,16 @@
 {
   "schemaVersion": 1,
   "status": "candidate_review",
+  "activePreviewVersion": "v2",
   "component": "auraJuggleCell",
   "layout": {
     "defaultVisible": 3,
     "maxVisible": 5,
     "orientation": "HORIZONTAL",
-    "stableSlots": true,
+    "stableSlots": false,
+    "urgencyQueue": true,
+    "reorderOnBucketChange": true,
+    "reorderOnTimerTick": false,
     "hideWhenEmpty": true,
     "permanentOverflowBadge": false
   },
@@ -22,18 +26,22 @@
       "sha256": "125BB040B637ECCB0C327E73EAC4DD317C85D6A8C129413E3FF59A690E0D646D"
     },
     "defaultPreview": {
-      "file": "aura-juggle-preview-v1.png",
+      "file": "aura-juggle-preview-v2.png",
       "sourceWidth": 1260,
       "sourceHeight": 226,
-      "sha256": "BBD13EFDB3C737A9857FF894E92014AD534F8A88B08499BB3A35CE5FFB7DB48A"
+      "sha256": "16546E80998B02B2D2FF4EFE511E9D622CFF1DADAADB15047B6CDDDE399B8139"
     },
     "stateReference": {
-      "file": "aura-juggle-state-reference-v1.png",
+      "file": "aura-juggle-state-reference-v2.png",
       "sourceWidth": 2100,
       "sourceHeight": 226,
-      "sha256": "E98F5BDA140B0C00F56044853EFF5FC821A57EE95036819653AD57E15242F4EC"
+      "sha256": "C6A65F8F6DFB1A923BE60BE3C9CA2F1784791C07DBAE5CC92B2E5810AE85FD7E"
     }
   },
+  "previousVisualReferences": [
+    "aura-juggle-preview-v1.png",
+    "aura-juggle-state-reference-v1.png"
+  ],
   "staticFrame": {
     "solidChannels": {
       "blue": "#0788D8",
@@ -74,58 +82,77 @@
         "height": 71
       },
       "layers": [
-        "stateShape",
-        "stateLabel"
+        "stateColorFill"
       ]
     }
   },
   "states": {
     "stable": {
       "color": "#7CFF4B",
-      "shape": "CIRCLE",
-      "label": "ESTÁVEL",
+      "shelfVisible": true,
       "salience": "LOW"
     },
     "attention": {
       "color": "#FFC247",
-      "shape": "TRIANGLE",
-      "label": "ATENÇÃO",
+      "shelfVisible": true,
       "salience": "MEDIUM"
     },
     "refresh": {
-      "color": "#FF8A2A",
-      "shape": "DIAMOND",
-      "label": "RENOVAR",
+      "color": "#FF3F3F",
+      "shelfVisible": true,
       "salience": "HIGH"
     },
     "missing": {
-      "color": "#FF5252",
-      "shape": "CROSS",
-      "label": "AUSENTE",
+      "color": null,
+      "shelfVisible": false,
+      "mainValue": "AUSENTE",
       "salience": "HIGH",
       "iconTreatment": "DESATURATED"
     },
     "unavailable": {
-      "color": "#98A4B0",
-      "shape": "QUESTION_MARK",
-      "label": "INDISP.",
+      "color": null,
+      "shelfVisible": false,
+      "mainValue": "—",
       "salience": "LOW",
       "iconTreatment": "DESATURATED",
       "mustNotImplyMissing": true
     }
   },
+  "stateColorProgression": {
+    "direction": "HEALTHY_TO_CRITICAL",
+    "input": "normalizedUrgency",
+    "interpolation": "TEMPORAL_LINEAR",
+    "stops": [
+      "#7CFF4B",
+      "#FFC247",
+      "#FF3F3F"
+    ],
+    "spatialGradient": false,
+    "uniformColorPerState": true,
+    "emptyWhen": [
+      "MISSING",
+      "DISABLED",
+      "UNAVAILABLE"
+    ]
+  },
   "selection": {
     "onlyDecisionRelevant": true,
     "source": "generic_ranked_signals",
-    "ordering": "stable_slot_key",
-    "durationDoesNotReorder": true
+    "ordering": "urgency_bucket_then_stable_key",
+    "leftToRightBuckets": [
+      "MISSING",
+      "REFRESH",
+      "ATTENTION",
+      "STABLE",
+      "DISABLED_OR_UNAVAILABLE"
+    ],
+    "durationDoesNotReorderWithinBucket": true
   },
   "dynamicLayers": [
     "wowAuraIcon",
     "shortName",
     "durationOrState",
-    "stateShape",
-    "stateLabel"
+    "stateColorFill"
   ],
   "generation": {
     "mode": "built_in_imagegen",
