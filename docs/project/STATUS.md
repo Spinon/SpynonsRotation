@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T18:44:29.107Z
+Atualizado pelo board em: 2026-09-03T18:56:32.898Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,7 +18,7 @@ Próxima ação: Preservar, auditar e normalizar a APL Enhancement pinada.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-010 — Contraste cromático do GCD | in_progress | Produzir o comparativo cromático do GCD no HUD e submeter a direção recomendada à revisão do Product Owner. |
+| ui | UI-DESIGN-010 — Contraste cromático do GCD | in_progress | Revisar com o Product Owner o sistema de canaletas procedurais e o prata neutro proposto para o GCD. |
 
 ## Progresso
 

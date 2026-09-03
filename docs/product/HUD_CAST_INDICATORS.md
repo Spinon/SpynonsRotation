@@ -43,9 +43,9 @@ A troca entre estados não muda a largura das zonas enquanto o componente estive
 
 ## Cor e distinção do GCD
 
-A moldura reutiliza os trilhos sólidos azul `#0788D8` e verde `#42C93E`. O preview usa ciano `#22D3EE` para o preenchimento do cast, sem gradiente ou glow incorporado. Essa cor ainda é candidata.
+A moldura técnica final terá canaletas neutras e máscara separada para energia procedural. O preview usa ciano `#22D3EE` como default configurável para o preenchimento do cast, sem gradiente ou glow incorporado.
 
-O GCD permanece com azul provisório até `UI-DESIGN-010`, quando cast, GCD, proc e moldura serão comparados juntos. A geometria do slot do GCD não será alterada nessa revisão.
+O GCD usa prata `#D8E1E8` como candidato para não competir com o cast ciano. Ambos usam `LINEAR_PROGRESS`, mas mantêm slots e fontes de progresso independentes. A geometria do slot do GCD não muda nessa revisão.
 
 ## Limites
 

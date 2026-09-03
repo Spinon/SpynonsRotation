@@ -54,6 +54,8 @@ cooldown radial
 
 No card de contexto, texto e estados ficam sobre `combat-context-card-frame-v1.png`. Nas actions, hotkey e quantidade permanecem acima de cooldown e estados transitórios, sem texturas intermediárias.
 
+A moldura técnica do contexto também adota a canaleta neutra compartilhada. Quando ativo, um segmento procedural curto pode usar o azul padrão com baixa saliência; texto continua sendo o canal autoritativo do modo. Cor e movimento são configuráveis pelo contrato de [`HUD_PROCEDURAL_CHANNELS.md`](HUD_PROCEDURAL_CHANNELS.md).
+
 ## Handoff
 
 O master, hash e safe areas normalizadas do contexto estão no manifest de [`assets/ui/context`](../../assets/ui/context/manifest.json). Defaults tipográficos e testes de legibilidade em escala pertencem a `UI-DESIGN-008`; os controles de usuário pertencem à trilha de configuração.

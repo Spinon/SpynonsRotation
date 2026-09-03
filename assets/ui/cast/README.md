@@ -24,9 +24,9 @@ Da base para o topo:
 3. indicadores decisivos;
 4. ícone nativo do WoW e nome da habilidade;
 5. `cast-indicator-frame-v1.png`;
-6. glow futuro, se aprovado em `UI-DESIGN-007`.
+6. segmento procedural de perímetro, definido em `UI-DESIGN-007`.
 
-O preenchimento ciano `#22D3EE` aparece somente no preview e permanece candidato. `UI-DESIGN-010` deve comparar cast, GCD, proc e trilhos da moldura antes de fechar a cor final do GCD.
+O preenchimento ciano `#22D3EE` aparece somente no preview e passa a ser o default configurável do cast. A moldura técnica final usa canaleta neutra e máscara separada conforme [`../procedural-channels.json`](../procedural-channels.json).
 
 ## Prompt de geração — moldura
 

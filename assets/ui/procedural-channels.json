@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate_review",
+  "system": "proceduralEnergyChannels",
+  "concept": {
+    "file": "concepts/spynon-main-hud-procedural-channels-concept-v2.png",
+    "sha256": "AAA2B75F740AC4F297E9B4313EBB3557A46AA1DFD661753EFCF3EA44F2F76DF9"
+  },
+  "staticAssetContract": {
+    "contains": [
+      "graphiteStructure",
+      "recessedNeutralChannel",
+      "masksAndCutouts"
+    ],
+    "excludes": [
+      "coloredPerimeterFill",
+      "progressFill",
+      "travelingLight",
+      "bakedGlow",
+      "gradient"
+    ],
+    "idleChannelVisible": true
+  },
+  "runtimeModes": {
+    "PERIMETER_FLOW": {
+      "behavior": "short_segment_travels_inside_channel",
+      "fullPerimeterFill": false,
+      "motionTask": "UI-DESIGN-007"
+    },
+    "LINEAR_PROGRESS": {
+      "behavior": "fill_length_represents_observable_progress",
+      "direction": "LEFT_TO_RIGHT",
+      "inventProgress": false
+    },
+    "STATE_FILL": {
+      "behavior": "solid_uniform_fill_while_state_is_active",
+      "spatialGradient": false
+    }
+  },
+  "defaultTokens": {
+    "channelTrack": "#07131D",
+    "primaryFlow": "#0788D8",
+    "signatureFlow": "#42C93E",
+    "gcdProgressCandidate": "#D8E1E8",
+    "castProgress": "#22D3EE",
+    "buffFlow": "#0788D8",
+    "debuffFlow": "#E5484D",
+    "stableState": "#7CFF4B",
+    "attentionState": "#FFC247",
+    "criticalState": "#FF3F3F"
+  },
+  "configuration": {
+    "strategy": "theme_defaults_with_component_overrides",
+    "globalPaletteConfigurable": true,
+    "perComponentColorConfigurable": true,
+    "inheritGlobalByDefault": true,
+    "motionConfigurable": true,
+    "reducedMotionFallback": "static_segment_or_progress_fill",
+    "geometryConfigurable": false
+  },
+  "components": {
+    "actionCurrent": {
+      "mode": "PERIMETER_FLOW",
+      "defaultToken": "primaryFlow"
+    },
+    "actionQueue": {
+      "mode": "PERIMETER_FLOW",
+      "defaultToken": "primaryFlow"
+    },
+    "combatContext": {
+      "mode": "PERIMETER_FLOW",
+      "defaultToken": "primaryFlow",
+      "salience": "LOW"
+    },
+    "globalCooldown": {
+      "mode": "LINEAR_PROGRESS",
+      "defaultToken": "gcdProgressCandidate",
+      "colorStatus": "candidate_pending_UI-DESIGN-010"
+    },
+    "castProgress": {
+      "mode": "LINEAR_PROGRESS",
+      "defaultToken": "castProgress"
+    },
+    "auraBuff": {
+      "mode": "PERIMETER_FLOW",
+      "defaultToken": "buffFlow"
+    },
+    "auraDebuff": {
+      "mode": "PERIMETER_FLOW",
+      "defaultToken": "debuffFlow"
+    },
+    "auraUrgencyShelf": {
+      "mode": "STATE_FILL",
+      "defaultTokens": [
+        "stableState",
+        "attentionState",
+        "criticalState"
+      ]
+    }
+  },
+  "runtimeReady": false,
+  "motionDesignTask": "UI-DESIGN-007",
+  "runtimePreparationTask": "UI-DESIGN-008",
+  "colorReviewTask": "UI-DESIGN-010"
+}

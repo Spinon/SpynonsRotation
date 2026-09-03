@@ -26,9 +26,10 @@
   "visual": {
     "trackColor": "#07131D",
     "trackAlpha": 0.86,
-    "fillColor": "#0788D8",
-    "fillColorStatus": "provisional",
+    "fillColor": "#D8E1E8",
+    "fillColorStatus": "candidate_review",
     "fillAlpha": 1,
+    "colorConfigurable": true,
     "gradient": false,
     "bakedGlow": false,
     "text": false
@@ -55,16 +56,22 @@
       "inventProgress": false
     }
   },
-  "referenceSource": "gcd-state-reference-v1.svg",
-  "referencePreview": "gcd-state-reference-v1.png",
-  "referenceSourceSha256": "7D2B1E8997ABEBDCBA1447139FBEB7E68C3D1296A8A695E8E4594E82FE6A3E86",
-  "referencePreviewSha256": "52D3FD35DD05AEAF93F6F31DB24C4BE813E0A0B85C97A63798D15C6A694E92EF",
+  "referenceSource": "gcd-state-reference-v2.svg",
+  "referencePreview": "gcd-state-reference-v2.png",
+  "referenceSourceSha256": "02DF9A1910656A2F53EAF0EA20E88B0FB64830D8E303E66A9A775CAC25AB1852",
+  "referencePreviewSha256": "8741CDA7C7B78496C8874476940D2B0BBE10729A6876733CA73246207754BC0A",
+  "previousReferences": [
+    "gcd-state-reference-v1.svg",
+    "gcd-state-reference-v1.png"
+  ],
   "integration": {
     "status": "approved",
     "frame": "../frames/action-current-frame-v5.png",
-    "preview": "action-current-gcd-slot-preview-v1.png",
-    "previewSha256": "1C0274ABF32FAF286670AFE924AC5614170194F99ED8EF2993BB2D52F4970EB9"
+    "preview": "action-current-gcd-slot-preview-v2.png",
+    "previewSha256": "8B4B2AE38F5C76E7E60AAEEE734465EFEA1FEEFFEDED657847A96160F4133D63",
+    "previousPreview": "action-current-gcd-slot-preview-v1.png"
   },
+  "proceduralChannelContract": "../procedural-channels.json",
   "colorReviewTask": "UI-DESIGN-010",
   "runtimeReady": false,
   "runtimePreparationTask": "UI-DESIGN-008"

@@ -86,6 +86,7 @@
     "action-queue-frame-v3.png",
     "action-current-frame-v4.png"
   ],
+  "proceduralChannelContract": "../procedural-channels.json",
   "runtimeReady": false,
   "runtimePreparationTask": "UI-DESIGN-008",
   "motionDesignTask": "UI-DESIGN-007"

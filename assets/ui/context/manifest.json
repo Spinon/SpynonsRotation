@@ -39,6 +39,7 @@
     "blue": "#0788D8",
     "green": "#42C93E"
   },
+  "proceduralChannelContract": "../procedural-channels.json",
   "runtimeReady": false,
   "runtimePreparationTask": "UI-DESIGN-008"
 }

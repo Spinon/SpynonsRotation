@@ -10,11 +10,14 @@ O master contém somente moldura e superfície. `AUTO`, `ST`, `CLEAVE`, `AOE`, m
 
 - zona superior: modo solicitado e, em `AUTO`, modo resolvido;
 - zona inferior: quantidade observável de alvos;
-- trilho azul sólido: identidade estrutural;
-- acento verde lateral: resolução válida/pronta, nunca classe ou spec;
+- canaleta neutra: estrutura de repouso;
+- segmento azul procedural: identidade estrutural ativa;
+- acento verde procedural: resolução válida/pronta, nunca classe ou spec;
 - exterior com alpha real; superfície interna escura para legibilidade.
 
 O mesmo bitmap atende todos os modos. A UI não seleciona uma moldura por spec e não deriva o modo somente da quantidade de alvos.
+
+O master atual preserva a referência cromática aprovada. `UI-DESIGN-008` deve entregar a canaleta neutra e sua máscara separada conforme [`../procedural-channels.json`](../procedural-channels.json).
 
 ## Prompt final — candidato v1
 

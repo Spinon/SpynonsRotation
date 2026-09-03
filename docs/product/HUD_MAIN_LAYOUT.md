@@ -2,7 +2,7 @@
 
 ## Status da direção
 
-Este documento consolida a direção visual aprovada para a tela operacional principal do Spynon's Rotation. A referência anotada é [`assets/ui/concepts/spynon-main-hud-annotated-concept-v2.png`](../../assets/ui/concepts/spynon-main-hud-annotated-concept-v2.png), em canvas conceitual de 1672 × 941 px.
+Este documento consolida a direção visual aprovada para a tela operacional principal do Spynon's Rotation. A referência anotada é [`assets/ui/concepts/spynon-main-hud-annotated-concept-v2.png`](../../assets/ui/concepts/spynon-main-hud-annotated-concept-v2.png), em canvas conceitual de 1672 × 941 px. A evolução com canaletas neutras e energia procedural está em [`spynon-main-hud-procedural-channels-concept-v2.png`](../../assets/ui/concepts/spynon-main-hud-procedural-channels-concept-v2.png).
 
 A aprovação cobre hierarquia, agrupamento e escala relativa. Ela não transforma os elementos desenhados no mockup em arte final nem declara implementação ou validação dentro do cliente Retail.
 
@@ -36,7 +36,7 @@ Todo o conjunto deve poder ser ancorado e escalado como uma unidade no futuro mo
 | 2 | Ação atual | Ocupa uma linha própria acima da fila e mantém a maior hierarquia visual. |
 | 3 | Fila de recomendações | Três próximas actions em uma linha mais compacta que a ação atual. |
 | 4 | Hotkeys | Texto sem background no canto superior direito da action atual e de cada item da fila; fonte e posição configuráveis. |
-| 5 | Global Cooldown | Barra horizontal integrada ao rodapé da action atual, com tempo legível sem competir com a action. |
+| 5 | Global Cooldown | Barra horizontal integrada ao rodapé da action atual, sem texto e sem competir com a action. |
 | 6 | Barra de cast + indicadores | Barra única na base; progresso acima, informações decisivas no centro e emblema/nome da skill à direita. |
 | 7 | Área de animação | Espaço compartilhado pela fila para MOVE, ENTER, EXIT, PROMOTE e CONSUME; não é um painel persistente. |
 | 8 | Assinatura da marca | Elemento periférico e discreto; não concorre com dados de combate. |
@@ -65,7 +65,7 @@ Da base para o topo, uma action é composta por:
 2. máscara ou recorte geométrico;
 3. radial swipe cinza do cooldown, limitado à abertura do ícone;
 4. moldura visual estática do addon;
-5. glow animado sobre os trilhos da moldura;
+5. canaleta neutra da moldura e segmento procedural de energia;
 6. demais estados transitórios;
 7. valor numérico opcional do cooldown no centro da habilidade;
 8. hotkey no canto superior direito;
@@ -102,7 +102,7 @@ O trilho é genérico e orientado a decisão. Cada célula reserva espaço para 
 
 Cor nunca é o único canal: texto, ícone de estado ou tratamento da moldura deve reforçar a leitura.
 
-O padrão usa três células e o teto é cinco. Elas funcionam como fila de urgência: o que exige atenção fica mais à esquerda, e a posição só muda ao trocar de faixa. O encaixe inferior não possui label; mostra verde, âmbar ou vermelho sólidos e fica vazio quando o sinal termina ou está desligado. Buff e debuff não formam filas separadas: o contorno energético azul identifica buff e o vermelho identifica debuff, enquanto a posição e o encaixe inferior continuam dedicados à urgência.
+O padrão usa três células e o teto é cinco. Elas funcionam como fila de urgência: o que exige atenção fica mais à esquerda, e a posição só muda ao trocar de faixa. O encaixe inferior não possui label; mostra verde, âmbar ou vermelho sólidos e fica vazio quando o sinal termina ou está desligado. Buff e debuff não formam filas separadas: um segmento azul percorre a canaleta do buff e um vermelho percorre a do debuff, enquanto a posição e o encaixe inferior continuam dedicados à urgência.
 
 ## Contexto, hotkeys e quantidades
 
@@ -110,7 +110,7 @@ O contrato visual detalhado de `UI-DESIGN-003` está em [`HUD_CONTEXT_BADGES.md`
 
 ## Global Cooldown e cooldown individual
 
-O contrato de `UI-DESIGN-004` está em [`HUD_COOLDOWNS.md`](HUD_COOLDOWNS.md). O cooldown individual usa somente um radial swipe cinza sobre o ícone, com revelação horária e número central opcional; não existe argola decorativa. O GCD cresce da esquerda para a direita no encaixe transparente do rodapé da ação atual `v5`, sem texto e sem aparecer na fila. O azul atual é provisório e terá contraste revisado em `UI-DESIGN-010`.
+O contrato de `UI-DESIGN-004` está em [`HUD_COOLDOWNS.md`](HUD_COOLDOWNS.md). O cooldown individual usa somente um radial swipe cinza sobre o ícone, com revelação horária e número central opcional; não existe argola decorativa. O GCD cresce da esquerda para a direita no encaixe transparente do rodapé da ação atual `v5`, sem texto e sem aparecer na fila. O candidato padrão é prata neutro; a seleção final pertence a `UI-DESIGN-010` e continua configurável.
 
 ## Barra de cast e indicadores
 
@@ -126,6 +126,10 @@ A barra inferior combina dois papéis sem misturar a hierarquia:
 A região direita não deve empurrar ou recentralizar os indicadores a cada troca de skill. As áreas possuem âncoras estáveis para evitar jitter.
 Quando não há cast nem indicador, o componente inteiro fica oculto para não deixar uma moldura vazia no campo de visão.
 
+## Canaletas e energia procedural
+
+O contrato compartilhado está em [`HUD_PROCEDURAL_CHANNELS.md`](HUD_PROCEDURAL_CHANNELS.md). Molduras fornecem grafite, recortes e canaletas neutras; barras coloridas, segmentos móveis e preenchimentos de estado são camadas de runtime. A paleta possui defaults da marca e overrides globais ou por componente.
+
 ## Vocabulário visual
 
 A identidade usa a marca aprovada em [`assets/brand/Spynon Logo.png`](../../assets/brand/Spynon%20Logo.png) como referência, quando aplicável:
@@ -137,7 +141,7 @@ A identidade usa a marca aprovada em [`assets/brand/Spynon Logo.png`](../../asse
 - grafite translúcido para superfícies e cooldown;
 - metal claro apenas em bordas e tipografia de alta hierarquia.
 
-A moldura usa canais azul elétrico e verde ácido vívidos, próximos da paleta da marca, em cor sólida e sem gradiente ou glow incorporado. A sensação de energia em movimento será produzida por um overlay animado independente e mais claro; somente a passagem desse overlay deve atingir luminosidade alta. Assim, desligar ou reduzir o movimento não exige trocar o bitmap-base e o glow não clareia permanentemente o HUD.
+A moldura final usa canaletas neutras sem preenchimento colorido permanente. Azul elétrico e verde ácido continuam como defaults da marca para segmentos procedurais sólidos; somente o trecho em movimento atinge luminosidade alta. Desligar movimento ou trocar a paleta não exige substituir o bitmap-base.
 
 A galáxia e os raios do mockup são direção de atmosfera, não backgrounds obrigatórios das actions. A marca informa molduras, glows e assinatura; não substitui a arte nativa fornecida pelo WoW.
 

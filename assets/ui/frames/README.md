@@ -31,14 +31,14 @@ Os arquivos ativos possuem alpha real no exterior e na abertura central. O conte
 - trilho e preenchimento do GCD permanecem procedurais e são renderizados abaixo do bezel, nunca incorporados ao PNG;
 - a fila usa a mesma moldura quadrada três vezes, sem duplicar o bitmap;
 - hotkey e stacks ocupam camadas próprias nos cantos superior e inferior direitos;
-- cooldown, glow e estados animados serão overlays independentes, sem alterar estes masters;
-- os canais coloridos do `v4` permanecem estáticos, sólidos e saturados; nenhum bitmap-base será deslocado, clareado ou pulsado;
+- cooldown, fluxo de perímetro e estados animados serão overlays independentes, sem alterar estes masters;
+- os canais coloridos atuais preservam a referência cromática aprovada, mas serão convertidos em canaletas neutras com máscaras separadas no kit técnico;
 - os pontos de inserção e a política de custo estão em [`ANIMATION_HOOKS.md`](ANIMATION_HOOKS.md);
 - o recorte/máscara final do ícone será preparado no kit técnico de `UI-DESIGN-008`.
 
 ## Direção visual
 
-As molduras usam grafite e gunmetal como estrutura, prata somente nas quinas, azul elétrico (`#0788D8`) como assinatura principal e verde ácido (`#42C93E`) como acento mínimo. São cores-base vívidas, mas abaixo da luminosidade do overlay de glow futuro. A linguagem deriva da marca Spynon sem reproduzir o logotipo e permanece genérica entre classes e specs.
+As molduras usam grafite e gunmetal como estrutura e prata somente nas quinas. Azul elétrico (`#0788D8`) e verde ácido (`#42C93E`) passam a ser defaults de segmentos procedurais, não preenchimentos permanentes do raster. A linguagem deriva da marca Spynon sem reproduzir o logotipo e permanece genérica entre classes e specs. O contrato compartilhado está em [`../procedural-channels.json`](../procedural-channels.json).
 
 ## Prompt final — revisão v5 e encaixe do GCD
 

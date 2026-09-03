@@ -188,6 +188,7 @@
       "../cast/cast-indicator-frame-v1.png"
     ]
   },
+  "proceduralChannelContract": "../procedural-channels.json",
   "runtimeReady": false,
   "runtimePreparationTask": "UI-DESIGN-008",
   "motionDesignTask": "UI-DESIGN-007"

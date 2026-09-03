@@ -20,9 +20,9 @@ Nome, duração, estado e ícone são camadas dinâmicas. A moldura raster não 
 
 ## Buff x debuff
 
-O tipo do efeito usa um canal independente da urgência: o contorno energético azul identifica buff e o vermelho identifica debuff. Não existe glifo, badge, label ou background adicional sobre o ícone. As duas cores de tipo são configuráveis.
+O tipo do efeito usa um canal independente da urgência: um segmento azul percorre a canaleta do buff e um vermelho percorre a canaleta do debuff. Não existe glifo, badge, label ou background adicional sobre o ícone. As duas cores de tipo são configuráveis.
 
-Buffs e debuffs permanecem na mesma fila global; não existem linhas ou grupos separados que enfraqueçam a prioridade da esquerda para a direita. O contrato técnico fornece o tipo genérico do efeito, e a UI apenas o representa — ela não classifica auras por módulo de classe ou spec. O master permanece único e azul; `UI-DESIGN-008` deve separar o canal energético em uma máscara tintável para produzir o vermelho sem duplicar a moldura.
+Buffs e debuffs permanecem na mesma fila global; não existem linhas ou grupos separados que enfraqueçam a prioridade da esquerda para a direita. O contrato técnico fornece o tipo genérico do efeito, e a UI apenas o representa — ela não classifica auras por módulo de classe ou spec. A revisão v4 preserva a decisão cromática; `UI-DESIGN-008` substitui o preenchimento incorporado por canaleta neutra e máscara tintável, sem duplicar a moldura.
 
 ## Estados
 
@@ -55,7 +55,7 @@ O conteúdo visual vem do cliente do WoW. O preview usa formas neutras somente p
 
 ## Cor e movimento
 
-O contorno usa azul `#0788D8` para buff e vermelho `#E5484D` para debuff, mantendo o pequeno acento verde `#42C93E`. O encaixe inferior usa uma única cor uniforme por vez e percorre temporalmente verde → âmbar → vermelho conforme a urgência aumenta; não existe gradiente espacial dentro do encaixe. A superfície diferencia a semântica: contorno informa tipo, encaixe inferior informa urgência. Ausente, desligado e indisponível deixam o encaixe vazio. Nenhum glow está incorporado ao master.
+O segmento de perímetro usa azul `#0788D8` para buff e vermelho `#E5484D` para debuff, mantendo o pequeno acento verde `#42C93E` como default secundário. O encaixe inferior usa uma única cor uniforme por vez e percorre temporalmente verde → âmbar → vermelho conforme a urgência aumenta; não existe gradiente espacial dentro do encaixe. A superfície diferencia a semântica: perímetro informa tipo, encaixe inferior informa urgência. Ausente, desligado e indisponível deixam o encaixe vazio. Nenhum glow é incorporado ao master.
 
 Pulsação discreta para `RENOVAR` ou `AUSENTE`, entrada/saída e reorganização visual serão avaliadas em `UI-DESIGN-007`. O estado estável não deve pulsar.
 

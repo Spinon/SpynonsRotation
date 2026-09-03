@@ -2,28 +2,28 @@
 
 ## Escopo
 
-Este documento registra onde o glow de movimento será conectado aos candidatos `v4`. Nenhuma animação ou lógica de runtime é implementada em `UI-DESIGN-002`.
+Este documento registra onde o fluxo procedural será conectado às molduras. Nenhuma animação ou lógica de runtime é implementada nas tasks de arte.
 
-As linhas azul/ciano e verde dos masters são trilhos-base: estáticos, sólidos, vívidos e sem gradiente. O movimento virá de um pequeno overlay monocromático com queda suave apenas no alpha, colorido no runtime e posicionado sobre os trilhos existentes. Somente esse overlay deve atingir luminosidade de glow.
+Os canais coloridos dos masters atuais preservam a referência aprovada, mas o kit técnico os transforma em canaletas neutras e máscaras separadas. O movimento vem de um segmento curto colorido no runtime; o restante do perímetro permanece escuro. Somente esse segmento pode atingir luminosidade alta.
 
-| Canal | Base em repouso | Glow futuro |
+| Canal | Canaleta em repouso | Segmento procedural padrão |
 | --- | --- | --- |
-| Azul/ciano | `#0788D8` | `#27D9FF` |
-| Verde | `#42C93E` | `#7CFF4B` |
+| Principal | `#07131D` | `#0788D8` |
+| Assinatura | `#07131D` | `#42C93E` |
 
-As cores de glow são alvos de direção para `UI-DESIGN-007`, não pixels incorporados aos masters `v4`. A animação não deve elevar permanentemente o brilho do trilho inteiro.
+As cores são defaults configuráveis, não pixels incorporados aos masters técnicos. A animação nunca ilumina permanentemente a canaleta inteira.
 
 ## Ordem das camadas
 
 ```text
 hotkey + stacks/charges
-glow animado              <- pontos definidos neste documento
-moldura estática v4
+segmento procedural       <- pontos definidos neste documento
+moldura + canaleta neutra
 cooldown radial + número  <- limitado à abertura do ícone
 ícone nativo do WoW
 ```
 
-O glow não pode cobrir hotkeys, stacks, números ou a arte nativa da action.
+O segmento não pode cobrir hotkeys, stacks, números ou a arte nativa da action.
 
 ## Hooks da ação atual
 
@@ -34,7 +34,7 @@ O glow não pode cobrir hotkeys, stacks, números ou a arte nativa da action.
 - início visual: encontro superior esquerdo do canal azul;
 - sequência: topo → quina direita → lateral direita → base → quina esquerda → lateral esquerda;
 - comportamento proposto: passagem lenta e discreta enquanto a action estiver realmente ativa;
-- implementação futura: um único segmento de glow reutilizável, movido por trechos; a moldura completa permanece imóvel.
+- implementação futura: um único segmento reutilizável, movido por trechos; a moldura completa permanece imóvel.
 
 Âncoras normalizadas de referência para o master horizontal:
 
@@ -62,7 +62,7 @@ left-high   (0.09, 0.14)
 - direção: sentido horário, respeitando as interrupções físicas da moldura;
 - início visual: trilho superior após o conjunto diagonal esquerdo;
 - comportamento proposto: one-shot em `ENTER` ou `PROMOTE`; itens parados na fila não mantêm animação contínua;
-- implementação futura: o mesmo segmento de glow usado na ação atual, redimensionado para a fila.
+- implementação futura: o mesmo segmento usado na ação atual, redimensionado para a fila.
 
 Âncoras normalizadas de referência para o master quadrado:
 
@@ -85,15 +85,15 @@ left-high   (0.13, 0.23)
 
 - no máximo um ciclo ocioso: `current.blue.perimeter` da action atual;
 - fila usa somente animações one-shot e apenas no item afetado;
-- usar uma textura pequena de glow reutilizada e colorida no runtime;
-- manter o trilho-base saturado abaixo da luminosidade do glow e mover apenas a janela luminosa do overlay;
+- usar um segmento ou máscara pequena reutilizada e colorida no runtime;
+- manter a canaleta neutra e mover somente a camada colorida;
 - preferir grupos de animação nativos do cliente a loops próprios por frame;
 - nunca deslocar, trocar ou recalcular os bitmaps completos das molduras;
 - parar animações quando o HUD estiver oculto;
 - modo de movimento reduzido substitui deslocamento por uma única variação curta de alpha;
-- a cadência final e o asset do glow pertencem a `UI-DESIGN-007`;
+- a cadência final e o asset do segmento pertencem a `UI-DESIGN-007`;
 - a implementação Lua pertence à task técnica do Animator na trilha `delivery`.
 
 ## Contrato de substituição
 
-Os IDs deste documento também aparecem em `manifest.json`. O handoff técnico deve manter esses IDs estáveis mesmo se coordenadas forem normalizadas em `UI-DESIGN-008`. Nenhum hook recebe nome ou comportamento específico de classe/spec.
+Os IDs deste documento também aparecem em `manifest.json`. O handoff técnico deve manter esses IDs estáveis mesmo se coordenadas forem normalizadas em `UI-DESIGN-008`. Nenhum hook recebe nome ou comportamento específico de classe/spec. Defaults e overrides seguem [`../procedural-channels.json`](../procedural-channels.json).

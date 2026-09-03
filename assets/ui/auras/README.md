@@ -26,10 +26,10 @@ Os ícones geométricos dos previews são placeholders neutros. O addon deve usa
 - as células formam uma fila de urgência, com ausência e crítico à esquerda;
 - a posição muda apenas quando a célula entra em outra faixa de urgência;
 - a duração não reorganiza itens dentro da mesma faixa;
-- o contorno energético azul identifica buff e o vermelho identifica debuff;
+- um segmento azul percorre a canaleta do buff e um vermelho percorre a do debuff;
 - não existe símbolo, badge, label ou background adicional para informar o tipo;
-- a cor do contorno é independente da cor de urgência e configurável por tipo;
-- o master permanece único: `UI-DESIGN-008` deve extrair o canal de tint para alternar a cor sem duplicar a moldura;
+- a cor do segmento é independente da cor de urgência e configurável por tipo;
+- o master permanece único: `UI-DESIGN-008` deve entregar canaleta neutra e máscara tintável sem duplicar a moldura;
 - ausência continua explícita no valor principal, enquanto o encaixe inferior fica vazio;
 - indisponível/desligado usa `—`, fica à direita e nunca é interpretado como ausência;
 - o encaixe inferior não usa texto ou símbolo, apenas uma cor sólida uniforme;
@@ -39,6 +39,8 @@ Os ícones geométricos dos previews são placeholders neutros. O addon deve usa
 - não há badge permanente de overflow: somente sinais ranqueados como decisivos entram no trilho.
 
 Movimento da fila, pulsação e transições pertencem a `UI-DESIGN-007`. Dimensões finais, fonte e preparação para runtime pertencem a `UI-DESIGN-008`.
+
+O contrato compartilhado de canaletas, defaults e overrides está em [`../procedural-channels.json`](../procedural-channels.json). A revisão v4 permanece como referência cromática; não exige que o perímetro final fique totalmente preenchido em repouso.
 
 ## Prompt de revisão v4
 

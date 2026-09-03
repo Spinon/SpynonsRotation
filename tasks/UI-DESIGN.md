@@ -91,11 +91,11 @@ O padrão visual usa três células repetíveis e o teto é cinco. Cada célula 
 
 ## UI-DESIGN-007 — Movimento e estados visuais
 
-Documentar e prototipar MOVE, ENTER, EXIT, PROMOTE e CONSUME, além de estados ready, cooldown, proc, refresh e indisponível.
+Documentar e prototipar MOVE, ENTER, EXIT, PROMOTE e CONSUME, além de estados ready, cooldown, proc, refresh e indisponível. As molduras usam canaletas neutras; esta task também define o segmento procedural que percorre perímetros, incluindo comprimento, velocidade, direção, entrada/saída e fallback sem movimento.
 
 ## UI-DESIGN-008 — Kit técnico e handoff
 
-Preparar os assets aprovados em formatos, dimensões, transparências e organização adequados à futura implementação da UI no runtime, mantendo fontes editáveis quando aplicável.
+Preparar os assets aprovados em formatos, dimensões, transparências e organização adequados à futura implementação da UI no runtime, mantendo fontes editáveis quando aplicável. Cada componente com barra ou contorno deve entregar estrutura estática com canaleta neutra e máscara separada para cor/progresso procedural; nenhum preenchimento colorido de perímetro permanece incorporado ao bitmap final.
 
 ## UI-DESIGN-009 — Encaixe do GCD na ação atual
 
@@ -103,4 +103,4 @@ Revisar a moldura da ação atual para incorporar um encaixe físico discreto no
 
 ## UI-DESIGN-010 — Contraste cromático do GCD
 
-Comparar a cor provisória do GCD com a moldura, a barra de cast e os demais estados do HUD. Selecionar uma cor final que preserve contraste e não seja confundida com proc, cast, cooldown individual ou assinatura da marca, sem alterar o encaixe e o movimento já aprovados.
+Comparar a cor provisória do GCD com a moldura, a barra de cast e os demais estados do HUD. Selecionar uma cor padrão que preserve contraste e não seja confundida com proc, cast, cooldown individual ou assinatura da marca, sem alterar o encaixe e o movimento já aprovados. A decisão integra o contrato global de canaletas procedurais: cores são defaults configuráveis, enquanto o comprimento continua sendo o dado autoritativo do progresso.
