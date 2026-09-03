@@ -81,6 +81,8 @@ Definir a barra de Global Cooldown e o radial swipe cinza que revela o ícone em
 
 Produzir a barra de cast combinada com indicadores decisivos, reservando a área direita para emblema e nome da habilidade e o centro para informações contextuais.
 
+O master deve permanecer vazio: progresso, indicadores, ícone nativo do WoW e nome são camadas dinâmicas. A geometria mantém zonas estáveis para evitar jitter. Sem cast, progresso e identidade somem sem inventar estado; sem indicadores, o centro fica vazio; sem nenhum dos dois, o componente inteiro fica oculto. A cor do cast deve ser registrada como candidata para a comparação com o GCD em `UI-DESIGN-010`.
+
 ## UI-DESIGN-006 — Juggle de buffs/debuffs
 
 Definir um componente genérico para specs que mantêm múltiplos buffs e debuffs, mostrando duração, urgência, refresh e ausência sem recriar um painel massivo de auras.

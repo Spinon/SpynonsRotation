@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate_review",
+  "component": "castAndDecisionBar",
+  "assets": {
+    "master": {
+      "file": "cast-indicator-frame-v1.png",
+      "role": "frame_overlay",
+      "sourceWidth": 1938,
+      "sourceHeight": 352,
+      "layoutAspectRatio": 5.505682,
+      "alpha": true,
+      "sha256": "37939213B042B4CE86CB7B658FEAD5F8A47EFBE599ED0B5E66DE1E0BCA1181B4"
+    },
+    "activePreview": {
+      "file": "cast-indicator-preview-v1.png",
+      "sourceWidth": 2018,
+      "sourceHeight": 472,
+      "sha256": "EC0C8CFD5AC6E341332D4A7B0623C6E4AE3399A1F642C574775B95A6F7A969AA"
+    },
+    "stateReference": {
+      "file": "cast-indicator-state-reference-v1.png",
+      "sourceWidth": 1960,
+      "sourceHeight": 570,
+      "sha256": "26AD5861EEF0DA692D38EFA0FD4AD15EA150C10166BE11EEBC1FD4CEA56EEB95"
+    }
+  },
+  "staticFrame": {
+    "solidChannels": {
+      "blue": "#0788D8",
+      "green": "#42C93E"
+    },
+    "gradient": false,
+    "bakedGlow": false
+  },
+  "zones": {
+    "castProgress": {
+      "pixelRect": {
+        "x": 107,
+        "y": 48,
+        "width": 1095,
+        "height": 61
+      },
+      "normalizedRect": {
+        "x": 0.0552,
+        "y": 0.1364,
+        "width": 0.565,
+        "height": 0.1733
+      },
+      "renderMode": "procedural",
+      "previewFillColor": "#22D3EE",
+      "fillColorStatus": "candidate_pending_UI-DESIGN-010"
+    },
+    "decisiveIndicators": {
+      "pixelRect": {
+        "x": 66,
+        "y": 133,
+        "width": 1136,
+        "height": 161
+      },
+      "normalizedRect": {
+        "x": 0.0341,
+        "y": 0.3778,
+        "width": 0.5862,
+        "height": 0.4574
+      }
+    },
+    "castIdentity": {
+      "pixelRect": {
+        "x": 1248,
+        "y": 55,
+        "width": 624,
+        "height": 240
+      },
+      "iconPixelRect": {
+        "x": 1266,
+        "y": 70,
+        "width": 214,
+        "height": 210
+      },
+      "namePixelRect": {
+        "x": 1510,
+        "y": 70,
+        "width": 362,
+        "height": 210
+      },
+      "iconSource": "wow_runtime",
+      "missingIcon": "neutral_local_placeholder"
+    }
+  },
+  "dynamicLayers": [
+    "castTrack",
+    "castFill",
+    "decisiveIndicators",
+    "wowSkillIcon",
+    "skillName"
+  ],
+  "states": {
+    "castAndIndicators": "show_all_dynamic_layers",
+    "castOnly": "hide_decisive_indicators",
+    "indicatorsOnly": "hide_cast_fill_and_cast_identity",
+    "idle": "hide_entire_component"
+  },
+  "generation": {
+    "mode": "built_in_imagegen",
+    "promptSource": "README.md",
+    "references": [
+      "../concepts/spynon-main-hud-annotated-concept-v2.png",
+      "../frames/action-current-frame-v5.png",
+      "../../brand/Spynon Logo.png"
+    ]
+  },
+  "runtimeReady": false,
+  "runtimePreparationTask": "UI-DESIGN-008",
+  "motionDesignTask": "UI-DESIGN-007",
+  "gcdColorReviewTask": "UI-DESIGN-010"
+}

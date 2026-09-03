@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-02T23:58:09.414Z
+Atualizado pelo board em: 2026-09-03T00:05:26.011Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,7 +18,7 @@ Próxima ação: Implementar contratos de resultados e política, comparações 
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-005 — Barra de cast e indicadores decisivos | in_progress | Produzir e submeter à revisão visual a barra combinada vazia, com progresso, centro contextual e identidade da habilidade separados em camadas. |
+| ui | UI-DESIGN-005 — Barra de cast e indicadores decisivos | in_progress | Product Owner revisar o candidato v1 e os quatro estados antes da aprovação final. |
 
 ## Progresso
 

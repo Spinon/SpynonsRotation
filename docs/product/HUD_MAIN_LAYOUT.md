@@ -110,6 +110,8 @@ O contrato de `UI-DESIGN-004` está em [`HUD_COOLDOWNS.md`](HUD_COOLDOWNS.md). O
 
 ## Barra de cast e indicadores
 
+A especificação visual de `UI-DESIGN-005`, com zonas, camadas e degradação, está em [`HUD_CAST_INDICATORS.md`](HUD_CAST_INDICATORS.md). O master vazio correspondente está em [`assets/ui/cast/cast-indicator-frame-v1.png`](../../assets/ui/cast/cast-indicator-frame-v1.png).
+
 A barra inferior combina dois papéis sem misturar a hierarquia:
 
 - faixa superior: progresso de cast ou canalização;
@@ -118,6 +120,7 @@ A barra inferior combina dois papéis sem misturar a hierarquia:
 - sem cast ativo: a estrutura pode manter somente os indicadores decisivos, sem inventar progresso.
 
 A região direita não deve empurrar ou recentralizar os indicadores a cada troca de skill. As áreas possuem âncoras estáveis para evitar jitter.
+Quando não há cast nem indicador, o componente inteiro fica oculto para não deixar uma moldura vazia no campo de visão.
 
 ## Vocabulário visual
 

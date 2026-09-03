@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-02T23:58:09.414Z",
+  "updatedAt": "2026-09-03T00:05:26.011Z",
   "currentFocus": "LAB-006",
   "parallelFocus": {
     "ui": "UI-DESIGN-005"
@@ -645,9 +645,9 @@
       "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-005--barra-de-cast-e-indicadores",
-      "updatedAt": "2026-09-02T23:55:53.326Z",
+      "updatedAt": "2026-09-03T00:05:26.011Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Produzir e submeter à revisão visual a barra combinada vazia, com progresso, centro contextual e identidade da habilidade separados em camadas.",
+      "nextAction": "Product Owner revisar o candidato v1 e os quatro estados antes da aprovação final.",
       "dependencies": [
         "UI-DESIGN-004",
         "UI-DESIGN-009"
@@ -657,7 +657,13 @@
         "Emblema e nome da habilidade ocupam a área direita",
         "Componente degrada com elegância quando não há cast ou indicadores"
       ],
-      "evidence": [],
+      "evidence": [
+        "assets/ui/cast/cast-indicator-frame-v1.png fornece um master RGBA vazio de 1938 × 352 px com zonas separadas para cast, indicadores, ícone e nome.",
+        "assets/ui/cast/cast-indicator-preview-v1.png demonstra progresso e conteúdo dinâmico sem incorporá-los à moldura.",
+        "assets/ui/cast/cast-indicator-state-reference-v1.png registra cast + indicadores, somente cast, somente indicadores e ocultação ociosa.",
+        "docs/product/HUD_CAST_INDICATORS.md documenta camadas, origem nativa do ícone, placeholder neutro e revisão cromática futura do GCD.",
+        "Validação confirmou master RGBA com alpha 0–255, aberturas transparentes, 35.115 pixels azuis sólidos, 1.190 pixels verdes sólidos e npm test integral sem falhas."
+      ],
       "track": "ui"
     },
     {
