@@ -334,13 +334,14 @@ public static class SpynonTechnicalAssetBuilder
 }
 
 $sourceDirectory = Join-Path $RepositoryRoot 'assets\ui\runtime-source'
-$runtimeDirectory = Join-Path $RepositoryRoot 'assets\ui\runtime'
-New-Item -ItemType Directory -Path $sourceDirectory, $runtimeDirectory -Force | Out-Null
+$textureRoot = Join-Path $RepositoryRoot 'addon\UI\Media\Textures'
+New-Item -ItemType Directory -Path $sourceDirectory, $textureRoot -Force | Out-Null
 
 $specifications = @(
     @{
         Id = 'action-current'
         Source = 'assets\ui\frames\action-current-frame-v5.png'
+        RuntimeFolder = 'Actions'
         Canvas = @(512, 256)
         Content = @(56, 8, 400, 240)
         Shelf = $null
@@ -348,6 +349,7 @@ $specifications = @(
     @{
         Id = 'action-queue'
         Source = 'assets\ui\frames\action-queue-frame-v4.png'
+        RuntimeFolder = 'Actions'
         Canvas = @(256, 256)
         Content = @(8, 8, 240, 240)
         Shelf = $null
@@ -355,6 +357,7 @@ $specifications = @(
     @{
         Id = 'combat-context'
         Source = 'assets\ui\context\combat-context-card-frame-v1.png'
+        RuntimeFolder = 'Context'
         Canvas = @(256, 128)
         Content = @(32, 3, 192, 122)
         Shelf = $null
@@ -362,6 +365,7 @@ $specifications = @(
     @{
         Id = 'cast-indicator'
         Source = 'assets\ui\cast\cast-indicator-frame-v1.png'
+        RuntimeFolder = 'Cast'
         Canvas = @(1024, 256)
         Content = @(16, 38, 992, 180)
         Shelf = $null
@@ -369,6 +373,7 @@ $specifications = @(
     @{
         Id = 'aura-juggle-cell'
         Source = 'assets\ui\auras\aura-juggle-cell-frame-v1.png'
+        RuntimeFolder = 'Auras'
         Canvas = @(512, 256)
         Content = @(1, 48, 510, 160)
         Shelf = @(810, 525, 450, 71)
@@ -377,13 +382,15 @@ $specifications = @(
 
 foreach ($specification in $specifications) {
     $sourcePath = Join-Path $RepositoryRoot $specification.Source
+    $tgaDirectory = Join-Path $textureRoot $specification.RuntimeFolder
+    New-Item -ItemType Directory -Path $tgaDirectory -Force | Out-Null
     $hasShelf = $null -ne $specification.Shelf
     $shelf = if ($hasShelf) { $specification.Shelf } else { @(0, 0, 0, 0) }
     $result = [SpynonTechnicalAssetBuilder]::Build(
         $specification.Id,
         $sourcePath,
         $sourceDirectory,
-        $runtimeDirectory,
+        $tgaDirectory,
         $specification.Canvas[0],
         $specification.Canvas[1],
         $specification.Content[0],

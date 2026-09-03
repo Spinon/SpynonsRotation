@@ -1,6 +1,8 @@
-# Assets de runtime do HUD
+# Manifest do kit de runtime do HUD
 
-Esta pasta contém a baseline técnica aprovada para consumo futuro pela UI do addon. Os arquivos são TGA true-color de 32 bits, com alpha de 8 bits, origem superior esquerda, canvas em potência de dois e padding transparente.
+Esta pasta contém o manifest e a documentação da baseline técnica aprovada. As texturas consumíveis ficam em [`addon/UI/Media/Textures`](../../../addon/UI/Media/Textures), separadas em `Actions`, `Auras`, `Cast` e `Context`. Fontes e PNGs de inspeção permanecem em [`runtime-source`](../runtime-source).
+
+Os arquivos de runtime são TGA true-color de 32 bits, com alpha de 8 bits, origem superior esquerda, canvas em potência de dois e padding transparente.
 
 Cada componente usa o mesmo conjunto lógico:
 
@@ -11,7 +13,7 @@ Cada componente usa o mesmo conjunto lógico:
 
 As máscaras definem onde a cor pode aparecer, não uma borda permanentemente acesa. O runtime deve tingi-las com os tokens configuráveis e revelar apenas o segmento previsto no contrato de movimento. A máscara de estado é a exceção: ela recebe preenchimento sólido completo enquanto o estado estiver ativo.
 
-O arquivo [`manifest.json`](manifest.json) contém checksums, dimensões, retângulos úteis, UVs e relacionamento com os masters aprovados. As instâncias da fila e das auras reutilizam a mesma textura; não existem cópias por slot.
+O arquivo [`manifest.json`](manifest.json) contém caminhos, checksums, dimensões, retângulos úteis, UVs e relacionamento com os masters aprovados. As instâncias da fila e das auras reutilizam a mesma textura; não existem cópias por slot nem TGAs duplicados nesta pasta.
 
 O pacote pode ser reconstruído com `tools/ui/Build-TechnicalAssets.ps1` e verificado com `tools/ui/Test-TechnicalAssets.ps1`.
 

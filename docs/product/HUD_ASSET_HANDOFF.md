@@ -2,7 +2,7 @@
 
 ## Resultado
 
-Os masters aprovados foram convertidos em um kit desacoplado de cor: estrutura neutra, máscara principal, máscara de assinatura e, quando necessário, máscara de estado. O pacote está em [`assets/ui/runtime`](../../assets/ui/runtime/README.md) e a prancha de inspeção está em [`technical-kit-preview-v1.png`](../../assets/ui/runtime-source/technical-kit-preview-v1.png).
+Os masters aprovados foram convertidos em um kit desacoplado de cor: estrutura neutra, máscara principal, máscara de assinatura e, quando necessário, máscara de estado. O manifest está em [`assets/ui/runtime`](../../assets/ui/runtime/README.md), as texturas consumíveis estão em [`addon/UI/Media/Textures`](../../addon/UI/Media/Textures) e a prancha de inspeção está em [`technical-kit-preview-v1.png`](../../assets/ui/runtime-source/technical-kit-preview-v1.png).
 
 O Product Owner aprovou a versão 1 como baseline de handoff em 2026-09-03. Refinamentos futuros continuam permitidos, mas devem produzir arquivos versionados em vez de sobrescrever os derivados e hashes aprovados.
 
@@ -19,6 +19,17 @@ Os PNGs originais continuam sendo a fonte visual de alta resolução. O script [
 | Célula de aura | 512 × 256 | `(1, 48, 510, 160)` | 1 a 5 | tipo + assinatura + estado |
 
 O código deve aplicar o retângulo UV registrado no manifest para excluir o padding sem distorcer o conteúdo. Repetições reutilizam a mesma textura e não geram um arquivo por slot.
+
+## Distribuição no addon
+
+| Pasta | Conteúdo |
+| --- | --- |
+| `UI/Media/Textures/Actions` | ação atual e item reutilizável da fila |
+| `UI/Media/Textures/Auras` | célula reutilizável, máscaras de tipo/assinatura e faixa de estado |
+| `UI/Media/Textures/Cast` | moldura e máscaras da barra de cast |
+| `UI/Media/Textures/Context` | cartão de contexto de combate e suas máscaras |
+
+O caminho raiz para uso futuro no cliente é `Interface\\AddOns\\SpynonRotation\\UI\\Media\\Textures`. O GCD, o preenchimento do cast, textos e ícones nativos não geram arquivos nesta árvore.
 
 ## Ordem de composição
 

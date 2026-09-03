@@ -95,7 +95,8 @@ function Test-Tga {
 }
 
 $manifestPath = Join-Path $RepositoryRoot 'assets\ui\runtime\manifest.json'
-$runtimeDirectory = Split-Path $manifestPath
+$manifestDirectory = Split-Path $manifestPath
+$addonTextureRoot = [System.IO.Path]::GetFullPath((Join-Path $RepositoryRoot 'addon\UI\Media\Textures'))
 $manifest = Get-Content -Raw -LiteralPath $manifestPath | ConvertFrom-Json
 
 Assert-UiAsset ($manifest.schemaVersion -eq 1) 'schemaVersion do pacote não suportado.'
@@ -107,8 +108,8 @@ $runtimeBytes = 0L
 $runtimeFiles = 0
 $reviewFiles = 0
 
-$reviewSourcePath = [System.IO.Path]::GetFullPath((Join-Path $runtimeDirectory $manifest.reviewBoard.source))
-$reviewPreviewPath = [System.IO.Path]::GetFullPath((Join-Path $runtimeDirectory $manifest.reviewBoard.preview))
+$reviewSourcePath = [System.IO.Path]::GetFullPath((Join-Path $manifestDirectory $manifest.reviewBoard.source))
+$reviewPreviewPath = [System.IO.Path]::GetFullPath((Join-Path $manifestDirectory $manifest.reviewBoard.preview))
 Test-Hash $reviewSourcePath $manifest.reviewBoard.sourceSha256
 [xml](Get-Content -Raw -LiteralPath $reviewSourcePath) | Out-Null
 Test-Png $reviewPreviewPath $manifest.reviewBoard.width $manifest.reviewBoard.height $manifest.reviewBoard.previewSha256
@@ -132,7 +133,7 @@ foreach ($componentProperty in $manifest.components.PSObject.Properties) {
     Assert-UiAsset ([Math]::Abs($uv.top - ($rect.y / $height)) -lt $epsilon) "UV top divergente: $($componentProperty.Name)"
     Assert-UiAsset ([Math]::Abs($uv.bottom - (($rect.y + $rect.height) / $height)) -lt $epsilon) "UV bottom divergente: $($componentProperty.Name)"
 
-    $sourcePath = [System.IO.Path]::GetFullPath((Join-Path $runtimeDirectory $component.source.file))
+    $sourcePath = [System.IO.Path]::GetFullPath((Join-Path $manifestDirectory $component.source.file))
     Test-Png $sourcePath $component.source.width $component.source.height $component.source.sha256
 
     foreach ($layerProperty in $component.layers.PSObject.Properties) {
@@ -141,8 +142,9 @@ foreach ($componentProperty in $manifest.components.PSObject.Properties) {
             continue
         }
 
-        $reviewPath = [System.IO.Path]::GetFullPath((Join-Path $runtimeDirectory $layer.review))
-        $runtimePath = Join-Path $runtimeDirectory $layer.runtime
+        $reviewPath = [System.IO.Path]::GetFullPath((Join-Path $manifestDirectory $layer.review))
+        $runtimePath = [System.IO.Path]::GetFullPath((Join-Path $manifestDirectory $layer.runtime))
+        Assert-UiAsset ($runtimePath.StartsWith($addonTextureRoot + [System.IO.Path]::DirectorySeparatorChar, [System.StringComparison]::OrdinalIgnoreCase)) "TGA fora da árvore do addon: $runtimePath"
         Test-Png $reviewPath $width $height $layer.reviewSha256
         Test-Tga $runtimePath $width $height $layer.runtimeSha256 ($layerProperty.Name -like '*Mask')
         $runtimeBytes += (Get-Item -LiteralPath $runtimePath).Length
@@ -153,5 +155,9 @@ foreach ($componentProperty in $manifest.components.PSObject.Properties) {
 
 Assert-UiAsset ($runtimeBytes -eq $manifest.format.totalRuntimeBytes) 'Tamanho total do pacote diverge do manifest.'
 Assert-UiAsset ($manifest.components.globalCooldown.asset -eq $null) 'GCD deve permanecer procedural.'
+$legacyRuntimeFiles = @(Get-ChildItem -LiteralPath $manifestDirectory -Filter '*.tga' -File)
+Assert-UiAsset ($legacyRuntimeFiles.Count -eq 0) 'assets/ui/runtime deve conter metadados, não cópias dos TGAs.'
+$packagedRuntimeFiles = @(Get-ChildItem -LiteralPath $addonTextureRoot -Filter '*.tga' -File -Recurse)
+Assert-UiAsset ($packagedRuntimeFiles.Count -eq $runtimeFiles) 'A árvore do addon contém TGAs ausentes ou não registrados.'
 
 Write-Output "Kit técnico válido: $runtimeFiles TGA(s), $reviewFiles PNG(s), $runtimeBytes bytes de runtime."

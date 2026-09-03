@@ -17,6 +17,7 @@
     "script": "../../../tools/ui/Build-TechnicalAssets.ps1",
     "deterministicOn": "Windows_System.Drawing",
     "sourceDirectory": "../runtime-source",
+    "runtimeDirectory": "../../../addon/UI/Media/Textures",
     "generatedFilesMustNotBeEditedDirectly": true
   },
   "reviewBoard": {
@@ -45,13 +46,13 @@
         "neutralFrame": {
           "review": "../runtime-source/action-current-neutral-v1.png",
           "reviewSha256": "9457BEBE00ED917DF1D4A2FF9511B2D157568C504FFD258595D80DFABD27CD8B",
-          "runtime": "action-current-neutral-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Actions/action-current-neutral-v1.tga",
           "runtimeSha256": "48A984DE55E199E9C535C0B993565899959F2E618C820332A3DB25F8E787DF67"
         },
         "primaryChannelMask": {
           "review": "../runtime-source/action-current-primary-mask-v1.png",
           "reviewSha256": "EE0B95AC18386F3A16CD98E9B6836C77430C7D346AC7353872F91D38070EF145",
-          "runtime": "action-current-primary-mask-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Actions/action-current-primary-mask-v1.tga",
           "runtimeSha256": "8588ED7E51A6F6431D200DC5DBADB34333CB4873778D02043D187D6F09BF22E2",
           "defaultToken": "primaryFlow",
           "render": "reveal_short_segment_only"
@@ -59,7 +60,7 @@
         "signatureChannelMask": {
           "review": "../runtime-source/action-current-signature-mask-v1.png",
           "reviewSha256": "201AB40DC4F3D475A8CE78C0FBBFE0929AB1A9625C7BC5775CA1CBDC60B0BD75",
-          "runtime": "action-current-signature-mask-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Actions/action-current-signature-mask-v1.tga",
           "runtimeSha256": "2A49F516A98967FD5E43F3BFCE9E55771440803E1D1EFBEF23CC23381C958457",
           "defaultToken": "signatureFlow",
           "render": "reveal_short_segment_only"
@@ -84,13 +85,13 @@
         "neutralFrame": {
           "review": "../runtime-source/action-queue-neutral-v1.png",
           "reviewSha256": "9168E68E1CD169FEE48206EF0ACE0D3F33CEB188B45A0A798CA7BC8DA0BB2A6A",
-          "runtime": "action-queue-neutral-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Actions/action-queue-neutral-v1.tga",
           "runtimeSha256": "9B37157B402339326E738A65050B140C42218B66DF7F4A08AD32702CA281F8D4"
         },
         "primaryChannelMask": {
           "review": "../runtime-source/action-queue-primary-mask-v1.png",
           "reviewSha256": "74DA3031B7BF3C8979582C07D10B2503A1C2E96C2EB318B4F8703C7A9A16E8E2",
-          "runtime": "action-queue-primary-mask-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Actions/action-queue-primary-mask-v1.tga",
           "runtimeSha256": "FFC2E7F72AAF361CB89A4B8FA4A692DAC3FCA6F20876D8B221C79BFBA07A95EA",
           "defaultToken": "primaryFlow",
           "render": "one_shot_segment_only"
@@ -98,7 +99,7 @@
         "signatureChannelMask": {
           "review": "../runtime-source/action-queue-signature-mask-v1.png",
           "reviewSha256": "0CC804040BF3F920E26A5F590818AC4F8661C0464836BE606299EE4C85670991",
-          "runtime": "action-queue-signature-mask-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Actions/action-queue-signature-mask-v1.tga",
           "runtimeSha256": "02F84101075039AD607C943D5BAB782249130CD86112CF4BFD73599D5926B910",
           "defaultToken": "signatureFlow",
           "render": "one_shot_segment_only"
@@ -124,13 +125,13 @@
         "neutralFrame": {
           "review": "../runtime-source/combat-context-neutral-v1.png",
           "reviewSha256": "22724F36EA84898CA304184D3ADBB6CA639261C25E92CA91DE6B7424E7750827",
-          "runtime": "combat-context-neutral-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Context/combat-context-neutral-v1.tga",
           "runtimeSha256": "56E625E8EA0416F12840B8ABDE4AA72182735EB01FB385BD947F2476E0111FF2"
         },
         "primaryChannelMask": {
           "review": "../runtime-source/combat-context-primary-mask-v1.png",
           "reviewSha256": "A415095E265EC0702570A2CC25A4172CC7A6758E9671CCBFC2B936A5F1727D9E",
-          "runtime": "combat-context-primary-mask-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Context/combat-context-primary-mask-v1.tga",
           "runtimeSha256": "3970F94A0C09EB6BE9F2A68FEC61CDB67E65228D81A6F14651F94C6D2624468C",
           "defaultToken": "primaryFlow",
           "render": "low_salience_segment_only"
@@ -138,7 +139,7 @@
         "signatureChannelMask": {
           "review": "../runtime-source/combat-context-signature-mask-v1.png",
           "reviewSha256": "C675A7D5CA5C57A2A60185337E17A890D8C5B4F46C8EBCA4D92FFF352CD338D7",
-          "runtime": "combat-context-signature-mask-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Context/combat-context-signature-mask-v1.tga",
           "runtimeSha256": "9E34232A31BA5ADE82F6B5D2757885E01BECF2FCB67C4FEA7FF2C22D904E03F2",
           "defaultToken": "signatureFlow",
           "render": "static_or_low_salience_segment"
@@ -163,13 +164,13 @@
         "neutralFrame": {
           "review": "../runtime-source/cast-indicator-neutral-v1.png",
           "reviewSha256": "2E3FD353097BDD95BB7A498737326470E2DB71812DCC47D9F9BDBD539D1AD45C",
-          "runtime": "cast-indicator-neutral-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Cast/cast-indicator-neutral-v1.tga",
           "runtimeSha256": "7F16C5778F6A36DC03D068501DD6A63B93CE067B3055E7CF8FB7317F0A35F980"
         },
         "primaryChannelMask": {
           "review": "../runtime-source/cast-indicator-primary-mask-v1.png",
           "reviewSha256": "66ADC5300DC2AA6275DA399AB64E23F865CC35209D24F5C6760C0557FF48F8A0",
-          "runtime": "cast-indicator-primary-mask-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Cast/cast-indicator-primary-mask-v1.tga",
           "runtimeSha256": "E4096E3469447D2CA8613B86B231C7DA8EDB22113E4B0283F25A0A222C9B9188",
           "defaultToken": "primaryFlow",
           "render": "reveal_short_segment_only"
@@ -177,7 +178,7 @@
         "signatureChannelMask": {
           "review": "../runtime-source/cast-indicator-signature-mask-v1.png",
           "reviewSha256": "5232AA3A3B64A5D59D5B05EAC0CBB79D9A3CA8CEE51FFD8EA07984B5E19D6C29",
-          "runtime": "cast-indicator-signature-mask-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Cast/cast-indicator-signature-mask-v1.tga",
           "runtimeSha256": "CEB63F84A4E4BAD046AD08A50A8F1527EB16F86BC12C7A6BFA634A733784E5B8",
           "defaultToken": "signatureFlow",
           "render": "reveal_short_segment_only"
@@ -207,13 +208,13 @@
         "neutralFrame": {
           "review": "../runtime-source/aura-juggle-cell-neutral-v1.png",
           "reviewSha256": "CEA95FD65505546F35361A6FD32FC9C4BD8E08D58E6B6FFB3E91FC981ECD2E16",
-          "runtime": "aura-juggle-cell-neutral-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Auras/aura-juggle-cell-neutral-v1.tga",
           "runtimeSha256": "68F39B944A3A82F3AA18336A11A3069FA749187DD903A9F7BB9606D7912B0443"
         },
         "primaryChannelMask": {
           "review": "../runtime-source/aura-juggle-cell-primary-mask-v1.png",
           "reviewSha256": "500D53010FF179AD626B1968F4B548EBA88911BF2985812092320FCDD4E1FB07",
-          "runtime": "aura-juggle-cell-primary-mask-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Auras/aura-juggle-cell-primary-mask-v1.tga",
           "runtimeSha256": "96508A2DDE543113F3B91C362133A0377DC9F71134C8EB01965A650BD51936CE",
           "defaultTokensByType": { "buff": "buffFlow", "debuff": "debuffFlow" },
           "render": "reveal_short_segment_only"
@@ -221,7 +222,7 @@
         "signatureChannelMask": {
           "review": "../runtime-source/aura-juggle-cell-signature-mask-v1.png",
           "reviewSha256": "F3C756A18528348F217AD15D333D2CA6F25DBDA540C7865306740D54030EA845",
-          "runtime": "aura-juggle-cell-signature-mask-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Auras/aura-juggle-cell-signature-mask-v1.tga",
           "runtimeSha256": "05F39C75BC7A14547C4F277A4DB23E3C6196B080BF3D5A4D23F844FC22CCF3F9",
           "defaultToken": "signatureFlow",
           "render": "static_or_one_shot_segment"
@@ -229,7 +230,7 @@
         "stateShelfMask": {
           "review": "../runtime-source/aura-juggle-cell-state-shelf-mask-v1.png",
           "reviewSha256": "3C163A1107447BA879CE91B0C94836211C76BBA494B779BADB18E89543838F1F",
-          "runtime": "aura-juggle-cell-state-shelf-mask-v1.tga",
+          "runtime": "../../../addon/UI/Media/Textures/Auras/aura-juggle-cell-state-shelf-mask-v1.tga",
           "runtimeSha256": "7A7C235BD4E544E56ECB4F754241043EF12A120C0B6ABCC6BF4CA172D9F16E95",
           "defaultTokens": ["stableState", "attentionState", "criticalState"],
           "render": "full_state_fill_while_active"
@@ -248,6 +249,7 @@
   "integration": {
     "iconSource": "wow_runtime",
     "missingIcon": "neutral_local_placeholder",
+    "addonTextureRoot": "Interface\\AddOns\\SpynonRotation\\UI\\Media\\Textures",
     "applyContentUvRect": true,
     "maskRgb": "WHITE",
     "maskAlpha": "COVERAGE",
