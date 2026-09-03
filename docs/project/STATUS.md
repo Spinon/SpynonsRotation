@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T18:41:02.155Z
+Atualizado pelo board em: 2026-09-03T18:44:29.107Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,9 +10,9 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **ENH-002 — Baseline APL**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Importar e revisar baseline de referência.
+Próxima ação: Preservar, auditar e normalizar a APL Enhancement pinada.
 
 ## Focos paralelos
 
@@ -22,8 +22,8 @@ Próxima ação: Importar e revisar baseline de referência.
 
 ## Progresso
 
-- Planejadas: 34
-- Em andamento: 1
+- Planejadas: 33
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 20
 - Total: 55
@@ -45,7 +45,7 @@ Próxima ação: Importar e revisar baseline de referência.
 | LAB-005 | delivery | ROTATION LAB | Optimizer | done | P2 | LAB-004, LAB-003 |
 | LAB-006 | delivery | ROTATION LAB | Regression suite | done | P1 | LAB-003, LAB-004 |
 | ENH-001 | delivery | SHAMAN | Catálogo Enhancement | done | P0 | CORE-002, CORE-003, CORE-004 |
-| ENH-002 | delivery | SHAMAN | Baseline APL | planned | P0 | ENH-001, LAB-002, LAB-003 |
+| ENH-002 | delivery | SHAMAN | Baseline APL | in_progress | P0 | ENH-001, LAB-002, LAB-003 |
 | ENH-003 | delivery | SHAMAN | Curadoria ST | planned | P1 | ENH-002, LAB-004 |
 | ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | planned | P1 | ENH-002, LAB-004 |
 | ENH-005 | delivery | SHAMAN | Talent-aware rotation | planned | P1 | ENH-003, ENH-004, CORE-003 |
