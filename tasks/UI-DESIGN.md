@@ -104,3 +104,9 @@ Revisar a moldura da ação atual para incorporar um encaixe físico discreto no
 ## UI-DESIGN-010 — Contraste cromático do GCD
 
 Comparar a cor provisória do GCD com a moldura, a barra de cast e os demais estados do HUD. Selecionar uma cor padrão que preserve contraste e não seja confundida com proc, cast, cooldown individual ou assinatura da marca, sem alterar o encaixe e o movimento já aprovados. A decisão integra o contrato global de canaletas procedurais: cores são defaults configuráveis, enquanto o comprimento continua sendo o dado autoritativo do progresso.
+
+## UI-DESIGN-011 — Distribuição dos assets de runtime
+
+Distribuir o kit técnico aprovado de acordo com sua finalidade: fontes, previews e manifests permanecem em `assets/ui`, enquanto somente as texturas TGA consumíveis pelo cliente ficam sob `addon/UI/Media/Textures`, separadas por componente.
+
+O build e o validador devem preservar hashes, dimensões, transparência e rastreabilidade após a mudança. A organização não implementa frames Lua, não carrega texturas no cliente e não altera os contratos de `Recommendation`.

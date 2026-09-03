@@ -6,9 +6,11 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T19:37:59.575Z",
+  "updatedAt": "2026-09-03T19:42:44.229Z",
   "currentFocus": "ENH-004",
-  "parallelFocus": {},
+  "parallelFocus": {
+    "ui": "UI-DESIGN-011"
+  },
   "release": {
     "version": "0.0.0",
     "channel": "bootstrap",
@@ -848,6 +850,28 @@
         "O Product Owner propôs canaletas estáticas com barras roláveis posteriores, cores padrão configuráveis e aplicação consistente em todos os elementos da UI.",
         "O Product Owner aprovou a direção de canaletas procedurais e o candidato prata neutro do GCD em 2026-09-03."
       ],
+      "track": "ui"
+    },
+    {
+      "id": "UI-DESIGN-011",
+      "title": "Distribuição dos assets de runtime",
+      "lane": "UI DESIGN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "tasks/UI-DESIGN.md#ui-design-011--distribuição-dos-assets-de-runtime",
+      "updatedAt": "2026-09-03T19:42:44.229Z",
+      "reviewBy": null,
+      "nextAction": "Separar fontes de design e texturas consumíveis, atualizando build, manifest e validação sem implementar runtime Lua.",
+      "dependencies": [
+        "UI-DESIGN-008"
+      ],
+      "acceptanceCriteria": [
+        "Somente texturas TGA consumíveis ficam sob addon/UI/Media/Textures e são separadas por componente",
+        "Fontes, previews e manifests de design permanecem sob assets/ui sem duplicar os TGAs",
+        "Build, manifest, documentação e validação preservam hashes, dimensões e caminhos de handoff"
+      ],
+      "evidence": [],
       "track": "ui"
     },
     {
