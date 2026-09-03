@@ -68,11 +68,15 @@
     }
   },
   "animationSpec": "ANIMATION_HOOKS.md",
+  "runtimePackage": {
+    "actionCurrent": "../runtime/manifest.json#components.actionCurrent",
+    "actionQueue": "../runtime/manifest.json#components.actionQueue"
+  },
   "separateLayers": [
     "wowIcon",
     "cooldown",
     "frame",
-    "animatedGlow",
+    "proceduralChannelSegment",
     "hotkey",
     "stacksOrCharges",
     "gcd"
@@ -87,7 +91,8 @@
     "action-current-frame-v4.png"
   ],
   "proceduralChannelContract": "../procedural-channels.json",
-  "runtimeReady": false,
+  "runtimeReady": true,
+  "runtimeImplemented": false,
   "runtimePreparationTask": "UI-DESIGN-008",
   "motionDesignTask": "UI-DESIGN-007"
 }

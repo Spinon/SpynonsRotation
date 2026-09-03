@@ -40,6 +40,8 @@
     "green": "#42C93E"
   },
   "proceduralChannelContract": "../procedural-channels.json",
-  "runtimeReady": false,
+  "runtimePackage": "../runtime/manifest.json#components.combatContext",
+  "runtimeReady": true,
+  "runtimeImplemented": false,
   "runtimePreparationTask": "UI-DESIGN-008"
 }

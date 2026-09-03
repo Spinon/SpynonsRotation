@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080">
+  <rect width="1600" height="1080" fill="#05080C"/>
+  <text x="54" y="62" fill="#E7EDF2" font-family="Arial, sans-serif" font-size="32" font-weight="700">UI-DESIGN-008 · KIT TÉCNICO</text>
+  <text x="54" y="98" fill="#82909C" font-family="Arial, sans-serif" font-size="17">PNG de revisão · os derivados de runtime usam TGA 32-bit e a mesma geometria</text>
+
+  <text x="54" y="148" fill="#82909C" font-family="Arial, sans-serif" font-size="15">COMPONENTE</text>
+  <text x="310" y="148" fill="#82909C" font-family="Arial, sans-serif" font-size="15">MASTER NEUTRO</text>
+  <text x="650" y="148" fill="#0788D8" font-family="Arial, sans-serif" font-size="15">MÁSCARA PRINCIPAL</text>
+  <text x="990" y="148" fill="#42C93E" font-family="Arial, sans-serif" font-size="15">MÁSCARA ASSINATURA</text>
+  <text x="1330" y="148" fill="#FFC247" font-family="Arial, sans-serif" font-size="15">MÁSCARA ESTADO</text>
+
+  <g fill="#081018" stroke="#22313D" stroke-width="2">
+    <rect x="40" y="168" width="1520" height="162" rx="12"/>
+    <rect x="40" y="344" width="1520" height="162" rx="12"/>
+    <rect x="40" y="520" width="1520" height="162" rx="12"/>
+    <rect x="40" y="696" width="1520" height="162" rx="12"/>
+    <rect x="40" y="872" width="1520" height="162" rx="12"/>
+  </g>
+
+  <g fill="#E7EDF2" font-family="Arial, sans-serif" font-size="20" font-weight="700">
+    <text x="62" y="236">AÇÃO ATUAL</text>
+    <text x="62" y="412">FILA</text>
+    <text x="62" y="588">CONTEXTO</text>
+    <text x="62" y="764">CAST</text>
+    <text x="62" y="940">AURA</text>
+  </g>
+
+  <g fill="#82909C" font-family="Arial, sans-serif" font-size="14">
+    <text x="62" y="264">512 × 256</text>
+    <text x="62" y="440">256 × 256</text>
+    <text x="62" y="616">256 × 128</text>
+    <text x="62" y="792">1024 × 256</text>
+    <text x="62" y="968">512 × 256</text>
+  </g>
+
+  <g fill="#020407" stroke="#13212B" stroke-width="1">
+    <rect x="286" y="184" width="320" height="130" rx="6"/>
+    <rect x="626" y="184" width="320" height="130" rx="6"/>
+    <rect x="966" y="184" width="320" height="130" rx="6"/>
+    <rect x="1306" y="184" width="230" height="130" rx="6"/>
+    <rect x="286" y="360" width="320" height="130" rx="6"/>
+    <rect x="626" y="360" width="320" height="130" rx="6"/>
+    <rect x="966" y="360" width="320" height="130" rx="6"/>
+    <rect x="1306" y="360" width="230" height="130" rx="6"/>
+    <rect x="286" y="536" width="320" height="130" rx="6"/>
+    <rect x="626" y="536" width="320" height="130" rx="6"/>
+    <rect x="966" y="536" width="320" height="130" rx="6"/>
+    <rect x="1306" y="536" width="230" height="130" rx="6"/>
+    <rect x="286" y="712" width="320" height="130" rx="6"/>
+    <rect x="626" y="712" width="320" height="130" rx="6"/>
+    <rect x="966" y="712" width="320" height="130" rx="6"/>
+    <rect x="1306" y="712" width="230" height="130" rx="6"/>
+    <rect x="286" y="888" width="320" height="130" rx="6"/>
+    <rect x="626" y="888" width="320" height="130" rx="6"/>
+    <rect x="966" y="888" width="320" height="130" rx="6"/>
+    <rect x="1306" y="888" width="230" height="130" rx="6"/>
+  </g>
+
+  <image href="action-current-neutral-v1.png" x="296" y="194" width="300" height="110" preserveAspectRatio="xMidYMid meet"/>
+  <image href="action-current-primary-mask-v1.png" x="636" y="194" width="300" height="110" preserveAspectRatio="xMidYMid meet"/>
+  <image href="action-current-signature-mask-v1.png" x="976" y="194" width="300" height="110" preserveAspectRatio="xMidYMid meet"/>
+
+  <image href="action-queue-neutral-v1.png" x="296" y="368" width="300" height="114" preserveAspectRatio="xMidYMid meet"/>
+  <image href="action-queue-primary-mask-v1.png" x="636" y="368" width="300" height="114" preserveAspectRatio="xMidYMid meet"/>
+  <image href="action-queue-signature-mask-v1.png" x="976" y="368" width="300" height="114" preserveAspectRatio="xMidYMid meet"/>
+
+  <image href="combat-context-neutral-v1.png" x="296" y="548" width="300" height="106" preserveAspectRatio="xMidYMid meet"/>
+  <image href="combat-context-primary-mask-v1.png" x="636" y="548" width="300" height="106" preserveAspectRatio="xMidYMid meet"/>
+  <image href="combat-context-signature-mask-v1.png" x="976" y="548" width="300" height="106" preserveAspectRatio="xMidYMid meet"/>
+
+  <image href="cast-indicator-neutral-v1.png" x="296" y="724" width="300" height="106" preserveAspectRatio="xMidYMid meet"/>
+  <image href="cast-indicator-primary-mask-v1.png" x="636" y="724" width="300" height="106" preserveAspectRatio="xMidYMid meet"/>
+  <image href="cast-indicator-signature-mask-v1.png" x="976" y="724" width="300" height="106" preserveAspectRatio="xMidYMid meet"/>
+
+  <image href="aura-juggle-cell-neutral-v1.png" x="296" y="900" width="300" height="106" preserveAspectRatio="xMidYMid meet"/>
+  <image href="aura-juggle-cell-primary-mask-v1.png" x="636" y="900" width="300" height="106" preserveAspectRatio="xMidYMid meet"/>
+  <image href="aura-juggle-cell-signature-mask-v1.png" x="976" y="900" width="300" height="106" preserveAspectRatio="xMidYMid meet"/>
+  <image href="aura-juggle-cell-state-shelf-mask-v1.png" x="1316" y="900" width="210" height="106" preserveAspectRatio="xMidYMid meet"/>
+
+  <g fill="#3B4650" font-family="Arial, sans-serif" font-size="16">
+    <text x="1388" y="255">N/A</text>
+    <text x="1388" y="431">N/A</text>
+    <text x="1388" y="607">N/A</text>
+    <text x="1388" y="783">N/A</text>
+  </g>
+</svg>

@@ -58,4 +58,4 @@ A moldura técnica do contexto também adota a canaleta neutra compartilhada. Qu
 
 ## Handoff
 
-O master, hash e safe areas normalizadas do contexto estão no manifest de [`assets/ui/context`](../../assets/ui/context/manifest.json). Defaults tipográficos e testes de legibilidade em escala pertencem a `UI-DESIGN-008`; os controles de usuário pertencem à trilha de configuração.
+O master, hash e safe areas normalizadas do contexto estão no manifest de [`assets/ui/context`](../../assets/ui/context/manifest.json). Canvas, UV e máscaras de runtime estão em [`HUD_ASSET_HANDOFF.md`](HUD_ASSET_HANDOFF.md); os controles de usuário pertencem à trilha de configuração.

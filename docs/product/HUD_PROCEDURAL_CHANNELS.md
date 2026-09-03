@@ -44,6 +44,6 @@ Mesmo quando vermelho aparece em mais de um papel, a superfície preserva a leit
 
 ## Contrato técnico futuro
 
-`UI-DESIGN-007` define comprimento, velocidade, direção, entrada, saída e fallback de movimento reduzido. `UI-DESIGN-008` entrega cada moldura neutra, a máscara da canaleta e os pontos de composição necessários ao runtime. A implementação deve preferir um controlador de animação compartilhado pelo HUD e evitar um ciclo de atualização independente por segmento.
+`UI-DESIGN-007` define comprimento, velocidade, direção, entrada, saída e fallback de movimento reduzido. `UI-DESIGN-008` entrega cada moldura neutra, a máscara da canaleta e os pontos de composição necessários ao runtime. A implementação deve preferir um controlador de animação compartilhado pelo HUD e evitar um ciclo de atualização independente por segmento. O handoff consolidado está em [`HUD_ASSET_HANDOFF.md`](HUD_ASSET_HANDOFF.md).
 
 O contrato canônico dos tokens e modos está em [`assets/ui/procedural-channels.json`](../../assets/ui/procedural-channels.json).

@@ -189,7 +189,9 @@
     ]
   },
   "proceduralChannelContract": "../procedural-channels.json",
-  "runtimeReady": false,
+  "runtimePackage": "../runtime/manifest.json#components.auraJuggleCell",
+  "runtimeReady": true,
+  "runtimeImplemented": false,
   "runtimePreparationTask": "UI-DESIGN-008",
   "motionDesignTask": "UI-DESIGN-007"
 }

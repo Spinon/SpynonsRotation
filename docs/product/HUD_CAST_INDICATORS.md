@@ -8,7 +8,7 @@ A arte aprovada está em [`assets/ui/cast/cast-indicator-frame-v1.png`](../../as
 
 ## Zonas estáveis
 
-As medidas abaixo descrevem o master de origem de `1938 × 352 px`. A normalização para runtime pertence a `UI-DESIGN-008`.
+As medidas abaixo descrevem o master de origem de `1938 × 352 px`. A normalização para runtime está registrada em [`HUD_ASSET_HANDOFF.md`](HUD_ASSET_HANDOFF.md).
 
 | Zona | Retângulo de referência | Conteúdo |
 | --- | --- | --- |
@@ -45,7 +45,7 @@ A troca entre estados não muda a largura das zonas enquanto o componente estive
 
 A moldura técnica final terá canaletas neutras e máscara separada para energia procedural. O preview usa ciano `#22D3EE` como default configurável para o preenchimento do cast, sem gradiente ou glow incorporado.
 
-O GCD usa prata `#D8E1E8` como candidato para não competir com o cast ciano. Ambos usam `LINEAR_PROGRESS`, mas mantêm slots e fontes de progresso independentes. A geometria do slot do GCD não muda nessa revisão.
+O GCD usa prata `#D8E1E8` como padrão aprovado para não competir com o cast ciano. Ambos usam `LINEAR_PROGRESS`, mas mantêm slots e fontes de progresso independentes. A geometria do slot do GCD não muda nessa revisão.
 
 ## Limites
 

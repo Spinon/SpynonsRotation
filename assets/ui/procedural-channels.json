@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "candidate_review",
+  "status": "approved",
   "system": "proceduralEnergyChannels",
   "concept": {
     "file": "concepts/spynon-main-hud-procedural-channels-concept-v2.png",
@@ -41,7 +41,7 @@
     "channelTrack": "#07131D",
     "primaryFlow": "#0788D8",
     "signatureFlow": "#42C93E",
-    "gcdProgressCandidate": "#D8E1E8",
+    "gcdProgress": "#D8E1E8",
     "castProgress": "#22D3EE",
     "buffFlow": "#0788D8",
     "debuffFlow": "#E5484D",
@@ -74,8 +74,8 @@
     },
     "globalCooldown": {
       "mode": "LINEAR_PROGRESS",
-      "defaultToken": "gcdProgressCandidate",
-      "colorStatus": "candidate_pending_UI-DESIGN-010"
+      "defaultToken": "gcdProgress",
+      "colorStatus": "approved_default"
     },
     "castProgress": {
       "mode": "LINEAR_PROGRESS",
@@ -98,7 +98,9 @@
       ]
     }
   },
-  "runtimeReady": false,
+  "runtimeReady": true,
+  "runtimeImplemented": false,
+  "runtimePackage": "runtime/manifest.json",
   "motionContract": "motion/manifest.json",
   "motionDesignTask": "UI-DESIGN-007",
   "runtimePreparationTask": "UI-DESIGN-008",

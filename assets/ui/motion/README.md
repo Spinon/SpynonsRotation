@@ -1,6 +1,6 @@
 # Movimento e estados visuais
 
-## Direção candidata
+## Direção aprovada
 
 Movimento comunica somente mudança real. A fila não flutua em repouso e um estado local não desloca componentes. O sistema separa:
 
@@ -10,7 +10,7 @@ Movimento comunica somente mudança real. A fila não flutua em repouso e um est
 
 `promote-storyboard-concept-v1.png` demonstra a preservação de identidade durante `PROMOTE`. `motion-state-reference-v1.svg` é a fonte da prancha técnica de movimentos e estados, e `motion-state-reference-v1.png` é seu preview renderizado; os labels existem apenas para documentação.
 
-O contrato estruturado e os tempos candidatos ficam em `manifest.json`. A arte desta pasta não é carregada pelo runtime.
+O contrato estruturado e os tempos aprovados ficam em `manifest.json`. A arte desta pasta não é carregada pelo runtime.
 
 ## Prompt da referência conceitual
 

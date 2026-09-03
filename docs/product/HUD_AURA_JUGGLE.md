@@ -22,7 +22,7 @@ Nome, duração, estado e ícone são camadas dinâmicas. A moldura raster não 
 
 O tipo do efeito usa um canal independente da urgência: um segmento azul percorre a canaleta do buff e um vermelho percorre a canaleta do debuff. Não existe glifo, badge, label ou background adicional sobre o ícone. As duas cores de tipo são configuráveis.
 
-Buffs e debuffs permanecem na mesma fila global; não existem linhas ou grupos separados que enfraqueçam a prioridade da esquerda para a direita. O contrato técnico fornece o tipo genérico do efeito, e a UI apenas o representa — ela não classifica auras por módulo de classe ou spec. A revisão v4 preserva a decisão cromática; `UI-DESIGN-008` substitui o preenchimento incorporado por canaleta neutra e máscara tintável, sem duplicar a moldura.
+Buffs e debuffs permanecem na mesma fila global; não existem linhas ou grupos separados que enfraqueçam a prioridade da esquerda para a direita. O contrato técnico fornece o tipo genérico do efeito, e a UI apenas o representa — ela não classifica auras por módulo de classe ou spec. A revisão v4 preserva a decisão cromática; o pacote técnico substitui o preenchimento incorporado por canaleta neutra e máscara tintável, sem duplicar a moldura.
 
 ## Estados
 

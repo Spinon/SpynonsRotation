@@ -112,7 +112,9 @@
     ]
   },
   "proceduralChannelContract": "../procedural-channels.json",
-  "runtimeReady": false,
+  "runtimePackage": "../runtime/manifest.json#components.castIndicator",
+  "runtimeReady": true,
+  "runtimeImplemented": false,
   "runtimePreparationTask": "UI-DESIGN-008",
   "motionDesignTask": "UI-DESIGN-007",
   "gcdColorReviewTask": "UI-DESIGN-010"

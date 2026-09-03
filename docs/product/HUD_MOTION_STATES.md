@@ -8,7 +8,7 @@ A referência conceitual de promoção está em [`promote-storyboard-concept-v1.
 
 ## Transações da fila
 
-| Evento | Duração candidata | Tratamento | O que o distingue |
+| Evento | Duração aprovada | Tratamento | O que o distingue |
 | --- | ---: | --- | --- |
 | `MOVE` | 160 ms | Translação entre slots com escala e alpha preservados. | O item permanece no mesmo nível de hierarquia. |
 | `ENTER` | 180 ms | Entra pela direita a partir de 25% da largura da célula; alpha `0 → 1`, escala `0,96 → 1`. | É o único evento que nasce fora da fila. |
@@ -48,4 +48,4 @@ Labels da documentação não aparecem no HUD. Hotkey, stacks, charges e cooldow
 
 ## Handoff futuro
 
-`UI-DESIGN-008` deve fornecer as máscaras e coordenadas de cada canaleta sem incorporar cor ou animação. A implementação técnica deve usar um controlador compartilhado de timeline, interromper animações quando o HUD estiver oculto e evitar um loop independente por elemento.
+O pacote de `UI-DESIGN-008` fornece as máscaras e coordenadas de cada canaleta sem incorporar cor ou animação. A implementação técnica deve usar um controlador compartilhado de timeline, interromper animações quando o HUD estiver oculto e evitar um loop independente por elemento.

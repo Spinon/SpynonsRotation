@@ -110,7 +110,7 @@ O contrato visual detalhado de `UI-DESIGN-003` está em [`HUD_CONTEXT_BADGES.md`
 
 ## Global Cooldown e cooldown individual
 
-O contrato de `UI-DESIGN-004` está em [`HUD_COOLDOWNS.md`](HUD_COOLDOWNS.md). O cooldown individual usa somente um radial swipe cinza sobre o ícone, com revelação horária e número central opcional; não existe argola decorativa. O GCD cresce da esquerda para a direita no encaixe transparente do rodapé da ação atual `v5`, sem texto e sem aparecer na fila. O candidato padrão é prata neutro; a seleção final pertence a `UI-DESIGN-010` e continua configurável.
+O contrato de `UI-DESIGN-004` está em [`HUD_COOLDOWNS.md`](HUD_COOLDOWNS.md). O cooldown individual usa somente um radial swipe cinza sobre o ícone, com revelação horária e número central opcional; não existe argola decorativa. O GCD cresce da esquerda para a direita no encaixe transparente do rodapé da ação atual `v5`, sem texto e sem aparecer na fila. O padrão aprovado é prata neutro e continua configurável.
 
 ## Barra de cast e indicadores
 
@@ -131,6 +131,8 @@ Quando não há cast nem indicador, o componente inteiro fica oculto para não d
 O contrato compartilhado está em [`HUD_PROCEDURAL_CHANNELS.md`](HUD_PROCEDURAL_CHANNELS.md). Molduras fornecem grafite, recortes e canaletas neutras; barras coloridas, segmentos móveis e preenchimentos de estado são camadas de runtime. A paleta possui defaults da marca e overrides globais ou por componente.
 
 O vocabulário de `MOVE`, `ENTER`, `EXIT`, `PROMOTE`, `CONSUME` e estados locais está em [`HUD_MOTION_STATES.md`](HUD_MOTION_STATES.md). Movimento comunica transição real e nunca substitui informação textual, progresso observável ou fallback seguro.
+
+O pacote de masters neutros, máscaras, canvases e UVs está em [`HUD_ASSET_HANDOFF.md`](HUD_ASSET_HANDOFF.md). Esses arquivos estão preparados para integração futura, sem declarar que o runtime já existe.
 
 ## Vocabulário visual
 

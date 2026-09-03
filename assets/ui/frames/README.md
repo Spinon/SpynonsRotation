@@ -4,7 +4,7 @@
 
 A ação atual `v5` foi aprovada pelo Product Owner em `UI-DESIGN-009`. Ela preserva a moldura `v4` e acrescenta somente o encaixe inferior do GCD. A fila continua usando `v4`. As versões anteriores permanecem preservadas como histórico de comparação.
 
-Todos são masters raster em alta resolução; normalização para dimensões e formatos de runtime pertence a `UI-DESIGN-008`.
+Todos são masters raster em alta resolução. Os derivados neutros, máscaras tintáveis, canvases e UVs estão no [`../runtime/manifest.json`](../runtime/manifest.json).
 
 ## Assets
 
@@ -34,7 +34,7 @@ Os arquivos ativos possuem alpha real no exterior e na abertura central. O conte
 - cooldown, fluxo de perímetro e estados animados serão overlays independentes, sem alterar estes masters;
 - os canais coloridos atuais preservam a referência cromática aprovada, mas serão convertidos em canaletas neutras com máscaras separadas no kit técnico;
 - os pontos de inserção e a política de custo estão em [`ANIMATION_HOOKS.md`](ANIMATION_HOOKS.md);
-- o recorte/máscara final do ícone será preparado no kit técnico de `UI-DESIGN-008`.
+- o recorte do ícone permanece definido pela abertura do master e pelo conteúdo útil registrado no pacote técnico.
 
 ## Direção visual
 

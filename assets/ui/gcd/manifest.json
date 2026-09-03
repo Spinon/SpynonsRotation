@@ -27,7 +27,7 @@
     "trackColor": "#07131D",
     "trackAlpha": 0.86,
     "fillColor": "#D8E1E8",
-    "fillColorStatus": "candidate_review",
+    "fillColorStatus": "approved_default",
     "fillAlpha": 1,
     "colorConfigurable": true,
     "gradient": false,
@@ -73,6 +73,7 @@
   },
   "proceduralChannelContract": "../procedural-channels.json",
   "colorReviewTask": "UI-DESIGN-010",
-  "runtimeReady": false,
+  "runtimeReady": true,
+  "runtimeImplemented": false,
   "runtimePreparationTask": "UI-DESIGN-008"
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "candidate_review",
+  "status": "approved",
   "component": "hudMotionAndVisualStates",
   "concept": {
     "file": "promote-storyboard-concept-v1.png",
@@ -130,6 +130,7 @@
     "motionOff": "instant_geometry_static_segments"
   },
   "proceduralChannelContract": "../procedural-channels.json",
-  "runtimeReady": false,
+  "runtimeReady": true,
+  "runtimeImplemented": false,
   "runtimePreparationTask": "UI-DESIGN-008"
 }

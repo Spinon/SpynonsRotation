@@ -75,13 +75,13 @@ Produzir o módulo de contexto de combate e definir o tratamento tipográfico de
 
 ## UI-DESIGN-004 — GCD e cooldown individual
 
-Definir a barra de Global Cooldown e o radial swipe cinza que revela o ícone em sentido horário. O cooldown individual não usa argola ou moldura adicional; o valor numérico central é configurável e pode ser ocultado. O GCD é procedural, exclusivo da ação atual, cresce da esquerda para a direita e não exibe texto. O azul sólido permanece provisório até a revisão comparativa de `UI-DESIGN-010`.
+Definir a barra de Global Cooldown e o radial swipe cinza que revela o ícone em sentido horário. O cooldown individual não usa argola ou moldura adicional; o valor numérico central é configurável e pode ser ocultado. O GCD é procedural, exclusivo da ação atual, cresce da esquerda para a direita e não exibe texto. O prata neutro aprovado em `UI-DESIGN-010` é o default configurável.
 
 ## UI-DESIGN-005 — Barra de cast e indicadores
 
 Produzir a barra de cast combinada com indicadores decisivos, reservando a área direita para emblema e nome da habilidade e o centro para informações contextuais.
 
-O master deve permanecer vazio: progresso, indicadores, ícone nativo do WoW e nome são camadas dinâmicas. A geometria mantém zonas estáveis para evitar jitter. Sem cast, progresso e identidade somem sem inventar estado; sem indicadores, o centro fica vazio; sem nenhum dos dois, o componente inteiro fica oculto. A cor do cast deve ser registrada como candidata para a comparação com o GCD em `UI-DESIGN-010`.
+O master deve permanecer vazio: progresso, indicadores, ícone nativo do WoW e nome são camadas dinâmicas. A geometria mantém zonas estáveis para evitar jitter. Sem cast, progresso e identidade somem sem inventar estado; sem indicadores, o centro fica vazio; sem nenhum dos dois, o componente inteiro fica oculto. O ciano permanece o default configurável do cast e é distinto do prata aprovado para o GCD.
 
 ## UI-DESIGN-006 — Juggle de buffs/debuffs
 

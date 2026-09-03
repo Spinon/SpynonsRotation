@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T19:13:10.591Z
+Atualizado pelo board em: 2026-09-03T19:26:30.929Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,7 +18,7 @@ Próxima ação: Medir candidatas ST limitadas contra a baseline pinada.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-008 — Kit técnico de assets e handoff | in_progress | Extrair masters neutros, máscaras tintáveis e documentar o contrato de integração sem implementar runtime. |
+| ui | UI-DESIGN-008 — Kit técnico de assets e handoff | in_progress | Revisar com o Product Owner os masters neutros, máscaras e dimensões antes de liberar o handoff para delivery. |
 
 ## Progresso
 
