@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T19:09:28.574Z
+Atualizado pelo board em: 2026-09-03T19:12:24.466Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,14 +18,14 @@ Próxima ação: Medir candidatas ST limitadas contra a baseline pinada.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-007 — Movimento e estados visuais | in_progress | Revisar com o Product Owner os tempos, a promoção da fila e os tratamentos locais antes do kit técnico. |
+| ui | UI-DESIGN-008 — Kit técnico de assets e handoff | planned | Preparar formatos, dimensões, transparências e documentação de integração. |
 
 ## Progresso
 
 - Planejadas: 31
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 22
+- Concluídas: 23
 - Total: 55
 
 ## Fila canônica
@@ -58,7 +58,7 @@ Próxima ação: Medir candidatas ST limitadas contra a baseline pinada.
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | done | P1 | UI-DESIGN-003 |
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | done | P1 | UI-DESIGN-004, UI-DESIGN-009 |
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | done | P0 | UI-DESIGN-005 |
-| UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | in_progress | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
+| UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | done | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
 | UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |
 | UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | done | P1 | UI-DESIGN-005, UI-DESIGN-009 |
@@ -263,6 +263,14 @@ Próxima ação: Medir candidatas ST limitadas contra a baseline pinada.
 - O v4 preserva a barra inferior exclusivamente para urgência e mantém o master único, registrando a futura extração de máscara tintável em UI-DESIGN-008.
 - Product Owner rejeitou os marcadores +/− do v3 e propôs distinguir o tipo pela cor do contorno.
 - Product Owner aprovou a revisão v4 com contorno azul para buff e vermelho para debuff.
+
+### UI-DESIGN-007
+
+- assets/ui/motion/promote-storyboard-concept-v1.png demonstra PROMOTE preservando a identidade visual entre a fila e a ação atual.
+- assets/ui/motion/motion-state-reference-v1.svg compara MOVE, ENTER, EXIT, PROMOTE, CONSUME e os cinco estados locais com labels apenas documentais.
+- assets/ui/motion/manifest.json registra tempos candidatos, política de interrupção, limites de simultaneidade e fallback reduzido/desligado.
+- docs/product/HUD_MOTION_STATES.md documenta o vocabulário completo sem implementar runtime ou depender de classe/spec.
+- O Product Owner aprovou os tempos, a promoção da fila e os tratamentos locais em 2026-09-03.
 
 ### UI-DESIGN-009
 

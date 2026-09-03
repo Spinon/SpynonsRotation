@@ -6,10 +6,10 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T19:09:28.574Z",
+  "updatedAt": "2026-09-03T19:12:24.466Z",
   "currentFocus": "ENH-003",
   "parallelFocus": {
-    "ui": "UI-DESIGN-007"
+    "ui": "UI-DESIGN-008"
   },
   "release": {
     "version": "0.0.0",
@@ -731,12 +731,12 @@
       "title": "Movimento e estados visuais",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-007--movimento-e-estados-visuais",
-      "updatedAt": "2026-09-03T19:09:28.574Z",
+      "updatedAt": "2026-09-03T19:12:24.466Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Revisar com o Product Owner os tempos, a promoção da fila e os tratamentos locais antes do kit técnico.",
+      "nextAction": null,
       "dependencies": [
         "UI-DESIGN-002",
         "UI-DESIGN-003",
@@ -754,7 +754,8 @@
         "assets/ui/motion/promote-storyboard-concept-v1.png demonstra PROMOTE preservando a identidade visual entre a fila e a ação atual.",
         "assets/ui/motion/motion-state-reference-v1.svg compara MOVE, ENTER, EXIT, PROMOTE, CONSUME e os cinco estados locais com labels apenas documentais.",
         "assets/ui/motion/manifest.json registra tempos candidatos, política de interrupção, limites de simultaneidade e fallback reduzido/desligado.",
-        "docs/product/HUD_MOTION_STATES.md documenta o vocabulário completo sem implementar runtime ou depender de classe/spec."
+        "docs/product/HUD_MOTION_STATES.md documenta o vocabulário completo sem implementar runtime ou depender de classe/spec.",
+        "O Product Owner aprovou os tempos, a promoção da fila e os tratamentos locais em 2026-09-03."
       ],
       "track": "ui"
     },
