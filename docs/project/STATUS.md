@@ -2,17 +2,17 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T18:56:32.898Z
+Atualizado pelo board em: 2026-09-03T18:59:21.575Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**ENH-002 — Baseline APL**
+**ENH-003 — Curadoria ST**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Preservar, auditar e normalizar a APL Enhancement pinada.
+Próxima ação: Validar prioridades single-target.
 
 ## Focos paralelos
 
@@ -23,9 +23,9 @@ Próxima ação: Preservar, auditar e normalizar a APL Enhancement pinada.
 ## Progresso
 
 - Planejadas: 33
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 20
+- Concluídas: 21
 - Total: 55
 
 ## Fila canônica
@@ -45,7 +45,7 @@ Próxima ação: Preservar, auditar e normalizar a APL Enhancement pinada.
 | LAB-005 | delivery | ROTATION LAB | Optimizer | done | P2 | LAB-004, LAB-003 |
 | LAB-006 | delivery | ROTATION LAB | Regression suite | done | P1 | LAB-003, LAB-004 |
 | ENH-001 | delivery | SHAMAN | Catálogo Enhancement | done | P0 | CORE-002, CORE-003, CORE-004 |
-| ENH-002 | delivery | SHAMAN | Baseline APL | in_progress | P0 | ENH-001, LAB-002, LAB-003 |
+| ENH-002 | delivery | SHAMAN | Baseline APL | done | P0 | ENH-001, LAB-002, LAB-003 |
 | ENH-003 | delivery | SHAMAN | Curadoria ST | planned | P1 | ENH-002, LAB-004 |
 | ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | planned | P1 | ENH-002, LAB-004 |
 | ENH-005 | delivery | SHAMAN | Talent-aware rotation | planned | P1 | ENH-003, ENH-004, CORE-003 |
@@ -197,6 +197,15 @@ Próxima ação: Preservar, auditar e normalizar a APL Enhancement pinada.
 - npm test passou com 144 testes Node, 99 testes Lua, fronteiras, Luacheck e wowlua-ls sem falhas.
 - specs/shaman/enhancement/catalog.json é a fonte canônica; addon/Classes/Shaman/Enhancement contém somente o derivado Lua e o SpecModule, sem regras de rotação ou mudanças no Core.
 - Commit aae336b registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### ENH-002
+
+- specs/shaman/enhancement/baseline/provenance.json fixa SimulationCraft 1210.01 no commit f86979165c9b952e41d8cb6119065d3f6272abee, blob dfa27f6c44c4de98f76305af0be076f6a90da3df e SHA-256 783560B572B81F0373932AD91579C82130341D23A4FC60809576A4BE14D7D77E.
+- specs/shaman/enhancement/baseline/audit.json contabiliza as 113 linhas upstream: 64 normalizadas e 49 preservadas somente na fonte com decisão explícita.
+- A auditoria classifica 13 linhas impossíveis como SIM_ONLY: 10 por fight_remains, 2 pelo modelo de dano do SimC e 1 por agendamento de pre-pot.
+- npm run enhancement:baseline-check recompila 4 listas e 64 regras com digest 036BEE377D6C5B492B3EF1F670F9D1F6DE6CCC4A098A972C29B3F578669C0BA0; todo estado volátil usa skip_rule.
+- npm test passou com 152 testes Node e 99 testes Lua; layout, lint Lua e análise estática sem erros.
+- Commit de implementação 4540568 foi enviado para origin/main.
 
 ### UI-DESIGN-001
 
