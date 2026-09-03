@@ -87,6 +87,8 @@ O master deve permanecer vazio: progresso, indicadores, ícone nativo do WoW e n
 
 Definir um componente genérico para specs que mantêm múltiplos buffs e debuffs, mostrando duração, urgência, refresh e ausência sem recriar um painel massivo de auras.
 
+O padrão visual usa três células repetíveis e o teto é cinco. Cada slot preserva posição estável e separa ícone nativo, nome, duração e estado. Estável, atenção, renovar, ausente e indisponível devem combinar valor, shape e label; indisponível nunca pode ser tratado como ausência. Somente sinais genéricos ranqueados como decisivos entram no trilho.
+
 ## UI-DESIGN-007 — Movimento e estados visuais
 
 Documentar e prototipar MOVE, ENTER, EXIT, PROMOTE e CONSUME, além de estados ready, cooldown, proc, refresh e indisponível.

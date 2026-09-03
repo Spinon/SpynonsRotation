@@ -90,6 +90,8 @@ Para um hub fora do cliente:
 
 ## Juggle de buffs/debuffs
 
+O contrato visual detalhado de `UI-DESIGN-006` está em [`HUD_AURA_JUGGLE.md`](HUD_AURA_JUGGLE.md). A célula vazia e repetível correspondente está em [`assets/ui/auras/aura-juggle-cell-frame-v1.png`](../../assets/ui/auras/aura-juggle-cell-frame-v1.png).
+
 O trilho é genérico e orientado a decisão. Cada célula reserva espaço para emblema, nome curto, duração e estado. Os estados semânticos previstos são:
 
 - estável: manutenção dentro da janela esperada;
@@ -98,7 +100,9 @@ O trilho é genérico e orientado a decisão. Cada célula reserva espaço para 
 - ausente: efeito esperado não encontrado;
 - indisponível: sinal não observável com segurança.
 
-Cor nunca é o único canal: texto, ícone de estado ou tratamento da moldura deve reforçar a leitura. A quantidade máxima visível e o comportamento de overflow serão definidos em `UI-DESIGN-006`.
+Cor nunca é o único canal: texto, ícone de estado ou tratamento da moldura deve reforçar a leitura.
+
+O padrão usa três células e o teto é cinco. Os slots permanecem em ordem estável; duração não reorganiza o trilho, e um efeito que expira muda para `AUSENTE` no mesmo lugar.
 
 ## Contexto, hotkeys e quantidades
 
