@@ -27,6 +27,8 @@ npm run scenario:check
 npm run scenario:test
 npm run optimizer:check
 npm run optimizer:test
+npm run regression:check
+npm run regression:test
 npm run core:test
 npm test
 ```
@@ -49,4 +51,5 @@ A representação intermediária de rotações está em [`docs/architecture/ROTA
 O compilador SimC ↔ DSL ↔ runtime está em [`docs/architecture/COMPILER.md`](docs/architecture/COMPILER.md).
 A matriz de cenários e o cálculo de fitness estão em [`docs/architecture/SCENARIOS.md`](docs/architecture/SCENARIOS.md).
 O beam search limitado do Rotation Lab está em [`docs/architecture/OPTIMIZER.md`](docs/architecture/OPTIMIZER.md).
+A comparação entre baseline, candidata e release anterior está em [`docs/architecture/REGRESSION.md`](docs/architecture/REGRESSION.md).
 O lifecycle e a política de evidências estão em [`docs/project/BOARD_GOVERNANCE.md`](docs/project/BOARD_GOVERNANCE.md).

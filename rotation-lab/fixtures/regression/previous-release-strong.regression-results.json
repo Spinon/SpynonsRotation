@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "role": "previous_release",
+  "matrix": {
+    "id": "neutral.initial_matrix",
+    "version": "1.0.0",
+    "sha256": "CD23ECE78BA018768FAE38B035EBCCC278C277B65B3B486CFDB323F9873E76E5"
+  },
+  "rotation": {
+    "id": "neutral.previous_release_strong",
+    "version": "0.9.1",
+    "sha256": "A0821996202D7693F5DE3DEE180B8F76C1E9AB72B9101B9E0401C8DDED249F95",
+    "releaseVersion": "0.9.1"
+  },
+  "engine": {
+    "id": "simulationcraft.cli",
+    "version": "1210.01",
+    "revision": "f86979165c9b952e41d8cb6119065d3f6272abee",
+    "wowBuild": "12.1.0.69587",
+    "iterations": 10000
+  },
+  "measurements": [
+    { "scenarioId": "neutral.st_short", "seed": 700001, "value": 99500 },
+    { "scenarioId": "neutral.st_medium", "seed": 700002, "value": 109450 },
+    { "scenarioId": "neutral.st_long", "seed": 700003, "value": 119400 },
+    { "scenarioId": "neutral.cleave_2", "seed": 700004, "value": 199000 },
+    { "scenarioId": "neutral.cleave_3", "seed": 700005, "value": 258700 },
+    { "scenarioId": "neutral.aoe_4", "seed": 700006, "value": 348250 },
+    { "scenarioId": "neutral.aoe_5", "seed": 700007, "value": 427850 },
+    { "scenarioId": "neutral.aoe_8", "seed": 700008, "value": 646750 },
+    { "scenarioId": "neutral.dungeon_short_pull", "seed": 700009, "value": 497500 },
+    { "scenarioId": "neutral.dungeon_prolonged_pull", "seed": 700010, "value": 477600 },
+    { "scenarioId": "neutral.dungeon_boss", "seed": 700011, "value": 120000 },
+    { "scenarioId": "neutral.dungeon_waves_adds", "seed": 700012, "value": 298500 }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "neutral.regression_policy",
+  "version": "1.0.0",
+  "description": "Política sintética para validar o contrato da suíte; não representa thresholds finais de uma spec.",
+  "targets": {
+    "matrixId": "neutral.initial_matrix",
+    "matrixVersion": "1.0.0"
+  },
+  "thresholds": {
+    "candidateVsBaseline": {
+      "source": "scenario_matrix"
+    },
+    "candidateVsPreviousRelease": {
+      "defaultMaxRegressionPercent": 2,
+      "overrides": [
+        {
+          "scenarioId": "neutral.dungeon_waves_adds",
+          "maxRegressionPercent": 6
+        }
+      ]
+    }
+  }
+}

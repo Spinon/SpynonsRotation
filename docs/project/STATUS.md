@@ -2,17 +2,17 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T00:05:26.011Z
+Atualizado pelo board em: 2026-09-03T00:10:11.082Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**LAB-006 — Regression suite**
+**ENH-001 — Catálogo Enhancement**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Implementar contratos de resultados e política, comparações pareadas e fixtures neutras.
+Próxima ação: Curar catálogo observável do Enhancement.
 
 ## Focos paralelos
 
@@ -23,9 +23,9 @@ Próxima ação: Implementar contratos de resultados e política, comparações 
 ## Progresso
 
 - Planejadas: 37
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 16
+- Concluídas: 17
 - Total: 55
 
 ## Fila canônica
@@ -43,7 +43,7 @@ Próxima ação: Implementar contratos de resultados e política, comparações 
 | LAB-003 | delivery | ROTATION LAB | Compiler SimC ↔ DSL ↔ runtime | done | P0 | LAB-001, LAB-002, CORE-001 |
 | LAB-004 | delivery | ROTATION LAB | Matriz de cenários | done | P1 | LAB-001, LAB-002 |
 | LAB-005 | delivery | ROTATION LAB | Optimizer | done | P2 | LAB-004, LAB-003 |
-| LAB-006 | delivery | ROTATION LAB | Regression suite | in_progress | P1 | LAB-003, LAB-004 |
+| LAB-006 | delivery | ROTATION LAB | Regression suite | done | P1 | LAB-003, LAB-004 |
 | ENH-001 | delivery | SHAMAN | Catálogo Enhancement | planned | P0 | CORE-002, CORE-003, CORE-004 |
 | ENH-002 | delivery | SHAMAN | Baseline APL | planned | P0 | ENH-001, LAB-002, LAB-003 |
 | ENH-003 | delivery | SHAMAN | Curadoria ST | planned | P1 | ENH-002, LAB-004 |
@@ -178,6 +178,16 @@ Próxima ação: Implementar contratos de resultados e política, comparações 
 - npm test passou com 113 testes Node, 90 testes Lua, lint e análise de tipos sem falhas.
 - docs/architecture/OPTIMIZER.md registra o contrato genérico, o evaluator injetável, a separação das fases e as fronteiras futuras.
 - Commit 0b1350f registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### LAB-006
+
+- npm run regression:test passou com 20 testes de política, resultados, paridade, thresholds, proveniência e reprodução byte a byte.
+- npm run regression:check comprovou 12 cenários com seeds pareadas e três comparações determinísticas no mesmo relatório.
+- As fixtures neutras aprovam uma candidata saudável e isolam bloqueios contra baseline em waves/adds e contra release anterior no boss dungeon-like.
+- A comparação candidata × baseline reutiliza os guardrails da LAB-004; candidata × release anterior usa política versionada com sobrescritas por cenário.
+- npm test passou com 133 testes Node, 90 testes Lua, lint e análise de tipos sem falhas.
+- docs/architecture/REGRESSION.md registra os contratos, a paridade obrigatória e as fronteiras da suíte.
+- Commit 245f0a1 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
 
 ### UI-DESIGN-001
 

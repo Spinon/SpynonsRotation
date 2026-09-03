@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T00:05:26.011Z",
-  "currentFocus": "LAB-006",
+  "updatedAt": "2026-09-03T00:10:11.082Z",
+  "currentFocus": "ENH-001",
   "parallelFocus": {
     "ui": "UI-DESIGN-005"
   },
@@ -329,12 +329,12 @@
       "title": "Regression suite",
       "lane": "ROTATION LAB",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/LAB-006.md",
-      "updatedAt": "2026-09-02T23:58:09.414Z",
+      "updatedAt": "2026-09-03T00:10:11.082Z",
       "reviewBy": null,
-      "nextAction": "Implementar contratos de resultados e política, comparações pareadas e fixtures neutras.",
+      "nextAction": null,
       "dependencies": [
         "LAB-003",
         "LAB-004"
@@ -344,7 +344,15 @@
         "Relatórios apontam regressão por cenário",
         "Resultados registram versões e seeds"
       ],
-      "evidence": []
+      "evidence": [
+        "npm run regression:test passou com 20 testes de política, resultados, paridade, thresholds, proveniência e reprodução byte a byte.",
+        "npm run regression:check comprovou 12 cenários com seeds pareadas e três comparações determinísticas no mesmo relatório.",
+        "As fixtures neutras aprovam uma candidata saudável e isolam bloqueios contra baseline em waves/adds e contra release anterior no boss dungeon-like.",
+        "A comparação candidata × baseline reutiliza os guardrails da LAB-004; candidata × release anterior usa política versionada com sobrescritas por cenário.",
+        "npm test passou com 133 testes Node, 90 testes Lua, lint e análise de tipos sem falhas.",
+        "docs/architecture/REGRESSION.md registra os contratos, a paridade obrigatória e as fronteiras da suíte.",
+        "Commit 245f0a1 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD."
+      ]
     },
     {
       "id": "ENH-001",

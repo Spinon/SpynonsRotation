@@ -132,6 +132,7 @@ Enhancement ou recomendação de produto.
 
 ## Fronteiras futuras
 
-`LAB-006` conectará execução comparativa e relatórios de regressão. `ENH-002` fornecerá a primeira
+A suíte da `LAB-006`, descrita em [`REGRESSION.md`](REGRESSION.md), compara resultados da candidata,
+baseline e release anterior com proveniência e seeds pareadas. `ENH-002` fornecerá a primeira
 baseline real. Tournament, evolutionary search, aleatoriedade e promoção automática permanecem
 fora desta versão.

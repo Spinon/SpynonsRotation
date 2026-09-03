@@ -16,6 +16,7 @@ const requiredDirectories = [
   "rotation-lab/dsl",
   "rotation-lab/compiler",
   "rotation-lab/optimizer",
+  "rotation-lab/regression",
   "rotation-lab/scenarios",
   "specs/shaman/enhancement",
   "tests/unit",
@@ -113,6 +114,20 @@ const requiredFiles = [
   "rotation-lab/fixtures/optimizer/neutral.optimizer-evaluations.json",
   "tests/rotation-lab/optimizer.test.mjs",
   "docs/architecture/OPTIMIZER.md",
+  "rotation-lab/regression/cli.mjs",
+  "rotation-lab/regression/errors.mjs",
+  "rotation-lab/regression/policy.mjs",
+  "rotation-lab/regression/report.mjs",
+  "rotation-lab/regression/results.mjs",
+  "rotation-lab/regression/verify.mjs",
+  "rotation-lab/fixtures/regression/neutral.regression-policy.json",
+  "rotation-lab/fixtures/regression/baseline.regression-results.json",
+  "rotation-lab/fixtures/regression/candidate-approved.regression-results.json",
+  "rotation-lab/fixtures/regression/candidate-baseline-regression.regression-results.json",
+  "rotation-lab/fixtures/regression/previous-release.regression-results.json",
+  "rotation-lab/fixtures/regression/previous-release-strong.regression-results.json",
+  "tests/rotation-lab/regression.test.mjs",
+  "docs/architecture/REGRESSION.md",
 ];
 const errors = [];
 

@@ -32,6 +32,7 @@ A representação intermediária declarativa e suas capabilities estão definida
 O pipeline determinístico entre SimC, DSL e bundles de runtime está definido em [`COMPILER.md`](COMPILER.md).
 A matriz neutra de simulação, seus planos e guardrails de fitness estão definidos em [`SCENARIOS.md`](SCENARIOS.md).
 O beam search reproduzível e seus contratos de mutação e avaliação estão definidos em [`OPTIMIZER.md`](OPTIMIZER.md).
+A suíte determinística de comparação entre baseline, candidata e release anterior está definida em [`REGRESSION.md`](REGRESSION.md).
 
 ## Contratos do Core
 
