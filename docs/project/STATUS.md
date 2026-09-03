@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T20:17:02.822Z
+Atualizado pelo board em: 2026-09-03T20:21:43.012Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **ENH-005 — Talent-aware rotation**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Montar matriz de builds e regras condicionais.
+Próxima ação: Materializar os perfis Stormbringer e Totemic como snapshots e compilar a matriz talent-aware.
 
 ## Progresso
 
-- Planejadas: 29
-- Em andamento: 0
+- Planejadas: 28
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 27
 - Total: 56
@@ -42,7 +42,7 @@ Próxima ação: Montar matriz de builds e regras condicionais.
 | ENH-002 | delivery | SHAMAN | Baseline APL | done | P0 | ENH-001, LAB-002, LAB-003 |
 | ENH-003 | delivery | SHAMAN | Curadoria ST | done | P1 | ENH-002, LAB-004 |
 | ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | done | P1 | ENH-002, LAB-004 |
-| ENH-005 | delivery | SHAMAN | Talent-aware rotation | planned | P1 | ENH-003, ENH-004, CORE-003 |
+| ENH-005 | delivery | SHAMAN | Talent-aware rotation | in_progress | P1 | ENH-003, ENH-004, CORE-003 |
 | RUN-001 | delivery | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
 | RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |

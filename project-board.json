@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T20:17:02.822Z",
+  "updatedAt": "2026-09-03T20:21:43.012Z",
   "currentFocus": "ENH-005",
   "parallelFocus": {},
   "release": {
@@ -474,12 +474,12 @@
       "title": "Talent-aware rotation",
       "lane": "SHAMAN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
-      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "source": "tasks/ENH-005.md",
+      "updatedAt": "2026-09-03T20:21:43.012Z",
       "reviewBy": null,
-      "nextAction": "Montar matriz de builds e regras condicionais.",
+      "nextAction": "Materializar os perfis Stormbringer e Totemic como snapshots e compilar a matriz talent-aware.",
       "dependencies": [
         "ENH-003",
         "ENH-004",
