@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T19:42:44.229Z",
+  "updatedAt": "2026-09-03T19:43:33.828Z",
   "currentFocus": "ENH-004",
   "parallelFocus": {
     "ui": "UI-DESIGN-011"
@@ -857,10 +857,10 @@
       "title": "Distribuição dos assets de runtime",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-011--distribuição-dos-assets-de-runtime",
-      "updatedAt": "2026-09-03T19:42:44.229Z",
+      "updatedAt": "2026-09-03T19:43:33.828Z",
       "reviewBy": null,
       "nextAction": "Separar fontes de design e texturas consumíveis, atualizando build, manifest e validação sem implementar runtime Lua.",
       "dependencies": [

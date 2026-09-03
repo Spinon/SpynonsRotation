@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T19:42:44.229Z
+Atualizado pelo board em: 2026-09-03T19:43:33.828Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,12 +18,12 @@ Próxima ação: Medir candidatas multi-target limitadas contra a baseline pinad
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-011 — Distribuição dos assets de runtime | planned | Separar fontes de design e texturas consumíveis, atualizando build, manifest e validação sem implementar runtime Lua. |
+| ui | UI-DESIGN-011 — Distribuição dos assets de runtime | in_progress | Separar fontes de design e texturas consumíveis, atualizando build, manifest e validação sem implementar runtime Lua. |
 
 ## Progresso
 
-- Planejadas: 30
-- Em andamento: 1
+- Planejadas: 29
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 25
 - Total: 56
@@ -62,7 +62,7 @@ Próxima ação: Medir candidatas multi-target limitadas contra a baseline pinad
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | done | P1 | UI-DESIGN-007 |
 | UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |
 | UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | done | P1 | UI-DESIGN-005, UI-DESIGN-009 |
-| UI-DESIGN-011 | ui | UI DESIGN | Distribuição dos assets de runtime | planned | P1 | UI-DESIGN-008 |
+| UI-DESIGN-011 | ui | UI DESIGN | Distribuição dos assets de runtime | in_progress | P1 | UI-DESIGN-008 |
 | UI-001 | delivery | UI | Queue estática | planned | P0 | RUN-002 |
 | UI-002 | delivery | UI | Animator | planned | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |
