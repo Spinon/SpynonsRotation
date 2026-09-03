@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T19:12:24.466Z",
+  "updatedAt": "2026-09-03T19:13:10.591Z",
   "currentFocus": "ENH-003",
   "parallelFocus": {
     "ui": "UI-DESIGN-008"
@@ -764,12 +764,12 @@
       "title": "Kit técnico de assets e handoff",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-008--kit-técnico-e-handoff",
-      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "updatedAt": "2026-09-03T19:13:10.591Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Preparar formatos, dimensões, transparências e documentação de integração.",
+      "nextAction": "Extrair masters neutros, máscaras tintáveis e documentar o contrato de integração sem implementar runtime.",
       "dependencies": [
         "UI-DESIGN-007"
       ],

@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T19:12:24.466Z
+Atualizado pelo board em: 2026-09-03T19:13:10.591Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,12 +18,12 @@ Próxima ação: Medir candidatas ST limitadas contra a baseline pinada.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-008 — Kit técnico de assets e handoff | planned | Preparar formatos, dimensões, transparências e documentação de integração. |
+| ui | UI-DESIGN-008 — Kit técnico de assets e handoff | in_progress | Extrair masters neutros, máscaras tintáveis e documentar o contrato de integração sem implementar runtime. |
 
 ## Progresso
 
-- Planejadas: 31
-- Em andamento: 1
+- Planejadas: 30
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 23
 - Total: 55
@@ -59,7 +59,7 @@ Próxima ação: Medir candidatas ST limitadas contra a baseline pinada.
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | done | P1 | UI-DESIGN-004, UI-DESIGN-009 |
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | done | P0 | UI-DESIGN-005 |
 | UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | done | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
-| UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
+| UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | in_progress | P1 | UI-DESIGN-007 |
 | UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |
 | UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | done | P1 | UI-DESIGN-005, UI-DESIGN-009 |
 | UI-001 | delivery | UI | Queue estática | planned | P0 | RUN-002 |
