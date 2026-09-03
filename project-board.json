@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T20:34:13.872Z",
-  "currentFocus": "RUN-001",
+  "updatedAt": "2026-09-03T20:41:07.569Z",
+  "currentFocus": "ENH-006",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -498,6 +498,28 @@
         "Duas gerações completas produziram snapshots.json e matrix.json byte a byte idênticos, com SHA-256 EFAF18FDDF64D2B4150746FE1F1B9EC8547913C5A20D96B037DB02F6208A9599 e 9E85BE2218871B918A767B23F444092F73C0E9C9A91918284F7DE1AA0C31C704; digest lógico 1CAB82F2F888D7046E3595BDFECCFE752DC2E950D31A65107D18E02B33411D74.",
         "npm test passou com 168 testes Node e 99 testes Lua; fronteiras, Luacheck e wowlua-ls permaneceram sem falhas."
       ]
+    },
+    {
+      "id": "ENH-006",
+      "title": "Build de referência para iniciantes",
+      "lane": "SHAMAN",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "tasks/ENH-006.md",
+      "updatedAt": "2026-09-03T20:41:07.569Z",
+      "reviewBy": null,
+      "nextAction": "Montar o catálogo finito de talent strings válidas e medir o cenário Patchwerk.",
+      "dependencies": [
+        "ENH-005",
+        "LAB-005"
+      ],
+      "acceptanceCriteria": [
+        "Candidatas de talentos são válidas, limitadas e reproduzíveis",
+        "Vencedor de dano e sugestão inicial usam critérios separados",
+        "Relatório publica talent string, métricas, premissas e limitações"
+      ],
+      "evidence": []
     },
     {
       "id": "RUN-001",

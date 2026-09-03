@@ -2,25 +2,25 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T20:34:13.872Z
+Atualizado pelo board em: 2026-09-03T20:41:07.569Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**RUN-001 — State engine**
+**ENH-006 — Build de referência para iniciantes**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Implementar snapshots e atualização incremental.
+Próxima ação: Montar o catálogo finito de talent strings válidas e medir o cenário Patchwerk.
 
 ## Progresso
 
-- Planejadas: 28
+- Planejadas: 29
 - Em andamento: 0
 - Bloqueadas: 0
 - Concluídas: 28
-- Total: 56
+- Total: 57
 
 ## Fila canônica
 
@@ -43,6 +43,7 @@ Próxima ação: Implementar snapshots e atualização incremental.
 | ENH-003 | delivery | SHAMAN | Curadoria ST | done | P1 | ENH-002, LAB-004 |
 | ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | done | P1 | ENH-002, LAB-004 |
 | ENH-005 | delivery | SHAMAN | Talent-aware rotation | done | P1 | ENH-003, ENH-004, CORE-003 |
+| ENH-006 | delivery | SHAMAN | Build de referência para iniciantes | planned | P1 | ENH-005, LAB-005 |
 | RUN-001 | delivery | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
 | RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
