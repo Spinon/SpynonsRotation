@@ -2,7 +2,7 @@
 
 ## Status
 
-`cast-indicator-frame-v1.png` é o candidato de arte de `UI-DESIGN-005`. O master contém somente a moldura vazia com alpha real. O progresso, os indicadores, o ícone nativo e o nome da habilidade mostrados nos previews são camadas dinâmicas e não fazem parte do bitmap final.
+`cast-indicator-frame-v1.png` foi aprovado pelo Product Owner em `UI-DESIGN-005`. O master contém somente a moldura vazia com alpha real. O progresso, os indicadores, o ícone nativo e o nome da habilidade mostrados nos previews são camadas dinâmicas e não fazem parte do bitmap final.
 
 ## Arquivos
 

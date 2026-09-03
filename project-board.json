@@ -6,10 +6,10 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T00:10:11.082Z",
+  "updatedAt": "2026-09-03T00:35:46.594Z",
   "currentFocus": "ENH-001",
   "parallelFocus": {
-    "ui": "UI-DESIGN-005"
+    "ui": "UI-DESIGN-006"
   },
   "release": {
     "version": "0.0.0",
@@ -650,12 +650,12 @@
       "title": "Barra de cast e indicadores decisivos",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-005--barra-de-cast-e-indicadores",
-      "updatedAt": "2026-09-03T00:05:26.011Z",
+      "updatedAt": "2026-09-03T00:35:46.594Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Product Owner revisar o candidato v1 e os quatro estados antes da aprovação final.",
+      "nextAction": null,
       "dependencies": [
         "UI-DESIGN-004",
         "UI-DESIGN-009"
@@ -670,7 +670,8 @@
         "assets/ui/cast/cast-indicator-preview-v1.png demonstra progresso e conteúdo dinâmico sem incorporá-los à moldura.",
         "assets/ui/cast/cast-indicator-state-reference-v1.png registra cast + indicadores, somente cast, somente indicadores e ocultação ociosa.",
         "docs/product/HUD_CAST_INDICATORS.md documenta camadas, origem nativa do ícone, placeholder neutro e revisão cromática futura do GCD.",
-        "Validação confirmou master RGBA com alpha 0–255, aberturas transparentes, 35.115 pixels azuis sólidos, 1.190 pixels verdes sólidos e npm test integral sem falhas."
+        "Validação confirmou master RGBA com alpha 0–255, aberturas transparentes, 35.115 pixels azuis sólidos, 1.190 pixels verdes sólidos e npm test integral sem falhas.",
+        "Product Owner aprovou explicitamente o candidato v1 e seus quatro estados na conversa da task."
       ],
       "track": "ui"
     },

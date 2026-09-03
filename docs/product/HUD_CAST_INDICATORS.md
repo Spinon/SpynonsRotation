@@ -4,7 +4,7 @@
 
 O componente combina o progresso de cast com poucos sinais que mudam a decisão imediata. Ele ocupa uma posição estável na base do HUD e evita criar um segundo painel de auras.
 
-A arte candidata está em [`assets/ui/cast/cast-indicator-frame-v1.png`](../../assets/ui/cast/cast-indicator-frame-v1.png). Ela é uma moldura vazia; nenhum conteúdo de combate está incorporado ao bitmap.
+A arte aprovada está em [`assets/ui/cast/cast-indicator-frame-v1.png`](../../assets/ui/cast/cast-indicator-frame-v1.png). Ela é uma moldura vazia; nenhum conteúdo de combate está incorporado ao bitmap.
 
 ## Zonas estáveis
 

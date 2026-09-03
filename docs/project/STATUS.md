@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T00:10:11.082Z
+Atualizado pelo board em: 2026-09-03T00:35:46.594Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,14 +18,14 @@ Próxima ação: Curar catálogo observável do Enhancement.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-005 — Barra de cast e indicadores decisivos | in_progress | Product Owner revisar o candidato v1 e os quatro estados antes da aprovação final. |
+| ui | UI-DESIGN-006 — Juggle de buffs e debuffs | planned | Definir cards, urgência e estados de refresh do trilho de auras. |
 
 ## Progresso
 
 - Planejadas: 37
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 17
+- Concluídas: 18
 - Total: 55
 
 ## Fila canônica
@@ -56,7 +56,7 @@ Próxima ação: Curar catálogo observável do Enhancement.
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | done | P0 | UI-DESIGN-001 |
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | done | P1 | UI-DESIGN-002 |
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | done | P1 | UI-DESIGN-003 |
-| UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | in_progress | P1 | UI-DESIGN-004, UI-DESIGN-009 |
+| UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | done | P1 | UI-DESIGN-004, UI-DESIGN-009 |
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | planned | P0 | UI-DESIGN-005 |
 | UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
@@ -219,6 +219,15 @@ Próxima ação: Curar catálogo observável do Enhancement.
 - O GCD foi fechado como barra procedural azul sólida, sem texto, crescendo da esquerda para a direita somente no rodapé da ação atual.
 - assets/ui/gcd/manifest.json e gcd-state-reference-v1.svg registram geometria normalizada, tokens, estados e hashes do preview para handoff.
 - npm test passou com validações do board, Rotation Lab, cenários, Core, layout, lint e typecheck.
+
+### UI-DESIGN-005
+
+- assets/ui/cast/cast-indicator-frame-v1.png fornece um master RGBA vazio de 1938 × 352 px com zonas separadas para cast, indicadores, ícone e nome.
+- assets/ui/cast/cast-indicator-preview-v1.png demonstra progresso e conteúdo dinâmico sem incorporá-los à moldura.
+- assets/ui/cast/cast-indicator-state-reference-v1.png registra cast + indicadores, somente cast, somente indicadores e ocultação ociosa.
+- docs/product/HUD_CAST_INDICATORS.md documenta camadas, origem nativa do ícone, placeholder neutro e revisão cromática futura do GCD.
+- Validação confirmou master RGBA com alpha 0–255, aberturas transparentes, 35.115 pixels azuis sólidos, 1.190 pixels verdes sólidos e npm test integral sem falhas.
+- Product Owner aprovou explicitamente o candidato v1 e seus quatro estados na conversa da task.
 
 ### UI-DESIGN-009
 
