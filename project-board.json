@@ -6,10 +6,10 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T18:59:21.575Z",
+  "updatedAt": "2026-09-03T19:01:19.321Z",
   "currentFocus": "ENH-003",
   "parallelFocus": {
-    "ui": "UI-DESIGN-010"
+    "ui": "UI-DESIGN-007"
   },
   "release": {
     "version": "0.0.0",
@@ -809,12 +809,12 @@
       "title": "Contraste cromático do GCD",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-010--contraste-cromatico-do-gcd",
-      "updatedAt": "2026-09-03T18:56:32.898Z",
+      "updatedAt": "2026-09-03T19:01:19.321Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Revisar com o Product Owner o sistema de canaletas procedurais e o prata neutro proposto para o GCD.",
+      "nextAction": null,
       "dependencies": [
         "UI-DESIGN-005",
         "UI-DESIGN-009"
@@ -828,7 +828,8 @@
         "assets/ui/concepts/spynon-main-hud-procedural-channels-concept-v2.png demonstra a composição completa com canaletas neutras e cor aplicada por camadas de runtime.",
         "assets/ui/procedural-channels.json registra modos, tokens padrão, overrides globais e por componente e fallback para movimento reduzido.",
         "assets/ui/gcd/gcd-state-reference-v2.png e action-current-gcd-slot-preview-v2.png aplicam o candidato prata sem alterar geometria ou direção aprovadas.",
-        "O Product Owner propôs canaletas estáticas com barras roláveis posteriores, cores padrão configuráveis e aplicação consistente em todos os elementos da UI."
+        "O Product Owner propôs canaletas estáticas com barras roláveis posteriores, cores padrão configuráveis e aplicação consistente em todos os elementos da UI.",
+        "O Product Owner aprovou a direção de canaletas procedurais e o candidato prata neutro do GCD em 2026-09-03."
       ],
       "track": "ui"
     },

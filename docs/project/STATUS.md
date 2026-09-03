@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T18:59:21.575Z
+Atualizado pelo board em: 2026-09-03T19:01:19.321Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,14 +18,14 @@ Próxima ação: Validar prioridades single-target.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-010 — Contraste cromático do GCD | in_progress | Revisar com o Product Owner o sistema de canaletas procedurais e o prata neutro proposto para o GCD. |
+| ui | UI-DESIGN-007 — Movimento e estados visuais | planned | Prototipar o vocabulário de movimento e os estados críticos. |
 
 ## Progresso
 
 - Planejadas: 33
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 21
+- Concluídas: 22
 - Total: 55
 
 ## Fila canônica
@@ -61,7 +61,7 @@ Próxima ação: Validar prioridades single-target.
 | UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
 | UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |
-| UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | in_progress | P1 | UI-DESIGN-005, UI-DESIGN-009 |
+| UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | done | P1 | UI-DESIGN-005, UI-DESIGN-009 |
 | UI-001 | delivery | UI | Queue estática | planned | P0 | RUN-002 |
 | UI-002 | delivery | UI | Animator | planned | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |
@@ -271,3 +271,11 @@ Próxima ação: Validar prioridades single-target.
 - Validação de imagem confirmou 1619 × 971, alpha nos pontos externos e internos, 14.730 pixels novos no slot e zero alterações fora da região autorizada.
 - npm test passou com board, Rotation Lab, optimizer, Core, layout, lint e typecheck.
 - Product Owner aprovou o encaixe v5 e solicitou preservar a geometria, mantendo a cor do preenchimento para revisão posterior.
+
+### UI-DESIGN-010
+
+- assets/ui/concepts/spynon-main-hud-procedural-channels-concept-v2.png demonstra a composição completa com canaletas neutras e cor aplicada por camadas de runtime.
+- assets/ui/procedural-channels.json registra modos, tokens padrão, overrides globais e por componente e fallback para movimento reduzido.
+- assets/ui/gcd/gcd-state-reference-v2.png e action-current-gcd-slot-preview-v2.png aplicam o candidato prata sem alterar geometria ou direção aprovadas.
+- O Product Owner propôs canaletas estáticas com barras roláveis posteriores, cores padrão configuráveis e aplicação consistente em todos os elementos da UI.
+- O Product Owner aprovou a direção de canaletas procedurais e o candidato prata neutro do GCD em 2026-09-03.
