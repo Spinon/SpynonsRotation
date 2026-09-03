@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T19:34:32.212Z
+Atualizado pelo board em: 2026-09-03T19:37:59.575Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **ENH-004 — Curadoria Cleave/AoE**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Validar prioridades de cleave e AoE.
+Próxima ação: Medir candidatas multi-target limitadas contra a baseline pinada.
 
 ## Progresso
 
-- Planejadas: 30
-- Em andamento: 0
+- Planejadas: 29
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 25
 - Total: 55
@@ -41,7 +41,7 @@ Próxima ação: Validar prioridades de cleave e AoE.
 | ENH-001 | delivery | SHAMAN | Catálogo Enhancement | done | P0 | CORE-002, CORE-003, CORE-004 |
 | ENH-002 | delivery | SHAMAN | Baseline APL | done | P0 | ENH-001, LAB-002, LAB-003 |
 | ENH-003 | delivery | SHAMAN | Curadoria ST | done | P1 | ENH-002, LAB-004 |
-| ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | planned | P1 | ENH-002, LAB-004 |
+| ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | in_progress | P1 | ENH-002, LAB-004 |
 | ENH-005 | delivery | SHAMAN | Talent-aware rotation | planned | P1 | ENH-003, ENH-004, CORE-003 |
 | RUN-001 | delivery | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
 | RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |

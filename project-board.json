@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T19:34:32.212Z",
+  "updatedAt": "2026-09-03T19:37:59.575Z",
   "currentFocus": "ENH-004",
   "parallelFocus": {},
   "release": {
@@ -445,12 +445,12 @@
       "title": "Curadoria Cleave/AoE",
       "lane": "SHAMAN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
-      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "source": "tasks/ENH-004.md",
+      "updatedAt": "2026-09-03T19:37:59.575Z",
       "reviewBy": null,
-      "nextAction": "Validar prioridades de cleave e AoE.",
+      "nextAction": "Medir candidatas multi-target limitadas contra a baseline pinada.",
       "dependencies": [
         "ENH-002",
         "LAB-004"
