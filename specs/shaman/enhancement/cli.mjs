@@ -8,6 +8,7 @@ import { verifyPinnedSimcCatalog } from "./simc.mjs";
 import { generateSingleTargetCuration, verifySingleTargetCuration } from "./single-target.mjs";
 import { generateMultiTargetCuration, verifyMultiTargetCuration } from "./multi-target.mjs";
 import { generateTalentAwareArtifacts, verifyTalentAwareArtifacts } from "./talent-aware.mjs";
+import { generateStarterBuildArtifacts, verifyStarterBuildArtifacts } from "./starter-build.mjs";
 import { CATALOG_FILE, RUNTIME_FILE, verifyEnhancementCatalog } from "./verify.mjs";
 
 const command = process.argv[2] ?? "check";
@@ -82,11 +83,23 @@ try {
       `Matriz talent-aware verificada: ${result.builds} builds, ${result.probes} probes, `
       + `${result.activeRules} regras ativas e ${result.excludedRules} exclusões; digest ${result.digest}.`
     );
+  } else if (command === "starter-generate") {
+    const result = await generateStarterBuildArtifacts();
+    console.log(
+      `Build de referência medida: dano ${result.damageWinner.label}; `
+      + `iniciante ${result.starterSuggestion.label}.`
+    );
+  } else if (command === "starter-check") {
+    const result = await verifyStarterBuildArtifacts();
+    console.log(
+      `Build de referência verificada: ${result.candidates} candidatas, ${result.confirmed} confirmadas; `
+      + `dano ${result.damageWinner.label}; iniciante ${result.starterSuggestion.label}.`
+    );
   } else {
     console.error(
       `Comando desconhecido: ${command}. `
       + "Use check, generate, simc-check, baseline-generate, baseline-check, st-generate, st-check, "
-      + "mt-generate, mt-check, talent-generate ou talent-check."
+      + "mt-generate, mt-check, talent-generate, talent-check, starter-generate ou starter-check."
     );
     process.exitCode = 1;
   }

@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T20:42:08.198Z
+Atualizado pelo board em: 2026-09-03T21:29:25.684Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**ENH-006 — Build de referência para iniciantes**
+**RUN-001 — State engine**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Montar o catálogo finito de talent strings válidas e medir o cenário Patchwerk.
+Próxima ação: Implementar snapshots e atualização incremental.
 
 ## Progresso
 
 - Planejadas: 28
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 28
+- Concluídas: 29
 - Total: 57
 
 ## Fila canônica
@@ -43,7 +43,7 @@ Próxima ação: Montar o catálogo finito de talent strings válidas e medir o 
 | ENH-003 | delivery | SHAMAN | Curadoria ST | done | P1 | ENH-002, LAB-004 |
 | ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | done | P1 | ENH-002, LAB-004 |
 | ENH-005 | delivery | SHAMAN | Talent-aware rotation | done | P1 | ENH-003, ENH-004, CORE-003 |
-| ENH-006 | delivery | SHAMAN | Build de referência para iniciantes | in_progress | P1 | ENH-005, LAB-005 |
+| ENH-006 | delivery | SHAMAN | Build de referência para iniciantes | done | P1 | ENH-005, LAB-005 |
 | RUN-001 | delivery | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
 | RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
@@ -228,6 +228,15 @@ Próxima ação: Montar o catálogo finito de talent strings válidas e medir o 
 - Três probes removem Tempest, Surging Totem e Voltaic Blaze; as ações e regras incompatíveis desaparecem, e Flame Shock retorna quando Voltaic Blaze deixa de substituí-la.
 - Duas gerações completas produziram snapshots.json e matrix.json byte a byte idênticos, com SHA-256 EFAF18FDDF64D2B4150746FE1F1B9EC8547913C5A20D96B037DB02F6208A9599 e 9E85BE2218871B918A767B23F444092F73C0E9C9A91918284F7DE1AA0C31C704; digest lógico 1CAB82F2F888D7046E3595BDFECCFE752DC2E950D31A65107D18E02B33411D74.
 - npm test passou com 168 testes Node e 99 testes Lua; fronteiras, Luacheck e wowlua-ls permaneceram sem falhas.
+
+### ENH-006
+
+- npm run enhancement:starter-generate mediu 10 candidatas e confirmou 6 com 2000 → 20000 iterações e seeds independentes no cenário neutral.st_long.
+- Duas gerações completas produziram snapshots, medições e relatório byte a byte idênticos: SHA-256 2955AF94E2EF54E9F6C589576B62FDA82A6E9C074C71E68744F7EE34458A1490, 8344E68E9A115DA77F30DE1BACACC5B9E97D12429068A43814523DFF665B3CF0 e 875267447C5C52A158428F4A9ED38E3C0C4ECDED62A982454A01FEE3168907EB.
+- specs/shaman/enhancement/starter-build/report.json preserva Stormbringer oficial como damageWinner e starterSuggestion em 232819.555252 DPS; nenhuma candidata mais simples ficou dentro da tolerância de 0,5%.
+- npm run enhancement:starter-check validou fontes, chassi talents-only, reexportação SimC, Hero Trees, linhagens, métricas, complexidade e decisão para 10/10 candidatas.
+- npm test passou com 172 testes Node, 99 testes Lua, fronteiras, Luacheck e wowlua-ls sem falhas; as medições foram offline e não houve validação dentro do WoW.
+- Commit d7cf176 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
 
 ### UI-DESIGN-001
 

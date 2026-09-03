@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 1,
+  "id": "enhancement.starter_build_measurements",
+  "version": "12.1.0-1",
+  "study": {
+    "id": "enhancement.starter_build",
+    "sha256": "CF7714631AAF6AA7F92AF259FDAF02F60616D3FB2D4A2F0223658F989ABE89D5"
+  },
+  "snapshotsSha256": "2955AF94E2EF54E9F6C589576B62FDA82A6E9C074C71E68744F7EE34458A1490",
+  "simulationCraft": {
+    "version": "1210.01",
+    "wowVersion": "12.1.0.69587",
+    "engineCommit": "f86979165c9b952e41d8cb6119065d3f6272abee",
+    "executableSha256": "150D3D8FE6D2E5DF6279F0940BE118ECB3A47B79AF58E81BCF24F01FB91C5070"
+  },
+  "confirmationSelection": [
+    {
+      "id": "enhancement.starter.stormbringer.lightning_conduit",
+      "reasons": [
+        "top_screening_damage"
+      ]
+    },
+    {
+      "id": "enhancement.starter.stormbringer.official",
+      "reasons": [
+        "official_baseline",
+        "top_screening_damage"
+      ]
+    },
+    {
+      "id": "enhancement.starter.stormbringer.surging_currents",
+      "reasons": [
+        "top_screening_damage"
+      ]
+    },
+    {
+      "id": "enhancement.starter.stormbringer.supercharge",
+      "reasons": [
+        "top_screening_damage"
+      ]
+    },
+    {
+      "id": "enhancement.starter.totemic.official",
+      "reasons": [
+        "official_baseline",
+        "simplest_complexity_for_hero_tree"
+      ]
+    },
+    {
+      "id": "enhancement.starter.stormbringer.deeply_rooted_elements",
+      "reasons": [
+        "simplest_complexity_for_hero_tree"
+      ]
+    }
+  ],
+  "phases": [
+    {
+      "id": "screening",
+      "iterations": 2000,
+      "seed": 620061,
+      "candidates": [
+        {
+          "id": "enhancement.starter.stormbringer.official",
+          "profileSha256": "2851BAEFBC179953B219267848FD784B4062AF73B2B634D6538CA97DCE7DF54F",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+          "heroTreeId": "enhancement.stormbringer",
+          "scenarioId": "neutral.st_long",
+          "phase": "screening",
+          "seed": 620061,
+          "iterationsRequested": 2000,
+          "sampleCount": 1999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 232990.35005127007,
+          "meanStandardError": 150.46152237596638,
+          "standardDeviation": 6727.161419326221
+        },
+        {
+          "id": "enhancement.starter.stormbringer.deeply_rooted_elements",
+          "profileSha256": "E854681654061D9D9028051A54FAFD21F00435493401B7AB25B75AD509A05CF7",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAAWAsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+          "heroTreeId": "enhancement.stormbringer",
+          "scenarioId": "neutral.st_long",
+          "phase": "screening",
+          "seed": 620061,
+          "iterationsRequested": 2000,
+          "sampleCount": 1999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 210526.45311712462,
+          "meanStandardError": 207.00983957562826,
+          "standardDeviation": 9255.446736304713
+        },
+        {
+          "id": "enhancement.starter.stormbringer.lightning_conduit",
+          "profileSha256": "5862449274E0D838E5FA8DE68384B8BCF680F440A5FA1F27CCDBB907DFB098E6",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsYGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+          "heroTreeId": "enhancement.stormbringer",
+          "scenarioId": "neutral.st_long",
+          "phase": "screening",
+          "seed": 620061,
+          "iterationsRequested": 2000,
+          "sampleCount": 1999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 232990.35005127007,
+          "meanStandardError": 150.46152237596638,
+          "standardDeviation": 6727.161419326221
+        },
+        {
+          "id": "enhancement.starter.stormbringer.supercharge",
+          "profileSha256": "FEE1847FFDA2BF3F077AB19E41B09051D2062B2B2E70300882AC0921A875B0DE",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+          "heroTreeId": "enhancement.stormbringer",
+          "scenarioId": "neutral.st_long",
+          "phase": "screening",
+          "seed": 620061,
+          "iterationsRequested": 2000,
+          "sampleCount": 1999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 231978.8146853257,
+          "meanStandardError": 147.2055934603382,
+          "standardDeviation": 6581.588258564549
+        },
+        {
+          "id": "enhancement.starter.stormbringer.surging_currents",
+          "profileSha256": "A56757F02FB3977EF0EDEC6B2B4577722C7A193565D24FA8123BBE43477E2C73",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkNYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+          "heroTreeId": "enhancement.stormbringer",
+          "scenarioId": "neutral.st_long",
+          "phase": "screening",
+          "seed": 620061,
+          "iterationsRequested": 2000,
+          "sampleCount": 1999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 232990.35005127007,
+          "meanStandardError": 150.46152237596638,
+          "standardDeviation": 6727.161419326221
+        },
+        {
+          "id": "enhancement.starter.totemic.official",
+          "profileSha256": "F18C4F6DDF9087464EB35CAA06F3C855E11ECA58B4F45965FAA4659F67876028",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+          "heroTreeId": "enhancement.totemic",
+          "scenarioId": "neutral.st_long",
+          "phase": "screening",
+          "seed": 620061,
+          "iterationsRequested": 2000,
+          "sampleCount": 1999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 218624.94257784908,
+          "meanStandardError": 104.63997734556195,
+          "standardDeviation": 4678.471993386362
+        },
+        {
+          "id": "enhancement.starter.totemic.swift_recall",
+          "profileSha256": "3AB20C06706D7905DADD18A9C29AF7D80B1D1AD51DC2CD55F4BC99CF5F69DB85",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsBbwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+          "heroTreeId": "enhancement.totemic",
+          "scenarioId": "neutral.st_long",
+          "phase": "screening",
+          "seed": 620061,
+          "iterationsRequested": 2000,
+          "sampleCount": 1999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 218624.94257784908,
+          "meanStandardError": 104.63997734556195,
+          "standardDeviation": 4678.471993386362
+        },
+        {
+          "id": "enhancement.starter.totemic.pulse_capacitor",
+          "profileSha256": "667C6CE78D4892E4365E55ABA87A6929907CFCD818EC1949D59821F74E0E7706",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsALwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+          "heroTreeId": "enhancement.totemic",
+          "scenarioId": "neutral.st_long",
+          "phase": "screening",
+          "seed": 620061,
+          "iterationsRequested": 2000,
+          "sampleCount": 1999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 218538.48531384647,
+          "meanStandardError": 103.30808336996179,
+          "standardDeviation": 4618.922776910259
+        },
+        {
+          "id": "enhancement.starter.totemic.oversurge",
+          "profileSha256": "5AA900D21D4C3CC9D430955A55A19D9F886BE406BB15A08BDADA68D50AEBF9C8",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwM20YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+          "heroTreeId": "enhancement.totemic",
+          "scenarioId": "neutral.st_long",
+          "phase": "screening",
+          "seed": 620061,
+          "iterationsRequested": 2000,
+          "sampleCount": 1999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 215129.71027955253,
+          "meanStandardError": 102.91771786415899,
+          "standardDeviation": 4601.46946573406
+        },
+        {
+          "id": "enhancement.starter.totemic.totemic_coordination",
+          "profileSha256": "83C47CE4A612E7AFD1AC6D8E5D9043B58B9E8C154940C388AC5FF0A918989D81",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwMW0YZAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+          "heroTreeId": "enhancement.totemic",
+          "scenarioId": "neutral.st_long",
+          "phase": "screening",
+          "seed": 620061,
+          "iterationsRequested": 2000,
+          "sampleCount": 1999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 214935.94514927707,
+          "meanStandardError": 100.58537868790346,
+          "standardDeviation": 4497.190166445277
+        }
+      ]
+    },
+    {
+      "id": "confirmation",
+      "iterations": 20000,
+      "seed": 720061,
+      "candidates": [
+        {
+          "id": "enhancement.starter.stormbringer.lightning_conduit",
+          "profileSha256": "5862449274E0D838E5FA8DE68384B8BCF680F440A5FA1F27CCDBB907DFB098E6",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsYGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+          "heroTreeId": "enhancement.stormbringer",
+          "scenarioId": "neutral.st_long",
+          "phase": "confirmation",
+          "seed": 720061,
+          "iterationsRequested": 20000,
+          "sampleCount": 19999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 232819.555251681,
+          "meanStandardError": 47.746491086335645,
+          "standardDeviation": 6752.2047135539015
+        },
+        {
+          "id": "enhancement.starter.stormbringer.official",
+          "profileSha256": "2851BAEFBC179953B219267848FD784B4062AF73B2B634D6538CA97DCE7DF54F",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+          "heroTreeId": "enhancement.stormbringer",
+          "scenarioId": "neutral.st_long",
+          "phase": "confirmation",
+          "seed": 720061,
+          "iterationsRequested": 20000,
+          "sampleCount": 19999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 232819.555251681,
+          "meanStandardError": 47.746491086335645,
+          "standardDeviation": 6752.2047135539015
+        },
+        {
+          "id": "enhancement.starter.stormbringer.surging_currents",
+          "profileSha256": "A56757F02FB3977EF0EDEC6B2B4577722C7A193565D24FA8123BBE43477E2C73",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkNYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+          "heroTreeId": "enhancement.stormbringer",
+          "scenarioId": "neutral.st_long",
+          "phase": "confirmation",
+          "seed": 720061,
+          "iterationsRequested": 20000,
+          "sampleCount": 19999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 232819.555251681,
+          "meanStandardError": 47.746491086335645,
+          "standardDeviation": 6752.2047135539015
+        },
+        {
+          "id": "enhancement.starter.stormbringer.supercharge",
+          "profileSha256": "FEE1847FFDA2BF3F077AB19E41B09051D2062B2B2E70300882AC0921A875B0DE",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+          "heroTreeId": "enhancement.stormbringer",
+          "scenarioId": "neutral.st_long",
+          "phase": "confirmation",
+          "seed": 720061,
+          "iterationsRequested": 20000,
+          "sampleCount": 19999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 231952.45014684607,
+          "meanStandardError": 46.48759900289257,
+          "standardDeviation": 6574.174938668253
+        },
+        {
+          "id": "enhancement.starter.totemic.official",
+          "profileSha256": "F18C4F6DDF9087464EB35CAA06F3C855E11ECA58B4F45965FAA4659F67876028",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+          "heroTreeId": "enhancement.totemic",
+          "scenarioId": "neutral.st_long",
+          "phase": "confirmation",
+          "seed": 720061,
+          "iterationsRequested": 20000,
+          "sampleCount": 19999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 218681.01035138304,
+          "meanStandardError": 32.039177779892995,
+          "standardDeviation": 4530.910697345399
+        },
+        {
+          "id": "enhancement.starter.stormbringer.deeply_rooted_elements",
+          "profileSha256": "E854681654061D9D9028051A54FAFD21F00435493401B7AB25B75AD509A05CF7",
+          "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAAWAsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+          "heroTreeId": "enhancement.stormbringer",
+          "scenarioId": "neutral.st_long",
+          "phase": "confirmation",
+          "seed": 720061,
+          "iterationsRequested": 20000,
+          "sampleCount": 19999,
+          "maxTime": 300,
+          "fixedTime": true,
+          "varyCombatLength": 0,
+          "desiredTargets": 1,
+          "fightStyle": "Patchwerk",
+          "meanDps": 210603.45994767253,
+          "meanStandardError": 66.33886682863358,
+          "standardDeviation": 9381.497971906807
+        }
+      ]
+    }
+  ],
+  "digest": "31DF38E8831EEE939BF5246A6409531376EC51D6BF2ED19A19C8FDCB09D8EFC7"
+}

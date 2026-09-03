@@ -29,6 +29,7 @@ const CONTEXTS = Object.freeze([
 ]);
 const TALENT_LOG_PATTERN = /adding (spec|hero|class) talent (.+?) \(node=(\d+) entry=(\d+) rank=(\d+)\/(\d+)\)/gu;
 const TALENT_EFFECT_LOG_PATTERN = /(?:setting|multiplying) talent (.+?) \(spell_id=(\d+), trait_node_entry_id=(\d+)\) rank (\d+)/gu;
+const TALENT_OVERWRITE_LOG_PATTERN = /Overwriting talent (.+?) \((\d+)\), rank \d+ -> (\d+)/gu;
 
 function fail(code, message, details = {}) {
   throw new EnhancementTalentAwareError(code, message, details);
@@ -213,6 +214,27 @@ export function parseSimcTalentLog(text, catalog, heroTreeId) {
       });
     }
     if (rank > 0) {
+      observed.set(entryId, { talent, rank });
+    }
+  }
+  for (const match of text.matchAll(TALENT_OVERWRITE_LOG_PATTERN)) {
+    const [, name, entryText, rankText] = match;
+    const entryId = Number(entryText);
+    const talent = talentsByEntry.get(entryId);
+    if (!talent) {
+      continue;
+    }
+    const rank = Number(rankText);
+    if (talent.name !== name || rank > talent.maxRanks) {
+      fail("TALENT_LOG_CATALOG_DRIFT", `${talent.id}: o overwrite do SimC diverge do catálogo.`, {
+        name,
+        entryId,
+        rank,
+      });
+    }
+    if (rank === 0) {
+      observed.delete(entryId);
+    } else {
       observed.set(entryId, { talent, rank });
     }
   }

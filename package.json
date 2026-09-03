@@ -40,12 +40,14 @@
     "enhancement:mt-check": "node specs/shaman/enhancement/cli.mjs mt-check",
     "enhancement:talent-generate": "node specs/shaman/enhancement/cli.mjs talent-generate",
     "enhancement:talent-check": "node specs/shaman/enhancement/cli.mjs talent-check",
-    "enhancement:test": "node --test tests/specs/enhancement-catalog.test.mjs tests/specs/enhancement-baseline.test.mjs tests/specs/enhancement-single-target.test.mjs tests/specs/enhancement-multi-target.test.mjs tests/specs/enhancement-talent-aware.test.mjs",
+    "enhancement:starter-generate": "node specs/shaman/enhancement/cli.mjs starter-generate",
+    "enhancement:starter-check": "node specs/shaman/enhancement/cli.mjs starter-check",
+    "enhancement:test": "node --test tests/specs/enhancement-catalog.test.mjs tests/specs/enhancement-baseline.test.mjs tests/specs/enhancement-single-target.test.mjs tests/specs/enhancement-multi-target.test.mjs tests/specs/enhancement-talent-aware.test.mjs tests/specs/enhancement-starter-build.test.mjs",
     "layout:check": "node tools/validation/check-layout.mjs",
     "core:test": "node tools/validation/run-lua-tests.mjs",
     "addon:lint": "node tools/validation/run-luacheck.mjs",
     "addon:typecheck": "node tools/validation/run-wowlua-ls.mjs",
-    "test": "npm run project:check && npm run project:test && npm run simc:test && npm run dsl:test && npm run compiler:test && npm run compiler:check && npm run scenario:test && npm run scenario:check && npm run optimizer:test && npm run optimizer:check && npm run regression:test && npm run regression:check && npm run enhancement:test && npm run enhancement:check && npm run enhancement:baseline-check && npm run enhancement:st-check && npm run enhancement:mt-check && npm run enhancement:talent-check && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
+    "test": "npm run project:check && npm run project:test && npm run simc:test && npm run dsl:test && npm run compiler:test && npm run compiler:check && npm run scenario:test && npm run scenario:check && npm run optimizer:test && npm run optimizer:check && npm run regression:test && npm run regression:check && npm run enhancement:test && npm run enhancement:check && npm run enhancement:baseline-check && npm run enhancement:st-check && npm run enhancement:mt-check && npm run enhancement:talent-check && npm run enhancement:starter-check && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
   },
   "license": "UNLICENSED"
 }

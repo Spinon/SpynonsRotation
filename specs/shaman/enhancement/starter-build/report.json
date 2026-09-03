@@ -1,0 +1,909 @@
+{
+  "schemaVersion": 1,
+  "id": "enhancement.starter_build_report",
+  "version": "12.1.0-1",
+  "measuredAt": "2026-09-03",
+  "sourceDigests": {
+    "studySha256": "CF7714631AAF6AA7F92AF259FDAF02F60616D3FB2D4A2F0223658F989ABE89D5",
+    "snapshotsSha256": "2955AF94E2EF54E9F6C589576B62FDA82A6E9C074C71E68744F7EE34458A1490",
+    "measurementsSha256": "8344E68E9A115DA77F30DE1BACACC5B9E97D12429068A43814523DFF665B3CF0"
+  },
+  "scope": {
+    "label": "Single Target sustentado — Patchwerk de 300 segundos",
+    "scenarioId": "neutral.st_long",
+    "finiteCuratedSearch": true,
+    "universalOptimumClaimed": false,
+    "candidateCount": 10,
+    "heroTrees": [
+      "Stormbringer",
+      "Totemic"
+    ],
+    "changedProfileField": "talents"
+  },
+  "simulationCraft": {
+    "version": "1210.01",
+    "wowVersion": "12.1.0.69587",
+    "engineCommit": "f86979165c9b952e41d8cb6119065d3f6272abee",
+    "executableSha256": "150D3D8FE6D2E5DF6279F0940BE118ECB3A47B79AF58E81BCF24F01FB91C5070",
+    "screening": {
+      "iterations": 2000,
+      "seed": 620061
+    },
+    "confirmation": {
+      "iterations": 20000,
+      "seed": 720061
+    }
+  },
+  "referenceChassis": {
+    "profile": "specs/shaman/enhancement/talent-aware/profiles/stormbringer.simc",
+    "upstreamPath": "profiles/MID2/MID2_Shaman_Enhancement.simc",
+    "profileSha256": "2851BAEFBC179953B219267848FD784B4062AF73B2B634D6538CA97DCE7DF54F",
+    "playerName": "MID2_Shaman_Enhancement_Stormbringer",
+    "equipment": [
+      {
+        "slot": "head",
+        "itemId": 271483,
+        "profileValue": "serpent_crown_of_the_ophidian_oracle,id=271483,bonus_id=10835/12854/13662,gem_id=240967,enchant_id=7991,redirected_base_stats=251220"
+      },
+      {
+        "slot": "neck",
+        "itemId": 268265,
+        "profileValue": "aqirbane_reliquary,id=268265,bonus_id=13335/13668/13848/13987,gem_id=240914/240890"
+      },
+      {
+        "slot": "shoulders",
+        "itemId": 271481,
+        "profileValue": "hissing_mantle_of_the_ophidian_oracle,id=271481,bonus_id=13848,enchant_id=8001,redirected_base_stats=268231"
+      },
+      {
+        "slot": "back",
+        "itemId": 268253,
+        "profileValue": "silken_voodoo_drape,id=268253,bonus_id=13848"
+      },
+      {
+        "slot": "chest",
+        "itemId": 271486,
+        "profileValue": "fanged_raiment_of_the_ophidian_oracle,id=271486,bonus_id=13662/13846/13848,enchant_id=7987,redirected_base_stats=271876"
+      },
+      {
+        "slot": "wrists",
+        "itemId": 244584,
+        "profileValue": "farstriders_plated_bracers,id=244584,bonus_id=8960/12384/13750/13751/13836/9627,gem_id=240908,crafted_stats=49/36"
+      },
+      {
+        "slot": "hands",
+        "itemId": 271484,
+        "profileValue": "hexing_grips_of_the_ophidian_oracle,id=271484,bonus_id=12854/13662,redirected_base_stats=160213"
+      },
+      {
+        "slot": "waist",
+        "itemId": 251155,
+        "profileValue": "tribal_defenders_cord,id=251155,bonus_id=10835/12854,gem_id=240906"
+      },
+      {
+        "slot": "legs",
+        "itemId": 271482,
+        "profileValue": "leggings_of_the_ophidian_oracle,id=271482,bonus_id=13662/13848,enchant_id=8159,redirected_base_stats=268237"
+      },
+      {
+        "slot": "feet",
+        "itemId": 271440,
+        "profileValue": "greaves_of_the_noxious_depths,id=271440,bonus_id=12854/13662,enchant_id=7963,crafted_stats=36/49"
+      },
+      {
+        "slot": "finger1",
+        "itemId": 268252,
+        "profileValue": "apex_brutes_claw_ring,id=268252,bonus_id=12854/13750,gem_id=240898,enchant_id=7967"
+      },
+      {
+        "slot": "finger2",
+        "itemId": 273792,
+        "profileValue": "band_of_the_amani_warlord,id=273792,bonus_id=12854/13750,gem_id=240900,enchant_id=7967"
+      },
+      {
+        "slot": "trinket1",
+        "itemId": 270175,
+        "profileValue": "voracious_heart_of_ulatek,id=270175,bonus_id=13335/13848"
+      },
+      {
+        "slot": "trinket2",
+        "itemId": 270173,
+        "profileValue": "zuljins_guillotine_technique,id=270173,bonus_id=13662/13848"
+      },
+      {
+        "slot": "main_hand",
+        "itemId": 268209,
+        "profileValue": "amanmuso_warlords_vengeance,id=268209,bonus_id=13848,enchant_id=8689"
+      },
+      {
+        "slot": "off_hand",
+        "itemId": 237850,
+        "profileValue": "farstriders_chopper,id=237850,bonus_id=8960/13751/13771/13836/12497,enchant_id=8689,crafted_stats=49/36"
+      }
+    ]
+  },
+  "confirmationSelection": [
+    {
+      "id": "enhancement.starter.stormbringer.lightning_conduit",
+      "reasons": [
+        "top_screening_damage"
+      ]
+    },
+    {
+      "id": "enhancement.starter.stormbringer.official",
+      "reasons": [
+        "official_baseline",
+        "top_screening_damage"
+      ]
+    },
+    {
+      "id": "enhancement.starter.stormbringer.surging_currents",
+      "reasons": [
+        "top_screening_damage"
+      ]
+    },
+    {
+      "id": "enhancement.starter.stormbringer.supercharge",
+      "reasons": [
+        "top_screening_damage"
+      ]
+    },
+    {
+      "id": "enhancement.starter.totemic.official",
+      "reasons": [
+        "official_baseline",
+        "simplest_complexity_for_hero_tree"
+      ]
+    },
+    {
+      "id": "enhancement.starter.stormbringer.deeply_rooted_elements",
+      "reasons": [
+        "simplest_complexity_for_hero_tree"
+      ]
+    }
+  ],
+  "screeningRanking": [
+    {
+      "rank": 1,
+      "candidateId": "enhancement.starter.stormbringer.lightning_conduit",
+      "meanDps": 232990.350051,
+      "meanStandardError": 150.461522,
+      "standardDeviation": 6727.161419,
+      "sampleCount": 1999
+    },
+    {
+      "rank": 2,
+      "candidateId": "enhancement.starter.stormbringer.official",
+      "meanDps": 232990.350051,
+      "meanStandardError": 150.461522,
+      "standardDeviation": 6727.161419,
+      "sampleCount": 1999
+    },
+    {
+      "rank": 3,
+      "candidateId": "enhancement.starter.stormbringer.surging_currents",
+      "meanDps": 232990.350051,
+      "meanStandardError": 150.461522,
+      "standardDeviation": 6727.161419,
+      "sampleCount": 1999
+    },
+    {
+      "rank": 4,
+      "candidateId": "enhancement.starter.stormbringer.supercharge",
+      "meanDps": 231978.814685,
+      "meanStandardError": 147.205593,
+      "standardDeviation": 6581.588259,
+      "sampleCount": 1999
+    },
+    {
+      "rank": 5,
+      "candidateId": "enhancement.starter.totemic.official",
+      "meanDps": 218624.942578,
+      "meanStandardError": 104.639977,
+      "standardDeviation": 4678.471993,
+      "sampleCount": 1999
+    },
+    {
+      "rank": 6,
+      "candidateId": "enhancement.starter.totemic.swift_recall",
+      "meanDps": 218624.942578,
+      "meanStandardError": 104.639977,
+      "standardDeviation": 4678.471993,
+      "sampleCount": 1999
+    },
+    {
+      "rank": 7,
+      "candidateId": "enhancement.starter.totemic.pulse_capacitor",
+      "meanDps": 218538.485314,
+      "meanStandardError": 103.308083,
+      "standardDeviation": 4618.922777,
+      "sampleCount": 1999
+    },
+    {
+      "rank": 8,
+      "candidateId": "enhancement.starter.totemic.oversurge",
+      "meanDps": 215129.71028,
+      "meanStandardError": 102.917718,
+      "standardDeviation": 4601.469466,
+      "sampleCount": 1999
+    },
+    {
+      "rank": 9,
+      "candidateId": "enhancement.starter.totemic.totemic_coordination",
+      "meanDps": 214935.945149,
+      "meanStandardError": 100.585379,
+      "standardDeviation": 4497.190166,
+      "sampleCount": 1999
+    },
+    {
+      "rank": 10,
+      "candidateId": "enhancement.starter.stormbringer.deeply_rooted_elements",
+      "meanDps": 210526.453117,
+      "meanStandardError": 207.00984,
+      "standardDeviation": 9255.446736,
+      "sampleCount": 1999
+    }
+  ],
+  "confirmationRanking": [
+    {
+      "rank": 1,
+      "candidateId": "enhancement.starter.stormbringer.lightning_conduit",
+      "meanDps": 232819.555252,
+      "meanStandardError": 47.746491,
+      "standardDeviation": 6752.204714,
+      "sampleCount": 19999
+    },
+    {
+      "rank": 2,
+      "candidateId": "enhancement.starter.stormbringer.official",
+      "meanDps": 232819.555252,
+      "meanStandardError": 47.746491,
+      "standardDeviation": 6752.204714,
+      "sampleCount": 19999
+    },
+    {
+      "rank": 3,
+      "candidateId": "enhancement.starter.stormbringer.surging_currents",
+      "meanDps": 232819.555252,
+      "meanStandardError": 47.746491,
+      "standardDeviation": 6752.204714,
+      "sampleCount": 19999
+    },
+    {
+      "rank": 4,
+      "candidateId": "enhancement.starter.stormbringer.supercharge",
+      "meanDps": 231952.450147,
+      "meanStandardError": 46.487599,
+      "standardDeviation": 6574.174939,
+      "sampleCount": 19999
+    },
+    {
+      "rank": 5,
+      "candidateId": "enhancement.starter.totemic.official",
+      "meanDps": 218681.010351,
+      "meanStandardError": 32.039178,
+      "standardDeviation": 4530.910697,
+      "sampleCount": 19999
+    },
+    {
+      "rank": 6,
+      "candidateId": "enhancement.starter.stormbringer.deeply_rooted_elements",
+      "meanDps": 210603.459948,
+      "meanStandardError": 66.338867,
+      "standardDeviation": 9381.497972,
+      "sampleCount": 19999
+    }
+  ],
+  "candidates": [
+    {
+      "id": "enhancement.starter.stormbringer.official",
+      "label": "Stormbringer oficial",
+      "heroTree": {
+        "id": "enhancement.stormbringer",
+        "subTreeId": 55
+      },
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+      "lineage": {
+        "kind": "official_profile",
+        "sourceBuildId": "enhancement.source.stormbringer",
+        "sourceProfile": "specs/shaman/enhancement/talent-aware/profiles/stormbringer.simc"
+      },
+      "simcInitialized": true,
+      "complexity": {
+        "formula": "single_target_decision_actions + cooldown_weight * active_cooldowns",
+        "availableActionCount": 13,
+        "singleTargetDecisionActionCount": 9,
+        "activeCooldownCount": 2,
+        "cooldownWeight": 2,
+        "score": 13,
+        "decisionActionIds": [
+          "enhancement.ascendance",
+          "enhancement.crash_lightning",
+          "enhancement.doom_winds",
+          "enhancement.lava_lash",
+          "enhancement.lightning_bolt",
+          "enhancement.stormstrike",
+          "enhancement.tempest",
+          "enhancement.voltaic_blaze",
+          "enhancement.windstrike"
+        ],
+        "cooldownActionIds": [
+          "enhancement.ascendance",
+          "enhancement.doom_winds"
+        ]
+      },
+      "screening": {
+        "meanDps": 232990.350051,
+        "meanStandardError": 150.461522,
+        "standardDeviation": 6727.161419,
+        "sampleCount": 1999
+      },
+      "confirmation": {
+        "meanDps": 232819.555252,
+        "meanStandardError": 47.746491,
+        "standardDeviation": 6752.204714,
+        "sampleCount": 19999
+      }
+    },
+    {
+      "id": "enhancement.starter.stormbringer.deeply_rooted_elements",
+      "label": "Stormbringer — Deeply Rooted Elements",
+      "heroTree": {
+        "id": "enhancement.stormbringer",
+        "subTreeId": 55
+      },
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAAWAsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.stormbringer.official",
+        "tree": "spec",
+        "nodeId": 92219,
+        "fromTalentId": "enhancement.ascendance",
+        "toTalentId": "enhancement.deeply_rooted_elements"
+      },
+      "simcInitialized": true,
+      "complexity": {
+        "formula": "single_target_decision_actions + cooldown_weight * active_cooldowns",
+        "availableActionCount": 12,
+        "singleTargetDecisionActionCount": 8,
+        "activeCooldownCount": 1,
+        "cooldownWeight": 2,
+        "score": 10,
+        "decisionActionIds": [
+          "enhancement.crash_lightning",
+          "enhancement.doom_winds",
+          "enhancement.lava_lash",
+          "enhancement.lightning_bolt",
+          "enhancement.stormstrike",
+          "enhancement.tempest",
+          "enhancement.voltaic_blaze",
+          "enhancement.windstrike"
+        ],
+        "cooldownActionIds": [
+          "enhancement.doom_winds"
+        ]
+      },
+      "screening": {
+        "meanDps": 210526.453117,
+        "meanStandardError": 207.00984,
+        "standardDeviation": 9255.446736,
+        "sampleCount": 1999
+      },
+      "confirmation": {
+        "meanDps": 210603.459948,
+        "meanStandardError": 66.338867,
+        "standardDeviation": 9381.497972,
+        "sampleCount": 19999
+      }
+    },
+    {
+      "id": "enhancement.starter.stormbringer.lightning_conduit",
+      "label": "Stormbringer — Lightning Conduit",
+      "heroTree": {
+        "id": "enhancement.stormbringer",
+        "subTreeId": 55
+      },
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsYGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.stormbringer.official",
+        "tree": "hero",
+        "nodeId": 94863,
+        "fromTalentId": "enhancement.electroshock",
+        "toTalentId": "enhancement.lightning_conduit"
+      },
+      "simcInitialized": true,
+      "complexity": {
+        "formula": "single_target_decision_actions + cooldown_weight * active_cooldowns",
+        "availableActionCount": 13,
+        "singleTargetDecisionActionCount": 9,
+        "activeCooldownCount": 2,
+        "cooldownWeight": 2,
+        "score": 13,
+        "decisionActionIds": [
+          "enhancement.ascendance",
+          "enhancement.crash_lightning",
+          "enhancement.doom_winds",
+          "enhancement.lava_lash",
+          "enhancement.lightning_bolt",
+          "enhancement.stormstrike",
+          "enhancement.tempest",
+          "enhancement.voltaic_blaze",
+          "enhancement.windstrike"
+        ],
+        "cooldownActionIds": [
+          "enhancement.ascendance",
+          "enhancement.doom_winds"
+        ]
+      },
+      "screening": {
+        "meanDps": 232990.350051,
+        "meanStandardError": 150.461522,
+        "standardDeviation": 6727.161419,
+        "sampleCount": 1999
+      },
+      "confirmation": {
+        "meanDps": 232819.555252,
+        "meanStandardError": 47.746491,
+        "standardDeviation": 6752.204714,
+        "sampleCount": 19999
+      }
+    },
+    {
+      "id": "enhancement.starter.stormbringer.supercharge",
+      "label": "Stormbringer — Supercharge",
+      "heroTree": {
+        "id": "enhancement.stormbringer",
+        "subTreeId": 55
+      },
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.stormbringer.official",
+        "tree": "hero",
+        "nodeId": 94873,
+        "fromTalentId": "enhancement.storm_swell",
+        "toTalentId": "enhancement.supercharge"
+      },
+      "simcInitialized": true,
+      "complexity": {
+        "formula": "single_target_decision_actions + cooldown_weight * active_cooldowns",
+        "availableActionCount": 13,
+        "singleTargetDecisionActionCount": 9,
+        "activeCooldownCount": 2,
+        "cooldownWeight": 2,
+        "score": 13,
+        "decisionActionIds": [
+          "enhancement.ascendance",
+          "enhancement.crash_lightning",
+          "enhancement.doom_winds",
+          "enhancement.lava_lash",
+          "enhancement.lightning_bolt",
+          "enhancement.stormstrike",
+          "enhancement.tempest",
+          "enhancement.voltaic_blaze",
+          "enhancement.windstrike"
+        ],
+        "cooldownActionIds": [
+          "enhancement.ascendance",
+          "enhancement.doom_winds"
+        ]
+      },
+      "screening": {
+        "meanDps": 231978.814685,
+        "meanStandardError": 147.205593,
+        "standardDeviation": 6581.588259,
+        "sampleCount": 1999
+      },
+      "confirmation": {
+        "meanDps": 231952.450147,
+        "meanStandardError": 46.487599,
+        "standardDeviation": 6574.174939,
+        "sampleCount": 19999
+      }
+    },
+    {
+      "id": "enhancement.starter.stormbringer.surging_currents",
+      "label": "Stormbringer — Surging Currents",
+      "heroTree": {
+        "id": "enhancement.stormbringer",
+        "subTreeId": 55
+      },
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkNYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.stormbringer.official",
+        "tree": "hero",
+        "nodeId": 94880,
+        "fromTalentId": "enhancement.natures_protection",
+        "toTalentId": "enhancement.surging_currents"
+      },
+      "simcInitialized": true,
+      "complexity": {
+        "formula": "single_target_decision_actions + cooldown_weight * active_cooldowns",
+        "availableActionCount": 13,
+        "singleTargetDecisionActionCount": 9,
+        "activeCooldownCount": 2,
+        "cooldownWeight": 2,
+        "score": 13,
+        "decisionActionIds": [
+          "enhancement.ascendance",
+          "enhancement.crash_lightning",
+          "enhancement.doom_winds",
+          "enhancement.lava_lash",
+          "enhancement.lightning_bolt",
+          "enhancement.stormstrike",
+          "enhancement.tempest",
+          "enhancement.voltaic_blaze",
+          "enhancement.windstrike"
+        ],
+        "cooldownActionIds": [
+          "enhancement.ascendance",
+          "enhancement.doom_winds"
+        ]
+      },
+      "screening": {
+        "meanDps": 232990.350051,
+        "meanStandardError": 150.461522,
+        "standardDeviation": 6727.161419,
+        "sampleCount": 1999
+      },
+      "confirmation": {
+        "meanDps": 232819.555252,
+        "meanStandardError": 47.746491,
+        "standardDeviation": 6752.204714,
+        "sampleCount": 19999
+      }
+    },
+    {
+      "id": "enhancement.starter.totemic.official",
+      "label": "Totemic oficial",
+      "heroTree": {
+        "id": "enhancement.totemic",
+        "subTreeId": 54
+      },
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+      "lineage": {
+        "kind": "official_profile",
+        "sourceBuildId": "enhancement.source.totemic",
+        "sourceProfile": "specs/shaman/enhancement/single-target/upstream-profile.simc"
+      },
+      "simcInitialized": true,
+      "complexity": {
+        "formula": "single_target_decision_actions + cooldown_weight * active_cooldowns",
+        "availableActionCount": 13,
+        "singleTargetDecisionActionCount": 9,
+        "activeCooldownCount": 2,
+        "cooldownWeight": 2,
+        "score": 13,
+        "decisionActionIds": [
+          "enhancement.crash_lightning",
+          "enhancement.doom_winds",
+          "enhancement.lava_lash",
+          "enhancement.lightning_bolt",
+          "enhancement.primordial_storm",
+          "enhancement.stormstrike",
+          "enhancement.sundering",
+          "enhancement.surging_totem",
+          "enhancement.voltaic_blaze"
+        ],
+        "cooldownActionIds": [
+          "enhancement.doom_winds",
+          "enhancement.surging_totem"
+        ]
+      },
+      "screening": {
+        "meanDps": 218624.942578,
+        "meanStandardError": 104.639977,
+        "standardDeviation": 4678.471993,
+        "sampleCount": 1999
+      },
+      "confirmation": {
+        "meanDps": 218681.010351,
+        "meanStandardError": 32.039178,
+        "standardDeviation": 4530.910697,
+        "sampleCount": 19999
+      }
+    },
+    {
+      "id": "enhancement.starter.totemic.swift_recall",
+      "label": "Totemic — Swift Recall",
+      "heroTree": {
+        "id": "enhancement.totemic",
+        "subTreeId": 54
+      },
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsBbwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.totemic.official",
+        "tree": "hero",
+        "nodeId": 94859,
+        "fromTalentId": "enhancement.oversized_totems",
+        "toTalentId": "enhancement.swift_recall"
+      },
+      "simcInitialized": true,
+      "complexity": {
+        "formula": "single_target_decision_actions + cooldown_weight * active_cooldowns",
+        "availableActionCount": 13,
+        "singleTargetDecisionActionCount": 9,
+        "activeCooldownCount": 2,
+        "cooldownWeight": 2,
+        "score": 13,
+        "decisionActionIds": [
+          "enhancement.crash_lightning",
+          "enhancement.doom_winds",
+          "enhancement.lava_lash",
+          "enhancement.lightning_bolt",
+          "enhancement.primordial_storm",
+          "enhancement.stormstrike",
+          "enhancement.sundering",
+          "enhancement.surging_totem",
+          "enhancement.voltaic_blaze"
+        ],
+        "cooldownActionIds": [
+          "enhancement.doom_winds",
+          "enhancement.surging_totem"
+        ]
+      },
+      "screening": {
+        "meanDps": 218624.942578,
+        "meanStandardError": 104.639977,
+        "standardDeviation": 4678.471993,
+        "sampleCount": 1999
+      },
+      "confirmation": null
+    },
+    {
+      "id": "enhancement.starter.totemic.pulse_capacitor",
+      "label": "Totemic — Pulse Capacitor",
+      "heroTree": {
+        "id": "enhancement.totemic",
+        "subTreeId": 54
+      },
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsALwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.totemic.official",
+        "tree": "hero",
+        "nodeId": 94866,
+        "fromTalentId": "enhancement.supportive_imbuements",
+        "toTalentId": "enhancement.pulse_capacitor"
+      },
+      "simcInitialized": true,
+      "complexity": {
+        "formula": "single_target_decision_actions + cooldown_weight * active_cooldowns",
+        "availableActionCount": 13,
+        "singleTargetDecisionActionCount": 9,
+        "activeCooldownCount": 2,
+        "cooldownWeight": 2,
+        "score": 13,
+        "decisionActionIds": [
+          "enhancement.crash_lightning",
+          "enhancement.doom_winds",
+          "enhancement.lava_lash",
+          "enhancement.lightning_bolt",
+          "enhancement.primordial_storm",
+          "enhancement.stormstrike",
+          "enhancement.sundering",
+          "enhancement.surging_totem",
+          "enhancement.voltaic_blaze"
+        ],
+        "cooldownActionIds": [
+          "enhancement.doom_winds",
+          "enhancement.surging_totem"
+        ]
+      },
+      "screening": {
+        "meanDps": 218538.485314,
+        "meanStandardError": 103.308083,
+        "standardDeviation": 4618.922777,
+        "sampleCount": 1999
+      },
+      "confirmation": null
+    },
+    {
+      "id": "enhancement.starter.totemic.oversurge",
+      "label": "Totemic — Oversurge",
+      "heroTree": {
+        "id": "enhancement.totemic",
+        "subTreeId": 54
+      },
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwM20YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.totemic.official",
+        "tree": "hero",
+        "nodeId": 94874,
+        "fromTalentId": "enhancement.amplification_core",
+        "toTalentId": "enhancement.oversurge"
+      },
+      "simcInitialized": true,
+      "complexity": {
+        "formula": "single_target_decision_actions + cooldown_weight * active_cooldowns",
+        "availableActionCount": 13,
+        "singleTargetDecisionActionCount": 9,
+        "activeCooldownCount": 2,
+        "cooldownWeight": 2,
+        "score": 13,
+        "decisionActionIds": [
+          "enhancement.crash_lightning",
+          "enhancement.doom_winds",
+          "enhancement.lava_lash",
+          "enhancement.lightning_bolt",
+          "enhancement.primordial_storm",
+          "enhancement.stormstrike",
+          "enhancement.sundering",
+          "enhancement.surging_totem",
+          "enhancement.voltaic_blaze"
+        ],
+        "cooldownActionIds": [
+          "enhancement.doom_winds",
+          "enhancement.surging_totem"
+        ]
+      },
+      "screening": {
+        "meanDps": 215129.71028,
+        "meanStandardError": 102.917718,
+        "standardDeviation": 4601.469466,
+        "sampleCount": 1999
+      },
+      "confirmation": null
+    },
+    {
+      "id": "enhancement.starter.totemic.totemic_coordination",
+      "label": "Totemic — Totemic Coordination",
+      "heroTree": {
+        "id": "enhancement.totemic",
+        "subTreeId": 54
+      },
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwMW0YZAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.totemic.official",
+        "tree": "hero",
+        "nodeId": 94881,
+        "fromTalentId": "enhancement.earthsurge",
+        "toTalentId": "enhancement.totemic_coordination"
+      },
+      "simcInitialized": true,
+      "complexity": {
+        "formula": "single_target_decision_actions + cooldown_weight * active_cooldowns",
+        "availableActionCount": 13,
+        "singleTargetDecisionActionCount": 9,
+        "activeCooldownCount": 2,
+        "cooldownWeight": 2,
+        "score": 13,
+        "decisionActionIds": [
+          "enhancement.crash_lightning",
+          "enhancement.doom_winds",
+          "enhancement.lava_lash",
+          "enhancement.lightning_bolt",
+          "enhancement.primordial_storm",
+          "enhancement.stormstrike",
+          "enhancement.sundering",
+          "enhancement.surging_totem",
+          "enhancement.voltaic_blaze"
+        ],
+        "cooldownActionIds": [
+          "enhancement.doom_winds",
+          "enhancement.surging_totem"
+        ]
+      },
+      "screening": {
+        "meanDps": 214935.945149,
+        "meanStandardError": 100.585379,
+        "standardDeviation": 4497.190166,
+        "sampleCount": 1999
+      },
+      "confirmation": null
+    }
+  ],
+  "bestMeasuredCandidate": {
+    "candidateId": "enhancement.starter.stormbringer.lightning_conduit",
+    "metric": {
+      "meanDps": 232819.555252,
+      "meanStandardError": 47.746491,
+      "standardDeviation": 6752.204714,
+      "sampleCount": 19999
+    },
+    "comparisonToBestOfficialBaseline": {
+      "referenceCandidateId": "enhancement.starter.stormbringer.official",
+      "dpsDelta": 0,
+      "deltaPercent": 0,
+      "confidenceInterval95Dps": {
+        "lower": -132.346521,
+        "upper": 132.346521
+      },
+      "confidenceInterval95Percent": {
+        "lower": -0.056845,
+        "upper": 0.056845
+      }
+    }
+  },
+  "damageWinner": {
+    "candidateId": "enhancement.starter.stormbringer.official",
+    "label": "Stormbringer oficial",
+    "heroTree": "Stormbringer",
+    "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+    "metric": {
+      "meanDps": 232819.555252,
+      "meanStandardError": 47.746491,
+      "standardDeviation": 6752.204714,
+      "sampleCount": 19999
+    },
+    "comparisonToBestOfficialBaseline": {
+      "referenceCandidateId": "enhancement.starter.stormbringer.official",
+      "dpsDelta": 0,
+      "deltaPercent": 0,
+      "confidenceInterval95Dps": {
+        "lower": 0,
+        "upper": 0
+      },
+      "confidenceInterval95Percent": {
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    "confidence": "best_official_baseline_preserved_without_statistically_confirmed_gain",
+    "selectionPolicy": "confirmed_damage_then_official_baseline_without_positive_95ci",
+    "claim": "best_official_baseline_preserved_without_confirmed_candidate_gain"
+  },
+  "starterSuggestion": {
+    "candidateId": "enhancement.starter.stormbringer.official",
+    "label": "Stormbringer oficial",
+    "heroTree": "Stormbringer",
+    "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+    "metric": {
+      "meanDps": 232819.555252,
+      "meanStandardError": 47.746491,
+      "standardDeviation": 6752.204714,
+      "sampleCount": 19999
+    },
+    "comparisonToDamageWinner": {
+      "referenceCandidateId": "enhancement.starter.stormbringer.official",
+      "dpsDelta": 0,
+      "deltaPercent": 0,
+      "confidenceInterval95Dps": {
+        "lower": 0,
+        "upper": 0
+      },
+      "confidenceInterval95Percent": {
+        "lower": 0,
+        "upper": 0
+      }
+    },
+    "tolerancePercent": 0.5,
+    "complexity": {
+      "formula": "single_target_decision_actions + cooldown_weight * active_cooldowns",
+      "availableActionCount": 13,
+      "singleTargetDecisionActionCount": 9,
+      "activeCooldownCount": 2,
+      "cooldownWeight": 2,
+      "score": 13,
+      "decisionActionIds": [
+        "enhancement.ascendance",
+        "enhancement.crash_lightning",
+        "enhancement.doom_winds",
+        "enhancement.lava_lash",
+        "enhancement.lightning_bolt",
+        "enhancement.stormstrike",
+        "enhancement.tempest",
+        "enhancement.voltaic_blaze",
+        "enhancement.windstrike"
+      ],
+      "cooldownActionIds": [
+        "enhancement.ascendance",
+        "enhancement.doom_winds"
+      ]
+    },
+    "selectionPolicy": "complexity_then_damage_then_damage_winner_then_id",
+    "reason": "damage_winner_is_simplest_candidate_within_tolerance"
+  },
+  "limitations": [
+    "Resultado válido somente para o chassi, APL, versões e cenário pinados.",
+    "A busca cobre duas baselines oficiais e oito trocas curadas de um único nó; não cobre todo o espaço de talentos.",
+    "Patchwerk sustentado não representa movimento, cleave, AoE, Mythic+, utilidade ou sobrevivência.",
+    "A sugestão para iniciantes usa um proxy estrutural de complexidade, não observação de jogadores reais.",
+    "Medições foram executadas offline no SimulationCraft; não houve validação dentro do World of Warcraft."
+  ]
+}

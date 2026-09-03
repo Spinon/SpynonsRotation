@@ -42,3 +42,12 @@ export class EnhancementTalentAwareError extends Error {
     this.details = details;
   }
 }
+
+export class EnhancementStarterBuildError extends Error {
+  constructor(code, message, details = {}) {
+    super(message);
+    this.name = "EnhancementStarterBuildError";
+    this.code = code;
+    this.details = details;
+  }
+}

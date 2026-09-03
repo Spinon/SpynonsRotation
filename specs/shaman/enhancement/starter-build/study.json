@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "id": "enhancement.starter_build",
+  "version": "12.1.0-1",
+  "measuredAt": "2026-09-03",
+  "sources": {
+    "catalog": {
+      "path": "specs/shaman/enhancement/catalog.json",
+      "sha256": "BE6C5436A83EAE8C065CFE2EADC867B625AEE43A4F626713E08E9BC724894199"
+    },
+    "rotation": {
+      "path": "specs/shaman/enhancement/baseline/baseline.rotation.json",
+      "sha256": "036BEE377D6C5B492B3EF1F670F9D1F6DE6CCC4A098A972C29B3F578669C0BA0"
+    },
+    "talentMatrix": {
+      "path": "specs/shaman/enhancement/talent-aware/matrix.json",
+      "sha256": "9E85BE2218871B918A767B23F444092F73C0E9C9A91918284F7DE1AA0C31C704"
+    },
+    "talentSnapshots": {
+      "path": "specs/shaman/enhancement/talent-aware/snapshots.json",
+      "sha256": "EFAF18FDDF64D2B4150746FE1F1B9EC8547913C5A20D96B037DB02F6208A9599"
+    },
+    "scenarioMatrix": {
+      "path": "rotation-lab/fixtures/scenarios/initial.scenario-matrix.json",
+      "sha256": "68B77B064DA93B53C091E70E32E5357F3AF25C04001969029A80FD0FB90C0017"
+    },
+    "optimizer": {
+      "task": "LAB-005",
+      "path": "rotation-lab/optimizer/search.mjs",
+      "sha256": "56491483057B1B242AE15495B9B213A8DE3684407448B22FD3DF5D16FFCF61B2",
+      "method": "bounded_two_phase_search_reference"
+    }
+  },
+  "simulationCraft": {
+    "version": "1210.01",
+    "wowVersion": "12.1.0.69587",
+    "engineCommit": "f86979165c9b952e41d8cb6119065d3f6272abee",
+    "executableSha256": "150D3D8FE6D2E5DF6279F0940BE118ECB3A47B79AF58E81BCF24F01FB91C5070",
+    "repository": "https://github.com/simulationcraft/simc",
+    "talentExportMethod": "manual_same_node_override_then_generate_traits_hash"
+  },
+  "chassis": {
+    "onlyMutableField": "talents",
+    "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+    "profile": {
+      "path": "specs/shaman/enhancement/talent-aware/profiles/stormbringer.simc",
+      "upstreamPath": "profiles/MID2/MID2_Shaman_Enhancement.simc",
+      "sourceUrl": "https://github.com/simulationcraft/simc/blob/f86979165c9b952e41d8cb6119065d3f6272abee/profiles/MID2/MID2_Shaman_Enhancement.simc",
+      "playerName": "MID2_Shaman_Enhancement_Stormbringer",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+      "bytes": 13517,
+      "sha256": "2851BAEFBC179953B219267848FD784B4062AF73B2B634D6538CA97DCE7DF54F",
+      "gitBlobSha": "2059098303f2c02766a86287eb0935c97ce66712"
+    }
+  },
+  "sourceBuilds": [
+    {
+      "id": "enhancement.source.stormbringer",
+      "name": "Stormbringer",
+      "heroTreeId": "enhancement.stormbringer",
+      "heroSubTreeId": 55,
+      "singleTargetList": "single_sb",
+      "talentAwareBuildId": "enhancement.build.stormbringer",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+      "profile": {
+        "path": "specs/shaman/enhancement/talent-aware/profiles/stormbringer.simc",
+        "upstreamPath": "profiles/MID2/MID2_Shaman_Enhancement.simc",
+        "sourceUrl": "https://github.com/simulationcraft/simc/blob/f86979165c9b952e41d8cb6119065d3f6272abee/profiles/MID2/MID2_Shaman_Enhancement.simc",
+        "playerName": "MID2_Shaman_Enhancement_Stormbringer",
+        "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+        "bytes": 13517,
+        "sha256": "2851BAEFBC179953B219267848FD784B4062AF73B2B634D6538CA97DCE7DF54F",
+        "gitBlobSha": "2059098303f2c02766a86287eb0935c97ce66712"
+      }
+    },
+    {
+      "id": "enhancement.source.totemic",
+      "name": "Totemic",
+      "heroTreeId": "enhancement.totemic",
+      "heroSubTreeId": 54,
+      "singleTargetList": "single_totemic",
+      "talentAwareBuildId": "enhancement.build.totemic",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+      "profile": {
+        "path": "specs/shaman/enhancement/single-target/upstream-profile.simc",
+        "upstreamPath": "profiles/MID2/MID2_Shaman_Enhancement_Totemic.simc",
+        "sourceUrl": "https://github.com/simulationcraft/simc/blob/f86979165c9b952e41d8cb6119065d3f6272abee/profiles/MID2/MID2_Shaman_Enhancement_Totemic.simc",
+        "playerName": "MID2_Shaman_Enhancement_Totemic",
+        "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+        "bytes": 13460,
+        "sha256": "32EB17FB5353C48AAA2B2FEFE45AFEC4AAFECDCBA969409459195580DC89CB16",
+        "gitBlobSha": "95e954758a4c887ce51cfc446471a4725c580b0a"
+      }
+    }
+  ],
+  "scenario": {
+    "id": "neutral.st_long",
+    "seeds": {
+      "screening": 620061,
+      "confirmation": 720061
+    }
+  },
+  "phases": {
+    "screeningIterations": 2000,
+    "confirmationIterations": 20000,
+    "damageFinalists": 4,
+    "alwaysConfirmOfficialBaselines": true,
+    "alwaysConfirmSimplestPerHeroTree": true
+  },
+  "selection": {
+    "damageRanking": "confirmed_damage_then_official_baseline_without_positive_95ci",
+    "confidenceZ": 1.96,
+    "starterTolerancePercent": 0.5,
+    "starterTieBreak": "complexity_then_damage_then_damage_winner_then_id",
+    "complexity": {
+      "formula": "single_target_decision_actions + cooldown_weight * active_cooldowns",
+      "cooldownWeight": 2
+    }
+  },
+  "candidates": [
+    {
+      "id": "enhancement.starter.stormbringer.official",
+      "label": "Stormbringer oficial",
+      "heroTreeId": "enhancement.stormbringer",
+      "heroSubTreeId": 55,
+      "sourceBuildId": "enhancement.source.stormbringer",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+      "lineage": {
+        "kind": "official_profile",
+        "sourceBuildId": "enhancement.source.stormbringer",
+        "sourceProfile": "specs/shaman/enhancement/talent-aware/profiles/stormbringer.simc"
+      }
+    },
+    {
+      "id": "enhancement.starter.stormbringer.deeply_rooted_elements",
+      "label": "Stormbringer — Deeply Rooted Elements",
+      "heroTreeId": "enhancement.stormbringer",
+      "heroSubTreeId": 55,
+      "sourceBuildId": "enhancement.source.stormbringer",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAAWAsZGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.stormbringer.official",
+        "tree": "spec",
+        "nodeId": 92219,
+        "fromTalentId": "enhancement.ascendance",
+        "toTalentId": "enhancement.deeply_rooted_elements"
+      }
+    },
+    {
+      "id": "enhancement.starter.stormbringer.lightning_conduit",
+      "label": "Stormbringer — Lightning Conduit",
+      "heroTreeId": "enhancement.stormbringer",
+      "heroSubTreeId": 55,
+      "sourceBuildId": "enhancement.source.stormbringer",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsYGDLkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.stormbringer.official",
+        "tree": "hero",
+        "nodeId": 94863,
+        "fromTalentId": "enhancement.electroshock",
+        "toTalentId": "enhancement.lightning_conduit"
+      }
+    },
+    {
+      "id": "enhancement.starter.stormbringer.supercharge",
+      "label": "Stormbringer — Supercharge",
+      "heroTreeId": "enhancement.stormbringer",
+      "heroSubTreeId": 55,
+      "sourceBuildId": "enhancement.source.stormbringer",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDbkFYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.stormbringer.official",
+        "tree": "hero",
+        "nodeId": 94873,
+        "fromTalentId": "enhancement.storm_swell",
+        "toTalentId": "enhancement.supercharge"
+      }
+    },
+    {
+      "id": "enhancement.starter.stormbringer.surging_currents",
+      "label": "Stormbringer — Surging Currents",
+      "heroTreeId": "enhancement.stormbringer",
+      "heroSubTreeId": 55,
+      "sourceBuildId": "enhancement.source.stormbringer",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzgZmZmZmhZmZAAAAAAAAA2AsZGDLkNYGGawCAzyMmxYZZGYmZbsMzMzMGGzAAMDjZGGBmZwgxA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.stormbringer.official",
+        "tree": "hero",
+        "nodeId": 94880,
+        "fromTalentId": "enhancement.natures_protection",
+        "toTalentId": "enhancement.surging_currents"
+      }
+    },
+    {
+      "id": "enhancement.starter.totemic.official",
+      "label": "Totemic oficial",
+      "heroTreeId": "enhancement.totemic",
+      "heroSubTreeId": 54,
+      "sourceBuildId": "enhancement.source.totemic",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+      "lineage": {
+        "kind": "official_profile",
+        "sourceBuildId": "enhancement.source.totemic",
+        "sourceProfile": "specs/shaman/enhancement/single-target/upstream-profile.simc"
+      }
+    },
+    {
+      "id": "enhancement.starter.totemic.swift_recall",
+      "label": "Totemic — Swift Recall",
+      "heroTreeId": "enhancement.totemic",
+      "heroSubTreeId": 54,
+      "sourceBuildId": "enhancement.source.totemic",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsBbwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.totemic.official",
+        "tree": "hero",
+        "nodeId": 94859,
+        "fromTalentId": "enhancement.oversized_totems",
+        "toTalentId": "enhancement.swift_recall"
+      }
+    },
+    {
+      "id": "enhancement.starter.totemic.pulse_capacitor",
+      "label": "Totemic — Pulse Capacitor",
+      "heroTreeId": "enhancement.totemic",
+      "heroSubTreeId": 54,
+      "sourceBuildId": "enhancement.source.totemic",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsALwMW0YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.totemic.official",
+        "tree": "hero",
+        "nodeId": 94866,
+        "fromTalentId": "enhancement.supportive_imbuements",
+        "toTalentId": "enhancement.pulse_capacitor"
+      }
+    },
+    {
+      "id": "enhancement.starter.totemic.oversurge",
+      "label": "Totemic — Oversurge",
+      "heroTreeId": "enhancement.totemic",
+      "heroSubTreeId": 54,
+      "sourceBuildId": "enhancement.source.totemic",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwM20YbAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.totemic.official",
+        "tree": "hero",
+        "nodeId": 94874,
+        "fromTalentId": "enhancement.amplification_core",
+        "toTalentId": "enhancement.oversurge"
+      }
+    },
+    {
+      "id": "enhancement.starter.totemic.totemic_coordination",
+      "label": "Totemic — Totemic Coordination",
+      "heroTreeId": "enhancement.totemic",
+      "heroSubTreeId": 54,
+      "sourceBuildId": "enhancement.source.totemic",
+      "talentString": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMzMzMzMzMzMzMzYGAAAAAAAAAsAbwMW0YZAMTwGAzyMmZGLLzYhZmNWmZmZYYMDAgBYMjYmBAGDA",
+      "lineage": {
+        "kind": "single_choice_swap",
+        "parentCandidateId": "enhancement.starter.totemic.official",
+        "tree": "hero",
+        "nodeId": 94881,
+        "fromTalentId": "enhancement.earthsurge",
+        "toTalentId": "enhancement.totemic_coordination"
+      }
+    }
+  ],
+  "limitations": [
+    "Resultado válido somente para o chassi, APL, versões e cenário pinados.",
+    "A busca cobre duas baselines oficiais e oito trocas curadas de um único nó; não cobre todo o espaço de talentos.",
+    "Patchwerk sustentado não representa movimento, cleave, AoE, Mythic+, utilidade ou sobrevivência.",
+    "A sugestão para iniciantes usa um proxy estrutural de complexidade, não observação de jogadores reais.",
+    "Medições foram executadas offline no SimulationCraft; não houve validação dentro do World of Warcraft."
+  ]
+}
