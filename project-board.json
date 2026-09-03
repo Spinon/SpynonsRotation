@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T10:27:54.287Z",
+  "updatedAt": "2026-09-03T18:41:02.155Z",
   "currentFocus": "ENH-002",
   "parallelFocus": {
     "ui": "UI-DESIGN-010"
@@ -802,12 +802,12 @@
       "title": "Contraste cromático do GCD",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-010--contraste-cromatico-do-gcd",
-      "updatedAt": "2026-09-02T23:50:16.509Z",
+      "updatedAt": "2026-09-03T18:41:02.155Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Após a barra de cast, comparar alternativas de cor do GCD no HUD completo e selecionar a opção com menor ambiguidade.",
+      "nextAction": "Produzir o comparativo cromático do GCD no HUD e submeter a direção recomendada à revisão do Product Owner.",
       "dependencies": [
         "UI-DESIGN-005",
         "UI-DESIGN-009"

@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T10:27:54.287Z
+Atualizado pelo board em: 2026-09-03T18:41:02.155Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,12 +18,12 @@ Próxima ação: Importar e revisar baseline de referência.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-010 — Contraste cromático do GCD | planned | Após a barra de cast, comparar alternativas de cor do GCD no HUD completo e selecionar a opção com menor ambiguidade. |
+| ui | UI-DESIGN-010 — Contraste cromático do GCD | in_progress | Produzir o comparativo cromático do GCD no HUD e submeter a direção recomendada à revisão do Product Owner. |
 
 ## Progresso
 
-- Planejadas: 35
-- Em andamento: 0
+- Planejadas: 34
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 20
 - Total: 55
@@ -61,7 +61,7 @@ Próxima ação: Importar e revisar baseline de referência.
 | UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
 | UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |
-| UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | planned | P1 | UI-DESIGN-005, UI-DESIGN-009 |
+| UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | in_progress | P1 | UI-DESIGN-005, UI-DESIGN-009 |
 | UI-001 | delivery | UI | Queue estática | planned | P0 | RUN-002 |
 | UI-002 | delivery | UI | Animator | planned | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |
