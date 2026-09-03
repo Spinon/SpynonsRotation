@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T00:37:02.657Z",
+  "updatedAt": "2026-09-03T00:40:17.718Z",
   "currentFocus": "ENH-001",
   "parallelFocus": {
     "ui": "UI-DESIGN-006"
@@ -359,12 +359,12 @@
       "title": "Catálogo Enhancement",
       "lane": "SHAMAN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
-      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "source": "tasks/ENH-001.md",
+      "updatedAt": "2026-09-03T00:40:17.718Z",
       "reviewBy": null,
-      "nextAction": "Curar catálogo observável do Enhancement.",
+      "nextAction": "Implementar e verificar o catálogo Enhancement contra o SimulationCraft pinado.",
       "dependencies": [
         "CORE-002",
         "CORE-003",

@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T00:37:02.657Z
+Atualizado pelo board em: 2026-09-03T00:40:17.718Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,9 +10,9 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **ENH-001 — Catálogo Enhancement**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Curar catálogo observável do Enhancement.
+Próxima ação: Implementar e verificar o catálogo Enhancement contra o SimulationCraft pinado.
 
 ## Focos paralelos
 
@@ -22,8 +22,8 @@ Próxima ação: Curar catálogo observável do Enhancement.
 
 ## Progresso
 
-- Planejadas: 36
-- Em andamento: 1
+- Planejadas: 35
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 18
 - Total: 55
@@ -44,7 +44,7 @@ Próxima ação: Curar catálogo observável do Enhancement.
 | LAB-004 | delivery | ROTATION LAB | Matriz de cenários | done | P1 | LAB-001, LAB-002 |
 | LAB-005 | delivery | ROTATION LAB | Optimizer | done | P2 | LAB-004, LAB-003 |
 | LAB-006 | delivery | ROTATION LAB | Regression suite | done | P1 | LAB-003, LAB-004 |
-| ENH-001 | delivery | SHAMAN | Catálogo Enhancement | planned | P0 | CORE-002, CORE-003, CORE-004 |
+| ENH-001 | delivery | SHAMAN | Catálogo Enhancement | in_progress | P0 | CORE-002, CORE-003, CORE-004 |
 | ENH-002 | delivery | SHAMAN | Baseline APL | planned | P0 | ENH-001, LAB-002, LAB-003 |
 | ENH-003 | delivery | SHAMAN | Curadoria ST | planned | P1 | ENH-002, LAB-004 |
 | ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | planned | P1 | ENH-002, LAB-004 |
