@@ -2,17 +2,17 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T00:57:16.406Z
+Atualizado pelo board em: 2026-09-03T01:00:56.432Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**ENH-001 — Catálogo Enhancement**
+**ENH-002 — Baseline APL**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Implementar e verificar o catálogo Enhancement contra o SimulationCraft pinado.
+Próxima ação: Importar e revisar baseline de referência.
 
 ## Focos paralelos
 
@@ -23,9 +23,9 @@ Próxima ação: Implementar e verificar o catálogo Enhancement contra o Simula
 ## Progresso
 
 - Planejadas: 35
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 18
+- Concluídas: 19
 - Total: 55
 
 ## Fila canônica
@@ -44,7 +44,7 @@ Próxima ação: Implementar e verificar o catálogo Enhancement contra o Simula
 | LAB-004 | delivery | ROTATION LAB | Matriz de cenários | done | P1 | LAB-001, LAB-002 |
 | LAB-005 | delivery | ROTATION LAB | Optimizer | done | P2 | LAB-004, LAB-003 |
 | LAB-006 | delivery | ROTATION LAB | Regression suite | done | P1 | LAB-003, LAB-004 |
-| ENH-001 | delivery | SHAMAN | Catálogo Enhancement | in_progress | P0 | CORE-002, CORE-003, CORE-004 |
+| ENH-001 | delivery | SHAMAN | Catálogo Enhancement | done | P0 | CORE-002, CORE-003, CORE-004 |
 | ENH-002 | delivery | SHAMAN | Baseline APL | planned | P0 | ENH-001, LAB-002, LAB-003 |
 | ENH-003 | delivery | SHAMAN | Curadoria ST | planned | P1 | ENH-002, LAB-004 |
 | ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | planned | P1 | ENH-002, LAB-004 |
@@ -188,6 +188,15 @@ Próxima ação: Implementar e verificar o catálogo Enhancement contra o Simula
 - npm test passou com 133 testes Node, 90 testes Lua, lint e análise de tipos sem falhas.
 - docs/architecture/REGRESSION.md registra os contratos, a paridade obrigatória e as fronteiras da suíte.
 - Commit 245f0a1 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### ENH-001
+
+- npm run enhancement:simc-check verificou 79 talentos, 2 Hero Trees e 27 spells no DBC Live 12.1.0.69587, engine f86979165c9b952e41d8cb6119065d3f6272abee e executável SHA-256 150D3D8FE6D2E5DF6279F0940BE118ECB3A47B79AF58E81BCF24F01FB91C5070.
+- npm run enhancement:test passou com 11/11 testes de schema, referências, modelos de recurso, determinismo e evidência SimC.
+- npm run core:test passou com 99/99 testes Lua, incluindo 9/9 do módulo real Enhancement e seus filtros de disponibilidade por talento e Hero Tree.
+- npm test passou com 144 testes Node, 99 testes Lua, fronteiras, Luacheck e wowlua-ls sem falhas.
+- specs/shaman/enhancement/catalog.json é a fonte canônica; addon/Classes/Shaman/Enhancement contém somente o derivado Lua e o SpecModule, sem regras de rotação ou mudanças no Core.
+- Commit aae336b registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
 
 ### UI-DESIGN-001
 

@@ -33,6 +33,8 @@ O pipeline determinístico entre SimC, DSL e bundles de runtime está definido e
 A matriz neutra de simulação, seus planos e guardrails de fitness estão definidos em [`SCENARIOS.md`](SCENARIOS.md).
 O beam search reproduzível e seus contratos de mutação e avaliação estão definidos em [`OPTIMIZER.md`](OPTIMIZER.md).
 A suíte determinística de comparação entre baseline, candidata e release anterior está definida em [`REGRESSION.md`](REGRESSION.md).
+O primeiro catálogo concreto e sua disponibilidade por loadout estão definidos em
+[`ENHANCEMENT_CATALOG.md`](ENHANCEMENT_CATALOG.md).
 
 ## Contratos do Core
 

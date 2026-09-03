@@ -128,6 +128,18 @@ const requiredFiles = [
   "rotation-lab/fixtures/regression/previous-release-strong.regression-results.json",
   "tests/rotation-lab/regression.test.mjs",
   "docs/architecture/REGRESSION.md",
+  "specs/shaman/enhancement/catalog.json",
+  "specs/shaman/enhancement/catalog.mjs",
+  "specs/shaman/enhancement/cli.mjs",
+  "specs/shaman/enhancement/errors.mjs",
+  "specs/shaman/enhancement/runtime.mjs",
+  "specs/shaman/enhancement/simc.mjs",
+  "specs/shaman/enhancement/verify.mjs",
+  "addon/Classes/Shaman/Enhancement/CatalogData.lua",
+  "addon/Classes/Shaman/Enhancement/Module.lua",
+  "tests/specs/enhancement-catalog.test.mjs",
+  "tests/unit/enhancement_catalog_spec.lua",
+  "docs/architecture/ENHANCEMENT_CATALOG.md",
 ];
 const errors = [];
 

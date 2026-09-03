@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "id": "shaman.enhancement",
+  "version": "12.1.0-1",
+  "classId": 7,
+  "specId": 263,
+  "displayName": "Enhancement Shaman",
+  "sources": {
+    "wowVersion": "12.1.0",
+    "wowBuild": 69587,
+    "interface": 120100,
+    "simcVersion": "1210.01",
+    "simcEngineCommit": "f86979165c9b952e41d8cb6119065d3f6272abee",
+    "simcHotfixDate": "2026-09-01"
+  },
+  "heroTrees": [
+    {
+      "id": "enhancement.stormbringer",
+      "name": "Stormbringer",
+      "subTreeId": 55,
+      "selectionEntryId": 123381,
+      "selectionNodeId": 99847,
+      "selectionIndex": 100
+    },
+    {
+      "id": "enhancement.totemic",
+      "name": "Totemic",
+      "subTreeId": 54,
+      "selectionEntryId": 123379,
+      "selectionNodeId": 99847,
+      "selectionIndex": 200
+    }
+  ],
+  "actions": [
+    {
+      "id": "enhancement.ascendance",
+      "label": "Ascendance",
+      "spellId": 114051,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["cooldown", "melee", "transformation"],
+      "availability": { "requiredTalentSpellIds": [114051] }
+    },
+    {
+      "id": "enhancement.chain_lightning",
+      "label": "Chain Lightning",
+      "spellId": 188443,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["aoe", "damage", "maelstrom_spender", "nature"],
+      "availability": { "requiredTalentSpellIds": [188443] }
+    },
+    {
+      "id": "enhancement.crash_lightning",
+      "label": "Crash Lightning",
+      "spellId": 187874,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["aoe", "damage", "melee"],
+      "availability": { "requiredTalentSpellIds": [187874] }
+    },
+    {
+      "id": "enhancement.doom_winds",
+      "label": "Doom Winds",
+      "spellId": 384352,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["cooldown", "damage", "melee"],
+      "availability": { "requiredTalentSpellIds": [384352] }
+    },
+    {
+      "id": "enhancement.flame_shock",
+      "label": "Flame Shock",
+      "spellId": 470411,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["damage", "fire", "ranged"],
+      "availability": { "forbiddenTalentSpellIds": [470057] }
+    },
+    {
+      "id": "enhancement.flametongue_weapon",
+      "label": "Flametongue Weapon",
+      "spellId": 318038,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["imbue", "maintenance", "self_buff"],
+      "availability": { "requiredTalentSpellIds": [318038] }
+    },
+    {
+      "id": "enhancement.frost_shock",
+      "label": "Frost Shock",
+      "spellId": 196840,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["damage", "frost", "ranged"],
+      "availability": { "requiredTalentSpellIds": [196840] }
+    },
+    {
+      "id": "enhancement.lava_lash",
+      "label": "Lava Lash",
+      "spellId": 60103,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["damage", "fire", "melee"],
+      "availability": { "requiredTalentSpellIds": [60103] }
+    },
+    {
+      "id": "enhancement.lightning_bolt",
+      "label": "Lightning Bolt",
+      "spellId": 188196,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["damage", "maelstrom_spender", "nature", "ranged"],
+      "availability": {}
+    },
+    {
+      "id": "enhancement.lightning_shield",
+      "label": "Lightning Shield",
+      "spellId": 192106,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["maintenance", "self_buff"],
+      "availability": {}
+    },
+    {
+      "id": "enhancement.primordial_storm",
+      "label": "Primordial Storm",
+      "spellId": 1218090,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["aoe", "damage", "maelstrom_spender", "replacement"],
+      "availability": { "requiredTalentSpellIds": [1218047] }
+    },
+    {
+      "id": "enhancement.stormstrike",
+      "label": "Stormstrike",
+      "spellId": 17364,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["damage", "melee"],
+      "availability": {}
+    },
+    {
+      "id": "enhancement.sundering",
+      "label": "Sundering",
+      "spellId": 197214,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["aoe", "damage", "melee"],
+      "availability": { "requiredTalentSpellIds": [197214] }
+    },
+    {
+      "id": "enhancement.surging_totem",
+      "label": "Surging Totem",
+      "spellId": 444995,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["aoe", "cooldown", "damage", "totem"],
+      "availability": {
+        "requiredTalentSpellIds": [455630],
+        "heroTreeId": "enhancement.totemic"
+      }
+    },
+    {
+      "id": "enhancement.tempest",
+      "label": "Tempest",
+      "spellId": 452201,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["damage", "maelstrom_spender", "nature", "replacement"],
+      "availability": {
+        "requiredTalentSpellIds": [454009],
+        "heroTreeId": "enhancement.stormbringer"
+      }
+    },
+    {
+      "id": "enhancement.voltaic_blaze",
+      "label": "Voltaic Blaze",
+      "spellId": 470057,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["damage", "fire", "nature", "replacement"],
+      "availability": { "requiredTalentSpellIds": [470057] }
+    },
+    {
+      "id": "enhancement.windfury_weapon",
+      "label": "Windfury Weapon",
+      "spellId": 33757,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["imbue", "maintenance", "self_buff"],
+      "availability": { "requiredTalentSpellIds": [33757] }
+    },
+    {
+      "id": "enhancement.windstrike",
+      "label": "Windstrike",
+      "spellId": 115356,
+      "kind": "spell",
+      "capability": "ADDON_AVAILABLE",
+      "tags": ["damage", "melee", "replacement"],
+      "availability": { "anyTalentSpellIds": [114051, 378270] }
+    }
+  ],
+  "talents": [
+    { "id": "enhancement.amplification_core", "name": "Amplification Core", "spellId": 445029, "entryId": 117471, "nodeId": 94874, "definitionId": 122483, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.arc_discharge", "name": "Arc Discharge", "spellId": 455096, "entryId": 117482, "nodeId": 94885, "definitionId": 122494, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.ascendance", "name": "Ascendance", "spellId": 114051, "entryId": 114291, "nodeId": 92219, "definitionId": 119296, "tree": "spec", "maxRanks": 1, "selectionIndex": 200, "replacesSpellId": 384352 },
+    { "id": "enhancement.ashen_catalyst", "name": "Ashen Catalyst", "spellId": 390370, "entryId": 101811, "nodeId": 80947, "definitionId": 106897, "tree": "spec", "maxRanks": 1, "selectionIndex": 0 },
+    { "id": "enhancement.awakening_storms", "name": "Awakening Storms", "spellId": 455129, "entryId": 117464, "nodeId": 94867, "definitionId": 122476, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.chain_lightning", "name": "Chain Lightning", "spellId": 188443, "entryId": 127856, "nodeId": 103583, "definitionId": 132665, "tree": "class", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.chaining_storms", "name": "Chaining Storms", "spellId": 334308, "entryId": 135254, "nodeId": 109192, "definitionId": 140022, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.cleanse_spirit", "name": "Cleanse Spirit", "spellId": 51886, "entryId": 127884, "nodeId": 103608, "definitionId": 132693, "tree": "class", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.conductive_energy", "name": "Conductive Energy", "spellId": 455123, "entryId": 117465, "nodeId": 94868, "definitionId": 122477, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.converging_storms", "name": "Converging Storms", "spellId": 384363, "entryId": 101839, "nodeId": 80973, "definitionId": 106878, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.crash_lightning", "name": "Crash Lightning", "spellId": 187874, "entryId": 101840, "nodeId": 80974, "definitionId": 106879, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.deeply_rooted_elements", "name": "Deeply Rooted Elements", "spellId": 378270, "entryId": 101816, "nodeId": 92219, "definitionId": 106894, "tree": "spec", "maxRanks": 1, "selectionIndex": 100, "replacesSpellId": 384352 },
+    { "id": "enhancement.descending_skies", "name": "Descending Skies", "spellId": 1264688, "entryId": 135985, "nodeId": 109727, "definitionId": 140740, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.doom_winds", "name": "Doom Winds", "spellId": 384352, "entryId": 101824, "nodeId": 80959, "definitionId": 106859, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.earthsurge", "name": "Earthsurge", "spellId": 455590, "entryId": 125822, "nodeId": 94881, "definitionId": 130653, "tree": "hero", "maxRanks": 1, "selectionIndex": 200, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.electroshock", "name": "Electroshock", "spellId": 454022, "entryId": 128226, "nodeId": 94863, "definitionId": 133033, "tree": "hero", "maxRanks": 1, "selectionIndex": 200, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.elemental_assault", "name": "Elemental Assault", "spellId": 210853, "entryId": 101815, "nodeId": 80951, "definitionId": 106893, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.elemental_attunement", "name": "Elemental Attunement", "spellId": 1263288, "entryId": 135983, "nodeId": 109725, "definitionId": 140738, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.elemental_tempo", "name": "Elemental Tempo", "spellId": 1250364, "entryId": 101826, "nodeId": 80961, "definitionId": 106861, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.elemental_weapons", "name": "Elemental Weapons", "spellId": 384355, "entryId": 101818, "nodeId": 80953, "definitionId": 106868, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.feral_spirit", "name": "Feral Spirit", "spellId": 469314, "entryId": 128236, "nodeId": 109194, "definitionId": 133043, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.fire_nova", "name": "Fire Nova", "spellId": 1260666, "entryId": 136176, "nodeId": 109909, "definitionId": 140949, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.flametongue_weapon", "name": "Flametongue Weapon", "spellId": 318038, "entryId": 101805, "nodeId": 80942, "definitionId": 106864, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.flurry", "name": "Flurry", "spellId": 382888, "entryId": 101799, "nodeId": 103642, "definitionId": 106872, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.forceful_winds", "name": "Forceful Winds", "spellId": 262647, "entryId": 101834, "nodeId": 80969, "definitionId": 106888, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.frost_shock", "name": "Frost Shock", "spellId": 196840, "entryId": 135718, "nodeId": 109492, "definitionId": 140473, "tree": "class", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.hot_hand", "name": "Hot Hand", "spellId": 201900, "entryId": 101809, "nodeId": 80945, "definitionId": 106898, "tree": "spec", "maxRanks": 2, "selectionIndex": 100 },
+    { "id": "enhancement.imbuement_mastery", "name": "Imbuement Mastery", "spellId": 445028, "entryId": 117468, "nodeId": 94871, "definitionId": 122480, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.lashing_flames", "name": "Lashing Flames", "spellId": 334046, "entryId": 101812, "nodeId": 80948, "definitionId": 106896, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.lava_lash", "name": "Lava Lash", "spellId": 60103, "entryId": 135593, "nodeId": 109389, "definitionId": 140349, "tree": "class", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.lightning_conduit", "name": "Lightning Conduit", "spellId": 467778, "entryId": 117460, "nodeId": 94863, "definitionId": 122472, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.lightning_strikes", "name": "Lightning Strikes", "spellId": 384450, "entryId": 135255, "nodeId": 109193, "definitionId": 140023, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.lively_totems", "name": "Lively Totems", "spellId": 445034, "entryId": 117479, "nodeId": 94882, "definitionId": 122491, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.maelstrom_weapon", "name": "Maelstrom Weapon", "spellId": 187880, "entryId": 101804, "nodeId": 80941, "definitionId": 106862, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.molten_assault", "name": "Molten Assault", "spellId": 334033, "entryId": 101806, "nodeId": 80943, "definitionId": 106863, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.natural_gift", "name": "Natural Gift", "spellId": 1264691, "entryId": 135986, "nodeId": 109728, "definitionId": 140741, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.natures_protection", "name": "Nature's Protection", "spellId": 454027, "entryId": 117477, "nodeId": 94880, "definitionId": 122489, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.overcharge", "name": "Overcharge", "spellId": 1251026, "entryId": 101808, "nodeId": 80944, "definitionId": 106900, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.overflowing_maelstrom", "name": "Overflowing Maelstrom", "spellId": 384143, "entryId": 101802, "nodeId": 80939, "definitionId": 106871, "tree": "spec", "maxRanks": 1, "selectionIndex": 0 },
+    { "id": "enhancement.oversized_totems", "name": "Oversized Totems", "spellId": 445026, "entryId": 117456, "nodeId": 94859, "definitionId": 122468, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.oversurge", "name": "Oversurge", "spellId": 445030, "entryId": 125823, "nodeId": 94874, "definitionId": 130654, "tree": "hero", "maxRanks": 1, "selectionIndex": 200, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.primal_catalyst", "name": "Primal Catalyst", "spellId": 1260874, "entryId": 135982, "nodeId": 109724, "definitionId": 140737, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.primordial_storm", "name": "Primordial Storm", "spellId": 1218047, "entryId": 101828, "nodeId": 80963, "definitionId": 106883, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.pulse_capacitor", "name": "Pulse Capacitor", "spellId": 445032, "entryId": 117463, "nodeId": 94866, "definitionId": 122475, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.raging_maelstrom", "name": "Raging Maelstrom", "spellId": 384149, "entryId": 101801, "nodeId": 80938, "definitionId": 106880, "tree": "spec", "maxRanks": 1, "selectionIndex": 0 },
+    { "id": "enhancement.ride_the_lightning", "name": "Ride the Lightning", "spellId": 289874, "entryId": 101827, "nodeId": 80962, "definitionId": 106860, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.rolling_thunder", "name": "Rolling Thunder", "spellId": 454026, "entryId": 117486, "nodeId": 94889, "definitionId": 122498, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.splitstream", "name": "Splitstream", "spellId": 445035, "entryId": 117469, "nodeId": 94872, "definitionId": 122481, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.static_accumulation", "name": "Static Accumulation", "spellId": 384411, "entryId": 101814, "nodeId": 80950, "definitionId": 106881, "tree": "spec", "maxRanks": 2, "selectionIndex": 100 },
+    { "id": "enhancement.storm_swell", "name": "Storm Swell", "spellId": 455088, "entryId": 117470, "nodeId": 94873, "definitionId": 122482, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.storm_unleashed_crash_lightning", "name": "Storm Unleashed", "spellId": 1252373, "entryId": 136969, "nodeId": 110401, "definitionId": 141732, "tree": "spec", "maxRanks": 1, "selectionIndex": 300 },
+    { "id": "enhancement.storm_unleashed_maelstrom", "name": "Storm Unleashed", "spellId": 1262761, "entryId": 136970, "nodeId": 110401, "definitionId": 141733, "tree": "spec", "maxRanks": 2, "selectionIndex": 200 },
+    { "id": "enhancement.storm_unleashed_reset", "name": "Storm Unleashed", "spellId": 1262713, "entryId": 136971, "nodeId": 110401, "definitionId": 141734, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.stormbind", "name": "Stormbind", "spellId": 1251069, "entryId": 135253, "nodeId": 109191, "definitionId": 140021, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.stormblast", "name": "Stormblast", "spellId": 319930, "entryId": 101825, "nodeId": 80960, "definitionId": 106877, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.stormcaller", "name": "Stormcaller", "spellId": 454021, "entryId": 117490, "nodeId": 94893, "definitionId": 122502, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.stormflurry", "name": "Stormflurry", "spellId": 344357, "entryId": 128270, "nodeId": 103871, "definitionId": 133077, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.storms_wrath", "name": "Storm's Wrath", "spellId": 392352, "entryId": 101832, "nodeId": 80967, "definitionId": 107009, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.stormwell", "name": "Stormwell", "spellId": 1264762, "entryId": 135987, "nodeId": 109729, "definitionId": 140742, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.sundering", "name": "Sundering", "spellId": 197214, "entryId": 101841, "nodeId": 80975, "definitionId": 106874, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.supercharge", "name": "Supercharge", "spellId": 455110, "entryId": 128225, "nodeId": 94873, "definitionId": 133032, "tree": "hero", "maxRanks": 1, "selectionIndex": 200, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.supportive_imbuements", "name": "Supportive Imbuements", "spellId": 445033, "entryId": 125824, "nodeId": 94866, "definitionId": 130655, "tree": "hero", "maxRanks": 1, "selectionIndex": 200, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.surging_currents", "name": "Surging Currents", "spellId": 454372, "entryId": 125617, "nodeId": 94880, "definitionId": 130449, "tree": "hero", "maxRanks": 1, "selectionIndex": 200, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.surging_elements", "name": "Surging Elements", "spellId": 382042, "entryId": 101829, "nodeId": 80964, "definitionId": 106884, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.surging_totem", "name": "Surging Totem", "spellId": 455630, "entryId": 117474, "nodeId": 94877, "definitionId": 122486, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.swift_recall", "name": "Swift Recall", "spellId": 445027, "entryId": 125825, "nodeId": 94859, "definitionId": 130656, "tree": "hero", "maxRanks": 1, "selectionIndex": 200, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.tempest", "name": "Tempest", "spellId": 454009, "entryId": 117489, "nodeId": 94892, "definitionId": 122501, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.thorims_invocation", "name": "Thorim's Invocation", "spellId": 384444, "entryId": 101813, "nodeId": 80949, "definitionId": 106882, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.thunder_capacitor", "name": "Thunder Capacitor", "spellId": 1262635, "entryId": 135252, "nodeId": 109190, "definitionId": 140020, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.totemic_coordination", "name": "Totemic Coordination", "spellId": 445036, "entryId": 117478, "nodeId": 94881, "definitionId": 122490, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.totemic_momentum", "name": "Totemic Momentum", "spellId": 1260644, "entryId": 135984, "nodeId": 109726, "definitionId": 140739, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.totemic_rebound", "name": "Totemic Rebound", "spellId": 445025, "entryId": 117487, "nodeId": 94890, "definitionId": 122499, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.unlimited_power", "name": "Unlimited Power", "spellId": 454391, "entryId": 117483, "nodeId": 94886, "definitionId": 122495, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.unruly_winds", "name": "Unruly Winds", "spellId": 390288, "entryId": 101833, "nodeId": 80968, "definitionId": 106887, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 },
+    { "id": "enhancement.voltaic_blaze", "name": "Voltaic Blaze", "spellId": 470057, "entryId": 101819, "nodeId": 80954, "definitionId": 106869, "tree": "spec", "maxRanks": 1, "selectionIndex": 100, "replacesSpellId": 470411 },
+    { "id": "enhancement.voltaic_surge", "name": "Voltaic Surge", "spellId": 454919, "entryId": 117467, "nodeId": 94870, "definitionId": 122479, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.stormbringer" },
+    { "id": "enhancement.whirling_elements", "name": "Whirling Elements", "spellId": 445024, "entryId": 117476, "nodeId": 94879, "definitionId": 122488, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.wind_barrier", "name": "Wind Barrier", "spellId": 445031, "entryId": 117488, "nodeId": 94891, "definitionId": 122500, "tree": "hero", "maxRanks": 1, "selectionIndex": 100, "heroTreeId": "enhancement.totemic" },
+    { "id": "enhancement.windfury_weapon", "name": "Windfury Weapon", "spellId": 33757, "entryId": 101823, "nodeId": 80958, "definitionId": 106876, "tree": "spec", "maxRanks": 1, "selectionIndex": 100 }
+  ],
+  "resources": [
+    {
+      "id": "enhancement.maelstrom_weapon",
+      "label": "Maelstrom Weapon",
+      "kind": "aura_stacks",
+      "capability": "ADDON_AVAILABLE",
+      "auraId": 344179,
+      "maxStacks": 10
+    },
+    {
+      "id": "enhancement.mana",
+      "label": "Mana",
+      "kind": "power",
+      "capability": "ADDON_AVAILABLE",
+      "powerType": 0
+    }
+  ],
+  "auras": [
+    { "id": "enhancement.ascendance", "label": "Ascendance", "spellId": 114051, "unit": "player", "capability": "ADDON_AVAILABLE", "availability": { "anyTalentSpellIds": [114051, 378270] } },
+    { "id": "enhancement.ashen_catalyst", "label": "Ashen Catalyst", "spellId": 390371, "unit": "player", "capability": "ADDON_AVAILABLE", "availability": { "requiredTalentSpellIds": [390370] } },
+    { "id": "enhancement.crash_lightning", "label": "Crash Lightning", "spellId": 187878, "unit": "player", "capability": "ADDON_AVAILABLE", "availability": { "requiredTalentSpellIds": [187874] } },
+    { "id": "enhancement.doom_winds", "label": "Doom Winds", "spellId": 466772, "unit": "player", "capability": "ADDON_AVAILABLE", "availability": { "requiredTalentSpellIds": [384352] } },
+    { "id": "enhancement.flame_shock", "label": "Flame Shock", "spellId": 188389, "unit": "target", "capability": "ADDON_AVAILABLE", "availability": {} },
+    { "id": "enhancement.hot_hand", "label": "Hot Hand", "spellId": 215785, "unit": "player", "capability": "ADDON_AVAILABLE", "availability": { "requiredTalentSpellIds": [201900] } },
+    { "id": "enhancement.lashing_flames", "label": "Lashing Flames", "spellId": 334168, "unit": "target", "capability": "ADDON_AVAILABLE", "availability": { "requiredTalentSpellIds": [334046] } },
+    { "id": "enhancement.maelstrom_weapon", "label": "Maelstrom Weapon", "spellId": 344179, "unit": "player", "capability": "ADDON_AVAILABLE", "maxStacks": 10, "availability": { "requiredTalentSpellIds": [187880] } },
+    { "id": "enhancement.primordial_storm", "label": "Primordial Storm", "spellId": 1218125, "unit": "player", "capability": "ADDON_AVAILABLE", "availability": { "requiredTalentSpellIds": [1218047] } },
+    { "id": "enhancement.tempest", "label": "Tempest", "spellId": 454015, "unit": "player", "capability": "ADDON_AVAILABLE", "availability": { "requiredTalentSpellIds": [454009], "heroTreeId": "enhancement.stormbringer" } }
+  ]
+}

@@ -16,6 +16,8 @@ Core/Contracts/Recommendation.lua
 Core/Contracts/PlayerState.lua
 Core/Contracts/SpecModule.lua
 Core/SpecRegistry.lua
+Classes/Shaman/Enhancement/CatalogData.lua
+Classes/Shaman/Enhancement/Module.lua
 Compat/SafeCall.lua
 Compat/Result.lua
 Compat/Build.lua

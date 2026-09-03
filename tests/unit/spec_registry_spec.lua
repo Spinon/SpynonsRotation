@@ -84,7 +84,8 @@ end
 test("TOC exposes a registry factory and default registry", function()
   assertTrue(type(SpecRegistry.Create) == "function")
   assertTrue(type(namespace.Specs.Register) == "function")
-  assertEqual(namespace.Specs:Count(), 0)
+  assertEqual(namespace.Specs:Count(), 1)
+  assertEqual(namespace.Specs:GetBySpecId(263).id, "shaman.enhancement")
 end)
 
 test("registry indexes a valid module by id and specId", function()
@@ -205,6 +206,7 @@ test("neutral fixture plugs into the default registry without Core changes", fun
   fixture("NeutralFixture", namespace)
   local module, lookupError = namespace.Specs:GetById("vanguard.neutral")
   assertNil(lookupError)
+  assertEqual(namespace.Specs:Count(), 2)
   assertEqual(module.specId, 9101)
   assertEqual(#module.getActions(), 0)
   assertEqual(#module.getRules(), 0)
