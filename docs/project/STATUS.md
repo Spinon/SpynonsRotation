@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T00:51:33.332Z
+Atualizado pelo board em: 2026-09-03T00:57:16.406Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,7 +18,7 @@ Próxima ação: Implementar e verificar o catálogo Enhancement contra o Simula
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-006 — Juggle de buffs e debuffs | in_progress | Product Owner revisar o candidato v2 com fila de urgência e encaixe inferior somente cromático. |
+| ui | UI-DESIGN-006 — Juggle de buffs e debuffs | in_progress | Product Owner revisar o candidato v3 com marcador independente para buff e debuff. |
 
 ## Progresso
 

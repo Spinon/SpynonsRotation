@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T00:51:33.332Z",
+  "updatedAt": "2026-09-03T00:57:16.406Z",
   "currentFocus": "ENH-001",
   "parallelFocus": {
     "ui": "UI-DESIGN-006"
@@ -683,9 +683,9 @@
       "status": "in_progress",
       "priority": "P0",
       "source": "tasks/UI-DESIGN.md#ui-design-006--juggle-de-buffsdebuffs",
-      "updatedAt": "2026-09-03T00:51:33.332Z",
+      "updatedAt": "2026-09-03T00:57:16.406Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Product Owner revisar o candidato v2 com fila de urgência e encaixe inferior somente cromático.",
+      "nextAction": "Product Owner revisar o candidato v3 com marcador independente para buff e debuff.",
       "dependencies": [
         "UI-DESIGN-005"
       ],
@@ -701,7 +701,10 @@
         "docs/product/HUD_AURA_JUGGLE.md registra seleção decisiva, teto de cinco, reordenação por faixa e ausência de label ou símbolo inferior.",
         "Validação confirmou alpha 0–255, aberturas transparentes, 61.581 pixels azuis sólidos, 2.328 pixels verdes sólidos e manifest JSON válido.",
         "npm test passou integralmente após a produção do candidato, incluindo board, Rotation Lab, Core, layout, lint e typecheck.",
-        "Product Owner solicitou que o encaixe inferior usasse somente cor e que as células formassem uma fila com maior urgência à esquerda."
+        "Product Owner solicitou que o encaixe inferior usasse somente cor e que as células formassem uma fila com maior urgência à esquerda.",
+        "assets/ui/auras/aura-juggle-preview-v3.png e aura-juggle-state-reference-v3.png distinguem buff com + ciano e debuff com − violeta no canto do ícone.",
+        "O marcador v3 mantém tipo e urgência em canais visuais independentes, sem dividir a fila global nem alterar o master raster.",
+        "Product Owner solicitou um ajuste que separasse visualmente buffs de debuffs."
       ],
       "track": "ui"
     },

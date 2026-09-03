@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "candidate_review",
-  "activePreviewVersion": "v2",
+  "activePreviewVersion": "v3",
   "component": "auraJuggleCell",
   "layout": {
     "defaultVisible": 3,
@@ -26,21 +26,23 @@
       "sha256": "125BB040B637ECCB0C327E73EAC4DD317C85D6A8C129413E3FF59A690E0D646D"
     },
     "defaultPreview": {
-      "file": "aura-juggle-preview-v2.png",
+      "file": "aura-juggle-preview-v3.png",
       "sourceWidth": 1260,
       "sourceHeight": 226,
-      "sha256": "16546E80998B02B2D2FF4EFE511E9D622CFF1DADAADB15047B6CDDDE399B8139"
+      "sha256": "BAD31EFCCC0C5119A9891AC51C2DF95EE58EE2061B340C31CE1DF3298FDA0594"
     },
     "stateReference": {
-      "file": "aura-juggle-state-reference-v2.png",
+      "file": "aura-juggle-state-reference-v3.png",
       "sourceWidth": 2100,
       "sourceHeight": 226,
-      "sha256": "C6A65F8F6DFB1A923BE60BE3C9CA2F1784791C07DBAE5CC92B2E5810AE85FD7E"
+      "sha256": "59E13B25AB9F1419E0D4B1BF302DAAB7A515489488C010DBE87FB6A2E1010F59"
     }
   },
   "previousVisualReferences": [
     "aura-juggle-preview-v1.png",
-    "aura-juggle-state-reference-v1.png"
+    "aura-juggle-state-reference-v1.png",
+    "aura-juggle-preview-v2.png",
+    "aura-juggle-state-reference-v2.png"
   ],
   "staticFrame": {
     "solidChannels": {
@@ -61,6 +63,32 @@
       },
       "source": "wow_runtime",
       "missingIcon": "neutral_local_placeholder"
+    },
+    "typeMarker": {
+      "anchor": "TOPRIGHT",
+      "relativeTo": "icon",
+      "layers": [
+        "effectTypeMarker"
+      ],
+      "background": false,
+      "configurable": [
+        "glyph",
+        "color",
+        "font",
+        "size",
+        "position",
+        "visibility"
+      ],
+      "types": {
+        "buff": {
+          "glyph": "+",
+          "color": "#22D3EE"
+        },
+        "debuff": {
+          "glyph": "−",
+          "color": "#B66CFF"
+        }
+      }
     },
     "nameAndDuration": {
       "pixelRect": {
@@ -150,6 +178,7 @@
   },
   "dynamicLayers": [
     "wowAuraIcon",
+    "effectTypeMarker",
     "shortName",
     "durationOrState",
     "stateColorFill"

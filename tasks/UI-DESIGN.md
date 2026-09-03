@@ -87,7 +87,7 @@ O master deve permanecer vazio: progresso, indicadores, ícone nativo do WoW e n
 
 Definir um componente genérico para specs que mantêm múltiplos buffs e debuffs, mostrando duração, urgência, refresh e ausência sem recriar um painel massivo de auras.
 
-O padrão visual usa três células repetíveis e o teto é cinco. Cada célula separa ícone nativo, nome, duração e estado. O trilho funciona como fila por faixas de urgência, com o que precisa de atenção à esquerda e desempate estável dentro da faixa. O encaixe inferior não usa label ou símbolo: mostra verde, âmbar ou vermelho sólidos e fica vazio quando o sinal termina ou está desligado. Somente sinais genéricos ranqueados como decisivos entram no trilho.
+O padrão visual usa três células repetíveis e o teto é cinco. Cada célula separa ícone nativo, nome, duração e estado. O trilho funciona como fila por faixas de urgência, com o que precisa de atenção à esquerda e desempate estável dentro da faixa. O encaixe inferior não usa label ou símbolo: mostra verde, âmbar ou vermelho sólidos e fica vazio quando o sinal termina ou está desligado. Um marcador dinâmico e configurável no canto do ícone usa `+` ciano para buff e `−` violeta para debuff, sem dividir a fila ou disputar a semântica de urgência. Somente sinais genéricos ranqueados como decisivos entram no trilho.
 
 ## UI-DESIGN-007 — Movimento e estados visuais
 

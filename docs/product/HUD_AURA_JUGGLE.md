@@ -4,18 +4,25 @@
 
 O trilho mostra somente buffs e debuffs que podem mudar a próxima decisão. Ele não substitui a barra de auras do WoW nem tenta apresentar todo efeito ativo.
 
-A célula candidata está em [`assets/ui/auras/aura-juggle-cell-frame-v1.png`](../../assets/ui/auras/aura-juggle-cell-frame-v1.png). A revisão visual ativa é `v2`: a composição padrão usa três instâncias em fila de urgência e o limite absoluto é cinco.
+A célula candidata está em [`assets/ui/auras/aura-juggle-cell-frame-v1.png`](../../assets/ui/auras/aura-juggle-cell-frame-v1.png). A revisão visual ativa é `v3`: a composição padrão usa três instâncias em fila de urgência e o limite absoluto é cinco.
 
 ## Conteúdo de uma célula
 
 | Zona | Conteúdo |
 | --- | --- |
 | Esquerda | Ícone nativo da aura, preservando proporção quadrada. |
+| Canto superior direito do ícone | `+` ciano para buff ou `−` violeta para debuff. |
 | Direita superior | Nome curto e estável. |
 | Direita inferior | Duração ou estado substituto. |
 | Encaixe inferior | Uma única amostra de cor sólida; sem texto ou símbolo. |
 
 Nome, duração, estado e ícone são camadas dinâmicas. A moldura raster não contém dados de uma classe ou spec.
+
+## Buff x debuff
+
+O tipo do efeito usa um canal independente da urgência: `+` ciano identifica buff e `−` violeta identifica debuff. O marcador fica sobre a área do ícone, sem badge ou background, e não altera a cor do encaixe inferior. Símbolo, cor, fonte, tamanho, posição e visibilidade são configuráveis.
+
+Buffs e debuffs permanecem na mesma fila global; não existem linhas ou grupos separados que enfraqueçam a prioridade da esquerda para a direita. O contrato técnico fornece o tipo genérico do efeito, e a UI apenas o representa — ela não classifica auras por módulo de classe ou spec.
 
 ## Estados
 
@@ -48,7 +55,7 @@ O conteúdo visual vem do cliente do WoW. O preview usa formas neutras somente p
 
 ## Cor e movimento
 
-A moldura mantém azul `#0788D8` e verde `#42C93E` sólidos. O encaixe inferior usa uma única cor uniforme por vez e percorre temporalmente verde → âmbar → vermelho conforme a urgência aumenta; não existe gradiente espacial dentro do encaixe. Ausente, desligado e indisponível deixam o encaixe vazio. Nenhum glow está incorporado ao master.
+A moldura mantém azul `#0788D8` e verde `#42C93E` sólidos. O encaixe inferior usa uma única cor uniforme por vez e percorre temporalmente verde → âmbar → vermelho conforme a urgência aumenta; não existe gradiente espacial dentro do encaixe. Ausente, desligado e indisponível deixam o encaixe vazio. Ciano e violeta pertencem exclusivamente ao marcador de tipo, não à urgência. Nenhum glow está incorporado ao master.
 
 Pulsação discreta para `RENOVAR` ou `AUSENTE`, entrada/saída e reorganização visual serão avaliadas em `UI-DESIGN-007`. O estado estável não deve pulsar.
 

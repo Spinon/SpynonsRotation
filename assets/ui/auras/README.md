@@ -2,15 +2,17 @@
 
 ## Status
 
-`aura-juggle-cell-frame-v1.png` é o candidato de arte de `UI-DESIGN-006`. O mesmo master vazio é repetido de uma a cinco vezes; o uso padrão mostra três sinais e o teto de cinco atende specs com manutenção mais exigente sem criar um painel massivo de auras. A revisão visual ativa é `v2`.
+`aura-juggle-cell-frame-v1.png` é o candidato de arte de `UI-DESIGN-006`. O mesmo master vazio é repetido de uma a cinco vezes; o uso padrão mostra três sinais e o teto de cinco atende specs com manutenção mais exigente sem criar um painel massivo de auras. A revisão visual ativa é `v3`.
 
 ## Arquivos
 
 | Arquivo | Papel |
 | --- | --- |
 | `aura-juggle-cell-frame-v1.png` | Master raster vazio e reutilizável. |
-| `aura-juggle-preview-v2.png` | Composição padrão ativa com três sinais em fila de urgência. |
-| `aura-juggle-state-reference-v2.png` | Referência ativa de ausência, crítico, atenção, estável e desligado. |
+| `aura-juggle-preview-v3.png` | Composição padrão ativa com três sinais em fila de urgência e tipo explícito. |
+| `aura-juggle-state-reference-v3.png` | Referência ativa de ausência, crítico, atenção, estável, desligado, buff e debuff. |
+| `aura-juggle-preview-v2.png` | Histórico anterior sem distinção explícita de buff e debuff. |
+| `aura-juggle-state-reference-v2.png` | Histórico anterior sem distinção explícita de buff e debuff. |
 | `aura-juggle-preview-v1.png` | Histórico anterior com labels inferiores. |
 | `aura-juggle-state-reference-v1.png` | Histórico anterior com labels e shapes inferiores. |
 | `manifest.json` | Geometria, estados, cores, hashes e política de seleção. |
@@ -22,6 +24,9 @@ Os ícones geométricos dos previews são placeholders neutros. O addon deve usa
 - as células formam uma fila de urgência, com ausência e crítico à esquerda;
 - a posição muda apenas quando a célula entra em outra faixa de urgência;
 - a duração não reorganiza itens dentro da mesma faixa;
+- um `+` ciano identifica buff e um `−` violeta identifica debuff no canto superior direito do ícone;
+- o marcador de tipo não possui badge ou background e é independente da cor de urgência;
+- símbolo, cor, fonte, tamanho, posição e visibilidade do marcador são configuráveis;
 - ausência continua explícita no valor principal, enquanto o encaixe inferior fica vazio;
 - indisponível/desligado usa `—`, fica à direita e nunca é interpretado como ausência;
 - o encaixe inferior não usa texto ou símbolo, apenas uma cor sólida uniforme;
@@ -31,6 +36,33 @@ Os ícones geométricos dos previews são placeholders neutros. O addon deve usa
 - não há badge permanente de overflow: somente sinais ranqueados como decisivos entram no trilho.
 
 Movimento da fila, pulsação e transições pertencem a `UI-DESIGN-007`. Dimensões finais, fonte e preparação para runtime pertencem a `UI-DESIGN-008`.
+
+## Prompt de revisão v3
+
+```text
+Use case: precise-object-edit.
+Asset type: World of Warcraft addon aura-juggle state reference.
+
+Treat Image 1 as the sole edit target. Preserve the existing five-cell composition, exact frame geometry, spacing, scale, icon placeholders, dark background, solid structural rails, names, central values, and lower urgency shelves.
+
+Add one minimal effect-type marker to each cell, completely independent from the lower urgency color:
+- Buff: a small cyan plus sign (+).
+- Debuff: a small vivid violet minus sign (−).
+Place the marker at the upper-right inside each icon aperture. Use a compact bold sans-serif glyph with only a subtle dark outline/shadow for readability. Do not add a badge or background behind it.
+
+Classify the cells as follows:
+- AURA D: debuff, violet −.
+- AURA C: debuff, violet −.
+- AURA B: buff, cyan +.
+- AURA A: buff, cyan +.
+- AURA E: buff, cyan +.
+
+Do not group or reorder cells. Preserve the global urgency ordering and the lower shelves exactly: empty, red, amber, green, empty. The lower shelf must remain dedicated only to temporal urgency.
+
+Do not add the words BUFF or DEBUFF. Do not add lower text, lower symbols, gradients, glow, badges, extra cells, new ornaments, or any recoloring of the urgency shelves.
+```
+
+A geração integrada validou a distinção de tipo. Os previews finais foram recompostos sobre a revisão v2 para manter geometria, texto, alinhamento, cores sólidas e dimensões exatas.
 
 ## Prompt de revisão v2
 
