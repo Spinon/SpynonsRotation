@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1050" viewBox="0 0 1800 1050">
+  <rect width="1800" height="1050" fill="#05080C"/>
+  <text x="70" y="72" fill="#E7EDF2" font-family="Arial, sans-serif" font-size="34" font-weight="700">UI-DESIGN-007 · MOVIMENTO E ESTADOS</text>
+  <text x="70" y="112" fill="#82909C" font-family="Arial, sans-serif" font-size="18">Referência técnica — labels não pertencem ao HUD</text>
+
+  <defs>
+    <g id="small-slot">
+      <rect x="0" y="0" width="96" height="96" rx="9" fill="#0A1016" stroke="#56616B" stroke-width="3"/>
+      <rect x="8" y="8" width="80" height="80" rx="5" fill="#10202B" stroke="#07131D" stroke-width="7"/>
+      <path d="M12 10 H43" stroke="#0788D8" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <g id="large-slot">
+      <rect x="0" y="0" width="210" height="124" rx="10" fill="#0A1016" stroke="#66717B" stroke-width="3"/>
+      <rect x="8" y="8" width="194" height="108" rx="6" fill="#10202B" stroke="#07131D" stroke-width="8"/>
+      <path d="M13 11 H71" stroke="#0788D8" stroke-width="5" stroke-linecap="round"/>
+      <rect x="27" y="105" width="72" height="5" fill="#D8E1E8"/>
+    </g>
+    <g id="aura-slot">
+      <rect x="0" y="0" width="210" height="86" rx="8" fill="#0A1016" stroke="#56616B" stroke-width="3"/>
+      <rect x="8" y="8" width="194" height="70" rx="5" fill="#0D151C" stroke="#07131D" stroke-width="7"/>
+      <path d="M12 10 H52" stroke="#0788D8" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <text x="70" y="152" fill="#0788D8" font-family="Arial, sans-serif" font-size="18" font-weight="700">TRANSAÇÕES DE FILA</text>
+
+  <g transform="translate(70 175)">
+    <rect width="316" height="325" rx="14" fill="#081018" stroke="#22313D" stroke-width="2"/>
+    <text x="24" y="38" fill="#E7EDF2" font-family="Arial, sans-serif" font-size="22" font-weight="700">MOVE</text>
+    <text x="24" y="64" fill="#82909C" font-family="Arial, sans-serif" font-size="15">160 ms · desliza sem fade</text>
+    <g transform="translate(32 126)" opacity="0.24"><use href="#small-slot"/></g>
+    <g transform="translate(110 126)" opacity="0.52"><use href="#small-slot"/></g>
+    <g transform="translate(188 126)"><use href="#small-slot"/></g>
+    <path d="M72 246 H240" stroke="#0788D8" stroke-width="4" stroke-linecap="round"/>
+    <path d="M240 246 L224 237 M240 246 L224 255" stroke="#0788D8" stroke-width="4" stroke-linecap="round"/>
+    <text x="24" y="294" fill="#AEB8C0" font-family="Arial, sans-serif" font-size="14">Mantém escala e identidade.</text>
+  </g>
+
+  <g transform="translate(408 175)">
+    <rect width="316" height="325" rx="14" fill="#081018" stroke="#22313D" stroke-width="2"/>
+    <text x="24" y="38" fill="#E7EDF2" font-family="Arial, sans-serif" font-size="22" font-weight="700">ENTER</text>
+    <text x="24" y="64" fill="#82909C" font-family="Arial, sans-serif" font-size="15">180 ms · entra pela direita</text>
+    <g transform="translate(46 126)" opacity="0.18"><use href="#small-slot"/></g>
+    <g transform="translate(188 126)"><use href="#small-slot"/></g>
+    <path d="M113 246 H236" stroke="#0788D8" stroke-width="4" stroke-dasharray="9 9"/>
+    <path d="M236 246 L220 237 M236 246 L220 255" stroke="#0788D8" stroke-width="4" stroke-linecap="round"/>
+    <text x="24" y="294" fill="#AEB8C0" font-family="Arial, sans-serif" font-size="14">Alpha 0→1; escala 0,96→1.</text>
+  </g>
+
+  <g transform="translate(746 175)">
+    <rect width="316" height="325" rx="14" fill="#081018" stroke="#22313D" stroke-width="2"/>
+    <text x="24" y="38" fill="#E7EDF2" font-family="Arial, sans-serif" font-size="22" font-weight="700">EXIT</text>
+    <text x="24" y="64" fill="#82909C" font-family="Arial, sans-serif" font-size="15">120 ms · contrai e apaga</text>
+    <g transform="translate(110 126)" opacity="0.18"><use href="#small-slot"/></g>
+    <g transform="translate(96 112)" opacity="0.44"><use href="#small-slot"/></g>
+    <g transform="translate(82 98)"><use href="#small-slot"/></g>
+    <path d="M95 113 L126 144 M221 113 L190 144 M95 239 L126 208 M221 239 L190 208" stroke="#82909C" stroke-width="3"/>
+    <text x="24" y="294" fill="#AEB8C0" font-family="Arial, sans-serif" font-size="14">Sem deslocamento lateral.</text>
+  </g>
+
+  <g transform="translate(1084 175)">
+    <rect width="316" height="325" rx="14" fill="#081018" stroke="#22313D" stroke-width="2"/>
+    <text x="24" y="38" fill="#E7EDF2" font-family="Arial, sans-serif" font-size="22" font-weight="700">PROMOTE</text>
+    <text x="24" y="64" fill="#82909C" font-family="Arial, sans-serif" font-size="15">220 ms · sobe e amplia</text>
+    <g transform="translate(53 94)"><use href="#large-slot"/></g>
+    <g transform="translate(110 218)" opacity="0.42"><use href="#small-slot"/></g>
+    <path d="M158 238 C158 196 158 171 158 150" fill="none" stroke="#0788D8" stroke-width="4"/>
+    <path d="M158 150 L149 166 M158 150 L167 166" stroke="#0788D8" stroke-width="4" stroke-linecap="round"/>
+    <text x="24" y="307" fill="#AEB8C0" font-family="Arial, sans-serif" font-size="14">Ícone persiste até a âncora final.</text>
+  </g>
+
+  <g transform="translate(1422 175)">
+    <rect width="308" height="325" rx="14" fill="#081018" stroke="#22313D" stroke-width="2"/>
+    <text x="24" y="38" fill="#E7EDF2" font-family="Arial, sans-serif" font-size="22" font-weight="700">CONSUME</text>
+    <text x="24" y="64" fill="#82909C" font-family="Arial, sans-serif" font-size="15">100 ms · flash interno único</text>
+    <g transform="translate(49 105)"><use href="#large-slot"/></g>
+    <path d="M68 121 L92 145 M238 121 L214 145 M68 211 L92 187 M238 211 L214 187" stroke="#D8E1E8" stroke-width="5" stroke-linecap="round"/>
+    <rect x="117" y="206" width="74" height="6" fill="#D8E1E8"/>
+    <text x="24" y="294" fill="#AEB8C0" font-family="Arial, sans-serif" font-size="14">Sem explosão ou shake.</text>
+  </g>
+
+  <text x="70" y="568" fill="#42C93E" font-family="Arial, sans-serif" font-size="18" font-weight="700">ESTADOS LOCAIS</text>
+
+  <g transform="translate(70 592)">
+    <rect width="316" height="325" rx="14" fill="#081018" stroke="#22313D" stroke-width="2"/>
+    <text x="24" y="38" fill="#E7EDF2" font-family="Arial, sans-serif" font-size="22" font-weight="700">PRONTO</text>
+    <text x="24" y="64" fill="#82909C" font-family="Arial, sans-serif" font-size="15">Fluxo lento só na ação atual</text>
+    <g transform="translate(53 108)"><use href="#large-slot"/></g>
+    <path d="M70 221 H130" stroke="#0788D8" stroke-width="7" stroke-linecap="round"/>
+    <text x="24" y="294" fill="#AEB8C0" font-family="Arial, sans-serif" font-size="14">Um ciclo a cada 3,2 s.</text>
+  </g>
+
+  <g transform="translate(408 592)">
+    <rect width="316" height="325" rx="14" fill="#081018" stroke="#22313D" stroke-width="2"/>
+    <text x="24" y="38" fill="#E7EDF2" font-family="Arial, sans-serif" font-size="22" font-weight="700">COOLDOWN</text>
+    <text x="24" y="64" fill="#82909C" font-family="Arial, sans-serif" font-size="15">Swipe cinza + número opcional</text>
+    <g transform="translate(110 110)"><use href="#small-slot"/></g>
+    <circle cx="158" cy="158" r="39" fill="#56616B" opacity="0.72"/>
+    <path d="M158 119 A39 39 0 0 1 197 158 L158 158 Z" fill="#10202B"/>
+    <text x="158" y="169" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="30" font-weight="700">3.2</text>
+    <text x="24" y="294" fill="#AEB8C0" font-family="Arial, sans-serif" font-size="14">Canaleta pausa ou escurece.</text>
+  </g>
+
+  <g transform="translate(746 592)">
+    <rect width="316" height="325" rx="14" fill="#081018" stroke="#22313D" stroke-width="2"/>
+    <text x="24" y="38" fill="#E7EDF2" font-family="Arial, sans-serif" font-size="22" font-weight="700">PROC</text>
+    <text x="24" y="64" fill="#82909C" font-family="Arial, sans-serif" font-size="15">Pulso verde único</text>
+    <g transform="translate(53 108)"><use href="#large-slot"/></g>
+    <path d="M70 115 H138" stroke="#42C93E" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="148" cy="115" r="7" fill="#7CFF4B"/>
+    <text x="24" y="294" fill="#AEB8C0" font-family="Arial, sans-serif" font-size="14">Dispara apenas na entrada do proc.</text>
+  </g>
+
+  <g transform="translate(1084 592)">
+    <rect width="316" height="325" rx="14" fill="#081018" stroke="#22313D" stroke-width="2"/>
+    <text x="24" y="38" fill="#E7EDF2" font-family="Arial, sans-serif" font-size="22" font-weight="700">REFRESH</text>
+    <text x="24" y="64" fill="#82909C" font-family="Arial, sans-serif" font-size="15">Encaixe inferior âmbar</text>
+    <g transform="translate(53 124)"><use href="#aura-slot"/></g>
+    <rect x="69" y="191" width="178" height="9" rx="4" fill="#FFC247"/>
+    <text x="24" y="294" fill="#AEB8C0" font-family="Arial, sans-serif" font-size="14">Um ganho curto de alpha.</text>
+  </g>
+
+  <g transform="translate(1422 592)">
+    <rect width="308" height="325" rx="14" fill="#081018" stroke="#22313D" stroke-width="2"/>
+    <text x="24" y="38" fill="#E7EDF2" font-family="Arial, sans-serif" font-size="22" font-weight="700">INDISPONÍVEL</text>
+    <text x="24" y="64" fill="#82909C" font-family="Arial, sans-serif" font-size="15">Sem cor e sem movimento</text>
+    <g transform="translate(49 108)" opacity="0.48"><use href="#large-slot"/></g>
+    <rect x="57" y="116" width="194" height="108" rx="6" fill="#39424A" opacity="0.64"/>
+    <text x="154" y="184" text-anchor="middle" fill="#AEB8C0" font-family="Arial, sans-serif" font-size="44">—</text>
+    <text x="24" y="294" fill="#AEB8C0" font-family="Arial, sans-serif" font-size="14">Nunca inventa disponibilidade.</text>
+  </g>
+
+  <path d="M70 972 H1730" stroke="#22313D" stroke-width="2"/>
+  <text x="70" y="1012" fill="#82909C" font-family="Arial, sans-serif" font-size="16">1 transação espacial por vez · até 2 acentos locais · sem gradiente ou bloom incorporado</text>
+</svg>

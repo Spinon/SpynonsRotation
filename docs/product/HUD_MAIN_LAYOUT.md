@@ -130,6 +130,8 @@ Quando não há cast nem indicador, o componente inteiro fica oculto para não d
 
 O contrato compartilhado está em [`HUD_PROCEDURAL_CHANNELS.md`](HUD_PROCEDURAL_CHANNELS.md). Molduras fornecem grafite, recortes e canaletas neutras; barras coloridas, segmentos móveis e preenchimentos de estado são camadas de runtime. A paleta possui defaults da marca e overrides globais ou por componente.
 
+O vocabulário de `MOVE`, `ENTER`, `EXIT`, `PROMOTE`, `CONSUME` e estados locais está em [`HUD_MOTION_STATES.md`](HUD_MOTION_STATES.md). Movimento comunica transição real e nunca substitui informação textual, progresso observável ou fallback seguro.
+
 ## Vocabulário visual
 
 A identidade usa a marca aprovada em [`assets/brand/Spynon Logo.png`](../../assets/brand/Spynon%20Logo.png) como referência, quando aplicável:

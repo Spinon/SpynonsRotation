@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate_review",
+  "component": "hudMotionAndVisualStates",
+  "concept": {
+    "file": "promote-storyboard-concept-v1.png",
+    "width": 1774,
+    "height": 887,
+    "sha256": "BB471AB1011519883010EFCEB0A7A3512EC1C660BE4CCF5814F6CDE8ECF0D934",
+    "runtimeAsset": false
+  },
+  "technicalReference": {
+    "file": "motion-state-reference-v1.svg",
+    "width": 1800,
+    "height": 1050,
+    "sha256": "7C2B73CCFA2E8D1C35F94920A02B66C7E0FA5AAFCB580DBF9360583270855A52",
+    "preview": "motion-state-reference-v1.png",
+    "previewSha256": "F126191EE823AF6E2F92DD1B514907D807316C8DDC2C481CDD74083905983906",
+    "runtimeAsset": false
+  },
+  "queueTransactions": {
+    "MOVE": {
+      "durationMs": 160,
+      "translation": true,
+      "alpha": [1, 1],
+      "scale": [1, 1],
+      "easing": "OUT_CUBIC"
+    },
+    "ENTER": {
+      "durationMs": 180,
+      "originOffsetCellWidths": 0.25,
+      "alpha": [0, 1],
+      "scale": [0.96, 1],
+      "easing": "OUT_CUBIC"
+    },
+    "EXIT": {
+      "durationMs": 120,
+      "translation": false,
+      "alpha": [1, 0],
+      "scale": [1, 0.94],
+      "easing": "IN_QUAD"
+    },
+    "PROMOTE": {
+      "durationMs": 220,
+      "from": "queue.0",
+      "to": "actionCurrent",
+      "preserveVisualIdentity": true,
+      "scaleToDestination": true,
+      "easing": "OUT_CUBIC"
+    },
+    "CONSUME": {
+      "durationMs": 100,
+      "translation": false,
+      "alpha": [1, 0.25],
+      "scale": [1, 0.96],
+      "accent": "single_inner_silver_flash",
+      "easing": "IN_QUAD"
+    }
+  },
+  "transactionPolicy": {
+    "maximumTotalDurationMs": 360,
+    "maximumConcurrentSpatialTransactions": 1,
+    "maximumConcurrentLocalAccents": 2,
+    "interruption": "retarget_from_current_visual_position",
+    "snapBack": false,
+    "shake": false,
+    "explosion": false
+  },
+  "visualStates": {
+    "READY": {
+      "authoritativeSignal": "recommendationAvailability",
+      "treatment": "slow_primary_flow_on_current_action"
+    },
+    "COOLDOWN": {
+      "authoritativeSignal": "cooldownSwipe",
+      "treatment": "gray_clockwise_swipe_optional_center_number_dim_or_pause_flow"
+    },
+    "PROC": {
+      "authoritativeSignal": "observableProcState",
+      "treatment": "single_signature_segment_alpha_pulse"
+    },
+    "REFRESH": {
+      "authoritativeSignal": "auraUrgency",
+      "treatment": "single_amber_shelf_alpha_rise_preserve_aura_type_flow"
+    },
+    "UNAVAILABLE": {
+      "authoritativeSignal": "safeAvailabilityFallback",
+      "treatment": "desaturate_dim_empty_channel_no_motion"
+    }
+  },
+  "perimeterFlow": {
+    "actionCurrent": {
+      "segmentLengthRatio": [0.22, 0.28],
+      "cycleDurationMs": 3200,
+      "loop": "READY_ONLY"
+    },
+    "actionQueue": {
+      "loop": "NONE",
+      "oneShotOn": [
+        "ENTER",
+        "MOVE",
+        "PROMOTE"
+      ]
+    },
+    "aura": {
+      "segmentLengthRatio": [0.14, 0.18],
+      "cycleDurationMs": 3600,
+      "loop": "WHILE_VISIBLE"
+    },
+    "combatContext": {
+      "segmentLengthRatio": [0.1, 0.14],
+      "cycleDurationMs": 4800,
+      "loop": "WHILE_ACTIVE",
+      "salience": "LOW"
+    }
+  },
+  "configuration": {
+    "globalMotionConfigurable": true,
+    "perComponentMotionConfigurable": true,
+    "intensityConfigurable": true,
+    "speedConfigurableWithinSafeBounds": true,
+    "reducedMotion": {
+      "MOVE": "instant_relayout",
+      "ENTER": "short_crossfade_in",
+      "EXIT": "short_crossfade_out",
+      "PROMOTE": "crossfade_between_anchors",
+      "CONSUME": "single_alpha_drop",
+      "travelingSegments": "static_segments"
+    },
+    "motionOff": "instant_geometry_static_segments"
+  },
+  "proceduralChannelContract": "../procedural-channels.json",
+  "runtimeReady": false,
+  "runtimePreparationTask": "UI-DESIGN-008"
+}

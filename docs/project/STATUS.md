@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T19:03:39.819Z
+Atualizado pelo board em: 2026-09-03T19:09:28.574Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,7 +18,7 @@ Próxima ação: Medir candidatas ST limitadas contra a baseline pinada.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-007 — Movimento e estados visuais | in_progress | Definir e prototipar o vocabulário de movimento, estados críticos e fallback sem movimento. |
+| ui | UI-DESIGN-007 — Movimento e estados visuais | in_progress | Revisar com o Product Owner os tempos, a promoção da fila e os tratamentos locais antes do kit técnico. |
 
 ## Progresso
 

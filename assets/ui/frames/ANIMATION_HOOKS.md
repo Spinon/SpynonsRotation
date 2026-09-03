@@ -96,4 +96,4 @@ left-high   (0.13, 0.23)
 
 ## Contrato de substituição
 
-Os IDs deste documento também aparecem em `manifest.json`. O handoff técnico deve manter esses IDs estáveis mesmo se coordenadas forem normalizadas em `UI-DESIGN-008`. Nenhum hook recebe nome ou comportamento específico de classe/spec. Defaults e overrides seguem [`../procedural-channels.json`](../procedural-channels.json).
+Os IDs deste documento também aparecem em `manifest.json`. O handoff técnico deve manter esses IDs estáveis mesmo se coordenadas forem normalizadas em `UI-DESIGN-008`. Nenhum hook recebe nome ou comportamento específico de classe/spec. Defaults e overrides seguem [`../procedural-channels.json`](../procedural-channels.json); tempos, interrupções e fallback sem movimento seguem [`../motion/manifest.json`](../motion/manifest.json).

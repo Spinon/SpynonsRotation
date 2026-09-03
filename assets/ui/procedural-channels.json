@@ -99,6 +99,7 @@
     }
   },
   "runtimeReady": false,
+  "motionContract": "motion/manifest.json",
   "motionDesignTask": "UI-DESIGN-007",
   "runtimePreparationTask": "UI-DESIGN-008",
   "colorReviewTask": "UI-DESIGN-010"

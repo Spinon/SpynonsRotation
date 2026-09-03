@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T19:03:39.819Z",
+  "updatedAt": "2026-09-03T19:09:28.574Z",
   "currentFocus": "ENH-003",
   "parallelFocus": {
     "ui": "UI-DESIGN-007"
@@ -734,9 +734,9 @@
       "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-007--movimento-e-estados-visuais",
-      "updatedAt": "2026-09-03T19:01:59.261Z",
+      "updatedAt": "2026-09-03T19:09:28.574Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Definir e prototipar o vocabulário de movimento, estados críticos e fallback sem movimento.",
+      "nextAction": "Revisar com o Product Owner os tempos, a promoção da fila e os tratamentos locais antes do kit técnico.",
       "dependencies": [
         "UI-DESIGN-002",
         "UI-DESIGN-003",
@@ -750,7 +750,12 @@
         "Ready, cooldown, proc, refresh e indisponível possuem tratamento coerente",
         "Animações propostas são discretas e preservam leitura periférica"
       ],
-      "evidence": [],
+      "evidence": [
+        "assets/ui/motion/promote-storyboard-concept-v1.png demonstra PROMOTE preservando a identidade visual entre a fila e a ação atual.",
+        "assets/ui/motion/motion-state-reference-v1.svg compara MOVE, ENTER, EXIT, PROMOTE, CONSUME e os cinco estados locais com labels apenas documentais.",
+        "assets/ui/motion/manifest.json registra tempos candidatos, política de interrupção, limites de simultaneidade e fallback reduzido/desligado.",
+        "docs/product/HUD_MOTION_STATES.md documenta o vocabulário completo sem implementar runtime ou depender de classe/spec."
+      ],
       "track": "ui"
     },
     {
