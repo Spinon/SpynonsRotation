@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T19:01:19.321Z",
+  "updatedAt": "2026-09-03T19:01:59.261Z",
   "currentFocus": "ENH-003",
   "parallelFocus": {
     "ui": "UI-DESIGN-007"
@@ -731,12 +731,12 @@
       "title": "Movimento e estados visuais",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UI-DESIGN.md#ui-design-007--movimento-e-estados-visuais",
-      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "updatedAt": "2026-09-03T19:01:59.261Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Prototipar o vocabulário de movimento e os estados críticos.",
+      "nextAction": "Definir e prototipar o vocabulário de movimento, estados críticos e fallback sem movimento.",
       "dependencies": [
         "UI-DESIGN-002",
         "UI-DESIGN-003",

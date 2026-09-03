@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T19:01:19.321Z
+Atualizado pelo board em: 2026-09-03T19:01:59.261Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,12 +18,12 @@ Próxima ação: Validar prioridades single-target.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-007 — Movimento e estados visuais | planned | Prototipar o vocabulário de movimento e os estados críticos. |
+| ui | UI-DESIGN-007 — Movimento e estados visuais | in_progress | Definir e prototipar o vocabulário de movimento, estados críticos e fallback sem movimento. |
 
 ## Progresso
 
-- Planejadas: 33
-- Em andamento: 0
+- Planejadas: 32
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 22
 - Total: 55
@@ -58,7 +58,7 @@ Próxima ação: Validar prioridades single-target.
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | done | P1 | UI-DESIGN-003 |
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | done | P1 | UI-DESIGN-004, UI-DESIGN-009 |
 | UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | done | P0 | UI-DESIGN-005 |
-| UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
+| UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | in_progress | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
 | UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |
 | UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | done | P1 | UI-DESIGN-005, UI-DESIGN-009 |
