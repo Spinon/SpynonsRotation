@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T00:35:46.594Z
+Atualizado pelo board em: 2026-09-03T00:37:02.657Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,12 +18,12 @@ Próxima ação: Curar catálogo observável do Enhancement.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-006 — Juggle de buffs e debuffs | planned | Definir cards, urgência e estados de refresh do trilho de auras. |
+| ui | UI-DESIGN-006 — Juggle de buffs e debuffs | in_progress | Produzir e submeter à revisão um trilho compacto e genérico com estados estável, atenção, renovar, ausente e indisponível. |
 
 ## Progresso
 
-- Planejadas: 37
-- Em andamento: 0
+- Planejadas: 36
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 18
 - Total: 55
@@ -57,7 +57,7 @@ Próxima ação: Curar catálogo observável do Enhancement.
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | done | P1 | UI-DESIGN-002 |
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | done | P1 | UI-DESIGN-003 |
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | done | P1 | UI-DESIGN-004, UI-DESIGN-009 |
-| UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | planned | P0 | UI-DESIGN-005 |
+| UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | in_progress | P0 | UI-DESIGN-005 |
 | UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
 | UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |

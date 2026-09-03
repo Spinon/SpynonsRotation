@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T00:35:46.594Z",
+  "updatedAt": "2026-09-03T00:37:02.657Z",
   "currentFocus": "ENH-001",
   "parallelFocus": {
     "ui": "UI-DESIGN-006"
@@ -680,12 +680,12 @@
       "title": "Juggle de buffs e debuffs",
       "lane": "UI DESIGN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "tasks/UI-DESIGN.md#ui-design-006--juggle-de-buffsdebuffs",
-      "updatedAt": "2026-09-02T20:49:58.888Z",
+      "updatedAt": "2026-09-03T00:37:02.657Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Definir cards, urgência e estados de refresh do trilho de auras.",
+      "nextAction": "Produzir e submeter à revisão um trilho compacto e genérico com estados estável, atenção, renovar, ausente e indisponível.",
       "dependencies": [
         "UI-DESIGN-005"
       ],
