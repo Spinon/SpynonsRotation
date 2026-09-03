@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T19:43:33.828Z
+Atualizado pelo board em: 2026-09-03T19:49:17.079Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -14,18 +14,12 @@ Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Medir candidatas multi-target limitadas contra a baseline pinada.
 
-## Focos paralelos
-
-| Trilha | Task | Status | Próxima ação |
-| --- | --- | --- | --- |
-| ui | UI-DESIGN-011 — Distribuição dos assets de runtime | in_progress | Separar fontes de design e texturas consumíveis, atualizando build, manifest e validação sem implementar runtime Lua. |
-
 ## Progresso
 
 - Planejadas: 29
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 25
+- Concluídas: 26
 - Total: 56
 
 ## Fila canônica
@@ -62,7 +56,7 @@ Próxima ação: Medir candidatas multi-target limitadas contra a baseline pinad
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | done | P1 | UI-DESIGN-007 |
 | UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |
 | UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | done | P1 | UI-DESIGN-005, UI-DESIGN-009 |
-| UI-DESIGN-011 | ui | UI DESIGN | Distribuição dos assets de runtime | in_progress | P1 | UI-DESIGN-008 |
+| UI-DESIGN-011 | ui | UI DESIGN | Distribuição dos assets de runtime | done | P1 | UI-DESIGN-008 |
 | UI-001 | delivery | UI | Queue estática | planned | P0 | RUN-002 |
 | UI-002 | delivery | UI | Animator | planned | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |
@@ -305,3 +299,11 @@ Próxima ação: Medir candidatas multi-target limitadas contra a baseline pinad
 - assets/ui/gcd/gcd-state-reference-v2.png e action-current-gcd-slot-preview-v2.png aplicam o candidato prata sem alterar geometria ou direção aprovadas.
 - O Product Owner propôs canaletas estáticas com barras roláveis posteriores, cores padrão configuráveis e aplicação consistente em todos os elementos da UI.
 - O Product Owner aprovou a direção de canaletas procedurais e o candidato prata neutro do GCD em 2026-09-03.
+
+### UI-DESIGN-011
+
+- addon/UI/Media/Textures contém 16 TGAs organizados em Actions, Auras, Cast e Context; assets/ui/runtime não mantém cópias dos binários.
+- assets/ui/runtime/manifest.json preserva os hashes e registra os caminhos de repositório e do cliente para cada textura.
+- tools/ui/Build-TechnicalAssets.ps1 reconstrói os TGAs diretamente nas pastas por componente e tools/ui/Test-TechnicalAssets.ps1 rejeita arquivos fora da árvore do addon ou não registrados.
+- tools/ui/Test-TechnicalAssets.ps1 validou 16 TGAs, 16 PNGs e 7.995.680 bytes de runtime após a redistribuição.
+- npm test passou sobre o commit 0ba555a em worktree limpo; nenhuma implementação Lua ou validação no cliente Retail foi declarada.
