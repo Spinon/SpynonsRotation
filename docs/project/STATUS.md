@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T09:50:12.459Z
+Atualizado pelo board em: 2026-09-03T10:27:54.287Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,14 +18,14 @@ Próxima ação: Importar e revisar baseline de referência.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-006 — Juggle de buffs e debuffs | in_progress | Product Owner revisar o candidato v4 com contorno azul para buff e vermelho para debuff. |
+| ui | UI-DESIGN-010 — Contraste cromático do GCD | planned | Após a barra de cast, comparar alternativas de cor do GCD no HUD completo e selecionar a opção com menor ambiguidade. |
 
 ## Progresso
 
 - Planejadas: 35
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 19
+- Concluídas: 20
 - Total: 55
 
 ## Fila canônica
@@ -57,7 +57,7 @@ Próxima ação: Importar e revisar baseline de referência.
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | done | P1 | UI-DESIGN-002 |
 | UI-DESIGN-004 | ui | UI DESIGN | Global Cooldown e cooldown individual | done | P1 | UI-DESIGN-003 |
 | UI-DESIGN-005 | ui | UI DESIGN | Barra de cast e indicadores decisivos | done | P1 | UI-DESIGN-004, UI-DESIGN-009 |
-| UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | in_progress | P0 | UI-DESIGN-005 |
+| UI-DESIGN-006 | ui | UI DESIGN | Juggle de buffs e debuffs | done | P0 | UI-DESIGN-005 |
 | UI-DESIGN-007 | ui | UI DESIGN | Movimento e estados visuais | planned | P1 | UI-DESIGN-002, UI-DESIGN-003, UI-DESIGN-004, UI-DESIGN-005, UI-DESIGN-006, UI-DESIGN-010 |
 | UI-DESIGN-008 | ui | UI DESIGN | Kit técnico de assets e handoff | planned | P1 | UI-DESIGN-007 |
 | UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |
@@ -237,6 +237,23 @@ Próxima ação: Importar e revisar baseline de referência.
 - docs/product/HUD_CAST_INDICATORS.md documenta camadas, origem nativa do ícone, placeholder neutro e revisão cromática futura do GCD.
 - Validação confirmou master RGBA com alpha 0–255, aberturas transparentes, 35.115 pixels azuis sólidos, 1.190 pixels verdes sólidos e npm test integral sem falhas.
 - Product Owner aprovou explicitamente o candidato v1 e seus quatro estados na conversa da task.
+
+### UI-DESIGN-006
+
+- assets/ui/auras/aura-juggle-cell-frame-v1.png fornece um master RGBA vazio e reutilizável de 1950 × 612 px.
+- assets/ui/auras/aura-juggle-preview-v2.png demonstra três células ordenadas da maior urgência à esquerda para a menor à direita.
+- assets/ui/auras/aura-juggle-state-reference-v2.png mostra ausência e desligado com encaixe vazio e estados ativos em vermelho, âmbar e verde sólidos.
+- docs/product/HUD_AURA_JUGGLE.md registra seleção decisiva, teto de cinco, reordenação por faixa e ausência de label ou símbolo inferior.
+- Validação confirmou alpha 0–255, aberturas transparentes, 61.581 pixels azuis sólidos, 2.328 pixels verdes sólidos e manifest JSON válido.
+- npm test passou integralmente após a produção do candidato, incluindo board, Rotation Lab, Core, layout, lint e typecheck.
+- Product Owner solicitou que o encaixe inferior usasse somente cor e que as células formassem uma fila com maior urgência à esquerda.
+- assets/ui/auras/aura-juggle-preview-v3.png e aura-juggle-state-reference-v3.png distinguem buff com + ciano e debuff com − violeta no canto do ícone.
+- O marcador v3 mantém tipo e urgência em canais visuais independentes, sem dividir a fila global nem alterar o master raster.
+- Product Owner solicitou um ajuste que separasse visualmente buffs de debuffs.
+- assets/ui/auras/aura-juggle-preview-v4.png e aura-juggle-state-reference-v4.png removem os glifos e usam contorno azul para buff e vermelho para debuff.
+- O v4 preserva a barra inferior exclusivamente para urgência e mantém o master único, registrando a futura extração de máscara tintável em UI-DESIGN-008.
+- Product Owner rejeitou os marcadores +/− do v3 e propôs distinguir o tipo pela cor do contorno.
+- Product Owner aprovou a revisão v4 com contorno azul para buff e vermelho para debuff.
 
 ### UI-DESIGN-009
 

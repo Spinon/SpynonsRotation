@@ -2,7 +2,7 @@
 
 ## Status
 
-`aura-juggle-cell-frame-v1.png` é o candidato de arte de `UI-DESIGN-006`. O mesmo master vazio é repetido de uma a cinco vezes; o uso padrão mostra três sinais e o teto de cinco atende specs com manutenção mais exigente sem criar um painel massivo de auras. A revisão visual ativa é `v4`.
+`aura-juggle-cell-frame-v1.png` é a arte aprovada de `UI-DESIGN-006`. O mesmo master vazio é repetido de uma a cinco vezes; o uso padrão mostra três sinais e o teto de cinco atende specs com manutenção mais exigente sem criar um painel massivo de auras. A revisão visual aprovada é `v4`.
 
 ## Arquivos
 

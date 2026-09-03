@@ -4,7 +4,7 @@
 
 O trilho mostra somente buffs e debuffs que podem mudar a próxima decisão. Ele não substitui a barra de auras do WoW nem tenta apresentar todo efeito ativo.
 
-A célula candidata está em [`assets/ui/auras/aura-juggle-cell-frame-v1.png`](../../assets/ui/auras/aura-juggle-cell-frame-v1.png). A revisão visual ativa é `v4`: a composição padrão usa três instâncias em fila de urgência e o limite absoluto é cinco.
+A célula aprovada está em [`assets/ui/auras/aura-juggle-cell-frame-v1.png`](../../assets/ui/auras/aura-juggle-cell-frame-v1.png). A revisão visual aprovada é `v4`: a composição padrão usa três instâncias em fila de urgência e o limite absoluto é cinco.
 
 ## Conteúdo de uma célula
 
