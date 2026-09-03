@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T19:01:59.261Z",
+  "updatedAt": "2026-09-03T19:03:39.819Z",
   "currentFocus": "ENH-003",
   "parallelFocus": {
     "ui": "UI-DESIGN-007"
@@ -419,12 +419,12 @@
       "title": "Curadoria ST",
       "lane": "SHAMAN",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
-      "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "source": "tasks/ENH-003.md",
+      "updatedAt": "2026-09-03T19:03:39.819Z",
       "reviewBy": null,
-      "nextAction": "Validar prioridades single-target.",
+      "nextAction": "Medir candidatas ST limitadas contra a baseline pinada.",
       "dependencies": [
         "ENH-002",
         "LAB-004"

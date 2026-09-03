@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T19:01:59.261Z
+Atualizado pelo board em: 2026-09-03T19:03:39.819Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,9 +10,9 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **ENH-003 — Curadoria ST**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Validar prioridades single-target.
+Próxima ação: Medir candidatas ST limitadas contra a baseline pinada.
 
 ## Focos paralelos
 
@@ -22,8 +22,8 @@ Próxima ação: Validar prioridades single-target.
 
 ## Progresso
 
-- Planejadas: 32
-- Em andamento: 1
+- Planejadas: 31
+- Em andamento: 2
 - Bloqueadas: 0
 - Concluídas: 22
 - Total: 55
@@ -46,7 +46,7 @@ Próxima ação: Validar prioridades single-target.
 | LAB-006 | delivery | ROTATION LAB | Regression suite | done | P1 | LAB-003, LAB-004 |
 | ENH-001 | delivery | SHAMAN | Catálogo Enhancement | done | P0 | CORE-002, CORE-003, CORE-004 |
 | ENH-002 | delivery | SHAMAN | Baseline APL | done | P0 | ENH-001, LAB-002, LAB-003 |
-| ENH-003 | delivery | SHAMAN | Curadoria ST | planned | P1 | ENH-002, LAB-004 |
+| ENH-003 | delivery | SHAMAN | Curadoria ST | in_progress | P1 | ENH-002, LAB-004 |
 | ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | planned | P1 | ENH-002, LAB-004 |
 | ENH-005 | delivery | SHAMAN | Talent-aware rotation | planned | P1 | ENH-003, ENH-004, CORE-003 |
 | RUN-001 | delivery | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
