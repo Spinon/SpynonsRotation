@@ -13,6 +13,10 @@ Opções de simc:run:
   --iterations <n>        Iterações, padrão 1000
   --threads <n>           Threads, padrão 1
   --max-time <segundos>   Duração máxima simulada
+  --seed <n>              Semente determinística
+  --desired-targets <n>   Quantidade de alvos
+  --vary-combat-length <n> Variação da duração entre 0 e 1
+  --fight-style <estilo>  Estilo tipado (Patchwerk)
   --timeout-ms <ms>       Limite de tempo do processo
   --fixed-time            Usa uma duração fixa de combate
 `;
@@ -23,9 +27,21 @@ const VALUE_FLAGS = new Map([
   ["--iterations", "iterations"],
   ["--threads", "threads"],
   ["--max-time", "maxTime"],
+  ["--seed", "seed"],
+  ["--desired-targets", "desiredTargets"],
+  ["--vary-combat-length", "varyCombatLength"],
+  ["--fight-style", "fightStyle"],
   ["--timeout-ms", "timeoutMs"],
 ]);
-const NUMBER_OPTIONS = new Set(["iterations", "threads", "maxTime", "timeoutMs"]);
+const NUMBER_OPTIONS = new Set([
+  "iterations",
+  "threads",
+  "maxTime",
+  "seed",
+  "desiredTargets",
+  "varyCombatLength",
+  "timeoutMs",
+]);
 
 function parseRunArguments(args) {
   const options = {};

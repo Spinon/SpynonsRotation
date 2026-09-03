@@ -10,6 +10,7 @@ processo diretamente, sem intermediação de shell.
 ```powershell
 npm run simc:doctor
 npm run simc:run -- --profile rotation-lab/fixtures/simc-cli-smoke.simc --iterations 1000
+npm run simc:run -- --profile rotation-lab/fixtures/simc-cli-smoke.simc --seed 310031 --max-time 60 --fixed-time --vary-combat-length 0 --desired-targets 1 --fight-style Patchwerk
 npm run simc:smoke
 ```
 
@@ -17,6 +18,10 @@ npm run simc:smoke
 `.simc` que permaneçam dentro do repositório, inclusive depois da resolução de links. Valores
 numéricos possuem limites explícitos. `simc:smoke` executa um caso mínimo e curto para provar a
 integração local; sua fixture não é uma baseline, build recomendada ou APL curada.
+
+Além do budget e do paralelismo, o runner tipa `seed`, duração, variação de duração, quantidade de
+alvos e `fight_style=Patchwerk`. Esses parâmetros existem para que estudos comparativos usem planos
+e seeds pareadas verificáveis, sem aceitar texto arbitrário como opção do processo.
 
 ## Artefatos
 
@@ -38,9 +43,10 @@ de saída documentados pelo SimulationCraft em categorias estáveis e mensagens 
 preservar o código original. Ausência do executável, divergência de hash, perfil fora do projeto e
 argumentos inválidos interrompem a operação antes que qualquer processo seja iniciado.
 
-A matriz versionada e os planos de execução futuros estão definidos em [`SCENARIOS.md`](SCENARIOS.md).
-Nesta etapa, validar a matriz não dispara o runner; a orquestração de execuções comparativas pertence
-à suíte de regressão.
+A matriz versionada e os planos de execução estão definidos em [`SCENARIOS.md`](SCENARIOS.md).
+Validar a matriz isoladamente não dispara o runner. Orquestradores específicos, como a curadoria ST
+de Enhancement, devem derivar seus parâmetros dela, registrar métricas golden e remover relatórios
+transitórios depois da extração validada.
 
 Referências oficiais:
 

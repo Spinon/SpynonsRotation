@@ -122,6 +122,10 @@ test("executa sem shell e registra identidade e artefatos reproduzíveis", async
       threads: 2,
       maxTime: 30,
       fixedTime: true,
+      seed: 310031,
+      desiredTargets: 1,
+      varyCombatLength: 0,
+      fightStyle: "Patchwerk",
     },
     {
       now: () => new Date("2026-09-02T22:30:00.000Z"),
@@ -133,6 +137,10 @@ test("executa sem shell e registra identidade e artefatos reproduzíveis", async
         assert.ok(args.includes("threads=2"));
         assert.ok(args.includes("max_time=30"));
         assert.ok(args.includes("fixed_time=1"));
+        assert.ok(args.includes("seed=310031"));
+        assert.ok(args.includes("desired_targets=1"));
+        assert.ok(args.includes("vary_combat_length=0"));
+        assert.ok(args.includes("fight_style=Patchwerk"));
       }),
     }
   );
@@ -146,6 +154,26 @@ test("executa sem shell e registra identidade e artefatos reproduzíveis", async
   assert.equal(result.manifest.process.runtimeIdentityVerified, true);
   assert.ok(fs.existsSync(result.manifestPath));
   assert.ok(fs.existsSync(result.simcReportPath));
+  assert.equal(result.manifest.request.seed, 310031);
+  assert.equal(result.manifest.request.desiredTargets, 1);
+  assert.equal(result.manifest.request.varyCombatLength, 0);
+  assert.equal(result.manifest.request.fightStyle, "Patchwerk");
+});
+
+test("recusa parâmetros avançados fora dos limites tipados", async (t) => {
+  const project = createProject(t);
+  await assert.rejects(
+    runSimulation({ root: project.root, profile: project.profilePath, seed: 0 }),
+    (error) => error instanceof SimcRunnerError && error.code === "INVALID_ARGUMENT"
+  );
+  await assert.rejects(
+    runSimulation({ root: project.root, profile: project.profilePath, varyCombatLength: 1.1 }),
+    (error) => error instanceof SimcRunnerError && error.code === "INVALID_ARGUMENT"
+  );
+  await assert.rejects(
+    runSimulation({ root: project.root, profile: project.profilePath, fightStyle: "DungeonRoute" }),
+    (error) => error instanceof SimcRunnerError && error.code === "INVALID_ARGUMENT"
+  );
 });
 
 test("mapeia falha do processo e preserva manifesto para diagnóstico", async (t) => {

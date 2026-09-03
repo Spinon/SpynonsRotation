@@ -15,3 +15,12 @@ export class EnhancementBaselineError extends Error {
     this.details = details;
   }
 }
+
+export class EnhancementSingleTargetError extends Error {
+  constructor(code, message, details = {}) {
+    super(message);
+    this.name = "EnhancementSingleTargetError";
+    this.code = code;
+    this.details = details;
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "enhancement.single_target_curation",
+  "version": "12.1.0-1",
+  "baseline": {
+    "id": "enhancement.st.baseline",
+    "rotationFile": "specs/shaman/enhancement/baseline/baseline.rotation.json",
+    "rotationSha256": "036BEE377D6C5B492B3EF1F670F9D1F6DE6CCC4A098A972C29B3F578669C0BA0",
+    "listId": "single_totemic"
+  },
+  "profile": {
+    "file": "specs/shaman/enhancement/single-target/upstream-profile.simc",
+    "bytes": 13460,
+    "sha256": "32EB17FB5353C48AAA2B2FEFE45AFEC4AAFECDCBA969409459195580DC89CB16",
+    "gitBlobSha": "95e954758a4c887ce51cfc446471a4725c580b0a",
+    "simulationCraftVersion": "1210.01",
+    "engineCommit": "f86979165c9b952e41d8cb6119065d3f6272abee",
+    "repository": "https://github.com/simulationcraft/simc",
+    "path": "profiles/MID2/MID2_Shaman_Enhancement_Totemic.simc",
+    "build": "Totemic"
+  },
+  "matrix": {
+    "file": "rotation-lab/fixtures/scenarios/initial.scenario-matrix.json",
+    "id": "neutral.initial_matrix",
+    "version": "1.0.0",
+    "sha256": "CD23ECE78BA018768FAE38B035EBCCC278C277B65B3B486CFDB323F9873E76E5"
+  },
+  "scenarios": [
+    { "id": "neutral.st_short", "seeds": { "screening": 310031, "finalist": 410031 } },
+    { "id": "neutral.st_medium", "seeds": { "screening": 310032, "finalist": 410032 } },
+    { "id": "neutral.st_long", "seeds": { "screening": 310033, "finalist": 410033 } }
+  ],
+  "phases": {
+    "screeningIterations": 1000,
+    "finalistIterations": 10000,
+    "finalistCount": 2
+  },
+  "selection": {
+    "confidenceZ": 2.241403,
+    "confidencePolicy": "95_percent_family_wise_bonferroni_for_two_finalists",
+    "requirePositiveLowerBound": true
+  },
+  "candidates": [
+    {
+      "id": "enhancement.st.primordial_window_2_5",
+      "mutation": {
+        "id": "enhancement.st.mutation.primordial_window_2_5",
+        "kind": "set_numeric_literal",
+        "listId": "single_totemic",
+        "ruleId": "enhancement.single_totemic_primordial_storm_1",
+        "valuePath": ["conditions", 1, "conditions", 0, "right"],
+        "value": 2.5
+      },
+      "profilePatch": {
+        "kind": "replace_line",
+        "before": "actions.single_totemic+=/primordial_storm,if=(buff.maelstrom_weapon.stack>=10|buff.primordial_storm.remains<3.5&buff.maelstrom_weapon.stack>=5)",
+        "after": "actions.single_totemic+=/primordial_storm,if=(buff.maelstrom_weapon.stack>=10|buff.primordial_storm.remains<2.5&buff.maelstrom_weapon.stack>=5)"
+      }
+    },
+    {
+      "id": "enhancement.st.primordial_window_4_5",
+      "mutation": {
+        "id": "enhancement.st.mutation.primordial_window_4_5",
+        "kind": "set_numeric_literal",
+        "listId": "single_totemic",
+        "ruleId": "enhancement.single_totemic_primordial_storm_1",
+        "valuePath": ["conditions", 1, "conditions", 0, "right"],
+        "value": 4.5
+      },
+      "profilePatch": {
+        "kind": "replace_line",
+        "before": "actions.single_totemic+=/primordial_storm,if=(buff.maelstrom_weapon.stack>=10|buff.primordial_storm.remains<3.5&buff.maelstrom_weapon.stack>=5)",
+        "after": "actions.single_totemic+=/primordial_storm,if=(buff.maelstrom_weapon.stack>=10|buff.primordial_storm.remains<4.5&buff.maelstrom_weapon.stack>=5)"
+      }
+    },
+    {
+      "id": "enhancement.st.maelstrom_floor_6",
+      "mutation": {
+        "id": "enhancement.st.mutation.maelstrom_floor_6",
+        "kind": "set_numeric_literal",
+        "listId": "single_totemic",
+        "ruleId": "enhancement.single_totemic_lightning_bolt_1",
+        "valuePath": ["right"],
+        "value": 6
+      },
+      "profilePatch": {
+        "kind": "replace_line",
+        "before": "actions.single_totemic+=/lightning_bolt,if=buff.maelstrom_weapon.stack>=5",
+        "after": "actions.single_totemic+=/lightning_bolt,if=buff.maelstrom_weapon.stack>=6"
+      }
+    },
+    {
+      "id": "enhancement.st.maelstrom_floor_7",
+      "mutation": {
+        "id": "enhancement.st.mutation.maelstrom_floor_7",
+        "kind": "set_numeric_literal",
+        "listId": "single_totemic",
+        "ruleId": "enhancement.single_totemic_lightning_bolt_1",
+        "valuePath": ["right"],
+        "value": 7
+      },
+      "profilePatch": {
+        "kind": "replace_line",
+        "before": "actions.single_totemic+=/lightning_bolt,if=buff.maelstrom_weapon.stack>=5",
+        "after": "actions.single_totemic+=/lightning_bolt,if=buff.maelstrom_weapon.stack>=7"
+      }
+    },
+    {
+      "id": "enhancement.st.lava_before_crash",
+      "mutation": {
+        "id": "enhancement.st.mutation.lava_before_crash",
+        "kind": "swap_rules",
+        "listId": "single_totemic",
+        "firstRuleId": "enhancement.single_totemic_crash_lightning_2",
+        "secondRuleId": "enhancement.single_totemic_lava_lash_1"
+      },
+      "profilePatch": {
+        "kind": "swap_lines",
+        "first": "actions.single_totemic+=/crash_lightning,if=!buff.crash_lightning.up",
+        "second": "actions.single_totemic+=/lava_lash"
+      }
+    },
+    {
+      "id": "enhancement.st.voltaic_before_stormstrike",
+      "mutation": {
+        "id": "enhancement.st.mutation.voltaic_before_stormstrike",
+        "kind": "swap_rules",
+        "listId": "single_totemic",
+        "firstRuleId": "enhancement.single_totemic_stormstrike_2",
+        "secondRuleId": "enhancement.single_totemic_voltaic_blaze_2"
+      },
+      "profilePatch": {
+        "kind": "swap_lines",
+        "first": "actions.single_totemic+=/stormstrike",
+        "second": "actions.single_totemic+=/voltaic_blaze"
+      }
+    },
+    {
+      "id": "enhancement.st.lightning_before_crash",
+      "mutation": {
+        "id": "enhancement.st.mutation.lightning_before_crash",
+        "kind": "swap_rules",
+        "listId": "single_totemic",
+        "firstRuleId": "enhancement.single_totemic_crash_lightning_3",
+        "secondRuleId": "enhancement.single_totemic_lightning_bolt_1"
+      },
+      "profilePatch": {
+        "kind": "swap_lines",
+        "first": "actions.single_totemic+=/crash_lightning",
+        "second": "actions.single_totemic+=/lightning_bolt,if=buff.maelstrom_weapon.stack>=5"
+      }
+    }
+  ]
+}

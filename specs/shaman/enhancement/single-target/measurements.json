@@ -1,0 +1,567 @@
+{
+  "schemaVersion": 1,
+  "study": {
+    "id": "enhancement.single_target_curation",
+    "version": "12.1.0-1",
+    "sha256": "7E94058D58F68C56408E946632B37233616B5CE8466321FBE6331421877CD402"
+  },
+  "simulationCraft": {
+    "version": "1210.01",
+    "wowVersion": "12.1.0.69587",
+    "engineCommit": "f86979165c9b952e41d8cb6119065d3f6272abee",
+    "executableSha256": "150D3D8FE6D2E5DF6279F0940BE118ECB3A47B79AF58E81BCF24F01FB91C5070"
+  },
+  "phases": [
+    {
+      "id": "screening",
+      "iterations": 1000,
+      "profiles": [
+        {
+          "id": "enhancement.st.baseline",
+          "rotationSha256": "036BEE377D6C5B492B3EF1F670F9D1F6DE6CCC4A098A972C29B3F578669C0BA0",
+          "profileSha256": "32EB17FB5353C48AAA2B2FEFE45AFEC4AAFECDCBA969409459195580DC89CB16",
+          "scenarios": [
+            {
+              "scenarioId": "neutral.st_short",
+              "seed": 310031,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 60,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 302113.066365428,
+              "meanStandardError": 396.23699354616787,
+              "standardDeviation": 12523.84730422131
+            },
+            {
+              "scenarioId": "neutral.st_medium",
+              "seed": 310032,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 180,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 231831.1328780929,
+              "meanStandardError": 196.5578282776419,
+              "standardDeviation": 6212.595663437766
+            },
+            {
+              "scenarioId": "neutral.st_long",
+              "seed": 310033,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 300,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 219247.6010994826,
+              "meanStandardError": 149.9734902704842,
+              "standardDeviation": 4740.206296789952
+            }
+          ]
+        },
+        {
+          "id": "enhancement.st.primordial_window_2_5",
+          "rotationSha256": "D076E1B61C44F1D62F78D4BB5BFF70A1128907FC1099465D31738849EFF229BD",
+          "profileSha256": "EC50EC66803AAA46BE00D705F1DCD4F24626E4D4C12840B5A3D0C4612F865B4E",
+          "scenarios": [
+            {
+              "scenarioId": "neutral.st_short",
+              "seed": 310031,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 60,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 302063.0780478562,
+              "meanStandardError": 407.17483811752,
+              "standardDeviation": 12869.559333840167
+            },
+            {
+              "scenarioId": "neutral.st_medium",
+              "seed": 310032,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 180,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 231829.91103068966,
+              "meanStandardError": 194.7900824044149,
+              "standardDeviation": 6156.722588107705
+            },
+            {
+              "scenarioId": "neutral.st_long",
+              "seed": 310033,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 300,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 219137.58261645355,
+              "meanStandardError": 145.38360774390947,
+              "standardDeviation": 4595.134057591171
+            }
+          ]
+        },
+        {
+          "id": "enhancement.st.primordial_window_4_5",
+          "rotationSha256": "1EF9DC710EE84C3725E12624F41D72AB91F62C4E5E54768AF0EEEBE8AEC1AB11",
+          "profileSha256": "E78FA17F48812FFA28C332FAFCA674D7F626273625E502377A9CD3E5E174840D",
+          "scenarios": [
+            {
+              "scenarioId": "neutral.st_short",
+              "seed": 310031,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 60,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 302682.3132944976,
+              "meanStandardError": 408.69836022811114,
+              "standardDeviation": 12917.713238166178
+            },
+            {
+              "scenarioId": "neutral.st_medium",
+              "seed": 310032,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 180,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 232094.86171204326,
+              "meanStandardError": 192.86634654889676,
+              "standardDeviation": 6095.919143450643
+            },
+            {
+              "scenarioId": "neutral.st_long",
+              "seed": 310033,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 300,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 219242.84130676245,
+              "meanStandardError": 141.16178511389953,
+              "standardDeviation": 4461.695073283942
+            }
+          ]
+        },
+        {
+          "id": "enhancement.st.maelstrom_floor_6",
+          "rotationSha256": "8246B07156A6D55F5896A89CB08C2E82A3CADA2478872ED3C7BCA6AD85DDE9C8",
+          "profileSha256": "4A0819936F2BE707EFBF4868A1DFE7A10256D7E783A66565BF4F0DB13D57A38C",
+          "scenarios": [
+            {
+              "scenarioId": "neutral.st_short",
+              "seed": 310031,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 60,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 302156.92240746896,
+              "meanStandardError": 406.30640056754874,
+              "standardDeviation": 12842.11066184275
+            },
+            {
+              "scenarioId": "neutral.st_medium",
+              "seed": 310032,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 180,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 231923.82679789004,
+              "meanStandardError": 202.42393118375645,
+              "standardDeviation": 6398.0053507300445
+            },
+            {
+              "scenarioId": "neutral.st_long",
+              "seed": 310033,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 300,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 219436.6707705179,
+              "meanStandardError": 142.36312934798158,
+              "standardDeviation": 4499.6659139487665
+            }
+          ]
+        },
+        {
+          "id": "enhancement.st.maelstrom_floor_7",
+          "rotationSha256": "3C6C709733C9F681D48EF605215BCD2589F312E6926E9939C2DFBC888A1D290F",
+          "profileSha256": "4C2E6223BEFCB2F220C5D977159679AE15EE49C9AF5F08FE8364F62DD0742ADF",
+          "scenarios": [
+            {
+              "scenarioId": "neutral.st_short",
+              "seed": 310031,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 60,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 301781.8123434964,
+              "meanStandardError": 409.3381415965168,
+              "standardDeviation": 12937.934783091325
+            },
+            {
+              "scenarioId": "neutral.st_medium",
+              "seed": 310032,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 180,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 231558.05484571305,
+              "meanStandardError": 199.43308146354843,
+              "standardDeviation": 6303.4736794932605
+            },
+            {
+              "scenarioId": "neutral.st_long",
+              "seed": 310033,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 300,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 219116.19413753692,
+              "meanStandardError": 141.53355196888842,
+              "standardDeviation": 4473.445493866792
+            }
+          ]
+        },
+        {
+          "id": "enhancement.st.lava_before_crash",
+          "rotationSha256": "26CCCE1D0F37865C5F10BB057F2394738794C433BFD1CDBA9F10EB522885F4D6",
+          "profileSha256": "C00AAE40180003D0AFC934A9D2ACA73C8789425871A72A71A4B60CFB9C356476",
+          "scenarios": [
+            {
+              "scenarioId": "neutral.st_short",
+              "seed": 310031,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 60,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 302113.066365428,
+              "meanStandardError": 396.23699354616787,
+              "standardDeviation": 12523.84730422131
+            },
+            {
+              "scenarioId": "neutral.st_medium",
+              "seed": 310032,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 180,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 231831.1328780929,
+              "meanStandardError": 196.5578282776419,
+              "standardDeviation": 6212.595663437766
+            },
+            {
+              "scenarioId": "neutral.st_long",
+              "seed": 310033,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 300,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 219247.6010994826,
+              "meanStandardError": 149.9734902704842,
+              "standardDeviation": 4740.206296789952
+            }
+          ]
+        },
+        {
+          "id": "enhancement.st.voltaic_before_stormstrike",
+          "rotationSha256": "C9C7D574511C644F6C7601B7CB0517BB9C9973E4FE265C0B6F9FC6D953A72157",
+          "profileSha256": "ADA671902064A6CDB73CD0554C7AF0CF8B6A70C8B654939C3C9DA7938FE39522",
+          "scenarios": [
+            {
+              "scenarioId": "neutral.st_short",
+              "seed": 310031,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 60,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 302113.066365428,
+              "meanStandardError": 396.23699354616787,
+              "standardDeviation": 12523.84730422131
+            },
+            {
+              "scenarioId": "neutral.st_medium",
+              "seed": 310032,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 180,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 231831.1328780929,
+              "meanStandardError": 196.5578282776419,
+              "standardDeviation": 6212.595663437766
+            },
+            {
+              "scenarioId": "neutral.st_long",
+              "seed": 310033,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 300,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 219247.6010994826,
+              "meanStandardError": 149.9734902704842,
+              "standardDeviation": 4740.206296789952
+            }
+          ]
+        },
+        {
+          "id": "enhancement.st.lightning_before_crash",
+          "rotationSha256": "B11B3B0927F0A3782F82BA968A3BCE8A38A6F70B0E79E7150B2E33A04D5E1948",
+          "profileSha256": "65CE04191701C9C451EF9CD30F91F9DA6427F63F221E4DCB4ECAA0C8FAF17DCD",
+          "scenarios": [
+            {
+              "scenarioId": "neutral.st_short",
+              "seed": 310031,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 60,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 302113.066365428,
+              "meanStandardError": 396.23699354616787,
+              "standardDeviation": 12523.84730422131
+            },
+            {
+              "scenarioId": "neutral.st_medium",
+              "seed": 310032,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 180,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 231831.1328780929,
+              "meanStandardError": 196.5578282776419,
+              "standardDeviation": 6212.595663437766
+            },
+            {
+              "scenarioId": "neutral.st_long",
+              "seed": 310033,
+              "iterationsRequested": 1000,
+              "sampleCount": 999,
+              "maxTime": 300,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 219247.6010994826,
+              "meanStandardError": 149.9734902704842,
+              "standardDeviation": 4740.206296789952
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finalist",
+      "iterations": 10000,
+      "profiles": [
+        {
+          "id": "enhancement.st.baseline",
+          "rotationSha256": "036BEE377D6C5B492B3EF1F670F9D1F6DE6CCC4A098A972C29B3F578669C0BA0",
+          "profileSha256": "32EB17FB5353C48AAA2B2FEFE45AFEC4AAFECDCBA969409459195580DC89CB16",
+          "scenarios": [
+            {
+              "scenarioId": "neutral.st_short",
+              "seed": 410031,
+              "iterationsRequested": 10000,
+              "sampleCount": 9999,
+              "maxTime": 60,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 302243.1540441659,
+              "meanStandardError": 129.42353107800568,
+              "standardDeviation": 12941.705973966426
+            },
+            {
+              "scenarioId": "neutral.st_medium",
+              "seed": 410032,
+              "iterationsRequested": 10000,
+              "sampleCount": 9999,
+              "maxTime": 180,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 231812.1324558556,
+              "meanStandardError": 61.63281279791175,
+              "standardDeviation": 6162.973108022698
+            },
+            {
+              "scenarioId": "neutral.st_long",
+              "seed": 410033,
+              "iterationsRequested": 10000,
+              "sampleCount": 9999,
+              "maxTime": 300,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 219126.60684617498,
+              "meanStandardError": 44.94127935045855,
+              "standardDeviation": 4493.903223031162
+            }
+          ]
+        },
+        {
+          "id": "enhancement.st.primordial_window_4_5",
+          "rotationSha256": "1EF9DC710EE84C3725E12624F41D72AB91F62C4E5E54768AF0EEEBE8AEC1AB11",
+          "profileSha256": "E78FA17F48812FFA28C332FAFCA674D7F626273625E502377A9CD3E5E174840D",
+          "scenarios": [
+            {
+              "scenarioId": "neutral.st_short",
+              "seed": 410031,
+              "iterationsRequested": 10000,
+              "sampleCount": 9999,
+              "maxTime": 60,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 302226.98320851644,
+              "meanStandardError": 129.3107002500744,
+              "standardDeviation": 12930.423455341543
+            },
+            {
+              "scenarioId": "neutral.st_medium",
+              "seed": 410032,
+              "iterationsRequested": 10000,
+              "sampleCount": 9999,
+              "maxTime": 180,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 231880.50800226477,
+              "meanStandardError": 60.219675426629145,
+              "standardDeviation": 6021.666436757945
+            },
+            {
+              "scenarioId": "neutral.st_long",
+              "seed": 410033,
+              "iterationsRequested": 10000,
+              "sampleCount": 9999,
+              "maxTime": 300,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 219263.21912299548,
+              "meanStandardError": 44.611771339149456,
+              "standardDeviation": 4460.9540694815
+            }
+          ]
+        },
+        {
+          "id": "enhancement.st.maelstrom_floor_6",
+          "rotationSha256": "8246B07156A6D55F5896A89CB08C2E82A3CADA2478872ED3C7BCA6AD85DDE9C8",
+          "profileSha256": "4A0819936F2BE707EFBF4868A1DFE7A10256D7E783A66565BF4F0DB13D57A38C",
+          "scenarios": [
+            {
+              "scenarioId": "neutral.st_short",
+              "seed": 410031,
+              "iterationsRequested": 10000,
+              "sampleCount": 9999,
+              "maxTime": 60,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 302174.65345166734,
+              "meanStandardError": 130.84825600769904,
+              "standardDeviation": 13084.171343133014
+            },
+            {
+              "scenarioId": "neutral.st_medium",
+              "seed": 410032,
+              "iterationsRequested": 10000,
+              "sampleCount": 9999,
+              "maxTime": 180,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 231761.76676591448,
+              "meanStandardError": 60.631011843900424,
+              "standardDeviation": 6062.798021751567
+            },
+            {
+              "scenarioId": "neutral.st_long",
+              "seed": 410033,
+              "iterationsRequested": 10000,
+              "sampleCount": 9999,
+              "maxTime": 300,
+              "fixedTime": true,
+              "varyCombatLength": 0,
+              "desiredTargets": 1,
+              "fightStyle": "Patchwerk",
+              "meanDps": 219186.82539709742,
+              "meanStandardError": 45.21341383258306,
+              "standardDeviation": 4521.115310537184
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

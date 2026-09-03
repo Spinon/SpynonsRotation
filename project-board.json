@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T19:26:30.929Z",
-  "currentFocus": "ENH-003",
+  "updatedAt": "2026-09-03T19:30:58.255Z",
+  "currentFocus": "ENH-004",
   "parallelFocus": {
     "ui": "UI-DESIGN-008"
   },
@@ -419,12 +419,12 @@
       "title": "Curadoria ST",
       "lane": "SHAMAN",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/ENH-003.md",
-      "updatedAt": "2026-09-03T19:03:39.819Z",
+      "updatedAt": "2026-09-03T19:30:58.255Z",
       "reviewBy": null,
-      "nextAction": "Medir candidatas ST limitadas contra a baseline pinada.",
+      "nextAction": null,
       "dependencies": [
         "ENH-002",
         "LAB-004"
@@ -434,7 +434,13 @@
         "Resultado é comparado ao baseline",
         "Regras usam somente estado permitido"
       ],
-      "evidence": []
+      "evidence": [
+        "specs/shaman/enhancement/single-target/study.json fixa o perfil oficial MID2 Totemic, hashes, três cenários ST, seeds independentes por fase e sete mutações com linhagem DSL/APL.",
+        "A triagem de 1.000 iterações selecionou primordial_window_4_5 e maelstrom_floor_6; a confirmação independente usou 10.000 iterações por perfil e cenário.",
+        "A melhor finalista obteve fitness de +0,031734%, mas limite inferior familiar de -0,021387%; report.json preserva formalmente enhancement.st.baseline.",
+        "Duas execuções completas produziram resultados byte a byte idênticos; os artefatos finais registram SHA-256 DFF4CA972FA92EEDC9AE356161FB1EC208F4C4D8E418CD4F06A30ED2FF48B4F6 e 9FF83D9A06DB4FB37F6D07B6A7205588F6DE3B9CB4A75380944A7BA16B518296.",
+        "npm test passou com 158 testes Node e 99 testes Lua; fronteiras, Luacheck e wowlua-ls permaneceram sem falhas."
+      ]
     },
     {
       "id": "ENH-004",

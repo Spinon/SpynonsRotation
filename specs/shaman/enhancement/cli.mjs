@@ -5,6 +5,7 @@ import { generateEnhancementBaseline, verifyEnhancementBaseline } from "./baseli
 import { loadEnhancementCatalog } from "./catalog.mjs";
 import { serializeEnhancementCatalogLua } from "./runtime.mjs";
 import { verifyPinnedSimcCatalog } from "./simc.mjs";
+import { generateSingleTargetCuration, verifySingleTargetCuration } from "./single-target.mjs";
 import { CATALOG_FILE, RUNTIME_FILE, verifyEnhancementCatalog } from "./verify.mjs";
 
 const command = process.argv[2] ?? "check";
@@ -40,10 +41,23 @@ try {
       `Capabilities: ${result.simOnlySourceLines} linha(s) SIM_ONLY; `
       + `${result.runtimeRules} regra(s) no bundle; digest ${result.digest}.`
     );
+  } else if (command === "st-generate") {
+    const result = await generateSingleTargetCuration();
+    console.log(
+      `Curadoria ST medida: ${result.screening.ranking.length} candidatas, `
+      + `${result.screening.selectedFinalists.length} finalistas; decisão ${result.decision.outcome} `
+      + `(${result.decision.selectedId}).`
+    );
+  } else if (command === "st-check") {
+    const result = verifySingleTargetCuration();
+    console.log(
+      `Curadoria ST verificada: ${result.candidates} candidatas × ${result.scenarios} cenários; `
+      + `decisão ${result.decision.outcome} (${result.decision.selectedId}).`
+    );
   } else {
     console.error(
       `Comando desconhecido: ${command}. `
-      + "Use check, generate, simc-check, baseline-generate ou baseline-check."
+      + "Use check, generate, simc-check, baseline-generate, baseline-check, st-generate ou st-check."
     );
     process.exitCode = 1;
   }

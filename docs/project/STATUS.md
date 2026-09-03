@@ -2,17 +2,17 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T19:26:30.929Z
+Atualizado pelo board em: 2026-09-03T19:30:58.255Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**ENH-003 — Curadoria ST**
+**ENH-004 — Curadoria Cleave/AoE**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Medir candidatas ST limitadas contra a baseline pinada.
+Próxima ação: Validar prioridades de cleave e AoE.
 
 ## Focos paralelos
 
@@ -23,9 +23,9 @@ Próxima ação: Medir candidatas ST limitadas contra a baseline pinada.
 ## Progresso
 
 - Planejadas: 30
-- Em andamento: 2
+- Em andamento: 1
 - Bloqueadas: 0
-- Concluídas: 23
+- Concluídas: 24
 - Total: 55
 
 ## Fila canônica
@@ -46,7 +46,7 @@ Próxima ação: Medir candidatas ST limitadas contra a baseline pinada.
 | LAB-006 | delivery | ROTATION LAB | Regression suite | done | P1 | LAB-003, LAB-004 |
 | ENH-001 | delivery | SHAMAN | Catálogo Enhancement | done | P0 | CORE-002, CORE-003, CORE-004 |
 | ENH-002 | delivery | SHAMAN | Baseline APL | done | P0 | ENH-001, LAB-002, LAB-003 |
-| ENH-003 | delivery | SHAMAN | Curadoria ST | in_progress | P1 | ENH-002, LAB-004 |
+| ENH-003 | delivery | SHAMAN | Curadoria ST | done | P1 | ENH-002, LAB-004 |
 | ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | planned | P1 | ENH-002, LAB-004 |
 | ENH-005 | delivery | SHAMAN | Talent-aware rotation | planned | P1 | ENH-003, ENH-004, CORE-003 |
 | RUN-001 | delivery | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
@@ -206,6 +206,14 @@ Próxima ação: Medir candidatas ST limitadas contra a baseline pinada.
 - npm run enhancement:baseline-check recompila 4 listas e 64 regras com digest 036BEE377D6C5B492B3EF1F670F9D1F6DE6CCC4A098A972C29B3F578669C0BA0; todo estado volátil usa skip_rule.
 - npm test passou com 152 testes Node e 99 testes Lua; layout, lint Lua e análise estática sem erros.
 - Commit de implementação 4540568 foi enviado para origin/main.
+
+### ENH-003
+
+- specs/shaman/enhancement/single-target/study.json fixa o perfil oficial MID2 Totemic, hashes, três cenários ST, seeds independentes por fase e sete mutações com linhagem DSL/APL.
+- A triagem de 1.000 iterações selecionou primordial_window_4_5 e maelstrom_floor_6; a confirmação independente usou 10.000 iterações por perfil e cenário.
+- A melhor finalista obteve fitness de +0,031734%, mas limite inferior familiar de -0,021387%; report.json preserva formalmente enhancement.st.baseline.
+- Duas execuções completas produziram resultados byte a byte idênticos; os artefatos finais registram SHA-256 DFF4CA972FA92EEDC9AE356161FB1EC208F4C4D8E418CD4F06A30ED2FF48B4F6 e 9FF83D9A06DB4FB37F6D07B6A7205588F6DE3B9CB4A75380944A7BA16B518296.
+- npm test passou com 158 testes Node e 99 testes Lua; fronteiras, Luacheck e wowlua-ls permaneceram sem falhas.
 
 ### UI-DESIGN-001
 

@@ -207,6 +207,17 @@ function positiveInteger(value, name, maximum) {
   return value;
 }
 
+function boundedNumber(value, name, minimum, maximum) {
+  if (typeof value !== "number" || !Number.isFinite(value) || value < minimum || value > maximum) {
+    throw new SimcRunnerError(
+      "INVALID_ARGUMENT",
+      `${name} deve ser um número entre ${minimum} e ${maximum}.`,
+      { name, value }
+    );
+  }
+  return value;
+}
+
 function normalizeRunOptions(options) {
   const iterations = positiveInteger(options.iterations ?? 1000, "iterations", 10_000_000);
   const threads = positiveInteger(options.threads ?? 1, "threads", 1024);
@@ -214,6 +225,23 @@ function normalizeRunOptions(options) {
   const maxTime = options.maxTime === undefined
     ? undefined
     : positiveInteger(options.maxTime, "maxTime", 86_400);
+  const seed = options.seed === undefined
+    ? undefined
+    : positiveInteger(options.seed, "seed", 2_147_483_647);
+  const desiredTargets = options.desiredTargets === undefined
+    ? undefined
+    : positiveInteger(options.desiredTargets, "desiredTargets", 40);
+  const varyCombatLength = options.varyCombatLength === undefined
+    ? undefined
+    : boundedNumber(options.varyCombatLength, "varyCombatLength", 0, 1);
+
+  if (options.fightStyle !== undefined && options.fightStyle !== "Patchwerk") {
+    throw new SimcRunnerError(
+      "INVALID_ARGUMENT",
+      "fightStyle aceita somente Patchwerk nesta versão tipada do runner.",
+      { name: "fightStyle", value: options.fightStyle }
+    );
+  }
 
   if (options.fixedTime !== undefined && typeof options.fixedTime !== "boolean") {
     throw new SimcRunnerError("INVALID_ARGUMENT", "fixedTime deve ser booleano.");
@@ -224,6 +252,10 @@ function normalizeRunOptions(options) {
     threads,
     timeoutMs,
     maxTime,
+    seed,
+    desiredTargets,
+    varyCombatLength,
+    fightStyle: options.fightStyle,
     fixedTime: options.fixedTime === true,
   };
 }
@@ -347,6 +379,18 @@ export async function runSimulation(options = {}, dependencies = {}) {
   if (normalizedOptions.fixedTime) {
     args.push("fixed_time=1");
   }
+  if (normalizedOptions.seed !== undefined) {
+    args.push(`seed=${normalizedOptions.seed}`);
+  }
+  if (normalizedOptions.desiredTargets !== undefined) {
+    args.push(`desired_targets=${normalizedOptions.desiredTargets}`);
+  }
+  if (normalizedOptions.varyCombatLength !== undefined) {
+    args.push(`vary_combat_length=${normalizedOptions.varyCombatLength}`);
+  }
+  if (normalizedOptions.fightStyle !== undefined) {
+    args.push(`fight_style=${normalizedOptions.fightStyle}`);
+  }
 
   const now = dependencies.now ?? (() => new Date());
   const startedAt = now();
@@ -405,6 +449,10 @@ export async function runSimulation(options = {}, dependencies = {}) {
       threads: normalizedOptions.threads,
       maxTime: normalizedOptions.maxTime ?? null,
       fixedTime: normalizedOptions.fixedTime,
+      seed: normalizedOptions.seed ?? null,
+      desiredTargets: normalizedOptions.desiredTargets ?? null,
+      varyCombatLength: normalizedOptions.varyCombatLength ?? null,
+      fightStyle: normalizedOptions.fightStyle ?? null,
       timeoutMs: normalizedOptions.timeoutMs,
     },
     process: {
