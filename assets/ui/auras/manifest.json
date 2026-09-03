@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "candidate_review",
-  "activePreviewVersion": "v3",
+  "activePreviewVersion": "v4",
   "component": "auraJuggleCell",
   "layout": {
     "defaultVisible": 3,
@@ -26,23 +26,25 @@
       "sha256": "125BB040B637ECCB0C327E73EAC4DD317C85D6A8C129413E3FF59A690E0D646D"
     },
     "defaultPreview": {
-      "file": "aura-juggle-preview-v3.png",
+      "file": "aura-juggle-preview-v4.png",
       "sourceWidth": 1260,
       "sourceHeight": 226,
-      "sha256": "BAD31EFCCC0C5119A9891AC51C2DF95EE58EE2061B340C31CE1DF3298FDA0594"
+      "sha256": "BB525A9819E2265E6580BF7FCF47DDF340844DE17D923D933D89F6B42E04C857"
     },
     "stateReference": {
-      "file": "aura-juggle-state-reference-v3.png",
+      "file": "aura-juggle-state-reference-v4.png",
       "sourceWidth": 2100,
       "sourceHeight": 226,
-      "sha256": "59E13B25AB9F1419E0D4B1BF302DAAB7A515489488C010DBE87FB6A2E1010F59"
+      "sha256": "478A316B62CFEDEDF71CBABF32716E6016601B793B2F0CF11BA8FBC3E153139C"
     }
   },
   "previousVisualReferences": [
     "aura-juggle-preview-v1.png",
     "aura-juggle-state-reference-v1.png",
     "aura-juggle-preview-v2.png",
-    "aura-juggle-state-reference-v2.png"
+    "aura-juggle-state-reference-v2.png",
+    "aura-juggle-preview-v3.png",
+    "aura-juggle-state-reference-v3.png"
   ],
   "staticFrame": {
     "solidChannels": {
@@ -64,29 +66,23 @@
       "source": "wow_runtime",
       "missingIcon": "neutral_local_placeholder"
     },
-    "typeMarker": {
-      "anchor": "TOPRIGHT",
-      "relativeTo": "icon",
+    "typeOutline": {
+      "sourceChannel": "frameBlueChannel",
       "layers": [
-        "effectTypeMarker"
+        "effectTypeOutlineTint"
       ],
-      "background": false,
+      "preserveSignatureAccent": true,
+      "requiresSeparatedTintMask": true,
       "configurable": [
-        "glyph",
-        "color",
-        "font",
-        "size",
-        "position",
-        "visibility"
+        "buffColor",
+        "debuffColor"
       ],
       "types": {
         "buff": {
-          "glyph": "+",
-          "color": "#22D3EE"
+          "color": "#0788D8"
         },
         "debuff": {
-          "glyph": "−",
-          "color": "#B66CFF"
+          "color": "#E5484D"
         }
       }
     },
@@ -178,7 +174,7 @@
   },
   "dynamicLayers": [
     "wowAuraIcon",
-    "effectTypeMarker",
+    "effectTypeOutlineTint",
     "shortName",
     "durationOrState",
     "stateColorFill"

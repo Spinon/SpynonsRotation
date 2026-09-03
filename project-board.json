@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T01:00:56.432Z",
+  "updatedAt": "2026-09-03T09:50:12.459Z",
   "currentFocus": "ENH-002",
   "parallelFocus": {
     "ui": "UI-DESIGN-006"
@@ -690,9 +690,9 @@
       "status": "in_progress",
       "priority": "P0",
       "source": "tasks/UI-DESIGN.md#ui-design-006--juggle-de-buffsdebuffs",
-      "updatedAt": "2026-09-03T00:57:16.406Z",
+      "updatedAt": "2026-09-03T09:50:12.459Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Product Owner revisar o candidato v3 com marcador independente para buff e debuff.",
+      "nextAction": "Product Owner revisar o candidato v4 com contorno azul para buff e vermelho para debuff.",
       "dependencies": [
         "UI-DESIGN-005"
       ],
@@ -711,7 +711,10 @@
         "Product Owner solicitou que o encaixe inferior usasse somente cor e que as células formassem uma fila com maior urgência à esquerda.",
         "assets/ui/auras/aura-juggle-preview-v3.png e aura-juggle-state-reference-v3.png distinguem buff com + ciano e debuff com − violeta no canto do ícone.",
         "O marcador v3 mantém tipo e urgência em canais visuais independentes, sem dividir a fila global nem alterar o master raster.",
-        "Product Owner solicitou um ajuste que separasse visualmente buffs de debuffs."
+        "Product Owner solicitou um ajuste que separasse visualmente buffs de debuffs.",
+        "assets/ui/auras/aura-juggle-preview-v4.png e aura-juggle-state-reference-v4.png removem os glifos e usam contorno azul para buff e vermelho para debuff.",
+        "O v4 preserva a barra inferior exclusivamente para urgência e mantém o master único, registrando a futura extração de máscara tintável em UI-DESIGN-008.",
+        "Product Owner rejeitou os marcadores +/− do v3 e propôs distinguir o tipo pela cor do contorno."
       ],
       "track": "ui"
     },

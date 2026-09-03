@@ -2,15 +2,17 @@
 
 ## Status
 
-`aura-juggle-cell-frame-v1.png` é o candidato de arte de `UI-DESIGN-006`. O mesmo master vazio é repetido de uma a cinco vezes; o uso padrão mostra três sinais e o teto de cinco atende specs com manutenção mais exigente sem criar um painel massivo de auras. A revisão visual ativa é `v3`.
+`aura-juggle-cell-frame-v1.png` é o candidato de arte de `UI-DESIGN-006`. O mesmo master vazio é repetido de uma a cinco vezes; o uso padrão mostra três sinais e o teto de cinco atende specs com manutenção mais exigente sem criar um painel massivo de auras. A revisão visual ativa é `v4`.
 
 ## Arquivos
 
 | Arquivo | Papel |
 | --- | --- |
 | `aura-juggle-cell-frame-v1.png` | Master raster vazio e reutilizável. |
-| `aura-juggle-preview-v3.png` | Composição padrão ativa com três sinais em fila de urgência e tipo explícito. |
-| `aura-juggle-state-reference-v3.png` | Referência ativa de ausência, crítico, atenção, estável, desligado, buff e debuff. |
+| `aura-juggle-preview-v4.png` | Composição padrão ativa com azul para buff e vermelho para debuff. |
+| `aura-juggle-state-reference-v4.png` | Referência ativa de estados, urgência e tipo pela cor do contorno. |
+| `aura-juggle-preview-v3.png` | Histórico anterior com marcadores `+` e `−`. |
+| `aura-juggle-state-reference-v3.png` | Histórico anterior com marcadores `+` e `−`. |
 | `aura-juggle-preview-v2.png` | Histórico anterior sem distinção explícita de buff e debuff. |
 | `aura-juggle-state-reference-v2.png` | Histórico anterior sem distinção explícita de buff e debuff. |
 | `aura-juggle-preview-v1.png` | Histórico anterior com labels inferiores. |
@@ -24,9 +26,10 @@ Os ícones geométricos dos previews são placeholders neutros. O addon deve usa
 - as células formam uma fila de urgência, com ausência e crítico à esquerda;
 - a posição muda apenas quando a célula entra em outra faixa de urgência;
 - a duração não reorganiza itens dentro da mesma faixa;
-- um `+` ciano identifica buff e um `−` violeta identifica debuff no canto superior direito do ícone;
-- o marcador de tipo não possui badge ou background e é independente da cor de urgência;
-- símbolo, cor, fonte, tamanho, posição e visibilidade do marcador são configuráveis;
+- o contorno energético azul identifica buff e o vermelho identifica debuff;
+- não existe símbolo, badge, label ou background adicional para informar o tipo;
+- a cor do contorno é independente da cor de urgência e configurável por tipo;
+- o master permanece único: `UI-DESIGN-008` deve extrair o canal de tint para alternar a cor sem duplicar a moldura;
 - ausência continua explícita no valor principal, enquanto o encaixe inferior fica vazio;
 - indisponível/desligado usa `—`, fica à direita e nunca é interpretado como ausência;
 - o encaixe inferior não usa texto ou símbolo, apenas uma cor sólida uniforme;
@@ -36,6 +39,30 @@ Os ícones geométricos dos previews são placeholders neutros. O addon deve usa
 - não há badge permanente de overflow: somente sinais ranqueados como decisivos entram no trilho.
 
 Movimento da fila, pulsação e transições pertencem a `UI-DESIGN-007`. Dimensões finais, fonte e preparação para runtime pertencem a `UI-DESIGN-008`.
+
+## Prompt de revisão v4
+
+```text
+Use case: precise-object-edit.
+Asset type: World of Warcraft addon aura-juggle state reference.
+Input images: Image 1 is the sole edit target.
+
+Primary request:
+Replace the buff/debuff plus and minus marker concept with frame-outline color. Image 1 already has no type glyphs.
+- AURA D and AURA C are debuffs: recolor only their existing electric-blue structural outline rails to a vivid solid crimson red approximately #E5484D.
+- AURA B, AURA A and AURA E are buffs: preserve their existing solid electric-blue outline rails approximately #0788D8.
+- Preserve the tiny lime-green brand signature accent on every cell.
+
+The outline color communicates effect type. The small lower shelf continues to communicate only temporal urgency and must remain exactly as shown: empty, red, amber, green, empty.
+
+Invariants:
+Preserve the exact five-cell order, frame geometry, graphite metal, icon placeholders, names, durations or state values, spacing, scale, dark background, lower shelf colors and all transparency behavior.
+
+Constraints:
+No plus sign, minus sign, BUFF/DEBUFF words, badge, new symbol, glow, bloom, gradient, regrouping, new row, extra cell or layout change. Keep all colored rails flat and solid.
+```
+
+A geração integrada validou a troca de linguagem visual. Os previews finais foram recompostos sobre a revisão v2 para preservar ícones, texto, geometria, cores de urgência e dimensões exatas.
 
 ## Prompt de revisão v3
 

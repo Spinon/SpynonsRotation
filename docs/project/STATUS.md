@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T01:00:56.432Z
+Atualizado pelo board em: 2026-09-03T09:50:12.459Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -18,7 +18,7 @@ Próxima ação: Importar e revisar baseline de referência.
 
 | Trilha | Task | Status | Próxima ação |
 | --- | --- | --- | --- |
-| ui | UI-DESIGN-006 — Juggle de buffs e debuffs | in_progress | Product Owner revisar o candidato v3 com marcador independente para buff e debuff. |
+| ui | UI-DESIGN-006 — Juggle de buffs e debuffs | in_progress | Product Owner revisar o candidato v4 com contorno azul para buff e vermelho para debuff. |
 
 ## Progresso
 

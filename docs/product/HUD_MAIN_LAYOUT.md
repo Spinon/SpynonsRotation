@@ -102,7 +102,7 @@ O trilho é genérico e orientado a decisão. Cada célula reserva espaço para 
 
 Cor nunca é o único canal: texto, ícone de estado ou tratamento da moldura deve reforçar a leitura.
 
-O padrão usa três células e o teto é cinco. Elas funcionam como fila de urgência: o que exige atenção fica mais à esquerda, e a posição só muda ao trocar de faixa. O encaixe inferior não possui label; mostra verde, âmbar ou vermelho sólidos e fica vazio quando o sinal termina ou está desligado. Buff e debuff não formam filas separadas: um `+` ciano ou `−` violeta no canto do ícone informa o tipo sem disputar a cor de urgência.
+O padrão usa três células e o teto é cinco. Elas funcionam como fila de urgência: o que exige atenção fica mais à esquerda, e a posição só muda ao trocar de faixa. O encaixe inferior não possui label; mostra verde, âmbar ou vermelho sólidos e fica vazio quando o sinal termina ou está desligado. Buff e debuff não formam filas separadas: o contorno energético azul identifica buff e o vermelho identifica debuff, enquanto a posição e o encaixe inferior continuam dedicados à urgência.
 
 ## Contexto, hotkeys e quantidades
 
