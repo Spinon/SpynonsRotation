@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "importedAt": "2026-09-03T18:44:29.107Z",
+  "target": {
+    "wowVersion": "12.1.0",
+    "wowBuild": 69587,
+    "interface": 120100
+  },
+  "simulationcraft": {
+    "version": "1210.01",
+    "repository": "https://github.com/simulationcraft/simc",
+    "commit": "f86979165c9b952e41d8cb6119065d3f6272abee",
+    "path": "ActionPriorityLists/default/shaman_enhancement.simc",
+    "sourceUrl": "https://github.com/simulationcraft/simc/blob/f86979165c9b952e41d8cb6119065d3f6272abee/ActionPriorityLists/default/shaman_enhancement.simc",
+    "gitBlobSha": "dfa27f6c44c4de98f76305af0be076f6a90da3df"
+  },
+  "localSource": {
+    "file": "upstream.simc",
+    "bytes": 11153,
+    "sha256": "783560B572B81F0373932AD91579C82130341D23A4FC60809576A4BE14D7D77E",
+    "actionLines": 113
+  },
+  "baseline": {
+    "id": "enhancement.simc_baseline",
+    "version": "12.1.0-1",
+    "entrypoint": "single_sb",
+    "normalizedRules": 64,
+    "sourceOnlyRules": 49
+  }
+}

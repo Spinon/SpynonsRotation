@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+import { generateEnhancementBaseline, verifyEnhancementBaseline } from "./baseline.mjs";
 import { loadEnhancementCatalog } from "./catalog.mjs";
 import { serializeEnhancementCatalogLua } from "./runtime.mjs";
 import { verifyPinnedSimcCatalog } from "./simc.mjs";
@@ -26,8 +27,24 @@ try {
       `DBC verificado: build ${result.wowBuild}, ${result.talents} talents, ${result.heroTrees} Hero Trees `
       + `e ${result.spells} spells; engine ${result.engineCommit}; SHA-256 ${result.executableSha256}.`
     );
+  } else if (command === "baseline-generate") {
+    const result = generateEnhancementBaseline();
+    console.log(`Baseline gerada: ${result.rules} regras em ${result.files.length} artefatos.`);
+  } else if (command === "baseline-check") {
+    const result = verifyEnhancementBaseline();
+    console.log(
+      `Baseline ${result.id}@${result.version}: ${result.sourceActionLines} linhas auditadas, `
+      + `${result.normalizedRules} normalizadas e ${result.sourceOnlyRules} preservadas somente na fonte.`
+    );
+    console.log(
+      `Capabilities: ${result.simOnlySourceLines} linha(s) SIM_ONLY; `
+      + `${result.runtimeRules} regra(s) no bundle; digest ${result.digest}.`
+    );
   } else {
-    console.error(`Comando desconhecido: ${command}. Use check, generate ou simc-check.`);
+    console.error(
+      `Comando desconhecido: ${command}. `
+      + "Use check, generate, simc-check, baseline-generate ou baseline-check."
+    );
     process.exitCode = 1;
   }
 } catch (error) {

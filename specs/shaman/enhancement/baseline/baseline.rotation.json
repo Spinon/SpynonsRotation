@@ -1,0 +1,1597 @@
+{
+  "schemaVersion": 1,
+  "id": "enhancement.simc_baseline",
+  "version": "12.1.0-1",
+  "description": "Baseline Enhancement preservada do SimulationCraft 1210.01; subconjunto reversível sem curadoria de prioridade.",
+  "entrypoint": "single_sb",
+  "lists": [
+    {
+      "id": "aoe",
+      "rules": [
+        {
+          "id": "enhancement.aoe_voltaic_blaze_1",
+          "priority": 10,
+          "action": "enhancement.voltaic_blaze",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.surging_totem",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "compare",
+                "operator": "eq",
+                "left": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.flame_shock",
+                    "remains"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                },
+                "right": {
+                  "kind": "literal",
+                  "value": 0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.aoe_flame_shock_1",
+          "priority": 20,
+          "action": "enhancement.flame_shock",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "not",
+            "condition": {
+              "kind": "truthy",
+              "value": {
+                "kind": "state",
+                "path": [
+                  "auras",
+                  "enhancement.flame_shock",
+                  "active"
+                ],
+                "capability": "CONDITIONALLY_SECRET"
+              }
+            }
+          }
+        },
+        {
+          "id": "enhancement.aoe_surging_totem_1",
+          "priority": 30,
+          "action": "enhancement.surging_totem",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.aoe_doom_winds_1",
+          "priority": 40,
+          "action": "enhancement.doom_winds",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.aoe_lava_lash_1",
+          "priority": 50,
+          "action": "enhancement.lava_lash",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.splitstream",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.hot_hand",
+                    "active"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.aoe_tempest_1",
+          "priority": 60,
+          "action": "enhancement.tempest",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "compare",
+                "operator": "gte",
+                "left": {
+                  "kind": "state",
+                  "path": [
+                    "resources",
+                    "enhancement.maelstrom_weapon",
+                    "current"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                },
+                "right": {
+                  "kind": "literal",
+                  "value": 10
+                }
+              },
+              {
+                "kind": "any",
+                "conditions": [
+                  {
+                    "kind": "not",
+                    "condition": {
+                      "kind": "truthy",
+                      "value": {
+                        "kind": "state",
+                        "path": [
+                          "auras",
+                          "enhancement.ascendance",
+                          "active"
+                        ],
+                        "capability": "CONDITIONALLY_SECRET"
+                      }
+                    }
+                  },
+                  {
+                    "kind": "not",
+                    "condition": {
+                      "kind": "truthy",
+                      "value": {
+                        "kind": "state",
+                        "path": [
+                          "auras",
+                          "enhancement.doom_winds",
+                          "active"
+                        ],
+                        "capability": "CONDITIONALLY_SECRET"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.aoe_primordial_storm_1",
+          "priority": 70,
+          "action": "enhancement.primordial_storm",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "compare",
+            "operator": "gte",
+            "left": {
+              "kind": "state",
+              "path": [
+                "resources",
+                "enhancement.maelstrom_weapon",
+                "current"
+              ],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 10
+            }
+          }
+        },
+        {
+          "id": "enhancement.aoe_crash_lightning_1",
+          "priority": 80,
+          "action": "enhancement.crash_lightning",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.thorims_invocation",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "any",
+                "conditions": [
+                  {
+                    "kind": "truthy",
+                    "value": {
+                      "kind": "state",
+                      "path": [
+                        "auras",
+                        "enhancement.doom_winds",
+                        "active"
+                      ],
+                      "capability": "CONDITIONALLY_SECRET"
+                    }
+                  },
+                  {
+                    "kind": "truthy",
+                    "value": {
+                      "kind": "state",
+                      "path": [
+                        "auras",
+                        "enhancement.ascendance",
+                        "active"
+                      ],
+                      "capability": "CONDITIONALLY_SECRET"
+                    }
+                  }
+                ]
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.splitstream",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.hot_hand",
+                    "active"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.aoe_windstrike_1",
+          "priority": 90,
+          "action": "enhancement.windstrike",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.thorims_invocation",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.splitstream",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.hot_hand",
+                    "active"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.aoe_stormstrike_1",
+          "priority": 100,
+          "action": "enhancement.stormstrike",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.thorims_invocation",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.doom_winds",
+                    "active"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.splitstream",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.hot_hand",
+                    "active"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.aoe_crash_lightning_2",
+          "priority": 110,
+          "action": "enhancement.crash_lightning",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.aoe_windstrike_2",
+          "priority": 120,
+          "action": "enhancement.windstrike",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "truthy",
+            "value": {
+              "kind": "state",
+              "path": [
+                "talents",
+                "enhancement.thorims_invocation",
+                "enabled"
+              ],
+              "capability": "ADDON_AVAILABLE"
+            }
+          }
+        },
+        {
+          "id": "enhancement.aoe_stormstrike_2",
+          "priority": 130,
+          "action": "enhancement.stormstrike",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.thorims_invocation",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.doom_winds",
+                    "active"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.aoe_sundering_1",
+          "priority": 140,
+          "action": "enhancement.sundering",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "truthy",
+            "value": {
+              "kind": "state",
+              "path": [
+                "talents",
+                "enhancement.feral_spirit",
+                "enabled"
+              ],
+              "capability": "ADDON_AVAILABLE"
+            }
+          }
+        },
+        {
+          "id": "enhancement.aoe_voltaic_blaze_2",
+          "priority": 150,
+          "action": "enhancement.voltaic_blaze",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.aoe_windstrike_3",
+          "priority": 160,
+          "action": "enhancement.windstrike",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.aoe_sundering_2",
+          "priority": 170,
+          "action": "enhancement.sundering",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "compare",
+            "operator": "gt",
+            "left": {
+              "kind": "state",
+              "path": [
+                "cooldowns",
+                "enhancement.surging_totem",
+                "remains"
+              ],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 25
+            }
+          }
+        },
+        {
+          "id": "enhancement.aoe_stormstrike_3",
+          "priority": 180,
+          "action": "enhancement.stormstrike",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "not",
+            "condition": {
+              "kind": "truthy",
+              "value": {
+                "kind": "state",
+                "path": [
+                  "talents",
+                  "enhancement.surging_totem",
+                  "enabled"
+                ],
+                "capability": "ADDON_AVAILABLE"
+              }
+            }
+          }
+        },
+        {
+          "id": "enhancement.aoe_lava_lash_2",
+          "priority": 190,
+          "action": "enhancement.lava_lash",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.aoe_stormstrike_4",
+          "priority": 200,
+          "action": "enhancement.stormstrike",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.aoe_chain_lightning_1",
+          "priority": 210,
+          "action": "enhancement.chain_lightning",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "compare",
+            "operator": "gte",
+            "left": {
+              "kind": "state",
+              "path": [
+                "resources",
+                "enhancement.maelstrom_weapon",
+                "current"
+              ],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 5
+            }
+          }
+        },
+        {
+          "id": "enhancement.aoe_flame_shock_2",
+          "priority": 220,
+          "action": "enhancement.flame_shock",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "precombat",
+      "rules": [
+        {
+          "id": "enhancement.precombat_windfury_weapon_1",
+          "priority": 10,
+          "action": "enhancement.windfury_weapon",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.precombat_flametongue_weapon_1",
+          "priority": 20,
+          "action": "enhancement.flametongue_weapon",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.precombat_lightning_shield_1",
+          "priority": 30,
+          "action": "enhancement.lightning_shield",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "single_sb",
+      "rules": [
+        {
+          "id": "enhancement.single_sb_primordial_storm_1",
+          "priority": 10,
+          "action": "enhancement.primordial_storm",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "any",
+            "conditions": [
+              {
+                "kind": "compare",
+                "operator": "gte",
+                "left": {
+                  "kind": "state",
+                  "path": [
+                    "resources",
+                    "enhancement.maelstrom_weapon",
+                    "current"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                },
+                "right": {
+                  "kind": "literal",
+                  "value": 9
+                }
+              },
+              {
+                "kind": "all",
+                "conditions": [
+                  {
+                    "kind": "compare",
+                    "operator": "lte",
+                    "left": {
+                      "kind": "state",
+                      "path": [
+                        "auras",
+                        "enhancement.primordial_storm",
+                        "remains"
+                      ],
+                      "capability": "CONDITIONALLY_SECRET"
+                    },
+                    "right": {
+                      "kind": "literal",
+                      "value": 4
+                    }
+                  },
+                  {
+                    "kind": "compare",
+                    "operator": "gte",
+                    "left": {
+                      "kind": "state",
+                      "path": [
+                        "resources",
+                        "enhancement.maelstrom_weapon",
+                        "current"
+                      ],
+                      "capability": "CONDITIONALLY_SECRET"
+                    },
+                    "right": {
+                      "kind": "literal",
+                      "value": 5
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.single_sb_voltaic_blaze_1",
+          "priority": 20,
+          "action": "enhancement.voltaic_blaze",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "compare",
+                "operator": "eq",
+                "left": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.flame_shock",
+                    "remains"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                },
+                "right": {
+                  "kind": "literal",
+                  "value": 0
+                }
+              },
+              {
+                "kind": "compare",
+                "operator": "lt",
+                "left": {
+                  "kind": "state",
+                  "path": [
+                    "combat",
+                    "elapsed_seconds"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                },
+                "right": {
+                  "kind": "literal",
+                  "value": 5
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.single_sb_flame_shock_1",
+          "priority": 30,
+          "action": "enhancement.flame_shock",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "not",
+            "condition": {
+              "kind": "truthy",
+              "value": {
+                "kind": "state",
+                "path": [
+                  "auras",
+                  "enhancement.flame_shock",
+                  "active"
+                ],
+                "capability": "CONDITIONALLY_SECRET"
+              }
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_sb_lava_lash_1",
+          "priority": 40,
+          "action": "enhancement.lava_lash",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "not",
+                "condition": {
+                  "kind": "truthy",
+                  "value": {
+                    "kind": "state",
+                    "path": [
+                      "auras",
+                      "enhancement.lashing_flames",
+                      "active"
+                    ],
+                    "capability": "CONDITIONALLY_SECRET"
+                  }
+                }
+              },
+              {
+                "kind": "compare",
+                "operator": "lt",
+                "left": {
+                  "kind": "state",
+                  "path": [
+                    "combat",
+                    "elapsed_seconds"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                },
+                "right": {
+                  "kind": "literal",
+                  "value": 5
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.single_sb_stormstrike_1",
+          "priority": 50,
+          "action": "enhancement.stormstrike",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "compare",
+            "operator": "lt",
+            "left": {
+              "kind": "state",
+              "path": [
+                "combat",
+                "elapsed_seconds"
+              ],
+              "capability": "ADDON_AVAILABLE"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 1
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_sb_sundering_1",
+          "priority": 60,
+          "action": "enhancement.sundering",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "any",
+            "conditions": [
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.surging_elements",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.feral_spirit",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.single_sb_doom_winds_1",
+          "priority": 70,
+          "action": "enhancement.doom_winds",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_sb_windstrike_1",
+          "priority": 80,
+          "action": "enhancement.windstrike",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "compare",
+                "operator": "gt",
+                "left": {
+                  "kind": "state",
+                  "path": [
+                    "resources",
+                    "enhancement.maelstrom_weapon",
+                    "current"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                },
+                "right": {
+                  "kind": "literal",
+                  "value": 0
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.thorims_invocation",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.single_sb_ascendance_1",
+          "priority": 90,
+          "action": "enhancement.ascendance",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_sb_stormstrike_2",
+          "priority": 100,
+          "action": "enhancement.stormstrike",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.doom_winds",
+                    "active"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.thorims_invocation",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.single_sb_crash_lightning_1",
+          "priority": 110,
+          "action": "enhancement.crash_lightning",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.doom_winds",
+                    "active"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.thorims_invocation",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.single_sb_tempest_1",
+          "priority": 120,
+          "action": "enhancement.tempest",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "compare",
+            "operator": "eq",
+            "left": {
+              "kind": "state",
+              "path": [
+                "resources",
+                "enhancement.maelstrom_weapon",
+                "current"
+              ],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 10
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_sb_lightning_bolt_1",
+          "priority": 130,
+          "action": "enhancement.lightning_bolt",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "compare",
+            "operator": "eq",
+            "left": {
+              "kind": "state",
+              "path": [
+                "resources",
+                "enhancement.maelstrom_weapon",
+                "current"
+              ],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 10
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_sb_stormstrike_3",
+          "priority": 140,
+          "action": "enhancement.stormstrike",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "compare",
+            "operator": "gte",
+            "left": {
+              "kind": "state",
+              "path": [
+                "cooldowns",
+                "enhancement.stormstrike",
+                "charges_fractional"
+              ],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 1.8
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_sb_lava_lash_2",
+          "priority": 150,
+          "action": "enhancement.lava_lash",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "truthy",
+            "value": {
+              "kind": "state",
+              "path": [
+                "talents",
+                "enhancement.lashing_flames",
+                "enabled"
+              ],
+              "capability": "ADDON_AVAILABLE"
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_sb_stormstrike_4",
+          "priority": 160,
+          "action": "enhancement.stormstrike",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_sb_voltaic_blaze_2",
+          "priority": 170,
+          "action": "enhancement.voltaic_blaze",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_sb_sundering_2",
+          "priority": 180,
+          "action": "enhancement.sundering",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_sb_lava_lash_3",
+          "priority": 190,
+          "action": "enhancement.lava_lash",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_sb_lightning_bolt_2",
+          "priority": 200,
+          "action": "enhancement.lightning_bolt",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "compare",
+            "operator": "gte",
+            "left": {
+              "kind": "state",
+              "path": [
+                "resources",
+                "enhancement.maelstrom_weapon",
+                "current"
+              ],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 8
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_sb_crash_lightning_2",
+          "priority": 210,
+          "action": "enhancement.crash_lightning",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_sb_lightning_bolt_3",
+          "priority": 220,
+          "action": "enhancement.lightning_bolt",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "compare",
+            "operator": "gte",
+            "left": {
+              "kind": "state",
+              "path": [
+                "resources",
+                "enhancement.maelstrom_weapon",
+                "current"
+              ],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 5
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_sb_flame_shock_2",
+          "priority": 230,
+          "action": "enhancement.flame_shock",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "single_totemic",
+      "rules": [
+        {
+          "id": "enhancement.single_totemic_voltaic_blaze_1",
+          "priority": 10,
+          "action": "enhancement.voltaic_blaze",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "compare",
+            "operator": "eq",
+            "left": {
+              "kind": "state",
+              "path": [
+                "auras",
+                "enhancement.flame_shock",
+                "remains"
+              ],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 0
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_flame_shock_1",
+          "priority": 20,
+          "action": "enhancement.flame_shock",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "not",
+            "condition": {
+              "kind": "truthy",
+              "value": {
+                "kind": "state",
+                "path": [
+                  "auras",
+                  "enhancement.flame_shock",
+                  "active"
+                ],
+                "capability": "CONDITIONALLY_SECRET"
+              }
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_surging_totem_1",
+          "priority": 30,
+          "action": "enhancement.surging_totem",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_doom_winds_1",
+          "priority": 40,
+          "action": "enhancement.doom_winds",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_primordial_storm_1",
+          "priority": 50,
+          "action": "enhancement.primordial_storm",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "any",
+            "conditions": [
+              {
+                "kind": "compare",
+                "operator": "gte",
+                "left": {
+                  "kind": "state",
+                  "path": [
+                    "resources",
+                    "enhancement.maelstrom_weapon",
+                    "current"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                },
+                "right": {
+                  "kind": "literal",
+                  "value": 10
+                }
+              },
+              {
+                "kind": "all",
+                "conditions": [
+                  {
+                    "kind": "compare",
+                    "operator": "lt",
+                    "left": {
+                      "kind": "state",
+                      "path": [
+                        "auras",
+                        "enhancement.primordial_storm",
+                        "remains"
+                      ],
+                      "capability": "CONDITIONALLY_SECRET"
+                    },
+                    "right": {
+                      "kind": "literal",
+                      "value": 3.5
+                    }
+                  },
+                  {
+                    "kind": "compare",
+                    "operator": "gte",
+                    "left": {
+                      "kind": "state",
+                      "path": [
+                        "resources",
+                        "enhancement.maelstrom_weapon",
+                        "current"
+                      ],
+                      "capability": "CONDITIONALLY_SECRET"
+                    },
+                    "right": {
+                      "kind": "literal",
+                      "value": 5
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_windstrike_1",
+          "priority": 60,
+          "action": "enhancement.windstrike",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.thorims_invocation",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.ascendance",
+                    "active"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_crash_lightning_1",
+          "priority": 70,
+          "action": "enhancement.crash_lightning",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "any",
+            "conditions": [
+              {
+                "kind": "all",
+                "conditions": [
+                  {
+                    "kind": "truthy",
+                    "value": {
+                      "kind": "state",
+                      "path": [
+                        "talents",
+                        "enhancement.thorims_invocation",
+                        "enabled"
+                      ],
+                      "capability": "ADDON_AVAILABLE"
+                    }
+                  },
+                  {
+                    "kind": "truthy",
+                    "value": {
+                      "kind": "state",
+                      "path": [
+                        "auras",
+                        "enhancement.doom_winds",
+                        "active"
+                      ],
+                      "capability": "CONDITIONALLY_SECRET"
+                    }
+                  }
+                ]
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.ascendance",
+                    "active"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_stormstrike_1",
+          "priority": 80,
+          "action": "enhancement.stormstrike",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "all",
+            "conditions": [
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "talents",
+                    "enhancement.thorims_invocation",
+                    "enabled"
+                  ],
+                  "capability": "ADDON_AVAILABLE"
+                }
+              },
+              {
+                "kind": "truthy",
+                "value": {
+                  "kind": "state",
+                  "path": [
+                    "auras",
+                    "enhancement.doom_winds",
+                    "active"
+                  ],
+                  "capability": "CONDITIONALLY_SECRET"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_crash_lightning_2",
+          "priority": 90,
+          "action": "enhancement.crash_lightning",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "not",
+            "condition": {
+              "kind": "truthy",
+              "value": {
+                "kind": "state",
+                "path": [
+                  "auras",
+                  "enhancement.crash_lightning",
+                  "active"
+                ],
+                "capability": "CONDITIONALLY_SECRET"
+              }
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_lava_lash_1",
+          "priority": 100,
+          "action": "enhancement.lava_lash",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_sundering_1",
+          "priority": 110,
+          "action": "enhancement.sundering",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "compare",
+            "operator": "gt",
+            "left": {
+              "kind": "state",
+              "path": [
+                "cooldowns",
+                "enhancement.surging_totem",
+                "remains"
+              ],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 25
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_stormstrike_2",
+          "priority": 120,
+          "action": "enhancement.stormstrike",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_voltaic_blaze_2",
+          "priority": 130,
+          "action": "enhancement.voltaic_blaze",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_crash_lightning_3",
+          "priority": 140,
+          "action": "enhancement.crash_lightning",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_lightning_bolt_1",
+          "priority": 150,
+          "action": "enhancement.lightning_bolt",
+          "capability": "CONDITIONALLY_SECRET",
+          "onUnavailable": "skip_rule",
+          "when": {
+            "kind": "compare",
+            "operator": "gte",
+            "left": {
+              "kind": "state",
+              "path": [
+                "resources",
+                "enhancement.maelstrom_weapon",
+                "current"
+              ],
+              "capability": "CONDITIONALLY_SECRET"
+            },
+            "right": {
+              "kind": "literal",
+              "value": 5
+            }
+          }
+        },
+        {
+          "id": "enhancement.single_totemic_flame_shock_2",
+          "priority": 160,
+          "action": "enhancement.flame_shock",
+          "capability": "ADDON_AVAILABLE",
+          "when": {
+            "kind": "constant",
+            "value": true
+          }
+        }
+      ]
+    }
+  ]
+}

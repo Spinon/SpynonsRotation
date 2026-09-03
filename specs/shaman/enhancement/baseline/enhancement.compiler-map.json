@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "document": {
+    "id": "enhancement.simc_baseline",
+    "version": "12.1.0-1",
+    "description": "Baseline Enhancement preservada do SimulationCraft 1210.01; subconjunto reversível sem curadoria de prioridade.",
+    "entrypoint": "single_sb",
+    "priorityStep": 10
+  },
+  "actions": [
+    {
+      "simc": "ascendance",
+      "dsl": "enhancement.ascendance"
+    },
+    {
+      "simc": "chain_lightning",
+      "dsl": "enhancement.chain_lightning"
+    },
+    {
+      "simc": "crash_lightning",
+      "dsl": "enhancement.crash_lightning"
+    },
+    {
+      "simc": "doom_winds",
+      "dsl": "enhancement.doom_winds"
+    },
+    {
+      "simc": "flame_shock",
+      "dsl": "enhancement.flame_shock"
+    },
+    {
+      "simc": "flametongue_weapon",
+      "dsl": "enhancement.flametongue_weapon"
+    },
+    {
+      "simc": "lava_lash",
+      "dsl": "enhancement.lava_lash"
+    },
+    {
+      "simc": "lightning_bolt",
+      "dsl": "enhancement.lightning_bolt"
+    },
+    {
+      "simc": "lightning_shield",
+      "dsl": "enhancement.lightning_shield"
+    },
+    {
+      "simc": "primordial_storm",
+      "dsl": "enhancement.primordial_storm"
+    },
+    {
+      "simc": "stormstrike",
+      "dsl": "enhancement.stormstrike"
+    },
+    {
+      "simc": "sundering",
+      "dsl": "enhancement.sundering"
+    },
+    {
+      "simc": "surging_totem",
+      "dsl": "enhancement.surging_totem"
+    },
+    {
+      "simc": "tempest",
+      "dsl": "enhancement.tempest"
+    },
+    {
+      "simc": "voltaic_blaze",
+      "dsl": "enhancement.voltaic_blaze"
+    },
+    {
+      "simc": "windfury_weapon",
+      "dsl": "enhancement.windfury_weapon"
+    },
+    {
+      "simc": "windstrike",
+      "dsl": "enhancement.windstrike"
+    }
+  ],
+  "states": [
+    {
+      "simc": "buff.ascendance.up",
+      "path": [
+        "auras",
+        "enhancement.ascendance",
+        "active"
+      ],
+      "capability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "simc": "buff.crash_lightning.up",
+      "path": [
+        "auras",
+        "enhancement.crash_lightning",
+        "active"
+      ],
+      "capability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "simc": "buff.doom_winds.up",
+      "path": [
+        "auras",
+        "enhancement.doom_winds",
+        "active"
+      ],
+      "capability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "simc": "buff.hot_hand.up",
+      "path": [
+        "auras",
+        "enhancement.hot_hand",
+        "active"
+      ],
+      "capability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "simc": "buff.maelstrom_weapon.stack",
+      "path": [
+        "resources",
+        "enhancement.maelstrom_weapon",
+        "current"
+      ],
+      "capability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "simc": "buff.primordial_storm.remains",
+      "path": [
+        "auras",
+        "enhancement.primordial_storm",
+        "remains"
+      ],
+      "capability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "simc": "charges_fractional",
+      "path": [
+        "cooldowns",
+        "enhancement.stormstrike",
+        "charges_fractional"
+      ],
+      "capability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "simc": "cooldown.surging_totem.remains",
+      "path": [
+        "cooldowns",
+        "enhancement.surging_totem",
+        "remains"
+      ],
+      "capability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "simc": "debuff.lashing_flames.up",
+      "path": [
+        "auras",
+        "enhancement.lashing_flames",
+        "active"
+      ],
+      "capability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "simc": "dot.flame_shock.remains",
+      "path": [
+        "auras",
+        "enhancement.flame_shock",
+        "remains"
+      ],
+      "capability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "simc": "talent.feral_spirit.enabled",
+      "path": [
+        "talents",
+        "enhancement.feral_spirit",
+        "enabled"
+      ],
+      "capability": "ADDON_AVAILABLE"
+    },
+    {
+      "simc": "talent.fire_nova.enabled",
+      "path": [
+        "talents",
+        "enhancement.fire_nova",
+        "enabled"
+      ],
+      "capability": "ADDON_AVAILABLE"
+    },
+    {
+      "simc": "talent.lashing_flames.enabled",
+      "path": [
+        "talents",
+        "enhancement.lashing_flames",
+        "enabled"
+      ],
+      "capability": "ADDON_AVAILABLE"
+    },
+    {
+      "simc": "talent.splitstream.enabled",
+      "path": [
+        "talents",
+        "enhancement.splitstream",
+        "enabled"
+      ],
+      "capability": "ADDON_AVAILABLE"
+    },
+    {
+      "simc": "talent.surging_elements.enabled",
+      "path": [
+        "talents",
+        "enhancement.surging_elements",
+        "enabled"
+      ],
+      "capability": "ADDON_AVAILABLE"
+    },
+    {
+      "simc": "talent.surging_totem.enabled",
+      "path": [
+        "talents",
+        "enhancement.surging_totem",
+        "enabled"
+      ],
+      "capability": "ADDON_AVAILABLE"
+    },
+    {
+      "simc": "talent.thorims_invocation.enabled",
+      "path": [
+        "talents",
+        "enhancement.thorims_invocation",
+        "enabled"
+      ],
+      "capability": "ADDON_AVAILABLE"
+    },
+    {
+      "simc": "ticking",
+      "path": [
+        "auras",
+        "enhancement.flame_shock",
+        "active"
+      ],
+      "capability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "simc": "time",
+      "path": [
+        "combat",
+        "elapsed_seconds"
+      ],
+      "capability": "ADDON_AVAILABLE"
+    }
+  ]
+}

@@ -1,0 +1,799 @@
+{
+  "schemaVersion": 1,
+  "source": "upstream.simc",
+  "normalizedSource": "normalized.simc",
+  "totalActionLines": 113,
+  "decisions": [
+    {
+      "line": 9,
+      "source": "actions.precombat=windfury_weapon",
+      "disposition": "normalized",
+      "normalizedLine": "actions.precombat=/windfury_weapon",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 10,
+      "source": "actions.precombat+=/flametongue_weapon",
+      "disposition": "normalized",
+      "normalizedLine": "actions.precombat+=/flametongue_weapon",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 11,
+      "source": "actions.precombat+=/lightning_shield",
+      "disposition": "normalized",
+      "normalizedLine": "actions.precombat+=/lightning_shield",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 12,
+      "source": "actions.precombat+=/variable,name=trinket1_is_weird,value=trinket.1.is.algethar_puzzle_box|trinket.1.is.unyielding_netherprism|trinket.1.is.font_of_venomous_rage",
+      "disposition": "source_only",
+      "reason": "unsupported_control_action",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 13,
+      "source": "actions.precombat+=/variable,name=trinket2_is_weird,value=trinket.2.is.algethar_puzzle_box|trinket.2.is.unyielding_netherprism|trinket.2.is.font_of_venomous_rage",
+      "disposition": "source_only",
+      "reason": "unsupported_control_action",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 15,
+      "source": "actions.precombat+=/snapshot_stats",
+      "disposition": "source_only",
+      "reason": "outside_enhancement_catalog",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 16,
+      "source": "actions.precombat+=/use_item,name=algethar_puzzle_box",
+      "disposition": "source_only",
+      "reason": "outside_enhancement_catalog",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 17,
+      "source": "actions.precombat+=/potion,if=!potion.liquid_luster",
+      "disposition": "source_only",
+      "reason": "outside_enhancement_catalog",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 18,
+      "source": "actions.precombat+=/potion,pre_pot_time=12,if=potion.liquid_luster",
+      "disposition": "source_only",
+      "reason": "simulation_scheduling",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 21,
+      "source": "actions=variable,name=target_nature_mod,value=(1+debuff.chaos_brand.up*debuff.chaos_brand.value)*(1+(debuff.hunters_mark.up*target.health.pct>=80)*debuff.hunters_mark.value)",
+      "disposition": "source_only",
+      "reason": "unsupported_control_action",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 22,
+      "source": "actions+=/variable,name=expected_lb_funnel,value=action.lightning_bolt.damage*(1+debuff.lightning_rod.up*variable.target_nature_mod*(1+active_dot.flame_shock)*debuff.lightning_rod.value)",
+      "disposition": "source_only",
+      "reason": "simulation_damage_model",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 23,
+      "source": "actions+=/variable,name=expected_cl_funnel,value=action.chain_lightning.damage*(1+debuff.lightning_rod.up*variable.target_nature_mod*active_enemies*debuff.lightning_rod.value)",
+      "disposition": "source_only",
+      "reason": "simulation_damage_model",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 24,
+      "source": "actions+=/variable,name=flame_shock_saturated,value=((active_dot.flame_shock=active_enemies)|(active_dot.flame_shock=6))",
+      "disposition": "source_only",
+      "reason": "unsupported_control_action",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 25,
+      "source": "actions+=/bloodlust,line_cd=600",
+      "disposition": "source_only",
+      "reason": "outside_enhancement_catalog",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 26,
+      "source": "actions+=/auto_attack",
+      "disposition": "source_only",
+      "reason": "outside_enhancement_catalog",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 27,
+      "source": "actions+=/call_action_list,name=single_sb,if=active_enemies=1&!talent.surging_totem.enabled",
+      "disposition": "source_only",
+      "reason": "unsupported_control_flow",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 28,
+      "source": "actions+=/call_action_list,name=single_totemic,if=active_enemies=1&talent.surging_totem.enabled",
+      "disposition": "source_only",
+      "reason": "unsupported_control_flow",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 29,
+      "source": "actions+=/call_action_list,name=aoe,if=active_enemies>1",
+      "disposition": "source_only",
+      "reason": "unsupported_control_flow",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 32,
+      "source": "actions.aoe=voltaic_blaze,if=talent.surging_totem.enabled&dot.flame_shock.remains=0",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe=/voltaic_blaze,if=talent.surging_totem.enabled&dot.flame_shock.remains=0",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 33,
+      "source": "actions.aoe+=/flame_shock,if=!ticking",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/flame_shock,if=!ticking",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 34,
+      "source": "actions.aoe+=/surging_totem",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/surging_totem",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 35,
+      "source": "actions.aoe+=/ascendance,if=ti_chain_lightning",
+      "disposition": "source_only",
+      "reason": "unsupported_simc_semantics",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 36,
+      "source": "actions.aoe+=/call_action_list,name=cooldowns",
+      "disposition": "source_only",
+      "reason": "unsupported_control_flow",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 37,
+      "source": "actions.aoe+=/sundering,if=talent.surging_elements.enabled|buff.whirling_earth.up",
+      "disposition": "source_only",
+      "reason": "state_not_cataloged",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 38,
+      "source": "actions.aoe+=/lava_lash,if=buff.whirling_fire.up",
+      "disposition": "source_only",
+      "reason": "state_not_cataloged",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 39,
+      "source": "actions.aoe+=/doom_winds",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/doom_winds",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 40,
+      "source": "actions.aoe+=/crash_lightning,if=talent.thorims_invocation.enabled&buff.whirling_air.up&(buff.doom_winds.up|buff.ascendance.up)",
+      "disposition": "source_only",
+      "reason": "state_not_cataloged",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 41,
+      "source": "actions.aoe+=/windstrike,if=talent.thorims_invocation.enabled&buff.whirling_air.up",
+      "disposition": "source_only",
+      "reason": "state_not_cataloged",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 42,
+      "source": "actions.aoe+=/stormstrike,if=talent.thorims_invocation.enabled&buff.doom_winds.up&buff.whirling_air.up",
+      "disposition": "source_only",
+      "reason": "state_not_cataloged",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 43,
+      "source": "actions.aoe+=/lava_lash,if=talent.splitstream.enabled&buff.hot_hand.up",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/lava_lash,if=talent.splitstream.enabled&buff.hot_hand.up",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 44,
+      "source": "actions.aoe+=/tempest,if=buff.maelstrom_weapon.stack>=10&(!buff.ascendance.up|!buff.doom_winds.up)",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/tempest,if=buff.maelstrom_weapon.stack>=10&(!buff.ascendance.up|!buff.doom_winds.up)",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 45,
+      "source": "actions.aoe+=/primordial_storm,if=buff.maelstrom_weapon.stack>=10",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/primordial_storm,if=buff.maelstrom_weapon.stack>=10",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 46,
+      "source": "actions.aoe+=/crash_lightning,if=talent.thorims_invocation.enabled&(buff.doom_winds.up|buff.ascendance.up)&talent.splitstream.enabled&buff.hot_hand.up",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/crash_lightning,if=talent.thorims_invocation.enabled&(buff.doom_winds.up|buff.ascendance.up)&talent.splitstream.enabled&buff.hot_hand.up",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 47,
+      "source": "actions.aoe+=/windstrike,if=talent.thorims_invocation.enabled&talent.splitstream.enabled&buff.hot_hand.up",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/windstrike,if=talent.thorims_invocation.enabled&talent.splitstream.enabled&buff.hot_hand.up",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 48,
+      "source": "actions.aoe+=/stormstrike,if=talent.thorims_invocation.enabled&buff.doom_winds.up&talent.splitstream.enabled&buff.hot_hand.up",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/stormstrike,if=talent.thorims_invocation.enabled&buff.doom_winds.up&talent.splitstream.enabled&buff.hot_hand.up",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 49,
+      "source": "actions.aoe+=/chain_lightning,if=buff.maelstrom_weapon.stack>=(9+1*talent.surging_totem.enabled)&talent.splitstream.enabled&buff.hot_hand.up",
+      "disposition": "source_only",
+      "reason": "unsupported_arithmetic",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 50,
+      "source": "actions.aoe+=/voltaic_blaze,if=talent.fire_nova.enabled|set_bonus.midnight_season_2_2pc",
+      "disposition": "source_only",
+      "reason": "state_not_modeled",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 51,
+      "source": "actions.aoe+=/crash_lightning",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/crash_lightning",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 52,
+      "source": "actions.aoe+=/windstrike,if=talent.thorims_invocation.enabled",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/windstrike,if=talent.thorims_invocation.enabled",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 53,
+      "source": "actions.aoe+=/stormstrike,if=talent.thorims_invocation.enabled&buff.doom_winds.up",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/stormstrike,if=talent.thorims_invocation.enabled&buff.doom_winds.up",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 54,
+      "source": "actions.aoe+=/chain_lightning,if=buff.maelstrom_weapon.stack>=(9+1*talent.surging_totem.enabled)",
+      "disposition": "source_only",
+      "reason": "unsupported_arithmetic",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 55,
+      "source": "actions.aoe+=/sundering,if=talent.feral_spirit.enabled",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/sundering,if=talent.feral_spirit.enabled",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 56,
+      "source": "actions.aoe+=/voltaic_blaze",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/voltaic_blaze",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 57,
+      "source": "actions.aoe+=/lava_lash,if=pet.searing_totem.active",
+      "disposition": "source_only",
+      "reason": "state_not_cataloged",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 58,
+      "source": "actions.aoe+=/windstrike",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/windstrike",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 59,
+      "source": "actions.aoe+=/stormstrike,if=charges_fractional>=1.8|buff.converging_storms.stack=buff.converging_storms.max_stack",
+      "disposition": "source_only",
+      "reason": "state_not_cataloged",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 60,
+      "source": "actions.aoe+=/sundering,if=cooldown.surging_totem.remains>25",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/sundering,if=cooldown.surging_totem.remains>25",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 61,
+      "source": "actions.aoe+=/stormstrike,if=!talent.surging_totem.enabled",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/stormstrike,if=!talent.surging_totem.enabled",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 62,
+      "source": "actions.aoe+=/lava_lash",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/lava_lash",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 63,
+      "source": "actions.aoe+=/stormstrike",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/stormstrike",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 64,
+      "source": "actions.aoe+=/chain_lightning,if=buff.maelstrom_weapon.stack>=5",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/chain_lightning,if=buff.maelstrom_weapon.stack>=5",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 65,
+      "source": "actions.aoe+=/flame_shock",
+      "disposition": "normalized",
+      "normalizedLine": "actions.aoe+=/flame_shock",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 68,
+      "source": "actions.cooldowns=use_item,name=algethar_puzzle_box,if=(talent.ascendance.enabled&(cooldown.ascendance.remains<2*gcd.max))|(talent.doom_winds.enabled&!talent.ascendance.enabled&(cooldown.doom_winds.remains<2*gcd.max))|(fight_remains%%120<=20)",
+      "disposition": "source_only",
+      "reason": "simulation_future_knowledge",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 69,
+      "source": "actions.cooldowns+=/use_item,name=unyielding_netherprism,if=(talent.ascendance.enabled&(cooldown.ascendance.remains<2*gcd.max))|(talent.doom_winds.enabled&!talent.ascendance.enabled&(cooldown.doom_winds.remains<2*gcd.max))|fight_remains<=20",
+      "disposition": "source_only",
+      "reason": "simulation_future_knowledge",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 70,
+      "source": "actions.cooldowns+=/use_item,slot=trinket1,if=!variable.trinket1_is_weird&((buff.ascendance.up|buff.doom_winds.up|pet.surging_totem.active|(fight_remains<=20)|(!talent.ascendance.enabled&!talent.doom_winds.enabled&!talent.surging_totem.enabled))|!trinket.1.has_use_buff)",
+      "disposition": "source_only",
+      "reason": "simulation_future_knowledge",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 71,
+      "source": "actions.cooldowns+=/use_item,slot=trinket2,if=!variable.trinket2_is_weird&((buff.ascendance.up|buff.doom_winds.up|pet.surging_totem.active|(fight_remains<=20)|(!talent.ascendance.enabled&!talent.doom_winds.enabled&!talent.surging_totem.enabled))|!trinket.2.has_use_buff)",
+      "disposition": "source_only",
+      "reason": "simulation_future_knowledge",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 72,
+      "source": "actions.cooldowns+=/use_item,name=font_of_venomous_rage,if=!buff.ascendance.up&((!trinket.1.has_use_buff&!trinket.2.has_use_buff)|time>=20)",
+      "disposition": "source_only",
+      "reason": "outside_enhancement_catalog",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 73,
+      "source": "actions.cooldowns+=/potion,if=(buff.ascendance.up|buff.doom_winds.up|pet.surging_totem.active|(fight_remains%%300<=30)|(!talent.ascendance.enabled&!talent.doom_winds.enabled&!talent.surging_totem.enabled))",
+      "disposition": "source_only",
+      "reason": "simulation_future_knowledge",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 74,
+      "source": "actions.cooldowns+=/blood_fury,if=(buff.ascendance.up|buff.doom_winds.up|pet.surging_totem.active|(fight_remains%%action.blood_fury.cooldown<=action.blood_fury.duration)|(!talent.ascendance.enabled&!talent.doom_winds.enabled&!talent.surging_totem.enabled))",
+      "disposition": "source_only",
+      "reason": "simulation_future_knowledge",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 75,
+      "source": "actions.cooldowns+=/berserking,if=(buff.ascendance.up|buff.doom_winds.up|pet.surging_totem.active|(fight_remains%%action.berserking.cooldown<=action.berserking.duration)|(!talent.ascendance.enabled&!talent.doom_winds.enabled&!talent.surging_totem.enabled))",
+      "disposition": "source_only",
+      "reason": "simulation_future_knowledge",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 76,
+      "source": "actions.cooldowns+=/fireblood,if=(buff.ascendance.up|buff.doom_winds.up|pet.surging_totem.active|(fight_remains%%action.fireblood.cooldown<=action.fireblood.duration)|(!talent.ascendance.enabled&!talent.doom_winds.enabled&!talent.surging_totem.enabled))",
+      "disposition": "source_only",
+      "reason": "simulation_future_knowledge",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 77,
+      "source": "actions.cooldowns+=/ancestral_call,if=(buff.ascendance.up|buff.doom_winds.up|pet.surging_totem.active|(fight_remains%%action.ancestral_call.cooldown<=action.ancestral_call.duration)|(!talent.ascendance.enabled&!talent.doom_winds.enabled&!talent.surging_totem.enabled))",
+      "disposition": "source_only",
+      "reason": "simulation_future_knowledge",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 78,
+      "source": "actions.cooldowns+=/invoke_external_buff,name=power_infusion,if=((talent.deeply_rooted_elements.enabled&buff.ascendance.remains>7.5)|(!talent.deeply_rooted_elements.enabled&(buff.ascendance.up|buff.doom_winds.up|pet.surging_totem.active))|(fight_remains%%120<=20)|(!talent.ascendance.enabled&!talent.doom_winds.enabled&!talent.surging_totem.enabled)|cooldown.ascendance.remains<gcd.max)",
+      "disposition": "source_only",
+      "reason": "simulation_future_knowledge",
+      "requiredCapability": "SIM_ONLY"
+    },
+    {
+      "line": 81,
+      "source": "actions.single_sb=primordial_storm,if=(buff.maelstrom_weapon.stack>=9|buff.primordial_storm.remains<=4&buff.maelstrom_weapon.stack>=5)",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb=/primordial_storm,if=(buff.maelstrom_weapon.stack>=9|buff.primordial_storm.remains<=4&buff.maelstrom_weapon.stack>=5)",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 82,
+      "source": "actions.single_sb+=/voltaic_blaze,if=dot.flame_shock.remains=0&time<5",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/voltaic_blaze,if=dot.flame_shock.remains=0&time<5",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 83,
+      "source": "actions.single_sb+=/flame_shock,if=!ticking",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/flame_shock,if=!ticking",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 84,
+      "source": "actions.single_sb+=/lava_lash,if=!debuff.lashing_flames.up&time<5",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/lava_lash,if=!debuff.lashing_flames.up&time<5",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 85,
+      "source": "actions.single_sb+=/stormstrike,if=time<1",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/stormstrike,if=time<1",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 86,
+      "source": "actions.single_sb+=/call_action_list,name=cooldowns",
+      "disposition": "source_only",
+      "reason": "unsupported_control_flow",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 87,
+      "source": "actions.single_sb+=/sundering,if=talent.surging_elements.enabled|talent.feral_spirit.enabled",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/sundering,if=talent.surging_elements.enabled|talent.feral_spirit.enabled",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 88,
+      "source": "actions.single_sb+=/doom_winds",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/doom_winds",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 89,
+      "source": "actions.single_sb+=/voltaic_blaze,if=set_bonus.midnight_season_2_2pc",
+      "disposition": "source_only",
+      "reason": "state_not_modeled",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 90,
+      "source": "actions.single_sb+=/crash_lightning,if=!buff.crash_lightning.up|talent.storm_unleashed.enabled",
+      "disposition": "source_only",
+      "reason": "ambiguous_talent_mapping",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 91,
+      "source": "actions.single_sb+=/voltaic_blaze,if=(buff.doom_winds.up&buff.maelstrom_weapon.stack>=10-(1+2*talent.fire_nova.enabled)&!buff.maelstrom_weapon.stack=10)&talent.thorims_invocation.enabled",
+      "disposition": "source_only",
+      "reason": "unsupported_arithmetic",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 92,
+      "source": "actions.single_sb+=/windstrike,if=buff.maelstrom_weapon.stack>0&talent.thorims_invocation.enabled",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/windstrike,if=buff.maelstrom_weapon.stack>0&talent.thorims_invocation.enabled",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 93,
+      "source": "actions.single_sb+=/ascendance",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/ascendance",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 94,
+      "source": "actions.single_sb+=/stormstrike,if=buff.doom_winds.up&talent.thorims_invocation.enabled",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/stormstrike,if=buff.doom_winds.up&talent.thorims_invocation.enabled",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 95,
+      "source": "actions.single_sb+=/crash_lightning,if=buff.doom_winds.up&talent.thorims_invocation.enabled",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/crash_lightning,if=buff.doom_winds.up&talent.thorims_invocation.enabled",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 96,
+      "source": "actions.single_sb+=/tempest,if=buff.maelstrom_weapon.stack=10",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/tempest,if=buff.maelstrom_weapon.stack=10",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 97,
+      "source": "actions.single_sb+=/lightning_bolt,if=buff.maelstrom_weapon.stack=10",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/lightning_bolt,if=buff.maelstrom_weapon.stack=10",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 98,
+      "source": "actions.single_sb+=/stormstrike,if=charges_fractional>=1.8",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/stormstrike,if=charges_fractional>=1.8",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 99,
+      "source": "actions.single_sb+=/lava_lash,if=talent.lashing_flames.enabled",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/lava_lash,if=talent.lashing_flames.enabled",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 100,
+      "source": "actions.single_sb+=/stormstrike",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/stormstrike",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 101,
+      "source": "actions.single_sb+=/voltaic_blaze",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/voltaic_blaze",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 102,
+      "source": "actions.single_sb+=/sundering",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/sundering",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 103,
+      "source": "actions.single_sb+=/lava_lash",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/lava_lash",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 104,
+      "source": "actions.single_sb+=/lightning_bolt,if=buff.maelstrom_weapon.stack>=8",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/lightning_bolt,if=buff.maelstrom_weapon.stack>=8",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 105,
+      "source": "actions.single_sb+=/crash_lightning",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/crash_lightning",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 106,
+      "source": "actions.single_sb+=/lightning_bolt,if=buff.maelstrom_weapon.stack>=5",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/lightning_bolt,if=buff.maelstrom_weapon.stack>=5",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 107,
+      "source": "actions.single_sb+=/flame_shock",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_sb+=/flame_shock",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 110,
+      "source": "actions.single_totemic=voltaic_blaze,if=dot.flame_shock.remains=0",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic=/voltaic_blaze,if=dot.flame_shock.remains=0",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 111,
+      "source": "actions.single_totemic+=/flame_shock,if=!ticking",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/flame_shock,if=!ticking",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 112,
+      "source": "actions.single_totemic+=/surging_totem",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/surging_totem",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 113,
+      "source": "actions.single_totemic+=/call_action_list,name=cooldowns",
+      "disposition": "source_only",
+      "reason": "unsupported_control_flow",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 114,
+      "source": "actions.single_totemic+=/sundering,if=talent.surging_elements.enabled|buff.whirling_earth.up|talent.feral_spirit.enabled",
+      "disposition": "source_only",
+      "reason": "state_not_cataloged",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 115,
+      "source": "actions.single_totemic+=/lava_lash,if=buff.whirling_fire.up|buff.hot_hand.up",
+      "disposition": "source_only",
+      "reason": "state_not_cataloged",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 116,
+      "source": "actions.single_totemic+=/doom_winds",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/doom_winds",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 117,
+      "source": "actions.single_totemic+=/voltaic_blaze,if=set_bonus.midnight_season_2_2pc",
+      "disposition": "source_only",
+      "reason": "state_not_modeled",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 118,
+      "source": "actions.single_totemic+=/crash_lightning,if=!buff.crash_lightning.up|talent.storm_unleashed.enabled",
+      "disposition": "source_only",
+      "reason": "ambiguous_talent_mapping",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 119,
+      "source": "actions.single_totemic+=/primordial_storm,if=(buff.maelstrom_weapon.stack>=10|buff.primordial_storm.remains<3.5&buff.maelstrom_weapon.stack>=5)",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/primordial_storm,if=(buff.maelstrom_weapon.stack>=10|buff.primordial_storm.remains<3.5&buff.maelstrom_weapon.stack>=5)",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 120,
+      "source": "actions.single_totemic+=/windstrike,if=talent.thorims_invocation.enabled&buff.ascendance.up",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/windstrike,if=talent.thorims_invocation.enabled&buff.ascendance.up",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 121,
+      "source": "actions.single_totemic+=/ascendance,if=ti_lightning_bolt",
+      "disposition": "source_only",
+      "reason": "unsupported_simc_semantics",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 122,
+      "source": "actions.single_totemic+=/crash_lightning,if=talent.thorims_invocation.enabled&buff.doom_winds.up|buff.ascendance.up",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/crash_lightning,if=talent.thorims_invocation.enabled&buff.doom_winds.up|buff.ascendance.up",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 123,
+      "source": "actions.single_totemic+=/stormstrike,if=talent.thorims_invocation.enabled&buff.doom_winds.up",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/stormstrike,if=talent.thorims_invocation.enabled&buff.doom_winds.up",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 124,
+      "source": "actions.single_totemic+=/lightning_bolt,if=talent.elemental_tempo.enabled&(buff.maelstrom_weapon.stack>=5&(cooldown.lava_lash.remains>gcd.max)&(cooldown.lava_lash.remains<=buff.maelstrom_weapon.stack*0.3)|buff.maelstrom_weapon.stack>=10)",
+      "disposition": "source_only",
+      "reason": "unsupported_arithmetic",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 125,
+      "source": "actions.single_totemic+=/crash_lightning,if=!buff.crash_lightning.up",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/crash_lightning,if=!buff.crash_lightning.up",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 126,
+      "source": "actions.single_totemic+=/lava_lash",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/lava_lash",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 127,
+      "source": "actions.single_totemic+=/sundering,if=cooldown.surging_totem.remains>25",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/sundering,if=cooldown.surging_totem.remains>25",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 128,
+      "source": "actions.single_totemic+=/stormstrike",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/stormstrike",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 129,
+      "source": "actions.single_totemic+=/voltaic_blaze",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/voltaic_blaze",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 130,
+      "source": "actions.single_totemic+=/crash_lightning",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/crash_lightning",
+      "requiredCapability": "ADDON_AVAILABLE"
+    },
+    {
+      "line": 131,
+      "source": "actions.single_totemic+=/lightning_bolt,if=buff.maelstrom_weapon.stack>=5",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/lightning_bolt,if=buff.maelstrom_weapon.stack>=5",
+      "requiredCapability": "CONDITIONALLY_SECRET"
+    },
+    {
+      "line": 132,
+      "source": "actions.single_totemic+=/flame_shock",
+      "disposition": "normalized",
+      "normalizedLine": "actions.single_totemic+=/flame_shock",
+      "requiredCapability": "ADDON_AVAILABLE"
+    }
+  ]
+}

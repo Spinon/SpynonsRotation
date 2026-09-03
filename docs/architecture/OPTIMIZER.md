@@ -133,6 +133,6 @@ Enhancement ou recomendação de produto.
 ## Fronteiras futuras
 
 A suíte da `LAB-006`, descrita em [`REGRESSION.md`](REGRESSION.md), compara resultados da candidata,
-baseline e release anterior com proveniência e seeds pareadas. `ENH-002` fornecerá a primeira
-baseline real. Tournament, evolutionary search, aleatoriedade e promoção automática permanecem
-fora desta versão.
+baseline e release anterior com proveniência e seeds pareadas. A primeira baseline real está
+preservada pela `ENH-002`; tournament, evolutionary search, aleatoriedade e promoção automática
+permanecem fora desta versão.

@@ -35,6 +35,8 @@ O beam search reproduzível e seus contratos de mutação e avaliação estão d
 A suíte determinística de comparação entre baseline, candidata e release anterior está definida em [`REGRESSION.md`](REGRESSION.md).
 O primeiro catálogo concreto e sua disponibilidade por loadout estão definidos em
 [`ENHANCEMENT_CATALOG.md`](ENHANCEMENT_CATALOG.md).
+A proveniência, auditoria e normalização da primeira APL real estão definidas em
+[`ENHANCEMENT_BASELINE.md`](ENHANCEMENT_BASELINE.md).
 
 ## Contratos do Core
 

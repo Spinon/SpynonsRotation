@@ -33,7 +33,8 @@ specs/shaman/enhancement/catalog.json
 - `CatalogData.lua` é um derivado e não deve ser editado manualmente;
 - `Module.lua` pertence exclusivamente à spec e converte definições em `Action` genérica;
 - Core, Compat, UI e outras specs não importam o catálogo;
-- o módulo registra `classId=7`, `specId=263` e retorna `getRules() = {}` até a ENH-002.
+- o módulo registra `classId=7`, `specId=263` e ainda retorna `getRules() = {}` porque a baseline
+  da ENH-002 é dado de pesquisa; o contrato de avaliação e sua integração pertencem ao runtime.
 
 ## Disponibilidade
 
@@ -96,3 +97,6 @@ As notas da Blizzard dão contexto de versão, mas não substituem a verificaç�
 
 `enhancement:check` é offline e prova schema, referências e paridade do Lua. `simc-check` consulta o
 DBC local pinado. Nenhum dos dois constitui validação dentro do World of Warcraft.
+
+A APL versionada que consome este catálogo e suas fronteiras de runtime estão documentadas em
+[`ENHANCEMENT_BASELINE.md`](ENHANCEMENT_BASELINE.md).

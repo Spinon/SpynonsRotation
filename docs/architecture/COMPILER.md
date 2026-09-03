@@ -111,6 +111,6 @@ reescreve goldens automaticamente.
 ## Limites atuais
 
 A fixture comprova o pipeline, não uma rotação real nem um perfil executável do SimulationCraft.
-A baseline de Enhancement será curada em `ENH-002`, depois do catálogo da spec. Novas construções
-SimC só devem entrar quando puderem ser representadas sem perda e cobertas por round-trip e golden
-files.
+A baseline de Enhancement da `ENH-002` aplica esse subconjunto à primeira APL real e está descrita
+em [`ENHANCEMENT_BASELINE.md`](ENHANCEMENT_BASELINE.md). Novas construções SimC só devem entrar
+quando puderem ser representadas sem perda e cobertas por round-trip e golden files.

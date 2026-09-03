@@ -85,5 +85,5 @@ altera fixtures e não produz uma recomendação de rotação.
 O optimizer da `LAB-005`, descrito em [`OPTIMIZER.md`](OPTIMIZER.md), consome o resultado `eligible`
 para pesquisar candidatas sem duplicar o cálculo de fitness. A suíte da `LAB-006`, descrita em
 [`REGRESSION.md`](REGRESSION.md), reutiliza os mesmos guardrails para comparar baseline, candidata e
-release anterior. `ENH-002` fornecerá a primeira APL real. Nenhuma dessas responsabilidades
-pertence ao schema da matriz.
+release anterior. A APL real preservada pela `ENH-002` será consumida pelas curadorias de spec;
+nenhuma dessas responsabilidades pertence ao schema da matriz.
