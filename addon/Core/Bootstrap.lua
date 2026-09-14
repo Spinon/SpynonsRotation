@@ -10,6 +10,7 @@ local function initialize()
   end
 
   Spynon.initialized = true
+  Spynon.ContextController:Start()
   Spynon.Recommendations:Start()
   Spynon.QueueController:Start()
   Spynon.InGameHarness:Start()

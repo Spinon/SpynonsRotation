@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:20:46.521Z",
-  "currentFocus": "RUN-003",
+  "updatedAt": "2026-09-14T20:25:07.864Z",
+  "currentFocus": "UI-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -589,12 +589,12 @@
       "title": "Context detector",
       "lane": "RUNTIME",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T20:20:46.521Z",
+      "updatedAt": "2026-09-14T20:25:07.864Z",
       "reviewBy": null,
-      "nextAction": "Definir sinais e fallbacks do CombatContext.",
+      "nextAction": null,
       "dependencies": [
         "RUN-001",
         "CORE-004"
@@ -604,7 +604,13 @@
         "Override manual está disponível",
         "Ausência de capacidade degrada com segurança"
       ],
-      "evidence": []
+      "evidence": [
+        "addon/Core/ContextDetector.lua e ContextController.lua — modos genéricos, thresholds validados, atualização event-driven e override via /spynon context auto|st|cleave|aoe|status.",
+        "addon/Compat/Context.lua — ausência explícita de fonte de contagem homologada no Retail; AUTO usa ST como fallback, sem inventar count nem tratar nameplates como alcance de AoE.",
+        "tests/unit/context_detector_spec.lua — 7/7 testes: fronteiras, Secret Values, overrides, configuração, comandos e updates; contagens positivas são fixtures, não medições no cliente.",
+        "npm test — aprovado: 172 testes Node e 166 testes Lua; lint, typecheck e fronteiras sem problemas.",
+        "docs/architecture/CONTEXT_DETECTOR.md — limitações e semântica de fallback documentadas; não há alegação de detecção automática real de packs nem de validação Retail."
+      ]
     },
     {
       "id": "UI-DESIGN-001",

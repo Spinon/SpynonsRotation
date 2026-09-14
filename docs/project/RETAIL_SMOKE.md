@@ -26,6 +26,10 @@ TEST-002 permanece pendente; não há evidência de taint, lockdown, leitura em 
    desaparecer quando o cliente restringe sinais; nunca deve reutilizar dados protegidos anteriores.
 6. Executar `/spynon test` após o combate e `/reload` para persistir o relatório em SavedVariables.
 
+Também verificar `/spynon context st`, `cleave`, `aoe` e `auto`. O modo AUTO atualmente usa ST como
+fallback explícito: nenhuma fonte de contagem de inimigos está homologada no cliente. O override manual
+é de sessão e não deve ser confundido com uma contagem medida.
+
 `SpynonRotationDB.lastSmokeReport` guarda somente diagnóstico técnico, sem nome de personagem, conta,
 chat ou combat log. `visualInspection`, `taintInspection` e `combatInspection` permanecem `PENDING`;
 o comando não transforma execução automática em aprovação humana ou validação visual.

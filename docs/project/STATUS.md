@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:20:46.521Z
+Atualizado pelo board em: 2026-09-14T20:25:07.864Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**RUN-003 — Context detector**
+**UI-002 — Animator**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Definir sinais e fallbacks do CombatContext.
+Próxima ação: Implementar diff de fila e movimentos.
 
 ## Progresso
 
 - Planejadas: 23
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 32
+- Concluídas: 33
 - Total: 57
 
 ## Fila canônica
@@ -46,7 +46,7 @@ Próxima ação: Definir sinais e fallbacks do CombatContext.
 | ENH-006 | delivery | SHAMAN | Build de referência para iniciantes | done | P1 | ENH-005, LAB-005 |
 | RUN-001 | delivery | RUNTIME | State engine | done | P0 | CORE-001, CORE-004 |
 | RUN-002 | delivery | RUNTIME | Recommendation engine | done | P0 | RUN-001, CORE-002, LAB-003 |
-| RUN-003 | delivery | RUNTIME | Context detector | in_progress | P1 | RUN-001, CORE-004 |
+| RUN-003 | delivery | RUNTIME | Context detector | done | P1 | RUN-001, CORE-004 |
 | UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | done | P0 | UI-DESIGN-001 |
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | done | P1 | UI-DESIGN-002 |
@@ -252,6 +252,14 @@ Próxima ação: Definir sinais e fallbacks do CombatContext.
 - tests/unit/recommendation_engine_spec.lua — 17/17 testes com golden queues neutras, exclusões, sinais protegidos, autoria de aura e integração do módulo real.
 - npm test — aprovado: 172 testes Node, 144 testes Lua, paridade do bundle empacotado, layout, lint e typecheck sem problemas.
 - docs/architecture/RECOMMENDATION_ENGINE.md — integração talent-aware e limites explícitos: prioridades atuais, sem previsão de casts ou equivalência integral de DPS com SimC; validação exclusivamente offline.
+
+### RUN-003
+
+- addon/Core/ContextDetector.lua e ContextController.lua — modos genéricos, thresholds validados, atualização event-driven e override via /spynon context auto|st|cleave|aoe|status.
+- addon/Compat/Context.lua — ausência explícita de fonte de contagem homologada no Retail; AUTO usa ST como fallback, sem inventar count nem tratar nameplates como alcance de AoE.
+- tests/unit/context_detector_spec.lua — 7/7 testes: fronteiras, Secret Values, overrides, configuração, comandos e updates; contagens positivas são fixtures, não medições no cliente.
+- npm test — aprovado: 172 testes Node e 166 testes Lua; lint, typecheck e fronteiras sem problemas.
+- docs/architecture/CONTEXT_DETECTOR.md — limitações e semântica de fallback documentadas; não há alegação de detecção automática real de packs nem de validação Retail.
 
 ### UI-DESIGN-001
 
