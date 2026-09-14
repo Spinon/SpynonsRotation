@@ -10,11 +10,16 @@ local function initialize()
   end
 
   Spynon.initialized = true
+  for _, event in ipairs(Spynon.StateEngineFactory.Events) do
+    eventFrame:RegisterEvent(event)
+  end
 end
 
 eventFrame:RegisterEvent("ADDON_LOADED")
 eventFrame:SetScript("OnEvent", function(_, event, loadedAddonName)
   if event == "ADDON_LOADED" and loadedAddonName == addonName then
     initialize()
+  elseif Spynon.initialized then
+    Spynon.StateEngine:HandleEvent(event, loadedAddonName)
   end
 end)

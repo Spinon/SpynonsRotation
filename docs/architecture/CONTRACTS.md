@@ -46,13 +46,15 @@ A identidade é independente da posição, permitindo ao Animator reconhecer MOV
 
 ## PlayerState
 
-Snapshot normalizado produzido futuramente pelo State Engine:
+Snapshot normalizado produzido pelo [State Engine](STATE_ENGINE.md):
 
 - `revision`, `capturedAt`, `inCombat` e `specId` opcional;
 - mapas de `resources`, `auras`, `cooldowns` e `talents`;
 - mapa de capabilities por sinal observado.
 
-O contrato faz cópias rasas dos mapas para preservar ownership do snapshot. A camada `Compat` será responsável por não inserir valores proibidos ou secretos nesses mapas.
+O construtor faz cópias rasas dos mapas; o State Engine isola profundamente os snapshots publicados.
+`Compat.State` não insere valores proibidos ou secretos nesses mapas. Ausência de valor exige `SKIP`,
+nunca inferência de zero; o formato dos sinais e as capabilities por campo estão em `STATE_ENGINE.md`.
 
 ## CombatContext
 
@@ -67,7 +69,7 @@ Modos explícitos resolvem para si mesmos. `AUTO` precisa de um `resolvedMode` c
 
 ## SpecModule
 
-Descriptor consumido futuramente pelo registry:
+Descriptor consumido pelo registry:
 
 ```text
 id            class.spec
@@ -77,9 +79,11 @@ displayName   nome legível
 version       versão do módulo
 getActions    provider do catálogo de Action
 getRules      provider de regras/DSL
+getStateQueries provider opcional de consultas públicas para o State Engine
 ```
 
-`SpecModule` não se registra sozinho e não avalia regras. O serviço e a ordem de carregamento estão documentados em [`SPEC_REGISTRY.md`](SPEC_REGISTRY.md); detecção real de spec/talentos é `CORE-003`.
+`SpecModule` não se registra sozinho e não avalia regras. O serviço e a ordem de carregamento estão documentados em [`SPEC_REGISTRY.md`](SPEC_REGISTRY.md); detecção de spec/talentos está em [`SPEC_DETECTION.md`](SPEC_DETECTION.md).
+`getStateQueries(detectedSpec)` é opcional e retrocompatível; seu schema e lifecycle estão em [`STATE_ENGINE.md`](STATE_ENGINE.md).
 
 ## Fluxo de ownership
 

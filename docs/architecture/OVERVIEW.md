@@ -28,6 +28,7 @@ Dependências apontam para contratos estáveis. Uma pasta genérica não pode de
 
 O registry plugável de classes/specs e sua ordem de carregamento estão definidos em [`SPEC_REGISTRY.md`](SPEC_REGISTRY.md).
 A composição segura da spec ativa, módulo e talentos está definida em [`SPEC_DETECTION.md`](SPEC_DETECTION.md).
+Os snapshots observáveis e a atualização incremental por eventos estão definidos em [`STATE_ENGINE.md`](STATE_ENGINE.md).
 A representação intermediária declarativa e suas capabilities estão definidas em [`ROTATION_DSL.md`](ROTATION_DSL.md).
 O pipeline determinístico entre SimC, DSL e bundles de runtime está definido em [`COMPILER.md`](COMPILER.md).
 A matriz neutra de simulação, seus planos e guardrails de fitness estão definidos em [`SCENARIOS.md`](SCENARIOS.md).
@@ -59,4 +60,6 @@ A API uniforme, matriz inicial e política de fallback da fronteira Blizzard est
 
 ## Runtime mínimo
 
-O bootstrap inclui somente um `.toc` e ciclo de inicialização neutro. Ele não contém engine, UI ou lógica de Enhancement. A autoridade final para taint, combat lockdown, Secret Values e rendering continua sendo o cliente Retail real.
+O bootstrap conecta o State Engine genérico aos eventos após o carregamento do addon. Ele não contém UI,
+avaliação de regras ou lógica de Enhancement. A autoridade final para taint, combat lockdown, Secret Values
+e rendering continua sendo o cliente Retail real.

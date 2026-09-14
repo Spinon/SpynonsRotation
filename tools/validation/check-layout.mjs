@@ -42,6 +42,10 @@ const requiredFiles = [
   "addon/Core/Contracts/SpecModule.lua",
   "addon/Core/SpecRegistry.lua",
   "addon/Core/SpecDetector.lua",
+  "addon/Core/StateEngine.lua",
+  "addon/Compat/State.lua",
+  "docs/architecture/STATE_ENGINE.md",
+  "tests/unit/state_engine_spec.lua",
   "addon/Compat/SafeCall.lua",
   "addon/Compat/Result.lua",
   "addon/Compat/Build.lua",
@@ -200,6 +204,13 @@ const volatileApiPatterns = [
   { name: "C_ClassTalents", pattern: /\bC_ClassTalents\b/u },
   { name: "C_Traits", pattern: /\bC_Traits\b/u },
   { name: "C_Secrets", pattern: /\bC_Secrets\b/u },
+  { name: "C_Spell", pattern: /\bC_Spell\b/u },
+  { name: "C_UnitAuras", pattern: /\bC_UnitAuras\b/u },
+  { name: "UnitPower/Max", pattern: /\bUnitPower(?:Max)?\s*\(/u },
+  { name: "UnitAffectingCombat", pattern: /\bUnitAffectingCombat\s*\(/u },
+  { name: "UnitExists/IsVisible", pattern: /\bUnit(?:Exists|IsVisible)\s*\(/u },
+  { name: "issecretvalue", pattern: /\bissecretvalue\s*\(/u },
+  { name: "GetTime", pattern: /\bGetTime\s*\(/u },
 ];
 
 function checkApiBoundary(directory) {

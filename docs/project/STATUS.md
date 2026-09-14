@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T19:01:06.737Z
+Atualizado pelo board em: 2026-09-14T19:15:44.349Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**RUN-001 — State engine**
+**RUN-002 — Recommendation engine**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Implementar snapshots e atualização incremental.
+Próxima ação: Implementar avaliação e ordenação de regras.
 
 ## Progresso
 
 - Planejadas: 27
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 29
+- Concluídas: 30
 - Total: 57
 
 ## Fila canônica
@@ -44,7 +44,7 @@ Próxima ação: Implementar snapshots e atualização incremental.
 | ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | done | P1 | ENH-002, LAB-004 |
 | ENH-005 | delivery | SHAMAN | Talent-aware rotation | done | P1 | ENH-003, ENH-004, CORE-003 |
 | ENH-006 | delivery | SHAMAN | Build de referência para iniciantes | done | P1 | ENH-005, LAB-005 |
-| RUN-001 | delivery | RUNTIME | State engine | in_progress | P0 | CORE-001, CORE-004 |
+| RUN-001 | delivery | RUNTIME | State engine | done | P0 | CORE-001, CORE-004 |
 | RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
 | UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
@@ -237,6 +237,14 @@ Próxima ação: Implementar snapshots e atualização incremental.
 - npm run enhancement:starter-check validou fontes, chassi talents-only, reexportação SimC, Hero Trees, linhagens, métricas, complexidade e decisão para 10/10 candidatas.
 - npm test passou com 172 testes Node, 99 testes Lua, fronteiras, Luacheck e wowlua-ls sem falhas; as medições foram offline e não houve validação dentro do WoW.
 - Commit d7cf176 registra planned → in_progress; project:check valida a conclusão contra esse estado em HEAD.
+
+### RUN-001
+
+- addon/Core/StateEngine.lua — PlayerState genérico com revisão, snapshots isolados, assinantes e atualização incremental por eventos.
+- addon/Compat/State.lua — leituras públicas de recursos, auras, cooldowns, cargas, combate e relógio; sondas e guards antes de normalização, com descarte e SKIP em falhas.
+- tests/unit/state_engine_spec.lua — 26/26 testes: spec neutra, atualização parcial, troca de spec/talentos, Secret Values, invalidação antecipada de restrições, ownership, bootstrap e consultas do módulo real.
+- npm test — aprovado; 125 testes Lua em 7 suítes, checks de catálogo/Rotation Lab/board, fronteiras, lint e typecheck sem problemas.
+- docs/architecture/STATE_ENGINE.md — contratos, eventos, fallback e fontes de API fixadas; validação exclusivamente offline, sem alegação de teste Retail.
 
 ### UI-DESIGN-001
 

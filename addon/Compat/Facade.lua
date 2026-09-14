@@ -11,6 +11,7 @@ function CompatFactory.Create(environment)
     Specialization = Internal.Specialization.Create(apiEnvironment),
     Talents = Internal.Talents.Create(apiEnvironment),
     Secrets = Internal.Secrets.Create(apiEnvironment),
+    State = Internal.State.Create(apiEnvironment),
   }
 end
 

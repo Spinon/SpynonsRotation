@@ -94,6 +94,29 @@ local module, moduleError = SpecModule.Create({
   displayName = Catalog.displayName,
   version = Catalog.version,
   getActions = getActions,
+  getStateQueries = function(snapshot)
+    local queries = { resources = {}, auras = {}, cooldowns = {}, talents = {} }
+    for _, resource in ipairs(Catalog.resources) do
+      queries.resources[#queries.resources + 1] = {
+        id = resource.id, kind = resource.kind, powerType = resource.powerType,
+        auraId = resource.auraId, maxStacks = resource.maxStacks,
+      }
+    end
+    for _, aura in ipairs(Catalog.auras) do
+      if actionIsAvailable(aura, snapshot) then
+        queries.auras[#queries.auras + 1] = { id = aura.id, unit = aura.unit, spellId = aura.spellId }
+      end
+    end
+    for _, action in ipairs(getActions(snapshot)) do
+      if action.kind == "spell" then
+        queries.cooldowns[#queries.cooldowns + 1] = { id = action.id, spellId = action.gameId }
+      end
+    end
+    for _, talent in ipairs(Catalog.talents) do
+      queries.talents[#queries.talents + 1] = { id = talent.id, spellId = talent.spellId }
+    end
+    return queries
+  end,
   getRules = function()
     return {}
   end,

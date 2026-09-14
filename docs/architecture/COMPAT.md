@@ -55,6 +55,12 @@ erros determinísticos nos testes.
 | Cooldowns | `Secrets:ClassifyCooldown` | `C_Secrets.Should*Cooldown*BeSecret` | resultado da sonda | `SKIP` |
 | Auras | `Secrets:ClassifyAura` | `C_Secrets.Should*Aura*BeSecret` | resultado da sonda | `SKIP` |
 | Recurso do jogador | `Secrets:ClassifyUnitPower` | `C_Secrets.ShouldUnitPowerBeSecret` | resultado da sonda | `SKIP` |
+| Relógio | `State:ReadClock` | `GetTime` | `ADDON_AVAILABLE` após guard | `SKIP` |
+| Combate | `State:ReadCombat` | `UnitAffectingCombat` | `ADDON_AVAILABLE` após guard | `SKIP` |
+| Power atual/máximo | `State:ReadPower` | sondas `ShouldUnitPowerBeSecret` e `ShouldUnitPowerMaxBeSecret`, `UnitPower`, `UnitPowerMax` | `ADDON_AVAILABLE` após sondas e guards | `SKIP` |
+| Aura por unidade/spell | `State:ReadAura` | `ShouldSpellAuraBeSecret`, `UnitExists`, `UnitIsVisible`, `C_UnitAuras.GetUnitAuraBySpellID` | `ADDON_AVAILABLE` após sonda e guards | `SKIP` |
+| Cooldown observado | `State:ReadCooldown` | `ShouldSpellCooldownBeSecret`, `C_Spell.GetSpellCooldown` | `ADDON_AVAILABLE` após sonda e guards | `SKIP` |
+| Cargas observadas | `State:ReadCharges` | `ShouldSpellCooldownBeSecret`, `C_Spell.GetSpellCharges` | `ADDON_AVAILABLE` após sonda e guards | `SKIP` |
 
 ## Regras de segurança
 
@@ -66,5 +72,9 @@ erros determinísticos nos testes.
 6. Sonda ausente, inválida, falha ou positiva resulta em `CONDITIONALLY_SECRET` e fallback `SKIP`.
 7. O código não tenta testar, converter, comparar ou calcular um valor depois que ele foi marcado como secreto.
 
-`CORE-003` combina esses adapters para detectar spec e talentos. `RUN-001` adicionará adapters de estado somente quando
-cada sinal e fallback estiverem documentados nesta matriz.
+`CORE-003` combina os adapters de spec/talentos. `RUN-001` adiciona `Compat.State`: `issecretvalue` verifica
+cada retorno e campo selecionado antes de normalização, inclusive quando a sonda é negativa. Guard ausente
+fecha a leitura. Cooldown e cargas possuem resultados independentes; nil em cargas significa spell sem
+cargas somente após uma chamada permitida e bem-sucedida, nunca depois de falha da API.
+As referências fixadas, formatos e invalidação antecipada por `ADDON_RESTRICTION_STATE_CHANGED` estão em
+[`STATE_ENGINE.md`](STATE_ENGINE.md). Essa extensão foi verificada offline em 2026-09-14, sem teste no cliente Retail.

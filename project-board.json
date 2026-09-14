@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T19:01:06.737Z",
-  "currentFocus": "RUN-001",
+  "updatedAt": "2026-09-14T19:15:44.349Z",
+  "currentFocus": "RUN-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -533,12 +533,12 @@
       "title": "State engine",
       "lane": "RUNTIME",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T19:01:06.737Z",
+      "updatedAt": "2026-09-14T19:15:44.349Z",
       "reviewBy": null,
-      "nextAction": "Implementar snapshots e atualização incremental.",
+      "nextAction": null,
       "dependencies": [
         "CORE-001",
         "CORE-004"
@@ -548,7 +548,13 @@
         "Updates são event-driven",
         "Secret Values não são convertidos indevidamente"
       ],
-      "evidence": []
+      "evidence": [
+        "addon/Core/StateEngine.lua — PlayerState genérico com revisão, snapshots isolados, assinantes e atualização incremental por eventos.",
+        "addon/Compat/State.lua — leituras públicas de recursos, auras, cooldowns, cargas, combate e relógio; sondas e guards antes de normalização, com descarte e SKIP em falhas.",
+        "tests/unit/state_engine_spec.lua — 26/26 testes: spec neutra, atualização parcial, troca de spec/talentos, Secret Values, invalidação antecipada de restrições, ownership, bootstrap e consultas do módulo real.",
+        "npm test — aprovado; 125 testes Lua em 7 suítes, checks de catálogo/Rotation Lab/board, fronteiras, lint e typecheck sem problemas.",
+        "docs/architecture/STATE_ENGINE.md — contratos, eventos, fallback e fontes de API fixadas; validação exclusivamente offline, sem alegação de teste Retail."
+      ]
     },
     {
       "id": "RUN-002",
