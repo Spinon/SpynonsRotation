@@ -12,6 +12,18 @@ return function()
   function methods:ClearAllPoints() self.point = nil end
   function methods:SetAllPoints(target) self.allPoints = target end
   function methods:SetFrameStrata(strata) self.strata = strata end
+  function methods:GetFrameLevel() return self.frameLevel or 1 end
+  function methods:SetFrameLevel(level) self.frameLevel = level end
+  function methods:Clear() self.durationObject = nil end
+  function methods:SetCooldownFromDurationObject(duration, clearIfZero)
+    self.durationObject, self.clearIfZero = duration, clearIfZero
+  end
+  function methods:SetDrawSwipe(value) self.drawSwipe = value end
+  function methods:SetDrawEdge(value) self.drawEdge = value end
+  function methods:SetDrawBling(value) self.drawBling = value end
+  function methods:SetReverse(value) self.reverse = value end
+  function methods:SetSwipeColor(...) self.swipeColor = { ... } end
+  function methods:SetHideCountdownNumbers(value) self.hideNumbers = value end
   function methods:EnableMouse(enabled) self.mouseEnabled = enabled end
   function methods:Show() self.visible = true end
   function methods:Hide()

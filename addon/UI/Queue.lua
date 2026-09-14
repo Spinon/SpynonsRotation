@@ -22,6 +22,7 @@ function Queue.Create(createFrame, parent, motionMode)
   root:Hide()
   local pool, byId, animator = {}, {}, nil
   local hotkeysEnabled, compactHotkeys = true, true
+  local overlayAdapter, gcdTiming
   for index = 1, 8 do
     local frame = createFrame("Frame", nil, root)
     frame:EnableMouse(false)
@@ -41,7 +42,8 @@ function Queue.Create(createFrame, parent, motionMode)
     placeholder:SetPoint("CENTER", frame, "CENTER", 0, 0)
     placeholder:SetTextColor(0.55, 0.6, 0.66, 1)
     placeholder:SetText("?")
-    local hotkey = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    local overlay = Spynon.CooldownOverlayFactory.Create(createFrame, frame, icon)
+    local hotkey = overlay:GetLabelParent():CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
     local font = hotkey:GetFont()
     hotkey:SetPoint("TOPRIGHT", icon, "TOPRIGHT", -2, -2)
     hotkey:SetTextColor(0.94, 0.97, 1, 1)
@@ -50,7 +52,7 @@ function Queue.Create(createFrame, parent, motionMode)
     hotkey:Hide()
     frame:Hide()
     pool[index] = { frame = frame, icon = icon, border = border, currentBorder = currentBorder,
-      flash = flash, placeholder = placeholder, hotkey = hotkey, font = font }
+      flash = flash, placeholder = placeholder, hotkey = hotkey, font = font, overlay = overlay }
   end
 
   local function geometry(position)
@@ -76,6 +78,7 @@ function Queue.Create(createFrame, parent, motionMode)
     slot.icon:ClearAllPoints()
     slot.icon:SetPoint("TOPLEFT", slot.frame, "TOPLEFT", value.iconX * scale, -value.iconY * scale)
     slot.icon:SetSize(value.iconWidth * scale, value.iconHeight * scale)
+    slot.overlay:Layout(value.width * scale, value.height * scale, slot.position == 1 and not slot.retiring)
     slot.flash:SetAllPoints(slot.icon)
     slot.flash:SetAlpha(animator:GetMode() == "NORMAL" and pulse * 0.16 or 0)
     -- Center crop preserves native square artwork proportions in either opening.
@@ -110,23 +113,36 @@ function Queue.Create(createFrame, parent, motionMode)
     animator:Cancel(slot)
     slot.id, slot.position, slot.rec, slot.visual, slot.retiring, slot.consumeTime = nil, nil, nil, nil, nil, nil
     slot.key = nil; slot.hotkey:SetText(""); slot.hotkey:Hide()
+    slot.overlay:Clear()
     slot.frame:Hide()
   end
-  local ticking = false
-  local function tick(_, elapsed)
+  local ticking, motionActive = false, false
+  local function updateGCD()
+    local progress = gcdTiming and overlayAdapter:GCDProgress(gcdTiming) or nil
+    if progress == nil then gcdTiming = nil end
+    for _, slot in ipairs(pool) do
+      slot.overlay:SetProgress(slot.position == 1 and not slot.retiring and progress or nil)
+    end
+  end
+  local tick
+  local function wake(active)
+    motionActive = active
+    local wanted = active or gcdTiming ~= nil
+    if wanted == ticking then return end
+    ticking = wanted
+    root:SetScript("OnUpdate", wanted and tick or nil)
+  end
+  tick = function(_, elapsed)
     animator:Step(elapsed, pool)
+    if gcdTiming then updateGCD(); wake(motionActive) end
     local any = false
     for _, slot in ipairs(pool) do if slot.id then any = true end end
     if not any then root:Hide() end
   end
-  local function wake(active)
-    if active == ticking then return end
-    ticking = active
-    root:SetScript("OnUpdate", active and tick or nil)
-  end
   animator = Spynon.AnimatorFactory.Create(paint, release, wake)
   animator:SetMode(motionMode or "NORMAL")
   local function clear()
+    gcdTiming = nil
     for _, slot in ipairs(pool) do release(slot) end
     wake(false)
   end
@@ -178,6 +194,26 @@ function Queue.Create(createFrame, parent, motionMode)
     return true
   end
   function view.Hide(_) clear(); root:Hide() end
+  function view.RefreshOverlays(_, adapter)
+    overlayAdapter, gcdTiming = adapter, nil
+    local current = false
+    for _, slot in ipairs(pool) do
+      if slot.rec and not slot.retiring then
+        slot.overlay:Refresh(adapter, slot.rec.action)
+        if slot.position == 1 then current = true end
+      else slot.overlay:Clear() end
+    end
+    if current then gcdTiming = adapter:ReadGCD() end
+    updateGCD(); wake(motionActive)
+  end
+  function view.ClearOverlays(_)
+    gcdTiming = nil
+    for _, slot in ipairs(pool) do slot.overlay:Clear() end
+    wake(motionActive)
+  end
+  function view.SetCooldownNumbers(_, enabled)
+    for _, slot in ipairs(pool) do slot.overlay:SetNumbers(enabled) end
+  end
   function view.SetHotkeys(_, keys)
     for _, slot in ipairs(pool) do slot.key = keys[slot.id]; paint(slot) end
   end

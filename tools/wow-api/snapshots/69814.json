@@ -43,6 +43,16 @@
       ]
     },
     {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/FrameAPICooldownDocumentation.lua",
+      "present": true,
+      "bytes": 13075,
+      "sha256": "2A5F8F4385D4F577A2B227FE38BE42B6276462AD07704145F29FD73732F0A173",
+      "modules": [
+        "addon/Compat/Cooldowns.lua",
+        "addon/UI/CooldownOverlay.lua"
+      ]
+    },
+    {
       "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/ItemDocumentation.lua",
       "present": true,
       "bytes": 43162,
@@ -204,6 +214,7 @@
       "sha256": "FBEDB3CF4B82D623B49A7FA170C982DE2E4B005D2BCD5DB3068BFB6211E51007",
       "modules": [
         "addon/Compat/Bindings.lua",
+        "addon/Compat/Cooldowns.lua",
         "addon/Compat/Media.lua",
         "addon/Compat/State.lua",
         "addon/Rotation/StateReader.lua"

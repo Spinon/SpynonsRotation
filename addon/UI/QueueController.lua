@@ -1,12 +1,13 @@
 local _, Spynon = ...
 local Controller = {}
 
-function Controller.Create(service, media, createFrame, console, bindings)
+function Controller.Create(service, media, createFrame, console, bindings, cooldowns)
   local controller = {}
   local view, unsubscribe
   local function render(recommendations)
     view:SetRecommendations(media:Present(recommendations))
     if bindings then view:SetHotkeys(bindings:ForRecommendations(recommendations)) end
+    if cooldowns then view:RefreshOverlays(cooldowns) end
   end
   function controller.HandleHotkeys(_, message)
     local argument = message:lower():match("^%s*keys%s*(.-)%s*$")
@@ -29,11 +30,22 @@ function Controller.Create(service, media, createFrame, console, bindings)
     console:Write("Use /spynon motion normal | reduced | off")
     return false
   end
+  function controller.HandleNumbers(_, message)
+    local argument = message:lower():match("^%s*numbers%s*(.-)%s*$")
+    if view and (argument == "on" or argument == "off") then
+      view:SetCooldownNumbers(argument == "on")
+      console:Write("Tempo numérico: " .. argument .. " (somente nesta sessão)")
+      return true
+    end
+    console:Write("Use /spynon numbers on | off")
+    return false
+  end
   function controller.Start(_)
     if unsubscribe then return end
     if not view then
       view = Spynon.QueueFactory.Create(createFrame, media:GetRootParent())
       view:GetRoot():RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
+      view:GetRoot():RegisterEvent("ADDON_RESTRICTION_STATE_CHANGED")
       if bindings then
         for _, event in ipairs(Spynon.CompatInternal.Bindings.Events) do view:GetRoot():RegisterEvent(event) end
       end
@@ -46,11 +58,13 @@ function Controller.Create(service, media, createFrame, console, bindings)
           bindings:Invalidate(event == "ADDON_RESTRICTION_STATE_CHANGED")
           view:SetHotkeys(bindings:ForRecommendations(service:GetRecommendations()))
         end
+        if event == "ADDON_RESTRICTION_STATE_CHANGED" then view:ClearOverlays() end
       end)
     end
     if console then
       console:RegisterRoute("motion", function(message) controller:HandleMotion(message) end)
       console:RegisterRoute("keys", function(message) controller:HandleHotkeys(message) end)
+      console:RegisterRoute("numbers", function(message) controller:HandleNumbers(message) end)
     end
     if bindings then bindings:Invalidate(false) end
     unsubscribe = service:Subscribe(render)
@@ -66,5 +80,6 @@ end
 
 Spynon.QueueControllerFactory = Controller
 Spynon.QueueController = Controller.Create(
-  Spynon.Recommendations, Spynon.Compat.Media, CreateFrame, Spynon.Compat.Console, Spynon.Compat.Bindings
+  Spynon.Recommendations, Spynon.Compat.Media, CreateFrame, Spynon.Compat.Console,
+  Spynon.Compat.Bindings, Spynon.Compat.Cooldowns
 )

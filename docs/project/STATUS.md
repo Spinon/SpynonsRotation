@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T21:03:37.495Z
+Atualizado pelo board em: 2026-09-14T21:17:59.107Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UI-004 — Cooldowns/charges/stacks**
+**UI-006 — Demo Mode**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Criar overlays compatíveis com Retail.
+Próxima ação: Criar timeline de demonstração.
 
 ## Progresso
 
 - Planejadas: 19
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 37
+- Concluídas: 38
 - Total: 58
 
 ## Fila canônica
@@ -61,7 +61,7 @@ Próxima ação: Criar overlays compatíveis com Retail.
 | UI-001 | delivery | UI | Queue estática | done | P0 | RUN-002 |
 | UI-002 | delivery | UI | Animator | done | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | done | P1 | UI-001, CORE-004 |
-| UI-004 | delivery | UI | Cooldowns/charges/stacks | in_progress | P1 | UI-001, CORE-004 |
+| UI-004 | delivery | UI | Cooldowns/charges/stacks | done | P1 | UI-001, CORE-004 |
 | UI-005 | delivery | UI | Buff/debuff indicators | planned | P2 | UI-004, RUN-002 |
 | UI-006 | delivery | UI | Demo Mode | planned | P1 | UI-002, UI-004, RUN-003 |
 | UX-001 | delivery | CONFIG / UX | Config básico contextual | planned | P1 | UI-001 |
@@ -384,6 +384,15 @@ Próxima ação: Criar overlays compatíveis com Retail.
 - npm test aprovado: 181 testes Node e 200 testes Lua, incluindo 12 fixtures de teclas; 38 arquivos sem warnings, erros ou problemas de tipo.
 - Pipeline de API expandido para 25 fontes pinadas, incluindo helpers legados em caminhos explicitamente permitidos; zero diferenças entre 69587 e 69814 e nenhuma alteração da allowlist.
 - docs/architecture/HOTKEYS.md registra resolução, eventos, Secret Values, macros/barras não suportadas e reteste Retail pendente. Commit aa0e506 registra início.
+
+### UI-004
+
+- Compat.Cooldowns encaminha DurationObjects opacos ao Cooldown nativo, exclui GCD do swipe e prioriza recarga parcial pública; contagens positivas de charges e aura própria de mesmo ID, sem inferir mapeamentos de spec.
+- UI.CooldownOverlay mantém radial no ícone, labels acima, número opcional por /spynon numbers on|off e GCD procedural público no rodapé atual. Fila vazia/restrita e Stop limpam timers e dados antigos.
+- npm test aprovado: 181 testes Node e 212 testes Lua em 14 suítes. Lint/typecheck: 40 arquivos sem problemas.
+- tests/unit/cooldown_overlay_spec.lua: 12/12 fixtures, incluindo opacidade por metatable, restrições, APIs ausentes, camadas, identidade estável, atualização sem mudança de ação e timer compartilhado.
+- docs/architecture/COOLDOWN_OVERLAYS.md registra fontes, limites para itens e stacks entre IDs, ausência de dados seguros e reteste Retail pendente. Pipeline: 26 fontes pinadas, zero mudanças documentadas entre as builds.
+- Commit 508057b registra início publicado. Próximo foco UI-006 (P1), elegível e útil para demonstração reproduzível antes dos indicadores UI-005 (P2). A captura estática recebida não valida os novos overlays.
 
 ### PATCH-001
 

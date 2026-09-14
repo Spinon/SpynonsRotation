@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T21:03:37.495Z",
-  "currentFocus": "UI-004",
+  "updatedAt": "2026-09-14T21:17:59.107Z",
+  "currentFocus": "UI-006",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1026,12 +1026,12 @@
       "title": "Cooldowns/charges/stacks",
       "lane": "UI",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T21:03:37.495Z",
+      "updatedAt": "2026-09-14T21:17:59.107Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Criar overlays compatíveis com Retail.",
+      "nextAction": null,
       "dependencies": [
         "UI-001",
         "CORE-004"
@@ -1041,7 +1041,14 @@
         "DurationObjects são usados quando necessário",
         "Valores secretos não alimentam lógica proibida"
       ],
-      "evidence": []
+      "evidence": [
+        "Compat.Cooldowns encaminha DurationObjects opacos ao Cooldown nativo, exclui GCD do swipe e prioriza recarga parcial pública; contagens positivas de charges e aura própria de mesmo ID, sem inferir mapeamentos de spec.",
+        "UI.CooldownOverlay mantém radial no ícone, labels acima, número opcional por /spynon numbers on|off e GCD procedural público no rodapé atual. Fila vazia/restrita e Stop limpam timers e dados antigos.",
+        "npm test aprovado: 181 testes Node e 212 testes Lua em 14 suítes. Lint/typecheck: 40 arquivos sem problemas.",
+        "tests/unit/cooldown_overlay_spec.lua: 12/12 fixtures, incluindo opacidade por metatable, restrições, APIs ausentes, camadas, identidade estável, atualização sem mudança de ação e timer compartilhado.",
+        "docs/architecture/COOLDOWN_OVERLAYS.md registra fontes, limites para itens e stacks entre IDs, ausência de dados seguros e reteste Retail pendente. Pipeline: 26 fontes pinadas, zero mudanças documentadas entre as builds.",
+        "Commit 508057b registra início publicado. Próximo foco UI-006 (P1), elegível e útil para demonstração reproduzível antes dos indicadores UI-005 (P2). A captura estática recebida não valida os novos overlays."
+      ]
     },
     {
       "id": "UI-005",

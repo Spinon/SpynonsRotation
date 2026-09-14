@@ -106,7 +106,8 @@ test("preview is explicit, has four slots and restores the live controller", fun
   eq(controller.stops, 1)
   local shownFrames, labeled = 0, false
   for _, object in ipairs(objects) do
-    if object.kind == "Frame" and object.visible then shownFrames = shownFrames + 1 end
+    if object.kind == "Frame" and object.visible and
+      (object.width == 256 or object.width == 200 or object.width == 80) then shownFrames = shownFrames + 1 end
     if object.text == "TESTE VISUAL - DADOS SIMULADOS" then labeled = true end
   end
   eq(shownFrames, 5)

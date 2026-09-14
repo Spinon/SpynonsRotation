@@ -122,7 +122,9 @@ test("consume is a short local accent only on the confirmed current spell", func
   near(frame.width, 192); near(frame.alpha, 0.75)
   local flashes = 0
   for _, item in ipairs(objects) do
-    if item.kind == "Texture" and item.layer == "ARTWORK" and item.alpha > 0 then flashes = flashes + 1 end
+    if item.kind == "Texture" and item.layer == "ARTWORK" and item.visible and (item.alpha or 1) > 0 then
+      flashes = flashes + 1
+    end
   end
   eq(flashes, 1); step(0.05); near(frame.width, 200); near(frame.alpha, 1)
   eq(view:GetRoot().scripts.OnUpdate, nil)
