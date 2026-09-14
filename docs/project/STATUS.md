@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T23:01:01.149Z
+Atualizado pelo board em: 2026-09-14T23:03:53.074Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UX-004 — Undo/Redo**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Implementar command history.
 
 ## Progresso
 
-- Planejadas: 14
-- Em andamento: 0
+- Planejadas: 13
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 44
 - Total: 59
@@ -67,7 +67,7 @@ Próxima ação: Implementar command history.
 | UX-001 | delivery | CONFIG / UX | Config básico contextual | done | P1 | UI-001 |
 | UX-002 | delivery | CONFIG / UX | Edit HUD | done | P1 | UX-001, UI-002 |
 | UX-003 | delivery | CONFIG / UX | Advanced panels | planned | P2 | UX-001 |
-| UX-004 | delivery | CONFIG / UX | Undo/Redo | planned | P1 | UX-002 |
+| UX-004 | delivery | CONFIG / UX | Undo/Redo | in_progress | P1 | UX-002 |
 | UX-005 | delivery | CONFIG / UX | Preview + reset granular | planned | P2 | UX-004 |
 | UX-006 | delivery | CONFIG / UX | Typography | planned | P2 | UX-001 |
 | PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | done | P1 | CORE-001, UX-001 |
