@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T22:32:00.000Z",
-  "currentFocus": "UX-001",
+  "updatedAt": "2026-09-14T22:40:02.271Z",
+  "currentFocus": "PROFILE-001",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1114,12 +1114,12 @@
       "title": "Config básico contextual",
       "lane": "CONFIG / UX",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T22:32:00.000Z",
+      "updatedAt": "2026-09-14T22:40:02.271Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Prototipar navegação e cards.",
+      "nextAction": null,
       "dependencies": [
         "UI-001"
       ],
@@ -1128,7 +1128,14 @@
         "Opções técnicas não aparecem no nível básico",
         "Mudanças têm preview imediato"
       ],
-      "evidence": []
+      "evidence": [
+        "Config/Panel.lua abre cards Fila e Informações por /spynon config, com navegação contextual, opções humanas e preview imediato sem Aplicar. Parâmetros técnicos e features futuras não são expostos.",
+        "Config/Settings.lua mantém modelo puro de sessão com limites/enum, cópias e notificações; Queue aplica quantidade 1-4, escala e três direções sem recriar frames nem alterar a engine.",
+        "Config/Controller.lua integra demo rotulada, fechamento/Escape, combate observável e cancelamento idempotente em qualquer ordem dos eventos. SavedVariables não foi modificado nesta task.",
+        "npm test aprovado: 181 testes Node e 259 testes Lua (440 ao todo), incluindo 16 de configuração; 48 arquivos sem warnings, erros ou problemas de tipo.",
+        "Test-QueueIconFit.ps1 preserva os oito probes transparentes e envelope lateral; API diff mantém 26 fontes e zero diferenças nas builds pinadas com ownership de Config incluído.",
+        "docs/architecture/BASIC_CONFIG.md registra comportamento, fronteiras e validação pendente no Retail. Commit c5f9768 registra início publicado; persistência segue em PROFILE-001 e curadoria visual continua adiada."
+      ]
     },
     {
       "id": "UX-002",

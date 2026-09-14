@@ -1,7 +1,7 @@
 local _, Spynon = ...
 local Controller = {}
 
-function Controller.Create(service, media, createFrame, console, bindings, cooldowns, indicators, clock)
+function Controller.Create(service, media, createFrame, console, bindings, cooldowns, indicators, clock, settings)
   local controller = {}
   local view, unsubscribe
   local function render(recommendations)
@@ -13,7 +13,8 @@ function Controller.Create(service, media, createFrame, console, bindings, coold
   function controller.HandleHotkeys(_, message)
     local argument = message:lower():match("^%s*keys%s*(.-)%s*$")
     if view and (argument == "compact" or argument == "full" or argument == "off") then
-      view:SetHotkeyStyle(argument ~= "off", argument ~= "full")
+      if settings then settings:Set("keys", argument)
+      else view:SetHotkeyStyle(argument ~= "off", argument ~= "full") end
       console:Write("Teclas: " .. argument .. " (somente nesta sessão)")
       return true
     end
@@ -24,7 +25,7 @@ function Controller.Create(service, media, createFrame, console, bindings, coold
     local argument = message:lower():match("^%s*motion%s*(.-)%s*$")
     local modes = { normal = "NORMAL", reduced = "REDUCED", off = "OFF" }
     if modes[argument] and view then
-      view:SetMotionMode(modes[argument])
+      if settings then settings:Set("motion", modes[argument]) else view:SetMotionMode(modes[argument]) end
       console:Write("Movimento: " .. argument .. " (somente nesta sessão)")
       return true
     end
@@ -34,7 +35,7 @@ function Controller.Create(service, media, createFrame, console, bindings, coold
   function controller.HandleNumbers(_, message)
     local argument = message:lower():match("^%s*numbers%s*(.-)%s*$")
     if view and (argument == "on" or argument == "off") then
-      view:SetCooldownNumbers(argument == "on")
+      if settings then settings:Set("numbers", argument == "on") else view:SetCooldownNumbers(argument == "on") end
       console:Write("Tempo numérico: " .. argument .. " (somente nesta sessão)")
       return true
     end
@@ -44,7 +45,7 @@ function Controller.Create(service, media, createFrame, console, bindings, coold
   function controller.Start(_)
     if unsubscribe then return end
     if not view then
-      view = Spynon.QueueFactory.Create(createFrame, media:GetRootParent())
+      view = Spynon.QueueFactory.Create(createFrame, media:GetRootParent(), nil, settings)
       view:GetRoot():RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
       view:GetRoot():RegisterEvent("ADDON_RESTRICTION_STATE_CHANGED")
       if bindings then
@@ -82,5 +83,5 @@ end
 Spynon.QueueControllerFactory = Controller
 Spynon.QueueController = Controller.Create(
   Spynon.Recommendations, Spynon.Compat.Media, CreateFrame, Spynon.Compat.Console,
-  Spynon.Compat.Bindings, Spynon.Compat.Cooldowns, Spynon.Indicators, Spynon.Compat.State
+  Spynon.Compat.Bindings, Spynon.Compat.Cooldowns, Spynon.Indicators, Spynon.Compat.State, Spynon.Settings
 )

@@ -6,6 +6,7 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
   local harness = {}
   local preview, previewLabel, active, started = nil, nil, false, false
   local demo
+  local onClosed
 
   function harness.Run(_)
     local build = compat.Build:GetInfo()
@@ -56,6 +57,7 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
     if preview then preview:Hide() end
     if active then queueController:Start() end
     active = false
+    if onClosed then onClosed() end
   end
 
   function harness.Show(_, demoMode)
@@ -117,7 +119,8 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
     if command == "test" then return harness:Run()
     elseif command == "test show" then return harness:Show()
     elseif command == "test hide" then return harness:Hide() end
-    compat.Console:Write("Comandos: /spynon test | /spynon test show | /spynon test hide")
+    compat.Console:Write("Comandos: /spynon config | /spynon demo | /spynon test"
+      .. " | /spynon test show | /spynon test hide")
   end
 
   function harness.HandleDemo(_, text)
@@ -142,6 +145,7 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
     frame:SetScript("OnEvent", function() harness:Hide() end)
   end
   function harness.IsPreviewActive(_) return active end
+  function harness.OnClosed(_, callback) onClosed = callback end
   function harness.IsDemoActive(_) return demo and demo:IsActive() or false end
   return harness
 end

@@ -85,6 +85,14 @@ ST/Cleave/AoE. `/spynon demo restart` reinicia; `reduced` reduz movimentos; `off
 somente movimentos, e **`/spynon demo stop` encerra**. A fila real é restaurada ao sair.
 O roteiro detalhado está em `docs/architecture/DEMO_MODE.md`. Não seguir a demo como rotação.
 
+### Configuração básica (UX-001)
+
+`/spynon config` abre os assuntos Fila e Informações junto à demo. Alterar quantidade,
+tamanho, direção, movimento, teclas e informações deve atualizar a prévia imediatamente.
+Fechar ou Escape restaura a fila real; entrar em combate também encerra painel e demo.
+As preferências são de sessão até PROFILE-001. Verificar legibilidade, cliques e propagação
+das teclas no Retail; as fixtures de UX-001 não são homologação visual ou de taint.
+
 ### Inspeção humana
 
 - [ ] Addon carregou sem erro Lua; `/spynon test` foi reconhecido.

@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T22:32:00.000Z
+Atualizado pelo board em: 2026-09-14T22:40:02.271Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UX-001 — Config básico contextual**
+**PROFILE-001 — Persistência e perfis**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Prototipar navegação e cards.
+Próxima ação: Avaliar AceDB e implementar resolução.
 
 ## Progresso
 
 - Planejadas: 16
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 41
+- Concluídas: 42
 - Total: 59
 
 ## Fila canônica
@@ -64,7 +64,7 @@ Próxima ação: Prototipar navegação e cards.
 | UI-004 | delivery | UI | Cooldowns/charges/stacks | done | P1 | UI-001, CORE-004 |
 | UI-005 | delivery | UI | Buff/debuff indicators | done | P2 | UI-004, RUN-002 |
 | UI-006 | delivery | UI | Demo Mode | done | P1 | UI-002, UI-004, RUN-003 |
-| UX-001 | delivery | CONFIG / UX | Config básico contextual | in_progress | P1 | UI-001 |
+| UX-001 | delivery | CONFIG / UX | Config básico contextual | done | P1 | UI-001 |
 | UX-002 | delivery | CONFIG / UX | Edit HUD | planned | P1 | UX-001, UI-002 |
 | UX-003 | delivery | CONFIG / UX | Advanced panels | planned | P2 | UX-001 |
 | UX-004 | delivery | CONFIG / UX | Undo/Redo | planned | P1 | UX-002 |
@@ -412,6 +412,15 @@ Próxima ação: Prototipar navegação e cards.
 - npm test aprovado: 181 testes Node e 223 testes Lua em 15 suítes; 42 arquivos Lua sem warnings, erros ou problemas de tipo. Check de API permanece com 26 fontes pinadas, sem ampliar a homologação.
 - docs/architecture/DEMO_MODE.md e docs/project/RETAIL_SMOKE.md documentam comandos, checkpoints e limites. Proc dedicado de buff/debuff fica em UI-005; contexto da demo não modifica o contexto real; nenhum dado de demo é persistido.
 - Commit 10947ca registra início publicado. Nenhuma execução da timeline no Retail foi declarada; captura anterior comprova somente a prévia estática.
+
+### UX-001
+
+- Config/Panel.lua abre cards Fila e Informações por /spynon config, com navegação contextual, opções humanas e preview imediato sem Aplicar. Parâmetros técnicos e features futuras não são expostos.
+- Config/Settings.lua mantém modelo puro de sessão com limites/enum, cópias e notificações; Queue aplica quantidade 1-4, escala e três direções sem recriar frames nem alterar a engine.
+- Config/Controller.lua integra demo rotulada, fechamento/Escape, combate observável e cancelamento idempotente em qualquer ordem dos eventos. SavedVariables não foi modificado nesta task.
+- npm test aprovado: 181 testes Node e 259 testes Lua (440 ao todo), incluindo 16 de configuração; 48 arquivos sem warnings, erros ou problemas de tipo.
+- Test-QueueIconFit.ps1 preserva os oito probes transparentes e envelope lateral; API diff mantém 26 fontes e zero diferenças nas builds pinadas com ownership de Config incluído.
+- docs/architecture/BASIC_CONFIG.md registra comportamento, fronteiras e validação pendente no Retail. Commit c5f9768 registra início publicado; persistência segue em PROFILE-001 e curadoria visual continua adiada.
 
 ### PATCH-001
 

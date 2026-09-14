@@ -119,6 +119,7 @@
       "bytes": 13724,
       "sha256": "99044B7A660587AF06BCA76A3B1E962B15CD7B86CA92C59ECB0632B5B95D8F6A",
       "modules": [
+        "addon/Config/Panel.lua",
         "addon/Core/InGameHarness.lua",
         "addon/UI/AuraIndicators.lua",
         "addon/UI/Queue.lua"
@@ -130,6 +131,8 @@
       "bytes": 33089,
       "sha256": "76FD146D432CB7AD8BC9D8AE034E29E54CD9D06F4DE33C2C321874ECAB0CEA42",
       "modules": [
+        "addon/Config/Controller.lua",
+        "addon/Config/Panel.lua",
         "addon/Core/InGameHarness.lua",
         "addon/UI/AuraIndicators.lua",
         "addon/UI/Queue.lua"
@@ -141,6 +144,8 @@
       "bytes": 7559,
       "sha256": "BC48CA01BAAF92998CD47DE0C378C695E935F9F425862DED8EBD0241493BAA22",
       "modules": [
+        "addon/Config/Controller.lua",
+        "addon/Config/Panel.lua",
         "addon/Core/Bootstrap.lua",
         "addon/UI/Queue.lua"
       ]
@@ -170,6 +175,7 @@
       "bytes": 13320,
       "sha256": "CD4DC47781B8B77F088EBE7AA4AEAD4D34FEE3CE3D679A1A950B3FC1A21FA5C9",
       "modules": [
+        "addon/Config/Panel.lua",
         "addon/UI/AuraIndicators.lua",
         "addon/UI/Queue.lua"
       ]
@@ -180,6 +186,7 @@
       "bytes": 4655,
       "sha256": "A3321CCE107B1D934487CE6E82C40FC2C7D37C279EE3FD18EA00B3FD8BC954A2",
       "modules": [
+        "addon/Config/Panel.lua",
         "addon/UI/AuraIndicators.lua",
         "addon/UI/Queue.lua"
       ]
@@ -199,6 +206,7 @@
       "bytes": 15125,
       "sha256": "41CE287E9AD62E977DE38D180D91FB9ED54B425F7F68EE3BDAFFD77619572586",
       "modules": [
+        "addon/Config/Panel.lua",
         "addon/UI/AuraIndicators.lua",
         "addon/UI/Queue.lua"
       ]

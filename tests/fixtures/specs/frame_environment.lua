@@ -8,6 +8,9 @@ return function()
   end
   function methods:SetSize(width, height) self.width, self.height = width, height end
   function methods:SetWidth(width) self.width = width end
+  function methods:SetScale(value) self.scale = value end
+  function methods:EnableKeyboard(value) self.keyboard = value end
+  function methods:SetPropagateKeyboardInput(value) self.propagateKeyboardInput = value end
   function methods:SetVertexColor(...) self.vertexColor = { ... } end
   function methods:SetDesaturated(value) self.desaturated = value end
   function methods:SetAlpha(alpha) self.alpha = alpha end

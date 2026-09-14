@@ -14,7 +14,7 @@ Queue.Layout = {
 -- UI-007: 2% edge trim instead of 8%; keep more native texels without stretching.
 local ICON_TRIM = 0.02
 
-function Queue.Create(createFrame, parent, motionMode)
+function Queue.Create(createFrame, parent, motionMode, settings)
   local view = {}
   local root = createFrame("Frame", nil, parent)
   root:SetSize(Queue.Layout.width, Queue.Layout.height)
@@ -26,6 +26,8 @@ function Queue.Create(createFrame, parent, motionMode)
   local hotkeysEnabled, compactHotkeys = true, true
   local overlayAdapter, gcdTiming
   local indicators
+  local options = { count = 4, direction = "STACKED", indicators = true }
+  local lastRecommendations, lastKeys, lastIndicators, indicatorClock, relayout
   for index = 1, 8 do
     local frame = createFrame("Frame", nil, root)
     frame:EnableMouse(false)
@@ -62,8 +64,17 @@ function Queue.Create(createFrame, parent, motionMode)
 
   local function geometry(position)
     local layout = position == 1 and Queue.Layout.current or Queue.Layout.queued
-    return { x = position == 1 and layout.x or (position - 2) * (layout.width + Queue.Layout.gap),
-      y = layout.y, width = layout.width, height = layout.height,
+    local count, gap = options.count, Queue.Layout.gap
+    local rowWidth = math.max(0, (count-1)*88-gap)
+    local width = options.direction == "STACKED" and math.max(200, rowWidth) or 200+(count-1)*88
+    local x, y = (width-200)/2, 0
+    if options.direction == "STACKED" and position > 1 then x, y = (width-rowWidth)/2+(position-2)*88, -134
+    elseif options.direction ~= "STACKED" then
+      x = position == 1 and 0 or 208+(position-2)*88
+      y = position == 1 and 0 or -20
+      if options.direction == "LEFT" then x = width-x-layout.width end
+    end
+    return { x = x, y = y, width = layout.width, height = layout.height,
       iconX = layout.iconX, iconY = layout.iconY, iconWidth = layout.iconWidth, iconHeight = layout.iconHeight,
       alpha = 1, scale = 1, current = position == 1 and 1 or 0 }
   end
@@ -148,6 +159,7 @@ function Queue.Create(createFrame, parent, motionMode)
   animator = Spynon.AnimatorFactory.Create(paint, release, wake)
   animator:SetMode(motionMode or "NORMAL")
   local function clear()
+    lastRecommendations, lastKeys, lastIndicators = nil, nil, nil
     if indicators then indicators:Clear() end
     gcdTiming = nil
     for _, slot in ipairs(pool) do release(slot) end
@@ -158,7 +170,7 @@ function Queue.Create(createFrame, parent, motionMode)
   function view.SetRecommendations(_, recommendations)
     if not Spynon.RotationProgram.IsList(recommendations, 12) then view:Hide(); return false end
     local ids, selected = {}, {}
-    for index = 1, math.min(4, #recommendations) do
+    for index = 1, math.min(options.count, #recommendations) do
       local rec = recommendations[index]
       if not Spynon.Contracts.Recommendation.IsRuntimeSafe(rec) or ids[rec.id] then view:Hide(); return false end
       ids[rec.id] = true
@@ -166,6 +178,7 @@ function Queue.Create(createFrame, parent, motionMode)
     end
     -- Empty/unsafe state withdraws all advice immediately, even mid-transition.
     if #selected == 0 then view:Hide(); return true end
+    lastRecommendations = recommendations
     local consuming = false
     for _, slot in ipairs(pool) do if slot.consumeTime then consuming = true end end
     -- Discard obsolete retirees first; at most four live plus four outgoing frames.
@@ -187,6 +200,7 @@ function Queue.Create(createFrame, parent, motionMode)
         byId[rec.id] = slot
       end
       local kind = Spynon.AnimatorFactory.Classify(slot.position, index)
+      if relayout and not kind then kind = "MOVE" end
       if animator:GetTransition(slot) == "EXIT" or animator:GetTransition(slot) == "CONSUME" then kind = "MOVE" end
       slot.id, slot.position, slot.rec = rec.id, index, rec
       content(slot, rec)
@@ -198,13 +212,20 @@ function Queue.Create(createFrame, parent, motionMode)
     local any = false
     for _, slot in ipairs(pool) do if slot.id then any = true end end
     if any then root:Show() else root:Hide(); wake(false) end
+    relayout = false
     return true
   end
   function view.Hide(_) clear(); root:Hide() end
   function view.SetIndicators(_, values, clock)
     if not Spynon.RotationProgram.IsList(values, 12) then
+      lastIndicators, indicatorClock = nil, nil
       if indicators then indicators:Clear() end
       return false
+    end
+    lastIndicators, indicatorClock = values, clock
+    if not options.indicators then
+      if indicators then indicators:Clear() end
+      return true
     end
     if not indicators and #values == 0 then return end
     indicators = indicators or Spynon.AuraIndicatorsFactory.Create(createFrame, root, clock)
@@ -223,6 +244,7 @@ function Queue.Create(createFrame, parent, motionMode)
     updateGCD(); wake(motionActive)
   end
   function view.ClearOverlays(_)
+    lastIndicators = nil
     if indicators then indicators:Clear() end
     gcdTiming = nil
     for _, slot in ipairs(pool) do slot.overlay:Clear() end
@@ -232,6 +254,7 @@ function Queue.Create(createFrame, parent, motionMode)
     for _, slot in ipairs(pool) do slot.overlay:SetNumbers(enabled) end
   end
   function view.SetHotkeys(_, keys)
+    lastKeys = keys
     for _, slot in ipairs(pool) do slot.key = keys[slot.id]; paint(slot) end
   end
   function view.SetHotkeyStyle(_, enabled, compact)
@@ -267,6 +290,29 @@ function Queue.Create(createFrame, parent, motionMode)
   end
   function view.GetFrameForId(_, id) return byId[id] and byId[id].frame or nil end
   function view.GetRoot(_) return root end
+  function view.ApplySettings(_, value)
+    if not Spynon.SettingsFactory.Validate(value) then return false end
+    relayout = options.count ~= value.count or options.direction ~= value.direction
+    options = value
+    local rowWidth = math.max(0, (value.count-1)*88-8)
+    root:SetSize(value.direction == "STACKED" and math.max(200, rowWidth) or 200+(value.count-1)*88,
+      value.direction == "STACKED" and value.count > 1 and 214 or 120)
+    root:SetScale(value.scale)
+    view:SetMotionMode(value.motion)
+    view:SetHotkeyStyle(value.keys ~= "off", value.keys ~= "full")
+    view:SetCooldownNumbers(value.numbers)
+    if lastRecommendations then
+      view:SetRecommendations(lastRecommendations)
+      if lastKeys then view:SetHotkeys(lastKeys) end
+      if overlayAdapter then view:RefreshOverlays(overlayAdapter) end
+      if lastIndicators then view:SetIndicators(lastIndicators, indicatorClock) end
+    end
+    return true
+  end
+  settings = settings or Spynon.Settings
+  view:ApplySettings(settings:Get())
+  settings:Subscribe(function(value) view:ApplySettings(value) end)
+  if motionMode then view:SetMotionMode(motionMode) end
   return view
 end
 Spynon.QueueFactory = Queue
