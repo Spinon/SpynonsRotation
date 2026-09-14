@@ -67,8 +67,8 @@ test("native icon crop keeps artwork aspect and uses approved content UVs", func
       local uv = item.uv
       local sourceRatio = (uv[2] - uv[1]) / (uv[4] - uv[3])
       eq(math.abs(sourceRatio - item.width / item.height) < 0.0001, true)
-    elseif item.kind == "Texture" and item.layer == "OVERLAY" and item.parent == view:GetFrameForId("n.a")
-      and item.texture:find("action-current", 1, true) then
+    elseif item.kind == "Texture" and item.layer == "ARTWORK" and item.parent.parent == view:GetFrameForId("n.a")
+      and type(item.texture) == "string" and item.texture:find("action-current", 1, true) then
       eq(item.uv[1], 0.109375)
       eq(item.uv[4], 0.96875)
     end
@@ -80,7 +80,7 @@ test("missing icons use local neutral placeholders and retain layout", function(
   local frame = view:GetFrameForId("n.a")
   local placeholders = 0
   for _, object in ipairs(objects) do
-    if object.parent == frame and object.kind == "FontString" and object.layer == "ARTWORK" then
+    if object.parent and object.parent.parent == frame and object.kind == "FontString" and object.text == "?" then
       eq(object.visible, true); eq(object.text, "?"); placeholders = placeholders + 1
     end
   end
@@ -137,6 +137,65 @@ test("controller subscribes once and releases its subscription without recreatin
   eq(controller:GetView():GetRoot().visible, false)
   controller:Start()
   eq(#objects, count)
+end)
+test("revised icon apertures retain more source texels with explicit linear filtering", function()
+  local view, objects = fixture()
+  view:SetRecommendations({ recommendation("n.a", 1), recommendation("n.b", 2) })
+  local found = 0
+  for _, item in ipairs(objects) do
+    if item.kind == "Texture" and (item.texture == 1 or item.texture == 2) then
+      local current = item.texture == 1
+      eq(item.point[4], current and 20 or 12); eq(item.point[5], current and -11 or -8)
+      eq(item.width, current and 158 or 57); eq(item.height, current and 94 or 59)
+      eq(item.filter, "LINEAR"); eq(item.wrapH, "CLAMP"); eq(item.wrapV, "CLAMP")
+      local u, v = item.uv[2] - item.uv[1], item.uv[4] - item.uv[3]
+      assert(math.abs(math.max(u, v) - 0.96) < 0.00001)
+      assert(math.abs(u / v - item.width / item.height) < 0.00001)
+      found = found + 1
+    end
+  end
+  eq(found, 2)
+end)
+test("both hierarchy borders sit above native cooldown frames and below text", function()
+  local view, objects = fixture()
+  view:SetRecommendations({ recommendation("n.a", 1) })
+  local borders, cooldown = 0, nil
+  local frame = view:GetFrameForId("n.a")
+  for _, item in ipairs(objects) do if item.kind == "Cooldown" and item.parent == frame then cooldown = item end end
+  assert(cooldown)
+  for _, item in ipairs(objects) do
+    if item.kind == "Texture" and type(item.texture) == "string" and item.parent.parent == frame then
+      assert(item.parent:GetFrameLevel() > cooldown:GetFrameLevel())
+      eq(item.layer, "ARTWORK"); eq(item.allPoints, frame); borders = borders + 1
+    elseif item.kind == "FontString" and item.parent.parent == frame then
+      eq(item.layer, "OVERLAY")
+    end
+  end
+  eq(borders, 2)
+end)
+test("promoted artwork, cooldown and hotkey remain attached with proportional crop", function()
+  local createFrame, objects = factory()
+  local view = ns.QueueFactory.Create(createFrame, {}, "NORMAL")
+  view:SetRecommendations({ recommendation("n.a", 1), recommendation("n.b", 2) })
+  view:GetRoot().scripts.OnUpdate(view:GetRoot(), 1)
+  local frame, count = view:GetFrameForId("n.b"), #objects
+  view:SetRecommendations({ recommendation("n.b", 2), recommendation("n.a", 1) })
+  view:SetHotkeys({ ["n.b"] = "Q" })
+  local icon, cooldown, key
+  for _, item in ipairs(objects) do
+    if item.texture == 2 then icon = item end
+    if item.kind == "Cooldown" and item.parent == frame then cooldown = item end
+    if item.kind == "FontString" and item.text == "Q" then key = item end
+  end
+  assert(icon and cooldown and key)
+  for _ = 1, 22 do
+    local tick = view:GetRoot().scripts.OnUpdate
+    if tick then tick(view:GetRoot(), 0.01) end
+    local uv = icon.uv
+    assert(math.abs((uv[2]-uv[1])/(uv[4]-uv[3]) - icon.width/icon.height) < 0.00001)
+    eq(cooldown.allPoints, icon); eq(key.point[2], icon)
+  end
+  eq(view:GetFrameForId("n.b"), frame); eq(#objects, count)
 end)
 print(string.format("Queue UI: %d/%d passed", passed, total))
 for _, failure in ipairs(failures) do print(failure) end

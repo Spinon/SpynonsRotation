@@ -63,6 +63,8 @@ const requiredFiles = [
   "tests/unit/in_game_harness_spec.lua",
   "docs/project/RETAIL_SMOKE.md",
   "addon/UI/Queue.lua",
+  "tools/ui/Test-QueueIconFit.ps1",
+  "docs/architecture/ICON_FIT.md",
   "addon/UI/DemoTimeline.lua",
   "addon/UI/DemoMode.lua",
   "tests/unit/demo_spec.lua",

@@ -34,7 +34,10 @@ return function()
     self.visible = false
     if wasVisible and self.scripts and self.scripts.OnHide then self.scripts.OnHide(self) end
   end
-  function methods:SetTexture(texture) self.texture = texture; return texture ~= "missing" end
+  function methods:SetTexture(texture, wrapH, wrapV, filter)
+    self.texture, self.wrapH, self.wrapV, self.filter = texture, wrapH, wrapV, filter
+    return texture ~= "missing"
+  end
   function methods:SetTexCoord(...) self.uv = { ... } end
   function methods:SetColorTexture(...) self.color = { ... }; self.texture = nil end
   function methods:SetTextColor(...) self.textColor = { ... } end

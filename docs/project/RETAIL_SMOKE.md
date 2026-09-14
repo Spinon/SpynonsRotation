@@ -41,6 +41,21 @@ captura do novo resultado e `/reload` para persistir. Não declarar a correção
 
 ## Comandos no jogo
 
+### Retorno posterior do Product Owner — 2026-09-14
+
+Captura `codex-clipboard-73fa5f18-4a77-4aba-b527-e4786d14cb5e.png`, SHA-256
+`40EBCE28DCE2E6E9778CC23D2F5D81EDB786BAFB6E9B4E05177D5A7753ECE2EE`:
+o chat mostra build 12.1.0.69814 / interface 120100 aceita para smoke, estado válido,
+126 sinais públicos e zero recomendações. Teclas Q e 4 aparecem na prévia estática.
+O aviso anterior de build não ocorre nessa execução; a causa histórica continua indeterminada.
+
+Em seguida, o PO relatou que o demo ficou liso e aprovou as animações. Também relatou
+ícones desencaixados e alguns pixelados. Esse relato valida a fluidez percebida da demo,
+não a rotação real, a ausência de taint ou cada cenário de combate. UI-007 trata encaixe
+e amostragem; sua revisão visual permanece pendente de novo teste.
+
+### Roteiro
+
 1. Abrir o Retail, habilitar **Spynon's Rotation** na lista de addons e entrar no personagem.
 2. Fora de combate, executar `/spynon test`. O chat mostra a compatibilidade de build, validade do
    snapshot e quantidade de sinais/recomendações. Fila vazia fora de combate é esperada.

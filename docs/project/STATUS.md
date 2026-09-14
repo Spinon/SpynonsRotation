@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T21:57:27.308Z
+Atualizado pelo board em: 2026-09-14T22:01:57.012Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UI-007 — Encaixe e amostragem dos ícones**
+**UI-005 — Buff/debuff indicators**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P2` · Responsável: Codex
 
-Próxima ação: Ajustar encaixe e crop preservando as animações aprovadas.
+Próxima ação: Definir vocabulário visual.
 
 ## Progresso
 
 - Planejadas: 18
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 39
+- Concluídas: 40
 - Total: 59
 
 ## Fila canônica
@@ -83,7 +83,7 @@ Próxima ação: Ajustar encaixe e crop preservando as animações aprovadas.
 | RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
 | PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | done | P0 | CORE-004, PATCH-001 |
-| UI-007 | delivery | UI | Encaixe e amostragem dos ícones | in_progress | P1 | UI-001, UI-002, UI-003, UI-004, UI-006 |
+| UI-007 | delivery | UI | Encaixe e amostragem dos ícones | done | P1 | UI-001, UI-002, UI-003, UI-004, UI-006 |
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
@@ -418,3 +418,12 @@ Próxima ação: Ajustar encaixe e crop preservando as animações aprovadas.
 - npm test aprovado: 180 testes Node e 172 testes Lua, incluindo 5 novas regressões; 35 arquivos sem warnings, erros ou problemas de tipo.
 - docs/project/RETAIL_SMOKE.md registra a captura Retail parcial e o relatório real, sem atribuir causa não comprovada ao aviso antigo ou concluir TEST-002.
 - Commit 59ef00c registra início da correção. Reteste no cliente ainda necessário; nenhuma build adicional ou release foi liberada.
+
+### UI-007
+
+- Queue.lua revisa aberturas para 20/11/158/94 (atual) e 12/8/57/59 (fila), reduz trim de 8% para 2% e usa CLAMP/LINEAR, sem esticar ícones nem alterar dimensões externas ou Animator.
+- Molduras de crossfade movidas para foreground acima do frame nativo de cooldown, com textos acima; âncoras de teclas, contagens e swipe continuam presas ao ícone. Nenhum frame extra ou asset alterado.
+- npm test aprovado: 181 testes Node e 226 testes Lua, incluindo 12 de Queue e todas as 16 regressões de animação; 42 arquivos sem warnings, erros ou problemas de tipo.
+- Test-QueueIconFit.ps1: oito probes transparentes cobertos e envelope lateral preservado nos PNGs técnicos. Test-TechnicalAssets.ps1: 16 TGAs, 16 PNGs, hashes e 7.995.680 bytes preservados.
+- docs/architecture/ICON_FIT.md registra medidas, crop, camadas e limite da arte nativa. RETAIL_SMOKE registra nova captura e aprovação humana da fluidez anterior; novo encaixe ainda exige reteste Retail.
+- Commit 0115503 registra início publicado. UI-005 volta ao foco sem antecipar seus indicadores.

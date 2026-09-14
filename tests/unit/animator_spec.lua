@@ -122,7 +122,8 @@ test("consume is a short local accent only on the confirmed current spell", func
   near(frame.width, 192); near(frame.alpha, 0.75)
   local flashes = 0
   for _, item in ipairs(objects) do
-    if item.kind == "Texture" and item.layer == "ARTWORK" and item.visible and (item.alpha or 1) > 0 then
+    if item.kind == "Texture" and item.color and item.color[1] == 0.8
+      and item.visible and (item.alpha or 1) > 0 then
       flashes = flashes + 1
     end
   end

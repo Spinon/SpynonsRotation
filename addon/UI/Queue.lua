@@ -6,11 +6,13 @@ Queue.Layout = {
   width = 256, height = 214, offsetY = -130, gap = 8,
   current = { width = 200, height = 120, x = 28, y = 0,
     texture = ROOT .. "action-current-neutral-v1.tga", uv = { 0.109375, 0.890625, 0.03125, 0.96875 },
-    iconX = 22, iconY = 16, iconWidth = 156, iconHeight = 86 },
+    iconX = 20, iconY = 11, iconWidth = 158, iconHeight = 94 },
   queued = { width = 80, height = 80, y = -134,
     texture = ROOT .. "action-queue-neutral-v1.tga", uv = { 0.03125, 0.96875, 0.03125, 0.96875 },
-    iconX = 15, iconY = 13, iconWidth = 50, iconHeight = 53 },
+    iconX = 12, iconY = 8, iconWidth = 57, iconHeight = 59 },
 }
+-- UI-007: 2% edge trim instead of 8%; keep more native texels without stretching.
+local ICON_TRIM = 0.02
 
 function Queue.Create(createFrame, parent, motionMode)
   local view = {}
@@ -27,23 +29,25 @@ function Queue.Create(createFrame, parent, motionMode)
     local frame = createFrame("Frame", nil, root)
     frame:EnableMouse(false)
     local icon = frame:CreateTexture(nil, "BACKGROUND")
-    local border = frame:CreateTexture(nil, "OVERLAY")
+    local overlay = Spynon.CooldownOverlayFactory.Create(createFrame, frame, icon)
+    local foreground = overlay:GetLabelParent()
+    -- Native Cooldown is a child frame: parent draw layers alone cannot cover it.
+    local border = foreground:CreateTexture(nil, "ARTWORK")
     border:SetAllPoints(frame)
     border:SetTexture(Queue.Layout.queued.texture)
     border:SetTexCoord(unpack(Queue.Layout.queued.uv))
-    local currentBorder = frame:CreateTexture(nil, "OVERLAY")
+    local currentBorder = foreground:CreateTexture(nil, "ARTWORK")
     currentBorder:SetAllPoints(frame)
     currentBorder:SetTexture(Queue.Layout.current.texture)
     currentBorder:SetTexCoord(unpack(Queue.Layout.current.uv))
-    local flash = frame:CreateTexture(nil, "ARTWORK")
+    local flash = foreground:CreateTexture(nil, "BACKGROUND")
     flash:SetColorTexture(0.8, 0.87, 0.94, 1)
     flash:SetAlpha(0)
-    local placeholder = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
-    placeholder:SetPoint("CENTER", frame, "CENTER", 0, 0)
+    local placeholder = foreground:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    placeholder:SetPoint("CENTER", icon, "CENTER", 0, 0)
     placeholder:SetTextColor(0.55, 0.6, 0.66, 1)
     placeholder:SetText("?")
-    local overlay = Spynon.CooldownOverlayFactory.Create(createFrame, frame, icon)
-    local hotkey = overlay:GetLabelParent():CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    local hotkey = foreground:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
     local font = hotkey:GetFont()
     hotkey:SetPoint("TOPRIGHT", icon, "TOPRIGHT", -2, -2)
     hotkey:SetTextColor(0.94, 0.97, 1, 1)
@@ -83,9 +87,10 @@ function Queue.Create(createFrame, parent, motionMode)
     slot.flash:SetAlpha(animator:GetMode() == "NORMAL" and pulse * 0.16 or 0)
     -- Center crop preserves native square artwork proportions in either opening.
     local ratio = value.iconWidth / value.iconHeight
-    local left, right, top, bottom = 0.08, 0.92, 0.08, 0.92
-    if ratio > 1 then top, bottom = 0.5 - 0.42 / ratio, 0.5 + 0.42 / ratio
-    else left, right = 0.5 - 0.42 * ratio, 0.5 + 0.42 * ratio end
+    local half = 0.5 - ICON_TRIM
+    local left, right, top, bottom = ICON_TRIM, 1 - ICON_TRIM, ICON_TRIM, 1 - ICON_TRIM
+    if ratio > 1 then top, bottom = 0.5 - half / ratio, 0.5 + half / ratio
+    else left, right = 0.5 - half * ratio, 0.5 + half * ratio end
     slot.icon:SetTexCoord(left, right, top, bottom)
     local text = hotkeysEnabled and Spynon.Hotkeys.Format(slot.key, compactHotkeys) or nil
     if text and slot.font then
@@ -100,7 +105,7 @@ function Queue.Create(createFrame, parent, motionMode)
     else slot.hotkey:SetText(""); slot.hotkey:Hide() end
   end
   local function content(slot, rec)
-    local loaded = rec.action.icon and slot.icon:SetTexture(rec.action.icon)
+    local loaded = rec.action.icon and slot.icon:SetTexture(rec.action.icon, "CLAMP", "CLAMP", "LINEAR")
     if not loaded then
       -- Local procedural placeholder: same rectangle and anchor as the resolved native icon.
       slot.icon:SetColorTexture(0.07, 0.09, 0.12, 1)
