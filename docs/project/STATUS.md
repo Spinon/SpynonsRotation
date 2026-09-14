@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T23:17:25.361Z
+Atualizado pelo board em: 2026-09-14T23:17:55.026Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UX-005 — Preview + reset granular**
 
-Status: `planned` · Prioridade: `P2` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
 
 Próxima ação: Definir snapshots e resets.
 
 ## Progresso
 
-- Planejadas: 13
-- Em andamento: 0
+- Planejadas: 12
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 45
 - Total: 59
@@ -68,7 +68,7 @@ Próxima ação: Definir snapshots e resets.
 | UX-002 | delivery | CONFIG / UX | Edit HUD | done | P1 | UX-001, UI-002 |
 | UX-003 | delivery | CONFIG / UX | Advanced panels | planned | P2 | UX-001 |
 | UX-004 | delivery | CONFIG / UX | Undo/Redo | done | P1 | UX-002 |
-| UX-005 | delivery | CONFIG / UX | Preview + reset granular | planned | P2 | UX-004 |
+| UX-005 | delivery | CONFIG / UX | Preview + reset granular | in_progress | P2 | UX-004 |
 | UX-006 | delivery | CONFIG / UX | Typography | planned | P2 | UX-001 |
 | PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | done | P1 | CORE-001, UX-001 |
 | SKIN-001 | delivery | PROFILES / SKINS | Skin API | planned | P1 | UI-001 |
