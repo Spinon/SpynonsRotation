@@ -1,10 +1,13 @@
 local _, Spynon = ...
 local Settings = {}
 local defaults = { count = 4, scale = 1, direction = "STACKED", motion = "NORMAL",
-  keys = "compact", numbers = true, indicators = true }
+  keys = "compact", numbers = true, indicators = true, mainScale = 1, spacing = 8,
+  alignment = "CENTER", keyPosition = "TOPRIGHT" }
 local choices = { count = { 1, 2, 3, 4 }, scale = { 0.75, 1, 1.25 },
   direction = { "STACKED", "RIGHT", "LEFT" }, motion = { "NORMAL", "REDUCED", "OFF" },
-  keys = { "compact", "full", "off" }, numbers = { true, false }, indicators = { true, false } }
+  keys = { "compact", "full", "off" }, numbers = { true, false }, indicators = { true, false },
+  mainScale = { 0.85, 1, 1.15 }, spacing = { 4, 8, 16 }, alignment = { "START", "CENTER", "END" },
+  keyPosition = { "TOPRIGHT", "TOPLEFT", "BOTTOMRIGHT", "BOTTOMLEFT" } }
 local function copy(source)
   local result = {}; for key, value in pairs(source) do result[key] = value end; return result
 end

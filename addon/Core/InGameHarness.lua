@@ -6,7 +6,7 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
   local harness = {}
   local preview, previewLabel, active, started = nil, nil, false, false
   local demo
-  local onClosed
+  local onClosed, onPresented
 
   function harness.Run(_)
     local build = compat.Build:GetInfo()
@@ -67,6 +67,8 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
       return false
     end
     preview = preview or Spynon.QueueFactory.Create(createFrame, compat.Media:GetRootParent(), "OFF")
+    preview:SetEditMode(nil)
+    if onPresented then onPresented() end
     if not previewLabel then
       previewLabel = preview:GetRoot():CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
       previewLabel:SetPoint("BOTTOM", preview:GetRoot(), "TOP", 0, 10)
@@ -145,7 +147,9 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
     frame:SetScript("OnEvent", function() harness:Hide() end)
   end
   function harness.IsPreviewActive(_) return active end
+  function harness.GetPreview(_) return preview end
   function harness.OnClosed(_, callback) onClosed = callback end
+  function harness.OnPresented(_, callback) onPresented = callback end
   function harness.IsDemoActive(_) return demo and demo:IsActive() or false end
   return harness
 end

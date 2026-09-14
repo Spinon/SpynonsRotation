@@ -95,6 +95,14 @@ PROFILE-001 acrescenta o card Perfis e persistência: alterar uma preferência, 
 e restauração exigem confirmação e preservam os outros perfis. Verificar legibilidade,
 cliques e propagação das teclas no Retail; fixtures não são homologação visual ou de taint.
 
+### Seleção direta (UX-002)
+
+Executar `/spynon edit`. Clicar no ícone principal, em Tecla e numa próxima ação deve abrir
+somente suas opções. Verificar se os alvos de clique acompanham os ícones ao mudar tamanho,
+direção e espaçamento. Os alvos Tecla não são binds reais. Fechar, iniciar demo ou entrar em
+combate deve remover os alvos sem interceptar cliques do jogo. Confirmar `/reload` das
+preferências novas. Hit testing, foco e rendering nativos continuam pendentes de inspeção.
+
 ### Inspeção humana
 
 - [ ] Addon carregou sem erro Lua; `/spynon test` foi reconhecido.

@@ -18,8 +18,22 @@ local fields = {
     { key = "numbers", label = "Tempo restante", options = { {true,"Mostrar"}, {false,"Ocultar"} } },
     { key = "indicators", label = "Buffs e debuffs relevantes", options = { {true,"Mostrar"}, {false,"Ocultar"} } },
   },
+  current = {
+    { key = "mainScale", label = "Tamanho do ícone principal",
+      options = { {0.85,"Menor"}, {1,"Padrão"}, {1.15,"Maior"} } },
+  },
+  hotkey = {
+    { key = "keys", label = "Exibição das teclas",
+      options = { {"compact","Curtas"}, {"full","Completas"}, {"off","Ocultas"} } },
+    { key = "keyPosition", label = "Posição no ícone",
+      options = { {"TOPLEFT","↖"}, {"TOPRIGHT","↗"}, {"BOTTOMLEFT","↙"}, {"BOTTOMRIGHT","↘"} } },
+  },
 }
-function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles)
+fields.layout = { fields.queue[1], fields.queue[3],
+  { key = "spacing", label = "Espaçamento", options = { {4,"Próximo"}, {8,"Padrão"}, {16,"Amplo"} } },
+  { key = "alignment", label = "Alinhamento", options = { {"START","Início"}, {"CENTER","Centro"}, {"END","Fim"} } },
+}
+function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles, onEdit)
   local panel, selected, buttons, pages = {}, nil, {}, {}
   local navigation, profileButtons, pending = {}, {}, nil
   for _, section in ipairs(sections) do navigation[#navigation+1] = section end
@@ -50,14 +64,21 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
     return { frame = value, fill = fill, caption = caption }
   end
   label(root, "Spynon's Rotation", 20, 18, 350)
-  label(root, "Prévia simulada • mudanças imediatas", 20, 44, 460)
+  local subtitle = label(root, "Prévia simulada • mudanças imediatas", 20, 50, 320)
   button(root, "Fechar", 404, 12, 86, 34, function() panel:Hide() end)
+  if onEdit then button(root, "Editar HUD", 350, 44, 140, 30, onEdit) end
   local intro = createFrame("Frame", nil, root)
   intro:SetAllPoints(root)
   label(intro, "O que você quer ajustar?", 20, 88, 470)
-  for index, section in ipairs(navigation) do
-    button(intro, section.label, 20, 125 + (index-1)*86, 470, 38, function() panel:Select(section.id) end)
-    label(intro, section.detail, 28, 168 + (index-1)*86, 450)
+  local pageSections = {}
+  for _, section in ipairs(navigation) do pageSections[#pageSections+1] = section end
+  for _, section in ipairs({ { id = "current", label = "Ícone principal" }, { id = "hotkey", label = "Teclas" },
+    { id = "layout", label = "Organização da fila" } }) do pageSections[#pageSections+1] = section end
+  for index, section in ipairs(pageSections) do
+    if index <= #navigation then
+      button(intro, section.label, 20, 125 + (index-1)*86, 470, 38, function() panel:Select(section.id) end)
+      label(intro, section.detail, 28, 168 + (index-1)*86, 450)
+    end
     local page = createFrame("Frame", nil, root)
     page:SetAllPoints(root); pages[section.id] = page
     button(page, "< Assuntos", 20, 80, 116, 34, function() panel:Select(nil) end)
@@ -132,6 +153,14 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
     return true
   end
   function panel.Show(_) panel:Refresh(); root:SetPropagateKeyboardInput(true); root:Show() end
+  function panel.SetEditing(_, enabled)
+    subtitle:SetText(enabled and "Clique no HUD • prévia parada" or "Prévia simulada • mudanças imediatas")
+  end
+  function panel.SelectElement(_, kind)
+    local sectionsByElement = { current = "current", hotkey = "hotkey", queue = "layout" }
+    if not sectionsByElement[kind] then return false end
+    return panel:Select(sectionsByElement[kind])
+  end
   function panel.Hide(_) pending = nil; root:Hide() end
   function panel.GetSection(_) return selected end
   function panel.GetRoot(_) return root end

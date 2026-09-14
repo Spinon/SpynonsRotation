@@ -8,6 +8,7 @@ return function()
   end
   function methods:SetSize(width, height) self.width, self.height = width, height end
   function methods:SetWidth(width) self.width = width end
+  function methods:SetHeight(height) self.height = height end
   function methods:SetScale(value) self.scale = value end
   function methods:EnableKeyboard(value) self.keyboard = value end
   function methods:SetPropagateKeyboardInput(value) self.propagateKeyboardInput = value end

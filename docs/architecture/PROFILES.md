@@ -82,7 +82,7 @@ do addon no cliente/conta WoW, não sincronização entre estações ou contas.
 [AceDB-3.0](https://www.wowace.com/projects/ace3/pages/api/ace-db-3-0) oferece defaults,
 namespaces, seleção, cópia e reset de perfis. A composição incremental global/personagem/spec
 e a fronteira de identidade guardada ainda exigiriam código próprio neste produto.
-Para os sete campos atuais, um store pequeno e coberto por fixtures evita adicionar uma
+Para os sete campos iniciais (onze após UX-002), um store pequeno e coberto por fixtures evita adicionar uma
 dependência sem vantagem clara. Não se usa AceConfig; o painel contextual permanece próprio.
 Reavaliar AceDB se a complexidade de migração, namespaces ou interoperabilidade crescer.
 

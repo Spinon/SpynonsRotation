@@ -25,8 +25,8 @@ function Queue.Create(createFrame, parent, motionMode, settings)
   local pool, byId, animator = {}, {}, nil
   local hotkeysEnabled, compactHotkeys = true, true
   local overlayAdapter, gcdTiming
-  local indicators
-  local options = { count = 4, direction = "STACKED", indicators = true }
+  local indicators, editor
+  local options = Spynon.SettingsFactory.Defaults()
   local lastRecommendations, lastKeys, lastIndicators, indicatorClock, relayout
   for index = 1, 8 do
     local frame = createFrame("Frame", nil, root)
@@ -58,24 +58,35 @@ function Queue.Create(createFrame, parent, motionMode, settings)
     hotkey:SetWordWrap(false)
     hotkey:Hide()
     frame:Hide()
-    pool[index] = { frame = frame, icon = icon, border = border, currentBorder = currentBorder,
+    pool[index] = { index = index, frame = frame, icon = icon, border = border, currentBorder = currentBorder,
       flash = flash, placeholder = placeholder, hotkey = hotkey, font = font, overlay = overlay }
   end
 
+  local function dimensions()
+    local w, h, count, gap = 200*options.mainScale, 120*options.mainScale, options.count, options.spacing
+    local row = math.max(0, (count-1)*(80+gap)-gap)
+    if options.direction == "STACKED" then
+      return math.max(w, row), h + (count > 1 and 80+gap+6 or 0), w, h, row
+    end
+    return w+(count-1)*(80+gap), h, w, h, row
+  end
   local function geometry(position)
     local layout = position == 1 and Queue.Layout.current or Queue.Layout.queued
-    local count, gap = options.count, Queue.Layout.gap
-    local rowWidth = math.max(0, (count-1)*88-gap)
-    local width = options.direction == "STACKED" and math.max(200, rowWidth) or 200+(count-1)*88
-    local x, y = (width-200)/2, 0
-    if options.direction == "STACKED" and position > 1 then x, y = (width-rowWidth)/2+(position-2)*88, -134
+    local width, _, mainWidth, mainHeight, rowWidth = dimensions()
+    local gap = options.spacing
+    local factor = options.alignment == "START" and 0 or (options.alignment == "END" and 1 or 0.5)
+    local size = position == 1 and options.mainScale or 1
+    local x, y = (width-mainWidth)*factor, 0
+    if options.direction == "STACKED" and position > 1 then
+      x, y = (width-rowWidth)*factor+(position-2)*(80+gap), -(mainHeight+gap+6)
     elseif options.direction ~= "STACKED" then
-      x = position == 1 and 0 or 208+(position-2)*88
-      y = position == 1 and 0 or -20
-      if options.direction == "LEFT" then x = width-x-layout.width end
+      x = position == 1 and 0 or mainWidth+gap+(position-2)*(80+gap)
+      y = position == 1 and 0 or -(mainHeight-80)*factor
+      if options.direction == "LEFT" then x = width-x-layout.width*size end
     end
-    return { x = x, y = y, width = layout.width, height = layout.height,
-      iconX = layout.iconX, iconY = layout.iconY, iconWidth = layout.iconWidth, iconHeight = layout.iconHeight,
+    return { x = x, y = y, width = layout.width*size, height = layout.height*size,
+      iconX = layout.iconX*size, iconY = layout.iconY*size,
+      iconWidth = layout.iconWidth*size, iconHeight = layout.iconHeight*size,
       alpha = 1, scale = 1, current = position == 1 and 1 or 0 }
   end
   local function paint(slot)
@@ -104,6 +115,9 @@ function Queue.Create(createFrame, parent, motionMode, settings)
     if ratio > 1 then top, bottom = 0.5 - half / ratio, 0.5 + half / ratio
     else left, right = 0.5 - half * ratio, 0.5 + half * ratio end
     slot.icon:SetTexCoord(left, right, top, bottom)
+    local anchor = options.keyPosition
+    slot.hotkey:ClearAllPoints(); slot.hotkey:SetPoint(anchor, slot.icon, anchor,
+      anchor:find("LEFT", 1, true) and 2 or -2, anchor:find("BOTTOM", 1, true) and 2 or -2)
     local text = hotkeysEnabled and Spynon.Hotkeys.Format(slot.key, compactHotkeys) or nil
     if text and slot.font then
       local size = math.floor((12 + 2 * value.current) * scale + 0.5)
@@ -115,6 +129,7 @@ function Queue.Create(createFrame, parent, motionMode, settings)
       if slot.hotkey:GetStringWidth() <= value.iconWidth * scale - 4 then slot.hotkey:Show()
       else slot.hotkey:Hide() end -- Never truncate a binding into a different instruction.
     else slot.hotkey:SetText(""); slot.hotkey:Hide() end
+    if editor then editor:Update(slot, options) end
   end
   local function content(slot, rec)
     local loaded = rec.action.icon and slot.icon:SetTexture(rec.action.icon, "CLAMP", "CLAMP", "LINEAR")
@@ -132,6 +147,7 @@ function Queue.Create(createFrame, parent, motionMode, settings)
     slot.key = nil; slot.hotkey:SetText(""); slot.hotkey:Hide()
     slot.overlay:Clear()
     slot.frame:Hide()
+    if editor then editor:Update(slot, options) end
   end
   local ticking, motionActive = false, false
   local function updateGCD()
@@ -159,6 +175,7 @@ function Queue.Create(createFrame, parent, motionMode, settings)
   animator = Spynon.AnimatorFactory.Create(paint, release, wake)
   animator:SetMode(motionMode or "NORMAL")
   local function clear()
+    if editor then editor:Clear() end
     lastRecommendations, lastKeys, lastIndicators = nil, nil, nil
     if indicators then indicators:Clear() end
     gcdTiming = nil
@@ -290,13 +307,20 @@ function Queue.Create(createFrame, parent, motionMode, settings)
   end
   function view.GetFrameForId(_, id) return byId[id] and byId[id].frame or nil end
   function view.GetRoot(_) return root end
+  function view.SetEditMode(_, callback)
+    if not editor and callback == nil then return end
+    editor = editor or Spynon.QueueEditorFactory.Create(createFrame, root)
+    editor:Set(callback)
+    for _, slot in ipairs(pool) do if slot.visual then editor:Update(slot, options) end end
+  end
   function view.ApplySettings(_, value)
     if not Spynon.SettingsFactory.Validate(value) then return false end
     relayout = options.count ~= value.count or options.direction ~= value.direction
+      or options.mainScale ~= value.mainScale or options.spacing ~= value.spacing
+      or options.alignment ~= value.alignment
     options = value
-    local rowWidth = math.max(0, (value.count-1)*88-8)
-    root:SetSize(value.direction == "STACKED" and math.max(200, rowWidth) or 200+(value.count-1)*88,
-      value.direction == "STACKED" and value.count > 1 and 214 or 120)
+    local width, height = dimensions()
+    root:SetSize(width, height)
     root:SetScale(value.scale)
     view:SetMotionMode(value.motion)
     view:SetHotkeyStyle(value.keys ~= "off", value.keys ~= "full")

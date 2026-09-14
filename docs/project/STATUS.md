@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T22:53:01.010Z
+Atualizado pelo board em: 2026-09-14T23:01:01.149Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UX-002 — Edit HUD**
+**UX-004 — Undo/Redo**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Implementar seleção contextual.
+Próxima ação: Implementar command history.
 
 ## Progresso
 
 - Planejadas: 14
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 43
+- Concluídas: 44
 - Total: 59
 
 ## Fila canônica
@@ -65,7 +65,7 @@ Próxima ação: Implementar seleção contextual.
 | UI-005 | delivery | UI | Buff/debuff indicators | done | P2 | UI-004, RUN-002 |
 | UI-006 | delivery | UI | Demo Mode | done | P1 | UI-002, UI-004, RUN-003 |
 | UX-001 | delivery | CONFIG / UX | Config básico contextual | done | P1 | UI-001 |
-| UX-002 | delivery | CONFIG / UX | Edit HUD | in_progress | P1 | UX-001, UI-002 |
+| UX-002 | delivery | CONFIG / UX | Edit HUD | done | P1 | UX-001, UI-002 |
 | UX-003 | delivery | CONFIG / UX | Advanced panels | planned | P2 | UX-001 |
 | UX-004 | delivery | CONFIG / UX | Undo/Redo | planned | P1 | UX-002 |
 | UX-005 | delivery | CONFIG / UX | Preview + reset granular | planned | P2 | UX-004 |
@@ -421,6 +421,15 @@ Próxima ação: Implementar seleção contextual.
 - npm test aprovado: 181 testes Node e 259 testes Lua (440 ao todo), incluindo 16 de configuração; 48 arquivos sem warnings, erros ou problemas de tipo.
 - Test-QueueIconFit.ps1 preserva os oito probes transparentes e envelope lateral; API diff mantém 26 fontes e zero diferenças nas builds pinadas com ownership de Config incluído.
 - docs/architecture/BASIC_CONFIG.md registra comportamento, fronteiras e validação pendente no Retail. Commit c5f9768 registra início publicado; persistência segue em PROFILE-001 e curadoria visual continua adiada.
+
+### UX-002
+
+- UI/QueueEditor.lua cria alvos de seleção locais somente na prévia, com identificação Tecla e destaque do componente. /spynon edit e botão Editar HUD iniciam prévia estática explicitamente simulada.
+- Config/Panel.lua mostra somente opções do principal, teclas ou organização da fila conforme o clique. Tamanho principal, quatro cantos da tecla, espaçamento e alinhamento atualizam a mesma view e persistem por Profiles.
+- Config.Controller e harness retiram os alvos ao fechar, trocar apresentação ou restringir; nenhum clique de edição lança habilidade, altera bind ou fica ativo na fila real.
+- npm test aprovado: 181 testes Node e 291 testes Lua (472 ao todo), incluindo 12 do editor e 324 combinações de layout; 52 arquivos sem warnings, erros ou problemas de tipo.
+- Test-QueueIconFit.ps1 preserva oito probes e envelope lateral dos assets. API diff mantém 26 fontes, zero diferenças entre builds pinadas e ownership do editor documentado.
+- docs/architecture/HUD_EDITOR.md e RETAIL_SMOKE registram limites e inspeção nativa pendente. Commit ec22607 registra início; hit testing/rendering/taint não foram homologados por fixtures, e acabamento visual segue adiado.
 
 ### PROFILE-001
 

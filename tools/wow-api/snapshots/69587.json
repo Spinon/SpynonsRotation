@@ -123,7 +123,8 @@
         "addon/Config/Panel.lua",
         "addon/Core/InGameHarness.lua",
         "addon/UI/AuraIndicators.lua",
-        "addon/UI/Queue.lua"
+        "addon/UI/Queue.lua",
+        "addon/UI/QueueEditor.lua"
       ]
     },
     {
@@ -136,7 +137,8 @@
         "addon/Config/Panel.lua",
         "addon/Core/InGameHarness.lua",
         "addon/UI/AuraIndicators.lua",
-        "addon/UI/Queue.lua"
+        "addon/UI/Queue.lua",
+        "addon/UI/QueueEditor.lua"
       ]
     },
     {
@@ -149,7 +151,8 @@
         "addon/Config/Panel.lua",
         "addon/Core/Bootstrap.lua",
         "addon/Profiles/Controller.lua",
-        "addon/UI/Queue.lua"
+        "addon/UI/Queue.lua",
+        "addon/UI/QueueEditor.lua"
       ]
     },
     {
@@ -179,7 +182,8 @@
       "modules": [
         "addon/Config/Panel.lua",
         "addon/UI/AuraIndicators.lua",
-        "addon/UI/Queue.lua"
+        "addon/UI/Queue.lua",
+        "addon/UI/QueueEditor.lua"
       ]
     },
     {
@@ -190,7 +194,8 @@
       "modules": [
         "addon/Config/Panel.lua",
         "addon/UI/AuraIndicators.lua",
-        "addon/UI/Queue.lua"
+        "addon/UI/Queue.lua",
+        "addon/UI/QueueEditor.lua"
       ]
     },
     {
@@ -210,7 +215,8 @@
       "modules": [
         "addon/Config/Panel.lua",
         "addon/UI/AuraIndicators.lua",
-        "addon/UI/Queue.lua"
+        "addon/UI/Queue.lua",
+        "addon/UI/QueueEditor.lua"
       ]
     },
     {

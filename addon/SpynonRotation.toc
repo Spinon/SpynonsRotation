@@ -50,6 +50,7 @@ UI/AuraIndicators.lua
 Config/Settings.lua
 Profiles/Store.lua
 Profiles/Controller.lua
+UI/QueueEditor.lua
 UI/Queue.lua
 UI/QueueController.lua
 UI/DemoTimeline.lua

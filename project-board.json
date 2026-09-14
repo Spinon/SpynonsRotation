@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T22:53:01.010Z",
-  "currentFocus": "UX-002",
+  "updatedAt": "2026-09-14T23:01:01.149Z",
+  "currentFocus": "UX-004",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1142,12 +1142,12 @@
       "title": "Edit HUD",
       "lane": "CONFIG / UX",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T22:53:01.010Z",
+      "updatedAt": "2026-09-14T23:01:01.149Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Implementar seleção contextual.",
+      "nextAction": null,
       "dependencies": [
         "UX-001",
         "UI-002"
@@ -1157,7 +1157,14 @@
         "Painel mostra opções pertinentes",
         "Preview atualiza em tempo real"
       ],
-      "evidence": []
+      "evidence": [
+        "UI/QueueEditor.lua cria alvos de seleção locais somente na prévia, com identificação Tecla e destaque do componente. /spynon edit e botão Editar HUD iniciam prévia estática explicitamente simulada.",
+        "Config/Panel.lua mostra somente opções do principal, teclas ou organização da fila conforme o clique. Tamanho principal, quatro cantos da tecla, espaçamento e alinhamento atualizam a mesma view e persistem por Profiles.",
+        "Config.Controller e harness retiram os alvos ao fechar, trocar apresentação ou restringir; nenhum clique de edição lança habilidade, altera bind ou fica ativo na fila real.",
+        "npm test aprovado: 181 testes Node e 291 testes Lua (472 ao todo), incluindo 12 do editor e 324 combinações de layout; 52 arquivos sem warnings, erros ou problemas de tipo.",
+        "Test-QueueIconFit.ps1 preserva oito probes e envelope lateral dos assets. API diff mantém 26 fontes, zero diferenças entre builds pinadas e ownership do editor documentado.",
+        "docs/architecture/HUD_EDITOR.md e RETAIL_SMOKE registram limites e inspeção nativa pendente. Commit ec22607 registra início; hit testing/rendering/taint não foram homologados por fixtures, e acabamento visual segue adiado."
+      ]
     },
     {
       "id": "UX-003",
