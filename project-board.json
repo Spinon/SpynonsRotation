@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:51:58.126Z",
+  "updatedAt": "2026-09-14T20:53:07.435Z",
   "currentFocus": "UI-003",
   "parallelFocus": {},
   "release": {
@@ -998,10 +998,10 @@
       "title": "Hotkeys",
       "lane": "UI",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T20:53:07.435Z",
       "reviewBy": "Product Owner",
       "nextAction": "Mapear bindings e renderizar overlay.",
       "dependencies": [
