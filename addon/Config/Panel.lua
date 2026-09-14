@@ -33,6 +33,19 @@ fields.layout = { fields.queue[1], fields.queue[3],
   { key = "spacing", label = "Espaçamento", options = { {4,"Próximo"}, {8,"Padrão"}, {16,"Amplo"} } },
   { key = "alignment", label = "Alinhamento", options = { {"START","Início"}, {"CENTER","Centro"}, {"END","Fim"} } },
 }
+local resetGroups = {
+  current = {"mainScale"}, hotkey = {"keys", "keyPosition"},
+  layout = {"count", "direction", "spacing", "alignment"},
+  queue = {"count", "scale", "direction", "motion", "mainScale", "spacing", "alignment"},
+  information = {"keys", "keyPosition", "numbers", "indicators"},
+}
+local function resetKeys(section)
+  local keys = {}
+  if section == "profiles" then
+    for key in pairs(Spynon.SettingsFactory.Defaults()) do keys[key] = true end
+  else for _, key in ipairs(resetGroups[section] or {}) do keys[key] = true end end
+  return keys
+end
 function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles, onEdit, history)
   local panel, selected, buttons, pages = {}, nil, {}, {}
   local navigation, profileButtons, pending = {}, {}, nil
@@ -40,7 +53,7 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
   if profiles then navigation[#navigation+1] = { id = "profiles", label = "Perfis",
     detail = "Escolha onde salvar; copie ou restaure preferências." } end
   local root = createFrame("Frame", nil, parent)
-  root:SetSize(510, 450); root:SetPoint("TOPLEFT", parent, "TOPLEFT", 24, -100)
+  root:SetSize(510, history and 560 or 450); root:SetPoint("TOPLEFT", parent, "TOPLEFT", 24, -100)
   root:SetFrameStrata("DIALOG"); root:EnableMouse(true); root:EnableKeyboard(true)
   root:SetPropagateKeyboardInput(true)
   local background = root:CreateTexture(nil, "BACKGROUND")
@@ -96,12 +109,21 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
     end
     page:Hide()
   end
-  local footer = label(root, "Por enquanto, ajustes desta sessão. Perfis vêm na próxima etapa.", 20, 413, 470)
-  local undo, redo
+  local footer = label(root, "Ajustes desta sessão.", 20, history and 523 or 413, 470)
+  local undo, redo, experiment, keep, cancel, resetSelection, previewLabel
   if history then
     Spynon.PreviewSliderFactory.Create(createFrame, pages.current, settings, history)
-    undo = button(root, "Desfazer", 20, 378, 114, 30, function() history:Undo() end)
-    redo = button(root, "Refazer", 140, 378, 114, 30, function() history:Redo() end)
+    undo = button(root, "Desfazer", 20, 488, 114, 30, function() history:Undo() end)
+    redo = button(root, "Refazer", 140, 488, 114, 30, function() history:Redo() end)
+    experiment = button(root, "Experimentar", 20, 418, 170, 32, function()
+      pending = nil; history:Cancel(); history:Begin(selected, "explore")
+    end)
+    keep = button(root, "Manter mudanças", 20, 418, 220, 32, function() history:Commit() end)
+    cancel = button(root, "Cancelar prévia", 250, 418, 240, 32, function() history:Cancel() end)
+    resetSelection = button(root, "Restaurar seção", 20, 378, 470, 32, function()
+      pending = nil; history:PreviewReset(resetKeys(selected))
+    end)
+    previewLabel = label(root, "", 20, 457, 470)
   end
   if profiles then
     local page = pages.profiles
@@ -128,7 +150,10 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
       source.text = "De: " .. scope[2]; profileButtons[#profileButtons+1] = source
     end
     local reset
-    reset = button(page, "Restaurar este perfil", 20, 286, 470, 34, function() confirm(reset, "reset") end)
+    reset = button(page, "Restaurar este perfil", 20, 286, 470, 34, function()
+      if history then pending = nil; history:PreviewReset(resetKeys("profiles"))
+      else confirm(reset, "reset") end
+    end)
     reset.text = "Restaurar este perfil"; profileButtons[#profileButtons+1] = reset
     profiles:Subscribe(function() pending = nil; panel:Refresh() end)
   end
@@ -153,6 +178,17 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
       local canUndo, canRedo = status.undo > 0 and not status.active, status.redo > 0 and not status.active
       undo.frame:EnableMouse(canUndo); undo.frame:SetAlpha(canUndo and 1 or 0.4)
       redo.frame:EnableMouse(canRedo); redo.frame:SetAlpha(canRedo and 1 or 0.4)
+      local contextual = selected ~= nil and resetGroups[selected] ~= nil
+      local function show(control, enabled) if enabled then control.frame:Show() else control.frame:Hide() end end
+      show(experiment, contextual and not status.active)
+      show(keep, status.mode == "explore" or status.mode == "reset")
+      show(cancel, status.active)
+      show(resetSelection, contextual and not status.active)
+      resetSelection.caption:SetText((selected == "current" or selected == "hotkey" or selected == "layout")
+        and "Restaurar elemento" or "Restaurar seção")
+      keep.caption:SetText(status.mode == "reset" and "Confirmar restauração" or "Manter mudanças")
+      previewLabel:SetText(status.mode == "reset" and "Prévia de restauração • ainda não salva"
+        or (status.mode == "explore" and "Experimentando • nada salvo até manter" or ""))
     end
   end
   function panel.Select(_, section)

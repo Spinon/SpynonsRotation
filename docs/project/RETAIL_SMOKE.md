@@ -114,6 +114,12 @@ Validar captura/soltura do mouse e foco no cliente: fixtures não reproduzem eve
 
 ### Inspeção humana
 
+Antes da inspeção geral, conferir UX-005: Experimentar permite múltiplas alterações sem
+gravar; Manter mudanças cria uma ação; Cancelar/navegar/fechar desfaz a prévia. Restaurar
+elemento, seção e perfil deve mostrar resultado antes de Confirmar restauração. Confirmar
+somente o alcance escolhido, preservando outros ajustes e perfis. Verificar que soltar o
+slider durante Experimentar não confirma toda a sessão cedo. Não há nova evidência Retail.
+
 - [ ] Addon carregou sem erro Lua; `/spynon test` foi reconhecido.
 - [ ] Build/interface coincidiram; estado e Recommendations válidos.
 - [ ] Texturas nativas, molduras, crop, escala e quatro posições legíveis no teste visual.

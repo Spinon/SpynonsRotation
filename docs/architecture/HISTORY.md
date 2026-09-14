@@ -25,7 +25,8 @@ Troca de alcance/spec, cópia/reset, eventos de atualização e edição pelo sl
 histórico. Divergência inesperada do banco também impede a restauração de um snapshot antigo.
 
 Restaurar perfil continua sendo operação distinta e confirmada, não um sinônimo de Undo.
-Reset granular e exploração confirmada mais ampla pertencem à UX-005. Não há atalhos globais
+Reset granular e exploração confirmada foram acrescentados em UX-005:
+[`PREVIEW_RESET.md`](PREVIEW_RESET.md). Não há atalhos globais
 Ctrl+Z/Ctrl+Y: botões evitam disputar bindings do jogo. Fora da configuração, não há slider ativo.
 
 ## Implementação e validação

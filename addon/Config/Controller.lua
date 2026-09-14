@@ -46,7 +46,9 @@ function Controller.Create(compat, createFrame, settings, harness, profiles)
     if started then return end
     started = true
     harness:OnClosed(function() controller:Close() end)
-    harness:OnPresented(function() if active and panel then panel:SetEditing(false) end end)
+    harness:OnPresented(function()
+      if active and panel then history:Cancel(); panel:SetEditing(false) end
+    end)
     compat.Console:RegisterRoute("config", function(message)
       local argument = message:lower():match("^%s*config%s*(.-)%s*$")
       if argument == "close" then controller:Close()

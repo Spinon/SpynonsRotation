@@ -31,6 +31,8 @@ não apaga outros personagens/specs, preferências ancestrais ou extensões desc
 Ambas exigem segundo clique em Confirmar. Navegação, fechamento, edição ou mudança de
 identidade/alcance desarmam a confirmação. UX-004 acrescenta histórico para edições comuns,
 mas cópia/reset continuam operações distintas e limpam o histórico: [`HISTORY.md`](HISTORY.md).
+Com UX-005, restaurar pelo painel real mostra primeiro o resultado herdado e requer
+Confirmar restauração; elemento/seção/perfil são separados em [`PREVIEW_RESET.md`](PREVIEW_RESET.md).
 
 ## Dados e fronteiras
 

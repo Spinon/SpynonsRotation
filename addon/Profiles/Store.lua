@@ -56,15 +56,17 @@ function Store.Create(source)
       and type(row.specs[tostring(context.specId)]) ~= "table" then return false end
     return true
   end
-  function store.Resolve(_, context, scope)
+  function store.Resolve(_, context, scope, omit)
     local value = Settings.Defaults()
     scope = scope or store:GetScope(context)
-    local function merge(overrides)
-      for key, item in pairs(overrides or {}) do if Settings.IsValue(key, item) then value[key] = item end end
+    local function merge(name)
+      for key, item in pairs(layer(name, context) or {}) do
+        if Settings.IsValue(key, item) and not (name == scope and omit and omit[key]) then value[key] = item end
+      end
     end
-    merge(layer("global", context))
-    if scope == "character" or scope == "spec" then merge(layer("character", context)) end
-    if scope == "spec" then merge(layer("spec", context)) end
+    merge("global")
+    if scope == "character" or scope == "spec" then merge("character") end
+    if scope == "spec" then merge("spec") end
     return value
   end
   function store.Select(_, scope, context)
@@ -105,6 +107,26 @@ function Store.Create(source)
       if Settings.IsValue(key, value) then values[key] = value end
     end
     return { scope = scope, character = context.character, specId = context.specId, values = values }
+  end
+  local function validKeys(keys)
+    if type(keys) ~= "table" or next(keys) == nil then return false end
+    local defaults = Settings.Defaults()
+    for key, enabled in pairs(keys) do if defaults[key] == nil or enabled ~= true then return false end end
+    return true
+  end
+  function store.PreviewReset(_, keys, context)
+    if not validKeys(keys) or not store:Capture(context) then return nil end
+    return store:Resolve(context, nil, keys)
+  end
+  function store.ResetFields(_, keys, expected, preview, context)
+    if not validKeys(keys) or not Store.SameSnapshot(store:Capture(context), expected)
+      or not Settings.Validate(preview) then return false end
+    local proposed = store:PreviewReset(keys, context)
+    for key, value in pairs(preview) do if proposed[key] ~= value then return false end end
+    local target = layer(store:GetScope(context), context, true)
+    if not target then return false end
+    for key in pairs(keys) do target[key] = nil end
+    return true
   end
   function store.Restore(_, target, expected, context)
     local current = store:Capture(context)

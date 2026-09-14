@@ -24,6 +24,7 @@ function History.Create(adapter)
   function history.IsInternal(_) return internal end
   function history.GetStatus(_)
     return { undo = #undo, redo = #redo, active = active ~= nil,
+      mode = active and active.mode,
       undoLabel = undo[#undo] and undo[#undo].label, redoLabel = redo[#redo] and redo[#redo].label }
   end
   function history.Subscribe(_, listener)
@@ -38,20 +39,34 @@ function History.Create(adapter)
     active, undo, redo = nil, {}, {}
     call("Refresh"); notify()
   end
-  function history.Begin(_, label)
-    if active then return true end
+  function history.Begin(_, label, mode)
+    if mode ~= nil and mode ~= "explore" then return false end
+    if active then return active.mode ~= "reset" end
     if not call("CanEdit") then return false end
     local before, values = call("Capture"), call("Values")
     if type(before) ~= "table" or not Spynon.SettingsFactory.Validate(values) then return false end
-    active = { before = copy(before), values = copy(values), original = copy(values), changes = {}, label = label }
+    active = { before = copy(before), values = copy(values), original = copy(values), changes = {},
+      label = label, mode = mode or "drag" }
     notify(); return true
   end
   function history.Preview(_, key, value)
-    if not active or not Spynon.SettingsFactory.IsValue(key, value) then return false end
+    if not active or active.mode == "reset" or not Spynon.SettingsFactory.IsValue(key, value) then return false end
     if not call("CanEdit") then history:Cancel(); return false end
     active.values[key] = value
     if value == active.original[key] then active.changes[key] = nil else active.changes[key] = value end
     return call("Preview", copy(active.values)) == true
+  end
+  function history.PreviewReset(_, keys)
+    if type(keys) ~= "table" or next(keys) == nil then return false end
+    local defaults = Spynon.SettingsFactory.Defaults()
+    for key, enabled in pairs(keys) do if defaults[key] == nil or enabled ~= true then return false end end
+    history:Cancel()
+    if not history:Begin("reset") then return false end
+    local values = call("PreviewReset", copy(keys))
+    if not Spynon.SettingsFactory.Validate(values) then history:Cancel(); return false end
+    active.mode, active.keys, active.resetValues = "reset", copy(keys), copy(values)
+    if not call("Preview", values) then history:Cancel(); return false end
+    notify(); return true
   end
   local function apply(before, changes, label)
     if not call("CanEdit") or not call("Apply", before, changes) then
@@ -70,11 +85,16 @@ function History.Create(adapter)
     if not active then return false end
     local transaction = active; active = nil
     call("Refresh") -- Discard visual preview before writing the authoritative store.
+    if transaction.mode == "reset" then
+      local ok = call("CanEdit") and call("ResetFields", transaction.keys, transaction.before, transaction.resetValues)
+      history:Invalidate(); return ok == true
+    end
     if next(transaction.changes) == nil then notify(); return true end
     return apply(transaction.before, transaction.changes, transaction.label)
   end
   function history.Execute(_, key, value)
     if not Spynon.SettingsFactory.IsValue(key, value) then return false end
+    if active and active.mode == "explore" then return history:Preview(key, value) end
     history:Cancel()
     if not call("CanEdit") then return false end
     local before = call("Capture")

@@ -32,9 +32,15 @@ function Slider.Create(createFrame, parent, settings, history)
     end
   end)
   slider:SetScript("OnMouseUp", function(_, button)
-    if button == "LeftButton" then history:Commit(); refresh() end
+    if button == "LeftButton" and history:GetStatus().mode == "drag" then history:Commit(); refresh() end
   end)
   slider:SetScript("OnHide", function() history:Cancel() end)
+  history:Subscribe(function()
+    local mode = history:GetStatus().mode
+    caption:SetText(mode == "explore" and "Compare tamanhos; depois escolha Manter mudanças."
+      or (mode == "reset" and "Restauração em prévia; confirme ou cancele abaixo."
+        or "Arraste para comparar; solte para salvar."))
+  end)
   settings:Subscribe(refresh); refresh()
   return slider
 end

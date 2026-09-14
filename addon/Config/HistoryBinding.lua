@@ -13,6 +13,16 @@ function Binding.Create(settings, profiles, canEdit)
     return { values = copy(committed) }
   end
   function adapter.Values(_) return settings:Get() end
+  function adapter.PreviewReset(_, keys)
+    if profiles then return profiles:PreviewReset(keys) end
+    local value, defaults = copy(committed), Spynon.SettingsFactory.Defaults()
+    for key in pairs(keys) do value[key] = defaults[key] end
+    return value
+  end
+  function adapter.ResetFields(_, keys, expected, preview)
+    if profiles then return profiles:ResetFields(keys, expected, preview) end
+    return adapter:Restore({values=preview}, expected)
+  end
   function adapter.Preview(_, values) return settings:Replace(values) end
   function adapter.Refresh(_)
     if profiles then profiles:Refresh() else settings:Replace(committed) end

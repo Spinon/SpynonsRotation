@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T23:17:55.026Z
+Atualizado pelo board em: 2026-09-14T23:23:46.543Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UX-005 — Preview + reset granular**
+**UX-003 — Advanced panels**
 
-Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
+Status: `planned` · Prioridade: `P2` · Responsável: Codex
 
-Próxima ação: Definir snapshots e resets.
+Próxima ação: Mapear níveis de disclosure.
 
 ## Progresso
 
 - Planejadas: 12
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 45
+- Concluídas: 46
 - Total: 59
 
 ## Fila canônica
@@ -68,7 +68,7 @@ Próxima ação: Definir snapshots e resets.
 | UX-002 | delivery | CONFIG / UX | Edit HUD | done | P1 | UX-001, UI-002 |
 | UX-003 | delivery | CONFIG / UX | Advanced panels | planned | P2 | UX-001 |
 | UX-004 | delivery | CONFIG / UX | Undo/Redo | done | P1 | UX-002 |
-| UX-005 | delivery | CONFIG / UX | Preview + reset granular | in_progress | P2 | UX-004 |
+| UX-005 | delivery | CONFIG / UX | Preview + reset granular | done | P2 | UX-004 |
 | UX-006 | delivery | CONFIG / UX | Typography | planned | P2 | UX-001 |
 | PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | done | P1 | CORE-001, UX-001 |
 | SKIN-001 | delivery | PROFILES / SKINS | Skin API | planned | P1 | UI-001 |
@@ -438,6 +438,14 @@ Próxima ação: Definir snapshots e resets.
 - npm test aprovado: 181 testes Node e 314 Lua (495 ao todo), incluindo 23 cenários transacionais; lint e typecheck sem problemas em 55 arquivos. API diff: 27 fontes pinadas e zero alterações documentadas; Slider e ownership incluídos explicitamente.
 - docs/architecture/HISTORY.md documenta semântica e limites; RETAIL_SMOKE mantém captura de mouse, foco e combate/taint pendentes. Nenhuma validação nova no Retail ou release é alegada.
 - Commit dea9b81 registra início publicado. UX-005 segue como próximo foco para preview e reset granular; ajuste fino visual permanece adiado pelo Product Owner.
+
+### UX-005
+
+- Experimentar usa snapshots temporários: múltiplas opções só entram no histórico e no perfil quando o usuário escolhe Manter mudanças. Cancelar/navegar/fechar/trocar modo ou contexto descarta a prévia; soltar slider não confirma a exploração cedo.
+- Restaurar elemento, seção e perfil mostra primeiro os valores herdados e exige Confirmar restauração. ResetFields valida todos os campos, contexto, snapshot e resultado apresentado antes de remover somente overrides selecionados; ancestrais, vizinhos e extensões sobrevivem.
+- npm test aprovado: 181 testes Node e 335 Lua (516 ao todo), incluindo 21 novos cenários de exploração/reset; 55 arquivos sem warnings, erros ou problemas de tipo. Nenhuma nova API, dependência, timer ou arte.
+- docs/architecture/PREVIEW_RESET.md define os alcances e confirmações. RETAIL_SMOKE mantém fluxo nativo, rendering e combate/taint pendentes; não houve nova validação no jogo.
+- Commit a2a1a91 registra início publicado. UX-003 é o próximo foco elegível para controles avançados sob demanda, preservando o adiamento do ajuste fino visual.
 
 ### PROFILE-001
 

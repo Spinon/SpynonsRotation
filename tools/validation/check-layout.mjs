@@ -71,6 +71,8 @@ const requiredFiles = [
   "addon/Config/HistoryBinding.lua",
   "addon/Config/PreviewSlider.lua",
   "tests/unit/history_spec.lua",
+  "tests/unit/preview_reset_spec.lua",
+  "docs/architecture/PREVIEW_RESET.md",
   "docs/architecture/HISTORY.md",
   "addon/Compat/Profiles.lua",
   "addon/Profiles/Store.lua",

@@ -40,6 +40,13 @@ function Controller.Create(compat, createFrame, settings)
     return store:Capture(context)
   end
   function controller.Apply(_, expected, changes) return action(store and store.Apply, expected, changes, context) end
+  function controller.PreviewReset(_, keys)
+    if not controller:Capture() or not safeToEdit() then return nil end
+    return store:PreviewReset(keys, context)
+  end
+  function controller.ResetFields(_, keys, expected, preview)
+    return action(store and store.ResetFields, keys, expected, preview, context)
+  end
   function controller.Restore(_, target, expected) return action(store and store.Restore, target, expected, context) end
   function controller.GetStatus(_)
     local scope = store and store:GetScope(context) or "global"
