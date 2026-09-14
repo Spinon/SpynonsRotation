@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T22:51:06.658Z",
+  "updatedAt": "2026-09-14T22:53:01.010Z",
   "currentFocus": "UX-002",
   "parallelFocus": {},
   "release": {
@@ -1142,10 +1142,10 @@
       "title": "Edit HUD",
       "lane": "CONFIG / UX",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T22:53:01.010Z",
       "reviewBy": "Product Owner",
       "nextAction": "Implementar seleção contextual.",
       "dependencies": [

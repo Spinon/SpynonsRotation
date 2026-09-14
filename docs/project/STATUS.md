@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T22:51:06.658Z
+Atualizado pelo board em: 2026-09-14T22:53:01.010Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UX-002 — Edit HUD**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Implementar seleção contextual.
 
 ## Progresso
 
-- Planejadas: 15
-- Em andamento: 0
+- Planejadas: 14
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 43
 - Total: 59
@@ -65,7 +65,7 @@ Próxima ação: Implementar seleção contextual.
 | UI-005 | delivery | UI | Buff/debuff indicators | done | P2 | UI-004, RUN-002 |
 | UI-006 | delivery | UI | Demo Mode | done | P1 | UI-002, UI-004, RUN-003 |
 | UX-001 | delivery | CONFIG / UX | Config básico contextual | done | P1 | UI-001 |
-| UX-002 | delivery | CONFIG / UX | Edit HUD | planned | P1 | UX-001, UI-002 |
+| UX-002 | delivery | CONFIG / UX | Edit HUD | in_progress | P1 | UX-001, UI-002 |
 | UX-003 | delivery | CONFIG / UX | Advanced panels | planned | P2 | UX-001 |
 | UX-004 | delivery | CONFIG / UX | Undo/Redo | planned | P1 | UX-002 |
 | UX-005 | delivery | CONFIG / UX | Preview + reset granular | planned | P2 | UX-004 |
