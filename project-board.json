@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T21:02:47.007Z",
+  "updatedAt": "2026-09-14T21:03:37.495Z",
   "currentFocus": "UI-004",
   "parallelFocus": {},
   "release": {
@@ -1026,10 +1026,10 @@
       "title": "Cooldowns/charges/stacks",
       "lane": "UI",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T21:03:37.495Z",
       "reviewBy": "Product Owner",
       "nextAction": "Criar overlays compatíveis com Retail.",
       "dependencies": [
