@@ -28,9 +28,11 @@ function Settings.Validate(value)
   return true
 end
 function Settings.Defaults() return copy(defaults) end
-function Settings.Create()
-  local model, values, listeners = {}, copy(defaults), {}
+function Settings.Create(skin)
+  skin = skin or Spynon.Skin
+  local model, values, listeners = {}, skin and skin:Resolve() or copy(defaults), {}
   local writer
+  function model.GetDefaults(_) return skin and skin:Resolve() or copy(defaults) end
   function model.Get(_) return copy(values) end
   function model.Replace(_, nextValues)
     if not Settings.Validate(nextValues) then return false end

@@ -1,6 +1,8 @@
 local _, Spynon = ...
 local Overlay = {}
-function Overlay.Create(createFrame, frame, icon)
+function Overlay.Create(createFrame, frame, icon, skin)
+  local tokens = (skin or Spynon.Skin):GetTokens()
+  local colors = tokens.colors
   local view = {}
   local cooldown = createFrame("Cooldown", nil, frame, "CooldownFrameTemplate")
   cooldown:SetAllPoints(icon)
@@ -8,23 +10,23 @@ function Overlay.Create(createFrame, frame, icon)
   cooldown:SetDrawEdge(false)
   cooldown:SetDrawBling(false)
   cooldown:SetReverse(false)
-  cooldown:SetSwipeColor(0.25, 0.27, 0.3, 0.8)
+  cooldown:SetSwipeColor(unpack(colors.swipe))
   cooldown:SetHideCountdownNumbers(false)
   cooldown:SetFrameLevel(frame:GetFrameLevel() + 1)
   local labels = createFrame("Frame", nil, frame)
   labels:SetAllPoints(frame)
   labels:SetFrameLevel(frame:GetFrameLevel() + 2)
   labels:EnableMouse(false)
-  local count = labels:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+  local count = labels:CreateFontString(nil, "OVERLAY", tokens.typography.fontObject)
   local font = count:GetFont()
   if font then count:SetFont(font, 12, "OUTLINE") end
   count:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", -2, 2)
-  count:SetTextColor(0.94, 0.97, 1, 1)
+  count:SetTextColor(unpack(colors.text))
   count:Hide()
   local track = frame:CreateTexture(nil, "BACKGROUND")
-  track:SetColorTexture(0.027, 0.075, 0.114, 0.86)
+  track:SetColorTexture(unpack(colors.gcdTrack))
   local fill = frame:CreateTexture(nil, "ARTWORK")
-  fill:SetColorTexture(0.847, 0.882, 0.91, 1)
+  fill:SetColorTexture(unpack(colors.gcdFill))
   track:Hide(); fill:Hide()
   local progress, width, height = nil, 0, 0
   function view.Layout(_, w, h, current)

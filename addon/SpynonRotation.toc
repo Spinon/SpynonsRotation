@@ -48,6 +48,8 @@ UI/Hotkeys.lua
 UI/CooldownOverlay.lua
 UI/AuraIndicators.lua
 Config/Settings.lua
+Skins/Default.lua
+Skins/Contract.lua
 Profiles/Store.lua
 Profiles/Controller.lua
 UI/QueueEditor.lua

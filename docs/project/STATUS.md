@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T23:29:59.748Z
+Atualizado pelo board em: 2026-09-14T23:38:21.436Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**SKIN-001 — Skin API**
+**SKIN-002 — External reskin contract**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P2` · Responsável: Codex
 
-Próxima ação: Definir contrato e skin default.
+Próxima ação: Projetar registro público de skins.
 
 ## Progresso
 
 - Planejadas: 10
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 47
+- Concluídas: 48
 - Total: 59
 
 ## Fila canônica
@@ -71,7 +71,7 @@ Próxima ação: Definir contrato e skin default.
 | UX-005 | delivery | CONFIG / UX | Preview + reset granular | done | P2 | UX-004 |
 | UX-006 | delivery | CONFIG / UX | Typography | planned | P2 | UX-001 |
 | PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | done | P1 | CORE-001, UX-001 |
-| SKIN-001 | delivery | PROFILES / SKINS | Skin API | in_progress | P1 | UI-001 |
+| SKIN-001 | delivery | PROFILES / SKINS | Skin API | done | P1 | UI-001 |
 | SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | planned | P2 | SKIN-001 |
 | BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | planned | P1 | BOOT-001 |
 | BRAND-002 | delivery | BRAND | Criar master técnico e variantes | planned | P2 | BRAND-001 |
@@ -464,6 +464,15 @@ Próxima ação: Definir contrato e skin default.
 - npm test aprovado: 181 testes Node e 279 testes Lua (460 ao todo), incluindo 20 fixtures de perfis; 51 arquivos sem warnings, erros ou problemas de tipo. Assets técnicos e hashes preservados.
 - API diff mantém 26 fontes e zero diferenças nas builds pinadas; ownership de identidade/Profiles atualizado. docs/architecture/PROFILES.md registra schema, semântica de alcance, proteção de dados e avaliação de AceDB sem nova dependência.
 - Commit b9a61f1 registra início publicado. Reconstrução offline comprova persistência do modelo, não logout/reload real: RETAIL_SMOKE mantém teste de gravação e troca de spec no cliente pendente.
+
+### SKIN-001
+
+- Skins/Default.lua concentra geometria, aberturas, texturas, máscaras, cores, objeto de fonte WoW e defaults de apresentação. Skins/Contract.lua compila dados validados sem callbacks, funções, metatables ou campos de lógica; cópias impedem mutação por referência.
+- Queue, CooldownOverlay e AuraIndicators consomem tokens da mesma skin, mantendo identidade, pooling, contratos e comportamentos. Settings/ProfileStore resolvem defaults do produto → skin → overrides do usuário; resets revelam a skin e cópias preservam valores efetivos.
+- npm test aprovado: 181 testes Node e 369 Lua (550 ao todo), incluindo 20 de skins; lint e typecheck sem problemas em 57 arquivos. Nenhuma API, dependência ou timer novo.
+- Test-QueueIconFit.ps1 lê agora Skins/Default.lua: oito probes cobertos e envelope preservado. Test-TechnicalAssets.ps1 confirma 16 TGAs, 16 PNGs, hashes e 7.995.680 bytes inalterados.
+- docs/architecture/SKINS.md descreve contrato interno, precedência e limites; não há seletor, registro externo nem alegação de nova aprovação Retail. Default mantém a arte anterior, sem ajuste fino visual.
+- Commit 208d2b4 registra início publicado. SKIN-002 segue como foco para registro externo versionado, conflitos e exemplo mínimo.
 
 ### PATCH-001
 

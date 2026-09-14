@@ -18,7 +18,8 @@ local function validSpec(context)
   return validCharacter(context) and Spynon.Contracts.Validation.IsPositiveInteger(context.specId)
     and context.specId <= 100000
 end
-function Store.Create(source)
+function Store.Create(source, skin)
+  skin = skin or Spynon.Skin
   local store = {}
   local writable = type(source) == "table" and source.schemaVersion == 1
     and type(source.global) == "table" and type(source.characters) == "table"
@@ -57,7 +58,7 @@ function Store.Create(source)
     return true
   end
   function store.Resolve(_, context, scope, omit)
-    local value = Settings.Defaults()
+    local value = skin and skin:Resolve() or Settings.Defaults()
     scope = scope or store:GetScope(context)
     local function merge(name)
       for key, item in pairs(layer(name, context) or {}) do

@@ -46,6 +46,7 @@ placeholder passa a usar o centro da abertura. GCD e contratos de Recommendation
 ## Evidência e limites
 
 `tools/ui/Test-QueueIconFit.ps1` lê a geometria Lua e os PNGs de revisão sem editá-los.
+Após SKIN-001, a geometria default reside em `addon/Skins/Default.lua`, consumida pela Queue.
 Verifica quatro pontos transparentes de cada abertura e o envelope lateral de cada linha.
 É uma verificação geométrica em posições finais, não uma renderização do WoW ou uma máscara
 exata dos recortes internos. Os testes Lua cobrem proporção durante promoção, camadas,

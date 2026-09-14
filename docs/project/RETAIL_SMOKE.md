@@ -114,6 +114,10 @@ Validar captura/soltura do mouse e foco no cliente: fixtures não reproduzem eve
 
 ### Inspeção humana
 
+SKIN-001: após reload, comparar a skin default à versão anterior (mesmos assets e medidas).
+Conferir molduras, cores de aura, textos e cooldowns; não há seletor de skin nesta entrega.
+Contratos e fixtures não substituem essa comparação no cliente.
+
 UX-003: Fila → Personalizar animações → tipo → Avançado. Confirmar que duração/ritmo não
 aparecem nos níveis anteriores; comparar tempos na demo, testar Desfazer e restaurar apenas
 a seção. Reduzido e Sem movimento devem prevalecer. Defaults permanecem os anteriores;

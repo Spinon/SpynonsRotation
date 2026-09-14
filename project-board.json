@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T23:29:59.748Z",
-  "currentFocus": "SKIN-001",
+  "updatedAt": "2026-09-14T23:38:21.436Z",
+  "currentFocus": "SKIN-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1303,12 +1303,12 @@
       "title": "Skin API",
       "lane": "PROFILES / SKINS",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T23:29:59.748Z",
+      "updatedAt": "2026-09-14T23:38:21.436Z",
       "reviewBy": null,
-      "nextAction": "Definir contrato e skin default.",
+      "nextAction": null,
       "dependencies": [
         "UI-001"
       ],
@@ -1317,7 +1317,14 @@
         "Overrides preservam precedência",
         "Default é desacoplado"
       ],
-      "evidence": []
+      "evidence": [
+        "Skins/Default.lua concentra geometria, aberturas, texturas, máscaras, cores, objeto de fonte WoW e defaults de apresentação. Skins/Contract.lua compila dados validados sem callbacks, funções, metatables ou campos de lógica; cópias impedem mutação por referência.",
+        "Queue, CooldownOverlay e AuraIndicators consomem tokens da mesma skin, mantendo identidade, pooling, contratos e comportamentos. Settings/ProfileStore resolvem defaults do produto → skin → overrides do usuário; resets revelam a skin e cópias preservam valores efetivos.",
+        "npm test aprovado: 181 testes Node e 369 Lua (550 ao todo), incluindo 20 de skins; lint e typecheck sem problemas em 57 arquivos. Nenhuma API, dependência ou timer novo.",
+        "Test-QueueIconFit.ps1 lê agora Skins/Default.lua: oito probes cobertos e envelope preservado. Test-TechnicalAssets.ps1 confirma 16 TGAs, 16 PNGs, hashes e 7.995.680 bytes inalterados.",
+        "docs/architecture/SKINS.md descreve contrato interno, precedência e limites; não há seletor, registro externo nem alegação de nova aprovação Retail. Default mantém a arte anterior, sem ajuste fino visual.",
+        "Commit 208d2b4 registra início publicado. SKIN-002 segue como foco para registro externo versionado, conflitos e exemplo mínimo."
+      ]
     },
     {
       "id": "SKIN-002",

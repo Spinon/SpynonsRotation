@@ -1,24 +1,13 @@
 local _, Spynon = ...
 local Queue = {}
-local ROOT = "Interface\\AddOns\\SpynonRotation\\UI\\Media\\Textures\\Actions\\"
--- Approved handoff v1 content UVs. Swap assets here without changing recommendation/identity logic.
-Queue.Layout = {
-  width = 256, height = 214, offsetY = -130, gap = 8,
-  current = { width = 200, height = 120, x = 28, y = 0,
-    texture = ROOT .. "action-current-neutral-v1.tga", uv = { 0.109375, 0.890625, 0.03125, 0.96875 },
-    iconX = 20, iconY = 11, iconWidth = 158, iconHeight = 94 },
-  queued = { width = 80, height = 80, y = -134,
-    texture = ROOT .. "action-queue-neutral-v1.tga", uv = { 0.03125, 0.96875, 0.03125, 0.96875 },
-    iconX = 12, iconY = 8, iconWidth = 57, iconHeight = 59 },
-}
--- UI-007: 2% edge trim instead of 8%; keep more native texels without stretching.
-local ICON_TRIM = 0.02
-
-function Queue.Create(createFrame, parent, motionMode, settings)
+function Queue.Create(createFrame, parent, motionMode, settings, skin)
+  local explicitSkin = skin ~= nil
+  skin = skin or Spynon.Skin
+  local tokens = skin:GetTokens()
+  local layoutTokens, colors = tokens.queue, tokens.colors
   local view = {}
   local root = createFrame("Frame", nil, parent)
-  root:SetSize(Queue.Layout.width, Queue.Layout.height)
-  root:SetPoint("CENTER", parent, "CENTER", 0, Queue.Layout.offsetY)
+  root:SetPoint("CENTER", parent, "CENTER", 0, layoutTokens.offsetY)
   root:SetFrameStrata("MEDIUM")
   root:EnableMouse(false)
   root:Hide()
@@ -32,28 +21,28 @@ function Queue.Create(createFrame, parent, motionMode, settings)
     local frame = createFrame("Frame", nil, root)
     frame:EnableMouse(false)
     local icon = frame:CreateTexture(nil, "BACKGROUND")
-    local overlay = Spynon.CooldownOverlayFactory.Create(createFrame, frame, icon)
+    local overlay = Spynon.CooldownOverlayFactory.Create(createFrame, frame, icon, skin)
     local foreground = overlay:GetLabelParent()
     -- Native Cooldown is a child frame: parent draw layers alone cannot cover it.
     local border = foreground:CreateTexture(nil, "ARTWORK")
     border:SetAllPoints(frame)
-    border:SetTexture(Queue.Layout.queued.texture)
-    border:SetTexCoord(unpack(Queue.Layout.queued.uv))
+    border:SetTexture(layoutTokens.queued.texture)
+    border:SetTexCoord(unpack(layoutTokens.queued.uv))
     local currentBorder = foreground:CreateTexture(nil, "ARTWORK")
     currentBorder:SetAllPoints(frame)
-    currentBorder:SetTexture(Queue.Layout.current.texture)
-    currentBorder:SetTexCoord(unpack(Queue.Layout.current.uv))
+    currentBorder:SetTexture(layoutTokens.current.texture)
+    currentBorder:SetTexCoord(unpack(layoutTokens.current.uv))
     local flash = foreground:CreateTexture(nil, "BACKGROUND")
-    flash:SetColorTexture(0.8, 0.87, 0.94, 1)
+    flash:SetColorTexture(unpack(colors.flash))
     flash:SetAlpha(0)
-    local placeholder = foreground:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    local placeholder = foreground:CreateFontString(nil, "OVERLAY", tokens.typography.fontObject)
     placeholder:SetPoint("CENTER", icon, "CENTER", 0, 0)
-    placeholder:SetTextColor(0.55, 0.6, 0.66, 1)
+    placeholder:SetTextColor(unpack(colors.muted))
     placeholder:SetText("?")
-    local hotkey = foreground:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    local hotkey = foreground:CreateFontString(nil, "OVERLAY", tokens.typography.fontObject)
     local font = hotkey:GetFont()
     hotkey:SetPoint("TOPRIGHT", icon, "TOPRIGHT", -2, -2)
-    hotkey:SetTextColor(0.94, 0.97, 1, 1)
+    hotkey:SetTextColor(unpack(colors.text))
     hotkey:SetJustifyH("RIGHT")
     hotkey:SetWordWrap(false)
     hotkey:Hide()
@@ -63,25 +52,27 @@ function Queue.Create(createFrame, parent, motionMode, settings)
   end
 
   local function dimensions()
-    local w, h, count, gap = 200*options.mainScale, 120*options.mainScale, options.count, options.spacing
-    local row = math.max(0, (count-1)*(80+gap)-gap)
+    local w, h = layoutTokens.current.width*options.mainScale, layoutTokens.current.height*options.mainScale
+    local count, gap, queued = options.count, options.spacing, layoutTokens.queued
+    local row = math.max(0, (count-1)*(queued.width+gap)-gap)
     if options.direction == "STACKED" then
-      return math.max(w, row), h + (count > 1 and 80+gap+6 or 0), w, h, row
+      return math.max(w, row), h + (count > 1 and queued.height+gap+layoutTokens.rowInset or 0), w, h, row
     end
-    return w+(count-1)*(80+gap), h, w, h, row
+    return w+(count-1)*(queued.width+gap), count > 1 and math.max(h, queued.height) or h, w, h, row
   end
   local function geometry(position)
-    local layout = position == 1 and Queue.Layout.current or Queue.Layout.queued
+    local layout = position == 1 and layoutTokens.current or layoutTokens.queued
     local width, _, mainWidth, mainHeight, rowWidth = dimensions()
     local gap = options.spacing
     local factor = options.alignment == "START" and 0 or (options.alignment == "END" and 1 or 0.5)
     local size = position == 1 and options.mainScale or 1
     local x, y = (width-mainWidth)*factor, 0
     if options.direction == "STACKED" and position > 1 then
-      x, y = (width-rowWidth)*factor+(position-2)*(80+gap), -(mainHeight+gap+6)
+      x, y = (width-rowWidth)*factor+(position-2)*(layoutTokens.queued.width+gap),
+        -(mainHeight+gap+layoutTokens.rowInset)
     elseif options.direction ~= "STACKED" then
-      x = position == 1 and 0 or mainWidth+gap+(position-2)*(80+gap)
-      y = position == 1 and 0 or -(mainHeight-80)*factor
+      x = position == 1 and 0 or mainWidth+gap+(position-2)*(layoutTokens.queued.width+gap)
+      y = position == 1 and 0 or -math.max(0, mainHeight-layoutTokens.queued.height)*factor
       if options.direction == "LEFT" then x = width-x-layout.width*size end
     end
     return { x = x, y = y, width = layout.width*size, height = layout.height*size,
@@ -110,8 +101,9 @@ function Queue.Create(createFrame, parent, motionMode, settings)
     slot.flash:SetAlpha(animator:GetMode() == "NORMAL" and pulse * 0.16 or 0)
     -- Center crop preserves native square artwork proportions in either opening.
     local ratio = value.iconWidth / value.iconHeight
-    local half = 0.5 - ICON_TRIM
-    local left, right, top, bottom = ICON_TRIM, 1 - ICON_TRIM, ICON_TRIM, 1 - ICON_TRIM
+    local trim = layoutTokens.iconTrim
+    local half = 0.5 - trim
+    local left, right, top, bottom = trim, 1 - trim, trim, 1 - trim
     if ratio > 1 then top, bottom = 0.5 - half / ratio, 0.5 + half / ratio
     else left, right = 0.5 - half * ratio, 0.5 + half * ratio end
     slot.icon:SetTexCoord(left, right, top, bottom)
@@ -135,7 +127,7 @@ function Queue.Create(createFrame, parent, motionMode, settings)
     local loaded = rec.action.icon and slot.icon:SetTexture(rec.action.icon, "CLAMP", "CLAMP", "LINEAR")
     if not loaded then
       -- Local procedural placeholder: same rectangle and anchor as the resolved native icon.
-      slot.icon:SetColorTexture(0.07, 0.09, 0.12, 1)
+      slot.icon:SetColorTexture(unpack(colors.placeholder))
       slot.placeholder:Show()
     else slot.placeholder:Hide() end
     slot.frame:Show()
@@ -245,7 +237,7 @@ function Queue.Create(createFrame, parent, motionMode, settings)
       return true
     end
     if not indicators and #values == 0 then return end
-    indicators = indicators or Spynon.AuraIndicatorsFactory.Create(createFrame, root, clock)
+    indicators = indicators or Spynon.AuraIndicatorsFactory.Create(createFrame, root, clock, skin)
     indicators:Set(values)
   end
   function view.RefreshOverlays(_, adapter)
@@ -334,7 +326,7 @@ function Queue.Create(createFrame, parent, motionMode, settings)
     end
     return true
   end
-  settings = settings or Spynon.Settings
+  settings = settings or (explicitSkin and Spynon.SettingsFactory.Create(skin) or Spynon.Settings)
   view:ApplySettings(settings:Get())
   settings:Subscribe(function(value) view:ApplySettings(value) end)
   if motionMode then view:SetMotionMode(motionMode) end

@@ -38,6 +38,7 @@ A seleção direta de componentes da prévia está em [`HUD_EDITOR.md`](HUD_EDIT
 O histórico transacional e o arraste temporário estão em [`HISTORY.md`](HISTORY.md).
 A exploração confirmada e os alcances de restauração estão em [`PREVIEW_RESET.md`](PREVIEW_RESET.md).
 Os controles de animação sob demanda estão em [`ADVANCED_CONFIG.md`](ADVANCED_CONFIG.md).
+A skin declarativa e a precedência de seus defaults estão em [`SKINS.md`](SKINS.md).
 A seleção de contexto e seus fallbacks estão em [`CONTEXT_DETECTOR.md`](CONTEXT_DETECTOR.md).
 A representação intermediária declarativa e suas capabilities estão definidas em [`ROTATION_DSL.md`](ROTATION_DSL.md).
 O pipeline determinístico entre SimC, DSL e bundles de runtime está definido em [`COMPILER.md`](COMPILER.md).

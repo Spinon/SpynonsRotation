@@ -2,7 +2,7 @@ param([string]$RepositoryRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..'))
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
-$queueSource = Get-Content -LiteralPath (Join-Path $RepositoryRoot 'addon/UI/Queue.lua') -Raw
+$queueSource = Get-Content -LiteralPath (Join-Path $RepositoryRoot 'addon/Skins/Default.lua') -Raw
 $cases = @(
     @{ name = 'current'; file = 'action-current-neutral-v1.png'; originX = 56; originY = 8; scale = 2;
        probes = @(@(98,120), @(240,32), @(409,120), @(240,215)) },

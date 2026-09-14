@@ -24,6 +24,9 @@ Somente o campo editado vira override. Escrever o mesmo valor herdado também cr
 explícito; futuras mudanças no ancestral não alteram essa preferência. O rodapé identifica
 o alcance de gravação, sem expor GUIDs ou caminhos de arquivos.
 
+SKIN-001 insere defaults da skin antes das camadas de perfil, sem alterar os valores
+da skin default. Reset revela esses valores; detalhes em [`SKINS.md`](SKINS.md).
+
 “Copiar” usa os valores **efetivos** da origem como snapshot independente no destino atual.
 Não mantém vínculo com a origem. Não copia para o mesmo alcance. “Restaurar este perfil”
 remove somente os campos conhecidos do alcance selecionado, revelando os valores herdados;
