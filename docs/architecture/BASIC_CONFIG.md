@@ -56,8 +56,8 @@ card Perfis; precedência e confirmação estão em [`PROFILES.md`](PROFILES.md)
 o botão Editar HUD e controles específicos por seleção, descritos em [`HUD_EDITOR.md`](HUD_EDITOR.md).
 UX-004 acrescenta Desfazer/Refazer e arraste transacional, descritos em [`HISTORY.md`](HISTORY.md).
 UX-005 acrescenta Experimentar e restauração com prévia em [`PREVIEW_RESET.md`](PREVIEW_RESET.md).
-Painéis avançados e tipografia têm suas
-próprias tasks. Nenhuma dependência foi adicionada. Componentes neutros locais preservam
+UX-003 acrescenta animações sob demanda em [`ADVANCED_CONFIG.md`](ADVANCED_CONFIG.md).
+Tipografia possui sua própria task. Nenhuma dependência foi adicionada. Componentes neutros locais preservam
 a direção visual sem gerar nova arte.
 
 `tests/unit/config_spec.lua` verifica disclosure, cliques, defaults, opções inválidas,

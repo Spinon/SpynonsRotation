@@ -18,7 +18,8 @@ Não existe persistência de rascunho nem restauração de rascunho após reload
 | Elemento: principal | mainScale |
 | Elemento: teclas | keys, keyPosition |
 | Elemento: organização | count, direction, spacing, alignment |
-| Seção: Fila | count, scale, direction, motion, mainScale, spacing, alignment |
+| Seção: Fila | count, scale, direction, motion, mainScale, spacing, alignment; nove campos de animação de UX-003 |
+| Seção avançada de animação | duração e curva daquele tipo (consumo só possui duração) |
 | Seção: Informações | keys, keyPosition, numbers, indicators |
 | Perfil | Todas as preferências conhecidas, somente no alcance selecionado |
 

@@ -92,7 +92,7 @@ function Queue.Create(createFrame, parent, motionMode, settings)
   local function paint(slot)
     local value = slot.visual
     if not value then return end
-    local pulse = slot.consumeTime and math.sin(math.pi * slot.consumeTime / 0.10) or 0
+    local pulse = slot.consumeTime and math.sin(math.pi * slot.consumeTime / (slot.consumeDuration or 0.10)) or 0
     local scale = value.scale * (1 - (animator:GetMode() == "NORMAL" and pulse * 0.04 or 0))
     slot.frame:ClearAllPoints()
     slot.frame:SetSize(value.width * scale, value.height * scale)
@@ -322,6 +322,7 @@ function Queue.Create(createFrame, parent, motionMode, settings)
     local width, height = dimensions()
     root:SetSize(width, height)
     root:SetScale(value.scale)
+    animator:Configure(value)
     view:SetMotionMode(value.motion)
     view:SetHotkeyStyle(value.keys ~= "off", value.keys ~= "full")
     view:SetCooldownNumbers(value.numbers)

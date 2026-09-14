@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T23:24:19.513Z",
-  "currentFocus": "UX-003",
+  "updatedAt": "2026-09-14T23:29:33.690Z",
+  "currentFocus": "SKIN-001",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1171,12 +1171,12 @@
       "title": "Advanced panels",
       "lane": "CONFIG / UX",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P2",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T23:24:19.513Z",
+      "updatedAt": "2026-09-14T23:29:33.690Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Mapear níveis de disclosure.",
+      "nextAction": null,
       "dependencies": [
         "UX-001"
       ],
@@ -1185,7 +1185,14 @@
         "Parâmetros possuem nomes humanos",
         "Configuração básica permanece limpa"
       ],
-      "evidence": []
+      "evidence": [
+        "Fila → Personalizar animações → tipo → Avançado mantém parâmetros técnicos fora dos níveis básicos. Cinco categorias usam nomes humanos; duração e curvas implementadas aparecem somente onde fazem sentido.",
+        "Nove campos aditivos em Settings configuram Animator sem alterar defaults. Tracks copiam duração/curva; consumo usa duração própria. Reduzido limita fades e consumo a 100 ms, MOVE instantâneo; OFF prevalece. Sem novos frames por atualização, API, dependência ou asset.",
+        "Preferências participam de Profiles, Undo/Redo, Experimentar e reset da seção/toda Fila. Perfis antigos herdam defaults sem migração destrutiva.",
+        "npm test aprovado: 181 testes Node e 349 Lua (530 ao todo), incluindo 14 de configuração avançada e 16 regressões anteriores de Animator. 55 arquivos sem warnings, erros ou problemas de tipo.",
+        "docs/architecture/ADVANCED_CONFIG.md registra opções, fórmulas, limites e disclosure; RETAIL_SMOKE mantém navegação/fluxo visual real pendentes. Defaults preservados, sem atribuir aprovação Retail aos novos controles.",
+        "Commit e03f427 registra início publicado. SKIN-001 segue como foco elegível para separar tokens visuais da lógica, sem retomar acabamento fino."
+      ]
     },
     {
       "id": "UX-004",

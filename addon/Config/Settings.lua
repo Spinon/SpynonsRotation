@@ -2,12 +2,18 @@ local _, Spynon = ...
 local Settings = {}
 local defaults = { count = 4, scale = 1, direction = "STACKED", motion = "NORMAL",
   keys = "compact", numbers = true, indicators = true, mainScale = 1, spacing = 8,
-  alignment = "CENTER", keyPosition = "TOPRIGHT" }
+  alignment = "CENTER", keyPosition = "TOPRIGHT",
+  moveDuration = 160, enterDuration = 180, exitDuration = 120, promoteDuration = 220, consumeDuration = 100,
+  moveCurve = "CUBIC", enterCurve = "CUBIC", exitCurve = "CUBIC", promoteCurve = "CUBIC" }
 local choices = { count = { 1, 2, 3, 4 }, scale = { 0.75, 1, 1.25 },
   direction = { "STACKED", "RIGHT", "LEFT" }, motion = { "NORMAL", "REDUCED", "OFF" },
   keys = { "compact", "full", "off" }, numbers = { true, false }, indicators = { true, false },
   mainScale = { 0.85, 1, 1.15 }, spacing = { 4, 8, 16 }, alignment = { "START", "CENTER", "END" },
-  keyPosition = { "TOPRIGHT", "TOPLEFT", "BOTTOMRIGHT", "BOTTOMLEFT" } }
+  keyPosition = { "TOPRIGHT", "TOPLEFT", "BOTTOMRIGHT", "BOTTOMLEFT" },
+  moveDuration = {100, 160, 220}, enterDuration = {120, 180, 260}, exitDuration = {80, 120, 180},
+  promoteDuration = {160, 220, 280}, consumeDuration = {60, 100, 140},
+  moveCurve = {"CUBIC", "LINEAR", "SMOOTH"}, enterCurve = {"CUBIC", "LINEAR", "SMOOTH"},
+  exitCurve = {"CUBIC", "LINEAR", "SMOOTH"}, promoteCurve = {"CUBIC", "LINEAR", "SMOOTH"} }
 local function copy(source)
   local result = {}; for key, value in pairs(source) do result[key] = value end; return result
 end

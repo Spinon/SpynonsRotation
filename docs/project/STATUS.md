@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T23:24:19.513Z
+Atualizado pelo board em: 2026-09-14T23:29:33.690Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UX-003 — Advanced panels**
+**SKIN-001 — Skin API**
 
-Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Mapear níveis de disclosure.
+Próxima ação: Definir contrato e skin default.
 
 ## Progresso
 
 - Planejadas: 11
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 46
+- Concluídas: 47
 - Total: 59
 
 ## Fila canônica
@@ -66,7 +66,7 @@ Próxima ação: Mapear níveis de disclosure.
 | UI-006 | delivery | UI | Demo Mode | done | P1 | UI-002, UI-004, RUN-003 |
 | UX-001 | delivery | CONFIG / UX | Config básico contextual | done | P1 | UI-001 |
 | UX-002 | delivery | CONFIG / UX | Edit HUD | done | P1 | UX-001, UI-002 |
-| UX-003 | delivery | CONFIG / UX | Advanced panels | in_progress | P2 | UX-001 |
+| UX-003 | delivery | CONFIG / UX | Advanced panels | done | P2 | UX-001 |
 | UX-004 | delivery | CONFIG / UX | Undo/Redo | done | P1 | UX-002 |
 | UX-005 | delivery | CONFIG / UX | Preview + reset granular | done | P2 | UX-004 |
 | UX-006 | delivery | CONFIG / UX | Typography | planned | P2 | UX-001 |
@@ -430,6 +430,15 @@ Próxima ação: Mapear níveis de disclosure.
 - npm test aprovado: 181 testes Node e 291 testes Lua (472 ao todo), incluindo 12 do editor e 324 combinações de layout; 52 arquivos sem warnings, erros ou problemas de tipo.
 - Test-QueueIconFit.ps1 preserva oito probes e envelope lateral dos assets. API diff mantém 26 fontes, zero diferenças entre builds pinadas e ownership do editor documentado.
 - docs/architecture/HUD_EDITOR.md e RETAIL_SMOKE registram limites e inspeção nativa pendente. Commit ec22607 registra início; hit testing/rendering/taint não foram homologados por fixtures, e acabamento visual segue adiado.
+
+### UX-003
+
+- Fila → Personalizar animações → tipo → Avançado mantém parâmetros técnicos fora dos níveis básicos. Cinco categorias usam nomes humanos; duração e curvas implementadas aparecem somente onde fazem sentido.
+- Nove campos aditivos em Settings configuram Animator sem alterar defaults. Tracks copiam duração/curva; consumo usa duração própria. Reduzido limita fades e consumo a 100 ms, MOVE instantâneo; OFF prevalece. Sem novos frames por atualização, API, dependência ou asset.
+- Preferências participam de Profiles, Undo/Redo, Experimentar e reset da seção/toda Fila. Perfis antigos herdam defaults sem migração destrutiva.
+- npm test aprovado: 181 testes Node e 349 Lua (530 ao todo), incluindo 14 de configuração avançada e 16 regressões anteriores de Animator. 55 arquivos sem warnings, erros ou problemas de tipo.
+- docs/architecture/ADVANCED_CONFIG.md registra opções, fórmulas, limites e disclosure; RETAIL_SMOKE mantém navegação/fluxo visual real pendentes. Defaults preservados, sem atribuir aprovação Retail aos novos controles.
+- Commit e03f427 registra início publicado. SKIN-001 segue como foco elegível para separar tokens visuais da lógica, sem retomar acabamento fino.
 
 ### UX-004
 

@@ -43,6 +43,10 @@ Se o principal já tiver sido removido por restrição/ausência de dados, nenhu
 
 ## Acessibilidade e limites
 
+UX-003 acrescenta durações/curvas configuráveis sem alterar estes defaults:
+[`ADVANCED_CONFIG.md`](ADVANCED_CONFIG.md). As preferências agora são persistidas por
+PROFILE-001; o histórico de UI-002 abaixo descreve a entrega original.
+
 - `/spynon motion normal`: default com movimento curto.
 - `/spynon motion reduced`: MOVE instantâneo, entradas/saídas com fade até 100 ms, promoção com fade
   entre âncoras (sem viagem longa), consumo somente por alpha, sem flash/compressão.

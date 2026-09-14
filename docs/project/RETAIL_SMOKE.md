@@ -114,6 +114,11 @@ Validar captura/soltura do mouse e foco no cliente: fixtures não reproduzem eve
 
 ### Inspeção humana
 
+UX-003: Fila → Personalizar animações → tipo → Avançado. Confirmar que duração/ritmo não
+aparecem nos níveis anteriores; comparar tempos na demo, testar Desfazer e restaurar apenas
+a seção. Reduzido e Sem movimento devem prevalecer. Defaults permanecem os anteriores;
+estes novos controles ainda não receberam inspeção real no cliente.
+
 Antes da inspeção geral, conferir UX-005: Experimentar permite múltiplas alterações sem
 gravar; Manter mudanças cria uma ação; Cancelar/navegar/fechar desfaz a prévia. Restaurar
 elemento, seção e perfil deve mostrar resultado antes de Confirmar restauração. Confirmar

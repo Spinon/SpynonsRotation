@@ -22,6 +22,15 @@ end
 -- One shared clock per view. All coordinates are local, public UI geometry.
 function Animator.Create(paint, release, wake)
   local animator, tracks, mode = {}, {}, "NORMAL"
+  local durations, curves = copy(Animator.Duration), {}
+  function animator.Configure(_, values)
+    if not Spynon.SettingsFactory.Validate(values) then return false end
+    for kind, prefix in pairs({ MOVE="move", ENTER="enter", EXIT="exit", PROMOTE="promote", CONSUME="consume" }) do
+      durations[kind] = values[prefix .. "Duration"] / 1000
+      curves[kind] = values[prefix .. "Curve"] or "CUBIC"
+    end
+    return true
+  end
   function animator.SetMode(_, value)
     if value ~= "NORMAL" and value ~= "REDUCED" and value ~= "OFF" then return false end
     animator:Finish()
@@ -32,7 +41,7 @@ function Animator.Create(paint, release, wake)
   function animator.Cancel(_, slot) tracks[slot] = nil end
   function animator.Animate(_, slot, target, kind, retiring, delay)
     local from = copy(slot.visual or target)
-    local duration = Animator.Duration[kind] or 0
+    local duration = durations[kind] or 0
     if kind == "ENTER" and not slot.visual then
       from.alpha = 0
       if mode == "NORMAL" then from.x = from.x + from.width * 0.25; from.scale = 0.96 end
@@ -56,7 +65,7 @@ function Animator.Create(paint, release, wake)
       return
     end
     tracks[slot] = { from = from, target = copy(target), time = mode == "NORMAL" and -(delay or 0) or 0,
-      duration = duration,
+      duration = duration, curve = curves[kind] or "CUBIC",
       kind = kind, retiring = retiring, crossfade = mode == "REDUCED" and kind == "PROMOTE" }
     slot.visual = from; paint(slot); wake(true)
   end
@@ -64,6 +73,7 @@ function Animator.Create(paint, release, wake)
     if mode == "OFF" then return false end
     -- A local accent is independent of an in-flight spatial transition.
     slot.consumeTime = 0
+    slot.consumeDuration = mode == "REDUCED" and math.min(durations.CONSUME, 0.10) or durations.CONSUME
     wake(true)
     return true
   end
@@ -78,12 +88,17 @@ function Animator.Create(paint, release, wake)
         if track.crossfade then
           slot.visual = copy(t < 0.5 and track.from or track.target)
           slot.visual.alpha = t < 0.5 and track.from.alpha * (1 - t * 2) or (t * 2 - 1) * track.target.alpha
-        else slot.visual = mix(track.from, track.target, 1 - (1 - t) ^ 3) end
+        else
+          local progress = track.curve == "LINEAR" and t
+            or (track.curve == "SMOOTH" and t*t*(3-2*t) or 1 - (1 - t) ^ 3)
+          slot.visual = mix(track.from, track.target, progress)
+        end
         if t == 1 then tracks[slot] = nil else active = true end
       end
       if slot.consumeTime then
         slot.consumeTime = slot.consumeTime + elapsed
-        if slot.consumeTime >= Animator.Duration.CONSUME then slot.consumeTime = nil else active = true end
+        if slot.consumeTime >= (slot.consumeDuration or durations.CONSUME) then slot.consumeTime = nil
+        else active = true end
       end
       if slot.visual then paint(slot) end
       if track and track.time == track.duration and track.retiring then release(slot) end

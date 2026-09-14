@@ -33,12 +33,31 @@ fields.layout = { fields.queue[1], fields.queue[3],
   { key = "spacing", label = "Espaçamento", options = { {4,"Próximo"}, {8,"Padrão"}, {16,"Amplo"} } },
   { key = "alignment", label = "Alinhamento", options = { {"START","Início"}, {"CENTER","Centro"}, {"END","Fim"} } },
 }
+local animations = {
+  {id="move", label="Movimento", detail="Uma ação muda de posição na fila.", times={100,160,220}},
+  {id="enter", label="Entrada", detail="Uma ação passa a participar da fila.", times={120,180,260}},
+  {id="exit", label="Saída", detail="Uma ação deixa de ser relevante.", times={80,120,180}},
+  {id="promote", label="Mudança de prioridade", detail="Uma ação sobe para o ícone principal.", times={160,220,280}},
+  {id="consume", label="Ação utilizada", detail="Feedback de uma habilidade confirmada.", times={60,100,140}},
+}
 local resetGroups = {
   current = {"mainScale"}, hotkey = {"keys", "keyPosition"},
   layout = {"count", "direction", "spacing", "alignment"},
   queue = {"count", "scale", "direction", "motion", "mainScale", "spacing", "alignment"},
   information = {"keys", "keyPosition", "numbers", "indicators"},
 }
+for _, animation in ipairs(animations) do
+  local id, options = "advanced_" .. animation.id, {}
+  for _, duration in ipairs(animation.times) do options[#options+1] = {duration, duration .. " ms"} end
+  fields[id] = {{key=animation.id .. "Duration", label="Duração", options=options}}
+  resetGroups[id] = {animation.id .. "Duration"}
+  if animation.id ~= "consume" then
+    fields[id][2] = {key=animation.id .. "Curve", label="Ritmo do movimento", options={
+      {"CUBIC", "Desacelera"}, {"LINEAR", "Constante"}, {"SMOOTH", "Suave nas pontas"}}}
+    resetGroups[id][2] = animation.id .. "Curve"
+  end
+  for _, key in ipairs(resetGroups[id]) do resetGroups.queue[#resetGroups.queue+1] = key end
+end
 local function resetKeys(section)
   local keys = {}
   if section == "profiles" then
@@ -87,6 +106,13 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
   for _, section in ipairs(navigation) do pageSections[#pageSections+1] = section end
   for _, section in ipairs({ { id = "current", label = "Ícone principal" }, { id = "hotkey", label = "Teclas" },
     { id = "layout", label = "Organização da fila" } }) do pageSections[#pageSections+1] = section end
+  pageSections[#pageSections+1] = {id="animations", label="Animações", back="queue", backLabel="< Fila"}
+  for _, animation in ipairs(animations) do
+    pageSections[#pageSections+1] = {id="motion_" .. animation.id, label=animation.label,
+      back="animations", backLabel="< Animações"}
+    pageSections[#pageSections+1] = {id="advanced_" .. animation.id, label=animation.label .. " • Avançado",
+      back="motion_" .. animation.id, backLabel="< Voltar"}
+  end
   for index, section in ipairs(pageSections) do
     if index <= #navigation then
       button(intro, section.label, 20, 125 + (index-1)*86, 470, 38, function() panel:Select(section.id) end)
@@ -94,7 +120,7 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
     end
     local page = createFrame("Frame", nil, root)
     page:SetAllPoints(root); pages[section.id] = page
-    button(page, "< Assuntos", 20, 80, 116, 34, function() panel:Select(nil) end)
+    button(page, section.backLabel or "< Assuntos", 20, 80, 116, 34, function() panel:Select(section.back) end)
     label(page, section.label, 154, 90, 320)
     for row, field in ipairs(fields[section.id] or {}) do
       local y = 134 + (row-1)*62
@@ -108,6 +134,17 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
       end
     end
     page:Hide()
+  end
+  button(pages.queue, "Personalizar animações", 20, 378, 225, 32, function() panel:Select("animations") end)
+  for index, animation in ipairs(animations) do
+    button(pages.animations, animation.label, 20, 130+(index-1)*47, 470, 38,
+      function() panel:Select("motion_" .. animation.id) end)
+    local page = pages["motion_" .. animation.id]
+    label(page, animation.detail, 20, 145, 470)
+    label(page, "O padrão já está pronto para usar. Personalize somente se quiser.", 20, 185, 470)
+    button(page, "Avançado", 20, 240, 470, 38, function() panel:Select("advanced_" .. animation.id) end)
+    label(pages["advanced_" .. animation.id],
+      "Reduzido limita os efeitos; Sem movimento sempre prevalece.", 20, 290, 470)
   end
   local footer = label(root, "Ajustes desta sessão.", 20, history and 523 or 413, 470)
   local undo, redo, experiment, keep, cancel, resetSelection, previewLabel
@@ -184,6 +221,10 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
       show(keep, status.mode == "explore" or status.mode == "reset")
       show(cancel, status.active)
       show(resetSelection, contextual and not status.active)
+      resetSelection.frame:ClearAllPoints()
+      resetSelection.frame:SetPoint("TOPLEFT", root, "TOPLEFT", selected == "queue" and 255 or 20, -378)
+      resetSelection.frame:SetWidth(selected == "queue" and 235 or 470)
+      resetSelection.caption:SetWidth(selected == "queue" and 219 or 454)
       resetSelection.caption:SetText((selected == "current" or selected == "hotkey" or selected == "layout")
         and "Restaurar elemento" or "Restaurar seção")
       keep.caption:SetText(status.mode == "reset" and "Confirmar restauração" or "Manter mudanças")
