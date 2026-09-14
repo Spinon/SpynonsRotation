@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T22:40:02.271Z",
+  "updatedAt": "2026-09-14T22:42:00.000Z",
   "currentFocus": "PROFILE-001",
   "parallelFocus": {},
   "release": {
@@ -1248,10 +1248,10 @@
       "title": "Persistência e perfis",
       "lane": "PROFILES / SKINS",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T22:42:00.000Z",
       "reviewBy": null,
       "nextAction": "Avaliar AceDB e implementar resolução.",
       "dependencies": [

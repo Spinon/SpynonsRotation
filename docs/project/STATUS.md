@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T22:40:02.271Z
+Atualizado pelo board em: 2026-09-14T22:42:00.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **PROFILE-001 — Persistência e perfis**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Avaliar AceDB e implementar resolução.
 
 ## Progresso
 
-- Planejadas: 16
-- Em andamento: 0
+- Planejadas: 15
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 42
 - Total: 59
@@ -70,7 +70,7 @@ Próxima ação: Avaliar AceDB e implementar resolução.
 | UX-004 | delivery | CONFIG / UX | Undo/Redo | planned | P1 | UX-002 |
 | UX-005 | delivery | CONFIG / UX | Preview + reset granular | planned | P2 | UX-004 |
 | UX-006 | delivery | CONFIG / UX | Typography | planned | P2 | UX-001 |
-| PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | planned | P1 | CORE-001, UX-001 |
+| PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | in_progress | P1 | CORE-001, UX-001 |
 | SKIN-001 | delivery | PROFILES / SKINS | Skin API | planned | P1 | UI-001 |
 | SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | planned | P2 | SKIN-001 |
 | BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | planned | P1 | BOOT-001 |
