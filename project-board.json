@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T23:45:58.160Z",
+  "updatedAt": "2026-09-14T23:46:32.211Z",
   "currentFocus": "UX-006",
   "parallelFocus": {},
   "release": {
@@ -1253,10 +1253,10 @@
       "title": "Typography",
       "lane": "CONFIG / UX",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P2",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T23:46:32.211Z",
       "reviewBy": "Product Owner",
       "nextAction": "Curar tipografia default.",
       "dependencies": [

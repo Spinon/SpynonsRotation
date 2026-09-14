@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T23:45:58.160Z
+Atualizado pelo board em: 2026-09-14T23:46:32.211Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UX-006 — Typography**
 
-Status: `planned` · Prioridade: `P2` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
 
 Próxima ação: Curar tipografia default.
 
 ## Progresso
 
-- Planejadas: 9
-- Em andamento: 0
+- Planejadas: 8
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 49
 - Total: 59
@@ -69,7 +69,7 @@ Próxima ação: Curar tipografia default.
 | UX-003 | delivery | CONFIG / UX | Advanced panels | done | P2 | UX-001 |
 | UX-004 | delivery | CONFIG / UX | Undo/Redo | done | P1 | UX-002 |
 | UX-005 | delivery | CONFIG / UX | Preview + reset granular | done | P2 | UX-004 |
-| UX-006 | delivery | CONFIG / UX | Typography | planned | P2 | UX-001 |
+| UX-006 | delivery | CONFIG / UX | Typography | in_progress | P2 | UX-001 |
 | PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | done | P1 | CORE-001, UX-001 |
 | SKIN-001 | delivery | PROFILES / SKINS | Skin API | done | P1 | UI-001 |
 | SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | done | P2 | SKIN-001 |
