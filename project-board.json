@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-03T21:29:25.684Z",
+  "updatedAt": "2026-09-14T19:01:06.737Z",
   "currentFocus": "RUN-001",
   "parallelFocus": {},
   "release": {
@@ -533,10 +533,10 @@
       "title": "State engine",
       "lane": "RUNTIME",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T19:01:06.737Z",
       "reviewBy": null,
       "nextAction": "Implementar snapshots e atualização incremental.",
       "dependencies": [

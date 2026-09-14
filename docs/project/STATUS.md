@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-03T21:29:25.684Z
+Atualizado pelo board em: 2026-09-14T19:01:06.737Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **RUN-001 — State engine**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
 Próxima ação: Implementar snapshots e atualização incremental.
 
 ## Progresso
 
-- Planejadas: 28
-- Em andamento: 0
+- Planejadas: 27
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 29
 - Total: 57
@@ -44,7 +44,7 @@ Próxima ação: Implementar snapshots e atualização incremental.
 | ENH-004 | delivery | SHAMAN | Curadoria Cleave/AoE | done | P1 | ENH-002, LAB-004 |
 | ENH-005 | delivery | SHAMAN | Talent-aware rotation | done | P1 | ENH-003, ENH-004, CORE-003 |
 | ENH-006 | delivery | SHAMAN | Build de referência para iniciantes | done | P1 | ENH-005, LAB-005 |
-| RUN-001 | delivery | RUNTIME | State engine | planned | P0 | CORE-001, CORE-004 |
+| RUN-001 | delivery | RUNTIME | State engine | in_progress | P0 | CORE-001, CORE-004 |
 | RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
 | UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
