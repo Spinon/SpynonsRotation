@@ -33,6 +33,14 @@ function Controller.Create(compat, createFrame, settings)
   function controller.Select(_, scope) return action(store and store.Select, scope, context) end
   function controller.Copy(_, source) return action(store and store.Copy, source, context) end
   function controller.Reset(_) return action(store and store.Reset, context) end
+  function controller.Capture(_)
+    if not store then return nil end
+    local fresh = compat.Profiles:ReadIdentity()
+    if fresh.character ~= context.character or fresh.specId ~= context.specId then controller:Refresh(); return nil end
+    return store:Capture(context)
+  end
+  function controller.Apply(_, expected, changes) return action(store and store.Apply, expected, changes, context) end
+  function controller.Restore(_, target, expected) return action(store and store.Restore, target, expected, context) end
   function controller.GetStatus(_)
     local scope = store and store:GetScope(context) or "global"
     local writable = store and store:CanUse(scope, context) or false

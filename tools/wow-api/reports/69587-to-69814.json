@@ -9,7 +9,7 @@
     "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59"
   },
   "interfaceChanged": false,
-  "coveredFiles": 26,
+  "coveredFiles": 27,
   "changes": [],
   "affectedModules": [],
   "decision": "NO_DOCUMENTED_CHANGE_IN_COVERED_FILES",

@@ -29,7 +29,8 @@ Não mantém vínculo com a origem. Não copia para o mesmo alcance. “Restaura
 remove somente os campos conhecidos do alcance selecionado, revelando os valores herdados;
 não apaga outros personagens/specs, preferências ancestrais ou extensões desconhecidas.
 Ambas exigem segundo clique em Confirmar. Navegação, fechamento, edição ou mudança de
-identidade/alcance desarmam a confirmação. Não há Undo/Redo nesta task.
+identidade/alcance desarmam a confirmação. UX-004 acrescenta histórico para edições comuns,
+mas cópia/reset continuam operações distintas e limpam o histórico: [`HISTORY.md`](HISTORY.md).
 
 ## Dados e fronteiras
 

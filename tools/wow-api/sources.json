@@ -3,10 +3,11 @@
   "repository": "Gethe/wow-ui-source",
   "developmentSmokeBuilds": ["69587", "69814"],
   "builds": {
-    "69587": { "version": "12.1.0.69587", "interface": 120100, "commit": "8ea15b61e45c0ed4eba01439c90757f86eb78d34", "snapshotSha256": "DAABF4F759B54911857FEEBC24A2DFFCCA51359057839853151002FDA6986BBC" },
-    "69814": { "version": "12.1.0.69814", "interface": 120100, "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59", "snapshotSha256": "6CFFA66FC9F14BB169498CAE36FE88CE72B376F65242E7FEA8B96DC6246A62C5" }
+    "69587": { "version": "12.1.0.69587", "interface": 120100, "commit": "8ea15b61e45c0ed4eba01439c90757f86eb78d34", "snapshotSha256": "A93011A1CD6B37BE72BA48A7AF36DDEFEDA85FCA7BC1771E25D62187146E9ADA" },
+    "69814": { "version": "12.1.0.69814", "interface": 120100, "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59", "snapshotSha256": "0B4B9241A6A6DEEB30DA3B3C33557DECF931AA6DF7290800ED9CFDCA8C045C07" }
   },
   "files": [
+    { "name": "SimpleSliderAPIDocumentation.lua", "modules": ["addon/Config/PreviewSlider.lua"] },
     { "name": "BuildDocumentation.lua", "modules": ["addon/Compat/Build.lua", "addon/Core/InGameHarness.lua"] },
     { "name": "SpecializationInfoDocumentation.lua", "modules": ["addon/Compat/Specialization.lua", "addon/Core/SpecDetector.lua", "addon/Compat/Profiles.lua"] },
     { "name": "ClassTalentsDocumentation.lua", "modules": ["addon/Compat/Talents.lua", "addon/Core/SpecDetector.lua"] },
@@ -24,14 +25,14 @@
     { "name": "SpellSharedDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Rotation/StateReader.lua"] },
     { "name": "ItemDocumentation.lua", "modules": ["addon/Compat/Media.lua"] },
     { "name": "RestrictedActionsDocumentation.lua", "modules": ["addon/Core/StateEngine.lua", "addon/Core/InGameHarness.lua"] },
-    { "name": "SimpleFrameAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/Core/InGameHarness.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua", "addon/Config/Controller.lua", "addon/UI/QueueEditor.lua"] },
-    { "name": "SimpleFrameScriptObjectAPIDocumentation.lua", "modules": ["addon/Core/Bootstrap.lua", "addon/UI/Queue.lua", "addon/Config/Panel.lua", "addon/Config/Controller.lua", "addon/Profiles/Controller.lua", "addon/UI/QueueEditor.lua"] },
-    { "name": "SimpleFontStringAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/Core/InGameHarness.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua", "addon/UI/QueueEditor.lua"] },
+    { "name": "SimpleFrameAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/Core/InGameHarness.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua", "addon/Config/Controller.lua", "addon/UI/QueueEditor.lua", "addon/Config/PreviewSlider.lua"] },
+    { "name": "SimpleFrameScriptObjectAPIDocumentation.lua", "modules": ["addon/Core/Bootstrap.lua", "addon/UI/Queue.lua", "addon/Config/Panel.lua", "addon/Config/Controller.lua", "addon/Profiles/Controller.lua", "addon/UI/QueueEditor.lua", "addon/Config/PreviewSlider.lua"] },
+    { "name": "SimpleFontStringAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/Core/InGameHarness.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua", "addon/UI/QueueEditor.lua", "addon/Config/PreviewSlider.lua"] },
     { "name": "SimpleRegionAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/UI/AuraIndicators.lua"] },
-    { "name": "SimpleScriptRegionAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua", "addon/UI/QueueEditor.lua"] },
-    { "name": "SimpleScriptRegionResizingAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua", "addon/UI/QueueEditor.lua"] },
+    { "name": "SimpleScriptRegionAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua", "addon/UI/QueueEditor.lua", "addon/Config/PreviewSlider.lua"] },
+    { "name": "SimpleScriptRegionResizingAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua", "addon/UI/QueueEditor.lua", "addon/Config/PreviewSlider.lua"] },
     { "name": "SimpleTextureAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua"] },
-    { "name": "SimpleTextureBaseAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua", "addon/UI/QueueEditor.lua"] },
+    { "name": "SimpleTextureBaseAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua", "addon/UI/QueueEditor.lua", "addon/Config/PreviewSlider.lua"] },
     { "name": "SimpleMessageFrameAPIDocumentation.lua", "modules": ["addon/Compat/Console.lua"] }
   ]
 }

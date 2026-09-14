@@ -103,6 +103,15 @@ direção e espaçamento. Os alvos Tecla não são binds reais. Fechar, iniciar 
 combate deve remover os alvos sem interceptar cliques do jogo. Confirmar `/reload` das
 preferências novas. Hit testing, foco e rendering nativos continuam pendentes de inspeção.
 
+### Histórico transacional (UX-004)
+
+Em Config, alterar uma opção e usar Desfazer/Refazer. No editor do ícone principal, arrastar
+o controle de tamanho repetidamente antes de soltar: uma única ação deve ser desfeita.
+Navegar, fechar ou entrar em combate durante o arraste deve cancelar a prévia não confirmada.
+Trocar alcance/spec ou confirmar cópia/reset deve limpar o histórico, preservando os outros
+perfis. Depois de `/reload`, preferências persistem, mas o histórico começa vazio.
+Validar captura/soltura do mouse e foco no cliente: fixtures não reproduzem eventos nativos.
+
 ### Inspeção humana
 
 - [ ] Addon carregou sem erro Lua; `/spynon test` foi reconhecido.

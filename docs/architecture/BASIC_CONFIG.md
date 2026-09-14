@@ -54,7 +54,8 @@ As opções explícitas de `/spynon demo reduced/off` continuam sendo overrides 
 UX-001 entregou preferências de sessão. PROFILE-001 acrescentou persistência automática e o
 card Perfis; precedência e confirmação estão em [`PROFILES.md`](PROFILES.md). UX-002 acrescentou
 o botão Editar HUD e controles específicos por seleção, descritos em [`HUD_EDITOR.md`](HUD_EDITOR.md).
-Painéis avançados, histórico, resets de elemento/seção e tipografia têm suas
+UX-004 acrescenta Desfazer/Refazer e arraste transacional, descritos em [`HISTORY.md`](HISTORY.md).
+Painéis avançados, resets de elemento/seção e tipografia têm suas
 próprias tasks. Nenhuma dependência foi adicionada. Componentes neutros locais preservam
 a direção visual sem gerar nova arte.
 

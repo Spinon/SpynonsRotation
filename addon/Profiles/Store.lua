@@ -1,6 +1,15 @@
 local _, Spynon = ...
 local Store, Settings = {}, Spynon.SettingsFactory
 local scopes = { global = true, character = true, spec = true }
+function Store.SameSnapshot(a, b)
+  if type(a) ~= "table" or type(b) ~= "table" or type(a.values) ~= "table" or type(b.values) ~= "table" then
+    return false
+  end
+  if a.scope ~= b.scope or a.character ~= b.character or a.specId ~= b.specId then return false end
+  for key, value in pairs(a.values) do if b.values[key] ~= value then return false end end
+  for key, value in pairs(b.values) do if a.values[key] ~= value then return false end end
+  return true
+end
 local function validCharacter(context)
   return type(context) == "table" and type(context.character) == "string" and #context.character <= 128
     and context.character:match("^Player%-%d+%-%x+$") ~= nil
@@ -87,6 +96,39 @@ function Store.Create(source)
     -- Reset supported preferences only. Unknown extension data and sibling profiles survive.
     for key in pairs(Settings.Defaults()) do target[key] = nil end
     return true
+  end
+  function store.Capture(_, context)
+    local scope = store:GetScope(context)
+    if not store:CanUse(scope, context) then return nil end
+    local values = {}
+    for key, value in pairs(layer(scope, context) or {}) do
+      if Settings.IsValue(key, value) then values[key] = value end
+    end
+    return { scope = scope, character = context.character, specId = context.specId, values = values }
+  end
+  function store.Restore(_, target, expected, context)
+    local current = store:Capture(context)
+    if not Store.SameSnapshot(current, expected) or type(target) ~= "table" or type(target.values) ~= "table"
+      or target.scope ~= current.scope or target.character ~= current.character or target.specId ~= current.specId then
+      return false
+    end
+    for key, value in pairs(target.values) do if not Settings.IsValue(key, value) then return false end end
+    local values = layer(current.scope, context, true)
+    if not values then return false end
+    for key in pairs(Settings.Defaults()) do
+      if current.values[key] ~= target.values[key] then values[key] = target.values[key] end
+    end
+    return true
+  end
+  function store.Apply(_, expected, changes, context)
+    if type(changes) ~= "table" then return false end
+    local target = store:Capture(context)
+    if not Store.SameSnapshot(target, expected) then return false end
+    for key, value in pairs(changes) do
+      if not Settings.IsValue(key, value) then return false end
+      target.values[key] = value
+    end
+    return store:Restore(target, expected, context)
   end
   function store.IsWritable(_) return writable end
   return store

@@ -33,7 +33,7 @@ fields.layout = { fields.queue[1], fields.queue[3],
   { key = "spacing", label = "Espaçamento", options = { {4,"Próximo"}, {8,"Padrão"}, {16,"Amplo"} } },
   { key = "alignment", label = "Alinhamento", options = { {"START","Início"}, {"CENTER","Centro"}, {"END","Fim"} } },
 }
-function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles, onEdit)
+function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles, onEdit, history)
   local panel, selected, buttons, pages = {}, nil, {}, {}
   local navigation, profileButtons, pending = {}, {}, nil
   for _, section in ipairs(sections) do navigation[#navigation+1] = section end
@@ -97,6 +97,12 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
     page:Hide()
   end
   local footer = label(root, "Por enquanto, ajustes desta sessão. Perfis vêm na próxima etapa.", 20, 413, 470)
+  local undo, redo
+  if history then
+    Spynon.PreviewSliderFactory.Create(createFrame, pages.current, settings, history)
+    undo = button(root, "Desfazer", 20, 378, 114, 30, function() history:Undo() end)
+    redo = button(root, "Refazer", 140, 378, 114, 30, function() history:Redo() end)
+  end
   if profiles then
     local page = pages.profiles
     label(page, "Salvar ajustes para", 20, 135, 470)
@@ -142,9 +148,16 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
         control.fill:SetColorTexture(chosen and 0.06 or 0.08, chosen and 0.30 or 0.13, chosen and 0.22 or 0.20, 1)
       end
     end
+    if history then
+      local status = history:GetStatus()
+      local canUndo, canRedo = status.undo > 0 and not status.active, status.redo > 0 and not status.active
+      undo.frame:EnableMouse(canUndo); undo.frame:SetAlpha(canUndo and 1 or 0.4)
+      redo.frame:EnableMouse(canRedo); redo.frame:SetAlpha(canRedo and 1 or 0.4)
+    end
   end
   function panel.Select(_, section)
     if section ~= nil and not pages[section] then return false end
+    if history then history:Cancel() end
     pending = nil
     selected = section
     if section then intro:Hide() else intro:Show() end
@@ -161,7 +174,7 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
     if not sectionsByElement[kind] then return false end
     return panel:Select(sectionsByElement[kind])
   end
-  function panel.Hide(_) pending = nil; root:Hide() end
+  function panel.Hide(_) pending = nil; if history then history:Cancel() end; root:Hide() end
   function panel.GetSection(_) return selected end
   function panel.GetRoot(_) return root end
   root:SetScript("OnKeyDown", function(_, key)
@@ -171,6 +184,7 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
   root:Hide()
   root:SetScript("OnHide", function() if onClose then onClose() end end)
   settings:Subscribe(function() panel:Refresh() end)
+  if history then history:Subscribe(function() panel:Refresh() end) end
   panel:Select(nil)
   return panel
 end

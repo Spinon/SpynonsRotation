@@ -9,6 +9,15 @@ return function()
   function methods:SetSize(width, height) self.width, self.height = width, height end
   function methods:SetWidth(width) self.width = width end
   function methods:SetHeight(height) self.height = height end
+  function methods:SetOrientation(value) self.orientation = value end
+  function methods:SetMinMaxValues(low, high) self.minimum, self.maximum = low, high end
+  function methods:SetValueStep(value) self.valueStep = value end
+  function methods:SetObeyStepOnDrag(value) self.obeyStep = value end
+  function methods:SetThumbTexture(value) self.thumb = value end
+  function methods:SetValue(value)
+    local previous = self.value; self.value = value
+    if previous ~= value and self.scripts and self.scripts.OnValueChanged then self.scripts.OnValueChanged(self, value) end
+  end
   function methods:SetScale(value) self.scale = value end
   function methods:EnableKeyboard(value) self.keyboard = value end
   function methods:SetPropagateKeyboardInput(value) self.propagateKeyboardInput = value end

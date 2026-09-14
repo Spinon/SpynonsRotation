@@ -2,6 +2,7 @@ local _, Spynon = ...
 local Controller = {}
 function Controller.Create(compat, createFrame, settings, harness, profiles)
   local controller, panel, active, started = {}, nil, false, false
+  local history
   local function allowed()
     local combat = compat.State:ReadCombat()
     return combat.ok and combat.capability == "ADDON_AVAILABLE" and combat.value == false
@@ -9,12 +10,13 @@ function Controller.Create(compat, createFrame, settings, harness, profiles)
   function controller.Close(_)
     if not active then return end
     active = false
+    if history then history:Cancel() end
     if panel then panel:Hide() end
     harness:Hide()
   end
   function controller.Change(_, key, value)
     if not active or not allowed() then controller:Close(); return false end
-    return settings:Set(key, value)
+    return history:Execute(key, value)
   end
   function controller.Open(_)
     if not allowed() then
@@ -23,9 +25,10 @@ function Controller.Create(compat, createFrame, settings, harness, profiles)
     end
     if active then return true end
     if not harness:Show(settings:Get().motion) then return false end
+    history = history or Spynon.HistoryBinding.Create(settings, profiles, function() return active and allowed() end)
     panel = panel or Spynon.ConfigPanelFactory.Create(createFrame, compat.Media:GetRootParent(), settings,
       function(key, value) controller:Change(key, value) end, function() controller:Close() end, profiles,
-      function() controller:Edit() end)
+      function() controller:Edit() end, history)
     active = true; panel:SetEditing(false); panel:Select(nil); panel:Show()
     return true
   end
@@ -64,6 +67,7 @@ function Controller.Create(compat, createFrame, settings, harness, profiles)
   end
   function controller.IsOpen(_) return active end
   function controller.GetPanel(_) return panel end
+  function controller.GetHistory(_) return history end
   return controller
 end
 Spynon.ConfigControllerFactory = Controller

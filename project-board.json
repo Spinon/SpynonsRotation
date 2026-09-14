@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T23:03:53.074Z",
-  "currentFocus": "UX-004",
+  "updatedAt": "2026-09-14T23:17:25.361Z",
+  "currentFocus": "UX-005",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1192,12 +1192,12 @@
       "title": "Undo/Redo",
       "lane": "CONFIG / UX",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T23:03:53.074Z",
+      "updatedAt": "2026-09-14T23:17:25.361Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Implementar command history.",
+      "nextAction": null,
       "dependencies": [
         "UX-002"
       ],
@@ -1206,7 +1206,13 @@
         "Drag contínuo vira uma ação",
         "Undo, redo e resets são distintos"
       ],
-      "evidence": []
+      "evidence": [
+        "Config/History.lua e HistoryBinding.lua implementam até 50 ações por sessão, snapshots de overrides com identidade e escrita atômica. Undo restaura ausência/herança; novas ações descartam Redo; troca de contexto ou edição externa invalida histórico.",
+        "Panel oferece Desfazer/Refazer e PreviewSlider agrupa todas as mudanças do arraste em uma ação. Prévia não grava SavedVariables; navegar, fechar ou entrar em combate cancela. Cópia/reset permanecem operações distintas e confirmadas.",
+        "npm test aprovado: 181 testes Node e 314 Lua (495 ao todo), incluindo 23 cenários transacionais; lint e typecheck sem problemas em 55 arquivos. API diff: 27 fontes pinadas e zero alterações documentadas; Slider e ownership incluídos explicitamente.",
+        "docs/architecture/HISTORY.md documenta semântica e limites; RETAIL_SMOKE mantém captura de mouse, foco e combate/taint pendentes. Nenhuma validação nova no Retail ou release é alegada.",
+        "Commit dea9b81 registra início publicado. UX-005 segue como próximo foco para preview e reset granular; ajuste fino visual permanece adiado pelo Product Owner."
+      ]
     },
     {
       "id": "UX-005",

@@ -56,6 +56,9 @@ UI/QueueController.lua
 UI/DemoTimeline.lua
 UI/DemoMode.lua
 Core/InGameHarness.lua
+Config/History.lua
+Config/HistoryBinding.lua
+Config/PreviewSlider.lua
 Config/Panel.lua
 Config/Controller.lua
 Core/Bootstrap.lua

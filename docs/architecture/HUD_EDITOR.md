@@ -48,8 +48,9 @@ perfis inclui os novos campos. Nenhuma camada recebe lógica de classe ou spec.
 
 ## Limites e evidência
 
-Não inclui arrastar posição livre, redimensionar por alças, Undo/Redo, tipografia individual,
-edição de cast ou novos assets. UX-004 trata histórico transacional; UX-006 trata tipografia.
+Não inclui arrastar posição livre, redimensionar por alças, tipografia individual,
+edição de cast ou novos assets. UX-004 acrescenta histórico transacional e controle deslizante
+de tamanho principal em [`HISTORY.md`](HISTORY.md); UX-006 trata tipografia.
 O foco desta task é selecionar diretamente o componente e editar opções pertinentes.
 
 `tests/unit/hud_editor_spec.lua` cobre 12 cenários: seleção, disclosure, teclas ausentes,
