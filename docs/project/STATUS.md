@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:38:38.917Z
+Atualizado pelo board em: 2026-09-14T20:39:23.956Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **PATCH-003 — Diagnóstico de build no smoke Retail**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
 Próxima ação: Separar falha de leitura e build divergente; cobrir retornos auxiliares ausentes e repetir smoke.
 
 ## Progresso
 
-- Planejadas: 23
-- Em andamento: 0
+- Planejadas: 22
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 34
 - Total: 58
@@ -82,7 +82,7 @@ Próxima ação: Separar falha de leitura e build divergente; cobrir retornos au
 | TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
 | RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
-| PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | planned | P0 | CORE-004, PATCH-001 |
+| PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | in_progress | P0 | CORE-004, PATCH-001 |
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas

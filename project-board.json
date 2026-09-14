@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:38:38.917Z",
+  "updatedAt": "2026-09-14T20:39:23.956Z",
   "currentFocus": "PATCH-003",
   "parallelFocus": {},
   "release": {
@@ -1479,10 +1479,10 @@
       "title": "Diagnóstico de build no smoke Retail",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "tasks/PATCH-003.md",
-      "updatedAt": "2026-09-14T20:38:38.917Z",
+      "updatedAt": "2026-09-14T20:39:23.956Z",
       "reviewBy": null,
       "nextAction": "Separar falha de leitura e build divergente; cobrir retornos auxiliares ausentes e repetir smoke.",
       "dependencies": ["CORE-004", "PATCH-001"],
