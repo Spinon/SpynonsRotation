@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:13:41.245Z",
-  "currentFocus": "TEST-002",
+  "updatedAt": "2026-09-14T20:20:07.441Z",
+  "currentFocus": "RUN-003",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1394,12 +1394,12 @@
       "title": "In-game harness",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "blocked",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T20:13:41.245Z",
+      "updatedAt": "2026-09-14T20:20:07.441Z",
       "reviewBy": null,
-      "nextAction": "Detectar cliente Retail e definir /spynon test.",
+      "nextAction": "Product Owner entrar no Retail e executar /spynon test e /spynon test show; coletar relatório persistido e inspeção visual/combate para completar o checklist.",
       "dependencies": [
         "RUN-002",
         "UI-001",
@@ -1410,7 +1410,13 @@
         "Taint, lockdown e rendering têm checklist",
         "Evidência distingue teste real de headless"
       ],
-      "evidence": []
+      "evidence": [
+        "Commit a313022 — comandos /spynon test, test show e test hide, preview explicitamente simulado e bloqueado em combate, relatório técnico em SavedVariables e instalador de desenvolvimento com proteção contra sobrescrita.",
+        "Cliente detectado pelo registro em D:/Blizzard/World of Warcraft/_retail_; Wow.exe FileVersion 12.1.0.69587 corresponde ao pin do projeto.",
+        "Install-DevelopmentAddon.ps1 verificou 48 arquivos em Interface/AddOns/SpynonRotation, incluindo hashes; nenhum outro addon ou SavedVariables foi alterado e nenhum release foi publicado.",
+        "npm test — aprovado: 172 testes Node e 159 testes Lua, incluindo 6 fixtures do harness; lint e typecheck sem problemas.",
+        "BLOQUEIO: ausência de sessão de personagem operável neste ambiente; execução real, inspeção visual, taint e comportamento em combate dependem do Product Owner. docs/project/RETAIL_SMOKE.md mantém o checklist pendente; nenhuma validação Retail é alegada."
+      ]
     },
     {
       "id": "RELEASE-001",

@@ -2,23 +2,23 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:13:41.245Z
+Atualizado pelo board em: 2026-09-14T20:20:07.441Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**TEST-002 — In-game harness**
+**RUN-003 — Context detector**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Detectar cliente Retail e definir /spynon test.
+Próxima ação: Definir sinais e fallbacks do CombatContext.
 
 ## Progresso
 
 - Planejadas: 24
-- Em andamento: 1
-- Bloqueadas: 0
+- Em andamento: 0
+- Bloqueadas: 1
 - Concluídas: 32
 - Total: 57
 
@@ -79,7 +79,7 @@ Próxima ação: Detectar cliente Retail e definir /spynon test.
 | PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | planned | P1 | CORE-004 |
 | PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | planned | P1 | PATCH-001, RUN-001 |
 | TEST-001 | delivery | PATCH / QUALITY | Wowless integration | planned | P1 | BOOT-001 |
-| TEST-002 | delivery | PATCH / QUALITY | In-game harness | in_progress | P0 | RUN-002, UI-001, CORE-004 |
+| TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
 | RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
