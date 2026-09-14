@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:07:01.168Z
+Atualizado pelo board em: 2026-09-14T20:07:35.546Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UI-001 — Queue estática**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
 Próxima ação: Criar primeiro protótipo visual no cliente.
 
 ## Progresso
 
-- Planejadas: 26
-- Em andamento: 0
+- Planejadas: 25
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 31
 - Total: 57
@@ -58,7 +58,7 @@ Próxima ação: Criar primeiro protótipo visual no cliente.
 | UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |
 | UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | done | P1 | UI-DESIGN-005, UI-DESIGN-009 |
 | UI-DESIGN-011 | ui | UI DESIGN | Distribuição dos assets de runtime | done | P1 | UI-DESIGN-008 |
-| UI-001 | delivery | UI | Queue estática | planned | P0 | RUN-002 |
+| UI-001 | delivery | UI | Queue estática | in_progress | P0 | RUN-002 |
 | UI-002 | delivery | UI | Animator | planned | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |
 | UI-004 | delivery | UI | Cooldowns/charges/stacks | planned | P1 | UI-001, CORE-004 |
