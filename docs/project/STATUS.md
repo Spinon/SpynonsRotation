@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T23:23:46.543Z
+Atualizado pelo board em: 2026-09-14T23:24:19.513Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UX-003 — Advanced panels**
 
-Status: `planned` · Prioridade: `P2` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
 
 Próxima ação: Mapear níveis de disclosure.
 
 ## Progresso
 
-- Planejadas: 12
-- Em andamento: 0
+- Planejadas: 11
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 46
 - Total: 59
@@ -66,7 +66,7 @@ Próxima ação: Mapear níveis de disclosure.
 | UI-006 | delivery | UI | Demo Mode | done | P1 | UI-002, UI-004, RUN-003 |
 | UX-001 | delivery | CONFIG / UX | Config básico contextual | done | P1 | UI-001 |
 | UX-002 | delivery | CONFIG / UX | Edit HUD | done | P1 | UX-001, UI-002 |
-| UX-003 | delivery | CONFIG / UX | Advanced panels | planned | P2 | UX-001 |
+| UX-003 | delivery | CONFIG / UX | Advanced panels | in_progress | P2 | UX-001 |
 | UX-004 | delivery | CONFIG / UX | Undo/Redo | done | P1 | UX-002 |
 | UX-005 | delivery | CONFIG / UX | Preview + reset granular | done | P2 | UX-004 |
 | UX-006 | delivery | CONFIG / UX | Typography | planned | P2 | UX-001 |
