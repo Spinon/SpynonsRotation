@@ -13,6 +13,7 @@ function CompatFactory.Create(environment)
     Secrets = Internal.Secrets.Create(apiEnvironment),
     State = Internal.State.Create(apiEnvironment),
     Media = Internal.Media.Create(apiEnvironment),
+    Console = Internal.Console.Create(apiEnvironment),
   }
 end
 

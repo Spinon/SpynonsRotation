@@ -12,6 +12,7 @@ local function initialize()
   Spynon.initialized = true
   Spynon.Recommendations:Start()
   Spynon.QueueController:Start()
+  Spynon.InGameHarness:Start()
   for _, event in ipairs(Spynon.StateEngineFactory.Events) do
     eventFrame:RegisterEvent(event)
   end

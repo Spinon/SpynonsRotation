@@ -461,6 +461,7 @@ test("bootstrap registers and forwards state events only after this addon loads"
   local handled = {}
   namespace.StateEngine = { HandleEvent = function(_, event, unit) handled[#handled + 1] = { event, unit } end }
   namespace.QueueController = { Start = function() end }
+  namespace.InGameHarness = { Start = function() end }
   onEvent(nil, "ADDON_LOADED", "SpynonRotation")
   equal(namespace.initialized, true)
   for _, event in ipairs(namespace.StateEngineFactory.Events) do equal(registeredEvents[event], true) end
