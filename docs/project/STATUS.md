@@ -2,25 +2,25 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T21:26:49.969Z
+Atualizado pelo board em: 2026-09-14T21:56:06.496Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UI-005 — Buff/debuff indicators**
+**UI-007 — Encaixe e amostragem dos ícones**
 
-Status: `planned` · Prioridade: `P2` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Definir vocabulário visual.
+Próxima ação: Ajustar encaixe e crop preservando as animações aprovadas.
 
 ## Progresso
 
-- Planejadas: 18
+- Planejadas: 19
 - Em andamento: 0
 - Bloqueadas: 1
 - Concluídas: 39
-- Total: 58
+- Total: 59
 
 ## Fila canônica
 
@@ -83,6 +83,7 @@ Próxima ação: Definir vocabulário visual.
 | RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
 | PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | done | P0 | CORE-004, PATCH-001 |
+| UI-007 | delivery | UI | Encaixe e amostragem dos ícones | planned | P1 | UI-001, UI-002, UI-003, UI-004, UI-006 |
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
