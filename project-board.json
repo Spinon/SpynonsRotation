@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T22:29:00.000Z",
+  "updatedAt": "2026-09-14T22:32:00.000Z",
   "currentFocus": "UX-001",
   "parallelFocus": {},
   "release": {
@@ -1114,10 +1114,10 @@
       "title": "Config básico contextual",
       "lane": "CONFIG / UX",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T22:32:00.000Z",
       "reviewBy": "Product Owner",
       "nextAction": "Prototipar navegação e cards.",
       "dependencies": [

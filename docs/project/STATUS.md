@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T22:29:00.000Z
+Atualizado pelo board em: 2026-09-14T22:32:00.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UX-001 — Config básico contextual**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Prototipar navegação e cards.
 
 ## Progresso
 
-- Planejadas: 17
-- Em andamento: 0
+- Planejadas: 16
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 41
 - Total: 59
@@ -64,7 +64,7 @@ Próxima ação: Prototipar navegação e cards.
 | UI-004 | delivery | UI | Cooldowns/charges/stacks | done | P1 | UI-001, CORE-004 |
 | UI-005 | delivery | UI | Buff/debuff indicators | done | P2 | UI-004, RUN-002 |
 | UI-006 | delivery | UI | Demo Mode | done | P1 | UI-002, UI-004, RUN-003 |
-| UX-001 | delivery | CONFIG / UX | Config básico contextual | planned | P1 | UI-001 |
+| UX-001 | delivery | CONFIG / UX | Config básico contextual | in_progress | P1 | UI-001 |
 | UX-002 | delivery | CONFIG / UX | Edit HUD | planned | P1 | UX-001, UI-002 |
 | UX-003 | delivery | CONFIG / UX | Advanced panels | planned | P2 | UX-001 |
 | UX-004 | delivery | CONFIG / UX | Undo/Redo | planned | P1 | UX-002 |
