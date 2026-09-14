@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T19:46:07.661Z",
-  "currentFocus": "RUN-002",
+  "updatedAt": "2026-09-14T20:07:01.168Z",
+  "currentFocus": "UI-001",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -561,12 +561,12 @@
       "title": "Recommendation engine",
       "lane": "RUNTIME",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T19:46:07.661Z",
+      "updatedAt": "2026-09-14T20:07:01.168Z",
       "reviewBy": null,
-      "nextAction": "Implementar avaliação e ordenação de regras.",
+      "nextAction": null,
       "dependencies": [
         "RUN-001",
         "CORE-002",
@@ -577,7 +577,12 @@
         "Golden fixtures são determinísticas",
         "Regras incompatíveis são excluídas"
       ],
-      "evidence": []
+      "evidence": [
+        "addon/Rotation/RecommendationEngine.lua, Program.lua e StateReader.lua — avaliação limitada do bytecode, capabilities efetivas, prioridades estáveis, deduplicação e snapshots observáveis.",
+        "tests/unit/recommendation_engine_spec.lua — 17/17 testes com golden queues neutras, exclusões, sinais protegidos, autoria de aura e integração do módulo real.",
+        "npm test — aprovado: 172 testes Node, 144 testes Lua, paridade do bundle empacotado, layout, lint e typecheck sem problemas.",
+        "docs/architecture/RECOMMENDATION_ENGINE.md — integração talent-aware e limites explícitos: prioridades atuais, sem previsão de casts ou equivalência integral de DPS com SimC; validação exclusivamente offline."
+      ]
     },
     {
       "id": "RUN-003",

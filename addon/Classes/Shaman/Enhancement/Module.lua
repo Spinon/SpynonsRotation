@@ -117,8 +117,17 @@ local module, moduleError = SpecModule.Create({
     end
     return queries
   end,
-  getRules = function()
-    return {}
+  getRules = function(selection, state, context)
+    if not selection or not state or not context or not selection.heroTree then return {} end
+    if state.capabilities.inCombat ~= "ADDON_AVAILABLE" or state.inCombat ~= true then return {} end
+    local heroId = selection.heroTree.id
+    if heroId ~= heroSubTreeById["enhancement.stormbringer"]
+      and heroId ~= heroSubTreeById["enhancement.totemic"] then return {} end
+    local list = heroId == heroSubTreeById["enhancement.stormbringer"] and "single_sb" or "single_totemic"
+    local mode = context.resolvedMode or context.mode
+    if mode == "CLEAVE" or mode == "AOE" then list = "aoe" end
+    local bundle = Enhancement.RotationBundle
+    return { schemaVersion = bundle.schemaVersion, entrypoint = list, lists = bundle.lists, source = bundle.source }
   end,
 })
 if module == nil then

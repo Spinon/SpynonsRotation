@@ -84,6 +84,8 @@ getStateQueries provider opcional de consultas públicas para o State Engine
 
 `SpecModule` não se registra sozinho e não avalia regras. O serviço e a ordem de carregamento estão documentados em [`SPEC_REGISTRY.md`](SPEC_REGISTRY.md); detecção de spec/talentos está em [`SPEC_DETECTION.md`](SPEC_DETECTION.md).
 `getStateQueries(detectedSpec)` é opcional e retrocompatível; seu schema e lifecycle estão em [`STATE_ENGINE.md`](STATE_ENGINE.md).
+`getRules(selection, state, context)` fornece um bundle runtime v1 e seu entrypoint; integração descrita em
+[`RECOMMENDATION_ENGINE.md`](RECOMMENDATION_ENGINE.md).
 
 ## Fluxo de ownership
 

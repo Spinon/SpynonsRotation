@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T19:46:07.661Z
+Atualizado pelo board em: 2026-09-14T20:07:01.168Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**RUN-002 — Recommendation engine**
+**UI-001 — Queue estática**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Implementar avaliação e ordenação de regras.
+Próxima ação: Criar primeiro protótipo visual no cliente.
 
 ## Progresso
 
 - Planejadas: 26
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 30
+- Concluídas: 31
 - Total: 57
 
 ## Fila canônica
@@ -45,7 +45,7 @@ Próxima ação: Implementar avaliação e ordenação de regras.
 | ENH-005 | delivery | SHAMAN | Talent-aware rotation | done | P1 | ENH-003, ENH-004, CORE-003 |
 | ENH-006 | delivery | SHAMAN | Build de referência para iniciantes | done | P1 | ENH-005, LAB-005 |
 | RUN-001 | delivery | RUNTIME | State engine | done | P0 | CORE-001, CORE-004 |
-| RUN-002 | delivery | RUNTIME | Recommendation engine | in_progress | P0 | RUN-001, CORE-002, LAB-003 |
+| RUN-002 | delivery | RUNTIME | Recommendation engine | done | P0 | RUN-001, CORE-002, LAB-003 |
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
 | UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | done | P0 | UI-DESIGN-001 |
@@ -245,6 +245,13 @@ Próxima ação: Implementar avaliação e ordenação de regras.
 - tests/unit/state_engine_spec.lua — 26/26 testes: spec neutra, atualização parcial, troca de spec/talentos, Secret Values, invalidação antecipada de restrições, ownership, bootstrap e consultas do módulo real.
 - npm test — aprovado; 125 testes Lua em 7 suítes, checks de catálogo/Rotation Lab/board, fronteiras, lint e typecheck sem problemas.
 - docs/architecture/STATE_ENGINE.md — contratos, eventos, fallback e fontes de API fixadas; validação exclusivamente offline, sem alegação de teste Retail.
+
+### RUN-002
+
+- addon/Rotation/RecommendationEngine.lua, Program.lua e StateReader.lua — avaliação limitada do bytecode, capabilities efetivas, prioridades estáveis, deduplicação e snapshots observáveis.
+- tests/unit/recommendation_engine_spec.lua — 17/17 testes com golden queues neutras, exclusões, sinais protegidos, autoria de aura e integração do módulo real.
+- npm test — aprovado: 172 testes Node, 144 testes Lua, paridade do bundle empacotado, layout, lint e typecheck sem problemas.
+- docs/architecture/RECOMMENDATION_ENGINE.md — integração talent-aware e limites explícitos: prioridades atuais, sem previsão de casts ou equivalência integral de DPS com SimC; validação exclusivamente offline.
 
 ### UI-DESIGN-001
 

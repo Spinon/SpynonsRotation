@@ -106,13 +106,16 @@ function State.Create(environment)
     local value, auraError = read("C_UnitAuras.GetUnitAuraBySpellID", unit, spellId)
     if auraError then return auraError end
     if value == nil then
-      return Result.Success({ active = false, applications = 0, duration = 0, expirationTime = 0 })
+      return Result.Success({ active = false, applications = 0, duration = 0, expirationTime = 0, unit = unit })
     end
     local normalized, fieldError = fields(value, {
       { "applications", Validation.IsNonNegativeInteger }, { "duration", number }, { "expirationTime", number },
     })
     if fieldError then return fieldError end
     normalized.active = true
+    normalized.unit = unit
+    local owner = value.isFromPlayerOrPlayerPet
+    if adapter:IsPublic(owner) and type(owner) == "boolean" then normalized.playerOwned = owner end
     return Result.Success(normalized)
   end
 
@@ -147,6 +150,14 @@ function State.Create(environment)
     if normalized.currentCharges > normalized.maxCharges then return Result.Failure(Result.Code.INVALID_DATA) end
     normalized.hasCharges = true
     return Result.Success(normalized)
+  end
+
+  function adapter.ReadUsable(_, spellId)
+    if not Validation.IsPositiveInteger(spellId) then return Result.Failure(Result.Code.INVALID_ARGUMENT) end
+    local value, failure = read("C_Spell.IsSpellUsable", spellId)
+    if failure then return failure end
+    if type(value) ~= "boolean" then return Result.Failure(Result.Code.INVALID_DATA) end
+    return Result.Success(value)
   end
 
   return adapter

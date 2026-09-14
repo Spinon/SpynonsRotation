@@ -10,6 +10,7 @@ local function initialize()
   end
 
   Spynon.initialized = true
+  Spynon.Recommendations:Start()
   for _, event in ipairs(Spynon.StateEngineFactory.Events) do
     eventFrame:RegisterEvent(event)
   end

@@ -17,6 +17,7 @@ Core/Contracts/PlayerState.lua
 Core/Contracts/SpecModule.lua
 Core/SpecRegistry.lua
 Classes/Shaman/Enhancement/CatalogData.lua
+Classes/Shaman/Enhancement/RotationData.lua
 Classes/Shaman/Enhancement/Module.lua
 Compat/SafeCall.lua
 Compat/Result.lua
@@ -28,4 +29,7 @@ Compat/State.lua
 Compat/Facade.lua
 Core/SpecDetector.lua
 Core/StateEngine.lua
+Rotation/StateReader.lua
+Rotation/Program.lua
+Rotation/RecommendationEngine.lua
 Core/Bootstrap.lua

@@ -32,7 +32,7 @@ local SECRET = setmetatable({}, {
 local function environment()
   local calls = { power = 0, aura = 0, cooldown = 0, charges = 0 }
   local data = {
-    now = 10, combat = false, current = 40, maximum = 100, exists = true, visible = true,
+    now = 10, combat = false, current = 40, maximum = 100, exists = true, visible = true, usable = true,
     aura = { applications = 3, duration = 20, expirationTime = 30 },
     cooldown = { startTime = 5, duration = 10, modRate = 1, isEnabled = true },
     charges = { currentCharges = 1, maxCharges = 2, cooldownStartTime = 5, cooldownDuration = 10, chargeModRate = 1 },
@@ -55,6 +55,7 @@ local function environment()
       GetUnitAuraBySpellID = function() calls.aura = calls.aura + 1; return data.aura end,
     },
     C_Spell = {
+      IsSpellUsable = function() return data.usable end,
       GetSpellCooldown = function() calls.cooldown = calls.cooldown + 1; return data.cooldown end,
       GetSpellCharges = function() calls.charges = calls.charges + 1; return data.charges end,
     },
@@ -424,6 +425,33 @@ test("production module supplies declarative queries with talent-filtered action
   equal(#queries.cooldowns > 0, true)
   for _, query in ipairs(queries.cooldowns) do equal(type(query.spellId), "number") end
   for _, query in ipairs(queries.auras) do equal(query.id, "enhancement.flame_shock") end
+end)
+
+test("runtime selection is isolated and cleared together with an unavailable spec", function()
+  local engine, _, _, _, detection = fixture()
+  engine:HandleEvent("PLAYER_ENTERING_WORLD")
+  local selection = engine:GetSelection()
+  equal(selection.specId, 9101)
+  selection.activeSpellRanks[103] = 999
+  equal(engine:GetSelection().activeSpellRanks[103], 2)
+  detection.failure = "NO_SELECTION"
+  engine:HandleEvent("PLAYER_SPECIALIZATION_CHANGED", "player")
+  equal(engine:GetSelection(), nil)
+end)
+
+test("usability is observed independently and cleared when protected or restricted", function()
+  local engine, data = fixture()
+  engine:HandleEvent("PLAYER_ENTERING_WORLD")
+  equal(engine:GetSnapshot().cooldowns["neutral.strike"].usable, true)
+  data.usable = false
+  engine:HandleEvent("SPELL_UPDATE_USABLE")
+  equal(engine:GetSnapshot().cooldowns["neutral.strike"].usable, false)
+  data.usable = SECRET
+  engine:HandleEvent("SPELL_UPDATE_USABLE")
+  equal(engine:GetSnapshot().cooldowns["neutral.strike"].usable, nil)
+  equal(engine:GetDiagnostics()["cooldowns.neutral.strike.usable"].code, "SECRET_RESTRICTED")
+  engine:HandleEvent("ADDON_RESTRICTION_STATE_CHANGED")
+  equal(engine:GetSnapshot().capabilities["cooldowns.neutral.strike.usable"], "CONDITIONALLY_SECRET")
 end)
 
 test("bootstrap registers and forwards state events only after this addon loads", function()

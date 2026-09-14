@@ -17,6 +17,7 @@ Factory.Events = {
   "UNIT_DISPLAYPOWER", "UNIT_AURA", "SPELL_UPDATE_COOLDOWN", "SPELL_UPDATE_CHARGES", "PLAYER_TARGET_CHANGED",
   "PLAYER_REGEN_DISABLED", "PLAYER_REGEN_ENABLED", "PLAYER_EQUIPMENT_CHANGED",
   "ADDON_RESTRICTION_STATE_CHANGED",
+  "SPELL_UPDATE_USABLE",
 }
 local EVENTS = {}
 for _, event in ipairs(Factory.Events) do EVENTS[event] = true end
@@ -84,6 +85,7 @@ function Factory.Create(compat, detector)
   local listeners, listenerSequence = {}, 0
   local updating = false
   local volatileInvalidated = false
+  local selection
 
   local function record(key, result)
     state.capabilities[key] = result.capability
@@ -95,6 +97,7 @@ function Factory.Create(compat, detector)
   end
 
   local function refreshSpec()
+    selection = nil
     queries = emptyQueries()
     for _, group in ipairs(GROUPS) do state[group] = {} end
     state.capabilities, diagnostics = {}, {}
@@ -102,6 +105,10 @@ function Factory.Create(compat, detector)
     local snapshot = record("specId", detection)
     state.specId = snapshot and snapshot.specialization.specId or nil
     if not snapshot then return end
+    selection = {
+      specId = state.specId, activeSpellRanks = copy(snapshot.activeSpellRanks or {}),
+      heroTree = snapshot.heroTree and { id = snapshot.heroTree.id } or nil,
+    }
     local provider = snapshot.module.getStateQueries
     if not provider then return end
     local ok, candidate = pcall(provider, snapshot)
@@ -160,6 +167,13 @@ function Factory.Create(compat, detector)
     end
   end
 
+  local function refreshUsability()
+    for _, query in ipairs(queries.cooldowns) do
+      local usable = record("cooldowns." .. query.id .. ".usable", api:ReadUsable(query.spellId))
+      if state.cooldowns[query.id] then state.cooldowns[query.id].usable = usable end
+    end
+  end
+
   local function invalidateVolatile()
     local unavailable = Result.Failure(Result.Code.SECRET_RESTRICTED)
     state.inCombat = false
@@ -168,7 +182,10 @@ function Factory.Create(compat, detector)
       state[group] = {}
       for _, query in ipairs(queries[group]) do
         record(group .. "." .. query.id, unavailable)
-        if group == "cooldowns" then record(group .. "." .. query.id .. ".charges", unavailable) end
+        if group == "cooldowns" then
+          record(group .. "." .. query.id .. ".charges", unavailable)
+          record(group .. "." .. query.id .. ".usable", unavailable)
+        end
       end
     end
     volatileInvalidated = true
@@ -180,6 +197,10 @@ function Factory.Create(compat, detector)
 
   function engine.GetDiagnostics(_)
     return copy(diagnostics)
+  end
+
+  function engine.GetSelection(_)
+    return copy(selection)
   end
 
   function engine.Subscribe(_, listener)
@@ -216,9 +237,10 @@ function Factory.Create(compat, detector)
       if unit == "player" then refreshResources("aura_stacks") end
     elseif event == "PLAYER_TARGET_CHANGED" then
       refreshAuras("target")
-    else
+    elseif event ~= "SPELL_UPDATE_USABLE" then
       refreshCooldowns()
     end
+    if event ~= "ADDON_RESTRICTION_STATE_CHANGED" then refreshUsability() end
     state.capturedAt = record("capturedAt", api:ReadClock()) or 0
     state.revision = state.revision + 1
     -- Freeze delivery order; callback failures/mutations cannot corrupt another consumer.

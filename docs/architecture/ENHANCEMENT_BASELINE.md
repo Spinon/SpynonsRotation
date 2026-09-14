@@ -68,9 +68,9 @@ upstream.simc + provenance.json
 ```
 
 Todos os arquivos pertencem a `specs/shaman/enhancement/baseline/`. Os quatro artefatos `baseline.*`
-são gerados mecanicamente e comparados byte a byte. O Lua ainda é dado de pesquisa: ele não é
-carregado pelo `.toc`, não lê APIs do WoW e não altera `SpecModule.getRules`. A integração com
-estado e avaliação pertence às tasks de runtime.
+são gerados mecanicamente e comparados byte a byte. A RUN-002 empacota uma cópia verificada no addon,
+carregada pelo `.toc` e selecionada por `SpecModule.getRules`, sem editar as fontes de pesquisa.
+As limitações e os fallbacks dessa integração estão em [`RECOMMENDATION_ENGINE.md`](RECOMMENDATION_ENGINE.md).
 
 ## Comandos
 
