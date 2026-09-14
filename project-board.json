@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:42:44.881Z",
-  "currentFocus": "UI-002",
+  "updatedAt": "2026-09-14T20:51:58.126Z",
+  "currentFocus": "UI-003",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -970,12 +970,12 @@
       "title": "Animator",
       "lane": "UI",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T20:42:44.881Z",
+      "updatedAt": "2026-09-14T20:51:58.126Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Implementar diff de fila e movimentos.",
+      "nextAction": null,
       "dependencies": [
         "UI-001"
       ],
@@ -984,7 +984,14 @@
         "MOVE, ENTER, EXIT, PROMOTE e CONSUME são distintos",
         "Defaults são discretos e legíveis"
       ],
-      "evidence": []
+      "evidence": [
+        "addon/UI/Animator.lua e Queue.lua implementam MOVE/ENTER/EXIT/PROMOTE/CONSUME, identidade persistente, retomada da posição pintada e pool limitado a oito frames; um timer compartilhado removido em repouso.",
+        "Confirmação de consumo usa evento de sucesso público filtrado por Compat.Media; remoção de prioridade não inventa consumo. Fila vazia/restrita cancela todas as animações imediatamente.",
+        "/spynon motion normal|reduced|off controla movimento nesta sessão; preview de TEST-002 permanece estático. Assets aprovados preservados com crossfade de hierarquia e crop proporcional.",
+        "npm test aprovado: 180 testes Node e 188 testes Lua, incluindo 16 fixtures de animação; 36 arquivos sem warnings, erros ou problemas de tipo. Pressão de 100 diffs sem alocação adicional de frames.",
+        "docs/architecture/ANIMATOR.md documenta tempos, fallbacks, fontes pinadas e limites. A captura Retail anterior não valida estas animações; inspeção de movimento no cliente continua pendente.",
+        "Commit 078e1af registra o início da task; pipeline mantém 22 fontes sem diferença entre builds, atualizando somente ownership do evento."
+      ]
     },
     {
       "id": "UI-003",

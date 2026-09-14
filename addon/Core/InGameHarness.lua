@@ -62,7 +62,7 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
       compat.Console:Write("Teste visual permitido somente fora de combate e com estado observável.")
       return false
     end
-    preview = preview or Spynon.QueueFactory.Create(createFrame, compat.Media:GetRootParent())
+    preview = preview or Spynon.QueueFactory.Create(createFrame, compat.Media:GetRootParent(), "OFF")
     if not previewLabel then
       previewLabel = preview:GetRoot():CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
       previewLabel:SetPoint("BOTTOM", preview:GetRoot(), "TOP", 0, 10)

@@ -3,8 +3,8 @@
   "repository": "Gethe/wow-ui-source",
   "developmentSmokeBuilds": ["69587", "69814"],
   "builds": {
-    "69587": { "version": "12.1.0.69587", "interface": 120100, "commit": "8ea15b61e45c0ed4eba01439c90757f86eb78d34", "snapshotSha256": "278FBF162373BC5FC78D2BB8B178BAAB1C1659E3C19A3558D3271842109D8B71" },
-    "69814": { "version": "12.1.0.69814", "interface": 120100, "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59", "snapshotSha256": "55B0DB9B9888A1BA341D540307B7BBF5D860B1E75279F5E3E3F6788C17C3CC0A" }
+    "69587": { "version": "12.1.0.69587", "interface": 120100, "commit": "8ea15b61e45c0ed4eba01439c90757f86eb78d34", "snapshotSha256": "BEF67470E6C5A0B645A0AFC74FC921ECF7196146D23A61A9430E0DD202845785" },
+    "69814": { "version": "12.1.0.69814", "interface": 120100, "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59", "snapshotSha256": "1C1DC2529B96AF363133A50DCF20378D94CA59E6063520124C1FCBD4EBA4E407" }
   },
   "files": [
     { "name": "BuildDocumentation.lua", "modules": ["addon/Compat/Build.lua", "addon/Core/InGameHarness.lua"] },
@@ -13,7 +13,7 @@
     { "name": "SharedTraitsDocumentation.lua", "modules": ["addon/Compat/Talents.lua", "addon/Core/SpecDetector.lua"] },
     { "name": "SecretPredicateAPIDocumentation.lua", "modules": ["addon/Compat/Secrets.lua", "addon/Compat/State.lua", "addon/Rotation/StateReader.lua"] },
     { "name": "SecretPredicatesDocumentation.lua", "modules": ["addon/Compat/Secrets.lua", "addon/Compat/State.lua", "addon/Compat/Media.lua"] },
-    { "name": "UnitDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Core/StateEngine.lua"] },
+    { "name": "UnitDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Core/StateEngine.lua", "addon/Compat/Media.lua", "addon/UI/QueueController.lua"] },
     { "name": "UnitAuraDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Core/StateEngine.lua"] },
     { "name": "UnitAuraSharedDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Rotation/StateReader.lua"] },
     { "name": "SpellDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Compat/Media.lua", "addon/Rotation/StateReader.lua"] },

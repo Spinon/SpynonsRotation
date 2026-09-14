@@ -7,13 +7,18 @@ return function()
     return value
   end
   function methods:SetSize(width, height) self.width, self.height = width, height end
+  function methods:SetAlpha(alpha) self.alpha = alpha end
   function methods:SetPoint(...) self.point = { ... } end
   function methods:ClearAllPoints() self.point = nil end
   function methods:SetAllPoints(target) self.allPoints = target end
   function methods:SetFrameStrata(strata) self.strata = strata end
   function methods:EnableMouse(enabled) self.mouseEnabled = enabled end
   function methods:Show() self.visible = true end
-  function methods:Hide() self.visible = false end
+  function methods:Hide()
+    local wasVisible = self.visible
+    self.visible = false
+    if wasVisible and self.scripts and self.scripts.OnHide then self.scripts.OnHide(self) end
+  end
   function methods:SetTexture(texture) self.texture = texture; return texture ~= "missing" end
   function methods:SetTexCoord(...) self.uv = { ... } end
   function methods:SetColorTexture(...) self.color = { ... }; self.texture = nil end

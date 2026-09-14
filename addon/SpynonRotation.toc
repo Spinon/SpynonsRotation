@@ -38,6 +38,7 @@ Rotation/Program.lua
 Rotation/RecommendationEngine.lua
 Core/ContextDetector.lua
 Core/ContextController.lua
+UI/Animator.lua
 UI/Queue.lua
 UI/QueueController.lua
 Core/InGameHarness.lua

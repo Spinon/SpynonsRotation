@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:42:44.881Z
+Atualizado pelo board em: 2026-09-14T20:51:58.126Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UI-002 — Animator**
+**UI-003 — Hotkeys**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Implementar diff de fila e movimentos.
+Próxima ação: Mapear bindings e renderizar overlay.
 
 ## Progresso
 
 - Planejadas: 21
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 35
+- Concluídas: 36
 - Total: 58
 
 ## Fila canônica
@@ -59,7 +59,7 @@ Próxima ação: Implementar diff de fila e movimentos.
 | UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | done | P1 | UI-DESIGN-005, UI-DESIGN-009 |
 | UI-DESIGN-011 | ui | UI DESIGN | Distribuição dos assets de runtime | done | P1 | UI-DESIGN-008 |
 | UI-001 | delivery | UI | Queue estática | done | P0 | RUN-002 |
-| UI-002 | delivery | UI | Animator | in_progress | P1 | UI-001 |
+| UI-002 | delivery | UI | Animator | done | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |
 | UI-004 | delivery | UI | Cooldowns/charges/stacks | planned | P1 | UI-001, CORE-004 |
 | UI-005 | delivery | UI | Buff/debuff indicators | planned | P2 | UI-004, RUN-002 |
@@ -367,6 +367,15 @@ Próxima ação: Implementar diff de fila e movimentos.
 - tests/unit/queue_spec.lua — 9/9 testes de layout, quatro recomendações, pool, promoção, placeholder, mídia e lifecycle; fixtures de frames, não rendering Retail.
 - npm test — aprovado: 172 testes Node, 153 testes Lua, layout, lint e typecheck; tools/ui/Test-TechnicalAssets.ps1 confirmou 16 TGAs e 16 PNGs com hashes preservados.
 - docs/architecture/QUEUE_UI.md — composição e limites documentados. Inspeção visual em cliente real e aprovação da escala efetiva permanecem pendentes de TEST-002.
+
+### UI-002
+
+- addon/UI/Animator.lua e Queue.lua implementam MOVE/ENTER/EXIT/PROMOTE/CONSUME, identidade persistente, retomada da posição pintada e pool limitado a oito frames; um timer compartilhado removido em repouso.
+- Confirmação de consumo usa evento de sucesso público filtrado por Compat.Media; remoção de prioridade não inventa consumo. Fila vazia/restrita cancela todas as animações imediatamente.
+- /spynon motion normal|reduced|off controla movimento nesta sessão; preview de TEST-002 permanece estático. Assets aprovados preservados com crossfade de hierarquia e crop proporcional.
+- npm test aprovado: 180 testes Node e 188 testes Lua, incluindo 16 fixtures de animação; 36 arquivos sem warnings, erros ou problemas de tipo. Pressão de 100 diffs sem alocação adicional de frames.
+- docs/architecture/ANIMATOR.md documenta tempos, fallbacks, fontes pinadas e limites. A captura Retail anterior não valida estas animações; inspeção de movimento no cliente continua pendente.
+- Commit 078e1af registra o início da task; pipeline mantém 22 fontes sem diferença entre builds, atualizando somente ownership do evento.
 
 ### PATCH-001
 

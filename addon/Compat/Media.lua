@@ -8,6 +8,11 @@ function Media.Create(environment)
   local adapter = {}
   local guard = Internal.State.Create(environment)
   function adapter.GetRootParent(_) return environment.UIParent end
+  function adapter.ConfirmedPlayerSpell(_, unit, spellID)
+    if not guard:IsPublic(unit) or not guard:IsPublic(spellID) then return nil end
+    if unit ~= "player" or not V.IsPositiveInteger(spellID) then return nil end
+    return spellID
+  end
   function adapter.ResolveIcon(_, action)
     if not Spynon.Contracts.Action.Validate(action) then return nil end
     if action.icon ~= nil then return action.icon end

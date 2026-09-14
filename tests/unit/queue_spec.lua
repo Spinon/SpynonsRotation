@@ -21,7 +21,7 @@ local function recommendation(id, icon)
 end
 local function fixture()
   local createFrame, objects = factory()
-  return ns.QueueFactory.Create(createFrame, {}), objects
+  return ns.QueueFactory.Create(createFrame, {}, "OFF"), objects
 end
 test("four recommendations use one current row and three smaller queued icons", function()
   local view = fixture()
@@ -67,7 +67,8 @@ test("native icon crop keeps artwork aspect and uses approved content UVs", func
       local uv = item.uv
       local sourceRatio = (uv[2] - uv[1]) / (uv[4] - uv[3])
       eq(math.abs(sourceRatio - item.width / item.height) < 0.0001, true)
-    elseif item.kind == "Texture" and item.layer == "OVERLAY" and item.parent == view:GetFrameForId("n.a") then
+    elseif item.kind == "Texture" and item.layer == "OVERLAY" and item.parent == view:GetFrameForId("n.a")
+      and item.texture:find("action-current", 1, true) then
       eq(item.uv[1], 0.109375)
       eq(item.uv[4], 0.96875)
     end

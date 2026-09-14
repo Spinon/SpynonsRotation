@@ -216,8 +216,10 @@
       "bytes": 117719,
       "sha256": "BC7FD554D45760061D699FF18EC9D9FEC45B3B3796A9323D661E003DEE5FDBE7",
       "modules": [
+        "addon/Compat/Media.lua",
         "addon/Compat/State.lua",
-        "addon/Core/StateEngine.lua"
+        "addon/Core/StateEngine.lua",
+        "addon/UI/QueueController.lua"
       ]
     }
   ]

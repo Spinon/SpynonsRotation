@@ -6,7 +6,8 @@ Não há import de classe/spec na UI, nem ícones baixados ou ilustrações dist
 
 ## Composição
 
-`QueueFactory.Create(createFrame, parent)` cria um root passivo e quatro frames reutilizáveis.
+`QueueFactory.Create(createFrame, parent, motionMode)` cria um root passivo e oito frames reutilizáveis
+(quatro ativos e até quatro saindo, a partir de UI-002). O modo padrão é NORMAL; OFF preserva o preview estático.
 `QueueController` conecta o serviço de recomendações à resolução de mídia e à view no bootstrap.
 
 - Ação atual: 200 × 120 unidades de UI, centralizada acima da fila.
@@ -26,8 +27,8 @@ Os masters, hashes e máscaras aprovados não foram sobrescritos ou reinterpreta
 ## Identidade e lifecycle
 
 Frames sobreviventes são reservados por `Recommendation.id` antes de reutilizar os removidos. Promoção
-altera dimensão e âncora do mesmo frame. Não há destruição/recriação de ícones a cada update. Quatro
-frames bastam para qualquer sequência da fila atual. A troca é estática; interpolação e efeitos são UI-002.
+altera dimensão e âncora do mesmo frame. Não há destruição/recriação de ícones a cada update.
+Interpolação, retomada, saídas simultâneas e consumo estão descritos em [ANIMATOR.md](ANIMATOR.md).
 
 `SetRecommendations`, `Hide`, `GetRoot` e `GetFrameForId` expõem somente a superfície da view.
 `QueueController:Start/Stop` administra uma única assinatura e reaproveita a instância após restart.
