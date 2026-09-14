@@ -21,23 +21,24 @@ function Build.Create(environment)
       return Result.Failure(version)
     end
 
-    local valid = Validation.IsNonEmptyString(version)
-      and Validation.IsNonEmptyString(number)
-      and Validation.IsNonEmptyString(date)
-      and Validation.IsPositiveInteger(interfaceVersion)
-      and Validation.IsNonEmptyString(localizedVersion)
-      and type(buildInfo) == "string"
-    if not valid then
-      return Result.Failure(Result.Code.INVALID_DATA)
+    -- Identity is mandatory. Descriptive text is not part of compatibility policy.
+    local invalidField
+    if not Validation.IsNonEmptyString(version) then invalidField = "version"
+    elseif not Validation.IsNonEmptyString(number) then invalidField = "number"
+    elseif not Validation.IsPositiveInteger(interfaceVersion) then invalidField = "interface" end
+    if invalidField then
+      local failure = Result.Failure(Result.Code.INVALID_DATA)
+      failure.invalidField = invalidField
+      return failure
     end
 
     return Result.Success({
       version = version,
       number = number,
-      date = date,
+      date = type(date) == "string" and date or nil,
       interface = interfaceVersion,
-      localizedVersion = localizedVersion,
-      buildInfo = buildInfo,
+      localizedVersion = type(localizedVersion) == "string" and localizedVersion or nil,
+      buildInfo = type(buildInfo) == "string" and buildInfo or nil,
     })
   end
 

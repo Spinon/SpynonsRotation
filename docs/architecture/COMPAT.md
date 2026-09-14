@@ -22,6 +22,19 @@ Fontes inspecionadas:
 O snapshot de UI Source é extraído do cliente `live`, mas não substitui teste dentro do WoW. O build/interface alvo
 vem do pin do projeto e precisa ser confirmado no cliente real em `TEST-002`.
 
+### Leitura de build — ajuste PATCH-003
+
+`Build:GetInfo` exige versão, número textual de build e interface numérica positiva. Data, versão
+localizada e descrição da build são auxiliares: strings são preservadas, ausência ou tipo diferente
+é omitido, sem inventar valores. A allowlist continua verificando estritamente a identidade completa.
+Falha de identidade mantém `INVALID_DATA` e acrescenta `invalidField` controlado; exceções não vazam texto.
+O harness distingue falha de leitura e identidade não homologada, sem promover nenhuma a aprovação Retail.
+
+A [fonte Blizzard extraída para 69814](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/BuildDocumentation.lua)
+descreve seis retornos. O fallback para textos auxiliares não significa afirmar que a API mudou;
+o primeiro relatório real não preservou a causa da normalização falhar. A repetição está pendente em
+[`RETAIL_SMOKE.md`](../project/RETAIL_SMOKE.md).
+
 ## Resultado uniforme
 
 Todo adapter retorna uma tabela com:

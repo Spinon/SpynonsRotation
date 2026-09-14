@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:39:23.956Z
+Atualizado pelo board em: 2026-09-14T20:41:54.543Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**PATCH-003 — Diagnóstico de build no smoke Retail**
+**UI-002 — Animator**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Separar falha de leitura e build divergente; cobrir retornos auxiliares ausentes e repetir smoke.
+Próxima ação: Implementar diff de fila e movimentos.
 
 ## Progresso
 
 - Planejadas: 22
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 34
+- Concluídas: 35
 - Total: 58
 
 ## Fila canônica
@@ -82,7 +82,7 @@ Próxima ação: Separar falha de leitura e build divergente; cobrir retornos au
 | TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
 | RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
-| PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | in_progress | P0 | CORE-004, PATCH-001 |
+| PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | done | P0 | CORE-004, PATCH-001 |
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
@@ -375,3 +375,10 @@ Próxima ação: Separar falha de leitura e build divergente; cobrir retornos au
 - ClientPolicy.lua e instalador liberam 69587/69814 somente para smoke de desenvolvimento após verificar pins e relatório; builds desconhecidas continuam rejeitadas.
 - npm test — aprovado: 180 testes Node, incluindo 8 do pipeline, e 167 testes Lua; lint, typecheck e checks sem falhas.
 - docs/architecture/API_DIFF.md registra a atualização externa do cliente, o bloqueio preventivo do instalador e a separação entre referência SimC 69587 e smoke 69814; TEST-002 continua aguardando evidência real.
+
+### PATCH-003
+
+- Build.lua preserva identidade estrita e trata textos auxiliares como opcionais; InGameHarness.lua distingue READ_FAILED, UNREVIEWED e SUPPORTED_SMOKE com causa controlada e versão observada.
+- npm test aprovado: 180 testes Node e 172 testes Lua, incluindo 5 novas regressões; 35 arquivos sem warnings, erros ou problemas de tipo.
+- docs/project/RETAIL_SMOKE.md registra a captura Retail parcial e o relatório real, sem atribuir causa não comprovada ao aviso antigo ou concluir TEST-002.
+- Commit 59ef00c registra início da correção. Reteste no cliente ainda necessário; nenhuma build adicional ou release foi liberada.

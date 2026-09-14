@@ -8,6 +8,8 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
 
   function harness.Run(_)
     local build = compat.Build:GetInfo()
+    local buildMatches = build.ok and compat.Build:IsDevelopmentSupported(build.value)
+    local buildStatus = not build.ok and "READ_FAILED" or (buildMatches and "SUPPORTED_SMOKE" or "UNREVIEWED")
     local state = stateEngine:GetSnapshot()
     local queue = recommendations:GetRecommendations()
     local counts = { available = 0, unavailable = 0 }
@@ -23,7 +25,8 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
       schemaVersion = 1, origin = "slash_command", addonVersion = Spynon.version,
       build = build.ok and build.value or nil,
       expectedBuild = "12.1.0.69587", expectedInterface = 120100,
-      buildMatches = build.ok and compat.Build:IsDevelopmentSupported(build.value),
+      buildMatches = buildMatches,
+      buildStatus = buildStatus, buildReadCode = build.code, buildInvalidField = build.invalidField,
       compatibilityScope = "DEVELOPMENT_SMOKE_ONLY",
       stateRevision = state.revision, stateValid = Spynon.Contracts.PlayerState.Validate(state),
       specId = state.specId, observedSignals = counts, recommendationCount = #queue,
@@ -32,7 +35,15 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
     }
     compat.Console:SaveReport(report)
     compat.Console:Write("Teste executado; relatório salvo para o próximo logout ou /reload.")
-    compat.Console:Write("Build: " .. (report.buildMatches and "aceita para smoke" or "DIVERGENTE/INDISPONÍVEL")
+    local buildLabel
+    if not build.ok then
+      buildLabel = "leitura indisponível (" .. build.code
+        .. (build.invalidField and ": " .. build.invalidField or "") .. ")"
+    else
+      buildLabel = build.value.version .. "." .. build.value.number .. " / interface " .. build.value.interface
+        .. (buildMatches and " - aceita para smoke" or " - NÃO HOMOLOGADA para smoke")
+    end
+    compat.Console:Write("Build: " .. buildLabel
       .. " | estado: " .. (report.stateValid and "válido" or "INVÁLIDO")
       .. " | sinais públicos: " .. counts.available .. " | recomendações: " .. #queue)
     compat.Console:Write("Visual, taint e combate ainda exigem inspeção. /spynon test show para a fila visual.")

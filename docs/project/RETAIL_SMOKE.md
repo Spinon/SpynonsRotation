@@ -15,8 +15,29 @@
 A allowlist de builds para smoke vem de `tools/wow-api/sources.json`, verificada pelo pipeline descrito
 em `docs/architecture/API_DIFF.md`. “Aceita para smoke” não significa “validada no Retail”.
 
-Detectar executável e copiar arquivos **não** significa validar dentro do jogo. Até o smoke real,
-TEST-002 permanece pendente; não há evidência de taint, lockdown, leitura em combate ou rendering.
+Detectar executável e copiar arquivos **não** significa validar dentro do jogo. A primeira captura
+Retail foi recebida em 2026-09-14 (evidência parcial abaixo). TEST-002 continua pendente para taint,
+lockdown e leitura em combate.
+
+## Primeira evidência do Product Owner — 2026-09-14
+
+Captura recebida nesta conversa: `codex-clipboard-a7313aca-d1b7-4682-9f5f-9346f5541913.png`.
+SHA-256: `A84F3C69D534FB549B8204335341F332FCE5ECCC111E480E33B28C6AD6D58B39`.
+Inspeção direta confirma o aviso de dados simulados, moldura principal com ícone e três molduras menores
+com ícones abaixo, sem placeholder visível. Isso comprova rendering do preview estático, não aprovação
+estética, estabilidade de sessão, ausência de erros ou funcionamento da fila real.
+
+O chat e o relatório persistido `SpynonRotationDB.lastSmokeReport` indicam `stateValid=true`,
+`specId=263`, revisão 31, 126 sinais disponíveis e 3 indisponíveis, `uiCreated=true`,
+`recommendationCount=0`, `recommendationsValid=true`, `buildMatches=false` e campo `build` ausente.
+Todos os campos de inspeção humana continuam `PENDING`. Não se infere o estado de combate a partir
+desse relatório antigo; zero recomendações fora de combate é esperado, mas o preview não testa a rotação.
+
+A ausência de `build` indica falha na leitura/normalização, não prova versão divergente. PATCH-003
+separa `READ_FAILED`, `UNREVIEWED` e `SUPPORTED_SMOKE`, registra `buildReadCode`/`buildInvalidField`,
+mostra versão/interface observadas e não exige textos descritivos para validar a identidade.
+O motivo exato da falha anterior não foi preservado. Após reinstalação: `/reload`, `/spynon test`,
+captura do novo resultado e `/reload` para persistir. Não declarar a correção confirmada no Retail antes disso.
 
 ## Comandos no jogo
 

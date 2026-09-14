@@ -188,6 +188,53 @@ test("Build rejects malformed return data", function()
   local result = compat.Build:GetInfo()
   assertFalse(result.ok)
   assertEqual(result.code, Result.Code.INVALID_DATA)
+  assertEqual(result.invalidField, "number")
+end)
+
+test("Build accepts identity without auxiliary text and keeps the allowlist strict", function()
+  local compat = CompatFactory.Create({ GetBuildInfo = function()
+    return "12.1.0", "69814", nil, 120100
+  end })
+  local result = compat.Build:GetInfo()
+  assertTrue(result.ok)
+  assertTrue(compat.Build:IsDevelopmentSupported(result.value))
+  assertNil(result.value.date)
+  assertNil(result.value.localizedVersion)
+  assertNil(result.value.buildInfo)
+  result.value.number = "99999"
+  assertFalse(compat.Build:IsDevelopmentSupported(result.value))
+  result.value.number, result.value.interface = "69814", 120101
+  assertFalse(compat.Build:IsDevelopmentSupported(result.value))
+  result.value.interface, result.value.version = 120100, "12.2.0"
+  assertFalse(compat.Build:IsDevelopmentSupported(result.value))
+end)
+
+test("Build permits empty descriptions and omits non-string auxiliary values", function()
+  local compat = CompatFactory.Create({ GetBuildInfo = function()
+    return "12.1.0", "69814", "", 120100, "", {}
+  end })
+  local result = compat.Build:GetInfo()
+  assertTrue(result.ok)
+  assertEqual(result.value.date, "")
+  assertEqual(result.value.localizedVersion, "")
+  assertNil(result.value.buildInfo)
+end)
+
+test("Build missing identity fails with a controlled field diagnostic", function()
+  for _, case in ipairs({
+    { version = "", number = "69814", interface = 120100, field = "version" },
+    { version = "12.1.0", number = 69814, interface = 120100, field = "number" },
+    { version = "12.1.0", number = "69814", interface = "120100", field = "interface" },
+    { version = "12.1.0", number = "69814", interface = 0, field = "interface" },
+  }) do
+    local result = CompatFactory.Create({ GetBuildInfo = function()
+      return case.version, case.number, nil, case.interface
+    end }).Build:GetInfo()
+    assertFalse(result.ok)
+    assertEqual(result.code, Result.Code.INVALID_DATA)
+    assertEqual(result.invalidField, case.field)
+    assertNil(result.value)
+  end
 end)
 
 test("Specialization exposes initialization state", function()

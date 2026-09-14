@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:39:23.956Z",
-  "currentFocus": "PATCH-003",
+  "updatedAt": "2026-09-14T20:41:54.543Z",
+  "currentFocus": "UI-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1409,9 +1409,9 @@
       "status": "blocked",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T20:20:07.441Z",
+      "updatedAt": "2026-09-14T20:41:54.543Z",
       "reviewBy": null,
-      "nextAction": "Product Owner entrar no Retail e executar /spynon test e /spynon test show; coletar relatório persistido e inspeção visual/combate para completar o checklist.",
+      "nextAction": "Após PATCH-003, repetir /reload e /spynon test; confirmar build e completar inspeção de combate/taint. Preview estático já tem captura Retail.",
       "dependencies": [
         "RUN-002",
         "UI-001",
@@ -1427,7 +1427,8 @@
         "Cliente detectado pelo registro em D:/Blizzard/World of Warcraft/_retail_; Wow.exe FileVersion 12.1.0.69587 corresponde ao pin do projeto.",
         "Install-DevelopmentAddon.ps1 verificou 48 arquivos em Interface/AddOns/SpynonRotation, incluindo hashes; nenhum outro addon ou SavedVariables foi alterado e nenhum release foi publicado.",
         "npm test — aprovado: 172 testes Node e 159 testes Lua, incluindo 6 fixtures do harness; lint e typecheck sem problemas.",
-        "BLOQUEIO: ausência de sessão de personagem operável neste ambiente; execução real, inspeção visual, taint e comportamento em combate dependem do Product Owner. docs/project/RETAIL_SMOKE.md mantém o checklist pendente; nenhuma validação Retail é alegada."
+        "BLOQUEIO: ausência de sessão de personagem operável neste ambiente; execução real, inspeção visual, taint e comportamento em combate dependem do Product Owner. docs/project/RETAIL_SMOKE.md mantém o checklist pendente; nenhuma validação Retail é alegada.",
+        "2026-09-14: captura do Product Owner confirma rendering do preview rotulado e quatro ícones. Relatório persistido: estado válido, 126 sinais públicos, 3 indisponíveis, zero recomendações e build ausente. PATCH-003 melhora o diagnóstico; combate/taint e repetição da leitura continuam pendentes. Evidência detalhada em docs/project/RETAIL_SMOKE.md."
       ]
     },
     {
@@ -1479,19 +1480,24 @@
       "title": "Diagnóstico de build no smoke Retail",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/PATCH-003.md",
-      "updatedAt": "2026-09-14T20:39:23.956Z",
+      "updatedAt": "2026-09-14T20:41:54.543Z",
       "reviewBy": null,
-      "nextAction": "Separar falha de leitura e build divergente; cobrir retornos auxiliares ausentes e repetir smoke.",
+      "nextAction": null,
       "dependencies": ["CORE-004", "PATCH-001"],
       "acceptanceCriteria": [
         "Diagnóstico distingue indisponibilidade e divergência real",
         "Identidade de build permanece estrita sem depender de textos auxiliares",
         "Regressões offline e evidência parcial Retail documentadas"
       ],
-      "evidence": []
+      "evidence": [
+        "Build.lua preserva identidade estrita e trata textos auxiliares como opcionais; InGameHarness.lua distingue READ_FAILED, UNREVIEWED e SUPPORTED_SMOKE com causa controlada e versão observada.",
+        "npm test aprovado: 180 testes Node e 172 testes Lua, incluindo 5 novas regressões; 35 arquivos sem warnings, erros ou problemas de tipo.",
+        "docs/project/RETAIL_SMOKE.md registra a captura Retail parcial e o relatório real, sem atribuir causa não comprovada ao aviso antigo ou concluir TEST-002.",
+        "Commit 59ef00c registra início da correção. Reteste no cliente ainda necessário; nenhuma build adicional ou release foi liberada."
+      ]
     },
     {
       "id": "ARCH-001",
