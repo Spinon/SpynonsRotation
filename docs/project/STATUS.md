@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:41:54.543Z
+Atualizado pelo board em: 2026-09-14T20:42:44.881Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UI-002 — Animator**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Implementar diff de fila e movimentos.
 
 ## Progresso
 
-- Planejadas: 22
-- Em andamento: 0
+- Planejadas: 21
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 35
 - Total: 58
@@ -59,7 +59,7 @@ Próxima ação: Implementar diff de fila e movimentos.
 | UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | done | P1 | UI-DESIGN-005, UI-DESIGN-009 |
 | UI-DESIGN-011 | ui | UI DESIGN | Distribuição dos assets de runtime | done | P1 | UI-DESIGN-008 |
 | UI-001 | delivery | UI | Queue estática | done | P0 | RUN-002 |
-| UI-002 | delivery | UI | Animator | planned | P1 | UI-001 |
+| UI-002 | delivery | UI | Animator | in_progress | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |
 | UI-004 | delivery | UI | Cooldowns/charges/stacks | planned | P1 | UI-001, CORE-004 |
 | UI-005 | delivery | UI | Buff/debuff indicators | planned | P2 | UI-004, RUN-002 |

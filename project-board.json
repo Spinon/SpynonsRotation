@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:41:54.543Z",
+  "updatedAt": "2026-09-14T20:42:44.881Z",
   "currentFocus": "UI-002",
   "parallelFocus": {},
   "release": {
@@ -970,10 +970,10 @@
       "title": "Animator",
       "lane": "UI",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T20:42:44.881Z",
       "reviewBy": "Product Owner",
       "nextAction": "Implementar diff de fila e movimentos.",
       "dependencies": [
