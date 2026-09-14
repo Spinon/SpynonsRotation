@@ -4,11 +4,16 @@
 
 - Cliente detectado pelo registro de instalação em `D:\Blizzard\World of Warcraft\_retail_`.
 - `Wow.exe`: FileVersion `12.1.0.69587`, correspondente ao alvo do projeto.
+- Em 2026-09-14 o cliente atualizou para `12.1.0.69814`. PATCH-001 comparou 22 fontes de API pinadas sem
+  diferenças e liberou essa build somente para smoke de desenvolvimento; a pesquisa SimC permanece em 69587.
 - Addon de desenvolvimento: `Interface\AddOns\SpynonRotation` dentro desse cliente.
 - Instalador local: `tools/wow/Install-DevelopmentAddon.ps1 -RetailRoot <pasta _retail_>`.
   Copia somente Lua, TOC e TGAs, confere hashes e grava recibo local. Não publica release, não altera
   outros addons e não toca em WTF/SavedVariables. Recusa build divergente ou sobrescrita de instalação
   não gerenciada/alterada pelo usuário.
+
+A allowlist de builds para smoke vem de `tools/wow-api/sources.json`, verificada pelo pipeline descrito
+em `docs/architecture/API_DIFF.md`. “Aceita para smoke” não significa “validada no Retail”.
 
 Detectar executável e copiar arquivos **não** significa validar dentro do jogo. Até o smoke real,
 TEST-002 permanece pendente; não há evidência de taint, lockdown, leitura em combate ou rendering.

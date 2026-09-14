@@ -53,6 +53,16 @@ test("client build drift is explicit in the report", function()
   data.build = "99999"
   eq(harness:Run().buildMatches, false)
 end)
+test("reviewed development builds are allowed without claiming Retail approval", function()
+  local harness, env, data = fixture()
+  data.build = "69814"
+  local report = harness:Run()
+  eq(report.buildMatches, true)
+  eq(report.compatibilityScope, "DEVELOPMENT_SMOKE_ONLY")
+  eq(report.combatInspection, "PENDING")
+  env.GetBuildInfo = function() return "12.1.0", "69814", "date", 120101, "12.1.0", "Release" end
+  eq(harness:Run().buildMatches, false)
+end)
 test("preview is explicit, has four slots and restores the live controller", function()
   local harness, _, _, controller, objects = fixture()
   eq(harness:Show(), true)

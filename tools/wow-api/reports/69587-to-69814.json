@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "baseline": {
+    "version": "12.1.0.69587",
+    "commit": "8ea15b61e45c0ed4eba01439c90757f86eb78d34"
+  },
+  "candidate": {
+    "version": "12.1.0.69814",
+    "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59"
+  },
+  "interfaceChanged": false,
+  "coveredFiles": 22,
+  "changes": [],
+  "affectedModules": [],
+  "decision": "NO_DOCUMENTED_CHANGE_IN_COVERED_FILES",
+  "retailValidation": "PENDING",
+  "simulationParity": "NOT_ASSERTED"
+}

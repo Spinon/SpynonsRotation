@@ -23,7 +23,8 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
       schemaVersion = 1, origin = "slash_command", addonVersion = Spynon.version,
       build = build.ok and build.value or nil,
       expectedBuild = "12.1.0.69587", expectedInterface = 120100,
-      buildMatches = build.ok and build.value.number == "69587" and build.value.interface == 120100,
+      buildMatches = build.ok and compat.Build:IsDevelopmentSupported(build.value),
+      compatibilityScope = "DEVELOPMENT_SMOKE_ONLY",
       stateRevision = state.revision, stateValid = Spynon.Contracts.PlayerState.Validate(state),
       specId = state.specId, observedSignals = counts, recommendationCount = #queue,
       recommendationsValid = validQueue, uiCreated = queueController:GetView() ~= nil,
@@ -31,7 +32,7 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
     }
     compat.Console:SaveReport(report)
     compat.Console:Write("Teste executado; relatório salvo para o próximo logout ou /reload.")
-    compat.Console:Write("Build: " .. (report.buildMatches and "compatível" or "DIVERGENTE/INDISPONÍVEL")
+    compat.Console:Write("Build: " .. (report.buildMatches and "aceita para smoke" or "DIVERGENTE/INDISPONÍVEL")
       .. " | estado: " .. (report.stateValid and "válido" or "INVÁLIDO")
       .. " | sinais públicos: " .. counts.available .. " | recomendações: " .. #queue)
     compat.Console:Write("Visual, taint e combate ainda exigem inspeção. /spynon test show para a fila visual.")

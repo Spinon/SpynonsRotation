@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "repository": "Gethe/wow-ui-source",
+  "developmentSmokeBuilds": ["69587", "69814"],
+  "builds": {
+    "69587": { "version": "12.1.0.69587", "interface": 120100, "commit": "8ea15b61e45c0ed4eba01439c90757f86eb78d34", "snapshotSha256": "278FBF162373BC5FC78D2BB8B178BAAB1C1659E3C19A3558D3271842109D8B71" },
+    "69814": { "version": "12.1.0.69814", "interface": 120100, "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59", "snapshotSha256": "55B0DB9B9888A1BA341D540307B7BBF5D860B1E75279F5E3E3F6788C17C3CC0A" }
+  },
+  "files": [
+    { "name": "BuildDocumentation.lua", "modules": ["addon/Compat/Build.lua", "addon/Core/InGameHarness.lua"] },
+    { "name": "SpecializationInfoDocumentation.lua", "modules": ["addon/Compat/Specialization.lua", "addon/Core/SpecDetector.lua"] },
+    { "name": "ClassTalentsDocumentation.lua", "modules": ["addon/Compat/Talents.lua", "addon/Core/SpecDetector.lua"] },
+    { "name": "SharedTraitsDocumentation.lua", "modules": ["addon/Compat/Talents.lua", "addon/Core/SpecDetector.lua"] },
+    { "name": "SecretPredicateAPIDocumentation.lua", "modules": ["addon/Compat/Secrets.lua", "addon/Compat/State.lua", "addon/Rotation/StateReader.lua"] },
+    { "name": "SecretPredicatesDocumentation.lua", "modules": ["addon/Compat/Secrets.lua", "addon/Compat/State.lua", "addon/Compat/Media.lua"] },
+    { "name": "UnitDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Core/StateEngine.lua"] },
+    { "name": "UnitAuraDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Core/StateEngine.lua"] },
+    { "name": "UnitAuraSharedDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Rotation/StateReader.lua"] },
+    { "name": "SpellDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Compat/Media.lua", "addon/Rotation/StateReader.lua"] },
+    { "name": "SpellSharedDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Rotation/StateReader.lua"] },
+    { "name": "ItemDocumentation.lua", "modules": ["addon/Compat/Media.lua"] },
+    { "name": "RestrictedActionsDocumentation.lua", "modules": ["addon/Core/StateEngine.lua", "addon/Core/InGameHarness.lua"] },
+    { "name": "SimpleFrameAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/Core/InGameHarness.lua"] },
+    { "name": "SimpleFrameScriptObjectAPIDocumentation.lua", "modules": ["addon/Core/Bootstrap.lua", "addon/UI/Queue.lua"] },
+    { "name": "SimpleFontStringAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/Core/InGameHarness.lua"] },
+    { "name": "SimpleRegionAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua"] },
+    { "name": "SimpleScriptRegionAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua"] },
+    { "name": "SimpleScriptRegionResizingAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua"] },
+    { "name": "SimpleTextureAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua"] },
+    { "name": "SimpleTextureBaseAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua"] },
+    { "name": "SimpleMessageFrameAPIDocumentation.lua", "modules": ["addon/Compat/Console.lua"] }
+  ]
+}

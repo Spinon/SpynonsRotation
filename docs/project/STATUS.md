@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:26:32.159Z
+Atualizado pelo board em: 2026-09-14T20:34:25.931Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**PATCH-001 — API diff pipeline**
+**UI-002 — Animator**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Comparar fontes pinadas das builds 69587 e 69814 após atualização externa do cliente; manter instalação bloqueada até revisão da compatibilidade.
+Próxima ação: Implementar diff de fila e movimentos.
 
 ## Progresso
 
 - Planejadas: 22
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 33
+- Concluídas: 34
 - Total: 57
 
 ## Fila canônica
@@ -76,7 +76,7 @@ Próxima ação: Comparar fontes pinadas das builds 69587 e 69814 após atualiza
 | BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | planned | P1 | BOOT-001 |
 | BRAND-002 | delivery | BRAND | Criar master técnico e variantes | planned | P2 | BRAND-001 |
 | BRAND-003 | delivery | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
-| PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | in_progress | P1 | CORE-004 |
+| PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | done | P1 | CORE-004 |
 | PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | planned | P1 | PATCH-001, RUN-001 |
 | TEST-001 | delivery | PATCH / QUALITY | Wowless integration | planned | P1 | BOOT-001 |
 | TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
@@ -366,3 +366,11 @@ Próxima ação: Comparar fontes pinadas das builds 69587 e 69814 após atualiza
 - tests/unit/queue_spec.lua — 9/9 testes de layout, quatro recomendações, pool, promoção, placeholder, mídia e lifecycle; fixtures de frames, não rendering Retail.
 - npm test — aprovado: 172 testes Node, 153 testes Lua, layout, lint e typecheck; tools/ui/Test-TechnicalAssets.ps1 confirmou 16 TGAs e 16 PNGs com hashes preservados.
 - docs/architecture/QUEUE_UI.md — composição e limites documentados. Inspeção visual em cliente real e aprovação da escala efetiva permanecem pendentes de TEST-002.
+
+### PATCH-001
+
+- tools/wow-api/ — snapshots de 22 fontes documentadas, commits imutáveis e hashes; diff por arquivo com módulos potencialmente afetados, controle de interface, cobertura e ownership.
+- Relatório 69587-to-69814.json: zero diferenças nos 22 arquivos cobertos. Não afirma igualdade de binários, desempenho SimC ou validação Retail.
+- ClientPolicy.lua e instalador liberam 69587/69814 somente para smoke de desenvolvimento após verificar pins e relatório; builds desconhecidas continuam rejeitadas.
+- npm test — aprovado: 180 testes Node, incluindo 8 do pipeline, e 167 testes Lua; lint, typecheck e checks sem falhas.
+- docs/architecture/API_DIFF.md registra a atualização externa do cliente, o bloqueio preventivo do instalador e a separação entre referência SimC 69587 e smoke 69814; TEST-002 continua aguardando evidência real.

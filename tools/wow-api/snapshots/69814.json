@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "version": "12.1.0.69814",
+  "interface": 120100,
+  "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59",
+  "files": [
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/BuildDocumentation.lua",
+      "present": true,
+      "bytes": 2484,
+      "sha256": "562E168C81070693A6E0B5C6FBE21DEFFA260EB57AA39CE781842387C988AB52",
+      "modules": [
+        "addon/Compat/Build.lua",
+        "addon/Core/InGameHarness.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/ClassTalentsDocumentation.lua",
+      "present": true,
+      "bytes": 13257,
+      "sha256": "F78A3C8AF0B812A6F705C078F18A70A763687CB9217B09F8AAF20E5C45510358",
+      "modules": [
+        "addon/Compat/Talents.lua",
+        "addon/Core/SpecDetector.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/ItemDocumentation.lua",
+      "present": true,
+      "bytes": 43162,
+      "sha256": "96A47025F01B338A1FB6891825BC1D71E888910008CD12DD22A54089427C64AE",
+      "modules": [
+        "addon/Compat/Media.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/RestrictedActionsDocumentation.lua",
+      "present": true,
+      "bytes": 3485,
+      "sha256": "B26826C2081EDF8E7CE770F75911EEBB43D55432C79F363440A48AA3BC1EA27A",
+      "modules": [
+        "addon/Core/InGameHarness.lua",
+        "addon/Core/StateEngine.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SecretPredicateAPIDocumentation.lua",
+      "present": true,
+      "bytes": 11691,
+      "sha256": "01EC6FDEA1AEF17CC5603EDAE6F61F8922D5B2546FB9F3D551CF4D3E7C6A2BC8",
+      "modules": [
+        "addon/Compat/Secrets.lua",
+        "addon/Compat/State.lua",
+        "addon/Rotation/StateReader.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SecretPredicatesDocumentation.lua",
+      "present": true,
+      "bytes": 7775,
+      "sha256": "71793D2623F392033B832C9B9CE499168ADF8A9002EDDCEEF0D95078BCB79952",
+      "modules": [
+        "addon/Compat/Media.lua",
+        "addon/Compat/Secrets.lua",
+        "addon/Compat/State.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SharedTraitsDocumentation.lua",
+      "present": true,
+      "bytes": 30097,
+      "sha256": "EA60282E77EC208B96218DFAAE6E076826510714204B36A7B7AFF9C2AA4187E1",
+      "modules": [
+        "addon/Compat/Talents.lua",
+        "addon/Core/SpecDetector.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleFontStringAPIDocumentation.lua",
+      "present": true,
+      "bytes": 13724,
+      "sha256": "99044B7A660587AF06BCA76A3B1E962B15CD7B86CA92C59ECB0632B5B95D8F6A",
+      "modules": [
+        "addon/Core/InGameHarness.lua",
+        "addon/UI/Queue.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleFrameAPIDocumentation.lua",
+      "present": true,
+      "bytes": 33089,
+      "sha256": "76FD146D432CB7AD8BC9D8AE034E29E54CD9D06F4DE33C2C321874ECAB0CEA42",
+      "modules": [
+        "addon/Core/InGameHarness.lua",
+        "addon/UI/Queue.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleFrameScriptObjectAPIDocumentation.lua",
+      "present": true,
+      "bytes": 7559,
+      "sha256": "BC48CA01BAAF92998CD47DE0C378C695E935F9F425862DED8EBD0241493BAA22",
+      "modules": [
+        "addon/Core/Bootstrap.lua",
+        "addon/UI/Queue.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleMessageFrameAPIDocumentation.lua",
+      "present": true,
+      "bytes": 7894,
+      "sha256": "BA2FD389BD91FD25520E240917896E300D3504B872C99D4079F551A38B50579B",
+      "modules": [
+        "addon/Compat/Console.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleRegionAPIDocumentation.lua",
+      "present": true,
+      "bytes": 4693,
+      "sha256": "B0B360D5BAF22C88F46E04113FD5ABCADEE697ED40A8C4A22FE3CA8DA3F91AE8",
+      "modules": [
+        "addon/UI/Queue.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleScriptRegionAPIDocumentation.lua",
+      "present": true,
+      "bytes": 13320,
+      "sha256": "CD4DC47781B8B77F088EBE7AA4AEAD4D34FEE3CE3D679A1A950B3FC1A21FA5C9",
+      "modules": [
+        "addon/UI/Queue.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleScriptRegionResizingAPIDocumentation.lua",
+      "present": true,
+      "bytes": 4655,
+      "sha256": "A3321CCE107B1D934487CE6E82C40FC2C7D37C279EE3FD18EA00B3FD8BC954A2",
+      "modules": [
+        "addon/UI/Queue.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleTextureAPIDocumentation.lua",
+      "present": true,
+      "bytes": 1249,
+      "sha256": "F72024431D58D1181B163562A9061FD7ED976DC9955D1CF57FF71E98B2BA33D9",
+      "modules": [
+        "addon/UI/Queue.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleTextureBaseAPIDocumentation.lua",
+      "present": true,
+      "bytes": 15125,
+      "sha256": "41CE287E9AD62E977DE38D180D91FB9ED54B425F7F68EE3BDAFFD77619572586",
+      "modules": [
+        "addon/UI/Queue.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SpecializationInfoDocumentation.lua",
+      "present": true,
+      "bytes": 15032,
+      "sha256": "230A25B58E6DABD0A8679FF1C76FFF33137DEBD86975DCB1305D920879F71D47",
+      "modules": [
+        "addon/Compat/Specialization.lua",
+        "addon/Core/SpecDetector.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellDocumentation.lua",
+      "present": true,
+      "bytes": 30929,
+      "sha256": "FBEDB3CF4B82D623B49A7FA170C982DE2E4B005D2BCD5DB3068BFB6211E51007",
+      "modules": [
+        "addon/Compat/Media.lua",
+        "addon/Compat/State.lua",
+        "addon/Rotation/StateReader.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellSharedDocumentation.lua",
+      "present": true,
+      "bytes": 5475,
+      "sha256": "4EBE8D82B50FAA906300F646D9BBA4E85EA820B7614947624C8816F19E0D6B68",
+      "modules": [
+        "addon/Compat/State.lua",
+        "addon/Rotation/StateReader.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/UnitAuraDocumentation.lua",
+      "present": true,
+      "bytes": 17279,
+      "sha256": "39405809F92E74A945034529D2A2962EBEBE9A70FE581B2F411586FC2B72D5D5",
+      "modules": [
+        "addon/Compat/State.lua",
+        "addon/Core/StateEngine.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/UnitAuraSharedDocumentation.lua",
+      "present": true,
+      "bytes": 2193,
+      "sha256": "8361E32DF9119D181ADA35648B48DD801FE8F28041029BFA0E83A9702F1B16CD",
+      "modules": [
+        "addon/Compat/State.lua",
+        "addon/Rotation/StateReader.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/UnitDocumentation.lua",
+      "present": true,
+      "bytes": 117719,
+      "sha256": "BC7FD554D45760061D699FF18EC9D9FEC45B3B3796A9323D661E003DEE5FDBE7",
+      "modules": [
+        "addon/Compat/State.lua",
+        "addon/Core/StateEngine.lua"
+      ]
+    }
+  ]
+}

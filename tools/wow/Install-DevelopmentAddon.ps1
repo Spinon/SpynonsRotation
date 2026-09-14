@@ -8,7 +8,14 @@ $clientRoot = (Resolve-Path -LiteralPath $RetailRoot).Path
 $clientExe = Join-Path $clientRoot 'Wow.exe'
 if (-not (Test-Path -LiteralPath $clientExe -PathType Leaf)) { throw 'RetailRoot precisa conter Wow.exe.' }
 $clientVersion = (Get-Item -LiteralPath $clientExe).VersionInfo.FileVersion
-if ($clientVersion -ne '12.1.0.69587') { throw "Build divergente: $clientVersion. Rever Compat antes de instalar." }
+Push-Location -LiteralPath $repositoryRoot
+try {
+    & node tools/wow-api/cli.mjs check
+    if ($LASTEXITCODE -ne 0) { throw 'Pins, relatório ou política de compatibilidade inválidos.' }
+} finally { Pop-Location }
+$clientPolicy = Get-Content -LiteralPath (Join-Path $repositoryRoot 'tools\wow-api\sources.json') -Raw | ConvertFrom-Json
+$permittedVersions = @($clientPolicy.developmentSmokeBuilds | ForEach-Object { $clientPolicy.builds.$_.version })
+if ($clientVersion -notin $permittedVersions) { throw "Build divergente: $clientVersion. Rever Compat antes de instalar." }
 $sourceRoot = Join-Path $repositoryRoot 'addon'
 $addonsRoot = Join-Path $clientRoot 'Interface\AddOns'
 $destination = [IO.Path]::GetFullPath((Join-Path $addonsRoot 'SpynonRotation'))

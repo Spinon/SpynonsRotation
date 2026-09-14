@@ -21,6 +21,7 @@ Classes/Shaman/Enhancement/RotationData.lua
 Classes/Shaman/Enhancement/Module.lua
 Compat/SafeCall.lua
 Compat/Result.lua
+Compat/ClientPolicy.lua
 Compat/Build.lua
 Compat/Specialization.lua
 Compat/Talents.lua

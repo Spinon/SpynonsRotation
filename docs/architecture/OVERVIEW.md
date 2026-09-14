@@ -60,6 +60,7 @@ As invariantes e o ownership desses contratos estão documentados em [`CONTRACTS
 Nenhum módulo converte ou deriva valores secretos quando a API não permite. Condições incompatíveis com o runtime ficam no Rotation Lab como `SIM_ONLY`. Toda degradação deve ser explícita e segura.
 
 A API uniforme, matriz inicial e política de fallback da fronteira Blizzard estão em [`COMPAT.md`](COMPAT.md).
+O diff pinado por build e a política de smoke de desenvolvimento estão em [`API_DIFF.md`](API_DIFF.md).
 
 ## Runtime mínimo
 

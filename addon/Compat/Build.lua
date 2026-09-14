@@ -8,6 +8,11 @@ local Build = {}
 
 function Build.Create(environment)
   local adapter = {}
+  function adapter.IsDevelopmentSupported(_, info)
+    local policy = Spynon.CompatInternal.ClientPolicy
+    return type(info) == "table" and info.version == "12.1.0" and info.interface == policy.interface
+      and policy.developmentBuilds[info.number] == true
+  end
 
   function adapter.GetInfo(_)
     local called, version, number, date, interfaceVersion, localizedVersion, buildInfo =
