@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:25:07.864Z",
-  "currentFocus": "UI-002",
+  "updatedAt": "2026-09-14T20:26:32.159Z",
+  "currentFocus": "PATCH-001",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1336,12 +1336,12 @@
       "title": "API diff pipeline",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T20:26:32.159Z",
       "reviewBy": null,
-      "nextAction": "Definir fontes e formato do diff.",
+      "nextAction": "Comparar fontes pinadas das builds 69587 e 69814 após atualização externa do cliente; manter instalação bloqueada até revisão da compatibilidade.",
       "dependencies": [
         "CORE-004"
       ],

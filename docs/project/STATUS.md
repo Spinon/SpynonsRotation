@@ -2,22 +2,22 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:25:07.864Z
+Atualizado pelo board em: 2026-09-14T20:26:32.159Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UI-002 — Animator**
+**PATCH-001 — API diff pipeline**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Implementar diff de fila e movimentos.
+Próxima ação: Comparar fontes pinadas das builds 69587 e 69814 após atualização externa do cliente; manter instalação bloqueada até revisão da compatibilidade.
 
 ## Progresso
 
-- Planejadas: 23
-- Em andamento: 0
+- Planejadas: 22
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 33
 - Total: 57
@@ -76,7 +76,7 @@ Próxima ação: Implementar diff de fila e movimentos.
 | BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | planned | P1 | BOOT-001 |
 | BRAND-002 | delivery | BRAND | Criar master técnico e variantes | planned | P2 | BRAND-001 |
 | BRAND-003 | delivery | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
-| PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | planned | P1 | CORE-004 |
+| PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | in_progress | P1 | CORE-004 |
 | PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | planned | P1 | PATCH-001, RUN-001 |
 | TEST-001 | delivery | PATCH / QUALITY | Wowless integration | planned | P1 | BOOT-001 |
 | TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
