@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T22:42:00.000Z
+Atualizado pelo board em: 2026-09-14T22:51:06.658Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**PROFILE-001 — Persistência e perfis**
+**UX-002 — Edit HUD**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Avaliar AceDB e implementar resolução.
+Próxima ação: Implementar seleção contextual.
 
 ## Progresso
 
 - Planejadas: 15
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 42
+- Concluídas: 43
 - Total: 59
 
 ## Fila canônica
@@ -70,7 +70,7 @@ Próxima ação: Avaliar AceDB e implementar resolução.
 | UX-004 | delivery | CONFIG / UX | Undo/Redo | planned | P1 | UX-002 |
 | UX-005 | delivery | CONFIG / UX | Preview + reset granular | planned | P2 | UX-004 |
 | UX-006 | delivery | CONFIG / UX | Typography | planned | P2 | UX-001 |
-| PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | in_progress | P1 | CORE-001, UX-001 |
+| PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | done | P1 | CORE-001, UX-001 |
 | SKIN-001 | delivery | PROFILES / SKINS | Skin API | planned | P1 | UI-001 |
 | SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | planned | P2 | SKIN-001 |
 | BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | planned | P1 | BOOT-001 |
@@ -421,6 +421,15 @@ Próxima ação: Avaliar AceDB e implementar resolução.
 - npm test aprovado: 181 testes Node e 259 testes Lua (440 ao todo), incluindo 16 de configuração; 48 arquivos sem warnings, erros ou problemas de tipo.
 - Test-QueueIconFit.ps1 preserva os oito probes transparentes e envelope lateral; API diff mantém 26 fontes e zero diferenças nas builds pinadas com ownership de Config incluído.
 - docs/architecture/BASIC_CONFIG.md registra comportamento, fronteiras e validação pendente no Retail. Commit c5f9768 registra início publicado; persistência segue em PROFILE-001 e curadoria visual continua adiada.
+
+### PROFILE-001
+
+- Compat/Profiles.lua isola SavedVariables e identidade pública; Profiles/Store.lua resolve defaults/global/personagem/spec, mantendo somente overrides e preservando dados desconhecidos ou incompatíveis.
+- Profiles/Controller.lua carrega antes da Queue, restaura preferências sem abrir configuração e observa identidade/spec. Revalidação antes de writes impede edição através de identidade antiga; combate e dados indisponíveis rejeitam alterações.
+- Card Perfis mostra alcance de gravação e oferece cópia de valores efetivos e reset somente do perfil selecionado, ambos com confirmação desarmada por mudança de contexto/navegação.
+- npm test aprovado: 181 testes Node e 279 testes Lua (460 ao todo), incluindo 20 fixtures de perfis; 51 arquivos sem warnings, erros ou problemas de tipo. Assets técnicos e hashes preservados.
+- API diff mantém 26 fontes e zero diferenças nas builds pinadas; ownership de identidade/Profiles atualizado. docs/architecture/PROFILES.md registra schema, semântica de alcance, proteção de dados e avaliação de AceDB sem nova dependência.
+- Commit b9a61f1 registra início publicado. Reconstrução offline comprova persistência do modelo, não logout/reload real: RETAIL_SMOKE mantém teste de gravação e troca de spec no cliente pendente.
 
 ### PATCH-001
 

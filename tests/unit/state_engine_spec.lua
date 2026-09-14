@@ -463,6 +463,7 @@ test("bootstrap registers and forwards state events only after this addon loads"
   namespace.QueueController = { Start = function() end }
   namespace.InGameHarness = { Start = function() end }
   namespace.ConfigController = { Start = function() end }
+  namespace.Profiles = { Start = function() end }
   namespace.ContextController = { Start = function() end }
   onEvent(nil, "ADDON_LOADED", "SpynonRotation")
   equal(namespace.initialized, true)

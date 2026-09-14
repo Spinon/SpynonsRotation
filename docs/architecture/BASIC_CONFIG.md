@@ -51,10 +51,11 @@ As opções explícitas de `/spynon demo reduced/off` continuam sendo overrides 
 
 ## Limites e validação
 
-Nesta task as preferências duram apenas a sessão. SavedVariables, perfis e precedência são
-PROFILE-001; edição direta do HUD é UX-002; painéis avançados, histórico, reset e tipografia
-têm suas próprias tasks. O rodapé explica a limitação de sessão. Nenhuma dependência foi
-adicionada. Componentes neutros locais preservam a direção visual sem gerar nova arte.
+UX-001 entregou preferências de sessão. PROFILE-001 acrescentou persistência automática e o
+card Perfis; precedência e confirmação estão em [`PROFILES.md`](PROFILES.md). Edição direta
+do HUD é UX-002; painéis avançados, histórico, resets de elemento/seção e tipografia têm suas
+próprias tasks. Nenhuma dependência foi adicionada. Componentes neutros locais preservam
+a direção visual sem gerar nova arte.
 
 `tests/unit/config_spec.lua` verifica disclosure, cliques, defaults, opções inválidas,
 assinaturas, layouts, escala, identidade, caches, timers, teclado, combate, ordem de eventos

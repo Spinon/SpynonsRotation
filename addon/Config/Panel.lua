@@ -19,8 +19,12 @@ local fields = {
     { key = "indicators", label = "Buffs e debuffs relevantes", options = { {true,"Mostrar"}, {false,"Ocultar"} } },
   },
 }
-function Panel.Create(createFrame, parent, settings, onChange, onClose)
+function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles)
   local panel, selected, buttons, pages = {}, nil, {}, {}
+  local navigation, profileButtons, pending = {}, {}, nil
+  for _, section in ipairs(sections) do navigation[#navigation+1] = section end
+  if profiles then navigation[#navigation+1] = { id = "profiles", label = "Perfis",
+    detail = "Escolha onde salvar; copie ou restaure preferências." } end
   local root = createFrame("Frame", nil, parent)
   root:SetSize(510, 450); root:SetPoint("TOPLEFT", parent, "TOPLEFT", 24, -100)
   root:SetFrameStrata("DIALOG"); root:EnableMouse(true); root:EnableKeyboard(true)
@@ -51,14 +55,14 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose)
   local intro = createFrame("Frame", nil, root)
   intro:SetAllPoints(root)
   label(intro, "O que você quer ajustar?", 20, 88, 470)
-  for index, section in ipairs(sections) do
+  for index, section in ipairs(navigation) do
     button(intro, section.label, 20, 125 + (index-1)*86, 470, 38, function() panel:Select(section.id) end)
     label(intro, section.detail, 28, 168 + (index-1)*86, 450)
     local page = createFrame("Frame", nil, root)
     page:SetAllPoints(root); pages[section.id] = page
     button(page, "< Assuntos", 20, 80, 116, 34, function() panel:Select(nil) end)
     label(page, section.label, 154, 90, 320)
-    for row, field in ipairs(fields[section.id]) do
+    for row, field in ipairs(fields[section.id] or {}) do
       local y = 134 + (row-1)*62
       label(page, field.label, 20, y, 470)
       local width = (470 - (#field.options-1)*6) / #field.options
@@ -71,7 +75,36 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose)
     end
     page:Hide()
   end
-  label(root, "Por enquanto, ajustes desta sessão. Perfis vêm na próxima etapa.", 20, 413, 470)
+  local footer = label(root, "Por enquanto, ajustes desta sessão. Perfis vêm na próxima etapa.", 20, 413, 470)
+  if profiles then
+    local page = pages.profiles
+    label(page, "Salvar ajustes para", 20, 135, 470)
+    label(page, "Copiar para o perfil selecionado", 20, 220, 470)
+    label(page, "Restaurar remove somente os ajustes deste perfil.\nValores herdados e outros perfis permanecem.",
+      20, 330, 470)
+    local function confirm(control, action, source)
+      local status = profiles:GetStatus()
+      if pending and pending.control == control and pending.revision == status.revision then
+        pending = nil
+        if action == "copy" then profiles:Copy(source) else profiles:Reset() end
+      else pending = { control = control, revision = status.revision } end
+      panel:Refresh()
+    end
+    for index, scope in ipairs({ {"global","Todos"}, {"character","Personagem"}, {"spec","Especialização"} }) do
+      local choice = button(page, scope[2], 20+(index-1)*160, 156, 150, 38, function()
+        pending = nil; profiles:Select(scope[1]); panel:Refresh()
+      end)
+      choice.scope, choice.text = scope[1], scope[2]; profileButtons[#profileButtons+1] = choice
+      local source
+      source = button(page, "De: " .. scope[2], 20+(index-1)*160, 242, 150, 40,
+        function() confirm(source, "copy", scope[1]) end)
+      source.text = "De: " .. scope[2]; profileButtons[#profileButtons+1] = source
+    end
+    local reset
+    reset = button(page, "Restaurar este perfil", 20, 286, 470, 34, function() confirm(reset, "reset") end)
+    reset.text = "Restaurar este perfil"; profileButtons[#profileButtons+1] = reset
+    profiles:Subscribe(function() pending = nil; panel:Refresh() end)
+  end
   function panel.Refresh(_)
     local value = settings:Get()
     for _, control in ipairs(buttons) do
@@ -79,16 +112,27 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose)
       control.caption:SetText((chosen and "• " or "") .. control.text)
       control.fill:SetColorTexture(chosen and 0.06 or 0.08, chosen and 0.30 or 0.13, chosen and 0.22 or 0.20, 1)
     end
+    if profiles then
+      local status = profiles:GetStatus(); footer:SetText(status.message)
+      for _, control in ipairs(profileButtons) do
+        local chosen = control.scope == status.scope
+        control.caption:SetText(pending and pending.control == control and "Confirmar" or
+          ((chosen and "• " or "") .. control.text))
+        control.fill:SetColorTexture(chosen and 0.06 or 0.08, chosen and 0.30 or 0.13, chosen and 0.22 or 0.20, 1)
+      end
+    end
   end
   function panel.Select(_, section)
     if section ~= nil and not pages[section] then return false end
+    pending = nil
     selected = section
     if section then intro:Hide() else intro:Show() end
     for id, page in pairs(pages) do if id == section then page:Show() else page:Hide() end end
+    panel:Refresh()
     return true
   end
   function panel.Show(_) panel:Refresh(); root:SetPropagateKeyboardInput(true); root:Show() end
-  function panel.Hide(_) root:Hide() end
+  function panel.Hide(_) pending = nil; root:Hide() end
   function panel.GetSection(_) return selected end
   function panel.GetRoot(_) return root end
   root:SetScript("OnKeyDown", function(_, key)

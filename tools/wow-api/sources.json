@@ -3,17 +3,17 @@
   "repository": "Gethe/wow-ui-source",
   "developmentSmokeBuilds": ["69587", "69814"],
   "builds": {
-    "69587": { "version": "12.1.0.69587", "interface": 120100, "commit": "8ea15b61e45c0ed4eba01439c90757f86eb78d34", "snapshotSha256": "378DCEFB90753FF2EDCAD36BCA28D4650BC594C6C45E070C93708FD473A95E4F" },
-    "69814": { "version": "12.1.0.69814", "interface": 120100, "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59", "snapshotSha256": "21849F1A87C3C11259466C4A5E2F57B7F92134E50567F332EC4B5B3EB96C39FC" }
+    "69587": { "version": "12.1.0.69587", "interface": 120100, "commit": "8ea15b61e45c0ed4eba01439c90757f86eb78d34", "snapshotSha256": "04AC91D3C000BA14D11A5FE32F3C3F181E65A56BD39606021E38684ED2DDF90D" },
+    "69814": { "version": "12.1.0.69814", "interface": 120100, "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59", "snapshotSha256": "B34107D6F6A2A2F2CABC5B0366521FA37DFA22966549E76A2BA0C5DFFF6C5DE8" }
   },
   "files": [
     { "name": "BuildDocumentation.lua", "modules": ["addon/Compat/Build.lua", "addon/Core/InGameHarness.lua"] },
-    { "name": "SpecializationInfoDocumentation.lua", "modules": ["addon/Compat/Specialization.lua", "addon/Core/SpecDetector.lua"] },
+    { "name": "SpecializationInfoDocumentation.lua", "modules": ["addon/Compat/Specialization.lua", "addon/Core/SpecDetector.lua", "addon/Compat/Profiles.lua"] },
     { "name": "ClassTalentsDocumentation.lua", "modules": ["addon/Compat/Talents.lua", "addon/Core/SpecDetector.lua"] },
     { "name": "SharedTraitsDocumentation.lua", "modules": ["addon/Compat/Talents.lua", "addon/Core/SpecDetector.lua"] },
-    { "name": "SecretPredicateAPIDocumentation.lua", "modules": ["addon/Compat/Secrets.lua", "addon/Compat/State.lua", "addon/Rotation/StateReader.lua"] },
+    { "name": "SecretPredicateAPIDocumentation.lua", "modules": ["addon/Compat/Secrets.lua", "addon/Compat/State.lua", "addon/Rotation/StateReader.lua", "addon/Compat/Profiles.lua"] },
     { "name": "SecretPredicatesDocumentation.lua", "modules": ["addon/Compat/Secrets.lua", "addon/Compat/State.lua", "addon/Compat/Media.lua"] },
-    { "name": "UnitDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Core/StateEngine.lua", "addon/Compat/Media.lua", "addon/UI/QueueController.lua"] },
+    { "name": "UnitDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Core/StateEngine.lua", "addon/Compat/Media.lua", "addon/UI/QueueController.lua", "addon/Compat/Profiles.lua", "addon/Profiles/Controller.lua"] },
     { "name": "UnitAuraDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Core/StateEngine.lua"] },
     { "name": "UnitAuraSharedDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Rotation/StateReader.lua"] },
     { "name": "SpellDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Compat/Media.lua", "addon/Rotation/StateReader.lua", "addon/Compat/Bindings.lua", "addon/Compat/Cooldowns.lua"] },
@@ -25,7 +25,7 @@
     { "name": "ItemDocumentation.lua", "modules": ["addon/Compat/Media.lua"] },
     { "name": "RestrictedActionsDocumentation.lua", "modules": ["addon/Core/StateEngine.lua", "addon/Core/InGameHarness.lua"] },
     { "name": "SimpleFrameAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/Core/InGameHarness.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua", "addon/Config/Controller.lua"] },
-    { "name": "SimpleFrameScriptObjectAPIDocumentation.lua", "modules": ["addon/Core/Bootstrap.lua", "addon/UI/Queue.lua", "addon/Config/Panel.lua", "addon/Config/Controller.lua"] },
+    { "name": "SimpleFrameScriptObjectAPIDocumentation.lua", "modules": ["addon/Core/Bootstrap.lua", "addon/UI/Queue.lua", "addon/Config/Panel.lua", "addon/Config/Controller.lua", "addon/Profiles/Controller.lua"] },
     { "name": "SimpleFontStringAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/Core/InGameHarness.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua"] },
     { "name": "SimpleRegionAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/UI/AuraIndicators.lua"] },
     { "name": "SimpleScriptRegionAPIDocumentation.lua", "modules": ["addon/UI/Queue.lua", "addon/UI/AuraIndicators.lua", "addon/Config/Panel.lua"] },

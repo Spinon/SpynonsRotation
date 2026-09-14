@@ -90,8 +90,10 @@ O roteiro detalhado está em `docs/architecture/DEMO_MODE.md`. Não seguir a dem
 `/spynon config` abre os assuntos Fila e Informações junto à demo. Alterar quantidade,
 tamanho, direção, movimento, teclas e informações deve atualizar a prévia imediatamente.
 Fechar ou Escape restaura a fila real; entrar em combate também encerra painel e demo.
-As preferências são de sessão até PROFILE-001. Verificar legibilidade, cliques e propagação
-das teclas no Retail; as fixtures de UX-001 não são homologação visual ou de taint.
+PROFILE-001 acrescenta o card Perfis e persistência: alterar uma preferência, executar
+`/reload` e conferir o mesmo valor. Comparar global, personagem e spec; confirmar que cópia
+e restauração exigem confirmação e preservam os outros perfis. Verificar legibilidade,
+cliques e propagação das teclas no Retail; fixtures não são homologação visual ou de taint.
 
 ### Inspeção humana
 

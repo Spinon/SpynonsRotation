@@ -87,6 +87,7 @@
       "bytes": 11691,
       "sha256": "01EC6FDEA1AEF17CC5603EDAE6F61F8922D5B2546FB9F3D551CF4D3E7C6A2BC8",
       "modules": [
+        "addon/Compat/Profiles.lua",
         "addon/Compat/Secrets.lua",
         "addon/Compat/State.lua",
         "addon/Rotation/StateReader.lua"
@@ -147,6 +148,7 @@
         "addon/Config/Controller.lua",
         "addon/Config/Panel.lua",
         "addon/Core/Bootstrap.lua",
+        "addon/Profiles/Controller.lua",
         "addon/UI/Queue.lua"
       ]
     },
@@ -217,6 +219,7 @@
       "bytes": 15032,
       "sha256": "230A25B58E6DABD0A8679FF1C76FFF33137DEBD86975DCB1305D920879F71D47",
       "modules": [
+        "addon/Compat/Profiles.lua",
         "addon/Compat/Specialization.lua",
         "addon/Core/SpecDetector.lua"
       ]
@@ -271,8 +274,10 @@
       "sha256": "BC7FD554D45760061D699FF18EC9D9FEC45B3B3796A9323D661E003DEE5FDBE7",
       "modules": [
         "addon/Compat/Media.lua",
+        "addon/Compat/Profiles.lua",
         "addon/Compat/State.lua",
         "addon/Core/StateEngine.lua",
+        "addon/Profiles/Controller.lua",
         "addon/UI/QueueController.lua"
       ]
     }

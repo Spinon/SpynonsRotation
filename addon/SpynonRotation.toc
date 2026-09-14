@@ -33,6 +33,7 @@ Compat/Console.lua
 Compat/Context.lua
 Compat/Bindings.lua
 Compat/Cooldowns.lua
+Compat/Profiles.lua
 Compat/Facade.lua
 Core/SpecDetector.lua
 Core/StateEngine.lua
@@ -47,6 +48,8 @@ UI/Hotkeys.lua
 UI/CooldownOverlay.lua
 UI/AuraIndicators.lua
 Config/Settings.lua
+Profiles/Store.lua
+Profiles/Controller.lua
 UI/Queue.lua
 UI/QueueController.lua
 UI/DemoTimeline.lua

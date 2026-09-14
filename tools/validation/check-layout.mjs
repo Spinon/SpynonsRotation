@@ -64,6 +64,11 @@ const requiredFiles = [
   "docs/project/RETAIL_SMOKE.md",
   "addon/UI/Queue.lua",
   "addon/Config/Settings.lua",
+  "addon/Compat/Profiles.lua",
+  "addon/Profiles/Store.lua",
+  "addon/Profiles/Controller.lua",
+  "tests/unit/profiles_spec.lua",
+  "docs/architecture/PROFILES.md",
   "addon/Config/Panel.lua",
   "addon/Config/Controller.lua",
   "tests/unit/config_spec.lua",
@@ -264,6 +269,7 @@ const volatileApiPatterns = [
   { name: "UnitExists/IsVisible", pattern: /\bUnit(?:Exists|IsVisible)\s*\(/u },
   { name: "issecretvalue", pattern: /\bissecretvalue\s*\(/u },
   { name: "GetTime", pattern: /\bGetTime\s*\(/u },
+  { name: "UnitGUID", pattern: /\bUnitGUID\s*\(/u },
 ];
 
 function checkApiBoundary(directory) {

@@ -1,6 +1,6 @@
 local _, Spynon = ...
 local Controller = {}
-function Controller.Create(compat, createFrame, settings, harness)
+function Controller.Create(compat, createFrame, settings, harness, profiles)
   local controller, panel, active, started = {}, nil, false, false
   local function allowed()
     local combat = compat.State:ReadCombat()
@@ -24,7 +24,7 @@ function Controller.Create(compat, createFrame, settings, harness)
     if active then return true end
     if not harness:Show(settings:Get().motion) then return false end
     panel = panel or Spynon.ConfigPanelFactory.Create(createFrame, compat.Media:GetRootParent(), settings,
-      function(key, value) controller:Change(key, value) end, function() controller:Close() end)
+      function(key, value) controller:Change(key, value) end, function() controller:Close() end, profiles)
     active = true; panel:Select(nil); panel:Show()
     return true
   end
@@ -49,4 +49,6 @@ function Controller.Create(compat, createFrame, settings, harness)
   return controller
 end
 Spynon.ConfigControllerFactory = Controller
-Spynon.ConfigController = Controller.Create(Spynon.Compat, CreateFrame, Spynon.Settings, Spynon.InGameHarness)
+Spynon.ConfigController = Controller.Create(
+  Spynon.Compat, CreateFrame, Spynon.Settings, Spynon.InGameHarness, Spynon.Profiles
+)

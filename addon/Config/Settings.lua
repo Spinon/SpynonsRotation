@@ -18,16 +18,30 @@ function Settings.Validate(value)
   for key in pairs(defaults) do if value[key] == nil then return false end end
   return true
 end
+function Settings.Defaults() return copy(defaults) end
 function Settings.Create()
   local model, values, listeners = {}, copy(defaults), {}
+  local writer
   function model.Get(_) return copy(values) end
-  function model.Set(_, key, value)
-    if not Settings.IsValue(key, value) then return false end
-    if values[key] == value then return true end
-    values[key] = value
+  function model.Replace(_, nextValues)
+    if not Settings.Validate(nextValues) then return false end
+    local changed = false
+    for key, value in pairs(values) do if nextValues[key] ~= value then changed = true; break end end
+    if not changed then return true end
+    values = copy(nextValues)
     local pending = {}; for listener in pairs(listeners) do pending[#pending + 1] = listener end
     for _, listener in ipairs(pending) do if listeners[listener] then listener(copy(values)) end end
     return true
+  end
+  function model.Set(_, key, value)
+    if not Settings.IsValue(key, value) then return false end
+    if writer then return writer(key, value) end
+    local nextValues = copy(values); nextValues[key] = value
+    return model:Replace(nextValues)
+  end
+  function model.SetWriter(_, callback)
+    assert(type(callback) == "function", "settings writer must be callable")
+    writer = callback
   end
   function model.Subscribe(_, listener)
     assert(type(listener) == "function", "settings listener must be callable")

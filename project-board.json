@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T22:42:00.000Z",
-  "currentFocus": "PROFILE-001",
+  "updatedAt": "2026-09-14T22:51:06.658Z",
+  "currentFocus": "UX-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1248,12 +1248,12 @@
       "title": "Persistência e perfis",
       "lane": "PROFILES / SKINS",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T22:42:00.000Z",
+      "updatedAt": "2026-09-14T22:51:06.658Z",
       "reviewBy": null,
-      "nextAction": "Avaliar AceDB e implementar resolução.",
+      "nextAction": null,
       "dependencies": [
         "CORE-001",
         "UX-001"
@@ -1263,7 +1263,14 @@
         "Cópia e reset possuem testes",
         "Default funciona sem abrir Profiles"
       ],
-      "evidence": []
+      "evidence": [
+        "Compat/Profiles.lua isola SavedVariables e identidade pública; Profiles/Store.lua resolve defaults/global/personagem/spec, mantendo somente overrides e preservando dados desconhecidos ou incompatíveis.",
+        "Profiles/Controller.lua carrega antes da Queue, restaura preferências sem abrir configuração e observa identidade/spec. Revalidação antes de writes impede edição através de identidade antiga; combate e dados indisponíveis rejeitam alterações.",
+        "Card Perfis mostra alcance de gravação e oferece cópia de valores efetivos e reset somente do perfil selecionado, ambos com confirmação desarmada por mudança de contexto/navegação.",
+        "npm test aprovado: 181 testes Node e 279 testes Lua (460 ao todo), incluindo 20 fixtures de perfis; 51 arquivos sem warnings, erros ou problemas de tipo. Assets técnicos e hashes preservados.",
+        "API diff mantém 26 fontes e zero diferenças nas builds pinadas; ownership de identidade/Profiles atualizado. docs/architecture/PROFILES.md registra schema, semântica de alcance, proteção de dados e avaliação de AceDB sem nova dependência.",
+        "Commit b9a61f1 registra início publicado. Reconstrução offline comprova persistência do modelo, não logout/reload real: RETAIL_SMOKE mantém teste de gravação e troca de spec no cliente pendente."
+      ]
     },
     {
       "id": "SKIN-001",

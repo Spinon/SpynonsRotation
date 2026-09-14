@@ -13,9 +13,9 @@ function Controller.Create(service, media, createFrame, console, bindings, coold
   function controller.HandleHotkeys(_, message)
     local argument = message:lower():match("^%s*keys%s*(.-)%s*$")
     if view and (argument == "compact" or argument == "full" or argument == "off") then
-      if settings then settings:Set("keys", argument)
+      if settings then if not settings:Set("keys", argument) then return false end
       else view:SetHotkeyStyle(argument ~= "off", argument ~= "full") end
-      console:Write("Teclas: " .. argument .. " (somente nesta sessão)")
+      console:Write("Teclas: " .. argument)
       return true
     end
     console:Write("Use /spynon keys compact | full | off")
@@ -25,8 +25,9 @@ function Controller.Create(service, media, createFrame, console, bindings, coold
     local argument = message:lower():match("^%s*motion%s*(.-)%s*$")
     local modes = { normal = "NORMAL", reduced = "REDUCED", off = "OFF" }
     if modes[argument] and view then
-      if settings then settings:Set("motion", modes[argument]) else view:SetMotionMode(modes[argument]) end
-      console:Write("Movimento: " .. argument .. " (somente nesta sessão)")
+      if settings then if not settings:Set("motion", modes[argument]) then return false end
+      else view:SetMotionMode(modes[argument]) end
+      console:Write("Movimento: " .. argument)
       return true
     end
     console:Write("Use /spynon motion normal | reduced | off")
@@ -35,8 +36,9 @@ function Controller.Create(service, media, createFrame, console, bindings, coold
   function controller.HandleNumbers(_, message)
     local argument = message:lower():match("^%s*numbers%s*(.-)%s*$")
     if view and (argument == "on" or argument == "off") then
-      if settings then settings:Set("numbers", argument == "on") else view:SetCooldownNumbers(argument == "on") end
-      console:Write("Tempo numérico: " .. argument .. " (somente nesta sessão)")
+      if settings then if not settings:Set("numbers", argument == "on") then return false end
+      else view:SetCooldownNumbers(argument == "on") end
+      console:Write("Tempo numérico: " .. argument)
       return true
     end
     console:Write("Use /spynon numbers on | off")

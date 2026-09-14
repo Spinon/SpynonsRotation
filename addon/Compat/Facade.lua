@@ -17,6 +17,7 @@ function CompatFactory.Create(environment)
     Context = Internal.Context.Create(apiEnvironment),
     Bindings = Internal.Bindings.Create(apiEnvironment),
     Cooldowns = Internal.Cooldowns.Create(apiEnvironment),
+    Profiles = Internal.Profiles.Create(apiEnvironment),
   }
 end
 
