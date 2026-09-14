@@ -34,6 +34,7 @@ Compat/Context.lua
 Compat/Bindings.lua
 Compat/Cooldowns.lua
 Compat/Profiles.lua
+Compat/Fonts.lua
 Compat/Facade.lua
 Core/SpecDetector.lua
 Core/StateEngine.lua
@@ -45,6 +46,7 @@ Core/ContextDetector.lua
 Core/ContextController.lua
 UI/Animator.lua
 UI/Hotkeys.lua
+UI/Typography.lua
 UI/CooldownOverlay.lua
 UI/AuraIndicators.lua
 Config/Settings.lua

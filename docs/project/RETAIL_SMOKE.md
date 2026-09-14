@@ -145,5 +145,11 @@ slider durante Experimentar não confirma toda a sessão cedo. Não há nova evi
 
 ## Fora do escopo deste smoke
 
+UX-006 também exige inspeção: Informações → Textos e legibilidade; comparar WoW/Números
+WoW, tamanhos, contorno e sombra, inclusive cooldown nativo. Verificar Global e overrides,
+Experimentar/Cancelar, reset granular e reload. Números desligados devem continuar
+ocultos. Validar teclas largas e rótulos nos idiomas do cliente. Testes offline não
+confirmam rasterização, legibilidade nem taint dessas alterações.
+
 Não é uma prova de rotação ótima, equivalência com SimC ou liberação de release. O preview estático
 e o Demo Mode animado são ferramentas de curadoria, não substitutos da inspeção de combate real.

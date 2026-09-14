@@ -20,6 +20,10 @@ function Overlay.Create(createFrame, frame, icon, skin)
   local count = labels:CreateFontString(nil, "OVERLAY", tokens.typography.fontObject)
   local font = count:GetFont()
   if font then count:SetFont(font, 12, "OUTLINE") end
+  local countType = Spynon.Typography.Bind(count, font)
+  local countdownFont, countdownName = Spynon.Compat.Fonts:NewCountdown()
+  if countdownFont then countdownFont:SetTextColor(unpack(colors.text)) end
+  local countdownType = countdownFont and Spynon.Typography.Bind(countdownFont, font)
   count:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", -2, 2)
   count:SetTextColor(unpack(colors.text))
   count:Hide()
@@ -50,6 +54,12 @@ function Overlay.Create(createFrame, frame, icon, skin)
     cooldown:Clear(); count:SetText(""); count:Hide(); track:Hide(); view:SetProgress(nil)
   end
   function view.SetNumbers(_, enabled) cooldown:SetHideCountdownNumbers(not enabled) end
+  function view.SetTypography(_, values)
+    countType:Apply(values, "stacks", 12)
+    if countdownType and countdownType:Apply(values, "cooldown", 14) then
+      cooldown:SetCountdownFont(countdownName)
+    end
+  end
   function view.GetLabelParent(_) return labels end
   return view
 end

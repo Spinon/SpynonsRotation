@@ -41,7 +41,9 @@ function AuraUI.Create(createFrame, parent, clock, skin)
     name:SetWordWrap(false); status:SetWordWrap(false); name:SetJustifyH("LEFT"); status:SetJustifyH("LEFT")
     name:SetTextColor(unpack(colors.text))
     cells[index] = { frame = frame, icon = icon, channel = channel, shelf = shelf,
-      name = name, status = status, placeholder = placeholder }
+      name = name, status = status, placeholder = placeholder,
+      nameType = Spynon.Typography.Bind(name, font), statusType = Spynon.Typography.Bind(status, font),
+      placeholderType = Spynon.Typography.Bind(placeholder, font) }
     frame:Hide()
   end
   function view.Clear(_)
@@ -127,6 +129,13 @@ function AuraUI.Create(createFrame, parent, clock, skin)
     return true
   end
   function view.GetFrameForId(_, id) return byId[id] and byId[id].frame or nil end
+  function view.SetTypography(_, options)
+    for _, cell in ipairs(cells) do
+      cell.nameType:Apply(options, "labels", 10)
+      cell.statusType:Apply(options, "stacks", 9)
+      cell.placeholderType:Apply(options, "labels", 12)
+    end
+  end
   function view.GetRoot(_) return root end
   root:SetScript("OnHide", function() root:SetScript("OnUpdate", nil) end)
   root:Hide()

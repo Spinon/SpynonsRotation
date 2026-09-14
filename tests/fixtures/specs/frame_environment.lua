@@ -43,6 +43,9 @@ return function()
   function methods:SetReverse(value) self.reverse = value end
   function methods:SetSwipeColor(...) self.swipeColor = { ... } end
   function methods:SetHideCountdownNumbers(value) self.hideNumbers = value end
+  function methods:SetCountdownFont(value) self.countdownFont = value end
+  function methods:SetShadowColor(...) self.shadowColor = {...} end
+  function methods:SetShadowOffset(...) self.shadowOffset = {...} end
   function methods:EnableMouse(enabled) self.mouseEnabled = enabled end
   function methods:Show() self.visible = true end
   function methods:Hide()

@@ -38,6 +38,9 @@ npm test
 
 ## Fronteiras principais
 
+Textos do HUD: `/spynon config` → Informações → Textos e legibilidade; fonte global e
+overrides por elemento, com prévia e restauração. Veja [Typography](docs/architecture/TYPOGRAPHY.md).
+
 - `addon/`: runtime Lua carregado pelo WoW.
 - `rotation-lab/`: pesquisa, SimulationCraft, cenários e otimização fora do jogo.
 - `specs/`: especificações curadas por classe/spec.

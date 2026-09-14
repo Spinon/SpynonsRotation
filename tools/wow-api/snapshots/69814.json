@@ -115,6 +115,16 @@
       ]
     },
     {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleFontAPIDocumentation.lua",
+      "present": true,
+      "bytes": 6098,
+      "sha256": "D915A6B769ED40A17F30DCBF5500AB20572CD82701CBF33A8B6CAEEC3E5C53ED",
+      "modules": [
+        "addon/Compat/Fonts.lua",
+        "addon/UI/Typography.lua"
+      ]
+    },
+    {
       "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleFontStringAPIDocumentation.lua",
       "present": true,
       "bytes": 13724,
@@ -124,8 +134,10 @@
         "addon/Config/PreviewSlider.lua",
         "addon/Core/InGameHarness.lua",
         "addon/UI/AuraIndicators.lua",
+        "addon/UI/CooldownOverlay.lua",
         "addon/UI/Queue.lua",
-        "addon/UI/QueueEditor.lua"
+        "addon/UI/QueueEditor.lua",
+        "addon/UI/Typography.lua"
       ]
     },
     {
@@ -300,6 +312,15 @@
         "addon/Core/StateEngine.lua",
         "addon/Profiles/Controller.lua",
         "addon/UI/QueueController.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_SharedXML/FontableFrameMixin.lua",
+      "present": true,
+      "bytes": 3382,
+      "sha256": "79B38244C0F8F13648D68C3B8FCC7EDC52CC788DFC4336B9CE57F1CCAEEB4242",
+      "modules": [
+        "addon/Compat/Fonts.lua"
       ]
     }
   ]

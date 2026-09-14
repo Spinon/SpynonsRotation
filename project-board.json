@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T23:46:32.211Z",
-  "currentFocus": "UX-006",
+  "updatedAt": "2026-09-14T23:59:40.000Z",
+  "currentFocus": "PATCH-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1253,12 +1253,12 @@
       "title": "Typography",
       "lane": "CONFIG / UX",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P2",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T23:46:32.211Z",
+      "updatedAt": "2026-09-14T23:59:40.000Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Curar tipografia default.",
+      "nextAction": null,
       "dependencies": [
         "UX-001"
       ],
@@ -1267,7 +1267,13 @@
         "Modo simples controla base, outline e shadow",
         "Overrides possuem fallback"
       ],
-      "evidence": []
+      "evidence": [
+        "Compat/Fonts.lua e UI/Typography.lua usam famílias nativas WoW, fallback de fonte e overrides por papel; fonts privados e limitados estilizam cooldown sem ler DurationObjects ou texto do contador.",
+        "Informações → Textos e legibilidade oferece fonte, tamanho, contorno e sombra; Por elemento revela teclas, cooldown, cargas/acúmulos e rótulos. Perfis, skins, prévia, undo/redo e resets preservam herança.",
+        "npm test aprovado: 181 testes Node e 401 testes Lua em 25 suítes; 61 arquivos sem warnings, erros ou problemas de tipo. Inclui 14 testes de Typography e 2 integrações adicionais de prévia/reset.",
+        "API diff cobre 29 arquivos pinados para 69587/69814, sem mudanças documentadas; não equivale a validação Retail. TYPOGRAPHY.md e RETAIL_SMOKE.md registram contrato, limitações e inspeção pendente.",
+        "Commit 93a66b1 registra início publicado. PATCH-002 é o próximo foco técnico; refinamento visual permanece adiado a pedido do Product Owner."
+      ]
     },
     {
       "id": "PROFILE-001",

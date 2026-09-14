@@ -48,7 +48,9 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     hotkey:Hide()
     frame:Hide()
     pool[index] = { index = index, frame = frame, icon = icon, border = border, currentBorder = currentBorder,
-      flash = flash, placeholder = placeholder, hotkey = hotkey, font = font, overlay = overlay }
+      flash = flash, placeholder = placeholder, hotkey = hotkey, font = font, overlay = overlay,
+      hotkeyType = Spynon.Typography.Bind(hotkey, font),
+      placeholderType = Spynon.Typography.Bind(placeholder, font) }
   end
 
   local function dimensions()
@@ -113,10 +115,10 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     local text = hotkeysEnabled and Spynon.Hotkeys.Format(slot.key, compactHotkeys) or nil
     if text and slot.font then
       local size = math.floor((12 + 2 * value.current) * scale + 0.5)
-      slot.hotkey:SetFont(slot.font, size, "OUTLINE")
+      slot.hotkeyType:Apply(options, "hotkey", size)
       slot.hotkey:SetText(text)
       if slot.hotkey:GetStringWidth() > value.iconWidth * scale - 4 then
-        slot.hotkey:SetFont(slot.font, 10, "OUTLINE")
+        slot.hotkeyType:Apply(options, "hotkey", 10)
       end
       if slot.hotkey:GetStringWidth() <= value.iconWidth * scale - 4 then slot.hotkey:Show()
       else slot.hotkey:Hide() end -- Never truncate a binding into a different instruction.
@@ -238,6 +240,7 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     end
     if not indicators and #values == 0 then return end
     indicators = indicators or Spynon.AuraIndicatorsFactory.Create(createFrame, root, clock, skin)
+    indicators:SetTypography(options)
     indicators:Set(values)
   end
   function view.RefreshOverlays(_, adapter)
@@ -311,6 +314,11 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
       or options.mainScale ~= value.mainScale or options.spacing ~= value.spacing
       or options.alignment ~= value.alignment
     options = value
+    for _, slot in ipairs(pool) do
+      slot.overlay:SetTypography(value)
+      slot.placeholderType:Apply(value, "labels", 12)
+    end
+    if indicators then indicators:SetTypography(value) end
     local width, height = dimensions()
     root:SetSize(width, height)
     root:SetScale(value.scale)

@@ -17,6 +17,22 @@ local choices = { count = { 1, 2, 3, 4 }, scale = { 0.75, 1, 1.25 },
 local function copy(source)
   local result = {}; for key, value in pairs(source) do result[key] = value end; return result
 end
+for _, role in ipairs({"text", "hotkey", "cooldown", "stacks", "labels"}) do
+  local inherited = role ~= "text"
+  defaults[role .. "Font"] = inherited and "INHERIT" or "WOW"
+  defaults[role .. "Size"] = inherited and "INHERIT" or 1
+  defaults[role .. "Outline"] = inherited and "INHERIT" or "OUTLINE"
+  defaults[role .. "Shadow"] = inherited and "INHERIT" or "SOFT"
+  choices[role .. "Font"] = {"WOW", "NUMBERS"}
+  choices[role .. "Size"] = {0.85, 1, 1.15}
+  choices[role .. "Outline"] = {"NONE", "OUTLINE", "THICKOUTLINE"}
+  choices[role .. "Shadow"] = {"NONE", "SOFT"}
+  if inherited then
+    for _, suffix in ipairs({"Font", "Size", "Outline", "Shadow"}) do
+      table.insert(choices[role .. suffix], "INHERIT")
+    end
+  end
+end
 function Settings.IsValue(key, value)
   for _, candidate in ipairs(choices[key] or {}) do if candidate == value then return true end end
   return false

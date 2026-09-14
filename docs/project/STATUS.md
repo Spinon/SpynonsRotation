@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T23:46:32.211Z
+Atualizado pelo board em: 2026-09-14T23:59:40.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UX-006 — Typography**
+**PATCH-002 — Secret Values audit**
 
-Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Curar tipografia default.
+Próxima ação: Criar matriz de riscos.
 
 ## Progresso
 
 - Planejadas: 8
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 49
+- Concluídas: 50
 - Total: 59
 
 ## Fila canônica
@@ -69,7 +69,7 @@ Próxima ação: Curar tipografia default.
 | UX-003 | delivery | CONFIG / UX | Advanced panels | done | P2 | UX-001 |
 | UX-004 | delivery | CONFIG / UX | Undo/Redo | done | P1 | UX-002 |
 | UX-005 | delivery | CONFIG / UX | Preview + reset granular | done | P2 | UX-004 |
-| UX-006 | delivery | CONFIG / UX | Typography | in_progress | P2 | UX-001 |
+| UX-006 | delivery | CONFIG / UX | Typography | done | P2 | UX-001 |
 | PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | done | P1 | CORE-001, UX-001 |
 | SKIN-001 | delivery | PROFILES / SKINS | Skin API | done | P1 | UI-001 |
 | SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | done | P2 | SKIN-001 |
@@ -455,6 +455,14 @@ Próxima ação: Curar tipografia default.
 - npm test aprovado: 181 testes Node e 335 Lua (516 ao todo), incluindo 21 novos cenários de exploração/reset; 55 arquivos sem warnings, erros ou problemas de tipo. Nenhuma nova API, dependência, timer ou arte.
 - docs/architecture/PREVIEW_RESET.md define os alcances e confirmações. RETAIL_SMOKE mantém fluxo nativo, rendering e combate/taint pendentes; não houve nova validação no jogo.
 - Commit a2a1a91 registra início publicado. UX-003 é o próximo foco elegível para controles avançados sob demanda, preservando o adiamento do ajuste fino visual.
+
+### UX-006
+
+- Compat/Fonts.lua e UI/Typography.lua usam famílias nativas WoW, fallback de fonte e overrides por papel; fonts privados e limitados estilizam cooldown sem ler DurationObjects ou texto do contador.
+- Informações → Textos e legibilidade oferece fonte, tamanho, contorno e sombra; Por elemento revela teclas, cooldown, cargas/acúmulos e rótulos. Perfis, skins, prévia, undo/redo e resets preservam herança.
+- npm test aprovado: 181 testes Node e 401 testes Lua em 25 suítes; 61 arquivos sem warnings, erros ou problemas de tipo. Inclui 14 testes de Typography e 2 integrações adicionais de prévia/reset.
+- API diff cobre 29 arquivos pinados para 69587/69814, sem mudanças documentadas; não equivale a validação Retail. TYPOGRAPHY.md e RETAIL_SMOKE.md registram contrato, limitações e inspeção pendente.
+- Commit 93a66b1 registra início publicado. PATCH-002 é o próximo foco técnico; refinamento visual permanece adiado a pedido do Product Owner.
 
 ### PROFILE-001
 

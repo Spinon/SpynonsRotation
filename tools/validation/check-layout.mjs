@@ -31,6 +31,10 @@ const requiredDirectories = [
   "tasks",
 ];
 const requiredFiles = [
+  "addon/Compat/Fonts.lua",
+  "addon/UI/Typography.lua",
+  "tests/unit/typography_spec.lua",
+  "docs/architecture/TYPOGRAPHY.md",
   "addon/SpynonRotation.toc",
   "addon/Core/Bootstrap.lua",
   "addon/Core/Namespace.lua",

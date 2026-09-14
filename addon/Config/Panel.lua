@@ -65,6 +65,26 @@ local function resetKeys(section)
   else for _, key in ipairs(resetGroups[section] or {}) do keys[key] = true end end
   return keys
 end
+local textRoles = {{"hotkey", "Teclas"}, {"cooldown", "Tempo restante"},
+  {"stacks", "Cargas e acúmulos"}, {"labels", "Rótulos"}}
+local textFields = {
+  {suffix="Font", label="Fonte", options={{"WOW","WoW"}, {"NUMBERS","Números WoW"}}},
+  {suffix="Size", label="Tamanho base", options={{0.85,"Menor"}, {1,"Padrão"}, {1.15,"Maior"}}},
+  {suffix="Outline", label="Contorno", options={{"NONE","Sem"}, {"OUTLINE","Fino"}, {"THICKOUTLINE","Forte"}}},
+  {suffix="Shadow", label="Sombra", options={{"NONE","Sem"}, {"SOFT","Suave"}}},
+}
+for _, role in ipairs({"text", "hotkey", "cooldown", "stacks", "labels"}) do
+  local page = "type_" .. role
+  fields[page], resetGroups[page] = {}, {}
+  for _, source in ipairs(textFields) do
+    local field = {key=role .. source.suffix, label=source.label, options={}}
+    if role ~= "text" then field.options[1] = {"INHERIT", "Global"} end
+    for _, option in ipairs(source.options) do field.options[#field.options+1] = option end
+    fields[page][#fields[page]+1] = field
+    resetGroups[page][#resetGroups[page]+1] = field.key
+    resetGroups.information[#resetGroups.information+1] = field.key
+  end
+end
 function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles, onEdit, history)
   local panel, selected, buttons, pages = {}, nil, {}, {}
   local navigation, profileButtons, pending = {}, {}, nil
@@ -107,6 +127,14 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
   for _, section in ipairs({ { id = "current", label = "Ícone principal" }, { id = "hotkey", label = "Teclas" },
     { id = "layout", label = "Organização da fila" } }) do pageSections[#pageSections+1] = section end
   pageSections[#pageSections+1] = {id="animations", label="Animações", back="queue", backLabel="< Fila"}
+  pageSections[#pageSections+1] = {id="type_text", label="Textos • Global",
+    back="information", backLabel="< Informações"}
+  pageSections[#pageSections+1] = {id="typography_roles", label="Textos por elemento",
+    back="type_text", backLabel="< Global"}
+  for _, role in ipairs(textRoles) do
+    pageSections[#pageSections+1] = {id="type_" .. role[1], label=role[2],
+      back="typography_roles", backLabel="< Elementos"}
+  end
   for _, animation in ipairs(animations) do
     pageSections[#pageSections+1] = {id="motion_" .. animation.id, label=animation.label,
       back="animations", backLabel="< Animações"}
@@ -136,6 +164,12 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
     page:Hide()
   end
   button(pages.queue, "Personalizar animações", 20, 378, 225, 32, function() panel:Select("animations") end)
+  button(pages.information, "Textos e legibilidade", 20, 330, 470, 34, function() panel:Select("type_text") end)
+  button(pages.type_text, "Por elemento", 20, 378, 225, 32, function() panel:Select("typography_roles") end)
+  for index, role in ipairs(textRoles) do
+    button(pages.typography_roles, role[2], 20, 134+(index-1)*52, 470, 38,
+      function() panel:Select("type_" .. role[1]) end)
+  end
   for index, animation in ipairs(animations) do
     button(pages.animations, animation.label, 20, 130+(index-1)*47, 470, 38,
       function() panel:Select("motion_" .. animation.id) end)
@@ -222,9 +256,10 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
       show(cancel, status.active)
       show(resetSelection, contextual and not status.active)
       resetSelection.frame:ClearAllPoints()
-      resetSelection.frame:SetPoint("TOPLEFT", root, "TOPLEFT", selected == "queue" and 255 or 20, -378)
-      resetSelection.frame:SetWidth(selected == "queue" and 235 or 470)
-      resetSelection.caption:SetWidth(selected == "queue" and 219 or 454)
+      local splitReset = selected == "queue" or selected == "type_text"
+      resetSelection.frame:SetPoint("TOPLEFT", root, "TOPLEFT", splitReset and 255 or 20, -378)
+      resetSelection.frame:SetWidth(splitReset and 235 or 470)
+      resetSelection.caption:SetWidth(splitReset and 219 or 454)
       resetSelection.caption:SetText((selected == "current" or selected == "hotkey" or selected == "layout")
         and "Restaurar elemento" or "Restaurar seção")
       keep.caption:SetText(status.mode == "reset" and "Confirmar restauração" or "Manter mudanças")

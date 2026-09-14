@@ -4,7 +4,7 @@ export const hash = (text) => crypto.createHash("sha256").update(text).digest("h
 export const serialize = (value) => `${JSON.stringify(value, null, 2)}\n`;
 const digest = /^[A-F0-9]{64}$/u;
 const commit = /^[a-f0-9]{40}$/u;
-const sourcePath = /^Interface\/AddOns\/(?:Blizzard_APIDocumentationGenerated\/[A-Za-z0-9]+|Blizzard_ActionBar\/Shared\/(?:ActionButton|ActionButtonUtil))\.lua$/u;
+const sourcePath = /^Interface\/AddOns\/(?:Blizzard_APIDocumentationGenerated\/[A-Za-z0-9]+|Blizzard_ActionBar\/Shared\/(?:ActionButton|ActionButtonUtil)|Blizzard_SharedXML\/FontableFrameMixin)\.lua$/u;
 const modulePath = /^addon\/(?:[A-Za-z0-9_-]+\/)*[A-Za-z0-9_-]+\.lua$/u;
 function requireValue(condition, message) { if (!condition) throw new Error(message); }
 
