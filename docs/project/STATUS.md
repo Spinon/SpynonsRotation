@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T22:01:57.012Z
+Atualizado pelo board em: 2026-09-14T22:14:42.429Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UI-005 — Buff/debuff indicators**
 
-Status: `planned` · Prioridade: `P2` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
 
 Próxima ação: Definir vocabulário visual.
 
 ## Progresso
 
-- Planejadas: 18
-- Em andamento: 0
+- Planejadas: 17
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 40
 - Total: 59
@@ -62,7 +62,7 @@ Próxima ação: Definir vocabulário visual.
 | UI-002 | delivery | UI | Animator | done | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | done | P1 | UI-001, CORE-004 |
 | UI-004 | delivery | UI | Cooldowns/charges/stacks | done | P1 | UI-001, CORE-004 |
-| UI-005 | delivery | UI | Buff/debuff indicators | planned | P2 | UI-004, RUN-002 |
+| UI-005 | delivery | UI | Buff/debuff indicators | in_progress | P2 | UI-004, RUN-002 |
 | UI-006 | delivery | UI | Demo Mode | done | P1 | UI-002, UI-004, RUN-003 |
 | UX-001 | delivery | CONFIG / UX | Config básico contextual | planned | P1 | UI-001 |
 | UX-002 | delivery | CONFIG / UX | Edit HUD | planned | P1 | UX-001, UI-002 |
