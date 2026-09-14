@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T23:29:33.690Z
+Atualizado pelo board em: 2026-09-14T23:29:59.748Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **SKIN-001 — Skin API**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Definir contrato e skin default.
 
 ## Progresso
 
-- Planejadas: 11
-- Em andamento: 0
+- Planejadas: 10
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 47
 - Total: 59
@@ -71,7 +71,7 @@ Próxima ação: Definir contrato e skin default.
 | UX-005 | delivery | CONFIG / UX | Preview + reset granular | done | P2 | UX-004 |
 | UX-006 | delivery | CONFIG / UX | Typography | planned | P2 | UX-001 |
 | PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | done | P1 | CORE-001, UX-001 |
-| SKIN-001 | delivery | PROFILES / SKINS | Skin API | planned | P1 | UI-001 |
+| SKIN-001 | delivery | PROFILES / SKINS | Skin API | in_progress | P1 | UI-001 |
 | SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | planned | P2 | SKIN-001 |
 | BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | planned | P1 | BOOT-001 |
 | BRAND-002 | delivery | BRAND | Criar master técnico e variantes | planned | P2 | BRAND-001 |
