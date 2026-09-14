@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T23:38:21.436Z",
+  "updatedAt": "2026-09-14T23:39:05.142Z",
   "currentFocus": "SKIN-002",
   "parallelFocus": {},
   "release": {
@@ -1331,10 +1331,10 @@
       "title": "External reskin contract",
       "lane": "PROFILES / SKINS",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P2",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T23:39:05.142Z",
       "reviewBy": null,
       "nextAction": "Projetar registro público de skins.",
       "dependencies": [
