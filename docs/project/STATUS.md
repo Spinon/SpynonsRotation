@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T21:56:06.496Z
+Atualizado pelo board em: 2026-09-14T21:57:27.308Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UI-007 — Encaixe e amostragem dos ícones**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Ajustar encaixe e crop preservando as animações aprovadas.
 
 ## Progresso
 
-- Planejadas: 19
-- Em andamento: 0
+- Planejadas: 18
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 39
 - Total: 59
@@ -83,7 +83,7 @@ Próxima ação: Ajustar encaixe e crop preservando as animações aprovadas.
 | RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
 | PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | done | P0 | CORE-004, PATCH-001 |
-| UI-007 | delivery | UI | Encaixe e amostragem dos ícones | planned | P1 | UI-001, UI-002, UI-003, UI-004, UI-006 |
+| UI-007 | delivery | UI | Encaixe e amostragem dos ícones | in_progress | P1 | UI-001, UI-002, UI-003, UI-004, UI-006 |
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas

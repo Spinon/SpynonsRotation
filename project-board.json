@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T21:56:06.496Z",
+  "updatedAt": "2026-09-14T21:57:27.308Z",
   "currentFocus": "UI-007",
   "parallelFocus": {},
   "release": {
@@ -1531,10 +1531,10 @@
       "title": "Encaixe e amostragem dos ícones",
       "lane": "UI",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UI-007.md",
-      "updatedAt": "2026-09-14T21:56:06.496Z",
+      "updatedAt": "2026-09-14T21:57:27.308Z",
       "reviewBy": "Product Owner",
       "nextAction": "Ajustar encaixe e crop preservando as animações aprovadas.",
       "dependencies": ["UI-001", "UI-002", "UI-003", "UI-004", "UI-006"],
