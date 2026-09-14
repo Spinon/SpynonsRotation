@@ -50,6 +50,8 @@ UI/AuraIndicators.lua
 Config/Settings.lua
 Skins/Default.lua
 Skins/Contract.lua
+Skins/Registry.lua
+Skins/PublicAPI.lua
 Profiles/Store.lua
 Profiles/Controller.lua
 UI/QueueEditor.lua

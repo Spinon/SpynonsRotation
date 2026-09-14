@@ -114,6 +114,10 @@ Validar captura/soltura do mouse e foco no cliente: fixtures não reproduzem eve
 
 ### Inspeção humana
 
+SKIN-002: o exemplo externo está no repositório, não instalado. Quando houver teste
+autorizado desse addon separado, confirmar dependência/carregamento, presença na API
+List/Get e ausência de troca automática do HUD. A execução atual do exemplo é somente offline.
+
 SKIN-001: após reload, comparar a skin default à versão anterior (mesmos assets e medidas).
 Conferir molduras, cores de aura, textos e cooldowns; não há seletor de skin nesta entrega.
 Contratos e fixtures não substituem essa comparação no cliente.

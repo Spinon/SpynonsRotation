@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T23:39:05.142Z",
-  "currentFocus": "SKIN-002",
+  "updatedAt": "2026-09-14T23:45:58.160Z",
+  "currentFocus": "UX-006",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1331,12 +1331,12 @@
       "title": "External reskin contract",
       "lane": "PROFILES / SKINS",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P2",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T23:39:05.142Z",
+      "updatedAt": "2026-09-14T23:45:58.160Z",
       "reviewBy": null,
-      "nextAction": "Projetar registro público de skins.",
+      "nextAction": null,
       "dependencies": [
         "SKIN-001"
       ],
@@ -1345,7 +1345,13 @@
         "Versionamento e conflitos são tratados",
         "Exemplo mínimo valida a API"
       ],
-      "evidence": []
+      "evidence": [
+        "Skins/Registry.lua e PublicAPI.lua expõem SpynonRotationSkins v1 com Register/Get/List, namespace por addon, duplicatas sem substituição, versão explícita, limite de 32 skins e cópias isoladas. Resolver interno desconhecido retorna default; global preexistente não é sobrescrito.",
+        "examples/SpynonSkin_Example declara RequiredDeps e registra dados sem criar frames/eventos, selecionar skin ou alterar preferências. O exemplo permanece separado do runtime instalado; seletor e hot swap não fazem parte deste contrato.",
+        "npm test aprovado: 181 testes Node e 385 Lua (566 ao todo), incluindo 16 de registro externo que executam o mesmo Skin.lua em namespace separado e consomem sua skin pela Queue. Lint/typecheck sem problemas em 59 arquivos; lint adicional do exemplo aprovado.",
+        "docs/architecture/EXTERNAL_SKINS.md registra API, códigos, limites, ownership cooperativo e ausência de sandbox. Dependência/loader, arquivos externos e rendering ainda requerem Retail; nenhuma validação nova em jogo ou release.",
+        "Commit bf6abf4 registra início publicado. UX-006 segue como foco para controles tipográficos com fontes nativas e fallback, preservando defaults e adiamento do acabamento fino."
+      ]
     },
     {
       "id": "BRAND-001",

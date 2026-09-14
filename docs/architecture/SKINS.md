@@ -1,5 +1,8 @@
 # Skin declarativa — SKIN-001
 
+SKIN-002 acrescenta registro público e descoberta em [`EXTERNAL_SKINS.md`](EXTERNAL_SKINS.md);
+os limites abaixo descrevem a entrega inicial. Registro não seleciona a skin automaticamente.
+
 O HUD passa a consumir uma skin de dados, sem mudar a aparência default. A arte técnica
 aprovada, aberturas de UI-007, cores, fontes WoW e tempos atuais permanecem iguais.
 `addon/Skins/Default.lua` é o ponto explícito de substituição dos assets/tokens; a Queue

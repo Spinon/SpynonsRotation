@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T23:39:05.142Z
+Atualizado pelo board em: 2026-09-14T23:45:58.160Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**SKIN-002 — External reskin contract**
+**UX-006 — Typography**
 
-Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
+Status: `planned` · Prioridade: `P2` · Responsável: Codex
 
-Próxima ação: Projetar registro público de skins.
+Próxima ação: Curar tipografia default.
 
 ## Progresso
 
 - Planejadas: 9
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 48
+- Concluídas: 49
 - Total: 59
 
 ## Fila canônica
@@ -72,7 +72,7 @@ Próxima ação: Projetar registro público de skins.
 | UX-006 | delivery | CONFIG / UX | Typography | planned | P2 | UX-001 |
 | PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | done | P1 | CORE-001, UX-001 |
 | SKIN-001 | delivery | PROFILES / SKINS | Skin API | done | P1 | UI-001 |
-| SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | in_progress | P2 | SKIN-001 |
+| SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | done | P2 | SKIN-001 |
 | BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | planned | P1 | BOOT-001 |
 | BRAND-002 | delivery | BRAND | Criar master técnico e variantes | planned | P2 | BRAND-001 |
 | BRAND-003 | delivery | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
@@ -473,6 +473,14 @@ Próxima ação: Projetar registro público de skins.
 - Test-QueueIconFit.ps1 lê agora Skins/Default.lua: oito probes cobertos e envelope preservado. Test-TechnicalAssets.ps1 confirma 16 TGAs, 16 PNGs, hashes e 7.995.680 bytes inalterados.
 - docs/architecture/SKINS.md descreve contrato interno, precedência e limites; não há seletor, registro externo nem alegação de nova aprovação Retail. Default mantém a arte anterior, sem ajuste fino visual.
 - Commit 208d2b4 registra início publicado. SKIN-002 segue como foco para registro externo versionado, conflitos e exemplo mínimo.
+
+### SKIN-002
+
+- Skins/Registry.lua e PublicAPI.lua expõem SpynonRotationSkins v1 com Register/Get/List, namespace por addon, duplicatas sem substituição, versão explícita, limite de 32 skins e cópias isoladas. Resolver interno desconhecido retorna default; global preexistente não é sobrescrito.
+- examples/SpynonSkin_Example declara RequiredDeps e registra dados sem criar frames/eventos, selecionar skin ou alterar preferências. O exemplo permanece separado do runtime instalado; seletor e hot swap não fazem parte deste contrato.
+- npm test aprovado: 181 testes Node e 385 Lua (566 ao todo), incluindo 16 de registro externo que executam o mesmo Skin.lua em namespace separado e consomem sua skin pela Queue. Lint/typecheck sem problemas em 59 arquivos; lint adicional do exemplo aprovado.
+- docs/architecture/EXTERNAL_SKINS.md registra API, códigos, limites, ownership cooperativo e ausência de sandbox. Dependência/loader, arquivos externos e rendering ainda requerem Retail; nenhuma validação nova em jogo ou release.
+- Commit bf6abf4 registra início publicado. UX-006 segue como foco para controles tipográficos com fontes nativas e fallback, preservando defaults e adiamento do acabamento fino.
 
 ### PATCH-001
 

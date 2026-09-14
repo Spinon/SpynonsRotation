@@ -1,0 +1,8 @@
+## Interface: 120100
+## Title: Spynon Skin Example (development)
+## Notes: Optional registration example; does not select or apply a skin.
+## Author: Spynon
+## Version: 0.0.0
+## RequiredDeps: SpynonRotation
+
+Skin.lua
