@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T19:15:44.349Z",
+  "updatedAt": "2026-09-14T19:46:07.661Z",
   "currentFocus": "RUN-002",
   "parallelFocus": {},
   "release": {
@@ -561,10 +561,10 @@
       "title": "Recommendation engine",
       "lane": "RUNTIME",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T19:46:07.661Z",
       "reviewBy": null,
       "nextAction": "Implementar avaliação e ordenação de regras.",
       "dependencies": [

@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T19:15:44.349Z
+Atualizado pelo board em: 2026-09-14T19:46:07.661Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **RUN-002 — Recommendation engine**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
 Próxima ação: Implementar avaliação e ordenação de regras.
 
 ## Progresso
 
-- Planejadas: 27
-- Em andamento: 0
+- Planejadas: 26
+- Em andamento: 1
 - Bloqueadas: 0
 - Concluídas: 30
 - Total: 57
@@ -45,7 +45,7 @@ Próxima ação: Implementar avaliação e ordenação de regras.
 | ENH-005 | delivery | SHAMAN | Talent-aware rotation | done | P1 | ENH-003, ENH-004, CORE-003 |
 | ENH-006 | delivery | SHAMAN | Build de referência para iniciantes | done | P1 | ENH-005, LAB-005 |
 | RUN-001 | delivery | RUNTIME | State engine | done | P0 | CORE-001, CORE-004 |
-| RUN-002 | delivery | RUNTIME | Recommendation engine | planned | P0 | RUN-001, CORE-002, LAB-003 |
+| RUN-002 | delivery | RUNTIME | Recommendation engine | in_progress | P0 | RUN-001, CORE-002, LAB-003 |
 | RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
 | UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | done | P0 | UI-DESIGN-001 |
