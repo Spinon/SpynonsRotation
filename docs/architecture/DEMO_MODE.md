@@ -46,8 +46,9 @@ nome e tipo de ação; não fornece a lógica da cena. Sem catálogo, aparecem p
 Hotkeys são uma captura das barras nativas ao iniciar: mudanças de binding durante a
 demo exigem reinício. Tempos, cargas, stacks, procs e contextos são sempre fictícios.
 
-Proc é demonstrado pela promoção e pelo rótulo da cena; os indicadores dedicados de
-buff/debuff e seu acento visual pertencem a UI-005. ST/Cleave/AoE aparecem no rótulo de
+Proc é demonstrado pela promoção e pelo rótulo da cena. UI-005 acrescenta três indicadores
+genéricos simulados, com stacks, duração, ausência, renovação e indisponibilidade; estados e
+limites estão em [`AURA_INDICATORS.md`](AURA_INDICATORS.md). ST/Cleave/AoE aparecem no rótulo de
 demonstração e no CombatContext das fixtures, não alteram o ContextController real.
 
 ## Fronteiras e desempenho
@@ -59,7 +60,8 @@ Esses objetos nunca são enviados ao serviço de recomendações.
 
 `UI.DemoMode` mantém um único timer do roteiro, além do timer compartilhado da Queue para
 movimento/GCD. Não há timer Lua por ícone. Recomendações e sidecars são reconstruídos
-somente nas fronteiras de cena, não a cada frame. O pool e todos os frames são reutilizados.
+somente nas fronteiras de cena, não a cada frame. O trilho de auras tem um timer compartilhado
+de 200 ms enquanto há durações públicas pendentes. O pool e todos os frames são reutilizados.
 Após uma pausa longa do cliente, avança diretamente para a cena correspondente, sem
 reproduzir uma cascata de eventos atrasados.
 

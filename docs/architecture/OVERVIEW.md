@@ -31,6 +31,7 @@ A composição segura da spec ativa, módulo e talentos está definida em [`SPEC
 Os snapshots observáveis e a atualização incremental por eventos estão definidos em [`STATE_ENGINE.md`](STATE_ENGINE.md).
 O interpretador seguro e a fila de prioridades estão definidos em [`RECOMMENDATION_ENGINE.md`](RECOMMENDATION_ENGINE.md).
 A primeira view estática e a resolução de ícones estão definidas em [`QUEUE_UI.md`](QUEUE_UI.md).
+Os sinais de buff/debuff relevantes à fila estão em [`AURA_INDICATORS.md`](AURA_INDICATORS.md).
 A seleção de contexto e seus fallbacks estão em [`CONTEXT_DETECTOR.md`](CONTEXT_DETECTOR.md).
 A representação intermediária declarativa e suas capabilities estão definidas em [`ROTATION_DSL.md`](ROTATION_DSL.md).
 O pipeline determinístico entre SimC, DSL e bundles de runtime está definido em [`COMPILER.md`](COMPILER.md).
@@ -48,6 +49,7 @@ A especialização determinística da baseline pelos talentos realmente ativos e
 
 - `Action`: spell, item, racial, trinket, potion, interrupt, defensive ou utility.
 - `Recommendation`: ação candidata, prioridade, razão observável e metadados visuais.
+- `Indicator`: sinal visual relevante, resolvido somente a partir de estado público.
 - `PlayerState`: snapshot somente de estado permitido.
 - `CombatContext`: AUTO, SINGLE_TARGET, CLEAVE ou AOE com fallback manual.
 - `SpecModule`: catálogo e regras plugáveis de uma spec.

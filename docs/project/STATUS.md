@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T22:14:42.429Z
+Atualizado pelo board em: 2026-09-14T22:29:00.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UI-005 — Buff/debuff indicators**
+**UX-001 — Config básico contextual**
 
-Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Definir vocabulário visual.
+Próxima ação: Prototipar navegação e cards.
 
 ## Progresso
 
 - Planejadas: 17
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 40
+- Concluídas: 41
 - Total: 59
 
 ## Fila canônica
@@ -62,7 +62,7 @@ Próxima ação: Definir vocabulário visual.
 | UI-002 | delivery | UI | Animator | done | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | done | P1 | UI-001, CORE-004 |
 | UI-004 | delivery | UI | Cooldowns/charges/stacks | done | P1 | UI-001, CORE-004 |
-| UI-005 | delivery | UI | Buff/debuff indicators | in_progress | P2 | UI-004, RUN-002 |
+| UI-005 | delivery | UI | Buff/debuff indicators | done | P2 | UI-004, RUN-002 |
 | UI-006 | delivery | UI | Demo Mode | done | P1 | UI-002, UI-004, RUN-003 |
 | UX-001 | delivery | CONFIG / UX | Config básico contextual | planned | P1 | UI-001 |
 | UX-002 | delivery | CONFIG / UX | Edit HUD | planned | P1 | UX-001, UI-002 |
@@ -394,6 +394,15 @@ Próxima ação: Definir vocabulário visual.
 - tests/unit/cooldown_overlay_spec.lua: 12/12 fixtures, incluindo opacidade por metatable, restrições, APIs ausentes, camadas, identidade estável, atualização sem mudança de ação e timer compartilhado.
 - docs/architecture/COOLDOWN_OVERLAYS.md registra fontes, limites para itens e stacks entre IDs, ausência de dados seguros e reteste Retail pendente. Pipeline: 26 fontes pinadas, zero mudanças documentadas entre as builds.
 - Commit 508057b registra início publicado. Próximo foco UI-006 (P1), elegível e útil para demonstração reproduzível antes dos indicadores UI-005 (P2). A captura estática recebida não valida os novos overlays.
+
+### UI-005
+
+- Indicator, IndicatorEngine e hook opcional de SpecModule resolvem sinais das regras recomendadas por StateReader, sem lógica de classe na UI/Core ou alteração de APL.
+- Trilho genérico limitado a três células por padrão, pool de cinco e um timer de 200 ms; diferencia ausência, renovação, atenção, estabilidade e indisponibilidade, preservando identidade e limpando ao restringir.
+- DemoTimeline inclui os cinco estados e stacks simulados. tests/unit/indicators_spec.lua contém 17 regressões de capabilities, ownership, seleção, timer, densidade e lifecycle.
+- npm test aprovado: 181 testes Node e 243 testes Lua (424 ao todo), 16 suítes Lua; 45 arquivos sem warnings, erros ou problemas de tipo. Assets: 16 TGAs, 16 PNGs e 7.995.680 bytes preservados.
+- Pipeline de API continua com 26 fontes e zero diferenças entre 69587/69814, com ownership visual atualizado. docs/architecture/AURA_INDICATORS.md registra contrato, proveniência e limites.
+- Commit 91268a6 registra início publicado. Rendering novo e combate/taint permanecem pendentes no Retail; canaleta estática e refinamentos visuais ficam para ajuste posterior solicitado pelo PO.
 
 ### UI-006
 

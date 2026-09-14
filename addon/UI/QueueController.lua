@@ -1,13 +1,14 @@
 local _, Spynon = ...
 local Controller = {}
 
-function Controller.Create(service, media, createFrame, console, bindings, cooldowns)
+function Controller.Create(service, media, createFrame, console, bindings, cooldowns, indicators, clock)
   local controller = {}
   local view, unsubscribe
   local function render(recommendations)
     view:SetRecommendations(media:Present(recommendations))
     if bindings then view:SetHotkeys(bindings:ForRecommendations(recommendations)) end
     if cooldowns then view:RefreshOverlays(cooldowns) end
+    if indicators then view:SetIndicators(indicators:ForRecommendations(recommendations), clock) end
   end
   function controller.HandleHotkeys(_, message)
     local argument = message:lower():match("^%s*keys%s*(.-)%s*$")
@@ -81,5 +82,5 @@ end
 Spynon.QueueControllerFactory = Controller
 Spynon.QueueController = Controller.Create(
   Spynon.Recommendations, Spynon.Compat.Media, CreateFrame, Spynon.Compat.Console,
-  Spynon.Compat.Bindings, Spynon.Compat.Cooldowns
+  Spynon.Compat.Bindings, Spynon.Compat.Cooldowns, Spynon.Indicators, Spynon.Compat.State
 )

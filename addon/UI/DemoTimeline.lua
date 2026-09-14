@@ -52,8 +52,20 @@ function Timeline.Create(candidates)
         if overlay then overlay.start, overlay.duration = cooldown[2], cooldown[3] end
       end
     end
+    local indicators = {
+      { id = "demo.aura_a", label = "Proc", kind = "buff", spellId = actions[1].gameId or 1,
+        state = "STABLE", expiresAt = time < 8 and 5 or 15, stacks = time < 8 and 5 or 10, attentionSeconds = 3 },
+      { id = "demo.aura_b", label = "Manutenção", kind = "debuff", spellId = actions[2].gameId or 2,
+        state = "STABLE", expiresAt = time < 8 and 10 or 15, attentionSeconds = 3,
+        refreshRecommended = (time >= 2 and time < 4) or time >= 12 },
+      { id = "demo.aura_c", label = "Sinal", kind = "buff", spellId = actions[3].gameId or 3,
+        state = "UNAVAILABLE" },
+    }
+    if time < 2 then indicators[2].state, indicators[2].expiresAt = "ABSENT", nil end
+    if time >= 4 and time < 8 then indicators[3].state = "STABLE" end
+    if time >= 12 then indicators[1].state, indicators[1].expiresAt, indicators[1].stacks = "ABSENT", nil, nil end
     return { phase = index, time = time, label = phase.label, recommendations = recommendations, overlays = overlays,
-      gcd = phase.gcd, consume = phase.consume and actions[phase.consume].id or nil }
+      gcd = phase.gcd, consume = phase.consume and actions[phase.consume].id or nil, indicators = indicators }
   end
   return timeline
 end

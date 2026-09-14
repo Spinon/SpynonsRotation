@@ -44,6 +44,14 @@ context    CombatContext opcional
 
 A identidade é independente da posição, permitindo ao Animator reconhecer MOVE, ENTER, EXIT e PROMOTE futuramente. `IsRuntimeSafe` exige que ação, motivo e contexto sejam diretamente observáveis.
 
+## Indicator
+
+Sidecar visual genérico para os sinais consultados pelas regras recomendadas: identidade,
+nome, tipo buff/debuff, spellId, ícone opcional, estado e duração/stacks públicos opcionais.
+Ausência confirmada e indisponibilidade são diferentes; o fim calculado do tempo não prova
+ausência. Não transporta objetos de API ou dados secretos. Seleção, estados, ordenação e
+lifecycle estão em [`AURA_INDICATORS.md`](AURA_INDICATORS.md).
+
 ## PlayerState
 
 Snapshot normalizado produzido pelo [State Engine](STATE_ENGINE.md):
@@ -80,12 +88,15 @@ version       versão do módulo
 getActions    provider do catálogo de Action
 getRules      provider de regras/DSL
 getStateQueries provider opcional de consultas públicas para o State Engine
+getIndicators provider opcional de definições dos indicadores relevantes à fila
 ```
 
 `SpecModule` não se registra sozinho e não avalia regras. O serviço e a ordem de carregamento estão documentados em [`SPEC_REGISTRY.md`](SPEC_REGISTRY.md); detecção de spec/talentos está em [`SPEC_DETECTION.md`](SPEC_DETECTION.md).
 `getStateQueries(detectedSpec)` é opcional e retrocompatível; seu schema e lifecycle estão em [`STATE_ENGINE.md`](STATE_ENGINE.md).
 `getRules(selection, state, context)` fornece um bundle runtime v1 e seu entrypoint; integração descrita em
 [`RECOMMENDATION_ENGINE.md`](RECOMMENDATION_ENGINE.md).
+`getIndicators(selection, recommendations)` fornece definições declarativas; o Core resolve
+seu estado com as mesmas guardas do StateReader. A UI não chama o módulo de spec diretamente.
 
 ## Fluxo de ownership
 

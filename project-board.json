@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T22:14:42.429Z",
-  "currentFocus": "UI-005",
+  "updatedAt": "2026-09-14T22:29:00.000Z",
+  "currentFocus": "UX-001",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1055,12 +1055,12 @@
       "title": "Buff/debuff indicators",
       "lane": "UI",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P2",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T22:14:42.429Z",
+      "updatedAt": "2026-09-14T22:29:00.000Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Definir vocabulário visual.",
+      "nextAction": null,
       "dependencies": [
         "UI-004",
         "RUN-002"
@@ -1070,7 +1070,14 @@
         "Indicadores não poluem o HUD",
         "Estados possuem Demo Mode e fixtures"
       ],
-      "evidence": []
+      "evidence": [
+        "Indicator, IndicatorEngine e hook opcional de SpecModule resolvem sinais das regras recomendadas por StateReader, sem lógica de classe na UI/Core ou alteração de APL.",
+        "Trilho genérico limitado a três células por padrão, pool de cinco e um timer de 200 ms; diferencia ausência, renovação, atenção, estabilidade e indisponibilidade, preservando identidade e limpando ao restringir.",
+        "DemoTimeline inclui os cinco estados e stacks simulados. tests/unit/indicators_spec.lua contém 17 regressões de capabilities, ownership, seleção, timer, densidade e lifecycle.",
+        "npm test aprovado: 181 testes Node e 243 testes Lua (424 ao todo), 16 suítes Lua; 45 arquivos sem warnings, erros ou problemas de tipo. Assets: 16 TGAs, 16 PNGs e 7.995.680 bytes preservados.",
+        "Pipeline de API continua com 26 fontes e zero diferenças entre 69587/69814, com ownership visual atualizado. docs/architecture/AURA_INDICATORS.md registra contrato, proveniência e limites.",
+        "Commit 91268a6 registra início publicado. Rendering novo e combate/taint permanecem pendentes no Retail; canaleta estática e refinamentos visuais ficam para ajuste posterior solicitado pelo PO."
+      ]
     },
     {
       "id": "UI-006",

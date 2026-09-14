@@ -14,6 +14,7 @@ local ALLOWED_FIELDS = {
   getActions = true,
   getRules = true,
   getStateQueries = true,
+  getIndicators = true,
 }
 
 local function isModuleId(value)
@@ -62,6 +63,9 @@ function SpecModule.Validate(value)
   if value.getStateQueries ~= nil and type(value.getStateQueries) ~= "function" then
     return false, "getStateQueries must be a function when provided"
   end
+  if value.getIndicators ~= nil and type(value.getIndicators) ~= "function" then
+    return false, "getIndicators must be a function when provided"
+  end
 
   return true
 end
@@ -81,6 +85,7 @@ function SpecModule.Create(value)
     getActions = value.getActions,
     getRules = value.getRules,
     getStateQueries = value.getStateQueries,
+    getIndicators = value.getIndicators,
   }
 end
 

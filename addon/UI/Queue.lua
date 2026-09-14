@@ -25,6 +25,7 @@ function Queue.Create(createFrame, parent, motionMode)
   local pool, byId, animator = {}, {}, nil
   local hotkeysEnabled, compactHotkeys = true, true
   local overlayAdapter, gcdTiming
+  local indicators
   for index = 1, 8 do
     local frame = createFrame("Frame", nil, root)
     frame:EnableMouse(false)
@@ -147,6 +148,7 @@ function Queue.Create(createFrame, parent, motionMode)
   animator = Spynon.AnimatorFactory.Create(paint, release, wake)
   animator:SetMode(motionMode or "NORMAL")
   local function clear()
+    if indicators then indicators:Clear() end
     gcdTiming = nil
     for _, slot in ipairs(pool) do release(slot) end
     wake(false)
@@ -199,6 +201,15 @@ function Queue.Create(createFrame, parent, motionMode)
     return true
   end
   function view.Hide(_) clear(); root:Hide() end
+  function view.SetIndicators(_, values, clock)
+    if not Spynon.RotationProgram.IsList(values, 12) then
+      if indicators then indicators:Clear() end
+      return false
+    end
+    if not indicators and #values == 0 then return end
+    indicators = indicators or Spynon.AuraIndicatorsFactory.Create(createFrame, root, clock)
+    indicators:Set(values)
+  end
   function view.RefreshOverlays(_, adapter)
     overlayAdapter, gcdTiming = adapter, nil
     local current = false
@@ -212,6 +223,7 @@ function Queue.Create(createFrame, parent, motionMode)
     updateGCD(); wake(motionActive)
   end
   function view.ClearOverlays(_)
+    if indicators then indicators:Clear() end
     gcdTiming = nil
     for _, slot in ipairs(pool) do slot.overlay:Clear() end
     wake(motionActive)

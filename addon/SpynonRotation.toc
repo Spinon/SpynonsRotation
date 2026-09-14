@@ -13,6 +13,7 @@ Core/Contracts/Capability.lua
 Core/Contracts/CombatContext.lua
 Core/Contracts/Action.lua
 Core/Contracts/Recommendation.lua
+Core/Contracts/Indicator.lua
 Core/Contracts/PlayerState.lua
 Core/Contracts/SpecModule.lua
 Core/SpecRegistry.lua
@@ -38,11 +39,13 @@ Core/StateEngine.lua
 Rotation/StateReader.lua
 Rotation/Program.lua
 Rotation/RecommendationEngine.lua
+Core/IndicatorEngine.lua
 Core/ContextDetector.lua
 Core/ContextController.lua
 UI/Animator.lua
 UI/Hotkeys.lua
 UI/CooldownOverlay.lua
+UI/AuraIndicators.lua
 UI/Queue.lua
 UI/QueueController.lua
 UI/DemoTimeline.lua

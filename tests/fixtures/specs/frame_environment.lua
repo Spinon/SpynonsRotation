@@ -7,6 +7,9 @@ return function()
     return value
   end
   function methods:SetSize(width, height) self.width, self.height = width, height end
+  function methods:SetWidth(width) self.width = width end
+  function methods:SetVertexColor(...) self.vertexColor = { ... } end
+  function methods:SetDesaturated(value) self.desaturated = value end
   function methods:SetAlpha(alpha) self.alpha = alpha end
   function methods:SetPoint(...) self.point = { ... } end
   function methods:ClearAllPoints() self.point = nil end

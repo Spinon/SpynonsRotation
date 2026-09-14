@@ -20,9 +20,17 @@ function Demo.Create(compat, createFrame, view, label, onUnavailable)
     if timeline:PhaseAt(elapsed) == phase then return end
     state = timeline:At(elapsed)
     phase = state.phase
-    view:SetRecommendations(compat.Media:Present(state.recommendations))
+    local presented = compat.Media:Present(state.recommendations)
+    view:SetRecommendations(presented)
     view:SetHotkeys(compat.Bindings:ForRecommendations(state.recommendations))
     view:RefreshOverlays(adapter)
+    for _, value in ipairs(state.indicators) do
+      if value.expiresAt then value.expiresAt = base + value.expiresAt end
+      for _, rec in ipairs(presented) do
+        if rec.action.gameId == value.spellId then value.icon = rec.action.icon end
+      end
+    end
+    view:SetIndicators(state.indicators, compat.State)
     if state.consume then view:PreviewConsume(state.consume) end
     label:SetText("DEMO - DADOS SIMULADOS\n" .. state.label)
   end

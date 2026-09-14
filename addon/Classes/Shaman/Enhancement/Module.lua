@@ -87,6 +87,41 @@ local function getActions(snapshot)
   return available
 end
 
+local function getIndicators(snapshot, recommendations)
+  -- Explain aura/resource inputs of selected compiled rules, not the entire aura catalog.
+  local selected, referenced, definitions = {}, {}, {}
+  for _, rec in ipairs(recommendations) do selected[rec.reason.code] = rec.action.id end
+  for _, list in ipairs(Enhancement.RotationBundle.lists) do
+    for _, rule in ipairs(list.rules) do
+      if selected[rule.id] == rule.action then
+        for _, instruction in ipairs(rule.program) do
+          local path = instruction.path
+          if instruction.op == "READ_STATE" and path then
+            if path[1] == "auras" then referenced[path[2]] = true
+            elseif path[1] == "resources" then
+              for _, resource in ipairs(Catalog.resources) do
+                if resource.id == path[2] and resource.kind == "aura_stacks" then
+                  for _, aura in ipairs(Catalog.auras) do
+                    if aura.spellId == resource.auraId then referenced[aura.id] = true end
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  for _, aura in ipairs(Catalog.auras) do
+    if referenced[aura.id] and actionIsAvailable(aura, snapshot) then
+      definitions[#definitions + 1] = { id = aura.id, auraId = aura.id, label = aura.label,
+        spellId = aura.spellId, kind = aura.unit == "target" and "debuff" or "buff", showAbsent = true,
+        refreshRecommended = aura.unit == "target" and recommendations[1].action.id == aura.id }
+    end
+  end
+  return definitions
+end
+
 local module, moduleError = SpecModule.Create({
   id = Catalog.id,
   classId = Catalog.classId,
@@ -94,6 +129,7 @@ local module, moduleError = SpecModule.Create({
   displayName = Catalog.displayName,
   version = Catalog.version,
   getActions = getActions,
+  getIndicators = getIndicators,
   getStateQueries = function(snapshot)
     local queries = { resources = {}, auras = {}, cooldowns = {}, talents = {} }
     for _, resource in ipairs(Catalog.resources) do
