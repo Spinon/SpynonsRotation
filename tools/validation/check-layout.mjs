@@ -63,6 +63,10 @@ const requiredFiles = [
   "tests/unit/in_game_harness_spec.lua",
   "docs/project/RETAIL_SMOKE.md",
   "addon/UI/Queue.lua",
+  "addon/Compat/Bindings.lua",
+  "addon/UI/Hotkeys.lua",
+  "tests/unit/hotkeys_spec.lua",
+  "docs/architecture/HOTKEYS.md",
   "addon/UI/Animator.lua",
   "tests/unit/animator_spec.lua",
   "docs/architecture/ANIMATOR.md",
@@ -226,6 +230,7 @@ for (const directory of genericLuaRoots) {
 }
 
 const volatileApiPatterns = [
+  { name: "Bindings/action identity", pattern: /\b(?:GetBindingKey|GetBindingAction|GetActionInfo)\s*\(/u },
   { name: "GetBuildInfo", pattern: /\bGetBuildInfo\s*\(/u },
   { name: "C_SpecializationInfo", pattern: /\bC_SpecializationInfo\b/u },
   { name: "C_ClassTalents", pattern: /\bC_ClassTalents\b/u },

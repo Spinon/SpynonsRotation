@@ -32,6 +32,8 @@ Interpolação, retomada, saídas simultâneas e consumo estão descritos em [AN
 
 `SetRecommendations`, `Hide`, `GetRoot` e `GetFrameForId` expõem somente a superfície da view.
 `QueueController:Start/Stop` administra uma única assinatura e reaproveita a instância após restart.
+UI-003 adiciona um mapa lateral de teclas sem mudar Recommendations; resolução e overlays estão em
+[HOTKEYS.md](HOTKEYS.md).
 
 As canaletas permanecem neutras. GCD, radial, texto de cooldown, hotkeys, charges/stacks, cast, indicadores,
 contexto e assinatura continuam fora desta task. Não se simula um estado luminoso ou uma aprovação desses

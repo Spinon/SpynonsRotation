@@ -3,8 +3,8 @@
   "repository": "Gethe/wow-ui-source",
   "developmentSmokeBuilds": ["69587", "69814"],
   "builds": {
-    "69587": { "version": "12.1.0.69587", "interface": 120100, "commit": "8ea15b61e45c0ed4eba01439c90757f86eb78d34", "snapshotSha256": "BEF67470E6C5A0B645A0AFC74FC921ECF7196146D23A61A9430E0DD202845785" },
-    "69814": { "version": "12.1.0.69814", "interface": 120100, "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59", "snapshotSha256": "1C1DC2529B96AF363133A50DCF20378D94CA59E6063520124C1FCBD4EBA4E407" }
+    "69587": { "version": "12.1.0.69587", "interface": 120100, "commit": "8ea15b61e45c0ed4eba01439c90757f86eb78d34", "snapshotSha256": "65D8AADC2E5CE8E8068A74C67C525B599971C3E2D5392378FFE91D4226A09D1C" },
+    "69814": { "version": "12.1.0.69814", "interface": 120100, "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59", "snapshotSha256": "23D64676A2CED09EDFDE9D10D0CF2593CF0366E46727ED753BDEE8A85B70F8FB" }
   },
   "files": [
     { "name": "BuildDocumentation.lua", "modules": ["addon/Compat/Build.lua", "addon/Core/InGameHarness.lua"] },
@@ -16,7 +16,10 @@
     { "name": "UnitDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Core/StateEngine.lua", "addon/Compat/Media.lua", "addon/UI/QueueController.lua"] },
     { "name": "UnitAuraDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Core/StateEngine.lua"] },
     { "name": "UnitAuraSharedDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Rotation/StateReader.lua"] },
-    { "name": "SpellDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Compat/Media.lua", "addon/Rotation/StateReader.lua"] },
+    { "name": "SpellDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Compat/Media.lua", "addon/Rotation/StateReader.lua", "addon/Compat/Bindings.lua"] },
+    { "name": "KeyBindingsDocumentation.lua", "modules": ["addon/Compat/Bindings.lua", "addon/UI/QueueController.lua"] },
+    { "name": "ActionButton.lua", "path": "Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua", "modules": ["addon/Compat/Bindings.lua"] },
+    { "name": "ActionButtonUtil.lua", "path": "Interface/AddOns/Blizzard_ActionBar/Shared/ActionButtonUtil.lua", "modules": ["addon/Compat/Bindings.lua"] },
     { "name": "SpellSharedDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Rotation/StateReader.lua"] },
     { "name": "ItemDocumentation.lua", "modules": ["addon/Compat/Media.lua"] },
     { "name": "RestrictedActionsDocumentation.lua", "modules": ["addon/Core/StateEngine.lua", "addon/Core/InGameHarness.lua"] },

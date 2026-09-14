@@ -24,6 +24,11 @@ return function()
   function methods:SetColorTexture(...) self.color = { ... }; self.texture = nil end
   function methods:SetTextColor(...) self.textColor = { ... } end
   function methods:SetText(text) self.text = text end
+  function methods:GetFont() return self.font or "Fonts\\FRIZQT__.TTF", self.fontSize or 12, self.fontFlags end
+  function methods:SetFont(font, size, flags) self.font, self.fontSize, self.fontFlags = font, size, flags end
+  function methods:SetJustifyH(value) self.justifyH = value end
+  function methods:SetWordWrap(value) self.wordWrap = value end
+  function methods:GetStringWidth() return #(self.text or "") * (self.fontSize or 12) * 0.55 end
   function methods:CreateTexture(_, layer) local child = object("Texture", self); child.layer = layer; return child end
   function methods:CreateFontString(_, layer, template)
     local child = object("FontString", self); child.layer, child.template = layer, template; return child

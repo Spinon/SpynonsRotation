@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:53:07.435Z",
-  "currentFocus": "UI-003",
+  "updatedAt": "2026-09-14T21:02:47.007Z",
+  "currentFocus": "UI-004",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -998,12 +998,12 @@
       "title": "Hotkeys",
       "lane": "UI",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T20:53:07.435Z",
+      "updatedAt": "2026-09-14T21:02:47.007Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Mapear bindings e renderizar overlay.",
+      "nextAction": null,
       "dependencies": [
         "UI-001",
         "CORE-004"
@@ -1013,7 +1013,13 @@
         "Abreviação compacta é configurável",
         "Fallback mantém legibilidade"
       ],
-      "evidence": []
+      "evidence": [
+        "Compat.Bindings observa até 96 botões nativos visíveis, slots da página atual, aliases públicos, duas teclas e CLICK; confirma binding efetivo e separa itens/spells. Macros e barras externas não são presumidas.",
+        "UI.Hotkeys e Queue exibem texto no canto superior direito com outline, sem badge; compact/full/off por sessão, fallback oculto para ausência ou texto ilegível. Contratos de Recommendation/Action não foram alterados.",
+        "npm test aprovado: 181 testes Node e 200 testes Lua, incluindo 12 fixtures de teclas; 38 arquivos sem warnings, erros ou problemas de tipo.",
+        "Pipeline de API expandido para 25 fontes pinadas, incluindo helpers legados em caminhos explicitamente permitidos; zero diferenças entre 69587 e 69814 e nenhuma alteração da allowlist.",
+        "docs/architecture/HOTKEYS.md registra resolução, eventos, Secret Values, macros/barras não suportadas e reteste Retail pendente. Commit aa0e506 registra início."
+      ]
     },
     {
       "id": "UI-004",

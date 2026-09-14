@@ -21,6 +21,7 @@ function Queue.Create(createFrame, parent, motionMode)
   root:EnableMouse(false)
   root:Hide()
   local pool, byId, animator = {}, {}, nil
+  local hotkeysEnabled, compactHotkeys = true, true
   for index = 1, 8 do
     local frame = createFrame("Frame", nil, root)
     frame:EnableMouse(false)
@@ -40,9 +41,16 @@ function Queue.Create(createFrame, parent, motionMode)
     placeholder:SetPoint("CENTER", frame, "CENTER", 0, 0)
     placeholder:SetTextColor(0.55, 0.6, 0.66, 1)
     placeholder:SetText("?")
+    local hotkey = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    local font = hotkey:GetFont()
+    hotkey:SetPoint("TOPRIGHT", icon, "TOPRIGHT", -2, -2)
+    hotkey:SetTextColor(0.94, 0.97, 1, 1)
+    hotkey:SetJustifyH("RIGHT")
+    hotkey:SetWordWrap(false)
+    hotkey:Hide()
     frame:Hide()
     pool[index] = { frame = frame, icon = icon, border = border, currentBorder = currentBorder,
-      flash = flash, placeholder = placeholder }
+      flash = flash, placeholder = placeholder, hotkey = hotkey, font = font }
   end
 
   local function geometry(position)
@@ -76,6 +84,17 @@ function Queue.Create(createFrame, parent, motionMode)
     if ratio > 1 then top, bottom = 0.5 - 0.42 / ratio, 0.5 + 0.42 / ratio
     else left, right = 0.5 - 0.42 * ratio, 0.5 + 0.42 * ratio end
     slot.icon:SetTexCoord(left, right, top, bottom)
+    local text = hotkeysEnabled and Spynon.Hotkeys.Format(slot.key, compactHotkeys) or nil
+    if text and slot.font then
+      local size = math.floor((12 + 2 * value.current) * scale + 0.5)
+      slot.hotkey:SetFont(slot.font, size, "OUTLINE")
+      slot.hotkey:SetText(text)
+      if slot.hotkey:GetStringWidth() > value.iconWidth * scale - 4 then
+        slot.hotkey:SetFont(slot.font, 10, "OUTLINE")
+      end
+      if slot.hotkey:GetStringWidth() <= value.iconWidth * scale - 4 then slot.hotkey:Show()
+      else slot.hotkey:Hide() end -- Never truncate a binding into a different instruction.
+    else slot.hotkey:SetText(""); slot.hotkey:Hide() end
   end
   local function content(slot, rec)
     local loaded = rec.action.icon and slot.icon:SetTexture(rec.action.icon)
@@ -90,6 +109,7 @@ function Queue.Create(createFrame, parent, motionMode)
     if byId[slot.id] == slot then byId[slot.id] = nil end
     animator:Cancel(slot)
     slot.id, slot.position, slot.rec, slot.visual, slot.retiring, slot.consumeTime = nil, nil, nil, nil, nil, nil
+    slot.key = nil; slot.hotkey:SetText(""); slot.hotkey:Hide()
     slot.frame:Hide()
   end
   local ticking = false
@@ -158,6 +178,13 @@ function Queue.Create(createFrame, parent, motionMode)
     return true
   end
   function view.Hide(_) clear(); root:Hide() end
+  function view.SetHotkeys(_, keys)
+    for _, slot in ipairs(pool) do slot.key = keys[slot.id]; paint(slot) end
+  end
+  function view.SetHotkeyStyle(_, enabled, compact)
+    hotkeysEnabled, compactHotkeys = enabled, compact
+    for _, slot in ipairs(pool) do paint(slot) end
+  end
   function view.SetMotionMode(_, mode)
     if not animator:SetMode(mode) then return false end
     for _, slot in ipairs(pool) do slot.consumeTime = nil; paint(slot) end

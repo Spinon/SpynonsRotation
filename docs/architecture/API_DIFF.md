@@ -8,7 +8,8 @@ metadados de restrição. Não afirma automaticamente qual função quebrou ou q
 ## Fontes e pins
 
 `tools/wow-api/sources.json` fixa commits de UI Source, versão declarada em `version.txt`, interface,
-22 arquivos e ownership. `snapshots/<build>.json` contém hashes de conteúdo e é, por sua vez, protegido
+25 arquivos e ownership (22 originais + documentação de bindings e dois helpers legados em UI-003).
+`snapshots/<build>.json` contém hashes de conteúdo e é, por sua vez, protegido
 por hash no manifest. `reports/69587-to-69814.json` é um golden reproduzido pelo check.
 
 - referência `69587`: [8ea15b6](https://github.com/Gethe/wow-ui-source/commit/8ea15b61e45c0ed4eba01439c90757f86eb78d34);

@@ -23,7 +23,8 @@ if (command === "capture") {
   for (const snapshot of Object.values(snapshots)) {
     if (snapshot.files.length !== sources.files.length) throw new Error("Configured coverage drift");
     for (const tracked of sources.files) {
-      const file = snapshot.files.find((entry) => entry.path.endsWith(`/${tracked.name}`));
+      const trackedPath = tracked.path ?? `Interface/AddOns/Blizzard_APIDocumentationGenerated/${tracked.name}`;
+      const file = snapshot.files.find((entry) => entry.path === trackedPath);
       if (!file || JSON.stringify(file.modules) !== JSON.stringify([...tracked.modules].sort())) {
         throw new Error("Configured ownership drift");
       }

@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:53:07.435Z
+Atualizado pelo board em: 2026-09-14T21:02:47.007Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UI-003 — Hotkeys**
+**UI-004 — Cooldowns/charges/stacks**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Mapear bindings e renderizar overlay.
+Próxima ação: Criar overlays compatíveis com Retail.
 
 ## Progresso
 
 - Planejadas: 20
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 36
+- Concluídas: 37
 - Total: 58
 
 ## Fila canônica
@@ -60,7 +60,7 @@ Próxima ação: Mapear bindings e renderizar overlay.
 | UI-DESIGN-011 | ui | UI DESIGN | Distribuição dos assets de runtime | done | P1 | UI-DESIGN-008 |
 | UI-001 | delivery | UI | Queue estática | done | P0 | RUN-002 |
 | UI-002 | delivery | UI | Animator | done | P1 | UI-001 |
-| UI-003 | delivery | UI | Hotkeys | in_progress | P1 | UI-001, CORE-004 |
+| UI-003 | delivery | UI | Hotkeys | done | P1 | UI-001, CORE-004 |
 | UI-004 | delivery | UI | Cooldowns/charges/stacks | planned | P1 | UI-001, CORE-004 |
 | UI-005 | delivery | UI | Buff/debuff indicators | planned | P2 | UI-004, RUN-002 |
 | UI-006 | delivery | UI | Demo Mode | planned | P1 | UI-002, UI-004, RUN-003 |
@@ -376,6 +376,14 @@ Próxima ação: Mapear bindings e renderizar overlay.
 - npm test aprovado: 180 testes Node e 188 testes Lua, incluindo 16 fixtures de animação; 36 arquivos sem warnings, erros ou problemas de tipo. Pressão de 100 diffs sem alocação adicional de frames.
 - docs/architecture/ANIMATOR.md documenta tempos, fallbacks, fontes pinadas e limites. A captura Retail anterior não valida estas animações; inspeção de movimento no cliente continua pendente.
 - Commit 078e1af registra o início da task; pipeline mantém 22 fontes sem diferença entre builds, atualizando somente ownership do evento.
+
+### UI-003
+
+- Compat.Bindings observa até 96 botões nativos visíveis, slots da página atual, aliases públicos, duas teclas e CLICK; confirma binding efetivo e separa itens/spells. Macros e barras externas não são presumidas.
+- UI.Hotkeys e Queue exibem texto no canto superior direito com outline, sem badge; compact/full/off por sessão, fallback oculto para ausência ou texto ilegível. Contratos de Recommendation/Action não foram alterados.
+- npm test aprovado: 181 testes Node e 200 testes Lua, incluindo 12 fixtures de teclas; 38 arquivos sem warnings, erros ou problemas de tipo.
+- Pipeline de API expandido para 25 fontes pinadas, incluindo helpers legados em caminhos explicitamente permitidos; zero diferenças entre 69587 e 69814 e nenhuma alteração da allowlist.
+- docs/architecture/HOTKEYS.md registra resolução, eventos, Secret Values, macros/barras não suportadas e reteste Retail pendente. Commit aa0e506 registra início.
 
 ### PATCH-001
 

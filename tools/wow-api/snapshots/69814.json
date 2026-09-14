@@ -5,6 +5,24 @@
   "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59",
   "files": [
     {
+      "path": "Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua",
+      "present": true,
+      "bytes": 62267,
+      "sha256": "54FB5625A5E8AA343CBBC0BE805B23E2B3B329011E792448E6B732A4BEBD8CBA",
+      "modules": [
+        "addon/Compat/Bindings.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_ActionBar/Shared/ActionButtonUtil.lua",
+      "present": true,
+      "bytes": 14432,
+      "sha256": "53D26E8D32F3B3579D1A6146FBD3F68F115BFC07DB88F342A394CB6D89D173E6",
+      "modules": [
+        "addon/Compat/Bindings.lua"
+      ]
+    },
+    {
       "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/BuildDocumentation.lua",
       "present": true,
       "bytes": 2484,
@@ -31,6 +49,16 @@
       "sha256": "96A47025F01B338A1FB6891825BC1D71E888910008CD12DD22A54089427C64AE",
       "modules": [
         "addon/Compat/Media.lua"
+      ]
+    },
+    {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/KeyBindingsDocumentation.lua",
+      "present": true,
+      "bytes": 5770,
+      "sha256": "B2A44F594572A4F4AF9F7AF50F68CAC5BB1D14276B391BD02E223DD75227A881",
+      "modules": [
+        "addon/Compat/Bindings.lua",
+        "addon/UI/QueueController.lua"
       ]
     },
     {
@@ -175,6 +203,7 @@
       "bytes": 30929,
       "sha256": "FBEDB3CF4B82D623B49A7FA170C982DE2E4B005D2BCD5DB3068BFB6211E51007",
       "modules": [
+        "addon/Compat/Bindings.lua",
         "addon/Compat/Media.lua",
         "addon/Compat/State.lua",
         "addon/Rotation/StateReader.lua"

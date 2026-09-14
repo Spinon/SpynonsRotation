@@ -1,11 +1,22 @@
 local _, Spynon = ...
 local Controller = {}
 
-function Controller.Create(service, media, createFrame, console)
+function Controller.Create(service, media, createFrame, console, bindings)
   local controller = {}
   local view, unsubscribe
   local function render(recommendations)
     view:SetRecommendations(media:Present(recommendations))
+    if bindings then view:SetHotkeys(bindings:ForRecommendations(recommendations)) end
+  end
+  function controller.HandleHotkeys(_, message)
+    local argument = message:lower():match("^%s*keys%s*(.-)%s*$")
+    if view and (argument == "compact" or argument == "full" or argument == "off") then
+      view:SetHotkeyStyle(argument ~= "off", argument ~= "full")
+      console:Write("Teclas: " .. argument .. " (somente nesta sessão)")
+      return true
+    end
+    console:Write("Use /spynon keys compact | full | off")
+    return false
   end
   function controller.HandleMotion(_, message)
     local argument = message:lower():match("^%s*motion%s*(.-)%s*$")
@@ -23,13 +34,25 @@ function Controller.Create(service, media, createFrame, console)
     if not view then
       view = Spynon.QueueFactory.Create(createFrame, media:GetRootParent())
       view:GetRoot():RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
-      view:GetRoot():SetScript("OnEvent", function(_, _, unit, _, spellID)
+      if bindings then
+        for _, event in ipairs(Spynon.CompatInternal.Bindings.Events) do view:GetRoot():RegisterEvent(event) end
+      end
+      view:GetRoot():SetScript("OnEvent", function(_, event, unit, _, spellID)
         if not unsubscribe then return end
-        local confirmed = media:ConfirmedPlayerSpell(unit, spellID)
-        if confirmed then view:ConfirmCast(confirmed) end
+        if event == "UNIT_SPELLCAST_SUCCEEDED" then
+          local confirmed = media:ConfirmedPlayerSpell(unit, spellID)
+          if confirmed then view:ConfirmCast(confirmed) end
+        elseif bindings then
+          bindings:Invalidate(event == "ADDON_RESTRICTION_STATE_CHANGED")
+          view:SetHotkeys(bindings:ForRecommendations(service:GetRecommendations()))
+        end
       end)
     end
-    if console then console:RegisterRoute("motion", function(message) controller:HandleMotion(message) end) end
+    if console then
+      console:RegisterRoute("motion", function(message) controller:HandleMotion(message) end)
+      console:RegisterRoute("keys", function(message) controller:HandleHotkeys(message) end)
+    end
+    if bindings then bindings:Invalidate(false) end
     unsubscribe = service:Subscribe(render)
     render(service:GetRecommendations())
   end
@@ -43,5 +66,5 @@ end
 
 Spynon.QueueControllerFactory = Controller
 Spynon.QueueController = Controller.Create(
-  Spynon.Recommendations, Spynon.Compat.Media, CreateFrame, Spynon.Compat.Console
+  Spynon.Recommendations, Spynon.Compat.Media, CreateFrame, Spynon.Compat.Console, Spynon.Compat.Bindings
 )

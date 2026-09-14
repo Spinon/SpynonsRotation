@@ -15,6 +15,7 @@ function CompatFactory.Create(environment)
     Media = Internal.Media.Create(apiEnvironment),
     Console = Internal.Console.Create(apiEnvironment),
     Context = Internal.Context.Create(apiEnvironment),
+    Bindings = Internal.Bindings.Create(apiEnvironment),
   }
 end
 

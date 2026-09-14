@@ -4,7 +4,7 @@ export const hash = (text) => crypto.createHash("sha256").update(text).digest("h
 export const serialize = (value) => `${JSON.stringify(value, null, 2)}\n`;
 const digest = /^[A-F0-9]{64}$/u;
 const commit = /^[a-f0-9]{40}$/u;
-const sourcePath = /^Interface\/AddOns\/Blizzard_APIDocumentationGenerated\/[A-Za-z0-9]+\.lua$/u;
+const sourcePath = /^Interface\/AddOns\/(?:Blizzard_APIDocumentationGenerated\/[A-Za-z0-9]+|Blizzard_ActionBar\/Shared\/(?:ActionButton|ActionButtonUtil))\.lua$/u;
 const modulePath = /^addon\/(?:[A-Za-z0-9_-]+\/)*[A-Za-z0-9_-]+\.lua$/u;
 function requireValue(condition, message) { if (!condition) throw new Error(message); }
 
@@ -30,8 +30,8 @@ export async function captureSnapshot(pin, files, fetchFile) {
   requireValue(commit.test(pin.commit), "Capture requires an immutable commit");
   const version = await fetchFile("version.txt");
   requireValue(version !== null && version.toString("utf8").trim() === pin.version, "Source build mismatch");
-  const entries = await Promise.all(files.map(async ({ name, modules }) => {
-    const path = `Interface/AddOns/Blizzard_APIDocumentationGenerated/${name}`;
+  const entries = await Promise.all(files.map(async ({ name, path: configuredPath, modules }) => {
+    const path = configuredPath ?? `Interface/AddOns/Blizzard_APIDocumentationGenerated/${name}`;
     requireValue(sourcePath.test(path), "Invalid configured source path");
     const bytes = await fetchFile(path);
     return { path, present: bytes !== null, bytes: bytes?.length ?? 0,

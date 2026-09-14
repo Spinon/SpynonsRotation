@@ -49,13 +49,23 @@ test("pins rejeitam edição de um byte ou troca de identidade do snapshot", asy
   assert.throws(() => verifyPinnedSnapshot(`${text} `, source), /hash drift/u);
   assert.throws(() => verifyPinnedSnapshot(text, { ...source, version: "12.1.0.2" }), /pin mismatch/u);
 });
-test("golden real compara 22 arquivos e não promove ausência de diff a validação Retail", () => {
+test("golden real compara 25 arquivos e não promove ausência de diff a validação Retail", () => {
   const sources = JSON.parse(fs.readFileSync("tools/wow-api/sources.json", "utf8"));
   const before = verifyPinnedSnapshot(fs.readFileSync("tools/wow-api/snapshots/69587.json", "utf8"), sources.builds["69587"]);
   const after = verifyPinnedSnapshot(fs.readFileSync("tools/wow-api/snapshots/69814.json", "utf8"), sources.builds["69814"]);
   const result = compareSnapshots(before, after);
-  assert.equal(result.coveredFiles, 22);
+  assert.equal(result.coveredFiles, 25);
   assert.equal(result.changes.length, 0);
   assert.equal(result.simulationParity, "NOT_ASSERTED");
   assert.equal(serialize(result), fs.readFileSync("tools/wow-api/reports/69587-to-69814.json", "utf8"));
+});
+
+test("helpers legados têm caminhos explícitos permitidos sem aceitar traversal", async () => {
+  const entry = { name: "ActionButton.lua", path: "Interface/AddOns/Blizzard_ActionBar/Shared/ActionButton.lua",
+    modules: ["addon/Compat/Bindings.lua"] };
+  const read = async (path) => Buffer.from(path === "version.txt" ? pin.version : "helper");
+  const data = await captureSnapshot(pin, [entry], read);
+  assert.equal(data.files[0].path, entry.path);
+  await assert.rejects(captureSnapshot(pin, [{ ...entry, path: "../ActionButton.lua" }], read), /path/u);
+  await assert.rejects(captureSnapshot(pin, [{ ...entry, path: "Interface/AddOns/Unknown/ActionButton.lua" }], read), /path/u);
 });

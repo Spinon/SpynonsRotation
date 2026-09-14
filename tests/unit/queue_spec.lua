@@ -80,7 +80,7 @@ test("missing icons use local neutral placeholders and retain layout", function(
   local frame = view:GetFrameForId("n.a")
   local placeholders = 0
   for _, object in ipairs(objects) do
-    if object.parent == frame and object.kind == "FontString" then
+    if object.parent == frame and object.kind == "FontString" and object.layer == "ARTWORK" then
       eq(object.visible, true); eq(object.text, "?"); placeholders = placeholders + 1
     end
   end

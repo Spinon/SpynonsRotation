@@ -88,6 +88,8 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
     queueController:Stop()
     active = true
     preview:SetRecommendations(compat.Media:Present(fixtures))
+    compat.Bindings:Invalidate(false)
+    preview:SetHotkeys(compat.Bindings:ForRecommendations(fixtures))
     compat.Console:Write("Fila simulada visível; NÃO representa uma rotação. /spynon test hide restaura a fila real.")
     return true
   end

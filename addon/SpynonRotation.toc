@@ -30,6 +30,7 @@ Compat/State.lua
 Compat/Media.lua
 Compat/Console.lua
 Compat/Context.lua
+Compat/Bindings.lua
 Compat/Facade.lua
 Core/SpecDetector.lua
 Core/StateEngine.lua
@@ -39,6 +40,7 @@ Rotation/RecommendationEngine.lua
 Core/ContextDetector.lua
 Core/ContextController.lua
 UI/Animator.lua
+UI/Hotkeys.lua
 UI/Queue.lua
 UI/QueueController.lua
 Core/InGameHarness.lua
