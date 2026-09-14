@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:07:35.546Z
+Atualizado pelo board em: 2026-09-14T20:13:09.540Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UI-001 — Queue estática**
+**TEST-002 — In-game harness**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Criar primeiro protótipo visual no cliente.
+Próxima ação: Detectar cliente Retail e definir /spynon test.
 
 ## Progresso
 
 - Planejadas: 25
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 0
-- Concluídas: 31
+- Concluídas: 32
 - Total: 57
 
 ## Fila canônica
@@ -58,7 +58,7 @@ Próxima ação: Criar primeiro protótipo visual no cliente.
 | UI-DESIGN-009 | ui | UI DESIGN | Encaixe do GCD na ação atual | done | P1 | UI-DESIGN-002, UI-DESIGN-004 |
 | UI-DESIGN-010 | ui | UI DESIGN | Contraste cromático do GCD | done | P1 | UI-DESIGN-005, UI-DESIGN-009 |
 | UI-DESIGN-011 | ui | UI DESIGN | Distribuição dos assets de runtime | done | P1 | UI-DESIGN-008 |
-| UI-001 | delivery | UI | Queue estática | in_progress | P0 | RUN-002 |
+| UI-001 | delivery | UI | Queue estática | done | P0 | RUN-002 |
 | UI-002 | delivery | UI | Animator | planned | P1 | UI-001 |
 | UI-003 | delivery | UI | Hotkeys | planned | P1 | UI-001, CORE-004 |
 | UI-004 | delivery | UI | Cooldowns/charges/stacks | planned | P1 | UI-001, CORE-004 |
@@ -350,3 +350,11 @@ Próxima ação: Criar primeiro protótipo visual no cliente.
 - tools/ui/Build-TechnicalAssets.ps1 reconstrói os TGAs diretamente nas pastas por componente e tools/ui/Test-TechnicalAssets.ps1 rejeita arquivos fora da árvore do addon ou não registrados.
 - tools/ui/Test-TechnicalAssets.ps1 validou 16 TGAs, 16 PNGs e 7.995.680 bytes de runtime após a redistribuição.
 - npm test passou sobre o commit 0ba555a em worktree limpo; nenhuma implementação Lua ou validação no cliente Retail foi declarada.
+
+### UI-001
+
+- addon/UI/Queue.lua e QueueController.lua — view genérica com ação principal e três próximas, frames persistentes por identidade, crop proporcional, UVs do handoff e placeholder local.
+- addon/Compat/Media.lua — resolução de ícones nativos spell/item antes da apresentação de Recommendation, sem dados de classe na UI.
+- tests/unit/queue_spec.lua — 9/9 testes de layout, quatro recomendações, pool, promoção, placeholder, mídia e lifecycle; fixtures de frames, não rendering Retail.
+- npm test — aprovado: 172 testes Node, 153 testes Lua, layout, lint e typecheck; tools/ui/Test-TechnicalAssets.ps1 confirmou 16 TGAs e 16 PNGs com hashes preservados.
+- docs/architecture/QUEUE_UI.md — composição e limites documentados. Inspeção visual em cliente real e aprovação da escala efetiva permanecem pendentes de TEST-002.

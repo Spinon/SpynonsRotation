@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:07:35.546Z",
-  "currentFocus": "UI-001",
+  "updatedAt": "2026-09-14T20:13:09.540Z",
+  "currentFocus": "TEST-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -937,12 +937,12 @@
       "title": "Queue estática",
       "lane": "UI",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T20:07:35.546Z",
+      "updatedAt": "2026-09-14T20:13:09.540Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Criar primeiro protótipo visual no cliente.",
+      "nextAction": null,
       "dependencies": [
         "RUN-002"
       ],
@@ -951,7 +951,13 @@
         "Primeira ação tem maior hierarquia",
         "UI consome somente Recommendation"
       ],
-      "evidence": []
+      "evidence": [
+        "addon/UI/Queue.lua e QueueController.lua — view genérica com ação principal e três próximas, frames persistentes por identidade, crop proporcional, UVs do handoff e placeholder local.",
+        "addon/Compat/Media.lua — resolução de ícones nativos spell/item antes da apresentação de Recommendation, sem dados de classe na UI.",
+        "tests/unit/queue_spec.lua — 9/9 testes de layout, quatro recomendações, pool, promoção, placeholder, mídia e lifecycle; fixtures de frames, não rendering Retail.",
+        "npm test — aprovado: 172 testes Node, 153 testes Lua, layout, lint e typecheck; tools/ui/Test-TechnicalAssets.ps1 confirmou 16 TGAs e 16 PNGs com hashes preservados.",
+        "docs/architecture/QUEUE_UI.md — composição e limites documentados. Inspeção visual em cliente real e aprovação da escala efetiva permanecem pendentes de TEST-002."
+      ]
     },
     {
       "id": "UI-002",

@@ -1,0 +1,29 @@
+return function()
+  local objects = {}
+  local methods = {}
+  local function object(kind, parent)
+    local value = setmetatable({ kind = kind, parent = parent, visible = true }, { __index = methods })
+    objects[#objects + 1] = value
+    return value
+  end
+  function methods:SetSize(width, height) self.width, self.height = width, height end
+  function methods:SetPoint(...) self.point = { ... } end
+  function methods:ClearAllPoints() self.point = nil end
+  function methods:SetAllPoints(target) self.allPoints = target end
+  function methods:SetFrameStrata(strata) self.strata = strata end
+  function methods:EnableMouse(enabled) self.mouseEnabled = enabled end
+  function methods:Show() self.visible = true end
+  function methods:Hide() self.visible = false end
+  function methods:SetTexture(texture) self.texture = texture; return texture ~= "missing" end
+  function methods:SetTexCoord(...) self.uv = { ... } end
+  function methods:SetColorTexture(...) self.color = { ... }; self.texture = nil end
+  function methods:SetTextColor(...) self.textColor = { ... } end
+  function methods:SetText(text) self.text = text end
+  function methods:CreateTexture(_, layer) local child = object("Texture", self); child.layer = layer; return child end
+  function methods:CreateFontString(_, layer, template)
+    local child = object("FontString", self); child.layer, child.template = layer, template; return child
+  end
+  function methods:RegisterEvent(event) self.events = self.events or {}; self.events[event] = true end
+  function methods:SetScript(event, callback) self.scripts = self.scripts or {}; self.scripts[event] = callback end
+  return function(kind, _, parent) return object(kind, parent) end, objects
+end

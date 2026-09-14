@@ -30,6 +30,7 @@ O registry plugável de classes/specs e sua ordem de carregamento estão definid
 A composição segura da spec ativa, módulo e talentos está definida em [`SPEC_DETECTION.md`](SPEC_DETECTION.md).
 Os snapshots observáveis e a atualização incremental por eventos estão definidos em [`STATE_ENGINE.md`](STATE_ENGINE.md).
 O interpretador seguro e a fila de prioridades estão definidos em [`RECOMMENDATION_ENGINE.md`](RECOMMENDATION_ENGINE.md).
+A primeira view estática e a resolução de ícones estão definidas em [`QUEUE_UI.md`](QUEUE_UI.md).
 A representação intermediária declarativa e suas capabilities estão definidas em [`ROTATION_DSL.md`](ROTATION_DSL.md).
 O pipeline determinístico entre SimC, DSL e bundles de runtime está definido em [`COMPILER.md`](COMPILER.md).
 A matriz neutra de simulação, seus planos e guardrails de fitness estão definidos em [`SCENARIOS.md`](SCENARIOS.md).
