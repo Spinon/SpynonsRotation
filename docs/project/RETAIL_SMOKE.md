@@ -62,6 +62,16 @@ o comando não transforma execução automática em aprovação humana ou valida
 
 ## Checklist a registrar na evidência
 
+### Demonstração animada disponível em UI-006
+
+Depois de `/reload`, executar `/spynon demo` fora de combate. A sequência identificada como
+simulada repete em 16 segundos: promoção, consumo, entrada/saída, cooldowns, contagens e
+ST/Cleave/AoE. `/spynon demo restart` reinicia; `reduced` reduz movimentos; `off` desliga
+somente movimentos, e **`/spynon demo stop` encerra**. A fila real é restaurada ao sair.
+O roteiro detalhado está em `docs/architecture/DEMO_MODE.md`. Não seguir a demo como rotação.
+
+### Inspeção humana
+
 - [ ] Addon carregou sem erro Lua; `/spynon test` foi reconhecido.
 - [ ] Build/interface coincidiram; estado e Recommendations válidos.
 - [ ] Texturas nativas, molduras, crop, escala e quatro posições legíveis no teste visual.
@@ -75,4 +85,4 @@ o comando não transforma execução automática em aprovação humana ou valida
 ## Fora do escopo deste smoke
 
 Não é uma prova de rotação ótima, equivalência com SimC ou liberação de release. O preview estático
-não implementa o Demo Mode com timelines (UI-006), nem substitui a inspeção de animações futuras.
+e o Demo Mode animado são ferramentas de curadoria, não substitutos da inspeção de combate real.

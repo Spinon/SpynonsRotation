@@ -5,6 +5,7 @@ local AVAILABLE = Spynon.Contracts.Capability.ADDON_AVAILABLE
 function Harness.Create(compat, stateEngine, recommendations, queueController, registry, createFrame)
   local harness = {}
   local preview, previewLabel, active, started = nil, nil, false, false
+  local demo
 
   function harness.Run(_)
     local build = compat.Build:GetInfo()
@@ -51,12 +52,13 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
   end
 
   function harness.Hide(_)
+    if demo then demo:Stop() end
     if preview then preview:Hide() end
     if active then queueController:Start() end
     active = false
   end
 
-  function harness.Show(_)
+  function harness.Show(_, demoMode)
     local combat = compat.State:ReadCombat()
     if not combat.ok or combat.capability ~= AVAILABLE or combat.value ~= false then
       compat.Console:Write("Teste visual permitido somente fora de combate e com estado observável.")
@@ -74,6 +76,22 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
       local module = registry:GetBySpecId(selection.specId)
       if module then candidates = module.getActions(selection) end
     end
+    if demoMode then
+      demo = demo or Spynon.DemoModeFactory.Create(compat, createFrame, preview, previewLabel,
+        function() harness:Hide() end)
+      queueController:Stop()
+      active = true
+      if not demo:Start(candidates, demoMode) then
+        harness:Hide()
+        compat.Console:Write("Demo indisponível: combate ou relógio não observável.")
+        return false
+      end
+      compat.Console:Write("Demo animada de 16 segundos; NÃO representa uma rotação. /spynon demo stop para sair.")
+      return true
+    end
+    if demo then demo:Stop() end
+    preview:SetMotionMode("OFF")
+    previewLabel:SetText("TESTE VISUAL - DADOS SIMULADOS")
     local fixtures = {}
     for index = 1, 4 do
       local source = candidates[index]
@@ -102,10 +120,21 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
     compat.Console:Write("Comandos: /spynon test | /spynon test show | /spynon test hide")
   end
 
+  function harness.HandleDemo(_, text)
+    local argument = text:lower():match("^%s*demo%s*(.-)%s*$")
+    if argument == "stop" then harness:Hide(); return true end
+    local modes = { [""] = "NORMAL", play = "NORMAL", restart = "NORMAL",
+      normal = "NORMAL", reduced = "REDUCED", off = "OFF" }
+    if modes[argument] then return harness:Show(modes[argument]) end
+    compat.Console:Write("Use /spynon demo [restart | normal | reduced | off | stop]")
+    return false
+  end
+
   function harness.Start(_)
     if started then return end
     started = true
     compat.Console:Register(function(text) harness:Handle(text) end)
+    compat.Console:RegisterRoute("demo", function(text) harness:HandleDemo(text) end)
     local frame = createFrame("Frame")
     frame:RegisterEvent("PLAYER_REGEN_DISABLED")
     frame:RegisterEvent("ADDON_RESTRICTION_STATE_CHANGED")
@@ -113,6 +142,7 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
     frame:SetScript("OnEvent", function() harness:Hide() end)
   end
   function harness.IsPreviewActive(_) return active end
+  function harness.IsDemoActive(_) return demo and demo:IsActive() or false end
   return harness
 end
 

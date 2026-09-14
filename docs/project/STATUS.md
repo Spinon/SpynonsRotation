@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T21:19:11.351Z
+Atualizado pelo board em: 2026-09-14T21:26:49.969Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UI-006 — Demo Mode**
+**UI-005 — Buff/debuff indicators**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P2` · Responsável: Codex
 
-Próxima ação: Criar timeline de demonstração.
+Próxima ação: Definir vocabulário visual.
 
 ## Progresso
 
 - Planejadas: 18
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 38
+- Concluídas: 39
 - Total: 58
 
 ## Fila canônica
@@ -63,7 +63,7 @@ Próxima ação: Criar timeline de demonstração.
 | UI-003 | delivery | UI | Hotkeys | done | P1 | UI-001, CORE-004 |
 | UI-004 | delivery | UI | Cooldowns/charges/stacks | done | P1 | UI-001, CORE-004 |
 | UI-005 | delivery | UI | Buff/debuff indicators | planned | P2 | UI-004, RUN-002 |
-| UI-006 | delivery | UI | Demo Mode | in_progress | P1 | UI-002, UI-004, RUN-003 |
+| UI-006 | delivery | UI | Demo Mode | done | P1 | UI-002, UI-004, RUN-003 |
 | UX-001 | delivery | CONFIG / UX | Config básico contextual | planned | P1 | UI-001 |
 | UX-002 | delivery | CONFIG / UX | Edit HUD | planned | P1 | UX-001, UI-002 |
 | UX-003 | delivery | CONFIG / UX | Advanced panels | planned | P2 | UX-001 |
@@ -393,6 +393,15 @@ Próxima ação: Criar timeline de demonstração.
 - tests/unit/cooldown_overlay_spec.lua: 12/12 fixtures, incluindo opacidade por metatable, restrições, APIs ausentes, camadas, identidade estável, atualização sem mudança de ação e timer compartilhado.
 - docs/architecture/COOLDOWN_OVERLAYS.md registra fontes, limites para itens e stacks entre IDs, ausência de dados seguros e reteste Retail pendente. Pipeline: 26 fontes pinadas, zero mudanças documentadas entre as builds.
 - Commit 508057b registra início publicado. Próximo foco UI-006 (P1), elegível e útil para demonstração reproduzível antes dos indicadores UI-005 (P2). A captura estática recebida não valida os novos overlays.
+
+### UI-006
+
+- UI.DemoTimeline e UI.DemoMode: sequência determinística de 16 segundos com cinco identidades, promoção por proc simulado, entrada/saída/consumo, cooldowns, contagens e contextos ST/Cleave/AoE.
+- /spynon demo, restart, normal, reduced, off e stop reutilizam Queue/Animator/overlays em uma view explicitamente simulada; combate, restrição, mundo e perda de relógio encerram o modo e restauram o controller real.
+- tests/unit/demo_spec.lua: 11/11 fixtures; determinismo, isolamento do catálogo, placeholders, 1000 ticks sem novos frames, contagens antigas removidas, comandos e cancelamento. Sem leitura de cooldown real para produzir tempos simulados.
+- npm test aprovado: 181 testes Node e 223 testes Lua em 15 suítes; 42 arquivos Lua sem warnings, erros ou problemas de tipo. Check de API permanece com 26 fontes pinadas, sem ampliar a homologação.
+- docs/architecture/DEMO_MODE.md e docs/project/RETAIL_SMOKE.md documentam comandos, checkpoints e limites. Proc dedicado de buff/debuff fica em UI-005; contexto da demo não modifica o contexto real; nenhum dado de demo é persistido.
+- Commit 10947ca registra início publicado. Nenhuma execução da timeline no Retail foi declarada; captura anterior comprova somente a prévia estática.
 
 ### PATCH-001
 

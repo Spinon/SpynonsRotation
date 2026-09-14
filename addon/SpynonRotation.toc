@@ -45,5 +45,7 @@ UI/Hotkeys.lua
 UI/CooldownOverlay.lua
 UI/Queue.lua
 UI/QueueController.lua
+UI/DemoTimeline.lua
+UI/DemoMode.lua
 Core/InGameHarness.lua
 Core/Bootstrap.lua

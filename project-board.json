@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T21:19:11.351Z",
-  "currentFocus": "UI-006",
+  "updatedAt": "2026-09-14T21:26:49.969Z",
+  "currentFocus": "UI-005",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1077,12 +1077,12 @@
       "title": "Demo Mode",
       "lane": "UI",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T21:19:11.351Z",
+      "updatedAt": "2026-09-14T21:26:49.969Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Criar timeline de demonstração.",
+      "nextAction": null,
       "dependencies": [
         "UI-002",
         "UI-004",
@@ -1093,7 +1093,14 @@
         "Não exige combate real",
         "Cenários são reproduzíveis"
       ],
-      "evidence": []
+      "evidence": [
+        "UI.DemoTimeline e UI.DemoMode: sequência determinística de 16 segundos com cinco identidades, promoção por proc simulado, entrada/saída/consumo, cooldowns, contagens e contextos ST/Cleave/AoE.",
+        "/spynon demo, restart, normal, reduced, off e stop reutilizam Queue/Animator/overlays em uma view explicitamente simulada; combate, restrição, mundo e perda de relógio encerram o modo e restauram o controller real.",
+        "tests/unit/demo_spec.lua: 11/11 fixtures; determinismo, isolamento do catálogo, placeholders, 1000 ticks sem novos frames, contagens antigas removidas, comandos e cancelamento. Sem leitura de cooldown real para produzir tempos simulados.",
+        "npm test aprovado: 181 testes Node e 223 testes Lua em 15 suítes; 42 arquivos Lua sem warnings, erros ou problemas de tipo. Check de API permanece com 26 fontes pinadas, sem ampliar a homologação.",
+        "docs/architecture/DEMO_MODE.md e docs/project/RETAIL_SMOKE.md documentam comandos, checkpoints e limites. Proc dedicado de buff/debuff fica em UI-005; contexto da demo não modifica o contexto real; nenhum dado de demo é persistido.",
+        "Commit 10947ca registra início publicado. Nenhuma execução da timeline no Retail foi declarada; captura anterior comprova somente a prévia estática."
+      ]
     },
     {
       "id": "UX-001",

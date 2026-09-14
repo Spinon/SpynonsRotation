@@ -14,7 +14,10 @@ return function()
   function methods:SetFrameStrata(strata) self.strata = strata end
   function methods:GetFrameLevel() return self.frameLevel or 1 end
   function methods:SetFrameLevel(level) self.frameLevel = level end
-  function methods:Clear() self.durationObject = nil end
+  function methods:Clear() self.durationObject, self.cooldownStart, self.cooldownDuration = nil, nil, nil end
+  function methods:SetCooldown(start, duration, modRate)
+    self.cooldownStart, self.cooldownDuration, self.cooldownRate = start, duration, modRate
+  end
   function methods:SetCooldownFromDurationObject(duration, clearIfZero)
     self.durationObject, self.clearIfZero = duration, clearIfZero
   end

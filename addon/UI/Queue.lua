@@ -241,6 +241,13 @@ function Queue.Create(createFrame, parent, motionMode)
     end
     return false
   end
+  function view.PreviewConsume(_, id)
+    -- Demo-only identity pulse; never called by the live recommendation controller.
+    local slot = byId[id]
+    if not slot or slot.position ~= 1 then return false end
+    for _, other in ipairs(pool) do other.consumeTime = nil end
+    return animator:Consume(slot)
+  end
   function view.GetFrameForId(_, id) return byId[id] and byId[id].frame or nil end
   function view.GetRoot(_) return root end
   return view

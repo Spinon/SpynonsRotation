@@ -51,6 +51,16 @@ function Cooldowns.Create(environment)
     if cooldown.duration <= 0 or not V.IsFiniteNumber(finish) then return nil end
     return { start = cooldown.startTime, duration = cooldown.duration, finish = finish }
   end
+  function adapter.ApplyDemo(_, widget, start, duration)
+    widget:Clear()
+    -- Explicit synthetic input, used only by the isolated out-of-combat demo view.
+    if not state:IsPublic(start) or not state:IsPublic(duration)
+      or not V.IsFiniteNumber(start) or start < 0 or not V.IsFiniteNumber(duration) or duration <= 0
+    then return false end
+    local ok = pcall(widget.SetCooldown, widget, start, duration, 1)
+    if not ok then widget:Clear() end
+    return ok
+  end
   function adapter.GCDProgress(_, timing)
     local clock = state:ReadClock()
     if not clock.ok or clock.value < timing.start or clock.value >= timing.finish then return nil end
