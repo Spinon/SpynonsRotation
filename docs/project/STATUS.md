@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T21:17:59.107Z
+Atualizado pelo board em: 2026-09-14T21:19:11.351Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UI-006 — Demo Mode**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Criar timeline de demonstração.
 
 ## Progresso
 
-- Planejadas: 19
-- Em andamento: 0
+- Planejadas: 18
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 38
 - Total: 58
@@ -63,7 +63,7 @@ Próxima ação: Criar timeline de demonstração.
 | UI-003 | delivery | UI | Hotkeys | done | P1 | UI-001, CORE-004 |
 | UI-004 | delivery | UI | Cooldowns/charges/stacks | done | P1 | UI-001, CORE-004 |
 | UI-005 | delivery | UI | Buff/debuff indicators | planned | P2 | UI-004, RUN-002 |
-| UI-006 | delivery | UI | Demo Mode | planned | P1 | UI-002, UI-004, RUN-003 |
+| UI-006 | delivery | UI | Demo Mode | in_progress | P1 | UI-002, UI-004, RUN-003 |
 | UX-001 | delivery | CONFIG / UX | Config básico contextual | planned | P1 | UI-001 |
 | UX-002 | delivery | CONFIG / UX | Edit HUD | planned | P1 | UX-001, UI-002 |
 | UX-003 | delivery | CONFIG / UX | Advanced panels | planned | P2 | UX-001 |

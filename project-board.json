@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T21:17:59.107Z",
+  "updatedAt": "2026-09-14T21:19:11.351Z",
   "currentFocus": "UI-006",
   "parallelFocus": {},
   "release": {
@@ -1077,10 +1077,10 @@
       "title": "Demo Mode",
       "lane": "UI",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T21:19:11.351Z",
       "reviewBy": "Product Owner",
       "nextAction": "Criar timeline de demonstração.",
       "dependencies": [
