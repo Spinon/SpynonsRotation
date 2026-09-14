@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:13:09.540Z",
+  "updatedAt": "2026-09-14T20:13:41.245Z",
   "currentFocus": "TEST-002",
   "parallelFocus": {},
   "release": {
@@ -1394,10 +1394,10 @@
       "title": "In-game harness",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T20:13:41.245Z",
       "reviewBy": null,
       "nextAction": "Detectar cliente Retail e definir /spynon test.",
       "dependencies": [
