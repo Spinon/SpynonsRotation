@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:34:25.931Z",
-  "currentFocus": "UI-002",
+  "updatedAt": "2026-09-14T20:38:38.917Z",
+  "currentFocus": "PATCH-003",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1471,6 +1471,25 @@
         "Checks rodam automaticamente",
         "Artifacts são reproduzíveis",
         "CI não publica sem autorização"
+      ],
+      "evidence": []
+    },
+    {
+      "id": "PATCH-003",
+      "title": "Diagnóstico de build no smoke Retail",
+      "lane": "PATCH / QUALITY",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "tasks/PATCH-003.md",
+      "updatedAt": "2026-09-14T20:38:38.917Z",
+      "reviewBy": null,
+      "nextAction": "Separar falha de leitura e build divergente; cobrir retornos auxiliares ausentes e repetir smoke.",
+      "dependencies": ["CORE-004", "PATCH-001"],
+      "acceptanceCriteria": [
+        "Diagnóstico distingue indisponibilidade e divergência real",
+        "Identidade de build permanece estrita sem depender de textos auxiliares",
+        "Regressões offline e evidência parcial Retail documentadas"
       ],
       "evidence": []
     },

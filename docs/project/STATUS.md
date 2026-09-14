@@ -2,25 +2,25 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:34:25.931Z
+Atualizado pelo board em: 2026-09-14T20:38:38.917Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UI-002 — Animator**
+**PATCH-003 — Diagnóstico de build no smoke Retail**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Implementar diff de fila e movimentos.
+Próxima ação: Separar falha de leitura e build divergente; cobrir retornos auxiliares ausentes e repetir smoke.
 
 ## Progresso
 
-- Planejadas: 22
+- Planejadas: 23
 - Em andamento: 0
 - Bloqueadas: 1
 - Concluídas: 34
-- Total: 57
+- Total: 58
 
 ## Fila canônica
 
@@ -82,6 +82,7 @@ Próxima ação: Implementar diff de fila e movimentos.
 | TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
 | RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
+| PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | planned | P0 | CORE-004, PATCH-001 |
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
