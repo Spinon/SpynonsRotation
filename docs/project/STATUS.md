@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T20:20:07.441Z
+Atualizado pelo board em: 2026-09-14T20:20:46.521Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **RUN-003 — Context detector**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Definir sinais e fallbacks do CombatContext.
 
 ## Progresso
 
-- Planejadas: 24
-- Em andamento: 0
+- Planejadas: 23
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 32
 - Total: 57
@@ -46,7 +46,7 @@ Próxima ação: Definir sinais e fallbacks do CombatContext.
 | ENH-006 | delivery | SHAMAN | Build de referência para iniciantes | done | P1 | ENH-005, LAB-005 |
 | RUN-001 | delivery | RUNTIME | State engine | done | P0 | CORE-001, CORE-004 |
 | RUN-002 | delivery | RUNTIME | Recommendation engine | done | P0 | RUN-001, CORE-002, LAB-003 |
-| RUN-003 | delivery | RUNTIME | Context detector | planned | P1 | RUN-001, CORE-004 |
+| RUN-003 | delivery | RUNTIME | Context detector | in_progress | P1 | RUN-001, CORE-004 |
 | UI-DESIGN-001 | ui | UI DESIGN | Consolidar layout do HUD principal | done | P0 | BOOT-002 |
 | UI-DESIGN-002 | ui | UI DESIGN | Arte final da ação atual e fila | done | P0 | UI-DESIGN-001 |
 | UI-DESIGN-003 | ui | UI DESIGN | Contexto, hotkeys e stacks | done | P1 | UI-DESIGN-002 |

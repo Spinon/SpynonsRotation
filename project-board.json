@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T20:20:07.441Z",
+  "updatedAt": "2026-09-14T20:20:46.521Z",
   "currentFocus": "RUN-003",
   "parallelFocus": {},
   "release": {
@@ -589,10 +589,10 @@
       "title": "Context detector",
       "lane": "RUNTIME",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-14T20:20:46.521Z",
       "reviewBy": null,
       "nextAction": "Definir sinais e fallbacks do CombatContext.",
       "dependencies": [
