@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T01:48:52Z
+Atualizado pelo board em: 2026-09-15T01:51:51Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**BRAND-001 — Integrar logotipo Spynon aprovado**
+**BRAND-002 — Criar master técnico e variantes**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P2` · Responsável: Codex
 
-Próxima ação: Registrar proveniência e integridade da prancha aprovada já presente em assets/brand, preservando seus bytes.
+Próxima ação: Preparar derivados técnicos.
 
 ## Progresso
 
 - Planejadas: 3
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 55
+- Concluídas: 56
 - Total: 60
 
 ## Fila canônica
@@ -73,7 +73,7 @@ Próxima ação: Registrar proveniência e integridade da prancha aprovada já p
 | PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | done | P1 | CORE-001, UX-001 |
 | SKIN-001 | delivery | PROFILES / SKINS | Skin API | done | P1 | UI-001 |
 | SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | done | P2 | SKIN-001 |
-| BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | in_progress | P1 | BOOT-001 |
+| BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | done | P1 | BOOT-001 |
 | BRAND-002 | delivery | BRAND | Criar master técnico e variantes | planned | P2 | BRAND-001 |
 | BRAND-003 | delivery | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
 | PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | done | P1 | CORE-004 |
@@ -490,6 +490,12 @@ Próxima ação: Registrar proveniência e integridade da prancha aprovada já p
 - npm test aprovado: 181 testes Node e 385 Lua (566 ao todo), incluindo 16 de registro externo que executam o mesmo Skin.lua em namespace separado e consomem sua skin pela Queue. Lint/typecheck sem problemas em 59 arquivos; lint adicional do exemplo aprovado.
 - docs/architecture/EXTERNAL_SKINS.md registra API, códigos, limites, ownership cooperativo e ausência de sandbox. Dependência/loader, arquivos externos e rendering ainda requerem Retail; nenhuma validação nova em jogo ou release.
 - Commit bf6abf4 registra início publicado. UX-006 segue como foco para controles tipográficos com fontes nativas e fallback, preservando defaults e adiamento do acabamento fino.
+
+### BRAND-001
+
+- assets/brand/Spynon Logo.png já estava no bootstrap e28f3d9771cdf6cb181a6b7c8199f3b34eefaa64. Original preservado byte a byte: SHA-256 7F36D1B97850262D77DCE67F88D48B30447355902C48C1D20F455651BBF9A19D.
+- Inspeção visual: prancha horizontal, símbolo e variante clara; PNG RGB 1448x1086 sem alpha. Origem/propriedades/limites registrados em assets/brand/source.json e README.md; nenhuma nova arte ou integração runtime nesta etapa.
+- brand:check aprovado; cinco testes de integridade, metadados, caminho, aprovação e exclusão runtime. npm test aprovado: 215 Node + 437 Lua = 652; lint/tipos limpos. Gate incorporado à suíte automática.
 
 ### PATCH-001
 

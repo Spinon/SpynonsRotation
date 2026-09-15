@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "brand": "Spynon",
+  "approval": {
+    "status": "APPROVED_SOURCE",
+    "authority": "Product Owner",
+    "reference": "docs/product/PRODUCT_CONTEXT.md#21-identidade-spynon--logotipo-aprovado"
+  },
+  "source": {
+    "path": "assets/brand/Spynon Logo.png",
+    "sha256": "7F36D1B97850262D77DCE67F88D48B30447355902C48C1D20F455651BBF9A19D",
+    "bytes": 1448115,
+    "width": 1448,
+    "height": 1086,
+    "bitDepth": 8,
+    "colorType": 2,
+    "firstTrackedCommit": "e28f3d9771cdf6cb181a6b7c8199f3b34eefaa64",
+    "firstTrackedAt": "2026-09-02T17:15:16-03:00"
+  },
+  "integration": {
+    "stage": "REFERENCE_ONLY",
+    "runtimeAsset": false,
+    "nextTask": "BRAND-002"
+  }
+}

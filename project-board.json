@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T01:48:52Z",
-  "currentFocus": "BRAND-001",
+  "updatedAt": "2026-09-15T01:51:51Z",
+  "currentFocus": "BRAND-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1364,12 +1364,12 @@
       "title": "Integrar logotipo Spynon aprovado",
       "lane": "BRAND",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T01:48:52Z",
+      "updatedAt": "2026-09-15T01:51:51Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Registrar proveniência e integridade da prancha aprovada já presente em assets/brand, preservando seus bytes.",
+      "nextAction": null,
       "dependencies": [
         "BOOT-001"
       ],
@@ -1378,7 +1378,11 @@
         "Origem e checksum são registrados",
         "Nenhum redesign é feito"
       ],
-      "evidence": []
+      "evidence": [
+        "assets/brand/Spynon Logo.png já estava no bootstrap e28f3d9771cdf6cb181a6b7c8199f3b34eefaa64. Original preservado byte a byte: SHA-256 7F36D1B97850262D77DCE67F88D48B30447355902C48C1D20F455651BBF9A19D.",
+        "Inspeção visual: prancha horizontal, símbolo e variante clara; PNG RGB 1448x1086 sem alpha. Origem/propriedades/limites registrados em assets/brand/source.json e README.md; nenhuma nova arte ou integração runtime nesta etapa.",
+        "brand:check aprovado; cinco testes de integridade, metadados, caminho, aprovação e exclusão runtime. npm test aprovado: 215 Node + 437 Lua = 652; lint/tipos limpos. Gate incorporado à suíte automática."
+      ]
     },
     {
       "id": "BRAND-002",

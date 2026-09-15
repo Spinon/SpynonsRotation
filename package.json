@@ -10,6 +10,8 @@
   },
   "scripts": {
     "bootstrap": "npm run toolchain:doctor && npm run project:status && npm run project:check",
+    "brand:check": "node tools/brand/source.mjs",
+    "brand:test": "node --test tests/project/brand-source.test.mjs",
     "project:status": "node tools/project/status.mjs",
     "project:check": "node tools/project/check.mjs",
     "project:test": "node --test tests/project/board.test.mjs tests/project/commands.test.mjs tests/project/sync.test.mjs",
@@ -63,7 +65,7 @@
     "core:test": "node tools/validation/run-lua-tests.mjs",
     "addon:lint": "node tools/validation/run-luacheck.mjs",
     "addon:typecheck": "node tools/validation/run-wowlua-ls.mjs",
-    "test": "npm run project:check && npm run project:test && npm run ci:test && npm run ci:check && npm run api:test && npm run api:check && npm run secret:test && npm run secret:check && npm run wowless:test && npm run wowless:check && npm run package:test && npm run package:check && npm run simc:test && npm run dsl:test && npm run compiler:test && npm run compiler:check && npm run scenario:test && npm run scenario:check && npm run optimizer:test && npm run optimizer:check && npm run regression:test && npm run regression:check && npm run enhancement:test && npm run enhancement:check && npm run enhancement:baseline-check && npm run enhancement:st-check && npm run enhancement:mt-check && npm run enhancement:talent-check && npm run enhancement:starter-check && npm run enhancement:addon-check && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
+    "test": "npm run brand:test && npm run brand:check && npm run project:check && npm run project:test && npm run ci:test && npm run ci:check && npm run api:test && npm run api:check && npm run secret:test && npm run secret:check && npm run wowless:test && npm run wowless:check && npm run package:test && npm run package:check && npm run simc:test && npm run dsl:test && npm run compiler:test && npm run compiler:check && npm run scenario:test && npm run scenario:check && npm run optimizer:test && npm run optimizer:check && npm run regression:test && npm run regression:check && npm run enhancement:test && npm run enhancement:check && npm run enhancement:baseline-check && npm run enhancement:st-check && npm run enhancement:mt-check && npm run enhancement:talent-check && npm run enhancement:starter-check && npm run enhancement:addon-check && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
   },
   "license": "UNLICENSED"
 }
