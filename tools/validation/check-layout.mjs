@@ -31,6 +31,12 @@ const requiredDirectories = [
   "tasks",
 ];
 const requiredFiles = [
+  ".github/workflows/validate.yml",
+  "tools/ci/pins.json",
+  "tools/ci/Setup-WindowsTools.ps1",
+  "tools/ci/check.mjs",
+  "tests/project/ci.test.mjs",
+  "docs/architecture/CI.md",
   "tools/packaging/zip.mjs",
   "tools/packaging/package.mjs",
   "tools/packaging/Test-Package.ps1",

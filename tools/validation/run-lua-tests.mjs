@@ -5,9 +5,9 @@ import { spawnSync } from "node:child_process";
 
 const root = process.cwd();
 const localAppData = process.env.LOCALAPPDATA ?? path.join(os.homedir(), "AppData", "Local");
-const executable = process.platform === "win32"
+const executable = process.env.SPYNON_LUAJIT ?? (process.platform === "win32"
   ? path.join(localAppData, "Programs", "LuaJIT", "bin", "luajit.exe")
-  : "luajit";
+  : "luajit");
 
 if (process.platform === "win32" && !fs.existsSync(executable)) {
   console.error(`LuaJIT não encontrado: ${executable}`);

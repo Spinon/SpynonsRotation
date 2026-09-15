@@ -1,0 +1,76 @@
+name: Validate addon
+on:
+  push:
+    branches: [main, 'codex/**']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  offline:
+    name: Offline checks and package
+    runs-on: windows-2025
+    timeout-minutes: 15
+    env:
+      SPYNON_LUAJIT: ${{ github.workspace }}/.tools/ci-luajit/bin/luajit.exe
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: '24.15.0'
+          package-manager-cache: false
+      - name: Prepare pinned portable tools
+        shell: pwsh
+        run: ./tools/ci/Setup-WindowsTools.ps1
+      - run: npm ci --ignore-scripts
+      - name: Validate board transitions in pushed commits
+        run: node --input-type=module -e "import { checkHistory } from './tools/ci/history.mjs'; checkHistory();"
+      - name: Run complete offline suite
+        run: npm test
+      - name: Reproduce development package
+        id: package
+        run: node tools/ci/package.mjs
+      - name: Verify ZIP with independent reader
+        shell: pwsh
+        env:
+          PACKAGE_DIRECTORY: ${{ steps.package.outputs.directory }}
+        run: ./tools/packaging/Test-Package.ps1 -Directory $env:PACKAGE_DIRECTORY
+      - name: Keep development artifact only
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: development-package-${{ github.sha }}
+          path: ${{ steps.package.outputs.directory }}
+          retention-days: 7
+          if-no-files-found: error
+  headless:
+    name: Pinned Wowless smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: '24.15.0'
+          package-manager-cache: false
+      - run: npm run wowless:check
+      - run: npm run wowless:build
+      - run: npm run wowless:run
+      - name: Keep isolated headless evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: headless-evidence-${{ github.sha }}
+          path: |
+            .tools/wowless-runs/*/report.json
+            .tools/wowless-runs/*/run.log
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: warn
