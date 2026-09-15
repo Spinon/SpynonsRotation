@@ -2,30 +2,31 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T03:15:22Z
+Atualizado pelo board em: 2026-09-15T03:27:23Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**TEST-002 — In-game harness**
+**PATCH-004 — Diagnóstico da fila real vazia**
 
-Status: `blocked` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Testar commit 8ce5a3b instalado: /reload, sair da demo/config e clicar no tag Auto/ST/Cleave/AoE antes e durante combate; conferir /spynon context status e checklist RETAIL_SMOKE.md. Também inspecionar posição/Acoplado/seis ações/coluna principal de UX-007; aprovação da demo não homologa combate/taint.
+Próxima ação: Adicionar diagnóstico público de seleção e descarte; instalar para nova captura em combate.
 
 ## Progresso
 
-- Planejadas: 1
+- Planejadas: 2
 - Em andamento: 0
 - Bloqueadas: 2
 - Concluídas: 58
-- Total: 61
+- Total: 62
 
 ## Fila canônica
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
+| PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | planned | P0 | PATCH-003, RUN-002, UX-008 |
 | UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | done | P1 | RUN-003, UX-007 |
 | BOOT-001 | delivery | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
 | BOOT-002 | delivery | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |

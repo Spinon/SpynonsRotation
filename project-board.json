@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T03:15:22Z",
-  "currentFocus": "TEST-002",
+  "updatedAt": "2026-09-15T03:27:23Z",
+  "currentFocus": "PATCH-004",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -20,6 +20,26 @@
     "validatedAt": null
   },
   "items": [
+    {
+      "id": "PATCH-004",
+      "title": "Diagnóstico da fila real vazia",
+      "lane": "PATCH / QUALITY",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "tasks/PATCH-004.md",
+      "updatedAt": "2026-09-15T03:27:23Z",
+      "reviewBy": null,
+      "nextAction": "Adicionar diagnóstico público de seleção e descarte; instalar para nova captura em combate.",
+      "dependencies": ["PATCH-003", "RUN-002", "UX-008"],
+      "acceptanceCriteria": [
+        "Diagnóstico distingue seleção, condições e readiness sem alterar decisões",
+        "Snapshot público limitado é exibido e salvo sem dados pessoais ou secretos",
+        "Regressões e smoke offline passam",
+        "Checkpoint instalado e reteste Retail explicitamente pendente"
+      ],
+      "evidence": []
+    },
     {
       "id": "UX-008",
       "title": "Contexto clicável no HUD",
