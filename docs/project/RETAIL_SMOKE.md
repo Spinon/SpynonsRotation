@@ -145,6 +145,11 @@ discretas de tamanho, sem slider. Não há nova evidência Retail dessa entrega.
 
 ### Tag de contexto clicável (UX-008)
 
+Commit 8ce5a3b instalado no Retail 12.1.0.69814 em 15/09/2026 UTC, 80 arquivos
+verificados. Pacote reproduzível SHA-256
+5BEBF2955F39EFFDEF2B6D1AD8D7002C275F9EF5E40B6B0C2FBAAAEE7D39425B.
+670 testes offline e smoke Wowless passaram; inspeção humana abaixo pendente.
+
 Depois de `/reload`, fora da demo/config, procurar o tag acima da fila. Ele deve
 continuar visível mesmo sem recomendações. Clique esquerdo alterna Auto → ST →
 Cleave → AoE → Auto. AUTO atual continua fallback ST, não detecção de packs.

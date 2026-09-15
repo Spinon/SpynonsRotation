@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T03:15:00Z",
-  "currentFocus": "UX-008",
+  "updatedAt": "2026-09-15T03:15:22Z",
+  "currentFocus": "TEST-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -25,12 +25,12 @@
       "title": "Contexto clicável no HUD",
       "lane": "CONFIG / UX",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/UX-008.md",
-      "updatedAt": "2026-09-15T03:15:00Z",
+      "updatedAt": "2026-09-15T03:15:22Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Implementar tag de contexto clicável usando o controlador existente, com fallback explícito e testes de lifecycle.",
+      "nextAction": null,
       "dependencies": ["RUN-003", "UX-007"],
       "acceptanceCriteria": [
         "Tag alterna quatro modos e distingue fallback de override manual",
@@ -42,7 +42,9 @@
         "UI/ContextTag.lua integra tag de contexto acima do HUD real: clique Auto/ST/Cleave/AoE, fallback/manual explícitos, independente da visibilidade de recomendações e sincronizado com slash pelo ContextController.",
         "Botão não protegido e sem ação de spell/macro; acompanha âncora/escala, reutiliza cores/fonte da skin e tipografia configurada. Demo/config/editor ocultam o tag e cancelam seus listeners; retorno relê contexto sem recriar frames.",
         "npm test passou: 224 Node + 446 Lua = 670 testes, 28 suítes Lua; lint e tipos limpos em 62 arquivos. Oito regressões novas cobrem ciclo, fila vazia, slash, fallback, escala, lifecycle, snapshots isolados e reentrada; SECRET-08 revisado sem nova API volátil.",
-        "Wowless 2026-09-15T03:13:51.170Z PASS, zero erros, 521 warnings upstream; runtime SHA-256 E2814562E8B9D844138340E50CAC01A5EE0262A449F069B9D7E2CBDFB9883860. Rendering e clique/lockdown em combate no Retail continuam pendentes no checklist RETAIL_SMOKE.md."
+        "Wowless 2026-09-15T03:13:51.170Z PASS, zero erros, 521 warnings upstream; runtime SHA-256 E2814562E8B9D844138340E50CAC01A5EE0262A449F069B9D7E2CBDFB9883860. Rendering e clique/lockdown em combate no Retail continuam pendentes no checklist RETAIL_SMOKE.md.",
+        "Commit 8ce5a3b publicado. Pacote limpo reproduzido duas vezes, 80 entradas, SHA-256 5BEBF2955F39EFFDEF2B6D1AD8D7002C275F9EF5E40B6B0C2FBAAAEE7D39425B; leitor ZIP .NET independente aprovado.",
+        "Install-DevelopmentAddon.ps1 verificou 80 arquivos no Retail 12.1.0.69814 em D:/Blizzard/World of Warcraft/_retail_/Interface/AddOns/SpynonRotation. SavedVariables e outros addons preservados. Próximo foco TEST-002; nenhum release publicado."
       ]
     },
     {
@@ -1554,9 +1556,9 @@
       "status": "blocked",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T01:43:19Z",
+      "updatedAt": "2026-09-15T03:15:22Z",
       "reviewBy": null,
-      "nextAction": "Testar versão UX-007 instalada: /reload, posição/Acoplado/seis ações/coluna principal e config; concluir checklist Retail de combate/taint. docs/architecture/HUD_USABILITY.md contém o roteiro; aprovação anterior da demo não homologa estes ajustes.",
+      "nextAction": "Testar commit 8ce5a3b instalado: /reload, sair da demo/config e clicar no tag Auto/ST/Cleave/AoE antes e durante combate; conferir /spynon context status e checklist RETAIL_SMOKE.md. Também inspecionar posição/Acoplado/seis ações/coluna principal de UX-007; aprovação da demo não homologa combate/taint.",
       "dependencies": [
         "RUN-002",
         "UI-001",

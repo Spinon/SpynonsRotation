@@ -2,31 +2,31 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T03:15:00Z
+Atualizado pelo board em: 2026-09-15T03:15:22Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UX-008 — Contexto clicável no HUD**
+**TEST-002 — In-game harness**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `blocked` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Implementar tag de contexto clicável usando o controlador existente, com fallback explícito e testes de lifecycle.
+Próxima ação: Testar commit 8ce5a3b instalado: /reload, sair da demo/config e clicar no tag Auto/ST/Cleave/AoE antes e durante combate; conferir /spynon context status e checklist RETAIL_SMOKE.md. Também inspecionar posição/Acoplado/seis ações/coluna principal de UX-007; aprovação da demo não homologa combate/taint.
 
 ## Progresso
 
 - Planejadas: 1
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 2
-- Concluídas: 57
+- Concluídas: 58
 - Total: 61
 
 ## Fila canônica
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
-| UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | in_progress | P1 | RUN-003, UX-007 |
+| UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | done | P1 | RUN-003, UX-007 |
 | BOOT-001 | delivery | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
 | BOOT-002 | delivery | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
 | CORE-001 | delivery | CORE | Contratos genéricos | done | P0 | BOOT-002 |
@@ -89,6 +89,15 @@ Próxima ação: Implementar tag de contexto clicável usando o controlador exis
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
+
+### UX-008
+
+- UI/ContextTag.lua integra tag de contexto acima do HUD real: clique Auto/ST/Cleave/AoE, fallback/manual explícitos, independente da visibilidade de recomendações e sincronizado com slash pelo ContextController.
+- Botão não protegido e sem ação de spell/macro; acompanha âncora/escala, reutiliza cores/fonte da skin e tipografia configurada. Demo/config/editor ocultam o tag e cancelam seus listeners; retorno relê contexto sem recriar frames.
+- npm test passou: 224 Node + 446 Lua = 670 testes, 28 suítes Lua; lint e tipos limpos em 62 arquivos. Oito regressões novas cobrem ciclo, fila vazia, slash, fallback, escala, lifecycle, snapshots isolados e reentrada; SECRET-08 revisado sem nova API volátil.
+- Wowless 2026-09-15T03:13:51.170Z PASS, zero erros, 521 warnings upstream; runtime SHA-256 E2814562E8B9D844138340E50CAC01A5EE0262A449F069B9D7E2CBDFB9883860. Rendering e clique/lockdown em combate no Retail continuam pendentes no checklist RETAIL_SMOKE.md.
+- Commit 8ce5a3b publicado. Pacote limpo reproduzido duas vezes, 80 entradas, SHA-256 5BEBF2955F39EFFDEF2B6D1AD8D7002C275F9EF5E40B6B0C2FBAAAEE7D39425B; leitor ZIP .NET independente aprovado.
+- Install-DevelopmentAddon.ps1 verificou 80 arquivos no Retail 12.1.0.69814 em D:/Blizzard/World of Warcraft/_retail_/Interface/AddOns/SpynonRotation. SavedVariables e outros addons preservados. Próximo foco TEST-002; nenhum release publicado.
 
 ### BOOT-001
 
