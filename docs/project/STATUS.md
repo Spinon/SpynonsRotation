@@ -2,31 +2,31 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T03:35:00Z
+Atualizado pelo board em: 2026-09-15T03:35:28Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**PATCH-004 — Diagnóstico da fila real vazia**
+**TEST-002 — In-game harness**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `blocked` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Adicionar diagnóstico público de seleção e descarte; instalar para nova captura em combate.
+Próxima ação: PO: /reload para carregar 9e07a1b, sair da demo/config, atacar boneco e executar /spynon debug. Capturar Debug/Regras/Prontidão/Leituras; sair de combate e /reload para persistir sem repetir debug fora de combate. Diagnosticar a causa com essa nova evidência antes de alterar regras. Checklists UX-007/UX-008 e combate/taint continuam pendentes.
 
 ## Progresso
 
 - Planejadas: 1
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 2
-- Concluídas: 58
+- Concluídas: 59
 - Total: 62
 
 ## Fila canônica
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
-| PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | in_progress | P0 | PATCH-003, RUN-002, UX-008 |
+| PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | done | P0 | PATCH-003, RUN-002, UX-008 |
 | UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | done | P1 | RUN-003, UX-007 |
 | BOOT-001 | delivery | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
 | BOOT-002 | delivery | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
@@ -90,6 +90,16 @@ Próxima ação: Adicionar diagnóstico público de seleção e descarte; instal
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
+
+### PATCH-004
+
+- Core/DebugReport.lua e /spynon debug acrescentam diagnóstico público ao smoke: combate observável, seleção hero/spec, lista/contexto/revisões, motivos de regra/readiness e falhas de leitura. Amostras limitadas, códigos allowlisted, sem valores brutos ou exceções.
+- StateReader mantém gates e só adiciona enum de prontidão; RecommendationEngine preserva decisões e fornece metadados isolados da última avaliação. Nenhuma API nova, mudança de talento ou bypass de restrição.
+- npm test passou: 224 Node + 453 Lua = 677 testes, 29 suítes Lua; lint e tipos limpos em 63 arquivos. SECRET-10 revisado: 27 fontes; sete regressões novas cobrem prontidão, snapshots, privacidade, limites e rota debug.
+- Wowless 2026-09-15T03:33:51.082Z PASS com comando debug, zero erros e 521 warnings upstream. Runtime SHA-256 826B95F53D3BC979B78FE9944198EB4C5DEC3659B693729690524F15ADCE00C3; teste headless não confirma causa da fila vazia no Retail.
+- Capturas do PO confirmam zero recomendações/97 sinais no boneco e seleção visual Aperfeiçoamento/Totêmico. QUEUE_DIAGNOSTICS.md distingue essa evidência da nova instrumentação ainda não testada pelo PO.
+- Commit 9e07a1b publicado; pacote limpo reproduzido duas vezes, 81 entradas, SHA-256 956F4E439FD022638CE78BB0A872E15B9C82C57FBFF18A4FD51C6FDA1346D4F9; leitor ZIP .NET independente aprovado.
+- Instalação development do commit 9e07a1b verificada: 81 arquivos no Retail 12.1.0.69814, SavedVariables/outros addons preservados. Suíte completa repetida após instalação: 224 Node e 453 Lua aprovados. Sem release ou alegação de correção da fila vazia; próximo foco TEST-002 para capturar /spynon debug em combate.
 
 ### UX-008
 

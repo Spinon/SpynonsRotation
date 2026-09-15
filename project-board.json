@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T03:35:00Z",
-  "currentFocus": "PATCH-004",
+  "updatedAt": "2026-09-15T03:35:28Z",
+  "currentFocus": "TEST-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -25,12 +25,12 @@
       "title": "Diagnóstico da fila real vazia",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/PATCH-004.md",
-      "updatedAt": "2026-09-15T03:35:00Z",
+      "updatedAt": "2026-09-15T03:35:28Z",
       "reviewBy": null,
-      "nextAction": "Adicionar diagnóstico público de seleção e descarte; instalar para nova captura em combate.",
+      "nextAction": null,
       "dependencies": ["PATCH-003", "RUN-002", "UX-008"],
       "acceptanceCriteria": [
         "Diagnóstico distingue seleção, condições e readiness sem alterar decisões",
@@ -43,7 +43,9 @@
         "StateReader mantém gates e só adiciona enum de prontidão; RecommendationEngine preserva decisões e fornece metadados isolados da última avaliação. Nenhuma API nova, mudança de talento ou bypass de restrição.",
         "npm test passou: 224 Node + 453 Lua = 677 testes, 29 suítes Lua; lint e tipos limpos em 63 arquivos. SECRET-10 revisado: 27 fontes; sete regressões novas cobrem prontidão, snapshots, privacidade, limites e rota debug.",
         "Wowless 2026-09-15T03:33:51.082Z PASS com comando debug, zero erros e 521 warnings upstream. Runtime SHA-256 826B95F53D3BC979B78FE9944198EB4C5DEC3659B693729690524F15ADCE00C3; teste headless não confirma causa da fila vazia no Retail.",
-        "Capturas do PO confirmam zero recomendações/97 sinais no boneco e seleção visual Aperfeiçoamento/Totêmico. QUEUE_DIAGNOSTICS.md distingue essa evidência da nova instrumentação ainda não testada pelo PO."
+        "Capturas do PO confirmam zero recomendações/97 sinais no boneco e seleção visual Aperfeiçoamento/Totêmico. QUEUE_DIAGNOSTICS.md distingue essa evidência da nova instrumentação ainda não testada pelo PO.",
+        "Commit 9e07a1b publicado; pacote limpo reproduzido duas vezes, 81 entradas, SHA-256 956F4E439FD022638CE78BB0A872E15B9C82C57FBFF18A4FD51C6FDA1346D4F9; leitor ZIP .NET independente aprovado.",
+        "Instalação development do commit 9e07a1b verificada: 81 arquivos no Retail 12.1.0.69814, SavedVariables/outros addons preservados. Suíte completa repetida após instalação: 224 Node e 453 Lua aprovados. Sem release ou alegação de correção da fila vazia; próximo foco TEST-002 para capturar /spynon debug em combate."
       ]
     },
     {
@@ -1582,9 +1584,9 @@
       "status": "blocked",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T03:15:22Z",
+      "updatedAt": "2026-09-15T03:35:28Z",
       "reviewBy": null,
-      "nextAction": "Testar commit 8ce5a3b instalado: /reload, sair da demo/config e clicar no tag Auto/ST/Cleave/AoE antes e durante combate; conferir /spynon context status e checklist RETAIL_SMOKE.md. Também inspecionar posição/Acoplado/seis ações/coluna principal de UX-007; aprovação da demo não homologa combate/taint.",
+      "nextAction": "PO: /reload para carregar 9e07a1b, sair da demo/config, atacar boneco e executar /spynon debug. Capturar Debug/Regras/Prontidão/Leituras; sair de combate e /reload para persistir sem repetir debug fora de combate. Diagnosticar a causa com essa nova evidência antes de alterar regras. Checklists UX-007/UX-008 e combate/taint continuam pendentes.",
       "dependencies": [
         "RUN-002",
         "UI-001",

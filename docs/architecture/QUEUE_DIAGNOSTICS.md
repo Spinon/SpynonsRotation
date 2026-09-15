@@ -47,3 +47,9 @@ Essas capturas não validam a nova instrumentação. Novo teste: `/reload`, sair
 demo/config, bater no boneco e executar `/spynon debug`; fotografar as linhas.
 Depois sair do combate e usar `/reload` para persistir aquela amostra. Não executar
 debug novamente fora de combate antes disso: a última amostra substitui a anterior.
+
+Checkpoint instalado: 9e07a1b, Retail 12.1.0.69814, 81 arquivos conferidos, sem mudar
+SavedVariables/outros addons. 677 testes passaram; Wowless executou debug sem erros.
+Pacote limpo reproduzível SHA-256
+956F4E439FD022638CE78BB0A872E15B9C82C57FBFF18A4FD51C6FDA1346D4F9.
+Nenhuma conclusão de causa/correção em Retail foi obtida nesta entrega.
