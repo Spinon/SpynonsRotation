@@ -81,6 +81,19 @@ Limite: LuaJIT não implementa secret scalars, secret tables ou taint do Retail.
 Sentinelas e hashes encontram regressões específicas, mas não são prova formal de
 fluxo de informação nem substituem uma sessão de combate real.
 
+## Revisão UX-008 — estado visual do contexto
+
+ContextController passa a publicar cópias de seu status já sanitizado pelo detector.
+O novo observer compara somente enums, booleanos e contagem pública validada na
+fronteira existente; não consulta novas APIs nem acessa valores protegidos.
+O estado é atualizado antes de callbacks da engine, com proteção contra reentrada;
+listeners isolados não podem alterar o snapshot de outros consumidores.
+ContextTag mostra enums/labels fechados e envia somente uma das quatro escolhas
+manuais já suportadas. Não usa a contagem para construir texto nem ações protegidas.
+Regressões de subscribers, fonte do fallback, clique e lifecycle estão em
+`context_detector_spec.lua` e `context_tag_spec.lua`. Hash de ContextController
+revisado; pins e classificação SECRET-08 preservados. Retail continua PENDING.
+
 ## Fontes primárias
 
 - [FrameScript API da build 69814](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/FrameScriptDocumentation.lua): issecretvalue e distinção entre valor e conteúdo de tabela.

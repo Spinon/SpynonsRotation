@@ -25,8 +25,33 @@ observabilidade e comportamento no cliente antes de ser conectada ao adapter.
 ```
 
 A troca reavalia imediatamente a fila. Pode ser usada em combate: não executa ações protegidas.
-O override é de sessão e volta a AUTO após reload; persistência de perfil e controles visuais continuam
-nas tasks próprias. Os comandos de teste existentes permanecem disponíveis.
+O override é de sessão e volta a AUTO após reload; persistência de perfil continua fora do escopo.
+UX-008 adiciona o controle visual abaixo. Os comandos de teste existentes permanecem disponíveis.
+
+## Tag clicável — UX-008
+
+`UI/ContextTag.lua` cria um único botão não protegido, acima e no centro da fila real.
+Clique esquerdo alterna **Auto → ST → Cleave → AoE → Auto**. Outros botões não mudam
+o contexto. O texto mostra `Auto: ST · fallback` ou o modo com `manual`; Auto só
+mostra `observado` se o detector receber sinal público validado (fixtures, não o
+adapter Retail atual). Não há contagem fictícia nem promessa de detecção de packs.
+
+O botão é irmão do root da fila, ancorado a ele, para permanecer acessível quando
+as recomendações estiverem vazias. Herda a escala por Settings e acompanha a âncora
+de posição da fila; usa cores/fonte da skin, tipografia configurada e largura pelo
+texto. Somente seus limites interceptam o mouse. É clamped à tela para não sumir
+acima da borda quando o conjunto for movido para o topo.
+
+QueueController injeta ContextController, que fornece snapshots públicos isolados
+e recebe a escolha manual. O status é atualizado antes da reavaliação da engine;
+observers são notificados também quando só a origem do fallback muda. Não há
+polling ou lógica de spec na UI. Clique e slash alimentam o mesmo SetMode.
+
+Ao parar a fila real para demo/config/editor, o tag é ocultado e suas inscrições
+são liberadas. Cliques atrasados não têm efeito. Ao retornar, reutiliza o botão e
+relê contexto/escala atuais. Não se coloca um seletor real sobre a fila simulada.
+Nenhuma macro, atributo de ação, secure template ou spellcast é criado. Testes
+offline cobrem evento de combate simulado, mas lockdown/taint exigem Retail.
 
 ## Contrato para sinais públicos
 

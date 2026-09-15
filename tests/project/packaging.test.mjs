@@ -9,7 +9,7 @@ import {collect, createPackage, verifyPackage, parseToc, validateMetadata, sha25
 const input = collect(), commit = "a".repeat(40), result = createPackage(input, commit, false);
 test("package includes only TOC Lua and approved runtime textures under one addon root", () => {
   const entries = verifyPackage(result.zip, result.manifest);
-  assert.equal(entries.length, 79); assert.equal(entries.filter((entry) => entry.name.endsWith(".tga")).length, 17);
+  assert.equal(entries.length, 80); assert.equal(entries.filter((entry) => entry.name.endsWith(".tga")).length, 17);
   assert.ok(entries.every((entry) => entry.name.startsWith("SpynonRotation/")));
   assert.ok(entries.every((entry) => !/README|\.json|\.png|Probe|tests|rotation-lab|WTF/u.test(entry.name)));
 });

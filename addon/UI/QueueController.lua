@@ -1,9 +1,11 @@
 local _, Spynon = ...
 local Controller = {}
 
-function Controller.Create(service, media, createFrame, console, bindings, cooldowns, indicators, clock, settings)
+function Controller.Create(service, media, createFrame, console, bindings, cooldowns, indicators, clock,
+  settings, context)
   local controller = {}
   local view, unsubscribe
+  local contextTag, unsubscribeContext, unsubscribeTagSettings
   local function render(recommendations)
     view:SetRecommendations(media:Present(recommendations))
     if bindings then view:SetHotkeys(bindings:ForRecommendations(recommendations)) end
@@ -73,17 +75,32 @@ function Controller.Create(service, media, createFrame, console, bindings, coold
     if bindings then bindings:Invalidate(false) end
     unsubscribe = service:Subscribe(render)
     render(service:GetRecommendations())
+    if context then
+      contextTag = contextTag or Spynon.ContextTagFactory.Create(createFrame, media:GetRootParent(), view:GetRoot(),
+        function(mode) context:SetMode(mode) end)
+      unsubscribeContext = context:Subscribe(function(status) contextTag:SetStatus(status) end)
+      contextTag:SetStatus(context:GetStatus())
+      local model = settings or Spynon.Settings
+      contextTag:ApplySettings(model:Get())
+      unsubscribeTagSettings = model:Subscribe(function(values) contextTag:ApplySettings(values) end)
+      contextTag:SetActive(true)
+    end
   end
   function controller.Stop(_)
     if unsubscribe then unsubscribe(); unsubscribe = nil end
+    if unsubscribeContext then unsubscribeContext(); unsubscribeContext = nil end
+    if unsubscribeTagSettings then unsubscribeTagSettings(); unsubscribeTagSettings = nil end
+    if contextTag then contextTag:SetActive(false) end
     if view then view:Hide() end
   end
   function controller.GetView(_) return view end
+  function controller.GetContextTag(_) return contextTag end
   return controller
 end
 
 Spynon.QueueControllerFactory = Controller
 Spynon.QueueController = Controller.Create(
   Spynon.Recommendations, Spynon.Compat.Media, CreateFrame, Spynon.Compat.Console,
-  Spynon.Compat.Bindings, Spynon.Compat.Cooldowns, Spynon.Indicators, Spynon.Compat.State, Spynon.Settings
+  Spynon.Compat.Bindings, Spynon.Compat.Cooldowns, Spynon.Indicators, Spynon.Compat.State, Spynon.Settings,
+  Spynon.ContextController
 )

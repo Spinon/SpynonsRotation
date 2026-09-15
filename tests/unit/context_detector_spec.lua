@@ -106,6 +106,34 @@ test("controller only republishes actual mode changes and exposes isolated statu
   controller:Stop()
   eq(callback, nil)
 end)
+test("status subscribers receive isolated deduplicated public snapshots and can unsubscribe", function()
+  local detector, signal = fixture()
+  local callback, received, applied = nil, {}, 0
+  local controller = ns.ContextControllerFactory.Create(detector, {
+    Subscribe = function(_, fn) callback = fn; return function() end end,
+  }, {SetContext = function() applied = applied + 1; return true end}, {RegisterRoute = function() end})
+  controller:Start()
+  controller:Subscribe(function(value) value.mode = "mutated"; error("isolated listener failure") end)
+  local unsubscribe = controller:Subscribe(function(value) received[#received+1] = value end)
+  callback(); eq(#received, 0)
+  signal.ok = false; callback(); eq(#received, 1); eq(received[1].source, "SAFE_FALLBACK")
+  eq(received[1].mode, "AUTO"); eq(applied, 1)
+  controller:SetMode("AOE"); eq(#received, 2); eq(received[2].isOverride, true)
+  unsubscribe(); controller:SetMode("CLEAVE"); eq(#received, 2)
+end)
+
+test("engine callbacks see the new context without recursively re-evaluating it", function()
+  local detector = fixture()
+  local controller, seen, applied, reentry = nil, nil, 0, nil
+  controller = ns.ContextControllerFactory.Create(detector, {Subscribe = function() return function() end end},
+    {SetContext = function()
+      applied = applied + 1; seen = controller:GetStatus().mode
+      reentry = controller:SetMode("AOE"); return true
+    end}, {RegisterRoute = function() end})
+  controller:Start(); eq(applied, 1); eq(seen, "AUTO"); eq(reentry, false)
+  controller:SetMode("CLEAVE"); eq(applied, 2); eq(seen, "CLEAVE"); eq(reentry, false)
+end)
+
 test("context slash route coexists with test commands", function()
   local env = { issecretvalue = function() return false end }
   local console = ns.CompatFactory.Create(env).Console

@@ -143,6 +143,22 @@ discretas de tamanho, sem slider. Não há nova evidência Retail dessa entrega.
 - [ ] Comportamento real no boneco é útil ou limitações foram registradas com exemplos.
 - [ ] Screenshot/relato do Product Owner e relatório persistido anexados à evidência da task.
 
+### Tag de contexto clicável (UX-008)
+
+Depois de `/reload`, fora da demo/config, procurar o tag acima da fila. Ele deve
+continuar visível mesmo sem recomendações. Clique esquerdo alterna Auto → ST →
+Cleave → AoE → Auto. AUTO atual continua fallback ST, não detecção de packs.
+
+- [ ] Tag legível e clicável fora e durante combate, sem erro Lua ou ação bloqueada.
+- [ ] Clique muda texto e contexto; `/spynon context status` confirma a mesma escolha.
+- [ ] `/spynon context aoe` muda o tag para AoE manual; quatro cliques completam o ciclo.
+- [ ] Tag acompanha posição/escala e não cobre os ícones nem captura mouse fora de seus limites.
+- [ ] Abrir demo/config/editor oculta o tag real; fechar ou entrar em combate o restaura.
+- [ ] `/reload` volta a Auto com fallback explícito, sem inventar contagem de inimigos.
+
+Fixture de combate e carregamento Wowless não preenchem esses itens automaticamente.
+A utilidade da fila real e a ausência de taint continuam sob TEST-002.
+
 ### Preview de marca (BRAND-003)
 
 O cabeçalho do config passa a mostrar o símbolo oficial em 46×46, separado do título.
