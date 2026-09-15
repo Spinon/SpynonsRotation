@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7F36D1B97850262D77DCE67F88D48B30447355902C48C1D20F455651BBF9A19D",
+  "method": "SVG_VIEWPORT_OF_UNMODIFIED_EMBEDDED_RASTER",
+  "trueVector": false,
+  "transparent": false,
+  "variants": [
+    {"id":"horizontal-color", "label":"Horizontal colorida", "rect":[310,185,900,340]},
+    {"id":"symbol-color", "label":"Símbolo colorido", "rect":[210,675,335,335]},
+    {"id":"horizontal-mono", "label":"Horizontal monocromática", "rect":[825,744,535,205]}
+  ],
+  "contexts": ["dark", "light"],
+  "reviewStatus": "TECHNICAL_COMPARISON_VERIFIED",
+  "runtimeIntegration": "BRAND-003"
+}

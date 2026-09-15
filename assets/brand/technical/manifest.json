@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7F36D1B97850262D77DCE67F88D48B30447355902C48C1D20F455651BBF9A19D",
+  "recipeSha256": "B29F1282F8244B3E8C1014D18C54B95FD5BA7531E5AD536503B0B5C4A8C249FA",
+  "method": "SVG_VIEWPORT_OF_UNMODIFIED_EMBEDDED_RASTER",
+  "trueVector": false,
+  "transparent": false,
+  "files": [
+    {
+      "name": "master-raster-backed.svg",
+      "bytes": 1931152,
+      "sha256": "40B24E3B4B64D9BC926BAD182263A41300FB73144C085E9D36C12277180CAACA"
+    },
+    {
+      "name": "horizontal-color.svg",
+      "bytes": 1931076,
+      "sha256": "C28CDAB2D5265352B57D931F9CD31FBC9D974D895A6343155EC6B3F4E18D40CD"
+    },
+    {
+      "name": "symbol-color.svg",
+      "bytes": 1931072,
+      "sha256": "B6D8DE24ADB6E18FFCB0270E80B0A3FEEA90C1B316EDF85E7C20734DFE939F82"
+    },
+    {
+      "name": "horizontal-mono.svg",
+      "bytes": 1931088,
+      "sha256": "A14F93BBC65B5F19285E05C680D7FC52363330FE7AC8CA3C7214BAFCC240BA81"
+    },
+    {
+      "name": "review.html",
+      "bytes": 2594,
+      "sha256": "FED0FD20D5615A376C052E83D75FAE229ED9F0FDBCDEC0DF054EF137F167DDAE"
+    }
+  ]
+}

@@ -29,3 +29,28 @@ BRAND-003 trata aplicação discreta no produto e aprovação do preview. Nenhum
 etapas substitui o original, homologa combate ou autoriza publicação de release.
 
 O pacote development atual continua excluindo PNGs de referência, metadados e docs.
+
+## Derivados técnicos — BRAND-002
+
+`technical/` contém master e três composições em SVG autocontido. Cada SVG incorpora
+o PNG original integral, com viewport e proporção explícitos em `variants.json`.
+O master é **raster-backed**, não uma vetorização: não há contornos reconstruídos,
+remoção de fundo, recoloração ou tipografia substituta. O fundo galáxia permanece.
+As superfícies claras/escuras da prancha de comparação são contextos de uso, não
+promessa de que o logo tenha transparência ou uma nova versão invertida.
+
+`npm run brand:build` reproduz os seis arquivos (quatro SVGs, HTML e manifesto).
+`brand:check` e dez regressões na suíte validam fontes, recortes, bytes incorporados,
+limites e igualdade das saídas. O build normal/CI não depende de um editor gráfico.
+
+Inspeção técnica estática em 15/09/2026 UTC com Sharp 0.35.4 / librsvg 2.62.91:
+símbolo, wordmark, estrela e extremidades completos nas três composições; nenhuma
+divisória da prancha foi incluída nos viewports. Proporções preservadas nos dois
+contextos. Prova local em `dist/brand-review/comparison.png`, SHA-256
+868A1B18A5A7E6D899D4834FEC2CF32700E51AD06994825F58E4CA0EA2BFAF83.
+
+O renderizador opcional `tools/brand/render-preview.mjs` recebe o diretório de um
+Sharp já instalado. Só rasteriza os SVGs estáticos verificados, sem HTML, navegador
+ou rede. A tentativa de abrir HTML local no navegador foi bloqueada pela política
+da ferramenta; nenhuma proteção foi alterada e não se alega teste de navegador.
+A aplicação no HUD ainda exige BRAND-003 e aprovação do PO.

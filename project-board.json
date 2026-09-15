@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T01:54:00Z",
-  "currentFocus": "BRAND-002",
+  "updatedAt": "2026-09-15T01:59:00Z",
+  "currentFocus": "BRAND-003",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1389,12 +1389,12 @@
       "title": "Criar master técnico e variantes",
       "lane": "BRAND",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P2",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T01:54:00Z",
+      "updatedAt": "2026-09-15T01:59:00Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Preparar master raster-backed e variantes técnicas fiéis por viewports, com comparação; sem redesenhar ou alegar vetor original.",
+      "nextAction": null,
       "dependencies": [
         "BRAND-001"
       ],
@@ -1403,7 +1403,11 @@
         "Variantes necessárias são produzidas",
         "Comparação confirma fidelidade"
       ],
-      "evidence": []
+      "evidence": [
+        "assets/brand/technical: master raster-backed, horizontal colorida, símbolo e horizontal monocromática; cada SVG incorpora byte a byte o original aprovado e usa viewport explícito. Sem redesenho, vetor alegado, remoção de fundo ou recoloração.",
+        "Renderização estática conferida em dist/brand-review/comparison.png, SHA-256 868A1B18A5A7E6D899D4834FEC2CF32700E51AD06994825F58E4CA0EA2BFAF83: extremidades, estrela e wordmark íntegros nos contextos claro/escuro. README distingue comparação técnica de aprovação do uso no HUD.",
+        "brand:build/check reproduzem seis arquivos; dez testes Node de fonte/derivados. npm test passou com 220 Node + 437 Lua = 657 testes; lint/tipos limpos. Nenhuma mudança de runtime ou instalação nesta etapa."
+      ]
     },
     {
       "id": "BRAND-003",

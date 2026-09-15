@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T01:54:00Z
+Atualizado pelo board em: 2026-09-15T01:59:00Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**BRAND-002 — Criar master técnico e variantes**
+**BRAND-003 — Aplicar identidade ao default**
 
-Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
+Status: `planned` · Prioridade: `P2` · Responsável: Codex
 
-Próxima ação: Preparar master raster-backed e variantes técnicas fiéis por viewports, com comparação; sem redesenhar ou alegar vetor original.
+Próxima ação: Aplicar tokens à skin default.
 
 ## Progresso
 
 - Planejadas: 2
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 56
+- Concluídas: 57
 - Total: 60
 
 ## Fila canônica
@@ -74,7 +74,7 @@ Próxima ação: Preparar master raster-backed e variantes técnicas fiéis por 
 | SKIN-001 | delivery | PROFILES / SKINS | Skin API | done | P1 | UI-001 |
 | SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | done | P2 | SKIN-001 |
 | BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | done | P1 | BOOT-001 |
-| BRAND-002 | delivery | BRAND | Criar master técnico e variantes | in_progress | P2 | BRAND-001 |
+| BRAND-002 | delivery | BRAND | Criar master técnico e variantes | done | P2 | BRAND-001 |
 | BRAND-003 | delivery | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
 | PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | done | P1 | CORE-004 |
 | PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | done | P1 | PATCH-001, RUN-001 |
@@ -496,6 +496,12 @@ Próxima ação: Preparar master raster-backed e variantes técnicas fiéis por 
 - assets/brand/Spynon Logo.png já estava no bootstrap e28f3d9771cdf6cb181a6b7c8199f3b34eefaa64. Original preservado byte a byte: SHA-256 7F36D1B97850262D77DCE67F88D48B30447355902C48C1D20F455651BBF9A19D.
 - Inspeção visual: prancha horizontal, símbolo e variante clara; PNG RGB 1448x1086 sem alpha. Origem/propriedades/limites registrados em assets/brand/source.json e README.md; nenhuma nova arte ou integração runtime nesta etapa.
 - brand:check aprovado; cinco testes de integridade, metadados, caminho, aprovação e exclusão runtime. npm test aprovado: 215 Node + 437 Lua = 652; lint/tipos limpos. Gate incorporado à suíte automática.
+
+### BRAND-002
+
+- assets/brand/technical: master raster-backed, horizontal colorida, símbolo e horizontal monocromática; cada SVG incorpora byte a byte o original aprovado e usa viewport explícito. Sem redesenho, vetor alegado, remoção de fundo ou recoloração.
+- Renderização estática conferida em dist/brand-review/comparison.png, SHA-256 868A1B18A5A7E6D899D4834FEC2CF32700E51AD06994825F58E4CA0EA2BFAF83: extremidades, estrela e wordmark íntegros nos contextos claro/escuro. README distingue comparação técnica de aprovação do uso no HUD.
+- brand:build/check reproduzem seis arquivos; dez testes Node de fonte/derivados. npm test passou com 220 Node + 437 Lua = 657 testes; lint/tipos limpos. Nenhuma mudança de runtime ou instalação nesta etapa.
 
 ### PATCH-001
 
