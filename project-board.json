@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T04:28:00Z",
-  "currentFocus": "PATCH-007",
+  "updatedAt": "2026-09-15T04:31:09Z",
+  "currentFocus": "TEST-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -25,12 +25,12 @@
       "title": "Barra de GCD com temporizador nativo",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/PATCH-007.md",
-      "updatedAt": "2026-09-15T04:28:00Z",
+      "updatedAt": "2026-09-15T04:31:09Z",
       "reviewBy": null,
-      "nextAction": "Conectar a barra existente ao DurationObject nativo, preservar fallback público, validar e instalar.",
+      "nextAction": null,
       "dependencies": ["PATCH-006"],
       "acceptanceCriteria": [
         "Barra recebe temporizador opaco mesmo com tempos restritos",
@@ -42,7 +42,8 @@
         "Compat encaminha DurationObject público de GCD 61304 ao StatusBar nativo, condicionado a status público habilitado/ativo. UI mantém geometria e cores existentes, oculta progresso antigo em falha/limpeza/demote e preserva fallback somente com tempos públicos. Nenhuma leitura do objeto ou valor do widget, mudança na engine ou uso de AssistedCombat.",
         "Pins incluem SimpleStatusBarAPIDocumentation nas duas builds: 31 fontes sem diferenças documentadas. Auditoria SECRET-05 e hashes de 29 fontes revisados; docs/architecture/GCD_CONTINUITY.md registra fronteira visual e limitações.",
         "npm test aprovado: 224 Node + 479 Lua = 703 testes, 30 suítes Lua; lint e tipos limpos em 63 arquivos. Seis regressões cobrem encaminhamento opaco, falhas/restrições, status, geometria, promoção/limpeza e fallback numérico público.",
-        "Wowless 2026-09-15T04:27:39.983Z PASS: zero erros, 521 warnings upstream, input SHA-256 A22F32CFE606E174E2048BA8181AD960AACFEB6A3E3AECBAAC134EFC38D2F4BF. Carregamento headless não valida animação nativa, taint ou combate Retail."
+        "Wowless 2026-09-15T04:27:39.983Z PASS: zero erros, 521 warnings upstream, input SHA-256 A22F32CFE606E174E2048BA8181AD960AACFEB6A3E3AECBAAC134EFC38D2F4BF. Carregamento headless não valida animação nativa, taint ou combate Retail.",
+        "Commit c875540 publicado; pacote limpo reproduzido duas vezes, 81 arquivos, SHA-256 571B73B05FA1B09764EE4279851CA994E6153CEB6FDA0C89E6F029B3A755192C; leitor ZIP independente aprovado. Instalador verificou 81 arquivos no Retail 12.1.0.69814, preservando SavedVariables e outros addons. Roteiro em RETAIL_SMOKE.md; foco TEST-002 para inspeção humana, nenhuma release."
       ]
     },
     {
@@ -1664,9 +1665,9 @@
       "status": "blocked",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T04:19:09Z",
+      "updatedAt": "2026-09-15T04:31:09Z",
       "reviewBy": null,
-      "nextAction": "PO: /reload carrega 32e2533 instalado; atacar boneco e confirmar continuidade da fila com GCD rotulado, retorno a pronto e saída de cooldown próprio. Se persistir o sumiço, /spynon debug em combate, screenshot e /reload após sair do combate sem repetir debug. Gate do Totem e checklists UX/taint ainda pendentes. Relato após PATCH-005 confirmou fila aparecendo, mas não aprovou continuidade.",
+      "nextAction": "PO: /reload carrega c875540 instalado; atacar boneco e confirmar barra de GCD, continuidade da fila, retorno a pronto e cooldown próprio. Se persistir o sumiço, /spynon debug em combate, screenshot e /reload após sair do combate sem repetir debug. Gate do Totem e checklists UX/taint ainda pendentes. Relato após PATCH-005 confirmou fila aparecendo, mas não aprovou continuidade; PATCH-007 corrige caminho visual da barra sem aprovação Retail presumida.",
       "dependencies": [
         "RUN-002",
         "UI-001",

@@ -240,6 +240,29 @@ Não se congelam recomendações antigas nem se calculam tempos protegidos. Refr
 fora do evento autorizado/perda de informação ainda pode retirar candidatas; flag
 de GCD não garante que não exista outro bloqueio. Inspeção Retail continua pendente.
 
+### PATCH-007 — barra de GCD nativa
+
+Commit c875540 instalado em 15/09/2026 UTC: 81 arquivos conferidos no Retail
+12.1.0.69814, sem alterar SavedVariables ou outros addons. Pacote limpo reproduzido
+duas vezes e leitor ZIP independente aprovado; SHA-256
+571B73B05FA1B09764EE4279851CA994E6153CEB6FDA0C89E6F029B3A755192C.
+703 testes offline aprovados; Wowless sem erros (521 warnings upstream).
+
+A barra existente agora encaminha DurationObject público ao temporizador nativo,
+sem ler tempos restritos nem inferir prontidão. Dimensões, posição e cores preservadas.
+Isso não altera WAITING_GCD nem resolve ausência de candidatas observáveis.
+
+Após `/reload`, fora de demo/config, repetir combate no boneco:
+
+- [ ] Barra acompanha o GCD na habilidade principal sem depender de tempos numéricos públicos.
+- [ ] Nenhuma barra residual nas posições da fila após promoção/reordenação.
+- [ ] Ao terminar GCD, limpar/esconder HUD ou perder dados, progresso antigo não reaparece.
+- [ ] Sem erro Lua, taint ou regressão de encaixe; continuidade PATCH-006 conferida.
+
+Os testes verificam encaminhamento opaco e lifecycle, não a animação real do widget.
+O apontamento do PO sobre a barra ausente motivou a correção, não constitui aceite
+desta versão. Rendering e combate Retail continuam pendentes em TEST-002.
+
 ### Entrega UX-007 instalada para inspeção
 
 Commit 59a2dcb, instalado em 15/09/2026 UTC no cliente 12.1.0.69814: 78 arquivos

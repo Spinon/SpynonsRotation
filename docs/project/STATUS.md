@@ -2,31 +2,31 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T04:28:00Z
+Atualizado pelo board em: 2026-09-15T04:31:09Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**PATCH-007 — Barra de GCD com temporizador nativo**
+**TEST-002 — In-game harness**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `blocked` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Conectar a barra existente ao DurationObject nativo, preservar fallback público, validar e instalar.
+Próxima ação: PO: /reload carrega c875540 instalado; atacar boneco e confirmar barra de GCD, continuidade da fila, retorno a pronto e cooldown próprio. Se persistir o sumiço, /spynon debug em combate, screenshot e /reload após sair do combate sem repetir debug. Gate do Totem e checklists UX/taint ainda pendentes. Relato após PATCH-005 confirmou fila aparecendo, mas não aprovou continuidade; PATCH-007 corrige caminho visual da barra sem aprovação Retail presumida.
 
 ## Progresso
 
 - Planejadas: 1
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 2
-- Concluídas: 61
+- Concluídas: 62
 - Total: 65
 
 ## Fila canônica
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
-| PATCH-007 | delivery | PATCH / QUALITY | Barra de GCD com temporizador nativo | in_progress | P0 | PATCH-006 |
+| PATCH-007 | delivery | PATCH / QUALITY | Barra de GCD com temporizador nativo | done | P0 | PATCH-006 |
 | PATCH-006 | delivery | PATCH / QUALITY | Continuidade da fila durante GCD | done | P0 | PATCH-005 |
 | PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | done | P0 | PATCH-004 |
 | PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | done | P0 | PATCH-003, RUN-002, UX-008 |
@@ -93,6 +93,14 @@ Próxima ação: Conectar a barra existente ao DurationObject nativo, preservar 
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
+
+### PATCH-007
+
+- Compat encaminha DurationObject público de GCD 61304 ao StatusBar nativo, condicionado a status público habilitado/ativo. UI mantém geometria e cores existentes, oculta progresso antigo em falha/limpeza/demote e preserva fallback somente com tempos públicos. Nenhuma leitura do objeto ou valor do widget, mudança na engine ou uso de AssistedCombat.
+- Pins incluem SimpleStatusBarAPIDocumentation nas duas builds: 31 fontes sem diferenças documentadas. Auditoria SECRET-05 e hashes de 29 fontes revisados; docs/architecture/GCD_CONTINUITY.md registra fronteira visual e limitações.
+- npm test aprovado: 224 Node + 479 Lua = 703 testes, 30 suítes Lua; lint e tipos limpos em 63 arquivos. Seis regressões cobrem encaminhamento opaco, falhas/restrições, status, geometria, promoção/limpeza e fallback numérico público.
+- Wowless 2026-09-15T04:27:39.983Z PASS: zero erros, 521 warnings upstream, input SHA-256 A22F32CFE606E174E2048BA8181AD960AACFEB6A3E3AECBAAC134EFC38D2F4BF. Carregamento headless não valida animação nativa, taint ou combate Retail.
+- Commit c875540 publicado; pacote limpo reproduzido duas vezes, 81 arquivos, SHA-256 571B73B05FA1B09764EE4279851CA994E6153CEB6FDA0C89E6F029B3A755192C; leitor ZIP independente aprovado. Instalador verificou 81 arquivos no Retail 12.1.0.69814, preservando SavedVariables e outros addons. Roteiro em RETAIL_SMOKE.md; foco TEST-002 para inspeção humana, nenhuma release.
 
 ### PATCH-006
 
