@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T04:22:04Z
+Atualizado pelo board em: 2026-09-15T04:23:05Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **PATCH-007 — Barra de GCD com temporizador nativo**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
 Próxima ação: Conectar a barra existente ao DurationObject nativo, preservar fallback público, validar e instalar.
 
 ## Progresso
 
-- Planejadas: 2
-- Em andamento: 0
+- Planejadas: 1
+- Em andamento: 1
 - Bloqueadas: 2
 - Concluídas: 61
 - Total: 65
@@ -26,7 +26,7 @@ Próxima ação: Conectar a barra existente ao DurationObject nativo, preservar 
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
-| PATCH-007 | delivery | PATCH / QUALITY | Barra de GCD com temporizador nativo | planned | P0 | PATCH-006 |
+| PATCH-007 | delivery | PATCH / QUALITY | Barra de GCD com temporizador nativo | in_progress | P0 | PATCH-006 |
 | PATCH-006 | delivery | PATCH / QUALITY | Continuidade da fila durante GCD | done | P0 | PATCH-005 |
 | PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | done | P0 | PATCH-004 |
 | PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | done | P0 | PATCH-003, RUN-002, UX-008 |
