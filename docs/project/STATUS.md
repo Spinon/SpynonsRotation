@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T03:43:41Z
+Atualizado pelo board em: 2026-09-15T03:44:00Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **PATCH-005 — Estado parcial seguro em combate**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
 Próxima ação: Preservar campos públicos independentes, investigar gates de ação e instalar correção com readiness estrito.
 
 ## Progresso
 
-- Planejadas: 2
-- Em andamento: 0
+- Planejadas: 1
+- Em andamento: 1
 - Bloqueadas: 2
 - Concluídas: 59
 - Total: 63
@@ -26,7 +26,7 @@ Próxima ação: Preservar campos públicos independentes, investigar gates de a
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
-| PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | planned | P0 | PATCH-004 |
+| PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | in_progress | P0 | PATCH-004 |
 | PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | done | P0 | PATCH-003, RUN-002, UX-008 |
 | UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | done | P1 | RUN-003, UX-007 |
 | BOOT-001 | delivery | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |

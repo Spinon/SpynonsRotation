@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T03:43:41Z",
+  "updatedAt": "2026-09-15T03:44:00Z",
   "currentFocus": "PATCH-005",
   "parallelFocus": {},
   "release": {
@@ -25,10 +25,10 @@
       "title": "Estado parcial seguro em combate",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "tasks/PATCH-005.md",
-      "updatedAt": "2026-09-15T03:43:41Z",
+      "updatedAt": "2026-09-15T03:44:00Z",
       "reviewBy": null,
       "nextAction": "Preservar campos públicos independentes, investigar gates de ação e instalar correção com readiness estrito.",
       "dependencies": ["PATCH-004"],
