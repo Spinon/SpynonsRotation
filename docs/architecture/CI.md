@@ -34,9 +34,14 @@ mesmo em falha. Nunca faz upload de .tools inteiro, cliente, WTF ou SavedVariabl
 Um artefato offline pode existir enquanto headless falha: aprovação exige ambos
 os jobs verdes, e ainda assim NÃO é aprovação Retail ou autorização de publicação.
 
-CI roda fixtures e verifica resultados SimC pinados já versionados; não executa
-novas matrizes de simulação nem download do SimC autenticado. Wowless é execução
-real headless, distinta das fixtures. Não mede DPS ou comportamento em combate real.
+CI roda fixtures e verifica resultados SimC pinados já versionados; os checks de
+talentos e starter build também reinicializam os perfis no executável SimC pinado.
+Setup-Simc usa somente o token efêmero automático do GitHub, limitado ao passo de
+download do artifact público já registrado; nenhuma credencial pessoal é necessária.
+Confere ID, run, commit, expiração, SHA do ZIP externo, 7z interno e executável.
+Artifact expirado bloqueia, nunca troca de versão silenciosamente. Não executa novas
+matrizes de DPS. Wowless é execução real headless, distinta das fixtures; nenhum dos
+jobs verifica comportamento em combate Retail.
 
 `ci:check`/`ci:test` são guardrails textuais do contrato, não um parser completo ou
 auditoria geral de workflows. A sintaxe e execução final são verificadas pelo GitHub.

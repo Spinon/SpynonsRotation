@@ -10,7 +10,7 @@ export function checkWorkflow(workflow, pins) {
   }
   for (const required of ["contents: read", "persist-credentials: false", "npm test", "node tools/ci/package.mjs",
     "npm run wowless:build", "npm run wowless:run", "retention-days: 7", "timeout-minutes: 15", "timeout-minutes: 40",
-    `node-version: '${pins.node}'`, "checkHistory();"]) if (!workflow.includes(required)) errors.push(`Missing CI contract: ${required}`);
+    `node-version: '${pins.node}'`, "checkHistory();", "./tools/ci/Setup-Simc.ps1"]) if (!workflow.includes(required)) errors.push(`Missing CI contract: ${required}`);
   if (Object.keys(pins.actions).length !== 3 || pins.schemaVersion !== 1 || !/^[A-F0-9]{64}$/u.test(pins.luaJitZip.sha256)) errors.push("Invalid CI pins");
   return errors;
 }

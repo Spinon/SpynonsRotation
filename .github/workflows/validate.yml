@@ -29,6 +29,11 @@ jobs:
         shell: pwsh
         run: ./tools/ci/Setup-WindowsTools.ps1
       - run: npm ci --ignore-scripts
+      - name: Prepare pinned SimulationCraft
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: ./tools/ci/Setup-Simc.ps1
       - name: Validate board transitions in pushed commits
         run: node --input-type=module -e "import { checkHistory } from './tools/ci/history.mjs'; checkHistory();"
       - name: Run complete offline suite

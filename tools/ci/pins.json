@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "node": "24.15.0",
+  "simcArtifactZipSha256": "6E1B63BB063F422FB4065F45D553CBC71118943662A228CF60A02A0CCBC05E08",
   "luaJitZip": {
     "url": "https://github.com/DevelopersCommunity/cmake-luajit/releases/download/v2.1.19907/LuaJIT-2.1.19907-win64.zip",
     "sha256": "3800F11BA52E6FD649E03F28C02B98EB645F434D3CCBF1AC0590112C1DDD255A"
