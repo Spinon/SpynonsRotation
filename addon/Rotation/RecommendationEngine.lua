@@ -102,9 +102,11 @@ function Engine.Create(stateEngine, registry, guard)
     local module = state.specId and registry:GetBySpecId(state.specId)
     if module and selection and selection.specId == state.specId and state.capabilities.specId == AVAILABLE then
       local ok, result = pcall(function()
-        local actions = module.getActions(copy(selection))
+        local actions, exclusions = module.getActions(copy(selection))
         local bundle = module.getRules(copy(selection), copy(state), copy(context))
-        return Engine.Evaluate(bundle, actions, state, context, guard, 6)
+        local evaluated = Engine.Evaluate(bundle, actions, state, context, guard, 6)
+        evaluated.actionExclusions = exclusions
+        return evaluated
       end)
       if ok then output = result
       else output = { recommendations = {}, diagnostics = { { code = "EVALUATION_FAILED" } } } end
@@ -129,6 +131,7 @@ function Engine.Create(stateEngine, registry, guard)
   function service.GetDiagnostics(_) return copy(output.diagnostics) end
   function service.GetEvaluationInfo(_)
     return { entrypoint = output.entrypoint, actionCount = output.actionCount,
+      actionExclusions = copy(output.actionExclusions),
       stateRevision = output.stateRevision, context = copy(context) }
   end
   function service.Subscribe(_, listener)

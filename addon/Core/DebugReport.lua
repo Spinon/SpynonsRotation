@@ -44,6 +44,19 @@ function Debug.Capture(stateEngine, service, guard)
   report.heroTreeId = number(field(field(selection, "heroTree"), "id"))
   report.entrypoint = identifier(field(info, "entrypoint"))
   report.actionCount = number(field(info, "actionCount"))
+  report.actionExclusions = {}
+  local exclusions = field(info, "actionExclusions")
+  local gates = {MISSING_REQUIRED_TALENT = true, MISSING_ALTERNATIVE_TALENT = true,
+    REPLACED_BY_TALENT = true, HERO_TREE_MISMATCH = true}
+  for index = 1, 33 do
+    local excluded = field(exclusions, index)
+    if not excluded then break end
+    if index > 32 then report.truncated = true; break end
+    local gate = field(excluded, "gate")
+    report.actionExclusions[#report.actionExclusions+1] = {
+      action = identifier(field(excluded, "action")), gate = gates[gate] and gate or "UNKNOWN",
+      talentSpellId = number(field(excluded, "talentSpellId")) }
+  end
   local context = field(info, "context")
   local modes = {AUTO = true, SINGLE_TARGET = true, CLEAVE = true, AOE = true}
   local mode, resolved = field(context, "mode"), field(context, "resolvedMode")
@@ -96,6 +109,11 @@ function Debug.Write(report, console)
   console:Write("Regras: " .. Debug.Summary(report.rules))
   console:Write("Prontidão: " .. Debug.Summary(report.readiness))
   console:Write("Leituras indisponíveis: " .. Debug.Summary(report.readFailures))
+  for index = 1, math.min(3, #report.actionExclusions) do
+    local excluded = report.actionExclusions[index]
+    console:Write("Ação excluída: " .. (excluded.action or "?") .. " -> " .. excluded.gate
+      .. (excluded.talentSpellId and " (talento " .. excluded.talentSpellId .. ")" or ""))
+  end
   for index = 1, math.min(3, #report.failureExamples) do
     local example = report.failureExamples[index]
     console:Write("Sinal: " .. example.signal .. " -> " .. example.code)

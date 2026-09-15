@@ -83,7 +83,9 @@ test("denied table field cannot wedge the event engine or preserve earlier advic
   local original=data.cooldown
   data.cooldown=setmetatable({}, {__index=function() error("inaccessible field") end})
   assert(engine:HandleEvent("SPELL_UPDATE_COOLDOWN"))
-  local state=engine:GetSnapshot(); eq(state.cooldowns["audit.spell"],nil)
+  local state=engine:GetSnapshot(); eq(state.cooldowns["audit.spell"].duration,nil)
+  eq(state.cooldowns["audit.spell"].startTime,nil)
+  eq(state.cooldowns["audit.spell"].charges.currentCharges, data.charges.currentCharges)
   eq(state.capabilities["cooldowns.audit.spell"],"CONDITIONALLY_SECRET")
   data.cooldown=original; assert(engine:HandleEvent("SPELL_UPDATE_COOLDOWN"))
   assert(engine:GetSnapshot().cooldowns["audit.spell"])

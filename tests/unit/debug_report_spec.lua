@@ -66,6 +66,17 @@ test("unavailable combat is not misrepresented as out of combat and pending sele
   data.state.capabilities.inCombat = "ADDON_AVAILABLE"
   eq(ns.DebugReport.Capture(source, service, guard).combat, "NO")
 end)
+test("optional action exclusions use bounded metadata and closed gate labels", function()
+  local data, source, service = fixture()
+  data.info.actionExclusions = {{action="fixture.totem", gate="MISSING_REQUIRED_TALENT", talentSpellId=455630},
+    {action=SECRET, gate="PRIVATE", talentSpellId=SECRET}}
+  local report = ns.DebugReport.Capture(source, service, guard)
+  eq(report.actionExclusions[1].talentSpellId, 455630)
+  eq(report.actionExclusions[2].gate, "UNKNOWN"); eq(report.actionExclusions[2].action, nil)
+  eq(report.actionExclusions[2].talentSpellId, nil)
+  report.actionExclusions[1].gate = "mutated"; eq(data.info.actionExclusions[1].gate, "MISSING_REQUIRED_TALENT")
+end)
+
 test("large diagnostics are capped and summaries are deterministic", function()
   local data, source, service = fixture()
   data.diagnostics = {}; for i = 1, 10001 do data.diagnostics[i] = {rule = "fixture."..i, code = "CONDITION_FALSE"} end

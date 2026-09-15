@@ -153,6 +153,15 @@ test("Maelstrom Weapon remains an aura stack mechanic distinct from Mana", funct
   assertEqual(Catalog.resources[2].powerType, 0)
 end)
 
+test("missing action reports its exact gate without assuming all Hero Tree talents", function()
+  local _, excluded = Module.getActions(snapshot({}, 54))
+  local found
+  for _, entry in ipairs(excluded) do if entry.action == "enhancement.surging_totem" then found = entry end end
+  assertEqual(found.gate, "MISSING_REQUIRED_TALENT"); assertEqual(found.talentSpellId, 455630)
+  local _, enabledExclusions = Module.getActions(snapshot({455630}, 54))
+  for _, entry in ipairs(enabledExclusions) do assert(entry.action ~= "enhancement.surging_totem") end
+end)
+
 test("getActions returns an isolated list", function()
   local first = Module.getActions()
   first[1] = nil

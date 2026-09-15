@@ -53,3 +53,28 @@ SavedVariables/outros addons. 677 testes passaram; Wowless executou debug sem er
 Pacote limpo reproduzível SHA-256
 956F4E439FD022638CE78BB0A872E15B9C82C57FBFF18A4FD51C6FDA1346D4F9.
 Nenhuma conclusão de causa/correção em Retail foi obtida nesta entrega.
+
+## Retorno Retail e correção PATCH-005
+
+Amostra real revision 47 (snapshot e avaliação iguais): combate YES, spec 263,
+hero 54, single_totemic e 12 ações. Dezesseis regras: seis STATE_UNAVAILABLE,
+seis ACTION_NOT_READY/USABILITY_UNAVAILABLE e quatro ACTION_UNAVAILABLE.
+As 32 falhas são sete auras, 24 cooldowns/charges e mana; nenhuma em usability.
+
+Reprodução com fixture comprovou perda de usability pública porque StateEngine
+só a anexava quando o container do cooldown existia. PATCH-005 preserva esse
+filho e as charges independentemente, sem autorizar tempos ou assumir prontidão.
+Assim, a rejeição passa a indicar COOLDOWN_UNAVAILABLE quando usability é pública
+e verdadeira. A correção não desbloqueia cooldowns protegidos pelo jogo.
+
+O debug agora salva até 32 gates de ações excluídas e imprime até três deles.
+getActions pode devolver esses metadados como segundo retorno opcional; não muda
+a lista permitida. Surging Totem exige 455630 no catálogo e hero tree 54, mas o
+relatório anterior não preserva qual gate falhou. Não se alterou esse requisito
+sem evidência: próximo reteste precisa conferir a linha Ação excluída correspondente.
+
+Fontes primárias consultadas: [política de combate Blizzard](https://worldofwarcraft.blizzard.com/en-us/news/24246290)
+e [API AssistedCombat da build pinada](https://raw.githubusercontent.com/Gethe/wow-ui-source/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/AssistedCombatDocumentation.lua).
+A API oferece sugestão oficial, não uma previsão de seis ações. Adotá-la como
+fallback é escolha separada do PO e requer adapter, guards e validação; não foi
+integrada automaticamente na correção de estado parcial.

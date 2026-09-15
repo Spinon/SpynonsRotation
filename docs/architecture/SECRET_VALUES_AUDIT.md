@@ -108,6 +108,21 @@ Testes incluem sentinelas secretas, containers secretos, acesso negado, getters 
 truncamento e isolamento. SECRET-10 agora cobre DebugReport; nenhum pin/Compat API mudou.
 Essa revisão não torna leituras restritas disponíveis nem homologa combate Retail.
 
+## Revisão PATCH-005 — campos públicos independentes
+
+StateEngine agora cria container parcial para charges/usability públicos mesmo se
+a leitura principal de cooldown falhar. O container não autoriza seus campos: a
+capability do cooldown continua restrita e somente a capability do filho público
+permite a leitura daquele filho. Atualização substitui o container, sem copiar
+tempos antigos; invalidação por restrição ainda apaga todos os campos voláteis.
+StateReader não foi relaxado: prontidão depende de usability E cooldown públicos.
+
+getActions pode fornecer um segundo retorno opcional de gates estáticos da spec.
+Não influencia disponibilidade ou seleção: apenas metadados, cópias isoladas,
+IDs limitados e quatro códigos fechados no DebugReport. Ausência de talento não é
+substituída por presunção baseada na hero tree. Regressões cobrem filhos públicos,
+tempos descartados, retorno a leitura pública e gates desconhecidos/secretos.
+
 ## Fontes primárias
 
 - [FrameScript API da build 69814](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/FrameScriptDocumentation.lua): issecretvalue e distinção entre valor e conteúdo de tabela.

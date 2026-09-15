@@ -162,6 +162,9 @@ function Factory.Create(compat, detector)
       local key = "cooldowns." .. query.id
       local cooldown = record(key, api:ReadCooldown(query.spellId))
       local charges = record(key .. ".charges", api:ReadCharges(query.spellId))
+      -- These reads have independent capabilities. A public child can survive a
+      -- restricted parent, but no old cooldown timing is carried into the new container.
+      if not cooldown and charges then cooldown = {} end
       if cooldown then cooldown.charges = charges end
       state.cooldowns[query.id] = cooldown
     end
@@ -170,6 +173,7 @@ function Factory.Create(compat, detector)
   local function refreshUsability()
     for _, query in ipairs(queries.cooldowns) do
       local usable = record("cooldowns." .. query.id .. ".usable", api:ReadUsable(query.spellId))
+      if not state.cooldowns[query.id] and usable ~= nil then state.cooldowns[query.id] = {} end
       if state.cooldowns[query.id] then state.cooldowns[query.id].usable = usable end
     end
   end

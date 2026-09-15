@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T03:44:00Z",
+  "updatedAt": "2026-09-15T03:48:56Z",
   "currentFocus": "PATCH-005",
   "parallelFocus": {},
   "release": {
@@ -28,7 +28,7 @@
       "status": "in_progress",
       "priority": "P0",
       "source": "tasks/PATCH-005.md",
-      "updatedAt": "2026-09-15T03:44:00Z",
+      "updatedAt": "2026-09-15T03:48:56Z",
       "reviewBy": null,
       "nextAction": "Preservar campos públicos independentes, investigar gates de ação e instalar correção com readiness estrito.",
       "dependencies": ["PATCH-004"],
@@ -38,7 +38,13 @@
         "Diagnóstico de gates permite investigar ações ausentes",
         "Regressões aprovadas e checkpoint instalado para Retail"
       ],
-      "evidence": []
+      "evidence": [
+        "StateEngine preserva filhos públicos usability/charges em container parcial novo quando cooldown falha. Capabilities continuam independentes; tempos antigos são descartados e StateReader não trata cooldown desconhecido como pronto.",
+        "Spec getActions devolve gates opcionais de exclusão; DebugReport usa cópias, códigos fechados e IDs limitados. Catálogo/prioridades preservados: Totem exige talento 455630 e hero 54, mas a amostra Retail antiga não comprova qual gate falhou. Sem presumir talento pelo nome da hero tree.",
+        "npm test passou: 224 Node + 457 Lua = 681 testes, 29 suítes Lua; lint e tipos limpos em 63 arquivos. Quatro novas regressões cobrem campos independentes, false/nil, transições, gates e isolamento; auditoria SECRET-10 revisada.",
+        "Wowless 2026-09-15T03:48:32.869Z PASS, zero erros e 521 warnings upstream; runtime SHA-256 812B878B5BF2260132C67FE866ED7FDE8A0C449ABEB51B1E002A92AB30BA86B0. Não homologa combate Retail nem remove suas restrições.",
+        "Consulta a fontes primárias Blizzard e AssistedCombat da build pinada confirma alternativa oficial a investigar. Solicitada escolha do PO para fallback de uma ação explicitamente identificado; sem resposta, não se substituiu silenciosamente a rotação própria."
+      ]
     },
     {
       "id": "PATCH-004",

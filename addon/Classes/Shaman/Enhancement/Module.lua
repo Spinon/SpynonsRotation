@@ -41,7 +41,7 @@ local function actionIsAvailable(definition, snapshot)
 
   for index = 1, #(availability.requiredTalentSpellIds or {}) do
     if not hasTalent(snapshot, availability.requiredTalentSpellIds[index]) then
-      return false
+      return false, "MISSING_REQUIRED_TALENT", availability.requiredTalentSpellIds[index]
     end
   end
 
@@ -55,13 +55,13 @@ local function actionIsAvailable(definition, snapshot)
       end
     end
     if not found then
-      return false
+      return false, "MISSING_ALTERNATIVE_TALENT"
     end
   end
 
   for index = 1, #(availability.forbiddenTalentSpellIds or {}) do
     if hasTalent(snapshot, availability.forbiddenTalentSpellIds[index]) then
-      return false
+      return false, "REPLACED_BY_TALENT", availability.forbiddenTalentSpellIds[index]
     end
   end
 
@@ -70,7 +70,7 @@ local function actionIsAvailable(definition, snapshot)
     if type(activeHeroTree) ~= "table"
       or activeHeroTree.id ~= heroSubTreeById[availability.heroTreeId]
     then
-      return false
+      return false, "HERO_TREE_MISMATCH"
     end
   end
 
@@ -78,13 +78,16 @@ local function actionIsAvailable(definition, snapshot)
 end
 
 local function getActions(snapshot)
-  local available = {}
+  local available, excluded = {}, {}
   for index = 1, #Catalog.actions do
-    if actionIsAvailable(Catalog.actions[index], snapshot) then
+    local allowed, gate, talentSpellId = actionIsAvailable(Catalog.actions[index], snapshot)
+    if allowed then
       available[#available + 1] = actions[index]
+    else
+      excluded[#excluded+1] = {action = Catalog.actions[index].id, gate = gate, talentSpellId = talentSpellId}
     end
   end
-  return available
+  return available, excluded
 end
 
 local function getIndicators(snapshot, recommendations)
