@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T00:26:00.000Z",
+  "updatedAt": "2026-09-15T00:28:00.000Z",
   "currentFocus": "RELEASE-001",
   "parallelFocus": {},
   "release": {
@@ -1541,10 +1541,10 @@
       "title": "Packaging",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-15T00:28:00.000Z",
       "reviewBy": null,
       "nextAction": "Criar pacote reproduzível.",
       "dependencies": [

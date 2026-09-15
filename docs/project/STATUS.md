@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T00:26:00.000Z
+Atualizado pelo board em: 2026-09-15T00:28:00.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **RELEASE-001 — Packaging**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Criar pacote reproduzível.
 
 ## Progresso
 
-- Planejadas: 6
-- Em andamento: 0
+- Planejadas: 5
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 52
 - Total: 59
@@ -80,7 +80,7 @@ Próxima ação: Criar pacote reproduzível.
 | PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | done | P1 | PATCH-001, RUN-001 |
 | TEST-001 | delivery | PATCH / QUALITY | Wowless integration | done | P1 | BOOT-001 |
 | TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
-| RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
+| RELEASE-001 | delivery | PATCH / QUALITY | Packaging | in_progress | P1 | UI-001, TEST-001 |
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
 | PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | done | P0 | CORE-004, PATCH-001 |
 | UI-007 | delivery | UI | Encaixe e amostragem dos ícones | done | P1 | UI-001, UI-002, UI-003, UI-004, UI-006 |
