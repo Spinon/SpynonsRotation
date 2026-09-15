@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T03:48:56Z",
+  "updatedAt": "2026-09-15T03:53:48Z",
   "currentFocus": "PATCH-005",
   "parallelFocus": {},
   "release": {
@@ -28,13 +28,13 @@
       "status": "in_progress",
       "priority": "P0",
       "source": "tasks/PATCH-005.md",
-      "updatedAt": "2026-09-15T03:48:56Z",
+      "updatedAt": "2026-09-15T03:53:48Z",
       "reviewBy": null,
-      "nextAction": "Preservar campos públicos independentes, investigar gates de ação e instalar correção com readiness estrito.",
+      "nextAction": "Consumir isActive/isEnabled NeverSecret com guards independentes; validar prontidão conservadora sem tempos e reinstalar o checkpoint.",
       "dependencies": ["PATCH-004"],
       "acceptanceCriteria": [
         "Usability pública preservada com cooldown restrito",
-        "Sem dados obsoletos ou readiness fictício",
+        "Sem dados obsoletos ou readiness fictício; status público independente permite prontidão sem tempos restritos",
         "Diagnóstico de gates permite investigar ações ausentes",
         "Regressões aprovadas e checkpoint instalado para Retail"
       ],

@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T03:48:56Z
+Atualizado pelo board em: 2026-09-15T03:53:48Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -12,7 +12,7 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Preservar campos públicos independentes, investigar gates de ação e instalar correção com readiness estrito.
+Próxima ação: Consumir isActive/isEnabled NeverSecret com guards independentes; validar prontidão conservadora sem tempos e reinstalar o checkpoint.
 
 ## Progresso
 

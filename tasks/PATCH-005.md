@@ -20,8 +20,14 @@ Reprodução offline confirma ReadUsable OK descartado por faltar o container do
 - Testes de regressão de transição, campos independentes e rotação segura; instalar
   checkpoint development e deixar TEST-002 pendente da execução real.
 
-Fallback que substitua decisões pela sugestão oficial do WoW é escolha de produto
-separada e depende da resposta do PO; não deve ser introduzido silenciosamente aqui.
+PO respondeu: priorizar a rotação própria; assistente oficial somente como último
+recurso, preferindo calcular cooldowns se necessário. A investigação encontrou
+SpellCooldownInfo.isActive/isEnabled marcados NeverSecret nos dois pins revisados.
+O escopo inclui ler exclusivamente esses booleanos públicos de forma independente,
+com guards de container/campo, e usá-los para prontidão conservadora. Não ler tempos
+restritos, inferir resets, ignorar GCD ou usar isOnGCD fora de seu evento autorizado.
+Manter a leitura numérica anterior quando o status não estiver disponível e os
+tempos forem públicos. Não integrar AssistedCombat nem cronômetros estimados aqui.
 
 ## Aceite
 
@@ -29,3 +35,5 @@ separada e depende da resposta do PO; não deve ser introduzido silenciosamente 
 2. Estados parciais não herdam autorização ampla, tempos obsoletos nem falsa prontidão.
 3. Ausência de ação pode ser investigada com metadados de gates públicos e limitados.
 4. Suíte passa e pacote é instalado, sem alegar corrigir restrições impostas pelo cliente.
+5. Status público habilitado e inativo permite readiness sem tempos; status ativo,
+   suspenso, secreto ou ausente não produz prontidão fictícia. Invalidação limpa status.
