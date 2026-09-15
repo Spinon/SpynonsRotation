@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T01:59:00Z
+Atualizado pelo board em: 2026-09-15T02:01:00Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **BRAND-003 — Aplicar identidade ao default**
 
-Status: `planned` · Prioridade: `P2` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P2` · Responsável: Codex
 
-Próxima ação: Aplicar tokens à skin default.
+Próxima ação: Aplicar símbolo aprovado discretamente no cabeçalho do config e preparar preview Retail; preservar núcleo, fila e cores atuais.
 
 ## Progresso
 
-- Planejadas: 2
-- Em andamento: 0
+- Planejadas: 1
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 57
 - Total: 60
@@ -75,7 +75,7 @@ Próxima ação: Aplicar tokens à skin default.
 | SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | done | P2 | SKIN-001 |
 | BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | done | P1 | BOOT-001 |
 | BRAND-002 | delivery | BRAND | Criar master técnico e variantes | done | P2 | BRAND-001 |
-| BRAND-003 | delivery | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
+| BRAND-003 | delivery | BRAND | Aplicar identidade ao default | in_progress | P2 | BRAND-002, SKIN-001, UI-001 |
 | PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | done | P1 | CORE-004 |
 | PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | done | P1 | PATCH-001, RUN-001 |
 | TEST-001 | delivery | PATCH / QUALITY | Wowless integration | done | P1 | BOOT-001 |
