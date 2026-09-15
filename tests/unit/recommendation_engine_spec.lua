@@ -135,6 +135,20 @@ test("cooldown, unusable spells and unknown rate are not recommended", function(
   state.cooldowns["neutral.filler"].modRate = 2
   eq(#E.Evaluate(bundle, actions, state, nil, guard).recommendations, 0)
 end)
+test("readiness details explain rejection without relaxing readiness or exposing values", function()
+  local bundle, actions, state = fixture()
+  state.cooldowns["neutral.burst"].usable = false
+  state.cooldowns["neutral.strike"].duration = 20
+  state.cooldowns["neutral.filler"].modRate = 2
+  local output = E.Evaluate(bundle, actions, state, nil, guard)
+  eq(#output.recommendations, 0); eq(output.entrypoint, "default"); eq(output.actionCount, 3)
+  eq(output.diagnostics[1].detail, "NOT_USABLE")
+  eq(output.diagnostics[2].detail, "COOLDOWN_ACTIVE")
+  eq(output.diagnostics[4].detail, "COOLDOWN_UNAVAILABLE")
+  state.cooldowns["neutral.burst"].usable = SECRET
+  eq(E.Evaluate(bundle, actions, state, nil, guard).diagnostics[1].detail, "USABILITY_UNAVAILABLE")
+end)
+
 test("SIM_ONLY, absent actions and missing fallback cannot enter the queue", function()
   local bundle, actions, state = fixture()
   bundle.lists[1].rules[1].capability = "SIM_ONLY"
@@ -187,6 +201,9 @@ test("service observes state, clears failed providers and isolates subscribers",
   service:Subscribe(function(queue) queue[1].action.label = "mutated"; error("isolated") end)
   service:Subscribe(function(queue) received = queue end)
   service:Start()
+  local info = service:GetEvaluationInfo()
+  eq(info.entrypoint, "default"); eq(info.actionCount, 3); eq(info.stateRevision, state.revision)
+  info.context.mode = "mutated"; eq(service:GetEvaluationInfo().context.mode, "AUTO")
   eq(#received, 3)
   eq(received[1].action.label, "neutral.burst")
   selections = nil
@@ -196,6 +213,7 @@ test("service observes state, clears failed providers and isolates subscribers",
   module.getRules = function() error("provider error") end
   callback(state)
   eq(service:GetDiagnostics()[1].code, "EVALUATION_FAILED")
+  eq(service:GetEvaluationInfo().entrypoint, nil)
   service:Stop()
   eq(callback, nil)
 end)

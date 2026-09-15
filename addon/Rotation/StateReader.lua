@@ -90,9 +90,10 @@ function Reader.Create(state, guard)
 
   function reader.IsReady(_, action)
     local usable = reader:Read({ "cooldowns", action.id, "usable" })
-    if usable ~= true then return false end
+    if usable ~= true then return false, usable == false and "NOT_USABLE" or "USABILITY_UNAVAILABLE" end
     local ready = reader:Read({ "cooldowns", action.id, "ready" })
-    return ready == true
+    if ready ~= true then return false, ready == false and "COOLDOWN_ACTIVE" or "COOLDOWN_UNAVAILABLE" end
+    return true, "READY"
   end
   return reader
 end

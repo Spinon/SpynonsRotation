@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T03:29:00Z",
+  "updatedAt": "2026-09-15T03:35:00Z",
   "currentFocus": "PATCH-004",
   "parallelFocus": {},
   "release": {
@@ -28,7 +28,7 @@
       "status": "in_progress",
       "priority": "P0",
       "source": "tasks/PATCH-004.md",
-      "updatedAt": "2026-09-15T03:29:00Z",
+      "updatedAt": "2026-09-15T03:35:00Z",
       "reviewBy": null,
       "nextAction": "Adicionar diagnóstico público de seleção e descarte; instalar para nova captura em combate.",
       "dependencies": ["PATCH-003", "RUN-002", "UX-008"],
@@ -38,7 +38,13 @@
         "Regressões e smoke offline passam",
         "Checkpoint instalado e reteste Retail explicitamente pendente"
       ],
-      "evidence": []
+      "evidence": [
+        "Core/DebugReport.lua e /spynon debug acrescentam diagnóstico público ao smoke: combate observável, seleção hero/spec, lista/contexto/revisões, motivos de regra/readiness e falhas de leitura. Amostras limitadas, códigos allowlisted, sem valores brutos ou exceções.",
+        "StateReader mantém gates e só adiciona enum de prontidão; RecommendationEngine preserva decisões e fornece metadados isolados da última avaliação. Nenhuma API nova, mudança de talento ou bypass de restrição.",
+        "npm test passou: 224 Node + 453 Lua = 677 testes, 29 suítes Lua; lint e tipos limpos em 63 arquivos. SECRET-10 revisado: 27 fontes; sete regressões novas cobrem prontidão, snapshots, privacidade, limites e rota debug.",
+        "Wowless 2026-09-15T03:33:51.082Z PASS com comando debug, zero erros e 521 warnings upstream. Runtime SHA-256 826B95F53D3BC979B78FE9944198EB4C5DEC3659B693729690524F15ADCE00C3; teste headless não confirma causa da fila vazia no Retail.",
+        "Capturas do PO confirmam zero recomendações/97 sinais no boneco e seleção visual Aperfeiçoamento/Totêmico. QUEUE_DIAGNOSTICS.md distingue essa evidência da nova instrumentação ainda não testada pelo PO."
+      ]
     },
     {
       "id": "UX-008",

@@ -56,6 +56,12 @@ e amostragem; sua revisão visual permanece pendente de novo teste.
 
 ### Roteiro
 
+PATCH-004 acrescenta `/spynon debug` e detalhe no `/spynon test`. Para investigar a
+fila vazia, executar **durante ataque ao boneco**, capturar as linhas Debug/Regras/
+Prontidão/Leituras e então sair do combate e dar `/reload` para salvar. Não repetir
+debug fora de combate antes de persistir a amostra. Não é necessário mudar talentos.
+Interpretação e limites em [QUEUE_DIAGNOSTICS.md](../architecture/QUEUE_DIAGNOSTICS.md).
+
 1. Abrir o Retail, habilitar **Spynon's Rotation** na lista de addons e entrar no personagem.
 2. Fora de combate, executar `/spynon test`. O chat mostra a compatibilidade de build, validade do
    snapshot e quantidade de sinais/recomendações. Fila vazia fora de combate é esperada.

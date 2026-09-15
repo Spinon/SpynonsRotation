@@ -94,6 +94,20 @@ Regressões de subscribers, fonte do fallback, clique e lifecycle estão em
 `context_detector_spec.lua` e `context_tag_spec.lua`. Hash de ContextController
 revisado; pins e classificação SECRET-08 preservados. Retail continua PENDING.
 
+## Revisão PATCH-004 — diagnóstico limitado
+
+StateReader preserva exatamente os gates anteriores e acrescenta apenas um segundo
+retorno enum: NOT_USABLE, USABILITY_UNAVAILABLE, COOLDOWN_ACTIVE ou COOLDOWN_UNAVAILABLE.
+RecommendationEngine preserva avaliação/prioridade, acrescentando detalhe de rejeição
+e metadados da avaliação (lista, quantidade de ações, revisão e contexto isolado).
+DebugReport consome somente snapshots internos via getters, com ReadPublicField nos
+campos selecionados. Códigos são allowlisted; IDs de configuração têm caracteres e
+tamanho limitados. Exceções de getters são descartadas, nunca serializadas.
+Não exporta valores de cooldown/aura/recurso, objetos Blizzard, nomes/GUIDs ou talentos.
+Testes incluem sentinelas secretas, containers secretos, acesso negado, getters ausentes,
+truncamento e isolamento. SECRET-10 agora cobre DebugReport; nenhum pin/Compat API mudou.
+Essa revisão não torna leituras restritas disponíveis nem homologa combate Retail.
+
 ## Fontes primárias
 
 - [FrameScript API da build 69814](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/FrameScriptDocumentation.lua): issecretvalue e distinção entre valor e conteúdo de tabela.

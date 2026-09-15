@@ -35,6 +35,7 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
       recommendationsValid = validQueue, uiCreated = queueController:GetView() ~= nil,
       visualInspection = "PENDING", taintInspection = "PENDING", combatInspection = "PENDING",
     }
+    report.debug = Spynon.DebugReport.Capture(stateEngine, recommendations, compat.State)
     compat.Console:SaveReport(report)
     compat.Console:Write("Teste executado; relatório salvo para o próximo logout ou /reload.")
     local buildLabel
@@ -49,6 +50,7 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
       .. " | estado: " .. (report.stateValid and "válido" or "INVÁLIDO")
       .. " | sinais públicos: " .. counts.available .. " | recomendações: " .. #queue)
     compat.Console:Write("Visual, taint e combate ainda exigem inspeção. /spynon test show para a fila visual.")
+    Spynon.DebugReport.Write(report.debug, compat.Console)
     return report
   end
 
@@ -140,6 +142,10 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
     started = true
     compat.Console:Register(function(text) harness:Handle(text) end)
     compat.Console:RegisterRoute("demo", function(text) harness:HandleDemo(text) end)
+    compat.Console:RegisterRoute("debug", function(text)
+      if text:lower():match("^%s*debug%s*$") then return harness:Run() end
+      compat.Console:Write("Use /spynon debug durante o combate; depois /reload para persistir.")
+    end)
     local frame = createFrame("Frame")
     frame:RegisterEvent("PLAYER_REGEN_DISABLED")
     frame:RegisterEvent("ADDON_RESTRICTION_STATE_CHANGED")

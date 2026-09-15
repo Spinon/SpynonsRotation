@@ -50,6 +50,17 @@ test("report records automated checks without claiming visual or combat validati
   eq(env.SpynonRotationDB.preserved, true)
   eq(env.SpynonRotationDB.lastSmokeReport, report)
 end)
+test("debug route saves bounded metadata and does not enable a preview or change the live queue", function()
+  local harness, env, _, controller, _, messages = fixture()
+  harness:Start(); env.SlashCmdList.SPYNONROTATION("debug")
+  local debug = env.SpynonRotationDB.lastSmokeReport.debug
+  eq(debug.schemaVersion, 1); eq(debug.diagnosticsAvailable, false); eq(debug.combat, "UNAVAILABLE")
+  eq(controller.starts, 0); eq(controller.stops, 0); eq(harness:IsPreviewActive(), false)
+  assert(messages[4]:find("Debug:", 1, true))
+  env.SlashCmdList.SPYNONROTATION("debug nonsense")
+  eq(env.SpynonRotationDB.lastSmokeReport.debug, debug)
+end)
+
 test("client build drift is explicit in the report", function()
   local harness, _, data, _, _, messages = fixture()
   data.build = "99999"

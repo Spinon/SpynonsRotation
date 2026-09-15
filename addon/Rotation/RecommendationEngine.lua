@@ -33,6 +33,7 @@ function Engine.Evaluate(bundle, actions, state, context, guard, limit)
     if list.id == bundle.entrypoint then selected = list end
   end
   if not selected then return reject("ENTRYPOINT_MISSING") end
+  output.entrypoint = bundle.entrypoint
   if not Spynon.RotationProgram.IsList(actions, 10000) then return reject("INVALID_ACTIONS") end
   local actionById = {}
   for _, action in ipairs(actions) do
@@ -40,6 +41,7 @@ function Engine.Evaluate(bundle, actions, state, context, guard, limit)
     actionById[action.id] = action
   end
   local ordered, ruleIds = {}, {}
+  output.actionCount = #actions
   for _, rule in ipairs(selected.rules) do
     if type(rule) ~= "table" or not V.IsNonEmptyString(rule.id) or ruleIds[rule.id]
       or not V.IsNonEmptyString(rule.action) or not V.IsPositiveInteger(rule.priority)
@@ -54,7 +56,7 @@ function Engine.Evaluate(bundle, actions, state, context, guard, limit)
   local reader, seen = Spynon.StateReader.Create(state, guard), {}
   for _, rule in ipairs(ordered) do
     local action = actionById[rule.action]
-    local code
+    local code, detail
     if not Contracts.Capability.IsValid(rule.capability) then code = "INVALID_CAPABILITY"
     elseif rule.capability == "SIM_ONLY" then code = "SIM_ONLY"
     elseif rule.capability == "CONDITIONALLY_SECRET" and rule.onUnavailable ~= "skip_rule" then
@@ -65,18 +67,21 @@ function Engine.Evaluate(bundle, actions, state, context, guard, limit)
     else
       local matched, reason = Spynon.RotationProgram.Evaluate(rule.program, reader)
       if matched ~= true then code = matched == false and "CONDITION_FALSE" or reason
-      elseif not reader:IsReady(action) then code = "ACTION_NOT_READY"
       else
-        local recommendation = Contracts.Recommendation.Create({
-          id = action.id, action = copy(action), priority = #output.recommendations + 1,
-          reason = { code = rule.id, capability = AVAILABLE }, context = copy(context),
-        })
-        output.recommendations[#output.recommendations + 1] = recommendation
-        seen[action.id] = true
-        code = "SELECTED"
+        local ready, readiness = reader:IsReady(action)
+        if not ready then code, detail = "ACTION_NOT_READY", readiness
+        else
+          local recommendation = Contracts.Recommendation.Create({
+            id = action.id, action = copy(action), priority = #output.recommendations + 1,
+            reason = { code = rule.id, capability = AVAILABLE }, context = copy(context),
+          })
+          output.recommendations[#output.recommendations + 1] = recommendation
+          seen[action.id] = true
+          code = "SELECTED"
+        end
       end
     end
-    output.diagnostics[#output.diagnostics + 1] = { rule = rule.id, code = code }
+    output.diagnostics[#output.diagnostics + 1] = { rule = rule.id, code = code, detail = detail }
     if #output.recommendations >= limit then break end
   end
   return output
@@ -104,6 +109,7 @@ function Engine.Create(stateEngine, registry, guard)
       if ok then output = result
       else output = { recommendations = {}, diagnostics = { { code = "EVALUATION_FAILED" } } } end
     end
+    output.stateRevision = state.revision
     for id = 1, nextListener do
       if listeners[id] then pcall(listeners[id], copy(output.recommendations), copy(output.diagnostics)) end
     end
@@ -121,6 +127,10 @@ function Engine.Create(stateEngine, registry, guard)
   end
   function service.GetRecommendations(_) return copy(output.recommendations) end
   function service.GetDiagnostics(_) return copy(output.diagnostics) end
+  function service.GetEvaluationInfo(_)
+    return { entrypoint = output.entrypoint, actionCount = output.actionCount,
+      stateRevision = output.stateRevision, context = copy(context) }
+  end
   function service.Subscribe(_, listener)
     assert(type(listener) == "function", "listener must be a function")
     nextListener = nextListener + 1

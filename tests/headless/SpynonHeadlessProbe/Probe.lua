@@ -13,7 +13,7 @@ frame:SetScript("OnEvent", function()
     assert(report.stateValid and report.recommendationsValid and report.uiCreated, "invalid bootstrap state")
     assert(report.visualInspection == "PENDING" and report.taintInspection == "PENDING", "invalid Retail claim")
     for _, command in ipairs({"test show", "test hide", "config", "config close",
-      "edit", "edit close", "demo off", "demo stop"}) do
+      "edit", "edit close", "demo off", "demo stop", "debug"}) do
       SlashCmdList.SPYNONROTATION(command)
     end
     SpynonHeadlessProbeResult = "PASS:BOOTSTRAP_SMOKE:HEADLESS_ONLY"

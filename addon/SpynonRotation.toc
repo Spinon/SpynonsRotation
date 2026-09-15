@@ -62,6 +62,7 @@ UI/ContextTag.lua
 UI/QueueController.lua
 UI/DemoTimeline.lua
 UI/DemoMode.lua
+Core/DebugReport.lua
 Core/InGameHarness.lua
 Config/History.lua
 Config/HistoryBinding.lua
