@@ -90,6 +90,35 @@ test("denied table field cannot wedge the event engine or preserve earlier advic
   data.cooldown=original; assert(engine:HandleEvent("SPELL_UPDATE_COOLDOWN"))
   assert(engine:GetSnapshot().cooldowns["audit.spell"])
 end)
+test("NeverSecret status reads only guarded flags even when timings are restricted and unindexable",function()
+  local compat,env,data,_,touched=fixture()
+  env.C_Secrets.ShouldSpellCooldownBeSecret=function() return true end
+  data.cooldown=setmetatable({isEnabled=true,isActive=false}, {__index=function() error("timing field read") end})
+  eq(compat.State:ReadCooldown(101).code,"SECRET_RESTRICTED")
+  local result=compat.State:ReadCooldownStatus(101)
+  eq(result.ok,true); eq(result.value.isEnabled,true); eq(result.value.isActive,false)
+  eq(result.value.startTime,nil); eq(result.value.duration,nil); eq(touched(),0)
+end)
+for _,field in ipairs({"isEnabled","isActive"}) do
+  test("NeverSecret metadata never replaces the live guard: " .. field,function()
+    local compat,_,data,secret,touched=fixture()
+    data.cooldown={isEnabled=true,isActive=false}; data.cooldown[field]=secret
+    eq(compat.State:ReadCooldownStatus(101).code,"SECRET_RESTRICTED"); eq(touched(),0)
+  end)
+end
+test("cooldown status rejects secret containers, denied indexing, malformed fields and missing guard",function()
+  local compat,env,data,secret,touched=fixture()
+  data.cooldown=secret
+  eq(compat.State:ReadCooldownStatus(101).code,"SECRET_RESTRICTED"); eq(touched(),0)
+  data.cooldown=setmetatable({}, {__index=function() error("private error") end})
+  eq(compat.State:ReadCooldownStatus(101).code,"CALL_FAILED")
+  data.cooldown={isEnabled=true,isActive=0}
+  eq(compat.State:ReadCooldownStatus(101).code,"INVALID_DATA")
+  data.cooldown=nil; eq(compat.State:ReadCooldownStatus(101).code,"NO_DATA")
+  eq(compat.State:ReadCooldownStatus(0).code,"INVALID_ARGUMENT")
+  data.cooldown={isEnabled=true,isActive=false}; env.issecretvalue=nil
+  eq(compat.State:ReadCooldownStatus(101).code,"SECRET_RESTRICTED")
+end)
 print("Secret boundary audit: " .. passed .. "/" .. total .. " passed")
 for _,failure in ipairs(failures) do print(failure) end
 if passed~=total then os.exit(1) end

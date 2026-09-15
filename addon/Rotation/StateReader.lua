@@ -33,6 +33,16 @@ function Reader.Create(state, guard)
     if not Spynon.RotationProgram.IsList(path, 16) or #path < 1 then return nil end
     for _, key in ipairs(path) do if not V.IsNonEmptyString(key) then return nil end end
     local key = table.concat(path, ".")
+    if #path == 3 and path[1] == "cooldowns" and path[3] == "ready" then
+      local explicit = at({ "capabilities", key })
+      if explicit ~= nil and explicit ~= AVAILABLE then return nil end
+      -- Independent public status is sufficient, but never authorizes timing/charges.
+      -- Do not ignore GCD or treat a cooldown on hold as ready.
+      local enabled = reader:Read({ "cooldowns", path[2], "status", "isEnabled" })
+      local active = reader:Read({ "cooldowns", path[2], "status", "isActive" })
+      if enabled == false then return false end
+      if enabled == true and type(active) == "boolean" then return not active end
+    end
     -- Most-specific capability wins; a restricted child cannot inherit a public parent.
     local authorized = false
     for length = #path, 1, -1 do

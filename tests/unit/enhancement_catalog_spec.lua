@@ -162,6 +162,49 @@ test("missing action reports its exact gate without assuming all Hero Tree talen
   for _, entry in ipairs(enabledExclusions) do assert(entry.action ~= "enhancement.surging_totem") end
 end)
 
+test("Totemic production pipeline recommends public-ready spells with restricted timings and auras", function()
+  local selected = snapshot({}, 54)
+  selected.specialization, selected.module = {specId=263}, Module
+  for _, talent in ipairs(Catalog.talents) do selected.activeSpellRanks[talent.spellId] = 1 end
+  local active = false
+  local env = {
+    issecretvalue=function() return false end, GetTime=function() return 10 end,
+    UnitAffectingCombat=function() return true end,
+    C_Secrets={ShouldSpellCooldownBeSecret=function() return true end,
+      ShouldSpellAuraBeSecret=function() return true end,
+      ShouldUnitPowerBeSecret=function() return true end},
+    C_Spell={IsSpellUsable=function() return true end, GetSpellCooldown=function()
+      return setmetatable({isEnabled=true,isActive=active}, {__index=function() error("timing access") end})
+    end},
+  }
+  local compat = namespace.CompatFactory.Create(env)
+  local engine = namespace.StateEngineFactory.Create(compat, {Capture=function()
+    return namespace.CompatInternal.Result.Success(selected)
+  end})
+  local context = namespace.Contracts.CombatContext.Create({mode="SINGLE_TARGET"})
+  local function evaluate()
+    local state = engine:GetSnapshot()
+    return namespace.RecommendationEngine.Evaluate(Module.getRules(engine:GetSelection(),state,context),
+      Module.getActions(engine:GetSelection()),state,context,compat.State,6)
+  end
+  engine:HandleEvent("PLAYER_ENTERING_WORLD")
+  local output = evaluate()
+  assertEqual(output.entrypoint,"single_totemic"); assertTrue(#output.recommendations > 0)
+  local strike = false
+  for _, rec in ipairs(output.recommendations) do
+    if rec.action.id == "enhancement.stormstrike" then strike = true end
+    assert(rec.action.id ~= "enhancement.lightning_bolt", "restricted Maelstrom must not be inferred")
+    assertTrue(namespace.Contracts.Recommendation.IsRuntimeSafe(rec))
+  end
+  assertTrue(strike)
+  active = true; engine:HandleEvent("SPELL_UPDATE_COOLDOWN")
+  assertEqual(#evaluate().recommendations,0)
+  active = false; engine:HandleEvent("SPELL_UPDATE_COOLDOWN")
+  assertTrue(#evaluate().recommendations > 0)
+  engine:HandleEvent("ADDON_RESTRICTION_STATE_CHANGED")
+  assertEqual(#evaluate().recommendations,0)
+end)
+
 test("getActions returns an isolated list", function()
   local first = Module.getActions()
   first[1] = nil

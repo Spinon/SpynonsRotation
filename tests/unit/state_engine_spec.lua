@@ -262,7 +262,7 @@ test("restriction transition invalidates immediately without trusting pre-activa
   engine:HandleEvent("UNIT_POWER_UPDATE", "player")
   equal(engine:GetSnapshot().auras["neutral.buff"], nil)
   equal(engine:GetSnapshot().resources["neutral.power"].current, 40)
-  equal(calls.cooldown, cooldownCalls + 1)
+  equal(calls.cooldown, cooldownCalls + 2)
 end)
 
 test("unavailable spec discards all previous spec data and queries", function()
@@ -491,6 +491,35 @@ test("usability is observed independently and cleared when protected or restrict
   equal(engine:GetDiagnostics()["cooldowns.neutral.strike.usable"].code, "SECRET_RESTRICTED")
   engine:HandleEvent("ADDON_RESTRICTION_STATE_CHANGED")
   equal(engine:GetSnapshot().capabilities["cooldowns.neutral.strike.usable"], "CONDITIONALLY_SECRET")
+end)
+
+test("public cooldown status survives timing restriction and follows active, held, missing and invalidation transitions", function()
+  local engine, data, _, env = fixture()
+  local api = namespace.CompatFactory.Create(env).State
+  env.C_Secrets.ShouldSpellCooldownBeSecret = function() return true end
+  data.cooldown = { isEnabled = true, isActive = false, startTime = SECRET, duration = SECRET, modRate = SECRET }
+  local function ready()
+    local state = engine:GetSnapshot()
+    equal(state.cooldowns["neutral.strike"].duration, nil)
+    equal(state.capabilities["cooldowns.neutral.strike"], "CONDITIONALLY_SECRET")
+    return namespace.StateReader.Create(state, api):IsReady({id="neutral.strike"})
+  end
+  engine:HandleEvent("PLAYER_ENTERING_WORLD")
+  equal(ready(), true)
+  equal(engine:GetSnapshot().capabilities["cooldowns.neutral.strike.status"], "ADDON_AVAILABLE")
+  data.cooldown.isActive = true; engine:HandleEvent("SPELL_UPDATE_COOLDOWN")
+  local value, reason = ready(); equal(value, false); equal(reason, "COOLDOWN_ACTIVE")
+  data.cooldown.isEnabled, data.cooldown.isActive = false, false
+  engine:HandleEvent("SPELL_UPDATE_COOLDOWN"); equal(ready(), false)
+  data.cooldown.isEnabled, data.cooldown.isActive = true, nil
+  engine:HandleEvent("SPELL_UPDATE_COOLDOWN")
+  value, reason = ready(); equal(value, false); equal(reason, "COOLDOWN_UNAVAILABLE")
+  equal(engine:GetSnapshot().cooldowns["neutral.strike"].status, nil)
+  data.cooldown.isActive = false; engine:HandleEvent("SPELL_UPDATE_COOLDOWN"); equal(ready(), true)
+  engine:HandleEvent("ADDON_RESTRICTION_STATE_CHANGED")
+  equal(next(engine:GetSnapshot().cooldowns), nil)
+  equal(engine:GetSnapshot().capabilities["cooldowns.neutral.strike.status"], "CONDITIONALLY_SECRET")
+  data.cooldown.isActive = true; engine:HandleEvent("SPELL_UPDATE_USABLE"); equal(ready(), false)
 end)
 
 test("bootstrap registers and forwards state events only after this addon loads", function()

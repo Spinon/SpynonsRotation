@@ -65,6 +65,41 @@ for _, golden in ipairs(assert(loadfile("tests/fixtures/specs/neutral_recommenda
     eq(order(E.Evaluate(bundle, actions, state, nil, guard)), golden.expected)
   end)
 end
+test("public cooldown flags permit our own queue without timing or an official assistant", function()
+  local bundle, actions, state = fixture()
+  for _, action in ipairs(actions) do
+    state.cooldowns[action.id] = { usable = true, status = { isEnabled = true, isActive = false } }
+    state.capabilities["cooldowns." .. action.id] = "CONDITIONALLY_SECRET"
+    state.capabilities["cooldowns." .. action.id .. ".status"] = "ADDON_AVAILABLE"
+  end
+  state.capabilities["auras.proc"] = "CONDITIONALLY_SECRET"
+  eq(order(E.Evaluate(bundle, actions, state, nil, guard)), "neutral.strike,neutral.filler")
+  local reader = ns.StateReader.Create(state, guard)
+  eq(reader:Read({"cooldowns","neutral.strike","remains"}), nil)
+  eq(reader:Read({"cooldowns","neutral.strike","ready"}), true)
+  state.cooldowns["neutral.strike"].status.isActive = true
+  eq(order(E.Evaluate(bundle, actions, state, nil, guard)), "neutral.filler")
+  state.cooldowns["neutral.filler"].status.isEnabled = false
+  eq(#E.Evaluate(bundle, actions, state, nil, guard).recommendations, 0)
+end)
+test("status readiness respects nested restrictions, secret flags and explicit readiness denial", function()
+  local _, _, state = fixture()
+  local id, key = "neutral.strike", "cooldowns.neutral.strike"
+  state.cooldowns[id] = {usable=true,status={isEnabled=true,isActive=false}}
+  state.capabilities[key], state.capabilities[key .. ".status"] = "CONDITIONALLY_SECRET", "ADDON_AVAILABLE"
+  local reader = ns.StateReader.Create(state, guard)
+  state.capabilities[key .. ".status.isActive"] = "CONDITIONALLY_SECRET"
+  eq(reader:Read({"cooldowns",id,"ready"}), nil)
+  state.capabilities[key .. ".status.isActive"] = nil
+  state.cooldowns[id].status.isActive = SECRET
+  eq(reader:Read({"cooldowns",id,"ready"}), nil)
+  state.cooldowns[id].status.isActive = false
+  state.capabilities[key .. ".ready"] = "CONDITIONALLY_SECRET"
+  eq(reader:Read({"cooldowns",id,"ready"}), nil)
+  state.capabilities[key .. ".ready"] = nil
+  eq(reader:Read({"cooldowns",id,"ready"}), true)
+end)
+
 test("zero is false under SimC truthiness and numeric comparisons cover all operators", function()
   local reader = { Read = function() return 0 end }
   eq(P.Evaluate({ read({ "x" }), { op = "TRUTHY" } }, reader), false)

@@ -142,6 +142,22 @@ function State.Create(environment)
     return Result.Success(normalized)
   end
 
+  function adapter.ReadCooldownStatus(_, spellId)
+    if not Validation.IsPositiveInteger(spellId) then return Result.Failure(Result.Code.INVALID_ARGUMENT) end
+    -- SpellSharedDocumentation (both reviewed pins) marks only these fields NeverSecret.
+    -- The timing predicate does not gate this separate read; no timing field is indexed.
+    -- NeverSecret is not a substitute for live container/leaf guards.
+    local value, failure = read("C_Spell.GetSpellCooldown", spellId)
+    if failure then return failure end
+    if value == nil then return Result.Failure(Result.Code.NO_DATA) end
+    local normalized, fieldError = fields(value, {
+      { "isEnabled", function(v) return type(v) == "boolean" end },
+      { "isActive", function(v) return type(v) == "boolean" end },
+    })
+    if fieldError then return fieldError end
+    return Result.Success(normalized)
+  end
+
   function adapter.ReadCharges(_, spellId)
     if not Validation.IsPositiveInteger(spellId) then return Result.Failure(Result.Code.INVALID_ARGUMENT) end
     local failure = allowed("C_Secrets.ShouldSpellCooldownBeSecret", spellId)

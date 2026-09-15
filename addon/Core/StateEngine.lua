@@ -162,10 +162,11 @@ function Factory.Create(compat, detector)
       local key = "cooldowns." .. query.id
       local cooldown = record(key, api:ReadCooldown(query.spellId))
       local charges = record(key .. ".charges", api:ReadCharges(query.spellId))
+      local status = record(key .. ".status", api:ReadCooldownStatus(query.spellId))
       -- These reads have independent capabilities. A public child can survive a
       -- restricted parent, but no old cooldown timing is carried into the new container.
-      if not cooldown and charges then cooldown = {} end
-      if cooldown then cooldown.charges = charges end
+      if not cooldown and (charges or status) then cooldown = {} end
+      if cooldown then cooldown.charges, cooldown.status = charges, status end
       state.cooldowns[query.id] = cooldown
     end
   end
@@ -189,6 +190,7 @@ function Factory.Create(compat, detector)
         if group == "cooldowns" then
           record(group .. "." .. query.id .. ".charges", unavailable)
           record(group .. "." .. query.id .. ".usable", unavailable)
+          record(group .. "." .. query.id .. ".status", unavailable)
         end
       end
     end

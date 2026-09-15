@@ -78,3 +78,24 @@ e [API AssistedCombat da build pinada](https://raw.githubusercontent.com/Gethe/w
 A API oferece sugestão oficial, não uma previsão de seis ações. Adotá-la como
 fallback é escolha separada do PO e requer adapter, guards e validação; não foi
 integrada automaticamente na correção de estado parcial.
+
+### Continuação: prontidão pública sem tempos nem assistente oficial
+
+PO priorizou nossa rotação e reservou AssistedCombat como último recurso.
+A investigação seguinte corrigiu a conclusão ampla de que todo o cooldown estava
+indisponível: [SpellSharedDocumentation da build 69814](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellSharedDocumentation.lua)
+declara isEnabled/isActive NeverSecret, embora os tempos possam estar restritos.
+
+ReadCooldownStatus consome somente esses dois booleanos com guards vivos. Com
+usability pública verdadeira, habilitado e inativo permitem nossa recomendação.
+Não se usa o assistente oficial, nem cronômetro calculado, nem previsão de reset.
+Tempos protegidos continuam indisponíveis; regras que dependem deles, buffs ou
+recursos inacessíveis continuam sendo omitidas. A fila pode ter menos de seis ações
+e desaparecer durante o GCD se todas estiverem ativas; não se mantém conselho antigo.
+
+Diagnóstico esperado: os erros dos tempos podem continuar SECRET_RESTRICTED mesmo
+com recomendações válidas. Status público válido entra em cooldowns.<ação>.status;
+se falhar, gera sua própria entrada controlada no debug. COOLDOWN_ACTIVE indica
+rejeição pública (inclui cooldown suspenso), não falha de leitura. A ausência do
+Surging Totem ainda exige correlacionar o gate salvo com a seleção real; não foi
+presumida resolvida pela mudança de prontidão.

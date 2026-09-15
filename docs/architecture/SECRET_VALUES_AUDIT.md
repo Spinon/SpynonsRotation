@@ -115,7 +115,27 @@ a leitura principal de cooldown falhar. O container não autoriza seus campos: a
 capability do cooldown continua restrita e somente a capability do filho público
 permite a leitura daquele filho. Atualização substitui o container, sem copiar
 tempos antigos; invalidação por restrição ainda apaga todos os campos voláteis.
-StateReader não foi relaxado: prontidão depende de usability E cooldown públicos.
+Prontidão continua exigindo usability E evidência pública de cooldown.
+
+Na continuação de PATCH-005, ReadCooldownStatus lê somente isEnabled/isActive,
+marcados NeverSecret em SpellSharedDocumentation dos dois pins. A sonda que bloqueia
+tempos não bloqueia essa leitura separada: nenhum tempo é indexado, nem mesmo para
+decidir se o status pode ser usado. Container e ambos os booleanos passam pelo guard
+vivo; ausência, segredo, tipo inválido ou indexação negada resultam em falha controlada.
+Não se inspecionam DurationObjects, textos, frames ou efeitos de operações secretas.
+
+StateEngine guarda status sob capability filha independente e o limpa em refresh e
+invalidação. StateReader permite ready somente com isEnabled=true e isActive=false;
+status suspenso ou ativo recusa prontidão, inclusive durante GCD. Sem status válido,
+permanece o caminho numérico anterior, exclusivamente com tempos públicos. A capability
+de status não autoriza remains, charges, auras ou recursos; uma negação explícita de
+ready ou de um filho de status é respeitada. Nenhuma redução/reset é estimada.
+
+Regressões acrescentam metatable que proíbe qualquer acesso aos tempos, guards reais
+simulados nos flags/container, estados held/active/missing, invalidação e pipeline de
+produção Totêmico. Este último produz recomendações próprias com timings/auras
+restritos e não infere Maelstrom Weapon para recomendar Lightning Bolt. Limitação:
+isOnGCD não é usado, logo não há previsão durante o bloqueio global.
 
 getActions pode fornecer um segundo retorno opcional de gates estáticos da spec.
 Não influencia disponibilidade ou seleção: apenas metadados, cópias isoladas,
@@ -125,6 +145,7 @@ tempos descartados, retorno a leitura pública e gates desconhecidos/secretos.
 
 ## Fontes primárias
 
+- [SpellShared da build 69814](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellSharedDocumentation.lua): isEnabled/isActive NeverSecret; sem converter esses flags em tempos ou cargas. Mesmo contrato no pin 69587 já coberto pelo diff.
 - [FrameScript API da build 69814](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/FrameScriptDocumentation.lua): issecretvalue e distinção entre valor e conteúdo de tabela.
 - [Secret predicates](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/SecretPredicateAPIDocumentation.lua): sondas específicas por spell/recurso; não substituem guards de retorno.
 - [SpecializationInfo](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/SpecializationInfoDocumentation.lua), [ClassTalents](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/ClassTalentsDocumentation.lua) e [SharedTraits](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/SharedTraitsDocumentation.lua): metadados estáticos revisados.
