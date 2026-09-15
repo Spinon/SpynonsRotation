@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T00:34:00.000Z",
+  "updatedAt": "2026-09-15T00:35:00.000Z",
   "currentFocus": "RELEASE-002",
   "parallelFocus": {},
   "release": {
@@ -1568,10 +1568,10 @@
       "title": "CI",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-15T00:35:00.000Z",
       "reviewBy": null,
       "nextAction": "Definir workflow de validação.",
       "dependencies": [
