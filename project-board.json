@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T04:01:10Z",
-  "currentFocus": "TEST-002",
+  "updatedAt": "2026-09-15T04:09:58Z",
+  "currentFocus": "PATCH-006",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -20,6 +20,26 @@
     "validatedAt": null
   },
   "items": [
+    {
+      "id": "PATCH-006",
+      "title": "Continuidade da fila durante GCD",
+      "lane": "PATCH / QUALITY",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "tasks/PATCH-006.md",
+      "updatedAt": "2026-09-15T04:09:58Z",
+      "reviewBy": null,
+      "nextAction": "Separar espera por GCD de prontidão usando apenas sinal público do evento autorizado; validar continuidade e instalar.",
+      "dependencies": ["PATCH-005"],
+      "acceptanceCriteria": [
+        "Candidatas durante GCD permanecem visíveis e explicitamente aguardando",
+        "Prontidão, cooldown próprio, dados restritos e invalidação preservados",
+        "Sinal GCD somente lido no evento autorizado; testes de integração aprovados",
+        "Pacote local instalado e reteste Retail documentado sem aprovação presumida"
+      ],
+      "evidence": []
+    },
     {
       "id": "PATCH-005",
       "title": "Estado parcial seguro em combate",

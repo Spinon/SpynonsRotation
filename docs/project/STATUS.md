@@ -2,30 +2,31 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T04:01:10Z
+Atualizado pelo board em: 2026-09-15T04:09:58Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**TEST-002 — In-game harness**
+**PATCH-006 — Continuidade da fila durante GCD**
 
-Status: `blocked` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: PO: /reload carrega d22f625 instalado, sair da demo/config, atacar boneco e observar fila própria entre cooldowns. Executar /spynon debug em combate, capturar regras/prontidão e ações excluídas; sair de combate e /reload para persistir sem repetir debug. Validar flags públicos no Retail e gate do Totem. Checklists UX-007/UX-008 e combate/taint continuam pendentes.
+Próxima ação: Separar espera por GCD de prontidão usando apenas sinal público do evento autorizado; validar continuidade e instalar.
 
 ## Progresso
 
-- Planejadas: 1
+- Planejadas: 2
 - Em andamento: 0
 - Bloqueadas: 2
 - Concluídas: 60
-- Total: 63
+- Total: 64
 
 ## Fila canônica
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
+| PATCH-006 | delivery | PATCH / QUALITY | Continuidade da fila durante GCD | planned | P0 | PATCH-005 |
 | PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | done | P0 | PATCH-004 |
 | PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | done | P0 | PATCH-003, RUN-002, UX-008 |
 | UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | done | P1 | RUN-003, UX-007 |
