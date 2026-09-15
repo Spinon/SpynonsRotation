@@ -143,6 +143,20 @@ discretas de tamanho, sem slider. Não há nova evidência Retail dessa entrega.
 - [ ] Comportamento real no boneco é útil ou limitações foram registradas com exemplos.
 - [ ] Screenshot/relato do Product Owner e relatório persistido anexados à evidência da task.
 
+### Preview de marca (BRAND-003)
+
+O cabeçalho do config passa a mostrar o símbolo oficial em 46×46, separado do título.
+Somente essa superfície muda; fila e skin continuam com os assets anteriores.
+Após atualizar a instalação e usar `/reload`, abrir `/spynon config`:
+
+- [ ] Símbolo íntegro, sem esticar, com fundo original discreto no cabeçalho.
+- [ ] Título e subtítulo legíveis, sem sobreposição a Fechar ou Editar HUD.
+- [ ] Marca desaparece ao fechar o config e não aparece na fila de combate.
+- [ ] Product Owner aprova o preview ou registra o ajuste necessário.
+
+Fonte aprovada e testes offline não preenchem esses itens. BRAND-003 mantém a
+aprovação do preview pendente, separada da validação de combate de TEST-002.
+
 ## Fora do escopo deste smoke
 
 ### Entrega UX-007 instalada para inspeção

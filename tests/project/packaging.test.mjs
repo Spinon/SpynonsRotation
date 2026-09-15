@@ -9,7 +9,7 @@ import {collect, createPackage, verifyPackage, parseToc, validateMetadata, sha25
 const input = collect(), commit = "a".repeat(40), result = createPackage(input, commit, false);
 test("package includes only TOC Lua and approved runtime textures under one addon root", () => {
   const entries = verifyPackage(result.zip, result.manifest);
-  assert.equal(entries.length, 78); assert.equal(entries.filter((entry) => entry.name.endsWith(".tga")).length, 16);
+  assert.equal(entries.length, 79); assert.equal(entries.filter((entry) => entry.name.endsWith(".tga")).length, 17);
   assert.ok(entries.every((entry) => entry.name.startsWith("SpynonRotation/")));
   assert.ok(entries.every((entry) => !/README|\.json|\.png|Probe|tests|rotation-lab|WTF/u.test(entry.name)));
 });
@@ -67,12 +67,23 @@ test("manifest drift and a missing packaged TOC are rejected", () => {
 test("collection rejects unlisted Lua and changed texture hashes", () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "spynon-package-test-"));
   try {
-    for (const relative of ["addon", "project-board.json", "package.json", "tools/toolchain/pins.json", "assets/ui/runtime/manifest.json"]) {
+    for (const relative of ["addon", "project-board.json", "package.json", "tools/toolchain/pins.json",
+      "assets/ui/runtime/manifest.json", "assets/brand/runtime.json", "assets/brand/source.json"]) {
       fs.mkdirSync(path.dirname(path.join(temporary, relative)), {recursive: true});
       fs.cpSync(relative, path.join(temporary, relative), {recursive: true});
     }
     const extra = path.join(temporary, "addon/Unexpected.lua"); fs.writeFileSync(extra, "return true");
     assert.throws(() => collect(temporary), /Unlisted runtime/u); fs.unlinkSync(extra);
+    const brandFile = path.join(temporary, "assets/brand/runtime.json");
+    const originalBrand = fs.readFileSync(brandFile), brand = JSON.parse(originalBrand);
+    for (const change of [{sourceSha256: "0".repeat(64)}, {approval: "UNREVIEWED"},
+      {retailPreview: "PASS"}, {runtime: "../outside.tga"}]) {
+      fs.writeFileSync(brandFile, JSON.stringify({...brand, ...change}));
+      assert.throws(() => collect(temporary), /brand asset provenance/u);
+    }
+    fs.writeFileSync(brandFile, JSON.stringify({...brand, runtimeSha256: "0".repeat(64)}));
+    assert.throws(() => collect(temporary), /Asset hash mismatch: brand/u);
+    fs.writeFileSync(brandFile, originalBrand);
     const asset = input.entries.find((entry) => entry.name.endsWith(".tga"));
     fs.writeFileSync(path.join(temporary, "addon", asset.name.slice("SpynonRotation/".length)), "changed");
     assert.throws(() => collect(temporary), /Asset hash/u);

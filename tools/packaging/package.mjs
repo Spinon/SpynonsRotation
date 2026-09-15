@@ -62,6 +62,16 @@ export function collect(root = process.cwd()) {
       entries.push({name: `${ADDON}/${relative}`, data});
     }
   }
+  const brand = JSON.parse(read(root, "assets/brand/runtime.json"));
+  const brandSource = JSON.parse(read(root, "assets/brand/source.json"));
+  if (brand.schemaVersion !== 1 || brand.approval !== "APPROVED_SOURCE_TECHNICAL_DERIVATIVE"
+    || brandSource.approval?.status !== "APPROVED_SOURCE" || brand.sourceSha256 !== brandSource.source?.sha256
+    || brand.retailPreview !== "PENDING" || brand.runtime !== "UI/Media/Textures/Brand/spynon-symbol-v1.tga") {
+    throw new Error("Invalid brand asset provenance");
+  }
+  const brandBytes = read(root, `addon/${brand.runtime}`);
+  if (brandBytes.length !== brand.bytes || sha256(brandBytes) !== brand.runtimeSha256) throw new Error("Asset hash mismatch: brand");
+  entries.push({name: `${ADDON}/${brand.runtime}`, data: brandBytes});
   const expected = new Set(entries.map((entry) => entry.name.slice(ADDON.length + 1)));
   function inspect(directory, prefix = "") {
     for (const entry of fs.readdirSync(directory, {withFileTypes: true})) {

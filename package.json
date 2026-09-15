@@ -10,9 +10,9 @@
   },
   "scripts": {
     "bootstrap": "npm run toolchain:doctor && npm run project:status && npm run project:check",
-    "brand:check": "node tools/brand/source.mjs && node tools/brand/variants.mjs check",
-    "brand:build": "node tools/brand/variants.mjs build",
-    "brand:test": "node --test tests/project/brand-source.test.mjs tests/project/brand-variants.test.mjs",
+    "brand:check": "node tools/brand/source.mjs && node tools/brand/variants.mjs check && node tools/brand/runtime.mjs check",
+    "brand:build": "node tools/brand/variants.mjs build && node tools/brand/runtime.mjs build",
+    "brand:test": "node --test tests/project/brand-source.test.mjs tests/project/brand-variants.test.mjs tests/project/brand-runtime.test.mjs",
     "project:status": "node tools/project/status.mjs",
     "project:check": "node tools/project/check.mjs",
     "project:test": "node --test tests/project/board.test.mjs tests/project/commands.test.mjs tests/project/sync.test.mjs",

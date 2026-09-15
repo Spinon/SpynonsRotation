@@ -121,9 +121,16 @@ function Panel.Create(createFrame, parent, settings, onChange, onClose, profiles
     value:SetScript("OnLeave", function() value:SetAlpha(1) end)
     return { frame = value, fill = fill, caption = caption }
   end
-  local title = label(root, "Spynon's Rotation", 20, 18, 350)
+  -- Approved source symbol; packaging verifies the deterministic, unscaled RGB derivative.
+  -- Branding stays in configuration, never over recommendations or the playfield.
+  local brand = root:CreateTexture(nil, "ARTWORK")
+  brand:SetPoint("TOPLEFT", root, "TOPLEFT", 20, -18); brand:SetSize(46, 46)
+  brand:SetTexCoord(0.171875, 0.826171875, 0.171875, 0.826171875)
+  if not brand:SetTexture("Interface\\AddOns\\SpynonRotation\\UI\\Media\\Textures\\Brand\\spynon-symbol-v1.tga",
+    "CLAMP", "CLAMP", "LINEAR") then brand:Hide() end
+  local title = label(root, "Spynon's Rotation", 80, 18, 300)
   local titleFont = title:GetFont(); title:SetFont(titleFont, 18, "")
-  local subtitle = label(root, "Prévia simulada • mudanças imediatas", 20, 50, 320)
+  local subtitle = label(root, "Prévia simulada • mudanças imediatas", 80, 50, 260)
   subtitle:SetTextColor(0.62, 0.73, 0.8, 1)
   for _, y in ipairs({76, 412, 482}) do
     local divider = root:CreateTexture(nil, "BORDER")

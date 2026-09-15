@@ -144,6 +144,30 @@ test("config starts with subject cards, exposing only the selected section", fun
   panel:Select("information"); assert(findText(objects, "Tempo restante"))
   eq(findText(objects, "Recomendações"), nil); eq(panel:Select("advanced"), false)
 end)
+test("brand is square and confined to config without overlapping title or playfield", function()
+  local controller, _, _, objects = configFixture()
+  controller:Open()
+  local root, brand, count = controller:GetPanel():GetRoot(), nil, 0
+  for _, object in ipairs(objects) do
+    if object.texture and object.texture:find("Textures\\Brand\\", 1, true) then
+      brand = object; count = count + 1
+    end
+  end
+  eq(count, 1); eq(brand.parent, root); eq(visible(brand), true)
+  eq(brand.width, 46); eq(brand.height, 46); eq(brand.filter, "LINEAR")
+  eq(brand.wrapH, "CLAMP"); eq(brand.wrapV, "CLAMP")
+  eq(brand.uv[1], 88/512); eq(brand.uv[2], 423/512)
+  eq(brand.uv[3], 88/512); eq(brand.uv[4], 423/512)
+  local title = assert(findText(objects, "Spynon's Rotation"))
+  assert(brand.point[4] + brand.width < title.point[4])
+  controller:Close(); eq(visible(brand), false)
+  controller:Open(); eq(visible(brand), true)
+  local _, _, liveObjects = queueFixture()
+  for _, object in ipairs(liveObjects) do
+    assert(not object.texture or not object.texture:find("Textures\\Brand\\", 1, true))
+  end
+end)
+
 test("button clicks update demo immediately and closing preserves this session only", function()
   local controller, harness, model, objects, _, live, env = configFixture()
   controller:Open(); controller:GetPanel():Select("queue")

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "approval": "APPROVED_SOURCE_TECHNICAL_DERIVATIVE",
+  "retailPreview": "PENDING",
+  "sourceSha256": "7F36D1B97850262D77DCE67F88D48B30447355902C48C1D20F455651BBF9A19D",
+  "method": "UNSCALED_RGB_CROP_WITH_TRANSPARENT_CANVAS_PADDING",
+  "viewport": [
+    210,
+    675,
+    335,
+    335
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "content": [
+    88,
+    88,
+    335,
+    335
+  ],
+  "uv": [
+    0.171875,
+    0.826171875,
+    0.171875,
+    0.826171875
+  ],
+  "runtime": "UI/Media/Textures/Brand/spynon-symbol-v1.tga",
+  "bytes": 1048594,
+  "runtimeSha256": "25ECCF8E54F18F05D25B6F4F3C20470C9C568A25F3DBDBF802CE36F90E2EE022"
+}
