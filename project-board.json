@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T04:09:58Z",
+  "updatedAt": "2026-09-15T04:11:12Z",
   "currentFocus": "PATCH-006",
   "parallelFocus": {},
   "release": {
@@ -25,10 +25,10 @@
       "title": "Continuidade da fila durante GCD",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "tasks/PATCH-006.md",
-      "updatedAt": "2026-09-15T04:09:58Z",
+      "updatedAt": "2026-09-15T04:11:12Z",
       "reviewBy": null,
       "nextAction": "Separar espera por GCD de prontidão usando apenas sinal público do evento autorizado; validar continuidade e instalar.",
       "dependencies": ["PATCH-005"],

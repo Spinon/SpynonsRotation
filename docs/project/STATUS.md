@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T04:09:58Z
+Atualizado pelo board em: 2026-09-15T04:11:12Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **PATCH-006 — Continuidade da fila durante GCD**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
 Próxima ação: Separar espera por GCD de prontidão usando apenas sinal público do evento autorizado; validar continuidade e instalar.
 
 ## Progresso
 
-- Planejadas: 2
-- Em andamento: 0
+- Planejadas: 1
+- Em andamento: 1
 - Bloqueadas: 2
 - Concluídas: 60
 - Total: 64
@@ -26,7 +26,7 @@ Próxima ação: Separar espera por GCD de prontidão usando apenas sinal públi
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
-| PATCH-006 | delivery | PATCH / QUALITY | Continuidade da fila durante GCD | planned | P0 | PATCH-005 |
+| PATCH-006 | delivery | PATCH / QUALITY | Continuidade da fila durante GCD | in_progress | P0 | PATCH-005 |
 | PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | done | P0 | PATCH-004 |
 | PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | done | P0 | PATCH-003, RUN-002, UX-008 |
 | UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | done | P1 | RUN-003, UX-007 |
