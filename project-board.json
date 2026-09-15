@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T01:51:51Z",
+  "updatedAt": "2026-09-15T01:54:00Z",
   "currentFocus": "BRAND-002",
   "parallelFocus": {},
   "release": {
@@ -1389,12 +1389,12 @@
       "title": "Criar master técnico e variantes",
       "lane": "BRAND",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P2",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-15T01:54:00Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Preparar derivados técnicos.",
+      "nextAction": "Preparar master raster-backed e variantes técnicas fiéis por viewports, com comparação; sem redesenhar ou alegar vetor original.",
       "dependencies": [
         "BRAND-001"
       ],
