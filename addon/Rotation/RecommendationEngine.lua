@@ -69,15 +69,17 @@ function Engine.Evaluate(bundle, actions, state, context, guard, limit)
       if matched ~= true then code = matched == false and "CONDITION_FALSE" or reason
       else
         local ready, readiness = reader:IsReady(action)
-        if not ready then code, detail = "ACTION_NOT_READY", readiness
+        if not ready and readiness ~= "WAITING_GCD" then code, detail = "ACTION_NOT_READY", readiness
         else
           local recommendation = Contracts.Recommendation.Create({
             id = action.id, action = copy(action), priority = #output.recommendations + 1,
             reason = { code = rule.id, capability = AVAILABLE }, context = copy(context),
+            readiness = readiness,
           })
           output.recommendations[#output.recommendations + 1] = recommendation
           seen[action.id] = true
           code = "SELECTED"
+          if readiness == "WAITING_GCD" then detail = readiness end
         end
       end
     end

@@ -102,6 +102,13 @@ function Reader.Create(state, guard)
     local usable = reader:Read({ "cooldowns", action.id, "usable" })
     if usable ~= true then return false, usable == false and "NOT_USABLE" or "USABILITY_UNAVAILABLE" end
     local ready = reader:Read({ "cooldowns", action.id, "ready" })
+    if ready == false
+      and reader:Read({ "cooldowns", action.id, "status", "isEnabled" }) == true
+      and reader:Read({ "cooldowns", action.id, "status", "isActive" }) == true
+      and reader:Read({ "cooldowns", action.id, "status", "isOnGCD" }) == true then
+      -- An observable waiting candidate, NOT cast readiness or an estimated expiry.
+      return false, "WAITING_GCD"
+    end
     if ready ~= true then return false, ready == false and "COOLDOWN_ACTIVE" or "COOLDOWN_UNAVAILABLE" end
     return true, "READY"
   end

@@ -157,12 +157,12 @@ function Factory.Create(compat, detector)
     end
   end
 
-  local function refreshCooldowns()
+  local function refreshCooldowns(event)
     for _, query in ipairs(queries.cooldowns) do
       local key = "cooldowns." .. query.id
       local cooldown = record(key, api:ReadCooldown(query.spellId))
       local charges = record(key .. ".charges", api:ReadCharges(query.spellId))
-      local status = record(key .. ".status", api:ReadCooldownStatus(query.spellId))
+      local status = record(key .. ".status", api:ReadCooldownStatus(query.spellId, event))
       -- These reads have independent capabilities. A public child can survive a
       -- restricted parent, but no old cooldown timing is carried into the new container.
       if not cooldown and (charges or status) then cooldown = {} end
@@ -234,7 +234,7 @@ function Factory.Create(compat, detector)
       state.inCombat = record("inCombat", api:ReadCombat()) or false
       refreshResources()
       refreshAuras()
-      refreshCooldowns()
+      refreshCooldowns(event)
       volatileInvalidated = false
     elseif POWER_EVENTS[event] then
       refreshResources("power")
@@ -244,7 +244,7 @@ function Factory.Create(compat, detector)
     elseif event == "PLAYER_TARGET_CHANGED" then
       refreshAuras("target")
     elseif event ~= "SPELL_UPDATE_USABLE" then
-      refreshCooldowns()
+      refreshCooldowns(event)
     end
     if event ~= "ADDON_RESTRICTION_STATE_CHANGED" then refreshUsability() end
     state.capturedAt = record("capturedAt", api:ReadClock()) or 0

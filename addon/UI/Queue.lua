@@ -49,12 +49,16 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     local detail = foreground:CreateFontString(nil, "OVERLAY", tokens.typography.fontObject)
     detail:SetJustifyH("LEFT"); detail:SetWordWrap(true); detail:SetTextColor(unpack(colors.text))
     detail:Hide()
+    local waiting = foreground:CreateFontString(nil, "OVERLAY", tokens.typography.fontObject)
+    waiting:SetPoint("BOTTOM", icon, "BOTTOM", 0, 2)
+    waiting:SetTextColor(unpack(colors.text)); waiting:SetText("GCD"); waiting:Hide()
     frame:Hide()
     pool[index] = { index = index, frame = frame, icon = icon, border = border, currentBorder = currentBorder,
       flash = flash, placeholder = placeholder, hotkey = hotkey, font = font, overlay = overlay,
       hotkeyType = Spynon.Typography.Bind(hotkey, font),
       placeholderType = Spynon.Typography.Bind(placeholder, font), detail = detail,
-      detailType = Spynon.Typography.Bind(detail, font) }
+      detailType = Spynon.Typography.Bind(detail, font), waiting = waiting,
+      waitingType = Spynon.Typography.Bind(waiting, font) }
   end
 
   local function dimensions()
@@ -98,6 +102,12 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     slot.frame:SetPoint("TOPLEFT", root, "TOPLEFT", value.x + value.width * (1 - scale) / 2,
       value.y - value.height * (1 - scale) / 2)
     slot.frame:SetAlpha(value.alpha * (1 - pulse * 0.25))
+    local waiting = slot.rec and slot.rec.readiness == "WAITING_GCD" and not slot.retiring
+    slot.icon:SetAlpha(waiting and 0.55 or 1)
+    if waiting then
+      slot.waitingType:Apply(options, "labels", 10)
+      slot.waiting:Show()
+    else slot.waiting:Hide() end
     -- Two preloaded neutral assets crossfade with hierarchy; no bitmap swaps per tick.
     slot.border:SetAlpha(1 - value.current)
     slot.currentBorder:SetAlpha(value.current)
@@ -145,7 +155,8 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
   local function content(slot, rec)
     local contexts = { SINGLE_TARGET = "Alvo único", CLEAVE = "Cleave", AOE = "Área" }
     local mode = rec.context and (rec.context.resolvedMode or rec.context.mode)
-    slot.detail:SetText(rec.action.label .. (contexts[mode] and "\n\n" .. contexts[mode] or ""))
+    local status = rec.readiness == "WAITING_GCD" and "\nAguardando GCD" or ""
+    slot.detail:SetText(rec.action.label .. status .. (contexts[mode] and "\n\n" .. contexts[mode] or ""))
     local loaded = rec.action.icon and slot.icon:SetTexture(rec.action.icon, "CLAMP", "CLAMP", "LINEAR")
     if not loaded then
       -- Local procedural placeholder: same rectangle and anchor as the resolved native icon.
@@ -160,6 +171,7 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     slot.id, slot.position, slot.rec, slot.visual, slot.retiring, slot.consumeTime = nil, nil, nil, nil, nil, nil
     slot.key = nil; slot.hotkey:SetText(""); slot.hotkey:Hide()
     slot.overlay:Clear()
+    slot.waiting:Hide(); slot.icon:SetAlpha(1)
     slot.frame:Hide()
     if editor then editor:Update(slot, options) end
   end

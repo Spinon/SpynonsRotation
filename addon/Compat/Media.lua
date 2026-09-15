@@ -48,6 +48,7 @@ function Media.Create(environment)
         presented[#presented + 1] = Spynon.Contracts.Recommendation.Create({
           id = recommendation.id, action = action, priority = recommendation.priority,
           reason = recommendation.reason, context = recommendation.context,
+          readiness = recommendation.readiness,
         })
       end
     end

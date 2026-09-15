@@ -143,6 +143,18 @@ IDs limitados e quatro códigos fechados no DebugReport. Ausência de talento n�
 substituída por presunção baseada na hero tree. Regressões cobrem filhos públicos,
 tempos descartados, retorno a leitura pública e gates desconhecidos/secretos.
 
+## Revisão PATCH-006
+
+Leitura opcional de isOnGCD limitada ao evento documentado e a booleano público.
+Cooldowns fora desse evento não preservam esse flag. IsReady não passa a true:
+o segundo retorno WAITING_GCD autoriza apenas candidatura rotulada em espera,
+com condição de regra e usability públicas. Media copia o enum validado e Queue
+o apresenta sem consultar APIs ou calcular tempos. Contrato e UI incluídos em
+SECRET-10, elevando a cobertura a 29 arquivos. Oito testes integrados em
+gcd_continuity_spec cobrem fluxo completo e falhas; ver [continuidade](GCD_CONTINUITY.md).
+Nenhum dado protegido, previsão de reset, cronômetro estimado ou assistente oficial
+entra na decisão. Reteste Retail permanece obrigatório.
+
 ## Fontes primárias
 
 - [SpellShared da build 69814](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellSharedDocumentation.lua): isEnabled/isActive NeverSecret; sem converter esses flags em tempos ou cargas. Mesmo contrato no pin 69587 já coberto pelo diff.

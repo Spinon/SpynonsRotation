@@ -14,6 +14,7 @@ local ALLOWED_FIELDS = {
   priority = true,
   reason = true,
   context = true,
+  readiness = true,
 }
 
 local ALLOWED_REASON_FIELDS = {
@@ -70,6 +71,10 @@ function Recommendation.Validate(value)
     return false, "priority must be a positive integer"
   end
 
+  if value.readiness ~= nil and value.readiness ~= "READY" and value.readiness ~= "WAITING_GCD" then
+    return false, "readiness must be READY or WAITING_GCD when provided"
+  end
+
   local reasonValid, reasonError = validateReason(value.reason)
   if not reasonValid then
     return false, reasonError
@@ -101,6 +106,7 @@ function Recommendation.Create(value)
       capability = value.reason.capability,
     },
     context = value.context,
+    readiness = value.readiness,
   }
 end
 

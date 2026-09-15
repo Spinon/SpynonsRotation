@@ -142,7 +142,7 @@ function State.Create(environment)
     return Result.Success(normalized)
   end
 
-  function adapter.ReadCooldownStatus(_, spellId)
+  function adapter.ReadCooldownStatus(_, spellId, event)
     if not Validation.IsPositiveInteger(spellId) then return Result.Failure(Result.Code.INVALID_ARGUMENT) end
     -- SpellSharedDocumentation (both reviewed pins) marks only these fields NeverSecret.
     -- The timing predicate does not gate this separate read; no timing field is indexed.
@@ -155,6 +155,11 @@ function State.Create(environment)
       { "isActive", function(v) return type(v) == "boolean" end },
     })
     if fieldError then return fieldError end
+    -- The optional GCD flag is documented as trustworthy only in this event.
+    if adapter:IsPublic(event) and event == "SPELL_UPDATE_COOLDOWN" then
+      local onGCD, gcdError = adapter:ReadPublicField(value, "isOnGCD")
+      if not gcdError and type(onGCD) == "boolean" then normalized.isOnGCD = onGCD end
+    end
     return Result.Success(normalized)
   end
 
