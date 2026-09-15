@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T01:28:26Z",
+  "updatedAt": "2026-09-15T01:32:00Z",
   "currentFocus": "UX-007",
   "parallelFocus": {},
   "release": {
@@ -1646,10 +1646,10 @@
       "title": "HUD ajustável e config legível",
       "lane": "CONFIG / UX",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "tasks/UX-007.md",
-      "updatedAt": "2026-09-15T01:28:26Z",
+      "updatedAt": "2026-09-15T01:32:00Z",
       "reviewBy": "Product Owner",
       "nextAction": "Implementar layout, posição, seis ações e polimento contextual solicitados pelo PO.",
       "dependencies": ["UX-006", "UI-007", "RELEASE-002"],

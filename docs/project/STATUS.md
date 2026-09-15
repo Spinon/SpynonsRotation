@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T01:28:26Z
+Atualizado pelo board em: 2026-09-15T01:32:00Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UX-007 — HUD ajustável e config legível**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Implementar layout, posição, seis ações e polimento contextual solicitados pelo PO.
 
 ## Progresso
 
-- Planejadas: 5
-- Em andamento: 0
+- Planejadas: 4
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 54
 - Total: 60
@@ -84,7 +84,7 @@ Próxima ação: Implementar layout, posição, seis ações e polimento context
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | done | P1 | RELEASE-001, BOOT-002 |
 | PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | done | P0 | CORE-004, PATCH-001 |
 | UI-007 | delivery | UI | Encaixe e amostragem dos ícones | done | P1 | UI-001, UI-002, UI-003, UI-004, UI-006 |
-| UX-007 | delivery | CONFIG / UX | HUD ajustável e config legível | planned | P1 | UX-006, UI-007, RELEASE-002 |
+| UX-007 | delivery | CONFIG / UX | HUD ajustável e config legível | in_progress | P1 | UX-006, UI-007, RELEASE-002 |
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
