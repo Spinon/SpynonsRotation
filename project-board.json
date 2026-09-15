@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-14T23:59:40.000Z",
+  "updatedAt": "2026-09-15T00:00:10.000Z",
   "currentFocus": "PATCH-002",
   "parallelFocus": {},
   "release": {
@@ -1456,10 +1456,10 @@
       "title": "Secret Values audit",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-15T00:00:10.000Z",
       "reviewBy": null,
       "nextAction": "Criar matriz de riscos.",
       "dependencies": [

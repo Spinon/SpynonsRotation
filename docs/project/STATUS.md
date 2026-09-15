@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-14T23:59:40.000Z
+Atualizado pelo board em: 2026-09-15T00:00:10.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **PATCH-002 — Secret Values audit**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Criar matriz de riscos.
 
 ## Progresso
 
-- Planejadas: 8
-- Em andamento: 0
+- Planejadas: 7
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 50
 - Total: 59
@@ -77,7 +77,7 @@ Próxima ação: Criar matriz de riscos.
 | BRAND-002 | delivery | BRAND | Criar master técnico e variantes | planned | P2 | BRAND-001 |
 | BRAND-003 | delivery | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
 | PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | done | P1 | CORE-004 |
-| PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | planned | P1 | PATCH-001, RUN-001 |
+| PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | in_progress | P1 | PATCH-001, RUN-001 |
 | TEST-001 | delivery | PATCH / QUALITY | Wowless integration | planned | P1 | BOOT-001 |
 | TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
 | RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
