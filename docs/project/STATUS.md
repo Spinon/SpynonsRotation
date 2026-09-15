@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T03:00:00Z
+Atualizado pelo board em: 2026-09-15T03:09:19Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **UX-008 — Contexto clicável no HUD**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Implementar tag de contexto clicável usando o controlador existente, com fallback explícito e testes de lifecycle.
 
 ## Progresso
 
-- Planejadas: 2
-- Em andamento: 0
+- Planejadas: 1
+- Em andamento: 1
 - Bloqueadas: 2
 - Concluídas: 57
 - Total: 61
@@ -26,7 +26,7 @@ Próxima ação: Implementar tag de contexto clicável usando o controlador exis
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
-| UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | planned | P1 | RUN-003, UX-007 |
+| UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | in_progress | P1 | RUN-003, UX-007 |
 | BOOT-001 | delivery | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
 | BOOT-002 | delivery | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
 | CORE-001 | delivery | CORE | Contratos genéricos | done | P0 | BOOT-002 |
