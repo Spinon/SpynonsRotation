@@ -2,22 +2,22 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T01:43:19Z
+Atualizado pelo board em: 2026-09-15T01:48:52Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**TEST-002 — In-game harness**
+**BRAND-001 — Integrar logotipo Spynon aprovado**
 
-Status: `blocked` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Testar versão UX-007 instalada: /reload, posição/Acoplado/seis ações/coluna principal e config; concluir checklist Retail de combate/taint. docs/architecture/HUD_USABILITY.md contém o roteiro; aprovação anterior da demo não homologa estes ajustes.
+Próxima ação: Registrar proveniência e integridade da prancha aprovada já presente em assets/brand, preservando seus bytes.
 
 ## Progresso
 
-- Planejadas: 4
-- Em andamento: 0
+- Planejadas: 3
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 55
 - Total: 60
@@ -73,7 +73,7 @@ Próxima ação: Testar versão UX-007 instalada: /reload, posição/Acoplado/se
 | PROFILE-001 | delivery | PROFILES / SKINS | Persistência e perfis | done | P1 | CORE-001, UX-001 |
 | SKIN-001 | delivery | PROFILES / SKINS | Skin API | done | P1 | UI-001 |
 | SKIN-002 | delivery | PROFILES / SKINS | External reskin contract | done | P2 | SKIN-001 |
-| BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | planned | P1 | BOOT-001 |
+| BRAND-001 | delivery | BRAND | Integrar logotipo Spynon aprovado | in_progress | P1 | BOOT-001 |
 | BRAND-002 | delivery | BRAND | Criar master técnico e variantes | planned | P2 | BRAND-001 |
 | BRAND-003 | delivery | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
 | PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | done | P1 | CORE-004 |
