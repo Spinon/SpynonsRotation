@@ -12,7 +12,7 @@ O inventário executável está em [`tools/toolchain/pins.json`](../../tools/too
 - Luacheck 1.2.0 portátil
 - wowlua-ls release 0.30.4 portátil
 - SimulationCraft 1210-01, WoW 12.1.0 build 69587
-- Docker Engine 29.7.2 disponível para a futura integração Wowless
+- Docker Engine 29.7.2; integração Wowless entregue em TEST-001
 
 ## Decisões
 
@@ -20,7 +20,9 @@ LuaJIT foi escolhido para os testes sintáticos tradicionais por manter compatib
 
 SimulationCraft usa o nightly oficial do projeto e é fixado por run, artifact, commit de publicação e SHA-256. O update não é silencioso: um novo pin exige validação e evidência no board.
 
-Wowless está pinado por commit, porém será integrado em `TEST-001`. O upstream exige Docker para desenvolvimento e se declara pre-alpha; por isso seus resultados serão auxiliares, nunca substitutos do teste no cliente Retail.
+Wowless está integrado por commit, imagem base e pacotes históricos fixados. Reprodução,
+isolamento e limites em [WOWLESS.md](../architecture/WOWLESS.md). O upstream se declara
+pre-alpha; resultados são auxiliares, nunca substitutos do teste no cliente Retail.
 
 wowlua-ls fornece os stubs de API WoW e o check de CI. O campo de versão do binário Windows atualmente responde `0.0.0`; o pin confiável é a release e o SHA-256 registrados.
 

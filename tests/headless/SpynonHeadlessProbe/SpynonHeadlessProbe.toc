@@ -1,0 +1,5 @@
+## Interface: 120100
+## Title: Spynon Headless Probe
+## RequiredDeps: SpynonRotation
+## SavedVariables: SpynonHeadlessProbeResult
+Probe.lua

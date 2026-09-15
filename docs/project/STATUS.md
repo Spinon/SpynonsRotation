@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T00:08:20.000Z
+Atualizado pelo board em: 2026-09-15T00:26:00.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**TEST-001 — Wowless integration**
+**RELEASE-001 — Packaging**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Criar harness Docker pinado.
+Próxima ação: Criar pacote reproduzível.
 
 ## Progresso
 
 - Planejadas: 6
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 51
+- Concluídas: 52
 - Total: 59
 
 ## Fila canônica
@@ -78,7 +78,7 @@ Próxima ação: Criar harness Docker pinado.
 | BRAND-003 | delivery | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
 | PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | done | P1 | CORE-004 |
 | PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | done | P1 | PATCH-001, RUN-001 |
-| TEST-001 | delivery | PATCH / QUALITY | Wowless integration | in_progress | P1 | BOOT-001 |
+| TEST-001 | delivery | PATCH / QUALITY | Wowless integration | done | P1 | BOOT-001 |
 | TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
 | RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
@@ -505,6 +505,13 @@ Próxima ação: Criar harness Docker pinado.
 - npm test aprovado: 188 testes Node e 424 testes Lua, incluindo 7 do gate e 23 sentinelas adicionais; 61 arquivos sem warnings, erros ou problemas de tipo. secret:check detecta alteração de fonte, nova fronteira não classificada e mudança de pin.
 - API diff ampliado para 30 arquivos com FrameScriptDocumentation, sem diferença documentada 69587→69814. SECRET_VALUES_AUDIT.md registra inferências e limites: testes offline não reproduzem taint ou secret scalars Retail.
 - Commit e07db6f registra início publicado. TEST-001 é o próximo foco; inspeção Retail e refinamento visual permanecem pendentes, sem ampliação de capabilities ou publicação de release.
+
+### TEST-001
+
+- tests/headless e tools/wowless: imagem Docker local com Wowless e6fbf29e, base por digest e arquivo Debian histórico; runtime sem rede, readonly e limitado, sem WTF ou credenciais.
+- npm run wowless:build e wowless:run executados no Docker 29.7.2: PASS, zero erros, 521 warnings upstream, ambos os addons carregados e probe concluído; entradas preservadas. Hashes e limites em docs/project/WOWLESS_SMOKE.md.
+- npm test aprovado: 195 testes Node e 427 Lua; 61 arquivos sem problemas de lint ou tipo. Parser rejeita exit zero com erros, truncamento ou ausência de confirmação; output Lua nunca é executado.
+- Build emulado 69497 não foi adicionado à allowlist. Retail permanece PENDING; nenhuma homologação de combate, taint, visual ou rotação. Commit b114c55 registra início publicado.
 
 ### PATCH-003
 

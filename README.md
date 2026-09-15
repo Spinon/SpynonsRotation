@@ -38,6 +38,9 @@ npm test
 
 ## Fronteiras principais
 
+Carregamento headless: `npm run wowless:build` e `npm run wowless:run` usam Docker
+pinado e isolado. Veja [Wowless](docs/architecture/WOWLESS.md); não é validação Retail.
+
 Auditoria de valores secretos: `npm run secret:check` e `npm run secret:test`, também
 incluídos em `npm test`. Matriz e limites em [Secret Values audit](docs/architecture/SECRET_VALUES_AUDIT.md).
 

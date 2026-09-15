@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/wowless/wowless",
+  "commit": "e6fbf29e6496d57a9dd52e4e8adabc362fe6d1f4",
+  "imageTag": "spynon-wowless:e6fbf29e",
+  "baseImage": "debian:bookworm-slim@sha256:5ae3c39ebd15e229dcedd5cee596b2497182493d41ff162e824ba13fc1b2b867",
+  "aptSnapshot": "20260902T000000Z",
+  "platform": "linux/amd64",
+  "product": "wow",
+  "wowlessBuild": "12.1.0.69497",
+  "interface": 120100,
+  "retailValidation": "PENDING"
+}

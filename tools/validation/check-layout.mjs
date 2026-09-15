@@ -31,6 +31,13 @@ const requiredDirectories = [
   "tasks",
 ];
 const requiredFiles = [
+  "tests/headless/Dockerfile",
+  "tests/headless/pins.json",
+  "tests/headless/SpynonHeadlessProbe/Probe.lua",
+  "tools/wowless/runner.mjs",
+  "tests/project/wowless.test.mjs",
+  "tests/unit/wowless_probe_spec.lua",
+  "docs/architecture/WOWLESS.md",
   "tools/wow-api/secret-audit.mjs",
   "tools/wow-api/secret-audit.json",
   "tests/project/secret-audit.test.mjs",

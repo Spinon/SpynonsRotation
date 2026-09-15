@@ -50,10 +50,14 @@
     "api:test": "node --test tests/project/api-diff.test.mjs",
     "secret:check": "node tools/wow-api/secret-audit.mjs",
     "secret:test": "node --test tests/project/secret-audit.test.mjs",
+    "wowless:check": "node tools/wowless/cli.mjs check",
+    "wowless:test": "node --test tests/project/wowless.test.mjs",
+    "wowless:build": "node tools/wowless/cli.mjs build",
+    "wowless:run": "node tools/wowless/cli.mjs run",
     "core:test": "node tools/validation/run-lua-tests.mjs",
     "addon:lint": "node tools/validation/run-luacheck.mjs",
     "addon:typecheck": "node tools/validation/run-wowlua-ls.mjs",
-    "test": "npm run project:check && npm run project:test && npm run api:test && npm run api:check && npm run secret:test && npm run secret:check && npm run simc:test && npm run dsl:test && npm run compiler:test && npm run compiler:check && npm run scenario:test && npm run scenario:check && npm run optimizer:test && npm run optimizer:check && npm run regression:test && npm run regression:check && npm run enhancement:test && npm run enhancement:check && npm run enhancement:baseline-check && npm run enhancement:st-check && npm run enhancement:mt-check && npm run enhancement:talent-check && npm run enhancement:starter-check && npm run enhancement:addon-check && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
+    "test": "npm run project:check && npm run project:test && npm run api:test && npm run api:check && npm run secret:test && npm run secret:check && npm run wowless:test && npm run wowless:check && npm run simc:test && npm run dsl:test && npm run compiler:test && npm run compiler:check && npm run scenario:test && npm run scenario:check && npm run optimizer:test && npm run optimizer:check && npm run regression:test && npm run regression:check && npm run enhancement:test && npm run enhancement:check && npm run enhancement:baseline-check && npm run enhancement:st-check && npm run enhancement:mt-check && npm run enhancement:talent-check && npm run enhancement:starter-check && npm run enhancement:addon-check && npm run core:test && npm run layout:check && npm run addon:lint && npm run addon:typecheck"
   },
   "license": "UNLICENSED"
 }
