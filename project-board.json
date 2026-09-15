@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T00:59:00.000Z",
-  "currentFocus": "RELEASE-002",
+  "updatedAt": "2026-09-15T01:28:26Z",
+  "currentFocus": "UX-007",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1568,12 +1568,12 @@
       "title": "CI",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T00:59:00.000Z",
+      "updatedAt": "2026-09-15T01:28:26Z",
       "reviewBy": null,
-      "nextAction": "Ao retomar, conferir o reteste remoto após correção UID/GID do runner Linux; concluir CI somente com ambos os jobs aprovados. Desenvolvimento pausado no checkpoint a pedido do Product Owner.",
+      "nextAction": null,
       "dependencies": [
         "RELEASE-001",
         "BOOT-002"
@@ -1587,7 +1587,7 @@
         "Workflow implementado em commits 03755a0, bcda81e e 6972c22; ferramentas por hash, actions por SHA, token somente leitura, pacote development-only e nenhuma publicação de release.",
         "Run 34914566492: job Windows aprovado, incluindo suíte completa, SimC pinado e pacote de 78 entradas. SHA-256 0227868BB241EEA1666A2FEF2696DFD6A2AF9E50AB68A571D3D97E5470DE346F coincide entre estação local e GitHub no commit 6972c22.",
         "Run 34914566492: imagem Linux compilada, execução falhou antes do carregamento por Permission denied em out/run.log. Root com cap-drop ALL não pode escrever no mkdtemp 0700 do runner; seleção de UID/GID do host corrigida e coberta por regressão. Reteste remoto ainda necessário.",
-        "Checkpoint solicitado pelo Product Owner: CI permanece in_progress, sem alegar aprovação completa ou Retail. Evidências e continuidade em docs/project/CI_CHECKPOINT.md."
+        "Retomada: run 34915503607 do commit 6b49280 aprovado nos dois jobs: offline/package Windows e Wowless Linux. https://github.com/Spinon/SpynonsRotation/actions/runs/34915503607 . Não equivale a validação Retail."
       ]
     },
     {
@@ -1640,6 +1640,26 @@
         "docs/architecture/ICON_FIT.md registra medidas, crop, camadas e limite da arte nativa. RETAIL_SMOKE registra nova captura e aprovação humana da fluidez anterior; novo encaixe ainda exige reteste Retail.",
         "Commit 0115503 registra início publicado. UI-005 volta ao foco sem antecipar seus indicadores."
       ]
+    },
+    {
+      "id": "UX-007",
+      "title": "HUD ajustável e config legível",
+      "lane": "CONFIG / UX",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "tasks/UX-007.md",
+      "updatedAt": "2026-09-15T01:28:26Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Implementar layout, posição, seis ações e polimento contextual solicitados pelo PO.",
+      "dependencies": ["UX-006", "UI-007", "RELEASE-002"],
+      "acceptanceCriteria": [
+        "Slider removido; posição editável, persistente e reversível",
+        "Modo acoplado e até seis ações com animações preservadas",
+        "Ícone principal quadrado com coluna de informações públicas",
+        "Config contextual polido e pacote development testável"
+      ],
+      "evidence": []
     },
     {
       "id": "ARCH-001",

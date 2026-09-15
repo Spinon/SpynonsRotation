@@ -52,4 +52,5 @@ são reproduzíveis por entradas, não promessa de sistema operacional imutável
 Fontes: [workflow syntax](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax),
 [setup-node](https://github.com/actions/setup-node),
 [LuaJIT portátil](https://github.com/DevelopersCommunity/cmake-luajit/releases/tag/v2.1.19907).
-Resultado remoto será registrado no board após a execução, não inferido do teste local.
+Execução remota confirmada: [34915503607](https://github.com/Spinon/SpynonsRotation/actions/runs/34915503607),
+commit 6b49280, ambos os jobs aprovados em 15/09/2026. Não equivale a validação Retail.

@@ -1,5 +1,12 @@
 # Checkpoint de pausa — RELEASE-002
 
+## Retomada confirmada
+
+O reteste [34915503607](https://github.com/Spinon/SpynonsRotation/actions/runs/34915503607)
+do commit 6b49280 passou nos dois jobs, incluindo Wowless Linux, às 01:10 UTC
+de 15/09/2026. RELEASE-002 concluída. O PO priorizou UX-007 antes do checklist Retail.
+O registro abaixo preserva o checkpoint original.
+
 Pausa solicitada pelo Product Owner em 2026-09-14 (America/Sao_Paulo).
 Nenhuma próxima task foi iniciada. RELEASE-002 permanece in_progress até o reteste.
 

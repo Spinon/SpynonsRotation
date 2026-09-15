@@ -2,25 +2,25 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T00:59:00.000Z
+Atualizado pelo board em: 2026-09-15T01:28:26Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**RELEASE-002 — CI**
+**UX-007 — HUD ajustável e config legível**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Ao retomar, conferir o reteste remoto após correção UID/GID do runner Linux; concluir CI somente com ambos os jobs aprovados. Desenvolvimento pausado no checkpoint a pedido do Product Owner.
+Próxima ação: Implementar layout, posição, seis ações e polimento contextual solicitados pelo PO.
 
 ## Progresso
 
-- Planejadas: 4
-- Em andamento: 1
+- Planejadas: 5
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 53
-- Total: 59
+- Concluídas: 54
+- Total: 60
 
 ## Fila canônica
 
@@ -81,9 +81,10 @@ Próxima ação: Ao retomar, conferir o reteste remoto após correção UID/GID 
 | TEST-001 | delivery | PATCH / QUALITY | Wowless integration | done | P1 | BOOT-001 |
 | TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
 | RELEASE-001 | delivery | PATCH / QUALITY | Packaging | done | P1 | UI-001, TEST-001 |
-| RELEASE-002 | delivery | PATCH / QUALITY | CI | in_progress | P1 | RELEASE-001, BOOT-002 |
+| RELEASE-002 | delivery | PATCH / QUALITY | CI | done | P1 | RELEASE-001, BOOT-002 |
 | PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | done | P0 | CORE-004, PATCH-001 |
 | UI-007 | delivery | UI | Encaixe e amostragem dos ícones | done | P1 | UI-001, UI-002, UI-003, UI-004, UI-006 |
+| UX-007 | delivery | CONFIG / UX | HUD ajustável e config legível | planned | P1 | UX-006, UI-007, RELEASE-002 |
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
@@ -519,6 +520,13 @@ Próxima ação: Ao retomar, conferir o reteste remoto após correção UID/GID 
 - Manifesto registra commit, working tree sujo, build/interface WoW, versão/commit SimC, revisão dos bundles, hashes e validação PENDING. Somente development-only/unreleased é permitido; nenhuma publicação ou instalação.
 - npm run package:build repetido: mesmos 8.315.385 bytes e SHA-256 2D0E20E608204850E079E214C3BEB47DE33B56C7DF213CF4F143FE40D5A758DD. package:verify e leitor independente .NET aprovaram 78 entradas; docs/project/PACKAGING_SMOKE.md registra a evidência local.
 - npm test aprovado: 204 testes Node e 427 Lua, incluindo nove regressões de packaging; lint e tipo sem problemas em 61 arquivos. Commit 26992ac registra início publicado; próxima task RELEASE-002.
+
+### RELEASE-002
+
+- Workflow implementado em commits 03755a0, bcda81e e 6972c22; ferramentas por hash, actions por SHA, token somente leitura, pacote development-only e nenhuma publicação de release.
+- Run 34914566492: job Windows aprovado, incluindo suíte completa, SimC pinado e pacote de 78 entradas. SHA-256 0227868BB241EEA1666A2FEF2696DFD6A2AF9E50AB68A571D3D97E5470DE346F coincide entre estação local e GitHub no commit 6972c22.
+- Run 34914566492: imagem Linux compilada, execução falhou antes do carregamento por Permission denied em out/run.log. Root com cap-drop ALL não pode escrever no mkdtemp 0700 do runner; seleção de UID/GID do host corrigida e coberta por regressão. Reteste remoto ainda necessário.
+- Retomada: run 34915503607 do commit 6b49280 aprovado nos dois jobs: offline/package Windows e Wowless Linux. https://github.com/Spinon/SpynonsRotation/actions/runs/34915503607 . Não equivale a validação Retail.
 
 ### PATCH-003
 
