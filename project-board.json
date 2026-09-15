@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T04:19:09Z",
-  "currentFocus": "TEST-002",
+  "updatedAt": "2026-09-15T04:22:04Z",
+  "currentFocus": "PATCH-007",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -20,6 +20,26 @@
     "validatedAt": null
   },
   "items": [
+    {
+      "id": "PATCH-007",
+      "title": "Barra de GCD com temporizador nativo",
+      "lane": "PATCH / QUALITY",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "tasks/PATCH-007.md",
+      "updatedAt": "2026-09-15T04:22:04Z",
+      "reviewBy": null,
+      "nextAction": "Conectar a barra existente ao DurationObject nativo, preservar fallback público, validar e instalar.",
+      "dependencies": ["PATCH-006"],
+      "acceptanceCriteria": [
+        "Barra recebe temporizador opaco mesmo com tempos restritos",
+        "Layout preservado e lifecycle limpa progresso anterior sem ler estado do widget",
+        "Pins, auditoria e testes aprovados; fallback público preservado",
+        "Pacote instalado e reteste Retail documentado"
+      ],
+      "evidence": []
+    },
     {
       "id": "PATCH-006",
       "title": "Continuidade da fila durante GCD",

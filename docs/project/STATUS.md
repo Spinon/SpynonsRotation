@@ -2,30 +2,31 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T04:19:09Z
+Atualizado pelo board em: 2026-09-15T04:22:04Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**TEST-002 — In-game harness**
+**PATCH-007 — Barra de GCD com temporizador nativo**
 
-Status: `blocked` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: PO: /reload carrega 32e2533 instalado; atacar boneco e confirmar continuidade da fila com GCD rotulado, retorno a pronto e saída de cooldown próprio. Se persistir o sumiço, /spynon debug em combate, screenshot e /reload após sair do combate sem repetir debug. Gate do Totem e checklists UX/taint ainda pendentes. Relato após PATCH-005 confirmou fila aparecendo, mas não aprovou continuidade.
+Próxima ação: Conectar a barra existente ao DurationObject nativo, preservar fallback público, validar e instalar.
 
 ## Progresso
 
-- Planejadas: 1
+- Planejadas: 2
 - Em andamento: 0
 - Bloqueadas: 2
 - Concluídas: 61
-- Total: 64
+- Total: 65
 
 ## Fila canônica
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
+| PATCH-007 | delivery | PATCH / QUALITY | Barra de GCD com temporizador nativo | planned | P0 | PATCH-006 |
 | PATCH-006 | delivery | PATCH / QUALITY | Continuidade da fila durante GCD | done | P0 | PATCH-005 |
 | PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | done | P0 | PATCH-004 |
 | PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | done | P0 | PATCH-003, RUN-002, UX-008 |
