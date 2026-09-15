@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T00:28:00.000Z
+Atualizado pelo board em: 2026-09-15T00:34:00.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**RELEASE-001 — Packaging**
+**RELEASE-002 — CI**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Criar pacote reproduzível.
+Próxima ação: Definir workflow de validação.
 
 ## Progresso
 
 - Planejadas: 5
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 52
+- Concluídas: 53
 - Total: 59
 
 ## Fila canônica
@@ -80,7 +80,7 @@ Próxima ação: Criar pacote reproduzível.
 | PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | done | P1 | PATCH-001, RUN-001 |
 | TEST-001 | delivery | PATCH / QUALITY | Wowless integration | done | P1 | BOOT-001 |
 | TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
-| RELEASE-001 | delivery | PATCH / QUALITY | Packaging | in_progress | P1 | UI-001, TEST-001 |
+| RELEASE-001 | delivery | PATCH / QUALITY | Packaging | done | P1 | UI-001, TEST-001 |
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
 | PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | done | P0 | CORE-004, PATCH-001 |
 | UI-007 | delivery | UI | Encaixe e amostragem dos ícones | done | P1 | UI-001, UI-002, UI-003, UI-004, UI-006 |
@@ -512,6 +512,13 @@ Próxima ação: Criar pacote reproduzível.
 - npm run wowless:build e wowless:run executados no Docker 29.7.2: PASS, zero erros, 521 warnings upstream, ambos os addons carregados e probe concluído; entradas preservadas. Hashes e limites em docs/project/WOWLESS_SMOKE.md.
 - npm test aprovado: 195 testes Node e 427 Lua; 61 arquivos sem problemas de lint ou tipo. Parser rejeita exit zero com erros, truncamento ou ausência de confirmação; output Lua nunca é executado.
 - Build emulado 69497 não foi adicionado à allowlist. Retail permanece PENDING; nenhuma homologação de combate, taint, visual ou rotação. Commit b114c55 registra início publicado.
+
+### RELEASE-001
+
+- tools/packaging gera ZIP STORE canônico: 78 arquivos runtime, TOC carimbado somente na cópia, TGAs com hashes aprovados; exclui docs, ferramentas, dados pessoais e testes externos.
+- Manifesto registra commit, working tree sujo, build/interface WoW, versão/commit SimC, revisão dos bundles, hashes e validação PENDING. Somente development-only/unreleased é permitido; nenhuma publicação ou instalação.
+- npm run package:build repetido: mesmos 8.315.385 bytes e SHA-256 2D0E20E608204850E079E214C3BEB47DE33B56C7DF213CF4F143FE40D5A758DD. package:verify e leitor independente .NET aprovaram 78 entradas; docs/project/PACKAGING_SMOKE.md registra a evidência local.
+- npm test aprovado: 204 testes Node e 427 Lua, incluindo nove regressões de packaging; lint e tipo sem problemas em 61 arquivos. Commit 26992ac registra início publicado; próxima task RELEASE-002.
 
 ### PATCH-003
 

@@ -38,6 +38,9 @@ npm test
 
 ## Fronteiras principais
 
+Pacote local: `npm run package:build` gera ZIP de desenvolvimento e manifesto de
+versões/hashes. Não publica nem instala. Veja [Packaging](docs/architecture/PACKAGING.md).
+
 Carregamento headless: `npm run wowless:build` e `npm run wowless:run` usam Docker
 pinado e isolado. Veja [Wowless](docs/architecture/WOWLESS.md); não é validação Retail.
 

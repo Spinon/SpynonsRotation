@@ -31,6 +31,11 @@ const requiredDirectories = [
   "tasks",
 ];
 const requiredFiles = [
+  "tools/packaging/zip.mjs",
+  "tools/packaging/package.mjs",
+  "tools/packaging/Test-Package.ps1",
+  "tests/project/packaging.test.mjs",
+  "docs/architecture/PACKAGING.md",
   "tests/headless/Dockerfile",
   "tests/headless/pins.json",
   "tests/headless/SpynonHeadlessProbe/Probe.lua",

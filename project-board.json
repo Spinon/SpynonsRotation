@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T00:28:00.000Z",
-  "currentFocus": "RELEASE-001",
+  "updatedAt": "2026-09-15T00:34:00.000Z",
+  "currentFocus": "RELEASE-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1541,12 +1541,12 @@
       "title": "Packaging",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T00:28:00.000Z",
+      "updatedAt": "2026-09-15T00:34:00.000Z",
       "reviewBy": null,
-      "nextAction": "Criar pacote reproduzível.",
+      "nextAction": null,
       "dependencies": [
         "UI-001",
         "TEST-001"
@@ -1556,7 +1556,12 @@
         "TOC e metadados são validados",
         "Artefato registra versões"
       ],
-      "evidence": []
+      "evidence": [
+        "tools/packaging gera ZIP STORE canônico: 78 arquivos runtime, TOC carimbado somente na cópia, TGAs com hashes aprovados; exclui docs, ferramentas, dados pessoais e testes externos.",
+        "Manifesto registra commit, working tree sujo, build/interface WoW, versão/commit SimC, revisão dos bundles, hashes e validação PENDING. Somente development-only/unreleased é permitido; nenhuma publicação ou instalação.",
+        "npm run package:build repetido: mesmos 8.315.385 bytes e SHA-256 2D0E20E608204850E079E214C3BEB47DE33B56C7DF213CF4F143FE40D5A758DD. package:verify e leitor independente .NET aprovaram 78 entradas; docs/project/PACKAGING_SMOKE.md registra a evidência local.",
+        "npm test aprovado: 204 testes Node e 427 Lua, incluindo nove regressões de packaging; lint e tipo sem problemas em 61 arquivos. Commit 26992ac registra início publicado; próxima task RELEASE-002."
+      ]
     },
     {
       "id": "RELEASE-002",
