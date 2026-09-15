@@ -2,31 +2,31 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T04:18:29Z
+Atualizado pelo board em: 2026-09-15T04:19:09Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**PATCH-006 — Continuidade da fila durante GCD**
+**TEST-002 — In-game harness**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `blocked` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Separar espera por GCD de prontidão usando apenas sinal público do evento autorizado; validar continuidade e instalar.
+Próxima ação: PO: /reload carrega 32e2533 instalado; atacar boneco e confirmar continuidade da fila com GCD rotulado, retorno a pronto e saída de cooldown próprio. Se persistir o sumiço, /spynon debug em combate, screenshot e /reload após sair do combate sem repetir debug. Gate do Totem e checklists UX/taint ainda pendentes. Relato após PATCH-005 confirmou fila aparecendo, mas não aprovou continuidade.
 
 ## Progresso
 
 - Planejadas: 1
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 2
-- Concluídas: 60
+- Concluídas: 61
 - Total: 64
 
 ## Fila canônica
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
-| PATCH-006 | delivery | PATCH / QUALITY | Continuidade da fila durante GCD | in_progress | P0 | PATCH-005 |
+| PATCH-006 | delivery | PATCH / QUALITY | Continuidade da fila durante GCD | done | P0 | PATCH-005 |
 | PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | done | P0 | PATCH-004 |
 | PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | done | P0 | PATCH-003, RUN-002, UX-008 |
 | UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | done | P1 | RUN-003, UX-007 |
@@ -92,6 +92,14 @@ Próxima ação: Separar espera por GCD de prontidão usando apenas sinal públi
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
+
+### PATCH-006
+
+- ReadCooldownStatus captura isOnGCD somente em SPELL_UPDATE_COOLDOWN, com guards de container/folha. StateReader.IsReady permanece false e retorna WAITING_GCD como candidatura separada; engine reavalia regras atuais, Media preserva enum e UI mostra GCD/arte atenuada sem congelar a fila antiga.
+- docs/architecture/GCD_CONTINUITY.md documenta lifecycle, distinção entre espera e prontidão e limites. Auditoria revisou 29 fontes; contrato Recommendation e Queue incluídos em SECRET-10. Nenhum assistente oficial, estimativa de duração ou exceção de Enhancement no Core/UI.
+- Wowless 2026-09-15T04:16:53.555Z PASS: zero erros, 521 warnings upstream; runtime input SHA-256 0DE15214E3EFDEA381258C3BA1A09F1A5CC4CD9D2AE12155BDF80EB729BE6793. Carregamento headless não valida rendering, taint ou combate Retail.
+- npm test aprovado: 224 Node + 473 Lua = 697 testes, 30 suítes Lua, lint e tipos sem problemas em 63 arquivos. Oito regressões integradas incluem ciclo pronto/GCD/pronto, cooldown próprio, animação normal durante consume/promote, seis posições, identidade, opacidade, invalidação e ausência/segredo/negação de flag.
+- Commit 32e2533 publicado, pacote limpo reproduzido duas vezes e leitor ZIP independente aprovado: 81 arquivos, SHA-256 B71D42E15971E76C9381A915F023C05F5DF30F7C902F1923BE6F9B55B6A4C331. Instalador verificou 81 arquivos no Retail 12.1.0.69814, preservando SavedVariables e outros addons. Próximo foco TEST-002 para confirmar continuidade real; nenhuma release publicada.
 
 ### PATCH-005
 

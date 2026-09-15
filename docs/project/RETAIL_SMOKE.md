@@ -191,6 +191,10 @@ aprovação do preview pendente, separada da validação de combate de TEST-002.
 
 ### PATCH-005 — reteste de prontidão pública
 
+**Retorno posterior do PO:** a fila apareceu, mas some após usar uma habilidade e
+retorna depois. Confirmação parcial da fila real, não aprovação de rotação/taint.
+O ciclo motivou PATCH-006; o checkpoint mais novo está descrito abaixo.
+
 Commit d22f625 instalado em 15/09/2026 04:01:10 UTC: 81 arquivos conferidos no
 Retail 12.1.0.69814. Pacote limpo reproduzido duas vezes e validado por leitor
 independente; SHA-256 330859D10A167E67C0595C14E6989AF5D2754055F89313A0C4E146609C0AE379.
@@ -214,6 +218,27 @@ independente; SHA-256 330859D10A167E67C0595C14E6989AF5D2754055F89313A0C4E146609C
 A fila ainda pode ter menos de seis ações ou esvaziar durante GCD. Não há previsão
 de seis casts, estimativa de resets ou promoção de informação restrita a pública.
 Relato anterior revision 47 é anterior a esta correção e não preenche este checklist.
+
+### PATCH-006 — continuidade durante GCD
+
+Commit 32e2533 instalado em 15/09/2026 UTC, 81 arquivos conferidos no Retail
+12.1.0.69814. Pacote limpo reproduzido e leitor ZIP independente aprovado:
+B71D42E15971E76C9381A915F023C05F5DF30F7C902F1923BE6F9B55B6A4C331.
+697 testes offline passaram; Wowless carregou sem erros (521 warnings upstream).
+
+Após `/reload`, sair da demo/config e repetir combate no boneco:
+
+- [ ] A fila permanece visível durante GCD público com candidatas e etiqueta GCD.
+- [ ] Arte atenuada/coluna Aguardando GCD distinguem espera de prontidão; retornam
+      ao normal quando o cooldown termina, sem reiniciar toda a fila.
+- [ ] Habilidade usada com cooldown próprio sem flag de GCD sai da fila normalmente.
+- [ ] Sem erro Lua, taint, freeze ou sobreposição ilegível da etiqueta às teclas.
+- [ ] Se o sumiço persistir: registrar `/spynon debug` em combate; WAITING_GCD
+      deve distinguir candidatas em espera das recusas COOLDOWN_ACTIVE.
+
+Não se congelam recomendações antigas nem se calculam tempos protegidos. Refresh
+fora do evento autorizado/perda de informação ainda pode retirar candidatas; flag
+de GCD não garante que não exista outro bloqueio. Inspeção Retail continua pendente.
 
 ### Entrega UX-007 instalada para inspeção
 

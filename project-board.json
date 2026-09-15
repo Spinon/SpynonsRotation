@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T04:18:29Z",
-  "currentFocus": "PATCH-006",
+  "updatedAt": "2026-09-15T04:19:09Z",
+  "currentFocus": "TEST-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -25,12 +25,12 @@
       "title": "Continuidade da fila durante GCD",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/PATCH-006.md",
-      "updatedAt": "2026-09-15T04:18:29Z",
+      "updatedAt": "2026-09-15T04:19:09Z",
       "reviewBy": null,
-      "nextAction": "Separar espera por GCD de prontidão usando apenas sinal público do evento autorizado; validar continuidade e instalar.",
+      "nextAction": null,
       "dependencies": ["PATCH-005"],
       "acceptanceCriteria": [
         "Candidatas durante GCD permanecem visíveis e explicitamente aguardando",
@@ -42,7 +42,8 @@
         "ReadCooldownStatus captura isOnGCD somente em SPELL_UPDATE_COOLDOWN, com guards de container/folha. StateReader.IsReady permanece false e retorna WAITING_GCD como candidatura separada; engine reavalia regras atuais, Media preserva enum e UI mostra GCD/arte atenuada sem congelar a fila antiga.",
         "docs/architecture/GCD_CONTINUITY.md documenta lifecycle, distinção entre espera e prontidão e limites. Auditoria revisou 29 fontes; contrato Recommendation e Queue incluídos em SECRET-10. Nenhum assistente oficial, estimativa de duração ou exceção de Enhancement no Core/UI.",
         "Wowless 2026-09-15T04:16:53.555Z PASS: zero erros, 521 warnings upstream; runtime input SHA-256 0DE15214E3EFDEA381258C3BA1A09F1A5CC4CD9D2AE12155BDF80EB729BE6793. Carregamento headless não valida rendering, taint ou combate Retail.",
-        "npm test aprovado: 224 Node + 473 Lua = 697 testes, 30 suítes Lua, lint e tipos sem problemas em 63 arquivos. Oito regressões integradas incluem ciclo pronto/GCD/pronto, cooldown próprio, animação normal durante consume/promote, seis posições, identidade, opacidade, invalidação e ausência/segredo/negação de flag."
+        "npm test aprovado: 224 Node + 473 Lua = 697 testes, 30 suítes Lua, lint e tipos sem problemas em 63 arquivos. Oito regressões integradas incluem ciclo pronto/GCD/pronto, cooldown próprio, animação normal durante consume/promote, seis posições, identidade, opacidade, invalidação e ausência/segredo/negação de flag.",
+        "Commit 32e2533 publicado, pacote limpo reproduzido duas vezes e leitor ZIP independente aprovado: 81 arquivos, SHA-256 B71D42E15971E76C9381A915F023C05F5DF30F7C902F1923BE6F9B55B6A4C331. Instalador verificou 81 arquivos no Retail 12.1.0.69814, preservando SavedVariables e outros addons. Próximo foco TEST-002 para confirmar continuidade real; nenhuma release publicada."
       ]
     },
     {
@@ -1638,9 +1639,9 @@
       "status": "blocked",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T04:01:10Z",
+      "updatedAt": "2026-09-15T04:19:09Z",
       "reviewBy": null,
-      "nextAction": "PO: /reload carrega d22f625 instalado, sair da demo/config, atacar boneco e observar fila própria entre cooldowns. Executar /spynon debug em combate, capturar regras/prontidão e ações excluídas; sair de combate e /reload para persistir sem repetir debug. Validar flags públicos no Retail e gate do Totem. Checklists UX-007/UX-008 e combate/taint continuam pendentes.",
+      "nextAction": "PO: /reload carrega 32e2533 instalado; atacar boneco e confirmar continuidade da fila com GCD rotulado, retorno a pronto e saída de cooldown próprio. Se persistir o sumiço, /spynon debug em combate, screenshot e /reload após sair do combate sem repetir debug. Gate do Totem e checklists UX/taint ainda pendentes. Relato após PATCH-005 confirmou fila aparecendo, mas não aprovou continuidade.",
       "dependencies": [
         "RUN-002",
         "UI-001",
