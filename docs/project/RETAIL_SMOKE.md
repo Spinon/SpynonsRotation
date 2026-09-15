@@ -147,6 +147,9 @@ discretas de tamanho, sem slider. Não há nova evidência Retail dessa entrega.
 
 O cabeçalho do config passa a mostrar o símbolo oficial em 46×46, separado do título.
 Somente essa superfície muda; fila e skin continuam com os assets anteriores.
+Commit 965ce13 instalado no Retail 12.1.0.69814 em 15/09/2026 UTC: 79 arquivos
+verificados, sem alterações em SavedVariables/outros addons. Pacote reproduzível
+de mesmo commit, SHA-256 28EA226F85A9D546C76DBC69B5CAA2FD42061C57883D06A52546059D1DEF6BBB.
 Após atualizar a instalação e usar `/reload`, abrir `/spynon config`:
 
 - [ ] Símbolo íntegro, sem esticar, com fundo original discreto no cabeçalho.

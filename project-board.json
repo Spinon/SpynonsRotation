@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T02:09:00Z",
+  "updatedAt": "2026-09-15T02:11:00Z",
   "currentFocus": "BRAND-003",
   "parallelFocus": {},
   "release": {
@@ -1414,12 +1414,12 @@
       "title": "Aplicar identidade ao default",
       "lane": "BRAND",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "blocked",
       "priority": "P2",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T02:09:00Z",
+      "updatedAt": "2026-09-15T02:11:00Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Aplicar símbolo aprovado discretamente no cabeçalho do config e preparar preview Retail; preservar núcleo, fila e cores atuais.",
+      "nextAction": "Product Owner: /reload e /spynon config na instalação 965ce13; conferir símbolo, título e botões e aprovar o preview ou apontar ajustes. Depois concluir o checklist Retail de TEST-002; ARCH-001 exige maturidade de Enhancement e escolha da segunda spec.",
       "dependencies": [
         "BRAND-002",
         "SKIN-001",
@@ -1434,7 +1434,10 @@
         "Config/Panel.lua aplica apenas o símbolo aprovado no cabeçalho, 46x46 e título separado. Nenhuma alteração em fila, rotação, Animator, cores ou molduras da skin.",
         "runtime.json e tools/brand/runtime.mjs reproduzem recorte RGB intacto em TGA 512x512; SHA-256 25ECCF8E54F18F05D25B6F4F3C20470C9C568A25F3DBDBF802CE36F90E2EE022. Decoder comparado independentemente com Sharp: 4.717.584 bytes RGB iguais.",
         "npm test aprovado: 224 Node + 438 Lua = 662 testes; 27 suítes Lua; lint e tipos limpos em 61 arquivos. Packaging passa a 79 entradas e rejeita mudança de origem, aprovação ou hash da marca.",
-        "Wowless 2026-09-15T02:06:38.752Z PASS, zero erros, 521 warnings upstream; runtime SHA-256 81E884A4C7CEF7E8BB2A09C3823FD0B3B4CA9C2776E9F3E990515E58DA999084. Não comprova renderização Retail; aprovação do preview continua pendente em RETAIL_SMOKE.md."
+        "Wowless 2026-09-15T02:06:38.752Z PASS, zero erros, 521 warnings upstream; runtime SHA-256 81E884A4C7CEF7E8BB2A09C3823FD0B3B4CA9C2776E9F3E990515E58DA999084. Não comprova renderização Retail; aprovação do preview continua pendente em RETAIL_SMOKE.md.",
+        "Commit 965ce13 publicado; pacote reproduzido duas vezes com working tree limpo e 79 entradas. SHA-256 28EA226F85A9D546C76DBC69B5CAA2FD42061C57883D06A52546059D1DEF6BBB; leitor .NET independente aprovado.",
+        "Install-DevelopmentAddon.ps1 verificou os 79 arquivos do commit 965ce13 no Retail 12.1.0.69814 em D:/Blizzard/World of Warcraft/_retail_/Interface/AddOns/SpynonRotation. SavedVariables e outros addons preservados; nenhuma release publicada.",
+        "BLOQUEIO de aceite, não de implementação: o critério Preview é aprovado exige manifestação do Product Owner. Capturas anteriores não mostram esta aplicação. Não há outra task de implementação pronta para avançar sem essa inspeção ou decisão de produto sobre segunda spec."
       ]
     },
     {
