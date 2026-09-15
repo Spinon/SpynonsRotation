@@ -1,5 +1,9 @@
 # Seleção direta do HUD — UX-002
 
+Atualização UX-007: [HUD_USABILITY.md](HUD_USABILITY.md) acrescenta movimento livre,
+seis ações, encaixe acoplado e coluna principal; remove o slider da interface.
+O texto abaixo registra o escopo original de UX-002.
+
 `/spynon edit`, ou **Editar HUD** em Config, inicia uma prévia estática rotulada e abre
 os controles da fila. Não é uma rotação. A timeline da demo para, permitindo selecionar
 componentes sem perseguir ícones. Alterações de layout ainda podem usar a transição

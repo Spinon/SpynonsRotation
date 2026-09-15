@@ -51,6 +51,13 @@ retornar false explicitamente para cada valor consumido; ausência/falha fecha a
 
 ## Checks e manutenção
 
+Revisão UX-007: Media acrescenta leitura de geometria do frame próprio, protegida
+por pcall e guard/finite antes da aritmética; falhas cancelam o arraste. Controller
+preserva combate público falso e commit transacional dos eixos. RecommendationEngine
+altera apenas limite explícito do serviço para seis, sem mudar regras/capabilities.
+Hashes desses três consumidores/fronteiras revistos com regressões hud_editor_spec;
+builds e aprovação Retail permanecem inalterados.
+
 `npm run secret:check` valida matriz, cobertura de todo Compat, presença de suítes,
 pins e SHA-256 das 26 fontes. Os hashes normalizam apenas CRLF para LF. Alteração de
 código, arquivo novo de Compat ou mudança de pin exige rever o risco e atualizar a

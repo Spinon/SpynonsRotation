@@ -146,7 +146,7 @@ test("revised icon apertures retain more source texels with explicit linear filt
     if item.kind == "Texture" and (item.texture == 1 or item.texture == 2) then
       local current = item.texture == 1
       eq(item.point[4], current and 20 or 12); eq(item.point[5], current and -11 or -8)
-      eq(item.width, current and 158 or 57); eq(item.height, current and 94 or 59)
+      eq(item.width, current and 94 or 57); eq(item.height, current and 94 or 59)
       eq(item.filter, "LINEAR"); eq(item.wrapH, "CLAMP"); eq(item.wrapV, "CLAMP")
       local u, v = item.uv[2] - item.uv[1], item.uv[4] - item.uv[3]
       assert(math.abs(math.max(u, v) - 0.96) < 0.00001)
@@ -156,6 +156,26 @@ test("revised icon apertures retain more source texels with explicit linear filt
   end
   eq(found, 2)
 end)
+test("current square and information column are independent and disappear on demotion", function()
+  local view, objects = fixture()
+  local a, b = recommendation("n.a", 1), recommendation("n.b", 2)
+  a.action.label = "Habilidade de teste"
+  a.context = ns.Contracts.CombatContext.Create({mode="AOE"})
+  view:SetRecommendations({a,b})
+  local detail, icon
+  for _, item in ipairs(objects) do
+    if item.text == "Habilidade de teste\n\nÁrea" then detail = item end
+    if item.texture == 1 then icon = item end
+  end
+  assert(detail and icon); eq(icon.width, icon.height)
+  eq(detail.visible, true); eq(detail.point[2], icon); eq(detail.point[3], "TOPRIGHT")
+  assert(detail.width+icon.width+detail.point[4] <= 158)
+  view:SetRecommendations({b,a}); eq(detail.visible, false)
+  view:SetRecommendations({a,b}); eq(detail.visible, true)
+  a.reason.capability = "SIM_ONLY"; eq(view:SetRecommendations({a}), false)
+  eq(view:GetRoot().visible, false)
+end)
+
 test("both hierarchy borders sit above native cooldown frames and below text", function()
   local view, objects = fixture()
   view:SetRecommendations({ recommendation("n.a", 1) })

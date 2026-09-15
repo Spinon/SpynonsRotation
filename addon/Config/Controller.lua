@@ -2,7 +2,13 @@ local _, Spynon = ...
 local Controller = {}
 function Controller.Create(compat, createFrame, settings, harness, profiles)
   local controller, panel, active, started = {}, nil, false, false
-  local history
+  local history, moving
+  local function stopMoving()
+    if not moving then return end
+    local view = moving; moving = nil
+    view:GetRoot():StopMovingOrSizing(); view:GetRoot():SetUserPlaced(false)
+    view:ApplySettings(settings:Get())
+  end
   local function allowed()
     local combat = compat.State:ReadCombat()
     return combat.ok and combat.capability == "ADDON_AVAILABLE" and combat.value == false
@@ -26,6 +32,9 @@ function Controller.Create(compat, createFrame, settings, harness, profiles)
     if active then return true end
     if not harness:Show(settings:Get().motion) then return false end
     history = history or Spynon.HistoryBinding.Create(settings, profiles, function() return active and allowed() end)
+    if not panel then history:Subscribe(function()
+      if not history:GetStatus().active then stopMoving() end
+    end) end
     panel = panel or Spynon.ConfigPanelFactory.Create(createFrame, compat.Media:GetRootParent(), settings,
       function(key, value) controller:Change(key, value) end, function() controller:Close() end, profiles,
       function() controller:Edit() end, history)
@@ -36,10 +45,32 @@ function Controller.Create(compat, createFrame, settings, harness, profiles)
     if not controller:Open() or not allowed() then return false end
     if not harness:Show() then controller:Close(); return false end
     panel:SetEditing(true); panel:SelectElement("queue")
-    harness:GetPreview():SetEditMode(function(kind)
+    local view = harness:GetPreview()
+    local mover = {}
+    function mover.Start()
+      if not active or not allowed() then controller:Close(); return false end
+      panel:SelectElement("position")
+      if not history:Begin("Mover conjunto") then return false end
+      moving = view
+      view:GetRoot():SetMovable(true); view:GetRoot():SetClampedToScreen(true)
+      view:GetRoot():StartMoving()
+      return true
+    end
+    function mover.Stop()
+      if not moving then return end
+      if not active or not allowed() then controller:Close(); return end
+      view:GetRoot():StopMovingOrSizing()
+      local x, y = compat.Media:ReadHUDPosition(view:GetRoot())
+      if x and y and history:Preview("positionX", x)
+        and history:Preview("positionY", y-view:GetOriginY()) then history:Commit()
+      else history:Cancel() end
+      stopMoving()
+    end
+    function mover.Cancel() if history then history:Cancel() end; stopMoving() end
+    view:SetEditMode(function(kind)
       if not active or not allowed() then controller:Close(); return end
       panel:SelectElement(kind)
-    end)
+    end, mover)
     return true
   end
   function controller.Start(_)

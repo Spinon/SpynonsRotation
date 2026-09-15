@@ -28,6 +28,8 @@ local function fixture(saved)
   harness:Start()
   local config = ns.ConfigControllerFactory.Create(compat, createFrame, model, harness, profiles)
   config:Start(); config:Edit()
+  -- Isolated legacy-widget coverage; production panel is covered as slider-free in HUD editor tests.
+  ns.PreviewSliderFactory.Create(createFrame, config:GetPanel():GetRoot(), model, config:GetHistory())
   return config:GetHistory(), model, profiles, env.SpynonRotationDB, data, config, objects
 end
 local function sliderOf(objects)

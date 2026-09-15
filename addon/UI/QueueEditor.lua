@@ -2,8 +2,18 @@ local _, Spynon = ...
 local Editor = {}
 function Editor.Create(createFrame, parent)
   local editor, callback, selected, targets = {}, nil, nil, {}
+  local mover
   local root = createFrame("Button", nil, parent)
   root:SetAllPoints(parent); root:SetFrameLevel(parent:GetFrameLevel()+10)
+  local handle = createFrame("Button", nil, root)
+  handle:SetSize(170, 26); handle:SetPoint("BOTTOM", root, "TOP", 0, 30)
+  handle:RegisterForDrag("LeftButton")
+  local handleFill = handle:CreateTexture(nil, "BACKGROUND")
+  handleFill:SetAllPoints(handle); handleFill:SetColorTexture(0.035, 0.22, 0.28, 0.95)
+  local caption = handle:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+  caption:SetPoint("CENTER", handle, "CENTER", 0, 0); caption:SetText("Mover conjunto  ↔")
+  handle:SetScript("OnDragStart", function() if callback and mover then mover.Start() end end)
+  handle:SetScript("OnDragStop", function() if mover then mover.Stop() end end)
   local function outline(frame)
     local edges = {}
     for _, edge in ipairs({ "TOP", "BOTTOM", "LEFT", "RIGHT" }) do
@@ -35,7 +45,7 @@ function Editor.Create(createFrame, parent)
     callback(kind)
   end
   root:SetScript("OnClick", function(_, button) if button == "LeftButton" then select("queue") end end)
-  for index = 1, 8 do
+  for index = 1, 12 do
     local hit = createFrame("Button", nil, root)
     local key = createFrame("Button", nil, hit)
     hit:SetFrameLevel(root:GetFrameLevel()+1); key:SetFrameLevel(root:GetFrameLevel()+2)
@@ -51,13 +61,18 @@ function Editor.Create(createFrame, parent)
     hit:Hide(); key:EnableMouse(false)
   end
   function editor.Clear(_)
+    if mover then mover.Cancel() end
+    mover = nil; handle:EnableMouse(false); handle:Hide()
     callback, selected = nil, nil
     root:EnableMouse(false); root:Hide()
     for _, target in ipairs(targets) do target.frame:EnableMouse(false); target.key:EnableMouse(false) end
   end
-  function editor.Set(_, listener)
+  function editor.Set(_, listener, movement)
     if type(listener) ~= "function" then editor:Clear(); return end
     callback, selected = listener, "queue"
+    mover = movement
+    handle:EnableMouse(mover ~= nil)
+    if mover then handle:Show() else handle:Hide() end
     root:EnableMouse(true); root:Show(); rootOutline(true)
   end
   function editor.Update(_, slot, options)

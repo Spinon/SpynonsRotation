@@ -17,7 +17,7 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
   local indicators, editor
   local options = Spynon.SettingsFactory.Defaults()
   local lastRecommendations, lastKeys, lastIndicators, indicatorClock, relayout
-  for index = 1, 8 do
+  for index = 1, 12 do
     local frame = createFrame("Frame", nil, root)
     frame:EnableMouse(false)
     local icon = frame:CreateTexture(nil, "BACKGROUND")
@@ -46,32 +46,37 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     hotkey:SetJustifyH("RIGHT")
     hotkey:SetWordWrap(false)
     hotkey:Hide()
+    local detail = foreground:CreateFontString(nil, "OVERLAY", tokens.typography.fontObject)
+    detail:SetJustifyH("LEFT"); detail:SetWordWrap(true); detail:SetTextColor(unpack(colors.text))
+    detail:Hide()
     frame:Hide()
     pool[index] = { index = index, frame = frame, icon = icon, border = border, currentBorder = currentBorder,
       flash = flash, placeholder = placeholder, hotkey = hotkey, font = font, overlay = overlay,
       hotkeyType = Spynon.Typography.Bind(hotkey, font),
-      placeholderType = Spynon.Typography.Bind(placeholder, font) }
+      placeholderType = Spynon.Typography.Bind(placeholder, font), detail = detail,
+      detailType = Spynon.Typography.Bind(detail, font) }
   end
 
   local function dimensions()
     local w, h = layoutTokens.current.width*options.mainScale, layoutTokens.current.height*options.mainScale
-    local count, gap, queued = options.count, options.spacing, layoutTokens.queued
+    local count, gap, queued = options.count, options.coupled and 0 or options.spacing, layoutTokens.queued
     local row = math.max(0, (count-1)*(queued.width+gap)-gap)
     if options.direction == "STACKED" then
-      return math.max(w, row), h + (count > 1 and queued.height+gap+layoutTokens.rowInset or 0), w, h, row
+      local inset = options.coupled and 0 or layoutTokens.rowInset
+      return math.max(w, row), h + (count > 1 and queued.height+gap+inset or 0), w, h, row
     end
     return w+(count-1)*(queued.width+gap), count > 1 and math.max(h, queued.height) or h, w, h, row
   end
   local function geometry(position)
     local layout = position == 1 and layoutTokens.current or layoutTokens.queued
     local width, _, mainWidth, mainHeight, rowWidth = dimensions()
-    local gap = options.spacing
+    local gap = options.coupled and 0 or options.spacing
     local factor = options.alignment == "START" and 0 or (options.alignment == "END" and 1 or 0.5)
     local size = position == 1 and options.mainScale or 1
     local x, y = (width-mainWidth)*factor, 0
     if options.direction == "STACKED" and position > 1 then
       x, y = (width-rowWidth)*factor+(position-2)*(layoutTokens.queued.width+gap),
-        -(mainHeight+gap+layoutTokens.rowInset)
+        -(mainHeight+gap+(options.coupled and 0 or layoutTokens.rowInset))
     elseif options.direction ~= "STACKED" then
       x = position == 1 and 0 or mainWidth+gap+(position-2)*(layoutTokens.queued.width+gap)
       y = position == 1 and 0 or -math.max(0, mainHeight-layoutTokens.queued.height)*factor
@@ -79,7 +84,8 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     end
     return { x = x, y = y, width = layout.width*size, height = layout.height*size,
       iconX = layout.iconX*size, iconY = layout.iconY*size,
-      iconWidth = layout.iconWidth*size, iconHeight = layout.iconHeight*size,
+      iconWidth = (position == 1 and math.min(layout.iconWidth, layout.iconHeight) or layout.iconWidth)*size,
+      iconHeight = (position == 1 and math.min(layout.iconWidth, layout.iconHeight) or layout.iconHeight)*size,
       alpha = 1, scale = 1, current = position == 1 and 1 or 0 }
   end
   local function paint(slot)
@@ -109,6 +115,17 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     if ratio > 1 then top, bottom = 0.5 - half / ratio, 0.5 + half / ratio
     else left, right = 0.5 - half * ratio, 0.5 + half * ratio end
     slot.icon:SetTexCoord(left, right, top, bottom)
+    -- The skin's current opening holds a square icon and a separate information column.
+    -- Narrow external skins safely omit the column; queued artwork keeps its approved fit.
+    local column = (layoutTokens.current.iconWidth - math.min(layoutTokens.current.iconWidth,
+      layoutTokens.current.iconHeight) - 8) * options.mainScale * scale
+    if slot.position == 1 and not slot.retiring and value.current > 0.99 and column >= 40 then
+      slot.detail:ClearAllPoints()
+      slot.detail:SetPoint("TOPLEFT", slot.icon, "TOPRIGHT", 8*options.mainScale*scale, -4*scale)
+      slot.detail:SetSize(column, math.max(1, value.iconHeight*scale-8))
+      slot.detailType:Apply(options, "labels", 10*options.mainScale*scale)
+      slot.detail:Show()
+    else slot.detail:Hide() end
     local anchor = options.keyPosition
     slot.hotkey:ClearAllPoints(); slot.hotkey:SetPoint(anchor, slot.icon, anchor,
       anchor:find("LEFT", 1, true) and 2 or -2, anchor:find("BOTTOM", 1, true) and 2 or -2)
@@ -126,6 +143,9 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     if editor then editor:Update(slot, options) end
   end
   local function content(slot, rec)
+    local contexts = { SINGLE_TARGET = "Alvo único", CLEAVE = "Cleave", AOE = "Área" }
+    local mode = rec.context and (rec.context.resolvedMode or rec.context.mode)
+    slot.detail:SetText(rec.action.label .. (contexts[mode] and "\n\n" .. contexts[mode] or ""))
     local loaded = rec.action.icon and slot.icon:SetTexture(rec.action.icon, "CLAMP", "CLAMP", "LINEAR")
     if not loaded then
       -- Local procedural placeholder: same rectangle and anchor as the resolved native icon.
@@ -192,7 +212,7 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     lastRecommendations = recommendations
     local consuming = false
     for _, slot in ipairs(pool) do if slot.consumeTime then consuming = true end end
-    -- Discard obsolete retirees first; at most four live plus four outgoing frames.
+    -- Discard obsolete retirees first; at most six live plus six outgoing frames.
     for _, slot in ipairs(pool) do
       if slot.retiring and not ids[slot.id] then release(slot) end
     end
@@ -302,17 +322,18 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
   end
   function view.GetFrameForId(_, id) return byId[id] and byId[id].frame or nil end
   function view.GetRoot(_) return root end
-  function view.SetEditMode(_, callback)
+  function view.GetOriginY(_) return layoutTokens.offsetY end
+  function view.SetEditMode(_, callback, mover)
     if not editor and callback == nil then return end
     editor = editor or Spynon.QueueEditorFactory.Create(createFrame, root)
-    editor:Set(callback)
+    editor:Set(callback, mover)
     for _, slot in ipairs(pool) do if slot.visual then editor:Update(slot, options) end end
   end
   function view.ApplySettings(_, value)
     if not Spynon.SettingsFactory.Validate(value) then return false end
     relayout = options.count ~= value.count or options.direction ~= value.direction
       or options.mainScale ~= value.mainScale or options.spacing ~= value.spacing
-      or options.alignment ~= value.alignment
+      or options.alignment ~= value.alignment or options.coupled ~= value.coupled
     options = value
     for _, slot in ipairs(pool) do
       slot.overlay:SetTypography(value)
@@ -322,6 +343,8 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     local width, height = dimensions()
     root:SetSize(width, height)
     root:SetScale(value.scale)
+    root:ClearAllPoints()
+    root:SetPoint("CENTER", parent, "CENTER", value.positionX, layoutTokens.offsetY+value.positionY)
     animator:Configure(value)
     view:SetMotionMode(value.motion)
     view:SetHotkeyStyle(value.keys ~= "off", value.keys ~= "full")

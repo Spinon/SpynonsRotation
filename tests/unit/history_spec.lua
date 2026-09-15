@@ -28,6 +28,8 @@ local function fixture(saved)
   harness:Start()
   local config = ns.ConfigControllerFactory.Create(compat, createFrame, model, harness, profiles)
   config:Start(); config:Edit()
+  -- Legacy widget regression only; production Config no longer instantiates this slider.
+  ns.PreviewSliderFactory.Create(createFrame, config:GetPanel():GetRoot(), model, config:GetHistory())
   return config:GetHistory(), model, profiles, env.SpynonRotationDB, data, config, objects
 end
 local function sliderOf(objects)
@@ -66,7 +68,7 @@ test("history is bounded to fifty actions and rejects malformed edits", function
   local history, _, _, saved = fixture()
   for i = 1, 80 do history:Execute("count", i%4+1) end
   eq(history:GetStatus().undo, 50)
-  eq(history:Execute("unknown", 1), false); eq(history:Execute("count", 5), false)
+  eq(history:Execute("unknown", 1), false); eq(history:Execute("count", 7), false)
   eq(saved.profiles.global.count, 1); eq(history:GetStatus().undo, 50)
 end)
 test("a hundred preview updates remain unpersisted until one transaction commits", function()

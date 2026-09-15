@@ -2,10 +2,10 @@ local _, Spynon = ...
 local Settings = {}
 local defaults = { count = 4, scale = 1, direction = "STACKED", motion = "NORMAL",
   keys = "compact", numbers = true, indicators = true, mainScale = 1, spacing = 8,
-  alignment = "CENTER", keyPosition = "TOPRIGHT",
+  alignment = "CENTER", keyPosition = "TOPRIGHT", coupled = false, positionX = 0, positionY = 0,
   moveDuration = 160, enterDuration = 180, exitDuration = 120, promoteDuration = 220, consumeDuration = 100,
   moveCurve = "CUBIC", enterCurve = "CUBIC", exitCurve = "CUBIC", promoteCurve = "CUBIC" }
-local choices = { count = { 1, 2, 3, 4 }, scale = { 0.75, 1, 1.25 },
+local choices = { count = { 1, 2, 3, 4, 5, 6 }, scale = { 0.75, 1, 1.25 }, coupled = {false, true},
   direction = { "STACKED", "RIGHT", "LEFT" }, motion = { "NORMAL", "REDUCED", "OFF" },
   keys = { "compact", "full", "off" }, numbers = { true, false }, indicators = { true, false },
   mainScale = { 0.85, 1, 1.15 }, spacing = { 4, 8, 16 }, alignment = { "START", "CENTER", "END" },
@@ -34,6 +34,10 @@ for _, role in ipairs({"text", "hotkey", "cooldown", "stacks", "labels"}) do
   end
 end
 function Settings.IsValue(key, value)
+  if key == "positionX" or key == "positionY" then
+    return type(value) == "number" and value == value and value >= -8192 and value <= 8192
+      and value == math.floor(value)
+  end
   for _, candidate in ipairs(choices[key] or {}) do if candidate == value then return true end end
   return false
 end

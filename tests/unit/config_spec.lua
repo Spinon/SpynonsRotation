@@ -62,7 +62,7 @@ end)
 test("settings reject unknown, unbounded and malformed values without notification", function()
   local model, events = ns.SettingsFactory.Create(), 0
   model:Subscribe(function() events = events + 1 end)
-  for _, value in ipairs({ -1, 0, 5, 1.5, math.huge, 0/0, "4", {} }) do eq(model:Set("count", value), false) end
+  for _, value in ipairs({ -1, 0, 7, 1.5, math.huge, 0/0, "4", {} }) do eq(model:Set("count", value), false) end
   eq(model:Set("advancedDuration", 2), false); eq(model:Set("numbers", 1), false)
   eq(model:Set("count", 4), true); eq(events, 0)
   eq(ns.SettingsFactory.Validate({ count = 4 }), false)

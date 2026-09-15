@@ -99,7 +99,7 @@ function Engine.Create(stateEngine, registry, guard)
       local ok, result = pcall(function()
         local actions = module.getActions(copy(selection))
         local bundle = module.getRules(copy(selection), copy(state), copy(context))
-        return Engine.Evaluate(bundle, actions, state, context, guard)
+        return Engine.Evaluate(bundle, actions, state, context, guard, 6)
       end)
       if ok then output = result
       else output = { recommendations = {}, diagnostics = { { code = "EVALUATION_FAILED" } } } end

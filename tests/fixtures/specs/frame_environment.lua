@@ -19,6 +19,14 @@ return function()
     if previous ~= value and self.scripts and self.scripts.OnValueChanged then self.scripts.OnValueChanged(self, value) end
   end
   function methods:SetScale(value) self.scale = value end
+  function methods:SetMovable(value) self.movable = value end
+  function methods:SetClampedToScreen(value) self.clamped = value end
+  function methods:SetUserPlaced(value) self.userPlaced = value end
+  function methods:RegisterForDrag(...) self.dragButtons = {...} end
+  function methods:StartMoving() self.moving = true end
+  function methods:StopMovingOrSizing() self.moving = false end
+  function methods:GetCenter() return self.centerX or 0, self.centerY or 0 end
+  function methods:GetEffectiveScale() return self.effectiveScale or self.scale or 1 end
   function methods:EnableKeyboard(value) self.keyboard = value end
   function methods:SetPropagateKeyboardInput(value) self.propagateKeyboardInput = value end
   function methods:SetVertexColor(...) self.vertexColor = { ... } end

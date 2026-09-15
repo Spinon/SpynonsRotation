@@ -97,7 +97,7 @@ function Harness.Create(compat, stateEngine, recommendations, queueController, r
     preview:SetMotionMode("OFF")
     previewLabel:SetText("TESTE VISUAL - DADOS SIMULADOS")
     local fixtures = {}
-    for index = 1, 4 do
+    for index = 1, 6 do
       local source = candidates[index]
       local action = source and Spynon.Contracts.Action.Create(source) or {
         id = "test.action_" .. index, kind = "spell", label = "Teste " .. index, capability = AVAILABLE,

@@ -8,6 +8,23 @@ function Media.Create(environment)
   local adapter = {}
   local guard = Internal.State.Create(environment)
   function adapter.GetRootParent(_) return environment.UIParent end
+  function adapter.ReadHUDPosition(_, frame)
+    -- Own movable frame only. Guard every scalar before coordinate arithmetic.
+    local ok, x, y, scale, px, py, parentScale = pcall(function()
+      local a, b = frame:GetCenter()
+      local c, d = environment.UIParent:GetCenter()
+      return a, b, frame:GetEffectiveScale(), c, d, environment.UIParent:GetEffectiveScale()
+    end)
+    if not ok then return nil end
+    for _, value in pairs({x=x, y=y, scale=scale, px=px, py=py, parentScale=parentScale}) do
+      if not guard:IsPublic(value) or not V.IsFiniteNumber(value) then return nil end
+    end
+    if x == nil or y == nil or px == nil or py == nil or scale == nil or parentScale == nil
+      or scale <= 0 or parentScale <= 0 then return nil end
+    local offsetX, offsetY = x-px*parentScale/scale, y-py*parentScale/scale
+    if not V.IsFiniteNumber(offsetX) or not V.IsFiniteNumber(offsetY) then return nil end
+    return math.floor(offsetX+0.5), math.floor(offsetY+0.5)
+  end
   function adapter.ConfirmedPlayerSpell(_, unit, spellID)
     if not guard:IsPublic(unit) or not guard:IsPublic(spellID) then return nil end
     if unit ~= "player" or not V.IsPositiveInteger(spellID) then return nil end

@@ -95,7 +95,7 @@ end)
 test("malformed known values are ignored but preserved and invalid writes do not mutate", function()
   local db = database(); db.global.count = 99; db.global.extension = "preserved"
   local store = ns.ProfileStoreFactory.Create(db); eq(store:Resolve(one).count, 4)
-  eq(store:Set("count", 5, one), false); eq(store:Set("extension", "overwrite", one), false)
+  eq(store:Set("count", 7, one), false); eq(store:Set("extension", "overwrite", one), false)
   eq(db.global.count, 99); eq(db.global.extension, "preserved")
 end)
 test("future or malformed schema remains read-only and is never overwritten", function()

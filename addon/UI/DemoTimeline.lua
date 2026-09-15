@@ -16,7 +16,7 @@ local PHASES = {
 }
 function Timeline.Create(candidates)
   local timeline, actions = {}, {}
-  for index = 1, 5 do
+  for index = 1, 7 do
     local source = candidates[index]
     local action = source and C.Action.Create(source)
     if not action or action.capability ~= "ADDON_AVAILABLE" then
@@ -36,7 +36,10 @@ function Timeline.Create(candidates)
     if not index then return nil end
     local time = elapsed % Timeline.Duration
     local phase, recommendations, overlays = PHASES[index], {}, {}
-    for priority, actionIndex in ipairs(phase.order) do
+    local order = {}
+    for _, actionIndex in ipairs(phase.order) do order[#order+1] = actionIndex end
+    order[5], order[6] = 6, 7 -- Extra simulated tail exercises the six-slot preference.
+    for priority, actionIndex in ipairs(order) do
       local action = C.Action.Create(actions[actionIndex])
       recommendations[priority] = C.Recommendation.Create({
         id = action.id, action = action, priority = priority,

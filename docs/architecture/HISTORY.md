@@ -1,5 +1,9 @@
 # Histórico transacional — UX-004
 
+UX-007 remove o slider da interface e aplica transações ao movimento do conjunto.
+Detalhes e checklist atuais: [HUD_USABILITY.md](HUD_USABILITY.md). O helper de slider
+permanece somente como compatibilidade inativa e regressão isolada.
+
 Config oferece **Desfazer** e **Refazer** para as preferências editadas pelo painel. Cada
 clique constitui uma ação. No editor do ícone principal, o controle deslizante compara os
 três tamanhos existentes (85%, 100%, 115%): mudanças enquanto o mouse está pressionado são

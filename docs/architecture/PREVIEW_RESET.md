@@ -1,5 +1,8 @@
 # Exploração segura e reset granular — UX-005
 
+UX-007 retira o slider do painel e acrescenta reset isolado dos eixos de posição;
+reset de Fila inclui também posição/encaixe. Veja [HUD_USABILITY.md](HUD_USABILITY.md).
+
 As mudanças comuns continuam imediatas. **Experimentar** inicia uma sessão temporária na
 seção ou elemento aberto: clicar em opções atualiza a prévia, sem gravar preferências nem
 criar histórico. **Manter mudanças** confirma o conjunto como uma ação; **Cancelar prévia**
