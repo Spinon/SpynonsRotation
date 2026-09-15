@@ -2,31 +2,31 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T04:00:15Z
+Atualizado pelo board em: 2026-09-15T04:01:10Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**PATCH-005 — Estado parcial seguro em combate**
+**TEST-002 — In-game harness**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `blocked` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Consumir isActive/isEnabled NeverSecret com guards independentes; validar prontidão conservadora sem tempos e reinstalar o checkpoint.
+Próxima ação: PO: /reload carrega d22f625 instalado, sair da demo/config, atacar boneco e observar fila própria entre cooldowns. Executar /spynon debug em combate, capturar regras/prontidão e ações excluídas; sair de combate e /reload para persistir sem repetir debug. Validar flags públicos no Retail e gate do Totem. Checklists UX-007/UX-008 e combate/taint continuam pendentes.
 
 ## Progresso
 
 - Planejadas: 1
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 2
-- Concluídas: 59
+- Concluídas: 60
 - Total: 63
 
 ## Fila canônica
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
-| PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | in_progress | P0 | PATCH-004 |
+| PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | done | P0 | PATCH-004 |
 | PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | done | P0 | PATCH-003, RUN-002, UX-008 |
 | UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | done | P1 | RUN-003, UX-007 |
 | BOOT-001 | delivery | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
@@ -91,6 +91,17 @@ Próxima ação: Consumir isActive/isEnabled NeverSecret com guards independente
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
+
+### PATCH-005
+
+- StateEngine preserva filhos públicos usability/charges em container parcial novo quando cooldown falha. Capabilities continuam independentes; tempos antigos são descartados e StateReader não trata cooldown desconhecido como pronto.
+- Spec getActions devolve gates opcionais de exclusão; DebugReport usa cópias, códigos fechados e IDs limitados. Catálogo/prioridades preservados: Totem exige talento 455630 e hero 54, mas a amostra Retail antiga não comprova qual gate falhou. Sem presumir talento pelo nome da hero tree.
+- npm test passou: 224 Node + 457 Lua = 681 testes, 29 suítes Lua; lint e tipos limpos em 63 arquivos. Quatro novas regressões cobrem campos independentes, false/nil, transições, gates e isolamento; auditoria SECRET-10 revisada.
+- Wowless 2026-09-15T03:48:32.869Z PASS, zero erros e 521 warnings upstream; runtime SHA-256 812B878B5BF2260132C67FE866ED7FDE8A0C449ABEB51B1E002A92AB30BA86B0. Não homologa combate Retail nem remove suas restrições.
+- Consulta inicial investigou AssistedCombat. PO depois pediu priorizar rotação própria: SpellShared dos dois pins documenta isEnabled/isActive NeverSecret. ReadCooldownStatus agora lê apenas esses flags com guard vivo; status habilitado/inativo permite prontidão sem tempos. Nenhum assistente oficial ou cálculo estimado foi integrado.
+- Continuação: npm test aprovado com 224 Node + 465 Lua = 689 testes, lint/tipos limpos em 63 arquivos. Oito regressões novas incluem acesso proibido aos tempos, flags secretos, invalidação e pipeline de produção Totêmico gerando fila própria com tempos/auras restritos, sem inferir Maelstrom Weapon.
+- Wowless 2026-09-15T04:00:02.578Z PASS: zero erros, 521 warnings upstream; input SHA-256 E7E60EEE83C0BA9A357B85884516909FA75730AE9DE99E43E39766FF2865E281. Status público não autoriza remains/cargas; sem regra observável ou durante GCD a fila ainda pode esvaziar. Reteste Retail pendente.
+- Commit d22f625 publicado; pacote limpo reproduzido duas vezes, 81 entradas, SHA-256 330859D10A167E67C0595C14E6989AF5D2754055F89313A0C4E146609C0AE379; leitor ZIP independente aprovado. Instalação verificada em 2026-09-15T04:01:10Z, 81 arquivos no Retail 12.1.0.69814, sem alterar SavedVariables/outros addons. Foco TEST-002 para reteste humano; nenhuma release.
 
 ### PATCH-004
 

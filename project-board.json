@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T04:00:15Z",
-  "currentFocus": "PATCH-005",
+  "updatedAt": "2026-09-15T04:01:10Z",
+  "currentFocus": "TEST-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -25,12 +25,12 @@
       "title": "Estado parcial seguro em combate",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/PATCH-005.md",
-      "updatedAt": "2026-09-15T04:00:15Z",
+      "updatedAt": "2026-09-15T04:01:10Z",
       "reviewBy": null,
-      "nextAction": "Consumir isActive/isEnabled NeverSecret com guards independentes; validar prontidão conservadora sem tempos e reinstalar o checkpoint.",
+      "nextAction": null,
       "dependencies": ["PATCH-004"],
       "acceptanceCriteria": [
         "Usability pública preservada com cooldown restrito",
@@ -45,7 +45,8 @@
         "Wowless 2026-09-15T03:48:32.869Z PASS, zero erros e 521 warnings upstream; runtime SHA-256 812B878B5BF2260132C67FE866ED7FDE8A0C449ABEB51B1E002A92AB30BA86B0. Não homologa combate Retail nem remove suas restrições.",
         "Consulta inicial investigou AssistedCombat. PO depois pediu priorizar rotação própria: SpellShared dos dois pins documenta isEnabled/isActive NeverSecret. ReadCooldownStatus agora lê apenas esses flags com guard vivo; status habilitado/inativo permite prontidão sem tempos. Nenhum assistente oficial ou cálculo estimado foi integrado.",
         "Continuação: npm test aprovado com 224 Node + 465 Lua = 689 testes, lint/tipos limpos em 63 arquivos. Oito regressões novas incluem acesso proibido aos tempos, flags secretos, invalidação e pipeline de produção Totêmico gerando fila própria com tempos/auras restritos, sem inferir Maelstrom Weapon.",
-        "Wowless 2026-09-15T04:00:02.578Z PASS: zero erros, 521 warnings upstream; input SHA-256 E7E60EEE83C0BA9A357B85884516909FA75730AE9DE99E43E39766FF2865E281. Status público não autoriza remains/cargas; sem regra observável ou durante GCD a fila ainda pode esvaziar. Reteste Retail pendente."
+        "Wowless 2026-09-15T04:00:02.578Z PASS: zero erros, 521 warnings upstream; input SHA-256 E7E60EEE83C0BA9A357B85884516909FA75730AE9DE99E43E39766FF2865E281. Status público não autoriza remains/cargas; sem regra observável ou durante GCD a fila ainda pode esvaziar. Reteste Retail pendente.",
+        "Commit d22f625 publicado; pacote limpo reproduzido duas vezes, 81 entradas, SHA-256 330859D10A167E67C0595C14E6989AF5D2754055F89313A0C4E146609C0AE379; leitor ZIP independente aprovado. Instalação verificada em 2026-09-15T04:01:10Z, 81 arquivos no Retail 12.1.0.69814, sem alterar SavedVariables/outros addons. Foco TEST-002 para reteste humano; nenhuma release."
       ]
     },
     {
@@ -1612,9 +1613,9 @@
       "status": "blocked",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T03:35:28Z",
+      "updatedAt": "2026-09-15T04:01:10Z",
       "reviewBy": null,
-      "nextAction": "PO: /reload para carregar 9e07a1b, sair da demo/config, atacar boneco e executar /spynon debug. Capturar Debug/Regras/Prontidão/Leituras; sair de combate e /reload para persistir sem repetir debug fora de combate. Diagnosticar a causa com essa nova evidência antes de alterar regras. Checklists UX-007/UX-008 e combate/taint continuam pendentes.",
+      "nextAction": "PO: /reload carrega d22f625 instalado, sair da demo/config, atacar boneco e observar fila própria entre cooldowns. Executar /spynon debug em combate, capturar regras/prontidão e ações excluídas; sair de combate e /reload para persistir sem repetir debug. Validar flags públicos no Retail e gate do Totem. Checklists UX-007/UX-008 e combate/taint continuam pendentes.",
       "dependencies": [
         "RUN-002",
         "UI-001",

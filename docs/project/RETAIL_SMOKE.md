@@ -189,6 +189,32 @@ aprovação do preview pendente, separada da validação de combate de TEST-002.
 
 ## Fora do escopo deste smoke
 
+### PATCH-005 — reteste de prontidão pública
+
+Commit d22f625 instalado em 15/09/2026 04:01:10 UTC: 81 arquivos conferidos no
+Retail 12.1.0.69814. Pacote limpo reproduzido duas vezes e validado por leitor
+independente; SHA-256 330859D10A167E67C0595C14E6989AF5D2754055F89313A0C4E146609C0AE379.
+689 testes offline e smoke Wowless passaram. Nenhum destes passos valida Retail.
+
+1. Fora do combate, `/reload`; fechar config/demo (`/spynon demo stop` e
+   `/spynon test hide` se necessário).
+2. Atacar o boneco em ST/Auto, observar a fila entre cooldowns e após usar habilidades.
+   Esta versão usa nossa engine com status público, não AssistedCombat.
+3. Durante combate executar `/spynon debug`. Guardar screenshot das linhas e depois
+   sair do combate e usar `/reload` para persistir. Não repetir debug fora do combate.
+4. Se o Totem continuar ausente, inspecionar actionExclusions do relatório salvo:
+   o chat imprime somente os três primeiros gates, não necessariamente o do Totem.
+
+- [ ] Há recomendações próprias quando existe ação pública pronta.
+- [ ] Habilidade em cooldown não aparece como pronta; erros/taint ausentes.
+- [ ] Retorno da fila após GCD e mudanças de cooldown funciona sem ficar travado.
+- [ ] Gate do Surging Totem correlacionado com talentos reais, sem presumir correção.
+- [ ] Limitações de buffs/recursos/tempos restritos documentadas com nova amostra.
+
+A fila ainda pode ter menos de seis ações ou esvaziar durante GCD. Não há previsão
+de seis casts, estimativa de resets ou promoção de informação restrita a pública.
+Relato anterior revision 47 é anterior a esta correção e não preenche este checklist.
+
 ### Entrega UX-007 instalada para inspeção
 
 Commit 59a2dcb, instalado em 15/09/2026 UTC no cliente 12.1.0.69814: 78 arquivos
