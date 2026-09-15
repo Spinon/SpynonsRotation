@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T00:07:40.000Z",
+  "updatedAt": "2026-09-15T00:08:20.000Z",
   "currentFocus": "TEST-001",
   "parallelFocus": {},
   "release": {
@@ -1484,10 +1484,10 @@
       "title": "Wowless integration",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-02T20:15:00.000Z",
+      "updatedAt": "2026-09-15T00:08:20.000Z",
       "reviewBy": null,
       "nextAction": "Criar harness Docker pinado.",
       "dependencies": [

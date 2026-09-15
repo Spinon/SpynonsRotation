@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T00:07:40.000Z
+Atualizado pelo board em: 2026-09-15T00:08:20.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **TEST-001 — Wowless integration**
 
-Status: `planned` · Prioridade: `P1` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
 Próxima ação: Criar harness Docker pinado.
 
 ## Progresso
 
-- Planejadas: 7
-- Em andamento: 0
+- Planejadas: 6
+- Em andamento: 1
 - Bloqueadas: 1
 - Concluídas: 51
 - Total: 59
@@ -78,7 +78,7 @@ Próxima ação: Criar harness Docker pinado.
 | BRAND-003 | delivery | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
 | PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | done | P1 | CORE-004 |
 | PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | done | P1 | PATCH-001, RUN-001 |
-| TEST-001 | delivery | PATCH / QUALITY | Wowless integration | planned | P1 | BOOT-001 |
+| TEST-001 | delivery | PATCH / QUALITY | Wowless integration | in_progress | P1 | BOOT-001 |
 | TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
 | RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | planned | P1 | RELEASE-001, BOOT-002 |
