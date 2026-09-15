@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T03:35:28Z",
-  "currentFocus": "TEST-002",
+  "updatedAt": "2026-09-15T03:43:41Z",
+  "currentFocus": "PATCH-005",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -20,6 +20,26 @@
     "validatedAt": null
   },
   "items": [
+    {
+      "id": "PATCH-005",
+      "title": "Estado parcial seguro em combate",
+      "lane": "PATCH / QUALITY",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "tasks/PATCH-005.md",
+      "updatedAt": "2026-09-15T03:43:41Z",
+      "reviewBy": null,
+      "nextAction": "Preservar campos públicos independentes, investigar gates de ação e instalar correção com readiness estrito.",
+      "dependencies": ["PATCH-004"],
+      "acceptanceCriteria": [
+        "Usability pública preservada com cooldown restrito",
+        "Sem dados obsoletos ou readiness fictício",
+        "Diagnóstico de gates permite investigar ações ausentes",
+        "Regressões aprovadas e checkpoint instalado para Retail"
+      ],
+      "evidence": []
+    },
     {
       "id": "PATCH-004",
       "title": "Diagnóstico da fila real vazia",

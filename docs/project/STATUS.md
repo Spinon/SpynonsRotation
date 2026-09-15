@@ -2,30 +2,31 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T03:35:28Z
+Atualizado pelo board em: 2026-09-15T03:43:41Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**TEST-002 — In-game harness**
+**PATCH-005 — Estado parcial seguro em combate**
 
-Status: `blocked` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: PO: /reload para carregar 9e07a1b, sair da demo/config, atacar boneco e executar /spynon debug. Capturar Debug/Regras/Prontidão/Leituras; sair de combate e /reload para persistir sem repetir debug fora de combate. Diagnosticar a causa com essa nova evidência antes de alterar regras. Checklists UX-007/UX-008 e combate/taint continuam pendentes.
+Próxima ação: Preservar campos públicos independentes, investigar gates de ação e instalar correção com readiness estrito.
 
 ## Progresso
 
-- Planejadas: 1
+- Planejadas: 2
 - Em andamento: 0
 - Bloqueadas: 2
 - Concluídas: 59
-- Total: 62
+- Total: 63
 
 ## Fila canônica
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
+| PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | planned | P0 | PATCH-004 |
 | PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | done | P0 | PATCH-003, RUN-002, UX-008 |
 | UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | done | P1 | RUN-003, UX-007 |
 | BOOT-001 | delivery | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
