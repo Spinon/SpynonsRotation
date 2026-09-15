@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T02:11:00Z",
-  "currentFocus": "BRAND-003",
+  "updatedAt": "2026-09-15T03:00:00Z",
+  "currentFocus": "UX-008",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -20,6 +20,26 @@
     "validatedAt": null
   },
   "items": [
+    {
+      "id": "UX-008",
+      "title": "Contexto clicável no HUD",
+      "lane": "CONFIG / UX",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P1",
+      "source": "tasks/UX-008.md",
+      "updatedAt": "2026-09-15T03:00:00Z",
+      "reviewBy": "Product Owner",
+      "nextAction": "Implementar tag de contexto clicável usando o controlador existente, com fallback explícito e testes de lifecycle.",
+      "dependencies": ["RUN-003", "UX-007"],
+      "acceptanceCriteria": [
+        "Tag alterna quatro modos e distingue fallback de override manual",
+        "Clique e slash sincronizam tag e engine mesmo com fila vazia",
+        "Posição, escala e lifecycle preservados sem ação protegida",
+        "Testes offline, pacote instalado e roteiro Retail documentados"
+      ],
+      "evidence": []
+    },
     {
       "id": "BOOT-001",
       "title": "Bootstrap do repositório e toolchain",

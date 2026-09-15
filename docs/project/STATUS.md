@@ -2,30 +2,31 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T02:11:00Z
+Atualizado pelo board em: 2026-09-15T03:00:00Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**BRAND-003 — Aplicar identidade ao default**
+**UX-008 — Contexto clicável no HUD**
 
-Status: `blocked` · Prioridade: `P2` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Product Owner: /reload e /spynon config na instalação 965ce13; conferir símbolo, título e botões e aprovar o preview ou apontar ajustes. Depois concluir o checklist Retail de TEST-002; ARCH-001 exige maturidade de Enhancement e escolha da segunda spec.
+Próxima ação: Implementar tag de contexto clicável usando o controlador existente, com fallback explícito e testes de lifecycle.
 
 ## Progresso
 
-- Planejadas: 1
+- Planejadas: 2
 - Em andamento: 0
 - Bloqueadas: 2
 - Concluídas: 57
-- Total: 60
+- Total: 61
 
 ## Fila canônica
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
+| UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | planned | P1 | RUN-003, UX-007 |
 | BOOT-001 | delivery | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
 | BOOT-002 | delivery | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |
 | CORE-001 | delivery | CORE | Contratos genéricos | done | P0 | BOOT-002 |
