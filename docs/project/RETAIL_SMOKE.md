@@ -105,8 +105,8 @@ preferências novas. Hit testing, foco e rendering nativos continuam pendentes d
 
 ### Histórico transacional (UX-004)
 
-Em Config, alterar uma opção e usar Desfazer/Refazer. No editor do ícone principal, arrastar
-o controle de tamanho repetidamente antes de soltar: uma única ação deve ser desfeita.
+Em Config, alterar uma opção e usar Desfazer/Refazer. Com UX-007, o slider foi removido:
+arrastar a alça Mover conjunto antes de soltar deve produzir uma única ação para os dois eixos.
 Navegar, fechar ou entrar em combate durante o arraste deve cancelar a prévia não confirmada.
 Trocar alcance/spec ou confirmar cópia/reset deve limpar o histórico, preservando os outros
 perfis. Depois de `/reload`, preferências persistem, mas o histórico começa vazio.
@@ -130,12 +130,12 @@ estes novos controles ainda não receberam inspeção real no cliente.
 Antes da inspeção geral, conferir UX-005: Experimentar permite múltiplas alterações sem
 gravar; Manter mudanças cria uma ação; Cancelar/navegar/fechar desfaz a prévia. Restaurar
 elemento, seção e perfil deve mostrar resultado antes de Confirmar restauração. Confirmar
-somente o alcance escolhido, preservando outros ajustes e perfis. Verificar que soltar o
-slider durante Experimentar não confirma toda a sessão cedo. Não há nova evidência Retail.
+somente o alcance escolhido, preservando outros ajustes e perfis. UX-007 mantém escolhas
+discretas de tamanho, sem slider. Não há nova evidência Retail dessa entrega.
 
 - [ ] Addon carregou sem erro Lua; `/spynon test` foi reconhecido.
 - [ ] Build/interface coincidiram; estado e Recommendations válidos.
-- [ ] Texturas nativas, molduras, crop, escala e quatro posições legíveis no teste visual.
+- [ ] Texturas nativas, molduras, crop, escala e uma a seis posições legíveis no teste visual.
 - [ ] Fila de teste claramente identificada e encerrada antes de combate.
 - [ ] Troca de talentos/spec não mantém ações anteriores.
 - [ ] Entrada/saída de combate não produz erro, ação bloqueada ou taint observado.
@@ -144,6 +144,15 @@ slider durante Experimentar não confirma toda a sessão cedo. Não há nova evi
 - [ ] Screenshot/relato do Product Owner e relatório persistido anexados à evidência da task.
 
 ## Fora do escopo deste smoke
+
+### Entrega UX-007 instalada para inspeção
+
+Commit 59a2dcb, instalado em 15/09/2026 UTC no cliente 12.1.0.69814: 78 arquivos
+verificados pelo instalador, sem alterar WTF ou outros addons. `/reload` carrega a versão.
+Checklist de posição persistente, modo acoplado, seis ações, coluna principal e config
+em [HUD_USABILITY.md](../architecture/HUD_USABILITY.md#checklist-retail).
+647 testes offline passaram; Wowless abriu inclusive o editor sem erros. Isso não
+marca nenhum item de inspeção humana acima como aprovado.
 
 UX-006 também exige inspeção: Informações → Textos e legibilidade; comparar WoW/Números
 WoW, tamanhos, contorno e sombra, inclusive cooldown nativo. Verificar Global e overrides,

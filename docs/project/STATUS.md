@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T01:32:00Z
+Atualizado pelo board em: 2026-09-15T01:43:19Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**UX-007 — HUD ajustável e config legível**
+**TEST-002 — In-game harness**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `blocked` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Implementar layout, posição, seis ações e polimento contextual solicitados pelo PO.
+Próxima ação: Testar versão UX-007 instalada: /reload, posição/Acoplado/seis ações/coluna principal e config; concluir checklist Retail de combate/taint. docs/architecture/HUD_USABILITY.md contém o roteiro; aprovação anterior da demo não homologa estes ajustes.
 
 ## Progresso
 
 - Planejadas: 4
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 54
+- Concluídas: 55
 - Total: 60
 
 ## Fila canônica
@@ -84,7 +84,7 @@ Próxima ação: Implementar layout, posição, seis ações e polimento context
 | RELEASE-002 | delivery | PATCH / QUALITY | CI | done | P1 | RELEASE-001, BOOT-002 |
 | PATCH-003 | delivery | PATCH / QUALITY | Diagnóstico de build no smoke Retail | done | P0 | CORE-004, PATCH-001 |
 | UI-007 | delivery | UI | Encaixe e amostragem dos ícones | done | P1 | UI-001, UI-002, UI-003, UI-004, UI-006 |
-| UX-007 | delivery | CONFIG / UX | HUD ajustável e config legível | in_progress | P1 | UX-006, UI-007, RELEASE-002 |
+| UX-007 | delivery | CONFIG / UX | HUD ajustável e config legível | done | P1 | UX-006, UI-007, RELEASE-002 |
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
@@ -543,3 +543,11 @@ Próxima ação: Implementar layout, posição, seis ações e polimento context
 - Test-QueueIconFit.ps1: oito probes transparentes cobertos e envelope lateral preservado nos PNGs técnicos. Test-TechnicalAssets.ps1: 16 TGAs, 16 PNGs, hashes e 7.995.680 bytes preservados.
 - docs/architecture/ICON_FIT.md registra medidas, crop, camadas e limite da arte nativa. RETAIL_SMOKE registra nova captura e aprovação humana da fluidez anterior; novo encaixe ainda exige reteste Retail.
 - Commit 0115503 registra início publicado. UI-005 volta ao foco sem antecipar seus indicadores.
+
+### UX-007
+
+- Commit 59a2dcb: slider retirado do painel, movimento transacional por alça, encaixe acoplado, até seis ações, principal quadrado com coluna pública e controles contextuais polidos. docs/architecture/HUD_USABILITY.md registra contratos e roteiro.
+- npm test aprovado: 210 Node + 437 Lua = 647 testes; 27 suítes Lua; lint e tipos limpos em 61 arquivos. Regressões incluem geometria sem sobreposição de botões, seis ações, pool, escalas, herança e cancelamento de arraste.
+- Wowless 2026-09-15T01:43:10.222Z PASS, zero erros, 521 warnings upstream; probe inclui edit/edit close. Runtime SHA-256 D6B8CA60953896D3C1D12556A608B75DFFCE940149BFD406776B807B98A987C0; Retail continua PENDING.
+- Pacote limpo e reproduzido duas vezes no commit 59a2dcb: 78 entradas; SHA-256 A59787C59B808FC02A4745EF91799BF3A2B66BF9DF6D6C8A184E4CB5DE0B315B; leitor ZIP independente aprovado.
+- Install-DevelopmentAddon.ps1 verificou 78 arquivos no Retail 12.1.0.69814 em D:/Blizzard/World of Warcraft/_retail_/Interface/AddOns/SpynonRotation. Sem alterações em SavedVariables/outros addons; nenhuma release publicada. Aprovação visual e combate dependem de TEST-002.

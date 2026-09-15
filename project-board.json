@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T01:32:00Z",
-  "currentFocus": "UX-007",
+  "updatedAt": "2026-09-15T01:43:19Z",
+  "currentFocus": "TEST-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1513,9 +1513,9 @@
       "status": "blocked",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-14T22:01:57.012Z",
+      "updatedAt": "2026-09-15T01:43:19Z",
       "reviewBy": null,
-      "nextAction": "Completar inspeção de combate/taint e revisar encaixe após UI-007. Build reconhecida na nova captura; fluidez da demo aprovada pelo Product Owner.",
+      "nextAction": "Testar versão UX-007 instalada: /reload, posição/Acoplado/seis ações/coluna principal e config; concluir checklist Retail de combate/taint. docs/architecture/HUD_USABILITY.md contém o roteiro; aprovação anterior da demo não homologa estes ajustes.",
       "dependencies": [
         "RUN-002",
         "UI-001",
@@ -1646,12 +1646,12 @@
       "title": "HUD ajustável e config legível",
       "lane": "CONFIG / UX",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "tasks/UX-007.md",
-      "updatedAt": "2026-09-15T01:32:00Z",
+      "updatedAt": "2026-09-15T01:43:19Z",
       "reviewBy": "Product Owner",
-      "nextAction": "Implementar layout, posição, seis ações e polimento contextual solicitados pelo PO.",
+      "nextAction": null,
       "dependencies": ["UX-006", "UI-007", "RELEASE-002"],
       "acceptanceCriteria": [
         "Slider removido; posição editável, persistente e reversível",
@@ -1659,7 +1659,13 @@
         "Ícone principal quadrado com coluna de informações públicas",
         "Config contextual polido e pacote development testável"
       ],
-      "evidence": []
+      "evidence": [
+        "Commit 59a2dcb: slider retirado do painel, movimento transacional por alça, encaixe acoplado, até seis ações, principal quadrado com coluna pública e controles contextuais polidos. docs/architecture/HUD_USABILITY.md registra contratos e roteiro.",
+        "npm test aprovado: 210 Node + 437 Lua = 647 testes; 27 suítes Lua; lint e tipos limpos em 61 arquivos. Regressões incluem geometria sem sobreposição de botões, seis ações, pool, escalas, herança e cancelamento de arraste.",
+        "Wowless 2026-09-15T01:43:10.222Z PASS, zero erros, 521 warnings upstream; probe inclui edit/edit close. Runtime SHA-256 D6B8CA60953896D3C1D12556A608B75DFFCE940149BFD406776B807B98A987C0; Retail continua PENDING.",
+        "Pacote limpo e reproduzido duas vezes no commit 59a2dcb: 78 entradas; SHA-256 A59787C59B808FC02A4745EF91799BF3A2B66BF9DF6D6C8A184E4CB5DE0B315B; leitor ZIP independente aprovado.",
+        "Install-DevelopmentAddon.ps1 verificou 78 arquivos no Retail 12.1.0.69814 em D:/Blizzard/World of Warcraft/_retail_/Interface/AddOns/SpynonRotation. Sem alterações em SavedVariables/outros addons; nenhuma release publicada. Aprovação visual e combate dependem de TEST-002."
+      ]
     },
     {
       "id": "ARCH-001",
