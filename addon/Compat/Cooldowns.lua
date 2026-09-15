@@ -43,6 +43,23 @@ function Cooldowns.Create(environment)
     end
     return count
   end
+  function adapter.ApplyGCD(_, widget)
+    widget:Hide()
+    if type(widget.SetTimerDuration) ~= "function" then return false end
+    local status = state:ReadCooldownStatus(GLOBAL_COOLDOWN)
+    if not status.ok or status.value.isEnabled ~= true or status.value.isActive ~= true then return false end
+    local called, duration = Internal.SafeCall.Call(environment,
+      "C_Spell.GetSpellCooldownDuration", GLOBAL_COOLDOWN, false)
+    if not called or not state:IsPublic(duration) then return false end
+    local kind = type(duration)
+    if kind ~= "table" and kind ~= "userdata" then return false end
+    -- Native presentation sink only. Never inspect duration or read the bar's value.
+    -- Defaults: Immediate interpolation, ElapsedTime direction (both reviewed pins).
+    local ok = pcall(widget.SetTimerDuration, widget, duration)
+    if not ok then widget:Hide(); return false end
+    widget:Show()
+    return true
+  end
   function adapter.ReadGCD(_)
     local value = state:ReadCooldown(GLOBAL_COOLDOWN)
     if not value.ok or not value.value.isEnabled or value.value.modRate ~= 1 then return nil end

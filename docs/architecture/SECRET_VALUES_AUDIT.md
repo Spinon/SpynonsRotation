@@ -157,6 +157,20 @@ entra na decisão. Reteste Retail permanece obrigatório.
 
 ## Fontes primárias
 
+### Complemento PATCH-007 — barra nativa
+
+StatusBar:SetTimerDuration recebe o handle público de GetSpellCooldownDuration(61304,
+false) somente após status público habilitado/ativo do GCD. Handle é passado opaco:
+não se lê GetValue/GetMinMaxValues/GetTimerDuration, não se inspeciona DurationObject,
+não se usa callback visual para decidir prontidão. UI esconde a barra antes de cada
+tentativa, falhas, demote, clear e hide; não consulta seu estado protegido para isso.
+Barra nativa avança sem OnUpdate Lua. O fallback antigo ainda exige tempos públicos.
+Seis regressões novas exercitam sink, guards, falhas, layout, lifecycle e fallback.
+SimpleStatusBarAPIDocumentation foi revisado e pinado nas duas builds: 31 arquivos,
+zero diferenças documentadas. SECRET-05/10 e hashes dos três consumidores revistos.
+
+- [StatusBar da build 69814](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleStatusBarAPIDocumentation.lua): sink nativo, defaults Immediate/ElapsedTime e getters que não são consumidos.
+
 - [SpellShared da build 69814](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellSharedDocumentation.lua): isEnabled/isActive NeverSecret; sem converter esses flags em tempos ou cargas. Mesmo contrato no pin 69587 já coberto pelo diff.
 - [FrameScript API da build 69814](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/FrameScriptDocumentation.lua): issecretvalue e distinção entre valor e conteúdo de tabela.
 - [Secret predicates](https://github.com/Gethe/wow-ui-source/blob/4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59/Interface/AddOns/Blizzard_APIDocumentationGenerated/SecretPredicateAPIDocumentation.lua): sondas específicas por spell/recurso; não substituem guards de retorno.

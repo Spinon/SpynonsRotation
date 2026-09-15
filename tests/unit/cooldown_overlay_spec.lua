@@ -42,7 +42,8 @@ local function fixture()
       GetSpellCharges = function() return data.charges end,
       GetSpellCooldown = function(id)
         data.gcdId = id
-        return { startTime = data.start, duration = data.duration, modRate = data.modRate, isEnabled = true }
+        return { startTime = data.start, duration = data.duration, modRate = data.modRate,
+          isEnabled = data.enabled == nil and true or data.enabled, isActive = data.active }
       end,
     },
   }
@@ -165,6 +166,89 @@ test("controller refreshes unchanged identities and clears restrictions without 
   eq(data.requested, nil); eq(root.scripts.OnUpdate, nil)
   for _, object in ipairs(objects) do if object.kind == "Cooldown" then eq(object.durationObject, nil) end end
   controller:Stop(); eq(callback, nil)
+end)
+test("native GCD forwards the opaque global duration even when numeric timings are restricted", function()
+  local adapter, _, data, _, createFrame = fixture()
+  data.restricted, data.active = true, true
+  local bar = createFrame("StatusBar")
+  eq(adapter:ApplyGCD(bar),true); eq(bar.visible,true); eq(bar.timerDuration,data.opaque)
+  eq(data.requested,61304); eq(data.ignoreGCD,false); eq(adapter:ReadGCD(),nil)
+end)
+test("native GCD failures hide old progress without reading the widget or duration", function()
+  for _, kind in ipairs({"secret","nil","number","missingAPI","missingMethod","throw"}) do
+    local adapter, env, data, secret, createFrame = fixture()
+    data.restricted, data.active = true, true
+    local bar = createFrame("StatusBar"); eq(adapter:ApplyGCD(bar),true)
+    bar.GetValue = function() error("bar read forbidden") end
+    bar.GetTimerDuration = bar.GetValue
+    if kind == "secret" then data.opaque = secret
+    elseif kind == "nil" then data.opaque = nil
+    elseif kind == "number" then data.opaque = 123
+    elseif kind == "missingAPI" then env.C_Spell.GetSpellCooldownDuration = nil
+    elseif kind == "missingMethod" then bar.SetTimerDuration = false
+    elseif kind == "throw" then bar.SetTimerDuration = function(self) self:Show(); error("sink rejected") end end
+    eq(adapter:ApplyGCD(bar),false); eq(bar.visible,false)
+  end
+end)
+test("inactive held or secret global status does not request or display a native duration", function()
+  for _, kind in ipairs({"inactive","held","secret","missingGuard"}) do
+    local adapter, env, data, secret, createFrame = fixture()
+    data.active = true
+    if kind == "inactive" then data.active = false
+    elseif kind == "held" then data.enabled = false
+    elseif kind == "secret" then data.active = secret
+    else env.issecretvalue = nil end
+    local bar = createFrame("StatusBar")
+    eq(adapter:ApplyGCD(bar),false); eq(bar.visible,false); eq(data.requested,nil)
+  end
+end)
+test("native GCD retains the approved bar geometry and needs no Lua progress timer", function()
+  local adapter, _, data, _, createFrame, objects = fixture()
+  data.restricted, data.active = true, true
+  local view = ns.QueueFactory.Create(createFrame, {}, "OFF")
+  view:SetRecommendations({rec()}); view:RefreshOverlays(adapter)
+  local bar
+  for _, object in ipairs(objects) do if object.kind == "StatusBar" and object.visible then
+    assert(not bar); bar = object
+  end end
+  assert(bar); eq(bar.timerDuration,data.opaque)
+  eq(bar.allPoints.width,200*0.657); eq(bar.allPoints.height,120*0.024)
+  eq(bar.allPoints.point[4],200*0.172); eq(bar.allPoints.point[5],-120*0.892)
+  eq(view:GetRoot().scripts.OnUpdate,nil)
+  data.active = false; view:RefreshOverlays(adapter)
+  eq(bar.visible,false); eq(view:GetRoot().scripts.OnUpdate,nil)
+end)
+test("native GCD belongs only to the current frame and clears on demote restriction and hide", function()
+  local adapter, _, data, _, createFrame, objects = fixture()
+  data.restricted, data.active = true, true
+  local a,b = rec(),rec(); b.id,b.action.id = "test.b","test.b"
+  local view = ns.QueueFactory.Create(createFrame, {}, "OFF")
+  view:SetRecommendations({a,b}); view:RefreshOverlays(adapter)
+  local first = view:GetFrameForId(a.id)
+  local oldBar
+  for _, object in ipairs(objects) do if object.kind == "StatusBar" and object.parent == first then oldBar = object end end
+  eq(oldBar.visible,true)
+  view:SetRecommendations({b,a}); eq(oldBar.visible,false)
+  view:RefreshOverlays(adapter)
+  local visible = 0
+  for _, object in ipairs(objects) do if object.kind == "StatusBar" and object.visible then
+    visible = visible+1; eq(object.parent,view:GetFrameForId(b.id))
+  end end
+  eq(visible,1); view:ClearOverlays()
+  for _, object in ipairs(objects) do if object.kind == "StatusBar" then eq(object.visible,false) end end
+  view:RefreshOverlays(adapter); view:Hide()
+  for _, object in ipairs(objects) do if object.kind == "StatusBar" then eq(object.visible,false) end end
+end)
+test("missing native timer method falls back only to public numeric GCD timing", function()
+  local adapter, _, data, _, createFrame, objects = fixture()
+  data.active = true
+  local view = ns.QueueFactory.Create(createFrame, {}, "OFF")
+  view:SetRecommendations({rec()})
+  for _, object in ipairs(objects) do if object.kind == "StatusBar" then object.SetTimerDuration = false end end
+  view:RefreshOverlays(adapter); assert(view:GetRoot().scripts.OnUpdate)
+  data.restricted = true; view:RefreshOverlays(adapter)
+  eq(view:GetRoot().scripts.OnUpdate,nil)
+  for _, object in ipairs(objects) do if object.kind == "StatusBar" then eq(object.visible,false) end end
 end)
 print(string.format("Cooldown overlays: %d/%d passed", passed, total))
 for _, failure in ipairs(failures) do print(failure) end

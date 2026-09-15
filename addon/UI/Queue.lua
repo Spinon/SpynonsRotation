@@ -277,14 +277,16 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
   end
   function view.RefreshOverlays(_, adapter)
     overlayAdapter, gcdTiming = adapter, nil
-    local current = false
+    local current, nativeGCD = false, false
     for _, slot in ipairs(pool) do
       if slot.rec and not slot.retiring then
         slot.overlay:Refresh(adapter, slot.rec.action)
+        local native = slot.overlay:RefreshGCD(adapter, slot.position == 1)
+        if native then nativeGCD = true end
         if slot.position == 1 then current = true end
       else slot.overlay:Clear() end
     end
-    if current then gcdTiming = adapter:ReadGCD() end
+    if current and not nativeGCD then gcdTiming = adapter:ReadGCD() end
     updateGCD(); wake(motionActive)
   end
   function view.ClearOverlays(_)

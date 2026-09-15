@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T04:23:05Z",
+  "updatedAt": "2026-09-15T04:28:00Z",
   "currentFocus": "PATCH-007",
   "parallelFocus": {},
   "release": {
@@ -28,7 +28,7 @@
       "status": "in_progress",
       "priority": "P0",
       "source": "tasks/PATCH-007.md",
-      "updatedAt": "2026-09-15T04:23:05Z",
+      "updatedAt": "2026-09-15T04:28:00Z",
       "reviewBy": null,
       "nextAction": "Conectar a barra existente ao DurationObject nativo, preservar fallback público, validar e instalar.",
       "dependencies": ["PATCH-006"],
@@ -38,7 +38,12 @@
         "Pins, auditoria e testes aprovados; fallback público preservado",
         "Pacote instalado e reteste Retail documentado"
       ],
-      "evidence": []
+      "evidence": [
+        "Compat encaminha DurationObject público de GCD 61304 ao StatusBar nativo, condicionado a status público habilitado/ativo. UI mantém geometria e cores existentes, oculta progresso antigo em falha/limpeza/demote e preserva fallback somente com tempos públicos. Nenhuma leitura do objeto ou valor do widget, mudança na engine ou uso de AssistedCombat.",
+        "Pins incluem SimpleStatusBarAPIDocumentation nas duas builds: 31 fontes sem diferenças documentadas. Auditoria SECRET-05 e hashes de 29 fontes revisados; docs/architecture/GCD_CONTINUITY.md registra fronteira visual e limitações.",
+        "npm test aprovado: 224 Node + 479 Lua = 703 testes, 30 suítes Lua; lint e tipos limpos em 63 arquivos. Seis regressões cobrem encaminhamento opaco, falhas/restrições, status, geometria, promoção/limpeza e fallback numérico público.",
+        "Wowless 2026-09-15T04:27:39.983Z PASS: zero erros, 521 warnings upstream, input SHA-256 A22F32CFE606E174E2048BA8181AD960AACFEB6A3E3AECBAAC134EFC38D2F4BF. Carregamento headless não valida animação nativa, taint ou combate Retail."
+      ]
     },
     {
       "id": "PATCH-006",

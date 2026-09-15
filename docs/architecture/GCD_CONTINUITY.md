@@ -34,3 +34,17 @@ service, Media e Queue reais com API e frames simulados. Cobre pronta → espera
 pronta, saída de cooldown próprio, seis posições, identidade/objetos, flags
 secretos/ausentes/negados, invalidação, gating de evento, contrato e diagnóstico.
 Não homologa comportamento, rendering ou taint no Retail.
+
+## Barra visual — PATCH-007
+
+A continuação corrige a barra que ainda dependia dos tempos numéricos. Um StatusBar
+ocupa o mesmo track (x 17,2%, y 89,2%, largura 65,7%, altura 2,4% do slot principal),
+com as cores existentes. Compat.Cooldowns.ApplyGCD verifica status público do GCD
+61304 e passa o DurationObject público ao sink SetTimerDuration. O próprio WoW faz
+o progresso; nenhum campo do objeto ou getter da barra é lido.
+
+Demote, inatividade, falha, clear e hide ocultam o widget. O slot principal pode
+usar o fallback de textura/progresso anterior se a API nativa falhar e os tempos
+forem públicos; sem eles, não se fabrica duração. O caminho nativo não ativa o
+timer Lua do progresso. Rótulo WAITING_GCD e decisões da engine ficam inalterados.
+Preenchimento e fim real ainda precisam de reteste no cliente.

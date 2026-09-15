@@ -238,6 +238,16 @@
       ]
     },
     {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleStatusBarAPIDocumentation.lua",
+      "present": true,
+      "bytes": 7822,
+      "sha256": "3E733125E54EAEC0EE60153E024444D457776422EAA17E48D48C25E842E1F784",
+      "modules": [
+        "addon/Compat/Cooldowns.lua",
+        "addon/UI/CooldownOverlay.lua"
+      ]
+    },
+    {
       "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleTextureAPIDocumentation.lua",
       "present": true,
       "bytes": 1249,

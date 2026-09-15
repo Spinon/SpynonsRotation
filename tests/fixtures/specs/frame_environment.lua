@@ -10,6 +10,9 @@ return function()
   function methods:SetWidth(width) self.width = width end
   function methods:SetHeight(height) self.height = height end
   function methods:SetOrientation(value) self.orientation = value end
+  function methods:SetStatusBarTexture(value) self.barTexture = value; return true end
+  function methods:SetStatusBarColor(...) self.barColor = {...} end
+  function methods:SetTimerDuration(duration) self.timerDuration = duration end
   function methods:SetMinMaxValues(low, high) self.minimum, self.maximum = low, high end
   function methods:SetValueStep(value) self.valueStep = value end
   function methods:SetObeyStepOnDrag(value) self.obeyStep = value end
