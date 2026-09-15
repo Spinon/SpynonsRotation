@@ -38,6 +38,13 @@ test("moving image tags and unsafe mount delimiters are rejected", () => {
   assert.throws(() => runtimeArgs(readPins(), "latest", "/out", "/addon", "/probe"), /immutable image/u);
   assert.throws(() => runtimeArgs(readPins(), `sha256:${"a".repeat(64)}`, "/out", "/addon,other", "/probe"), /mount path/u);
 });
+test("Linux container uses the output owner without relaxing directory or capability isolation", () => {
+  const args = runtimeArgs(readPins(), `sha256:${"a".repeat(64)}`, "/out", "/addon", "/probe", {uid: 1001, gid: 1001});
+  assert.equal(args[args.indexOf("--user") + 1], "1001:1001");
+  assert.equal(args[args.indexOf("--cap-drop") + 1], "ALL");
+  assert.ok(args.includes("--read-only"));
+  assert.throws(() => runtimeArgs(readPins(), `sha256:${"a".repeat(64)}`, "/out", "/addon", "/probe", {uid: "root", gid: -1}));
+});
 test("input evidence includes the complete runtime and remains deterministic", () => {
   const first = inputDigest("addon");
   const expected = fs.readdirSync("addon", {recursive: true, withFileTypes: true}).filter((entry) => entry.isFile()).length;

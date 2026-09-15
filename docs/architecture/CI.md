@@ -14,6 +14,7 @@ checkout não preserva credenciais. Nenhum comando cria release, tag, push ou de
   isolado, sem rede durante execução. Build requer acesso às fontes públicas.
 
 Actions fixadas por SHA em `tools/ci/pins.json`, Node alinhado à toolchain local.
+Upload-artifact usa v7.0.1 / Node 24, sem depender da execução forçada de actions Node 20.
 LuaJIT ZIP 2.1.19907 produz o mesmo runtime 2.1.1720049189 já usado localmente;
 arquivo e conteúdo extraído são verificados antes de executar. Luacheck 1.2.0 e
 wowlua-ls 0.30.4 mantêm os hashes existentes. Não há instalador nem alteração global.

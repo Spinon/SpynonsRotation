@@ -54,13 +54,20 @@ export function classify(log, probe, exitCode = 0) {
   return { status: exitCode === 0 && errors === 0 && !truncated && passed && loaded ? "PASS" : "FAIL",
     errors, warnings, truncated, probePassed: passed, addonLoaded: loaded, retailValidation: "PENDING" };
 }
-export function runtimeArgs(pins, image, runDirectory, addonDirectory, probeDirectory) {
+export function runtimeArgs(pins, image, runDirectory, addonDirectory, probeDirectory,
+  identity = process.platform === "linux" ? {uid: process.getuid(), gid: process.getgid()} : null) {
   if (!/^sha256:[a-f0-9]{64}$/u.test(image)) throw new Error("Run requires an immutable image ID");
+  if (identity && (![identity.uid, identity.gid].every((value) => Number.isSafeInteger(value) && value >= 0))) {
+    throw new Error("Invalid host user identity");
+  }
   const mount = (source, destination, readonly) => {
     if (/[\r\n,]/u.test(source)) throw new Error("Unsupported mount path");
     return `type=bind,src=${source},dst=${destination}${readonly ? ",readonly" : ""}`;
   };
   return ["run", "--rm", "--platform", pins.platform, "--network", "none", "--read-only",
+    // Linux mkdtemp is 0700 owned by the host user; root with cap-drop ALL cannot bypass it.
+    // Match that owner instead of chmod 777 or restoring DAC_OVERRIDE.
+    ...(identity ? ["--user", `${identity.uid}:${identity.gid}`] : []),
     "--cidfile", path.join(runDirectory, "container.id"),
     "--cap-drop", "ALL", "--security-opt", "no-new-privileges", "--cpus", "2", "--memory", "4g",
     "--pids-limit", "512", "--tmpfs", "/tmp:rw,nosuid,size=128m",

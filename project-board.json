@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T00:35:00.000Z",
+  "updatedAt": "2026-09-15T00:59:00.000Z",
   "currentFocus": "RELEASE-002",
   "parallelFocus": {},
   "release": {
@@ -1571,9 +1571,9 @@
       "status": "in_progress",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T00:35:00.000Z",
+      "updatedAt": "2026-09-15T00:59:00.000Z",
       "reviewBy": null,
-      "nextAction": "Definir workflow de validação.",
+      "nextAction": "Ao retomar, conferir o reteste remoto após correção UID/GID do runner Linux; concluir CI somente com ambos os jobs aprovados. Desenvolvimento pausado no checkpoint a pedido do Product Owner.",
       "dependencies": [
         "RELEASE-001",
         "BOOT-002"
@@ -1583,7 +1583,12 @@
         "Artifacts são reproduzíveis",
         "CI não publica sem autorização"
       ],
-      "evidence": []
+      "evidence": [
+        "Workflow implementado em commits 03755a0, bcda81e e 6972c22; ferramentas por hash, actions por SHA, token somente leitura, pacote development-only e nenhuma publicação de release.",
+        "Run 34914566492: job Windows aprovado, incluindo suíte completa, SimC pinado e pacote de 78 entradas. SHA-256 0227868BB241EEA1666A2FEF2696DFD6A2AF9E50AB68A571D3D97E5470DE346F coincide entre estação local e GitHub no commit 6972c22.",
+        "Run 34914566492: imagem Linux compilada, execução falhou antes do carregamento por Permission denied em out/run.log. Root com cap-drop ALL não pode escrever no mkdtemp 0700 do runner; seleção de UID/GID do host corrigida e coberta por regressão. Reteste remoto ainda necessário.",
+        "Checkpoint solicitado pelo Product Owner: CI permanece in_progress, sem alegar aprovação completa ou Retail. Evidências e continuidade em docs/project/CI_CHECKPOINT.md."
+      ]
     },
     {
       "id": "PATCH-003",

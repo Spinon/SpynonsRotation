@@ -38,6 +38,8 @@ privilégios novos. Limites: duas CPUs, 4 GiB, 512 processos e cinco minutos. Tm
 pasta de saída são os únicos destinos graváveis. Timeout remove somente o container
 cujo ID foi criado nessa invocação; não há prune de imagens, volumes ou containers.
 O runner verifica se a árvore de entrada mudou durante a execução e rejeita drift.
+No host Linux, o container usa o UID/GID do chamador para escrever na pasta privada
+criada por mkdtemp; não amplia permissões da pasta nem restaura capabilities.
 
 ## Critério de resultado
 

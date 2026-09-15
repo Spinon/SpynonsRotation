@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T00:35:00.000Z
+Atualizado pelo board em: 2026-09-15T00:59:00.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -12,7 +12,7 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Definir workflow de validação.
+Próxima ação: Ao retomar, conferir o reteste remoto após correção UID/GID do runner Linux; concluir CI somente com ambos os jobs aprovados. Desenvolvimento pausado no checkpoint a pedido do Product Owner.
 
 ## Progresso
 

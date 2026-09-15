@@ -38,6 +38,9 @@ npm test
 
 ## Fronteiras principais
 
+Validação automática no GitHub: testes Windows, pacote reproduzível e smoke Wowless
+Linux, sem publicar releases. Contrato em [CI](docs/architecture/CI.md).
+
 Pacote local: `npm run package:build` gera ZIP de desenvolvimento e manifesto de
 versões/hashes. Não publica nem instala. Veja [Packaging](docs/architecture/PACKAGING.md).
 
