@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T03:27:23Z
+Atualizado pelo board em: 2026-09-15T03:29:00Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **PATCH-004 — Diagnóstico da fila real vazia**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
 Próxima ação: Adicionar diagnóstico público de seleção e descarte; instalar para nova captura em combate.
 
 ## Progresso
 
-- Planejadas: 2
-- Em andamento: 0
+- Planejadas: 1
+- Em andamento: 1
 - Bloqueadas: 2
 - Concluídas: 58
 - Total: 62
@@ -26,7 +26,7 @@ Próxima ação: Adicionar diagnóstico público de seleção e descarte; instal
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
-| PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | planned | P0 | PATCH-003, RUN-002, UX-008 |
+| PATCH-004 | delivery | PATCH / QUALITY | Diagnóstico da fila real vazia | in_progress | P0 | PATCH-003, RUN-002, UX-008 |
 | UX-008 | delivery | CONFIG / UX | Contexto clicável no HUD | done | P1 | RUN-003, UX-007 |
 | BOOT-001 | delivery | BOOT | Bootstrap do repositório e toolchain | done | P0 | — |
 | BOOT-002 | delivery | BOOT | Governança da fila e AGENTS | done | P0 | BOOT-001 |

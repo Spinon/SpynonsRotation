@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T03:27:23Z",
+  "updatedAt": "2026-09-15T03:29:00Z",
   "currentFocus": "PATCH-004",
   "parallelFocus": {},
   "release": {
@@ -25,10 +25,10 @@
       "title": "Diagnóstico da fila real vazia",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "P0",
       "source": "tasks/PATCH-004.md",
-      "updatedAt": "2026-09-15T03:27:23Z",
+      "updatedAt": "2026-09-15T03:29:00Z",
       "reviewBy": null,
       "nextAction": "Adicionar diagnóstico público de seleção e descarte; instalar para nova captura em combate.",
       "dependencies": ["PATCH-003", "RUN-002", "UX-008"],
