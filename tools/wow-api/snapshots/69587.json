@@ -53,6 +53,19 @@
       ]
     },
     {
+      "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/FrameScriptDocumentation.lua",
+      "present": true,
+      "bytes": 16436,
+      "sha256": "00F538CB711B5BAA0A7F819FAE4B038C9189E234AC70C1AAF8C51E4D9335628C",
+      "modules": [
+        "addon/Compat/Bindings.lua",
+        "addon/Compat/Console.lua",
+        "addon/Compat/Media.lua",
+        "addon/Compat/Profiles.lua",
+        "addon/Compat/State.lua"
+      ]
+    },
+    {
       "path": "Interface/AddOns/Blizzard_APIDocumentationGenerated/ItemDocumentation.lua",
       "present": true,
       "bytes": 43162,

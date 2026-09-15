@@ -31,6 +31,11 @@ const requiredDirectories = [
   "tasks",
 ];
 const requiredFiles = [
+  "tools/wow-api/secret-audit.mjs",
+  "tools/wow-api/secret-audit.json",
+  "tests/project/secret-audit.test.mjs",
+  "tests/unit/secret_audit_spec.lua",
+  "docs/architecture/SECRET_VALUES_AUDIT.md",
   "addon/Compat/Fonts.lua",
   "addon/UI/Typography.lua",
   "tests/unit/typography_spec.lua",

@@ -67,6 +67,9 @@ As invariantes e o ownership desses contratos estão documentados em [`CONTRACTS
 
 ## Secret Values
 
+A matriz revisada, a correção de contenção de acesso a campos e os gates de regressão
+estão em [SECRET_VALUES_AUDIT.md](SECRET_VALUES_AUDIT.md).
+
 Nenhum módulo converte ou deriva valores secretos quando a API não permite. Condições incompatíveis com o runtime ficam no Rotation Lab como `SIM_ONLY`. Toda degradação deve ser explícita e segura.
 
 A API uniforme, matriz inicial e política de fallback da fronteira Blizzard estão em [`COMPAT.md`](COMPAT.md).

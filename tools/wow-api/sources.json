@@ -3,10 +3,11 @@
   "repository": "Gethe/wow-ui-source",
   "developmentSmokeBuilds": ["69587", "69814"],
   "builds": {
-    "69587": { "version": "12.1.0.69587", "interface": 120100, "commit": "8ea15b61e45c0ed4eba01439c90757f86eb78d34", "snapshotSha256": "E4A76453E6E9B0A90376E6CD1651624406A75B90115AB0F6FC77362B983824A4" },
-    "69814": { "version": "12.1.0.69814", "interface": 120100, "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59", "snapshotSha256": "59E7DA118A710AAD12FFEF8CA62BA71D6FE8A91C852C598B5396460E2738C045" }
+    "69587": { "version": "12.1.0.69587", "interface": 120100, "commit": "8ea15b61e45c0ed4eba01439c90757f86eb78d34", "snapshotSha256": "DF939604393BF55DE7E517CBAE6D2D3654DD637012C0072F810DA72837A1F3E7" },
+    "69814": { "version": "12.1.0.69814", "interface": 120100, "commit": "4e3cbb8c5609e4bfc332c0aebbfa4d79731fab59", "snapshotSha256": "F9FE0281895159E159A84D112EBEF79E9BD0AE94C81A713003382F4335A1428E" }
   },
   "files": [
+    { "name": "FrameScriptDocumentation.lua", "modules": ["addon/Compat/State.lua", "addon/Compat/Bindings.lua", "addon/Compat/Media.lua", "addon/Compat/Profiles.lua", "addon/Compat/Console.lua"] },
     { "name": "SimpleFontAPIDocumentation.lua", "modules": ["addon/Compat/Fonts.lua", "addon/UI/Typography.lua"] },
     { "name": "FontableFrameMixin.lua", "path": "Interface/AddOns/Blizzard_SharedXML/FontableFrameMixin.lua", "modules": ["addon/Compat/Fonts.lua"] },
     { "name": "SimpleSliderAPIDocumentation.lua", "modules": ["addon/Config/PreviewSlider.lua"] },

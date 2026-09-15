@@ -2,24 +2,24 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T00:00:10.000Z
+Atualizado pelo board em: 2026-09-15T00:07:40.000Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**PATCH-002 — Secret Values audit**
+**TEST-001 — Wowless integration**
 
-Status: `in_progress` · Prioridade: `P1` · Responsável: Codex
+Status: `planned` · Prioridade: `P1` · Responsável: Codex
 
-Próxima ação: Criar matriz de riscos.
+Próxima ação: Criar harness Docker pinado.
 
 ## Progresso
 
 - Planejadas: 7
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 1
-- Concluídas: 50
+- Concluídas: 51
 - Total: 59
 
 ## Fila canônica
@@ -77,7 +77,7 @@ Próxima ação: Criar matriz de riscos.
 | BRAND-002 | delivery | BRAND | Criar master técnico e variantes | planned | P2 | BRAND-001 |
 | BRAND-003 | delivery | BRAND | Aplicar identidade ao default | planned | P2 | BRAND-002, SKIN-001, UI-001 |
 | PATCH-001 | delivery | PATCH / QUALITY | API diff pipeline | done | P1 | CORE-004 |
-| PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | in_progress | P1 | PATCH-001, RUN-001 |
+| PATCH-002 | delivery | PATCH / QUALITY | Secret Values audit | done | P1 | PATCH-001, RUN-001 |
 | TEST-001 | delivery | PATCH / QUALITY | Wowless integration | planned | P1 | BOOT-001 |
 | TEST-002 | delivery | PATCH / QUALITY | In-game harness | blocked | P0 | RUN-002, UI-001, CORE-004 |
 | RELEASE-001 | delivery | PATCH / QUALITY | Packaging | planned | P1 | UI-001, TEST-001 |
@@ -497,6 +497,14 @@ Próxima ação: Criar matriz de riscos.
 - ClientPolicy.lua e instalador liberam 69587/69814 somente para smoke de desenvolvimento após verificar pins e relatório; builds desconhecidas continuam rejeitadas.
 - npm test — aprovado: 180 testes Node, incluindo 8 do pipeline, e 167 testes Lua; lint, typecheck e checks sem falhas.
 - docs/architecture/API_DIFF.md registra a atualização externa do cliente, o bloqueio preventivo do instalador e a separação entre referência SimC 69587 e smoke 69814; TEST-002 continua aguardando evidência real.
+
+### PATCH-002
+
+- tools/wow-api/secret-audit.json registra 10 grupos de risco e 26 fontes revisadas, incluindo todos os 16 arquivos de Compat; guard, fallback, limitação, testes, pins e SHA-256 normalizado por fonte.
+- State.ReadPublicField contém falha de indexação e verifica o valor antes de normalizar; State e Bindings reutilizam a fronteira. Teste comprova retirada de estado antigo e recuperação do engine após tabela inacessível.
+- npm test aprovado: 188 testes Node e 424 testes Lua, incluindo 7 do gate e 23 sentinelas adicionais; 61 arquivos sem warnings, erros ou problemas de tipo. secret:check detecta alteração de fonte, nova fronteira não classificada e mudança de pin.
+- API diff ampliado para 30 arquivos com FrameScriptDocumentation, sem diferença documentada 69587→69814. SECRET_VALUES_AUDIT.md registra inferências e limites: testes offline não reproduzem taint ou secret scalars Retail.
+- Commit e07db6f registra início publicado. TEST-001 é o próximo foco; inspeção Retail e refinamento visual permanecem pendentes, sem ampliação de capabilities ou publicação de release.
 
 ### PATCH-003
 

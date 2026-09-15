@@ -3,7 +3,12 @@
 `addon/Compat/` é a única fronteira para APIs Blizzard cobertas pelo projeto. Consumidores recebem resultados
 normalizados; não acessam globais do cliente diretamente.
 
-## Snapshot de referência
+## Snapshot histórico de referência (CORE-004)
+
+Este bloco registra a descoberta inicial. Para o cliente detectado depois e a auditoria
+atual de 69587/69814, consultar [SECRET_VALUES_AUDIT.md](SECRET_VALUES_AUDIT.md) e
+[RETAIL_SMOKE.md](../project/RETAIL_SMOKE.md). PATCH-002 acrescenta contenção de
+indexação em ReadPublicField; metadados de erro da API não escapam para o Core.
 
 - alvo do addon: WoW Retail `12.1.0`, build `69587`, Interface `120100`;
 - cliente Retail detectado nesta estação: não;

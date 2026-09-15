@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T00:00:10.000Z",
-  "currentFocus": "PATCH-002",
+  "updatedAt": "2026-09-15T00:07:40.000Z",
+  "currentFocus": "TEST-001",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -1456,12 +1456,12 @@
       "title": "Secret Values audit",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P1",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T00:00:10.000Z",
+      "updatedAt": "2026-09-15T00:07:40.000Z",
       "reviewBy": null,
-      "nextAction": "Criar matriz de riscos.",
+      "nextAction": null,
       "dependencies": [
         "PATCH-001",
         "RUN-001"
@@ -1471,7 +1471,13 @@
         "Regressões quebram checks",
         "Fallbacks são verificados"
       ],
-      "evidence": []
+      "evidence": [
+        "tools/wow-api/secret-audit.json registra 10 grupos de risco e 26 fontes revisadas, incluindo todos os 16 arquivos de Compat; guard, fallback, limitação, testes, pins e SHA-256 normalizado por fonte.",
+        "State.ReadPublicField contém falha de indexação e verifica o valor antes de normalizar; State e Bindings reutilizam a fronteira. Teste comprova retirada de estado antigo e recuperação do engine após tabela inacessível.",
+        "npm test aprovado: 188 testes Node e 424 testes Lua, incluindo 7 do gate e 23 sentinelas adicionais; 61 arquivos sem warnings, erros ou problemas de tipo. secret:check detecta alteração de fonte, nova fronteira não classificada e mudança de pin.",
+        "API diff ampliado para 30 arquivos com FrameScriptDocumentation, sem diferença documentada 69587→69814. SECRET_VALUES_AUDIT.md registra inferências e limites: testes offline não reproduzem taint ou secret scalars Retail.",
+        "Commit e07db6f registra início publicado. TEST-001 é o próximo foco; inspeção Retail e refinamento visual permanecem pendentes, sem ampliação de capabilities ou publicação de release."
+      ]
     },
     {
       "id": "TEST-001",

@@ -15,6 +15,16 @@ function State.Create(environment)
     return ok == true and secret == false
   end
 
+  function adapter.ReadPublicField(_, object, key)
+    if not adapter:IsPublic(object) then return nil, Result.Failure(Result.Code.SECRET_RESTRICTED) end
+    if type(object) ~= "table" then return nil, Result.Failure(Result.Code.INVALID_DATA) end
+    -- Indexing can itself be denied; pcall is containment, never permission to use a secret.
+    local ok, value = pcall(function() return object[key] end)
+    if not ok then return nil, Result.Failure(Result.Code.CALL_FAILED) end
+    if not adapter:IsPublic(value) then return nil, Result.Failure(Result.Code.SECRET_RESTRICTED) end
+    return value
+  end
+
   local function read(path, ...)
     local ok, value = SafeCall.Call(environment, path, ...)
     if not ok then
@@ -49,10 +59,8 @@ function State.Create(environment)
     end
     local normalized = {}
     for _, field in ipairs(schema) do
-      local item = value[field[1]]
-      if not adapter:IsPublic(item) then
-        return nil, Result.Failure(Result.Code.SECRET_RESTRICTED)
-      end
+      local item, failure = adapter:ReadPublicField(value, field[1])
+      if failure then return nil, failure end
       if not field[2](item) then
         return nil, Result.Failure(Result.Code.INVALID_DATA)
       end
@@ -114,8 +122,8 @@ function State.Create(environment)
     if fieldError then return fieldError end
     normalized.active = true
     normalized.unit = unit
-    local owner = value.isFromPlayerOrPlayerPet
-    if adapter:IsPublic(owner) and type(owner) == "boolean" then normalized.playerOwned = owner end
+    local owner, ownerError = adapter:ReadPublicField(value, "isFromPlayerOrPlayerPet")
+    if not ownerError and type(owner) == "boolean" then normalized.playerOwned = owner end
     return Result.Success(normalized)
   end
 

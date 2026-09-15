@@ -38,6 +38,9 @@ npm test
 
 ## Fronteiras principais
 
+Auditoria de valores secretos: `npm run secret:check` e `npm run secret:test`, também
+incluídos em `npm test`. Matriz e limites em [Secret Values audit](docs/architecture/SECRET_VALUES_AUDIT.md).
+
 Textos do HUD: `/spynon config` → Informações → Textos e legibilidade; fonte global e
 overrides por elemento, com prévia e restauração. Veja [Typography](docs/architecture/TYPOGRAPHY.md).
 

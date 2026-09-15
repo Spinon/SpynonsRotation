@@ -14,10 +14,9 @@ function Bindings.Create(environment)
   local guard = Internal.State.Create(environment)
   local function public(value) return guard:IsPublic(value) end
   local function field(object, name)
-    if not public(object) or type(object) ~= "table" then return nil end
-    local ok, value = pcall(function() return object[name] end)
-    if ok and public(value) then return value end
-    return nil
+    local value, failure = guard:ReadPublicField(object, name)
+    if failure then return nil end
+    return value
   end
   local function keyString(value)
     return public(value) and type(value) == "string" and #value > 0 and #value <= 64
