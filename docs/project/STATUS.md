@@ -2,31 +2,31 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-16T15:30:43Z
+Atualizado pelo board em: 2026-09-16T15:31:43Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**PATCH-008 — Tracking de debuffs independente da fila**
+**TEST-002 — In-game harness**
 
-Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
+Status: `blocked` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: Desacoplar debuffs curados, preservar campos públicos de aura, testar e instalar.
+Próxima ação: PO: /reload carrega d975130 instalado; conferir Flame Shock no trilho em combate, inclusive com Voltaic Blaze e fila vazia. Ativo sem segundos significa presença pública sem tempo; — significa indisponível, não ausente. Trocar/perder alvo e sair de combate não deve manter dados antigos. Barra GCD, continuidade da fila, gate do Totem e checklists UX/taint continuam pendentes; capturar /spynon debug em combate e persistir via /reload depois sem repetir debug fora do combate.
 
 ## Progresso
 
 - Planejadas: 1
-- Em andamento: 1
+- Em andamento: 0
 - Bloqueadas: 2
-- Concluídas: 62
+- Concluídas: 63
 - Total: 66
 
 ## Fila canônica
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
-| PATCH-008 | delivery | PATCH / QUALITY | Tracking de debuffs independente da fila | in_progress | P0 | PATCH-007, UI-005 |
+| PATCH-008 | delivery | PATCH / QUALITY | Tracking de debuffs independente da fila | done | P0 | PATCH-007, UI-005 |
 | PATCH-007 | delivery | PATCH / QUALITY | Barra de GCD com temporizador nativo | done | P0 | PATCH-006 |
 | PATCH-006 | delivery | PATCH / QUALITY | Continuidade da fila durante GCD | done | P0 | PATCH-005 |
 | PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | done | P0 | PATCH-004 |
@@ -94,6 +94,14 @@ Próxima ação: Desacoplar debuffs curados, preservar campos públicos de aura,
 | ARCH-001 | delivery | MULTI-CLASS VALIDATION | Segunda spec para validação multiclasse | planned | P2 | ENH-005, RUN-003, UI-006, PROFILE-001, SKIN-002 |
 
 ## Evidências concluídas
+
+### PATCH-008
+
+- Enhancement seleciona debuffs de alvo curados independentemente das recomendações, preservando Flame Shock com Voltaic Blaze. IndicatorEngine aceita fila vazia e presença pública sem tempo; Queue mantém trilho independente e AuraIndicators reserva uma célula sem aumentar o limite.
+- Compat.ReadAuraState preserva somente campos públicos individualmente validados, mantendo sonda de segredo, guards, autoria e ausência distinta de indisponibilidade. Snapshot novo descarta tempos antigos. ReadAura estrita permanece para stacks legados; nenhuma alteração em APL, cooldowns ou totens.
+- npm test aprovado: 224 Node + 488 Lua = 712 testes, 30 suítes Lua; lint e tipos limpos em 63 arquivos. Nove regressões novas cobrem estados parciais, secrets, restrição total, autoria, substituição, fila vazia, densidade, troca/perda de alvo, recursos, configuração e lifecycle. Auditoria cobre 31 fontes.
+- Wowless 2026-09-16T15:30:23.152Z PASS: zero erros, 521 warnings upstream; input SHA-256 315E51467D20409CFD909C383CB998BBBF84BE99432BC3806E99E83F0268D18B. Teste de carregamento não valida rendering, taint ou combate Retail.
+- Commit d975130 publicado; pacote limpo reproduzido duas vezes e leitor ZIP independente aprovado: 81 arquivos, SHA-256 AC131A554F3C170F81DBB1E5BBCB0F7107BCD6E2A640B2195C75515B6C49AE5F. Instalação verificada em Retail 12.1.0.69814, sem alterar SavedVariables/outros addons; nenhuma release. Próximo foco TEST-002 para reteste humano do tracking e demais pendências.
 
 ### PATCH-007
 

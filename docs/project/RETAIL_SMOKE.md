@@ -263,6 +263,29 @@ Os testes verificam encaminhamento opaco e lifecycle, não a animação real do 
 O apontamento do PO sobre a barra ausente motivou a correção, não constitui aceite
 desta versão. Rendering e combate Retail continuam pendentes em TEST-002.
 
+### PATCH-008 — debuffs independentes da fila
+
+Commit d975130 instalado em 16/09/2026 UTC: 81 arquivos conferidos no Retail
+12.1.0.69814, SavedVariables e outros addons preservados. Pacote limpo reproduzido
+duas vezes e leitor independente aprovado; SHA-256
+AC131A554F3C170F81DBB1E5BBCB0F7107BCD6E2A640B2195C75515B6C49AE5F.
+712 testes offline aprovados; Wowless carregou sem erros (521 warnings upstream).
+
+Após `/reload`, sair de demo/config e testar no boneco:
+
+- [ ] Flame Shock aparece no trilho de debuffs mesmo com Voltaic Blaze ou fila vazia.
+- [ ] Leitura pública diferencia AUSENTE, Ativo sem tempo e contagem pública; —
+      indica indisponibilidade, nunca confirma ausência ou autoriza refresh sozinho.
+- [ ] Trocar/perder alvo retira os dados antigos; sair de combate oculta indicadores.
+- [ ] Desligar/religar indicadores em Informações funciona sem deixar timers antigos.
+- [ ] Não há erros Lua, taint, regressão de geometria ou reaparecimento de dados obsoletos.
+
+Esta entrega não desbloqueia auras secretas nem inclui temporizador nativo de debuff.
+Corrige seleção/visibilidade e preservação de campos públicos independentes; presença
+conhecida não autoriza duração desconhecida. APL, cooldowns e totens não foram alterados.
+Nova amostra de `/spynon debug` em combate ainda é necessária para investigar os totens.
+Nenhum critério Retail é marcado aprovado por testes offline.
+
 ### Entrega UX-007 instalada para inspeção
 
 Commit 59a2dcb, instalado em 15/09/2026 UTC no cliente 12.1.0.69814: 78 arquivos

@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-16T15:30:43Z",
-  "currentFocus": "PATCH-008",
+  "updatedAt": "2026-09-16T15:31:43Z",
+  "currentFocus": "TEST-002",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -25,12 +25,12 @@
       "title": "Tracking de debuffs independente da fila",
       "lane": "PATCH / QUALITY",
       "owner": "Codex",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "source": "tasks/PATCH-008.md",
-      "updatedAt": "2026-09-16T15:30:43Z",
+      "updatedAt": "2026-09-16T15:31:43Z",
       "reviewBy": null,
-      "nextAction": "Desacoplar debuffs curados, preservar campos públicos de aura, testar e instalar.",
+      "nextAction": null,
       "dependencies": ["PATCH-007", "UI-005"],
       "acceptanceCriteria": [
         "Debuffs curados permanecem com fila vazia e botão substituído",
@@ -42,7 +42,8 @@
         "Enhancement seleciona debuffs de alvo curados independentemente das recomendações, preservando Flame Shock com Voltaic Blaze. IndicatorEngine aceita fila vazia e presença pública sem tempo; Queue mantém trilho independente e AuraIndicators reserva uma célula sem aumentar o limite.",
         "Compat.ReadAuraState preserva somente campos públicos individualmente validados, mantendo sonda de segredo, guards, autoria e ausência distinta de indisponibilidade. Snapshot novo descarta tempos antigos. ReadAura estrita permanece para stacks legados; nenhuma alteração em APL, cooldowns ou totens.",
         "npm test aprovado: 224 Node + 488 Lua = 712 testes, 30 suítes Lua; lint e tipos limpos em 63 arquivos. Nove regressões novas cobrem estados parciais, secrets, restrição total, autoria, substituição, fila vazia, densidade, troca/perda de alvo, recursos, configuração e lifecycle. Auditoria cobre 31 fontes.",
-        "Wowless 2026-09-16T15:30:23.152Z PASS: zero erros, 521 warnings upstream; input SHA-256 315E51467D20409CFD909C383CB998BBBF84BE99432BC3806E99E83F0268D18B. Teste de carregamento não valida rendering, taint ou combate Retail."
+        "Wowless 2026-09-16T15:30:23.152Z PASS: zero erros, 521 warnings upstream; input SHA-256 315E51467D20409CFD909C383CB998BBBF84BE99432BC3806E99E83F0268D18B. Teste de carregamento não valida rendering, taint ou combate Retail.",
+        "Commit d975130 publicado; pacote limpo reproduzido duas vezes e leitor ZIP independente aprovado: 81 arquivos, SHA-256 AC131A554F3C170F81DBB1E5BBCB0F7107BCD6E2A640B2195C75515B6C49AE5F. Instalação verificada em Retail 12.1.0.69814, sem alterar SavedVariables/outros addons; nenhuma release. Próximo foco TEST-002 para reteste humano do tracking e demais pendências."
       ]
     },
     {
@@ -1690,9 +1691,9 @@
       "status": "blocked",
       "priority": "P0",
       "source": "docs/product/PRODUCT_CONTEXT.md#31-fila-inicial",
-      "updatedAt": "2026-09-15T04:31:09Z",
+      "updatedAt": "2026-09-16T15:31:43Z",
       "reviewBy": null,
-      "nextAction": "PO: /reload carrega c875540 instalado; atacar boneco e confirmar barra de GCD, continuidade da fila, retorno a pronto e cooldown próprio. Se persistir o sumiço, /spynon debug em combate, screenshot e /reload após sair do combate sem repetir debug. Gate do Totem e checklists UX/taint ainda pendentes. Relato após PATCH-005 confirmou fila aparecendo, mas não aprovou continuidade; PATCH-007 corrige caminho visual da barra sem aprovação Retail presumida.",
+      "nextAction": "PO: /reload carrega d975130 instalado; conferir Flame Shock no trilho em combate, inclusive com Voltaic Blaze e fila vazia. Ativo sem segundos significa presença pública sem tempo; — significa indisponível, não ausente. Trocar/perder alvo e sair de combate não deve manter dados antigos. Barra GCD, continuidade da fila, gate do Totem e checklists UX/taint continuam pendentes; capturar /spynon debug em combate e persistir via /reload depois sem repetir debug fora do combate.",
       "dependencies": [
         "RUN-002",
         "UI-001",
