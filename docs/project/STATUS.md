@@ -2,7 +2,7 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-16T15:25:00Z
+Atualizado pelo board em: 2026-09-16T15:26:00Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
@@ -10,14 +10,14 @@ Release: **0.0.0** (bootstrap; unreleased)
 
 **PATCH-008 — Tracking de debuffs independente da fila**
 
-Status: `planned` · Prioridade: `P0` · Responsável: Codex
+Status: `in_progress` · Prioridade: `P0` · Responsável: Codex
 
 Próxima ação: Desacoplar debuffs curados, preservar campos públicos de aura, testar e instalar.
 
 ## Progresso
 
-- Planejadas: 2
-- Em andamento: 0
+- Planejadas: 1
+- Em andamento: 1
 - Bloqueadas: 2
 - Concluídas: 62
 - Total: 66
@@ -26,7 +26,7 @@ Próxima ação: Desacoplar debuffs curados, preservar campos públicos de aura,
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
-| PATCH-008 | delivery | PATCH / QUALITY | Tracking de debuffs independente da fila | planned | P0 | PATCH-007, UI-005 |
+| PATCH-008 | delivery | PATCH / QUALITY | Tracking de debuffs independente da fila | in_progress | P0 | PATCH-007, UI-005 |
 | PATCH-007 | delivery | PATCH / QUALITY | Barra de GCD com temporizador nativo | done | P0 | PATCH-006 |
 | PATCH-006 | delivery | PATCH / QUALITY | Continuidade da fila durante GCD | done | P0 | PATCH-005 |
 | PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | done | P0 | PATCH-004 |
