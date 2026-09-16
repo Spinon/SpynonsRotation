@@ -6,8 +6,8 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-15T04:31:09Z",
-  "currentFocus": "TEST-002",
+  "updatedAt": "2026-09-16T15:25:00Z",
+  "currentFocus": "PATCH-008",
   "parallelFocus": {},
   "release": {
     "version": "0.0.0",
@@ -20,6 +20,26 @@
     "validatedAt": null
   },
   "items": [
+    {
+      "id": "PATCH-008",
+      "title": "Tracking de debuffs independente da fila",
+      "lane": "PATCH / QUALITY",
+      "owner": "Codex",
+      "status": "planned",
+      "priority": "P0",
+      "source": "tasks/PATCH-008.md",
+      "updatedAt": "2026-09-16T15:25:00Z",
+      "reviewBy": null,
+      "nextAction": "Desacoplar debuffs curados, preservar campos públicos de aura, testar e instalar.",
+      "dependencies": ["PATCH-007", "UI-005"],
+      "acceptanceCriteria": [
+        "Debuffs curados permanecem com fila vazia e botão substituído",
+        "Campos públicos independentes sem inventar ausência ou tempos",
+        "Lifecycle e configuração preservados com regressões aprovadas",
+        "Pacote instalado; inspeção Retail explicitamente pendente"
+      ],
+      "evidence": []
+    },
     {
       "id": "PATCH-007",
       "title": "Barra de GCD com temporizador nativo",

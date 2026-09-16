@@ -2,30 +2,31 @@
 
 # Status do projeto
 
-Atualizado pelo board em: 2026-09-15T04:31:09Z
+Atualizado pelo board em: 2026-09-16T15:25:00Z
 
 Release: **0.0.0** (bootstrap; unreleased)
 
 ## Foco atual
 
-**TEST-002 — In-game harness**
+**PATCH-008 — Tracking de debuffs independente da fila**
 
-Status: `blocked` · Prioridade: `P0` · Responsável: Codex
+Status: `planned` · Prioridade: `P0` · Responsável: Codex
 
-Próxima ação: PO: /reload carrega c875540 instalado; atacar boneco e confirmar barra de GCD, continuidade da fila, retorno a pronto e cooldown próprio. Se persistir o sumiço, /spynon debug em combate, screenshot e /reload após sair do combate sem repetir debug. Gate do Totem e checklists UX/taint ainda pendentes. Relato após PATCH-005 confirmou fila aparecendo, mas não aprovou continuidade; PATCH-007 corrige caminho visual da barra sem aprovação Retail presumida.
+Próxima ação: Desacoplar debuffs curados, preservar campos públicos de aura, testar e instalar.
 
 ## Progresso
 
-- Planejadas: 1
+- Planejadas: 2
 - Em andamento: 0
 - Bloqueadas: 2
 - Concluídas: 62
-- Total: 65
+- Total: 66
 
 ## Fila canônica
 
 | ID | Trilha | Lane | Título | Status | Prioridade | Dependências |
 | --- | --- | --- | --- | --- | --- | --- |
+| PATCH-008 | delivery | PATCH / QUALITY | Tracking de debuffs independente da fila | planned | P0 | PATCH-007, UI-005 |
 | PATCH-007 | delivery | PATCH / QUALITY | Barra de GCD com temporizador nativo | done | P0 | PATCH-006 |
 | PATCH-006 | delivery | PATCH / QUALITY | Continuidade da fila durante GCD | done | P0 | PATCH-005 |
 | PATCH-005 | delivery | PATCH / QUALITY | Estado parcial seguro em combate | done | P0 | PATCH-004 |
