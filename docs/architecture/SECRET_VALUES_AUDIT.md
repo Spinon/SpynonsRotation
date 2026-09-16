@@ -155,6 +155,23 @@ gcd_continuity_spec cobrem fluxo completo e falhas; ver [continuidade](GCD_CONTI
 Nenhum dado protegido, previsão de reset, cronômetro estimado ou assistente oficial
 entra na decisão. Reteste Retail permanece obrigatório.
 
+## Revisão PATCH-008 — presença pública e tracking independente
+
+ReadAuraState não remove ShouldSpellAuraBeSecret nem guards de retorno/container.
+Quando a consulta exata autorizada retorna tabela pública, presença é pública;
+cada campo opcional é normalizado separadamente. Campos secretos, ausentes,
+inválidos ou de indexação negada são omitidos. ReadAura estrita permanece para
+stacks/overlays legados. Snapshot novo substitui inteiramente o anterior, e o reader
+continua exigindo autoria pública de debuffs ativos. Nenhuma duration secreta,
+identidade de instância ou widget é interpretado.
+
+IndicatorEngine permite Ativo sem contagem quando somente presença/autoria são
+públicas; expiração pública vencida não vira ausência. Debuffs curados persistem
+sem recomendações, com estado UNAVAILABLE quando a leitura inteira é restrita.
+Queue/AuraIndicators preservam o limite de células e limpam timers em hide/stop,
+configuração desabilitada e restrição. Fontes do módulo e renderer incluídas na
+auditoria; testes de transição são offline, não homologação Retail.
+
 ## Fontes primárias
 
 ### Complemento PATCH-007 — barra nativa

@@ -15,6 +15,11 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
   local hotkeysEnabled, compactHotkeys = true, true
   local overlayAdapter, gcdTiming
   local indicators, editor
+  local indicatorsVisible = false
+  local hidingEmpty = false
+  local function hideEmpty()
+    hidingEmpty = true; root:Hide(); hidingEmpty = false
+  end
   local options = Spynon.SettingsFactory.Defaults()
   local lastRecommendations, lastKeys, lastIndicators, indicatorClock, relayout
   for index = 1, 12 do
@@ -196,19 +201,20 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
     if gcdTiming then updateGCD(); wake(motionActive) end
     local any = false
     for _, slot in ipairs(pool) do if slot.id then any = true end end
-    if not any then root:Hide() end
+    if not any and not indicatorsVisible then root:Hide() end
   end
   animator = Spynon.AnimatorFactory.Create(paint, release, wake)
   animator:SetMode(motionMode or "NORMAL")
   local function clear()
     if editor then editor:Clear() end
     lastRecommendations, lastKeys, lastIndicators = nil, nil, nil
+    indicatorsVisible = false
     if indicators then indicators:Clear() end
     gcdTiming = nil
     for _, slot in ipairs(pool) do release(slot) end
     wake(false)
   end
-  root:SetScript("OnHide", clear)
+  root:SetScript("OnHide", function() if not hidingEmpty then clear() end end)
 
   function view.SetRecommendations(_, recommendations)
     if not Spynon.RotationProgram.IsList(recommendations, 12) then view:Hide(); return false end
@@ -219,8 +225,14 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
       ids[rec.id] = true
       selected[index] = rec
     end
-    -- Empty/unsafe state withdraws all advice immediately, even mid-transition.
-    if #selected == 0 then view:Hide(); return true end
+    -- Empty advice withdraws actions immediately, without discarding independent indicators.
+    if #selected == 0 then
+      lastRecommendations, lastKeys, gcdTiming = recommendations, nil, nil
+      for _, slot in ipairs(pool) do release(slot) end
+      wake(false)
+      if not indicatorsVisible then hideEmpty() end
+      return true
+    end
     lastRecommendations = recommendations
     local consuming = false
     for _, slot in ipairs(pool) do if slot.consumeTime then consuming = true end end
@@ -260,20 +272,30 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
   end
   function view.Hide(_) clear(); root:Hide() end
   function view.SetIndicators(_, values, clock)
+    local function visibility(visible)
+      indicatorsVisible = visible
+      if visible then root:Show(); return end
+      for _, slot in ipairs(pool) do if slot.id then return end end
+      hideEmpty()
+    end
     if not Spynon.RotationProgram.IsList(values, 12) then
       lastIndicators, indicatorClock = nil, nil
       if indicators then indicators:Clear() end
+      visibility(false)
       return false
     end
     lastIndicators, indicatorClock = values, clock
     if not options.indicators then
       if indicators then indicators:Clear() end
+      visibility(false)
       return true
     end
-    if not indicators and #values == 0 then return end
+    if not indicators and #values == 0 then visibility(false); return true end
     indicators = indicators or Spynon.AuraIndicatorsFactory.Create(createFrame, root, clock, skin)
     indicators:SetTypography(options)
-    indicators:Set(values)
+    local valid = indicators:Set(values)
+    visibility(valid and #values > 0)
+    return valid
   end
   function view.RefreshOverlays(_, adapter)
     overlayAdapter, gcdTiming = adapter, nil
@@ -291,10 +313,14 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
   end
   function view.ClearOverlays(_)
     lastIndicators = nil
+    indicatorsVisible = false
     if indicators then indicators:Clear() end
     gcdTiming = nil
     for _, slot in ipairs(pool) do slot.overlay:Clear() end
     wake(motionActive)
+    local any = false
+    for _, slot in ipairs(pool) do if slot.id then any = true end end
+    if not any then root:Hide() end
   end
   function view.SetCooldownNumbers(_, enabled)
     for _, slot in ipairs(pool) do slot.overlay:SetNumbers(enabled) end
@@ -367,8 +393,8 @@ function Queue.Create(createFrame, parent, motionMode, settings, skin)
       view:SetRecommendations(lastRecommendations)
       if lastKeys then view:SetHotkeys(lastKeys) end
       if overlayAdapter then view:RefreshOverlays(overlayAdapter) end
-      if lastIndicators then view:SetIndicators(lastIndicators, indicatorClock) end
     end
+    if lastIndicators then view:SetIndicators(lastIndicators, indicatorClock) end
     return true
   end
   settings = settings or (explicitSkin and Spynon.SettingsFactory.Create(skin) or Spynon.Settings)

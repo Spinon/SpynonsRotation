@@ -63,6 +63,14 @@ function AuraUI.Create(createFrame, parent, clock, skin)
       if a.state ~= b.state then return Indicator.Rank[a.state] < Indicator.Rank[b.state] end
       return a.value.id < b.value.id
     end)
+    -- Reserve one visible cell for a curated target debuff; selected buffs must
+    -- not push independent tracking out of the bounded rail, even when unknown.
+    for index, item in ipairs(ranked) do
+      if item.value.kind == "debuff" then
+        if index > limit then table.insert(ranked, limit, table.remove(ranked, index)) end
+        break
+      end
+    end
     for i = 1, math.min(limit, #ranked) do keep[ranked[i].value.id] = true end
     for _, cell in ipairs(cells) do
       if cell.id and not keep[cell.id] then byId[cell.id] = nil; cell.id = nil; cell.frame:Hide() end

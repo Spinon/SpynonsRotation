@@ -91,6 +91,68 @@ local function fixture()
   return namespace.StateEngineFactory.Create(compat, detection), data, calls, env, detection, queryData
 end
 
+test("partial aura preserves public presence and ownership without secret optional fields", function()
+  local env, data = environment()
+  local api = namespace.CompatFactory.Create(env).State
+  data.aura = { applications = SECRET, duration = SECRET, expirationTime = SECRET,
+    isFromPlayerOrPlayerPet = true }
+  local result = api:ReadAuraState("target", 101)
+  equal(result.ok, true); equal(result.value.active, true); equal(result.value.playerOwned, true)
+  equal(result.value.applications, nil); equal(result.value.duration, nil); equal(result.value.expirationTime, nil)
+  equal(api:ReadAura("target", 101).code, "SECRET_RESTRICTED")
+  data.aura.isFromPlayerOrPlayerPet = SECRET
+  equal(api:ReadAuraState("target", 101).value.playerOwned, nil)
+end)
+
+test("partial aura rejects whole restrictions and malformed containers without inferring absence", function()
+  local env, data, calls = environment()
+  local api = namespace.CompatFactory.Create(env).State
+  env.C_Secrets.ShouldSpellAuraBeSecret = function() return true end
+  equal(api:ReadAuraState("target", 101).code, "SECRET_RESTRICTED"); equal(calls.aura, 0)
+  env.C_Secrets.ShouldSpellAuraBeSecret = function() return false end
+  data.aura = SECRET; equal(api:ReadAuraState("target", 101).code, "SECRET_RESTRICTED")
+  data.aura = 7; equal(api:ReadAuraState("target", 101).code, "INVALID_DATA")
+  data.aura = nil; equal(api:ReadAuraState("target", 101).value.active, false)
+  data.exists = false; equal(api:ReadAuraState("target", 101).code, "NO_DATA")
+  env.issecretvalue = nil; equal(api:ReadAuraState("target", 101).code, "SECRET_RESTRICTED")
+end)
+
+test("partial aura omits denied invalid and missing optional fields independently", function()
+  local env, data = environment()
+  local api = namespace.CompatFactory.Create(env).State
+  data.aura = setmetatable({isFromPlayerOrPlayerPet = true, applications = 2},
+    {__index = function() error("private field") end})
+  local result = api:ReadAuraState("target", 101)
+  equal(result.ok, true); equal(result.value.applications, 2); equal(result.value.duration, nil)
+  data.aura = {duration = -1, expirationTime = "bad", applications = 0.5}
+  result = api:ReadAuraState("target", 101)
+  equal(result.ok, true); equal(result.value.duration, nil)
+  equal(result.value.expirationTime, nil); equal(result.value.applications, nil)
+end)
+
+test("aura refresh replaces fields and never reuses target timing or stack resource", function()
+  local engine, data, _, env = fixture()
+  data.aura.isFromPlayerOrPlayerPet = true
+  engine:HandleEvent("PLAYER_ENTERING_WORLD")
+  equal(engine:GetSnapshot().auras["neutral.debuff"].expirationTime, 30)
+  data.aura = {duration = SECRET, expirationTime = SECRET, applications = SECRET,
+    isFromPlayerOrPlayerPet = true}
+  engine:HandleEvent("PLAYER_TARGET_CHANGED")
+  local state = engine:GetSnapshot()
+  equal(state.auras["neutral.debuff"].active, true)
+  equal(state.auras["neutral.debuff"].expirationTime, nil)
+  local guard = namespace.CompatFactory.Create(env).State
+  local reader = namespace.StateReader.Create(state, guard)
+  equal(reader:Read({"auras", "neutral.debuff", "active"}), true)
+  equal(reader:Read({"auras", "neutral.debuff", "remains"}), nil)
+  engine:HandleEvent("UNIT_AURA", "player")
+  equal(engine:GetSnapshot().resources["neutral.stacks"], nil)
+  data.exists = false; engine:HandleEvent("PLAYER_TARGET_CHANGED")
+  equal(engine:GetSnapshot().auras["neutral.debuff"], nil)
+  engine:HandleEvent("ADDON_RESTRICTION_STATE_CHANGED")
+  equal(next(engine:GetSnapshot().auras), nil)
+end)
+
 test("state is initialized without pretending any capability is available", function()
   local engine = fixture()
   local state = engine:GetSnapshot()

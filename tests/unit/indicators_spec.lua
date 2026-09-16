@@ -53,7 +53,8 @@ test("secret scalar fields and narrower capabilities cannot escape through displ
   state.auras["n.a"].applications = secret
   eq(ns.IndicatorEngine.Resolve({ definition() }, state, compat.State)[1].stacks, nil)
   state.capabilities["auras.n.a.expirationTime"] = "CONDITIONALLY_SECRET"
-  eq(ns.IndicatorEngine.Resolve({ definition() }, state, compat.State)[1].state, "UNAVAILABLE")
+  local partial = ns.IndicatorEngine.Resolve({ definition() }, state, compat.State)[1]
+  eq(partial.state, "STABLE"); eq(partial.expiresAt, nil)
   state.capabilities["auras.n.a.expirationTime"] = nil
   state.auras["n.a"].active = secret
   eq(ns.IndicatorEngine.Resolve({ definition() }, state, compat.State)[1].state, "UNAVAILABLE")
@@ -109,24 +110,97 @@ test("provider is optional and cannot publish outside combat or on selection mis
     reason = { code = "TEST", capability = "ADDON_AVAILABLE" } }) }
   eq(#provider:ForRecommendations(recs), 1)
   eq(#provider:ForRecommendations({ {} }), 0)
-  eq(#provider:ForRecommendations({}), 0)
+  eq(#provider:ForRecommendations({}), 1)
   state.inCombat = false; eq(#provider:ForRecommendations(recs), 0)
   state.inCombat = true; selection.specId = 264; eq(#provider:ForRecommendations(recs), 0)
   selection.specId = 263; module.getIndicators = nil; eq(#provider:ForRecommendations(recs), 0)
   module.getIndicators = function() error("bad provider") end; eq(#provider:ForRecommendations(recs), 0)
 end)
-test("spec derives aura inputs only from selected compiled rules, respecting talents", function()
+test("spec keeps curated target debuff while player buffs follow selected rules and talents", function()
   local module = ns.Classes.Shaman.Enhancement.Module
   local selection = { activeSpellRanks = {}, heroTree = { id = 55 } }
   local rec = { reason = { code = "enhancement.aoe_lava_lash_1" }, action = { id = "enhancement.lava_lash" } }
-  eq(#module.getIndicators(selection, { rec }), 0)
+  eq(#module.getIndicators(selection, { rec }), 1)
   selection.activeSpellRanks[201900] = 1
   local result = module.getIndicators(selection, { rec })
-  eq(#result, 1); eq(result[1].auraId, "enhancement.hot_hand")
-  rec.action.id = "different"; eq(#module.getIndicators(selection, { rec }), 0)
+  eq(#result, 2); eq(result[1].auraId, "enhancement.flame_shock"); eq(result[2].auraId, "enhancement.hot_hand")
+  rec.action.id = "different"; eq(#module.getIndicators(selection, { rec }), 1)
   rec.action.id = "enhancement.lava_lash"; rec.reason.code = "DEMO_ONLY_PHASE_1"
-  eq(#module.getIndicators(selection, { rec }), 0)
+  eq(#module.getIndicators(selection, { rec }), 1)
 end)
+test("Flame Shock tracking survives empty advice and Voltaic Blaze replacement", function()
+  local module = ns.Classes.Shaman.Enhancement.Module
+  for _, ranks in ipairs({{}, {[470057] = 1}}) do
+    local selection = {activeSpellRanks = ranks, heroTree = {id = 54}}
+    local values = module.getIndicators(selection, {})
+    eq(#values, 1); eq(values[1].spellId, 188389); eq(values[1].kind, "debuff")
+    eq(values[1].refreshRecommended, false)
+  end
+end)
+
+test("public owned presence without time is active but unknown ownership is unavailable", function()
+  local state, compat, secret = fixture()
+  local def = definition(); def.kind = "debuff"
+  state.auras["n.a"] = {active = true, unit = "target", playerOwned = true}
+  local value = ns.IndicatorEngine.Resolve({def}, state, compat.State)[1]
+  eq(value.state, "STABLE"); eq(value.expiresAt, nil); eq(value.stacks, nil)
+  for _, owner in ipairs({false, secret}) do
+    state.auras["n.a"].playerOwned = owner
+    eq(ns.IndicatorEngine.Resolve({def}, state, compat.State)[1].state, "UNAVAILABLE")
+  end
+end)
+
+test("indicator-only HUD survives empty advice settings and transitions then clears on stop", function()
+  local _, compat, _, _, createFrame, objects = fixture()
+  local settings = ns.SettingsFactory.Create()
+  local view = ns.QueueFactory.Create(createFrame, {}, "NORMAL", settings)
+  view:SetRecommendations({})
+  view:SetIndicators({indicator("tracking", "STABLE", 20)}, compat.State)
+  eq(view:GetRoot().visible, true)
+  local count = #objects
+  view:SetRecommendations({}); eq(view:GetRoot().visible, true)
+  local options = settings:Get(); options.indicators = false
+  view:ApplySettings(options); eq(view:GetRoot().visible, false)
+  for _, object in ipairs(objects) do if object.scripts then eq(object.scripts.OnUpdate, nil) end end
+  options.indicators = true; view:ApplySettings(options); eq(view:GetRoot().visible, true)
+  local rec = ns.Contracts.Recommendation.Create({id = "n.a", priority = 1,
+    action = {id = "n.a", kind = "spell", label = "A", capability = "ADDON_AVAILABLE"},
+    reason = {code = "TEST", capability = "ADDON_AVAILABLE"}})
+  view:SetRecommendations({rec}); view:SetRecommendations({})
+  eq(view:GetFrameForId("n.a"), nil); eq(view:GetRoot().visible, true)
+  eq(#objects, count)
+  view:ClearOverlays(); eq(view:GetRoot().visible, false)
+  view:SetIndicators({indicator("tracking", "STABLE", 20)}, compat.State)
+  view:Hide(); eq(view:GetRoot().visible, false)
+  for _, object in ipairs(objects) do if object.scripts then eq(object.scripts.OnUpdate, nil) end end
+  view:SetIndicators({indicator("tracking")}, compat.State)
+  eq(view:SetIndicators({{}}, compat.State), false); eq(view:GetRoot().visible, false)
+end)
+
+test("empty recommendation service renders real curated debuff and clears on combat exit", function()
+  local state, compat, _, _, createFrame, objects = fixture()
+  state.auras = {["enhancement.flame_shock"] = {active = true, unit = "target", playerOwned = true}}
+  state.capabilities["auras.enhancement.flame_shock"] = "ADDON_AVAILABLE"
+  local source = {GetSnapshot = function() return state end,
+    GetSelection = function() return {specId = 263, activeSpellRanks = {[470057] = 1}, heroTree = {id = 54}} end}
+  local provider = ns.IndicatorEngine.Create(source, ns.Specs, compat.State, compat.Media)
+  local callback
+  local service = {GetRecommendations = function() return {} end,
+    Subscribe = function(_, fn) callback = fn; return function() callback = nil end end}
+  local controller = ns.QueueControllerFactory.Create(service, compat.Media, createFrame,
+    nil, nil, nil, provider, compat.State)
+  controller:Start(); eq(controller:GetView():GetRoot().visible, true)
+  local active = false
+  for _, object in ipairs(objects) do if object.text == "Ativo" then active = true end end
+  eq(active, true)
+  state.capabilities["auras.enhancement.flame_shock"] = "CONDITIONALLY_SECRET"
+  state.auras = {}; callback({})
+  eq(controller:GetView():GetRoot().visible, true)
+  for _, object in ipairs(objects) do assert(object.text ~= "Ativo") end
+  state.inCombat = false; callback({}); eq(controller:GetView():GetRoot().visible, false)
+  controller:Stop(); eq(callback, nil)
+end)
+
 test("aura stack resources map through module catalog without a UI spec condition", function()
   local module = ns.Classes.Shaman.Enhancement.Module
   local selection = { activeSpellRanks = { [187880] = 1, [454009] = 1 }, heroTree = { id = 55 } }
@@ -151,6 +225,16 @@ test("urgency ordering is stable within bands and defaults to three with a ceili
   view:GetRoot().scripts.OnUpdate(view:GetRoot(), 0.2)
   eq(view:GetFrameForId("a"), a); eq(a.point[4], 256)
 end)
+test("bounded rail keeps a curated debuff visible alongside higher urgency buffs", function()
+  local _, compat, _, _, createFrame = fixture()
+  local view = ns.AuraIndicatorsFactory.Create(createFrame, {}, compat.State)
+  local debuff = indicator("tracking", "UNAVAILABLE"); debuff.kind = "debuff"
+  view:Set({indicator("a", "ABSENT"), indicator("b", "ABSENT"), indicator("c", "ABSENT"), debuff})
+  assert(view:GetFrameForId("tracking")); eq(view:GetFrameForId("c"), nil)
+  eq(view:GetFrameForId("tracking").point[4], 256)
+  view:SetLimit(1); assert(view:GetFrameForId("tracking")); eq(view:GetFrameForId("a"), nil)
+end)
+
 test("countdown stops on expiration without showing absent and clear releases timer", function()
   local _, compat, _, data, createFrame, objects = fixture()
   local view = ns.AuraIndicatorsFactory.Create(createFrame, {}, compat.State)

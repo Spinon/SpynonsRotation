@@ -91,7 +91,7 @@ local function getActions(snapshot)
 end
 
 local function getIndicators(snapshot, recommendations)
-  -- Explain aura/resource inputs of selected compiled rules, not the entire aura catalog.
+  -- Curated target debuffs persist independently; player buffs still explain selected rules.
   local selected, referenced, definitions = {}, {}, {}
   for _, rec in ipairs(recommendations) do selected[rec.reason.code] = rec.action.id end
   for _, list in ipairs(Enhancement.RotationBundle.lists) do
@@ -116,10 +116,11 @@ local function getIndicators(snapshot, recommendations)
     end
   end
   for _, aura in ipairs(Catalog.auras) do
-    if referenced[aura.id] and actionIsAvailable(aura, snapshot) then
+    if (aura.unit == "target" or referenced[aura.id]) and actionIsAvailable(aura, snapshot) then
       definitions[#definitions + 1] = { id = aura.id, auraId = aura.id, label = aura.label,
         spellId = aura.spellId, kind = aura.unit == "target" and "debuff" or "buff", showAbsent = true,
-        refreshRecommended = aura.unit == "target" and recommendations[1].action.id == aura.id }
+        refreshRecommended = aura.unit == "target" and recommendations[1] ~= nil
+          and recommendations[1].action.id == aura.id }
     end
   end
   return definitions

@@ -15,7 +15,7 @@ function fixture() {
   return { audit, files, pins, run: () => validateAudit(audit, (file) => files[file], [source], pins) };
 }
 test("audit real cobre toda a fronteira Compat e preserva Retail pendente", () => {
-  assert.deepEqual(checkWorkspace(), { risks: 10, files: 29, retailValidation: "PENDING" });
+  assert.deepEqual(checkWorkspace(), { risks: 10, files: 31, retailValidation: "PENDING" });
 });
 test("remoção de guard ou qualquer mudança em fonte revisada exige nova auditoria", () => {
   const data = fixture(); data.files[source] = "operation without guard\n";

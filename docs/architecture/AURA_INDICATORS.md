@@ -1,14 +1,15 @@
 # Indicadores decisivos — UI-005
 
 O trilho fica abaixo da fila, com três células por padrão e pool máximo de cinco. Não é uma
-segunda barra de buffs do WoW. Fila real vazia, estado de combate incerto ou spec incompatível
-retiram os indicadores; não se mantém informação antiga para preencher o HUD.
+segunda barra de buffs do WoW. Estado de combate incerto ou spec incompatível retiram os
+indicadores; fila vazia não retira debuffs curados independentes. Não se mantém informação antiga.
 
 ## Seleção e contratos
 
 SpecModule ganha o hook opcional `getIndicators(selection, recommendations)`. Módulos sem
 o hook continuam válidos. O módulo piloto seleciona somente auras/recursos de stacks que
-aparecem em READ_STATE das regras compiladas correspondentes às recomendações atuais.
+aparecem em READ_STATE das regras compiladas correspondentes às recomendações atuais,
+além dos debuffs de alvo já curados no catálogo, independentemente da fila.
 Confere tanto reason.code quanto action.id, preserva filtros de talentos e converte recursos
 de aura pelo próprio catálogo. Não há ID, nome de spell ou condição de Enhancement no Core/UI.
 
@@ -42,6 +43,31 @@ encerra seu timer em repouso, Clear, Hide ou restrição. Não há timer Lua por
 A ordem é ausente, renovar, atenção, estável, indisponível; desempate por ID estável.
 O cronômetro não reordena dentro de uma faixa. As células preservam identidade, e mudanças
 de faixa reposicionam sem acrescentar uma nova animação que altere o movimento da Queue.
+
+## PATCH-008 — tracking independente
+
+Flame Shock usa a aura de alvo 188389, não o ID do botão. Continua selecionado com
+fila vazia, regra descartada ou substituição por Voltaic Blaze. Buffs do jogador
+continuam contextuais. Uma célula do limite existente é reservada ao debuff curado
+mais urgente quando buffs ocupariam todas as posições; não aumenta a densidade.
+
+Compat.ReadAuraState mantém a mesma sonda de segredo e consulta exata da leitura
+completa ReadAura. Somente um resultado público autorizado confirma presença;
+autoria, duração, expiração e aplicações passam por guards independentes. Campos
+opcionais indisponíveis são omitidos, nunca copiados do snapshot anterior. ReadAura
+continua estrita para consumidores legados de stacks. Sem autoria pública, uma aura
+de alvo não entra como aura própria. Duração ausente não invalida presença pública:
+o indicador mostra Ativo sem segundos; expiração pública vencida continua indisponível.
+
+Restrição total mostra —, não AUSENTE. Não há novo caminho para ler auras secretas,
+DurationObject de debuff, previsão, alteração de APL ou promessa de recomendação.
+Estado novo pode liberar condições baseadas somente na presença pública, mas não
+condições que ainda dependem de tempo indisponível.
+
+O root pode conter apenas indicadores; esvaziar ações limpa slots/cooldowns, não o
+trilho. Desligar/religar indicadores conserva configuração, enquanto hide/stop e
+restrição limpam dados e timers. Troca/perda de alvo substitui observações; saída
+de combate retira o trilho. Inspeção visual Retail continua pendente.
 
 ## Apresentação e demo
 

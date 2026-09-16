@@ -21,7 +21,9 @@ function Engine.Resolve(definitions, state, guard)
       local expires = reader:Read({ "auras", definition.auraId, "expirationTime" })
       local duration = reader:Read({ "auras", definition.auraId, "duration" })
       local now = reader:Read({ "capturedAt" })
-      if expires == 0 and duration == 0 then value.state = "STABLE"
+      if expires == nil or (expires == 0 and (duration == nil or duration == 0)) then
+        -- Public presence without public timing is active, not an invented countdown.
+        value.state = "STABLE"
       elseif V.IsFiniteNumber(expires) and V.IsFiniteNumber(now) and now >= 0 and expires > now then
         value.state, value.expiresAt = "STABLE", expires
       end
@@ -37,7 +39,7 @@ end
 function Engine.Create(stateEngine, registry, guard, media)
   local provider = {}
   function provider.ForRecommendations(_, recommendations)
-    if not Spynon.RotationProgram.IsList(recommendations, 12) or #recommendations == 0 then return {} end
+    if not Spynon.RotationProgram.IsList(recommendations, 12) then return {} end
     for _, rec in ipairs(recommendations) do
       if not Spynon.Contracts.Recommendation.IsRuntimeSafe(rec) then return {} end
     end

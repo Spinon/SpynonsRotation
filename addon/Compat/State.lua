@@ -100,7 +100,7 @@ function State.Create(environment)
     return Result.Success({ current = current, maximum = maximum })
   end
 
-  function adapter.ReadAura(_, unit, spellId)
+  local function readAura(unit, spellId, partial)
     if (unit ~= "player" and unit ~= "target") or not Validation.IsPositiveInteger(spellId) then
       return Result.Failure(Result.Code.INVALID_ARGUMENT)
     end
@@ -116,16 +116,32 @@ function State.Create(environment)
     if value == nil then
       return Result.Success({ active = false, applications = 0, duration = 0, expirationTime = 0, unit = unit })
     end
-    local normalized, fieldError = fields(value, {
+    local schema = {
       { "applications", Validation.IsNonNegativeInteger }, { "duration", number }, { "expirationTime", number },
-    })
-    if fieldError then return fieldError end
+    }
+    local normalized = {}
+    if partial then
+      if type(value) ~= "table" then return Result.Failure(Result.Code.INVALID_DATA) end
+      -- Presence is the public result of the authorized exact-spell query. Optional
+      -- fields are independent; nothing secret or malformed enters the snapshot.
+      for _, field in ipairs(schema) do
+        local item, fieldError = adapter:ReadPublicField(value, field[1])
+        if not fieldError and field[2](item) then normalized[field[1]] = item end
+      end
+    else
+      local fieldError
+      normalized, fieldError = fields(value, schema)
+      if fieldError then return fieldError end
+    end
     normalized.active = true
     normalized.unit = unit
     local owner, ownerError = adapter:ReadPublicField(value, "isFromPlayerOrPlayerPet")
     if not ownerError and type(owner) == "boolean" then normalized.playerOwned = owner end
     return Result.Success(normalized)
   end
+
+  function adapter.ReadAura(_, unit, spellId) return readAura(unit, spellId, false) end
+  function adapter.ReadAuraState(_, unit, spellId) return readAura(unit, spellId, true) end
 
   function adapter.ReadCooldown(_, spellId)
     if not Validation.IsPositiveInteger(spellId) then return Result.Failure(Result.Code.INVALID_ARGUMENT) end

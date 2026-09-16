@@ -6,7 +6,7 @@
     "repository": "https://github.com/Spinon/SpynonsRotation",
     "defaultBranch": "main"
   },
-  "updatedAt": "2026-09-16T15:26:00Z",
+  "updatedAt": "2026-09-16T15:30:43Z",
   "currentFocus": "PATCH-008",
   "parallelFocus": {},
   "release": {
@@ -28,7 +28,7 @@
       "status": "in_progress",
       "priority": "P0",
       "source": "tasks/PATCH-008.md",
-      "updatedAt": "2026-09-16T15:26:00Z",
+      "updatedAt": "2026-09-16T15:30:43Z",
       "reviewBy": null,
       "nextAction": "Desacoplar debuffs curados, preservar campos públicos de aura, testar e instalar.",
       "dependencies": ["PATCH-007", "UI-005"],
@@ -38,7 +38,12 @@
         "Lifecycle e configuração preservados com regressões aprovadas",
         "Pacote instalado; inspeção Retail explicitamente pendente"
       ],
-      "evidence": []
+      "evidence": [
+        "Enhancement seleciona debuffs de alvo curados independentemente das recomendações, preservando Flame Shock com Voltaic Blaze. IndicatorEngine aceita fila vazia e presença pública sem tempo; Queue mantém trilho independente e AuraIndicators reserva uma célula sem aumentar o limite.",
+        "Compat.ReadAuraState preserva somente campos públicos individualmente validados, mantendo sonda de segredo, guards, autoria e ausência distinta de indisponibilidade. Snapshot novo descarta tempos antigos. ReadAura estrita permanece para stacks legados; nenhuma alteração em APL, cooldowns ou totens.",
+        "npm test aprovado: 224 Node + 488 Lua = 712 testes, 30 suítes Lua; lint e tipos limpos em 63 arquivos. Nove regressões novas cobrem estados parciais, secrets, restrição total, autoria, substituição, fila vazia, densidade, troca/perda de alvo, recursos, configuração e lifecycle. Auditoria cobre 31 fontes.",
+        "Wowless 2026-09-16T15:30:23.152Z PASS: zero erros, 521 warnings upstream; input SHA-256 315E51467D20409CFD909C383CB998BBBF84BE99432BC3806E99E83F0268D18B. Teste de carregamento não valida rendering, taint ou combate Retail."
+      ]
     },
     {
       "id": "PATCH-007",

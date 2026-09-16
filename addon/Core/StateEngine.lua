@@ -152,7 +152,7 @@ function Factory.Create(compat, detector)
   local function refreshAuras(unit)
     for _, query in ipairs(queries.auras) do
       if unit == nil or unit == query.unit then
-        state.auras[query.id] = record("auras." .. query.id, api:ReadAura(query.unit, query.spellId))
+        state.auras[query.id] = record("auras." .. query.id, api:ReadAuraState(query.unit, query.spellId))
       end
     end
   end
